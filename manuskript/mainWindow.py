@@ -6,7 +6,7 @@ import re
 
 from PyQt5.Qt import qVersion, PYQT_VERSION_STR
 from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoint,
-                          QRegExp, QUrl, QSize, QModelIndex)
+                          QRegExp, QUrl, QSize, QModelIndex, QFileSystemWatcher)
 from PyQt5.QtGui import QStandardItemModel, QIcon, QColor, QStandardItem
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
     QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit, QTextEdit, QTreeView, QDialog, QTableView
@@ -76,6 +76,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sessionStartWordCount = 0  # Used to track session targets
         self.history = History()
         self._previousSelectionEmpty = True
+        self._fileWatcher = None
+        self._changedPaths = set()
 
         self.readSettings()
 
@@ -1009,6 +1011,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Reset history
         self.history.reset()
 
+        # Watch project files for external changes
+        self._startFileWatcher(project)
+
         # Show main Window
         self.switchToProject()
 
@@ -1046,6 +1051,107 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         return True  # the situation has been handled
 
 
+    ###############################################################################
+    # FILE WATCHER — detect external changes and propose reload
+    ###############################################################################
+
+    def _collectWatchPaths(self, projectDir):
+        """Collect content files and directories to watch, skipping hidden entries."""
+        watchFiles = []
+        watchDirs = [projectDir]
+        for dirpath, dirnames, filenames in os.walk(projectDir):
+            if os.path.basename(dirpath).startswith("."):
+                continue
+            for d in dirnames:
+                if not d.startswith("."):
+                    watchDirs.append(os.path.join(dirpath, d))
+            for f in filenames:
+                if not f.startswith("."):
+                    watchFiles.append(os.path.join(dirpath, f))
+        return watchFiles, watchDirs
+
+    def _startFileWatcher(self, project):
+        """Set up a QFileSystemWatcher on the project's data directory."""
+        self._stopFileWatcher()
+
+        projectDir = os.path.splitext(project)[0]
+        if not os.path.isdir(projectDir):
+            return
+
+        self._fileWatcher = QFileSystemWatcher(self)
+        self._watchedProjectDir = projectDir
+
+        watchFiles, watchDirs = self._collectWatchPaths(projectDir)
+        if watchDirs:
+            self._fileWatcher.addPaths(watchDirs)
+        if watchFiles:
+            self._fileWatcher.addPaths(watchFiles)
+
+        self._fileWatcherTimer = QTimer(self)
+        self._fileWatcherTimer.setSingleShot(True)
+        self._fileWatcherTimer.setInterval(1500)
+        self._fileWatcherTimer.timeout.connect(self._onFileWatcherTimeout)
+
+        self._fileWatcher.fileChanged.connect(self._onExternalFileChanged)
+        self._fileWatcher.directoryChanged.connect(self._onExternalFileChanged)
+
+        LOGGER.info("File watcher started on %s (%d files, %d dirs)",
+                    projectDir, len(watchFiles), len(watchDirs))
+
+    def _stopFileWatcher(self):
+        """Remove the file watcher."""
+        if self._fileWatcher is not None:
+            self._fileWatcher.fileChanged.disconnect(self._onExternalFileChanged)
+            self._fileWatcher.directoryChanged.disconnect(self._onExternalFileChanged)
+            self._fileWatcher.removePaths(self._fileWatcher.files() + self._fileWatcher.directories())
+            self._fileWatcher.deleteLater()
+            self._fileWatcher = None
+        if hasattr(self, '_fileWatcherTimer') and self._fileWatcherTimer is not None:
+            self._fileWatcherTimer.stop()
+            self._fileWatcherTimer.deleteLater()
+            self._fileWatcherTimer = None
+
+    def _onExternalFileChanged(self, path):
+        """Slot for QFileSystemWatcher. Debounces via timer."""
+        self._changedPaths.add(path)
+        self._fileWatcherTimer.start()
+        LOGGER.debug("External change detected: %s", path)
+
+    def _onFileWatcherTimeout(self):
+        """Debounce expired. Notify open editors about changed files."""
+        if not self.currentProject:
+            return
+
+        paths = self._changedPaths
+        self._changedPaths = set()
+
+        # Notify all open editorWidgets
+        for ts in self.mainEditor.allTabSplitters():
+            for i in range(ts.tab.count()):
+                editor = ts.tab.widget(i)
+                if editor and hasattr(editor, 'notifyExternalChange'):
+                    for p in paths:
+                        editor.notifyExternalChange(p)
+
+        # Re-sync watcher (files may have been added/removed)
+        self._refreshWatcherPaths()
+
+    def _refreshWatcherPaths(self):
+        """Re-add paths that inotify may have dropped after a file change."""
+        if not self._fileWatcher or not hasattr(self, '_watchedProjectDir'):
+            return
+        currentFiles = set(self._fileWatcher.files())
+        currentDirs = set(self._fileWatcher.directories())
+        wantFiles, wantDirs = self._collectWatchPaths(self._watchedProjectDir)
+
+        missingFiles = [f for f in wantFiles if f not in currentFiles]
+        missingDirs = [d for d in wantDirs if d not in currentDirs]
+
+        if missingFiles:
+            self._fileWatcher.addPaths(missingFiles)
+        if missingDirs:
+            self._fileWatcher.addPaths(missingDirs)
+
     def closeProject(self):
 
         if not self.currentProject:
@@ -1063,6 +1169,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.currentProject = None
         self.projectDirty = None
         QSettings().setValue("lastProject", "")
+
+        # Stop file watcher
+        self._stopFileWatcher()
 
         # Clear datas
         self.loadEmptyDatas()
