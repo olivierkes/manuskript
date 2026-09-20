@@ -1656,8 +1656,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.tabMain.setTabIcon(i, icons[i])
 
             item = QListWidgetItem(self.tabMain.tabIcon(i),
-                                   self.tabMain.tabText(i))
-            item.setSizeHint(QSize(item.sizeHint().width(), 64))
+                                   "")  # Start with no text, will be set by set_sidebar_labels_visible
             item.setToolTip(self.tabMain.tabText(i))
             item.setTextAlignment(Qt.AlignCenter)
             self.lstTabs.addItem(item)
@@ -1666,6 +1665,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstTabs.item(self.TabDebug).setHidden(not self.SHOW_DEBUG_TAB)
         self.tabMain.setTabEnabled(self.TabDebug, self.SHOW_DEBUG_TAB)
         self.tabMain.currentChanged.connect(self.lstTabs.setCurrentRow)
+
+        # Apply sidebar labels visibility setting
+        self.set_sidebar_labels_visible(settings.show_sidebar_labels)
 
         # Splitters
         self.splitterPersos.setStretchFactor(0, 25)
@@ -2047,3 +2049,46 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.dialog = exporterDialog(mw=self)
         self.dialog.show()
         self.centerChildWindow(self.dialog)
+
+    ###############################################################################
+    # SIDEBAR
+    ###############################################################################
+    def set_sidebar_labels_visible(self, visible):
+        """Show or hide text labels in the sidebar navigation."""
+        # Icon size is 48x48
+        iconOnlyWidth = 48
+        withLabelsWidth = 120
+
+        LOGGER.debug(f"Setting sidebar labels visible: {visible}")
+        LOGGER.debug(f"lstTabs width before change: {self.lstTabs.width()}px")
+        LOGGER.debug(f"dckNavigation width before change: {self.dckNavigation.width()}px")
+
+        if visible:
+            # Show icon with text below
+            self.lstTabs.setSpacing(0)
+            self.lstTabs.setMinimumWidth(withLabelsWidth)
+            self.lstTabs.setMaximumWidth(withLabelsWidth)
+            # Make dock widget follow lstTabs size
+            self.dckNavigation.setMinimumWidth(withLabelsWidth)
+            self.dckNavigation.setMaximumWidth(withLabelsWidth)
+            for i in range(self.lstTabs.count()):
+                item = self.lstTabs.item(i)
+                item.setText(self.tabMain.tabText(i))
+                item.setSizeHint(QSize(withLabelsWidth, 64))
+            LOGGER.debug(f"lstTabs width after showing labels: {self.lstTabs.width()}px (target: {withLabelsWidth}px)")
+            LOGGER.debug(f"dckNavigation width after showing labels: {self.dckNavigation.width()}px")
+        else:
+            # Show icon only - compact width, no text gap
+            self.lstTabs.setSpacing(0)
+            self.lstTabs.setMinimumWidth(iconOnlyWidth)
+            self.lstTabs.setMaximumWidth(iconOnlyWidth)
+            # Make dock widget follow lstTabs size
+            self.dckNavigation.setMinimumWidth(iconOnlyWidth)
+            self.dckNavigation.setMaximumWidth(iconOnlyWidth)
+            for i in range(self.lstTabs.count()):
+                item = self.lstTabs.item(i)
+                item.setText("")
+                # Set height to exact icon size to eliminate text label gap
+                item.setSizeHint(QSize(iconOnlyWidth, iconOnlyWidth))
+            LOGGER.debug(f"lstTabs width after hiding labels: {self.lstTabs.width()}px (target: {iconOnlyWidth}px)")
+            LOGGER.debug(f"dckNavigation width after hiding labels: {self.dckNavigation.width()}px")
