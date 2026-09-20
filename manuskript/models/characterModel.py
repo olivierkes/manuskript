@@ -156,6 +156,20 @@ class characterModel(QAbstractItemModel, searchableModel):
 
         return r
 
+    def getPovCharactersByImportance(self):
+        """
+        Lists characters with POV activated by importance.
+
+        @return: array of array of ´character´, by importance.
+        """
+        r = [[], [], []]
+
+        for c in self.characters:
+            if c.pov():
+                r[2-int(c.importance())].append(c)
+
+        return r
+
     def getCharacterByID(self, ID):
         if ID != None:
             ID = str(ID)

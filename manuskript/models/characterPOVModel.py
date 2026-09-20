@@ -18,7 +18,7 @@ class characterPOVModel(QSortFilterProxyModel):
         # this is simpler to do, actually works and also more ideomatic Qt code.
         index = self.sourceModel().index(sourceRow, C.pov.value, sourceParent)
         value = self.sourceModel().data(index)
-        return bool(value)
+        return value == 'True'
 
     def rowToSource(self, row):
         index = self.index(row, 0)
