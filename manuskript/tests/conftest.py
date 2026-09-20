@@ -22,7 +22,7 @@ def MWNoProject(MW):
     """
     Take the MainWindow and close andy possibly open project.
     """
-    MW.closeProject()
+    MW.projectManager.closeProject()
     assert MW.currentProject == None
     return MW
 
@@ -34,7 +34,7 @@ def MWEmptyProject(MW):
     import tempfile
     tf = tempfile.NamedTemporaryFile(suffix=".msk")
 
-    MW.closeProject()
+    MW.projectManager.closeProject()
     assert MW.currentProject == None
     MW.welcome.createFile(tf.name, overwrite=True)
     assert MW.currentProject != None
@@ -66,7 +66,7 @@ def MWSampleProject(MW):
     import shutil
     shutil.copyfile(src, tf.name)
     shutil.copytree(src[:-4], tf.name[:-4])
-    MW.loadProject(tf.name)
+    MW.projectManager.loadProject(tf.name)
     assert MW.currentProject != None
 
     return MW

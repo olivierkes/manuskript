@@ -386,8 +386,8 @@ class settingsWindow(QWidget, Ui_Settings):
         settings.saveToZip = True if self.chkSaveToZip.checkState() else False
         settings.autoSaveDelay = int(self.txtAutoSave.text())
         settings.autoSaveNoChangesDelay = int(self.txtAutoSaveNoChanges.text())
-        self.mw.saveTimer.setInterval(settings.autoSaveDelay * 60 * 1000)
-        self.mw.saveTimerNoChanges.setInterval(settings.autoSaveNoChangesDelay * 1000)
+        self.mw.projectManager.saveTimer.setInterval(settings.autoSaveDelay * 60 * 1000)
+        self.mw.projectManager.saveTimerNoChanges.setInterval(settings.autoSaveNoChangesDelay * 1000)
 
     ####################################################################################################
     #                                           REVISION                                               #

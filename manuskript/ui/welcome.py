@@ -82,10 +82,10 @@ class welcome(QWidget, Ui_welcome):
             project = self.mw._autoLoadProject
             self.mw._autoLoadProject = None
             self.appendToRecentFiles(project)
-            self.mw.loadProject(project)
+            self.mw.projectManager.loadProject(project)
 
         elif autoLoad and last:
-            self.mw.loadProject(last)
+            self.mw.projectManager.loadProject(last)
 
     def getAutoLoadValues(self):
         """
@@ -144,8 +144,8 @@ class welcome(QWidget, Ui_welcome):
     def loadRecentFile(self):
         act = self.sender()
         self.appendToRecentFiles(act.data())
-        self.mw.closeProject()
-        self.mw.loadProject(act.data())
+        self.mw.projectManager.closeProject()
+        self.mw.projectManager.loadProject(act.data())
 
     ###############################################################################
     # DIALOGS
@@ -162,7 +162,7 @@ class welcome(QWidget, Ui_welcome):
         if filename:
             self.setLastAccessedDirectory(os.path.dirname(filename))
             self.appendToRecentFiles(filename)
-            self.mw.loadProject(filename)
+            self.mw.projectManager.loadProject(filename)
 
     def saveAsFile(self):
         lastDirectory = self.getLastAccessedDirectory()
@@ -180,7 +180,7 @@ class welcome(QWidget, Ui_welcome):
                 filename += ".msk"
             self.appendToRecentFiles(filename)
             loadSave.clearSaveCache()  # Ensure all file(s) are saved under new filename
-            self.mw.saveDatas(filename)
+            self.mw.projectManager.saveDatas(filename)
             # Update Window's project name with new filename
             pName = os.path.split(filename)[1]
             if pName.endswith('.msk'):
@@ -213,7 +213,7 @@ class welcome(QWidget, Ui_welcome):
             # Create new project
             self.appendToRecentFiles(filename)
             self.loadDefaultDatas()
-            self.mw.loadProject(filename, loadFromFile=False)
+            self.mw.projectManager.loadProject(filename, loadFromFile=False)
 
     ###############################################################################
     # TEMPLATES
@@ -268,7 +268,7 @@ class welcome(QWidget, Ui_welcome):
             # Change button text
             self.btnCreate.setText("Open {}".format(name))
             # Load project
-            self.mw.loadProject(appPath(os.path.join("sample-projects", name)))
+            self.mw.projectManager.loadProject(appPath(os.path.join("sample-projects", name)))
 
     def updateTemplate(self):
         # Clear layout
@@ -440,7 +440,7 @@ class welcome(QWidget, Ui_welcome):
         # Empty settings
         importlib.reload(settings)
         settings.initDefaultValues()
-        self.mw.loadEmptyDatas()
+        self.mw.projectManager.loadEmptyDatas()
 
         if self.template:
             t = [i for i in self._templates if i[0] == self.template[0]]
