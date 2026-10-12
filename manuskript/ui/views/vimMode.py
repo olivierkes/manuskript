@@ -1,5 +1,6 @@
 from PyQt5.QtCore import QObject, Qt, pyqtSignal
-from PyQt5.QtGui import QTextCursor
+from PyQt5.QtGui import QTextCharFormat, QTextCursor
+from PyQt5.QtWidgets import QTextEdit
 
 MODE_NORMAL = '-- NORMAL --'
 MODE_INSERT = '-- INSERT --'
@@ -77,6 +78,9 @@ class VimMode(QObject):
         self.register = ''
         self.register_linewise = False
         self.last_find = None
+        self._orig_cursor_width = editor.cursorWidth()
+        editor.cursorPositionChanged.connect(self._onCursorPositionChanged)
+        self.refreshBlockCursor()
 
     # -- public API --
 
@@ -93,6 +97,7 @@ class VimMode(QObject):
         self._cancelPending()
         self.mode = MODE_NORMAL
         self.modeChanged.emit(self.mode)
+        self.refreshBlockCursor()
 
     def refreshIndicator(self):
         self.modeChanged.emit(self.mode)
@@ -107,11 +112,13 @@ class VimMode(QObject):
         self._cancelPending()
         self.mode = MODE_NORMAL
         self.modeChanged.emit(self.mode)
+        self.refreshBlockCursor()
 
     def _enterInsert(self):
         self._cancelPending()
         self.mode = MODE_INSERT
         self.modeChanged.emit(self.mode)
+        self.refreshBlockCursor()
 
     def _cancelPending(self):
         self.count = ''
@@ -151,6 +158,34 @@ class VimMode(QObject):
             t = block.text()
             cursor.setPosition(block.position() + len(t) - len(t.lstrip()))
         self.editor.setTextCursor(cursor)
+
+    def _onCursorPositionChanged(self):
+        if self.mode == MODE_NORMAL:
+            self.refreshBlockCursor()
+
+    def refreshBlockCursor(self):
+        if self.mode != MODE_NORMAL:
+            self.editor.setExtraSelections([])
+            self.editor.setCursorWidth(self._orig_cursor_width)
+            return
+        cursor = self.editor.textCursor()
+        block = cursor.block()
+        if cursor.positionInBlock() < block.length() - 1:
+            selection = QTextEdit.ExtraSelection()
+            c = QTextCursor(self.editor.document())
+            c.setPosition(cursor.position())
+            c.setPosition(cursor.position() + 1, QTextCursor.KeepAnchor)
+            selection.cursor = c
+            fmt = QTextCharFormat()
+            fmt.setBackground(self.editor.palette().highlight())
+            fmt.setForeground(self.editor.palette().highlightedText())
+            selection.format = fmt
+            self.editor.setExtraSelections([selection])
+            self.editor.setCursorWidth(0)
+        else:
+            self.editor.setExtraSelections([])
+            self.editor.setCursorWidth(
+                self.editor.fontMetrics().horizontalAdvance(" "))
 
     # -- normal-mode dispatch --
 

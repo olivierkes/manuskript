@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QEvent, Qt
-from PyQt5.QtGui import QKeyEvent
+from PyQt5.QtGui import QKeyEvent, QTextCursor
 from PyQt5.QtWidgets import QMainWindow
 
 from manuskript.ui.views.MDEditView import MDEditView
@@ -555,3 +555,66 @@ def test_main_window_status_label(qapp):
     assert win._vimModeLabel.text() == MODE_INSERT
     esc(ed)
     assert win._vimModeLabel.text() == MODE_NORMAL
+
+
+def test_block_cursor_shown_in_normal(editor):
+    load(editor, 'abc\ndef\n', 1)
+    sels = editor.extraSelections()
+    assert len(sels) == 1
+    assert sels[0].cursor.selectionStart() == 1
+    assert sels[0].cursor.selectionEnd() == 2
+    assert editor.cursorWidth() == 0
+    assert sels[0].format.background().color() == editor.palette().highlight().color()
+    assert sels[0].format.foreground().color() == editor.palette().highlightedText().color()
+
+
+def test_block_cursor_follows_motion_and_programmatic_move(editor):
+    load(editor, 'abcdef', 0)
+    send(editor, 'l')
+    assert editor.extraSelections()[0].cursor.selectionStart() == 1
+    assert editor.extraSelections()[0].cursor.selectionEnd() == 2
+    c = QTextCursor(editor.document())
+    c.setPosition(4)
+    editor.setTextCursor(c)
+    assert editor.extraSelections()[0].cursor.selectionStart() == 4
+    assert editor.extraSelections()[0].cursor.selectionEnd() == 5
+
+
+def test_block_cursor_cleared_in_insert(editor):
+    load(editor, 'abc', 1)
+    send(editor, 'i')
+    send(editor, 'X')
+    assert editor.extraSelections() == []
+    assert editor.cursorWidth() == 1
+
+
+def test_block_cursor_restored_after_esc(editor):
+    load(editor, 'abc', 1)
+    send(editor, 'i')
+    esc(editor)
+    assert len(editor.extraSelections()) == 1
+    assert editor.extraSelections()[0].cursor.selectionStart() == 0
+    assert editor.extraSelections()[0].cursor.selectionEnd() == 1
+    assert editor.cursorWidth() == 0
+
+
+def test_block_cursor_at_line_end_and_document_end(editor):
+    load(editor, 'abc\ndef\n', 3)
+    assert editor.extraSelections() == []
+    assert editor.cursorWidth() == editor.fontMetrics().horizontalAdvance(' ')
+    c = QTextCursor(editor.document())
+    c.setPosition(8)
+    editor.setTextCursor(c)
+    assert editor.extraSelections() == []
+    assert editor.cursorWidth() == editor.fontMetrics().horizontalAdvance(' ')
+
+
+def test_block_cursor_after_reset(editor):
+    load(editor, 'abcdef', 2)
+    send(editor, 'i')
+    assert editor.extraSelections() == []
+    editor._vim.reset()
+    assert len(editor.extraSelections()) == 1
+    assert editor.extraSelections()[0].cursor.selectionStart() == 2
+    assert editor.extraSelections()[0].cursor.selectionEnd() == 3
+    assert editor.cursorWidth() == 0
