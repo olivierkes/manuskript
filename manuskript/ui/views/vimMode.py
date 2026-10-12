@@ -314,18 +314,18 @@ class VimMode(QObject):
     def _executeG(self, gg=False):
         op = self.pending_operator if self.pending_operator in ('d', 'c', 'y') else None
         count = int(self.count) if self.count else 0
+        op_count = self.operator_count
         cursor_block = self.editor.textCursor().block()
         self._cancelPending()
         if op is not None:
-            first = self._document().firstBlock() if gg else cursor_block
-            last = cursor_block if gg else self._lastLineBlock()
-            if count:
-                block = self._document().findBlockByNumber(count - 1)
-                if block.isValid():
-                    if gg:
-                        last = block
-                    else:
-                        first = block
+            if count or op_count:
+                n = (op_count or 1) * (count or 1)
+                target = self._document().findBlockByNumber(n - 1)
+                if not target.isValid():
+                    target = self._lastLineBlock()
+            else:
+                target = self._document().firstBlock() if gg else self._lastLineBlock()
+            first, last = (cursor_block, target) if cursor_block.position() <= target.position() else (target, cursor_block)
             self._applyLinewiseRange(op, first, last)
             return
         if count:
@@ -541,8 +541,7 @@ class VimMode(QObject):
             self._applyLinewiseRange(op, block, self._blockBelow(block, count - 1))
             return
         if ch == 'G':
-            self._cancelPending()
-            self._applyLinewiseRange(op, block, self._lastLineBlock())
+            self._executeG()
             return
         if ch == 'g':
             self.pending_motion = 'g'

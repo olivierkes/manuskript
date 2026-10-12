@@ -490,6 +490,30 @@ def test_dgg(editor):
     assert editor.toPlainText() == 'cc\n'
 
 
+def test_operator_d2G(editor):
+    load(editor, 'aa\nbb\ncc\ndd\n')
+    send(editor, 'd2G')
+    assert editor.toPlainText() == 'cc\ndd\n'
+
+
+def test_operator_2dG(editor):
+    load(editor, 'aa\nbb\ncc\ndd\n')
+    send(editor, '2dG')
+    assert editor.toPlainText() == 'cc\ndd\n'
+
+
+def test_operator_counted_G_direction(editor):
+    load(editor, 'aa\nbb\ncc\ndd\n', 6)
+    send(editor, 'd2G')
+    assert editor.toPlainText() == 'aa\ndd\n'
+
+
+def test_operator_d2gg(editor):
+    load(editor, 'aa\nbb\ncc\ndd\n', 6)
+    send(editor, 'd2gg')
+    assert editor.toPlainText() == 'aa\ndd\n'
+
+
 def test_dtx(editor):
     load(editor, 'abcxdef')
     send(editor, 'dtx')
