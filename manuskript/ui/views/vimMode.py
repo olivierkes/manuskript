@@ -174,6 +174,10 @@ class VimMode(QObject):
                 self._cancelPending()
             return True
 
+        if self.pending_operator == 'r' and text and text.isprintable() and not text.isspace():
+            self._executeReplace(text)
+            return True
+
         if mods & (Qt.ControlModifier | Qt.AltModifier | Qt.MetaModifier):
             if (mods & Qt.ControlModifier) and not (mods & Qt.ShiftModifier) and k == Qt.Key_R:
                 self._cancelPending()
@@ -214,6 +218,20 @@ class VimMode(QObject):
             self.count = ''
         elif ch == 'G':
             self._executeG()
+        elif ch == 'x':
+            self._executeDeleteChars()
+        elif ch == 'r':
+            self.pending_operator = 'r'
+            self.operator_count = int(self.count) if self.count else 0
+            self.count = ''
+        elif ch in 'aAIoO':
+            self._executeInsertGesture(ch)
+        elif ch == 'J':
+            self._executeJoin()
+        elif ch == 'u':
+            self._takeCount()
+            self._cancelPending()
+            self.editor.undo()
         elif ch in 'wWbBeE':
             self._executeWordMotion(ch)
         elif ch in 'ftFT':
@@ -305,7 +323,7 @@ class VimMode(QObject):
             self._setCursorPos(min(end, cursor.position() + count))
             return True
         if k == Qt.Key_Delete:
-            self._takeCount()
+            self._executeDeleteChars()
             return True
         if k == Qt.Key_Tab:
             self._takeCount()
@@ -357,6 +375,98 @@ class VimMode(QObject):
         else:
             self._setCursorPos(idx + 1)
         return True
+
+    def _executeReplace(self, ch):
+        count = self.operator_count if self.operator_count else 1
+        self._cancelPending()
+        cursor = self.editor.textCursor()
+        block = cursor.block()
+        position = cursor.position()
+        line_end = block.position() + block.length() - 1
+        end = min(position + count, line_end, len(self._text()))
+        if end <= position:
+            return
+        edit_cursor = QTextCursor(self._document())
+        edit_cursor.setPosition(position)
+        edit_cursor.setPosition(end, QTextCursor.KeepAnchor)
+        edit_cursor.beginEditBlock()
+        edit_cursor.insertText(ch * (end - position))
+        edit_cursor.endEditBlock()
+        self._setCursorPos(position)
+
+    def _executeDeleteChars(self):
+        count = self._takeCount()
+        text = self._text()
+        position = self.editor.textCursor().position()
+        end = position
+        while end < len(text) and end - position < count and text[end] != '\n':
+            end += 1
+        if end == position:
+            return
+        self.register = text[position:end]
+        self.register_linewise = False
+        edit_cursor = QTextCursor(self._document())
+        edit_cursor.setPosition(position)
+        edit_cursor.setPosition(end, QTextCursor.KeepAnchor)
+        edit_cursor.beginEditBlock()
+        edit_cursor.removeSelectedText()
+        edit_cursor.endEditBlock()
+        self._setCursorPos(position)
+
+    def _executeJoin(self):
+        count = int(self.count) if self.count else 1
+        self.count = ''
+        for _ in range(count):
+            cursor = self.editor.textCursor()
+            block = cursor.block()
+            nxt = block.next()
+            text = self._text()
+            if not nxt.isValid() or nxt.position() >= len(text):
+                break
+            eob = block.position() + block.length() - 1
+            text_next = nxt.text()
+            if text_next.strip() == '':
+                end = nxt.position()
+                replacement = ''
+            else:
+                end = nxt.position() + len(text_next) - len(text_next.lstrip())
+                replacement = ' '
+            edit_cursor = QTextCursor(self._document())
+            edit_cursor.setPosition(eob)
+            edit_cursor.setPosition(end, QTextCursor.KeepAnchor)
+            edit_cursor.beginEditBlock()
+            edit_cursor.insertText(replacement)
+            edit_cursor.endEditBlock()
+            self._setCursorPos(eob)
+
+    def _executeInsertGesture(self, ch):
+        cursor = self.editor.textCursor()
+        block = cursor.block()
+        position = cursor.position()
+        eob = block.position() + block.length() - 1
+        text = self._text()
+        if ch == 'a':
+            position = position + 1 if position < len(text) else position
+        elif ch == 'I':
+            position = self._firstNonBlank(block)
+        elif ch == 'A':
+            position = eob
+        elif ch == 'o':
+            edit_cursor = QTextCursor(self._document())
+            edit_cursor.setPosition(eob)
+            edit_cursor.beginEditBlock()
+            edit_cursor.insertText('\n')
+            edit_cursor.endEditBlock()
+            position = eob + 1
+        else:  # 'O'
+            edit_cursor = QTextCursor(self._document())
+            edit_cursor.setPosition(block.position())
+            edit_cursor.beginEditBlock()
+            edit_cursor.insertText('\n')
+            edit_cursor.endEditBlock()
+            position = block.position()
+        self._setCursorPos(position)
+        self._enterInsert()
 
     # -- operators (filled in Task 4) --
 

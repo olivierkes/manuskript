@@ -253,3 +253,112 @@ def test_find_missing_char_does_not_move(editor):
     load(editor, 'hello world\n')
     send(editor, 'fz')
     assert pos(editor) == 0
+
+
+def test_x_deletes_char(editor):
+    load(editor, 'abcdef')
+    send(editor, 'x')
+    assert editor.toPlainText() == 'bcdef'
+    assert pos(editor) == 0
+
+
+def test_x_with_count(editor):
+    load(editor, 'abcdef')
+    send(editor, 'x')
+    send(editor, '3x')
+    assert editor.toPlainText() == 'ef'
+    assert pos(editor) == 0
+
+
+def test_delete_key_deletes_char(editor):
+    load(editor, 'abcdef')
+    send_key(editor, Qt.Key_Delete)
+    assert editor.toPlainText() == 'bcdef'
+    assert pos(editor) == 0
+
+
+def test_replace_char(editor):
+    load(editor, 'abcd', 1)
+    send(editor, 'rZ')
+    assert editor.toPlainText() == 'aZcd'
+    assert pos(editor) == 1
+
+
+def test_replace_with_count(editor):
+    load(editor, 'abcd')
+    send(editor, '2rZ')
+    assert editor.toPlainText() == 'ZZcd'
+    assert pos(editor) == 0
+
+
+def test_join_lines(editor):
+    load(editor, 'aa\nbb\ncc\n')
+    send(editor, 'J')
+    assert editor.toPlainText() == 'aa bb\ncc\n'
+    assert pos(editor) == 2
+
+
+def test_join_with_count(editor):
+    load(editor, 'aa\nbb\ncc\n')
+    send(editor, '2J')
+    assert editor.toPlainText() == 'aa bb cc\n'
+
+
+def test_append(editor):
+    load(editor, 'abc', 1)
+    send(editor, 'a')
+    send(editor, 'X')
+    assert editor.toPlainText() == 'abXc'
+    assert pos(editor) == 3
+
+
+def test_insert_at_first_non_blank(editor):
+    load(editor, '  abc', 5)
+    send(editor, 'I')
+    send(editor, 'X')
+    assert editor.toPlainText() == '  Xabc'
+
+
+def test_append_at_end_of_line(editor):
+    load(editor, 'abc')
+    send(editor, 'A')
+    send(editor, 'X')
+    assert editor.toPlainText() == 'abcX'
+
+
+def test_open_line_below(editor):
+    load(editor, 'abc\ndef\n')
+    send(editor, 'o')
+    send(editor, 'X')
+    assert editor.toPlainText() == 'abc\nX\ndef\n'
+
+
+def test_open_line_above(editor):
+    load(editor, 'abc')
+    send(editor, 'O')
+    send(editor, 'X')
+    assert editor.toPlainText() == 'X\nabc'
+
+
+def test_undo_after_x(editor):
+    load(editor, 'abcdef')
+    send(editor, 'x')
+    assert editor.toPlainText() == 'bcdef'
+    send(editor, 'u')
+    assert editor.toPlainText() == 'abcdef'
+
+
+def test_ctrl_r_redo(editor):
+    load(editor, 'abcdef')
+    send(editor, 'x')
+    send(editor, 'u')
+    send_key(editor, Qt.Key_R, '\x12', Qt.ControlModifier)
+    assert editor.toPlainText() == 'bcdef'
+
+
+def test_ctrl_v_consumed_in_normal(editor):
+    from PyQt5.QtWidgets import QApplication
+    QApplication.clipboard().setText('Q')
+    load(editor, 'abc')
+    send_key(editor, Qt.Key_V, '\x16', Qt.ControlModifier)
+    assert editor.toPlainText() == 'abc'
