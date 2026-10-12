@@ -1,6 +1,8 @@
 from PyQt5.QtCore import QEvent, Qt
 from PyQt5.QtGui import QKeyEvent
+from PyQt5.QtWidgets import QMainWindow
 
+from manuskript.ui.views.MDEditView import MDEditView
 from manuskript.ui.views.vimMode import MODE_INSERT, MODE_NORMAL
 
 
@@ -536,3 +538,20 @@ def test_undo_grouping(editor):
     assert editor.toPlainText() == 'bb\ncc dd\n'
     send(editor, 'u')
     assert editor.toPlainText() == 'aa bb\ncc dd\n'
+
+
+def test_enable_vim_is_idempotent(editor):
+    vim = editor._vim
+    editor.enableVim()
+    assert editor._vim is vim
+
+
+def test_main_window_status_label(qapp):
+    win = QMainWindow()
+    ed = MDEditView(win)
+    ed.setEnabled(True)
+    ed.enableVim()
+    send(ed, 'i')
+    assert win._vimModeLabel.text() == MODE_INSERT
+    esc(ed)
+    assert win._vimModeLabel.text() == MODE_NORMAL

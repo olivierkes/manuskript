@@ -50,6 +50,8 @@ class fullScreenEditor(QWidget):
         self.scrollBar = self.editor.verticalScrollBar()
         self.scrollBar.setParent(self)
 
+        self.editor.enableVim()
+
         # Top Panel
         self.topPanel = myPanel(parent=self)
         # self.topPanel.layout().addStretch(1)
@@ -144,6 +146,12 @@ class fullScreenEditor(QWidget):
         self.bottomPanel.layout().addWidget(self.lblProgress)
         self.bottomPanel.layout().addSpacing(15)
         self.bottomPanel.layout().addWidget(self.lblClock)
+
+        self.lblVimMode = QLabel(self)
+        self.bottomPanel.layout().addWidget(self.lblVimMode)
+        self.editor._vim.modeChanged.connect(self.lblVimMode.setText)
+        self.lblVimMode.setText("-- NORMAL --")
+
         self.updateStatusBar()
 
         self.bottomPanel.layout().addSpacing(24)
