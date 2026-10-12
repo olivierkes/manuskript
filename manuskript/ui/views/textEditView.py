@@ -5,7 +5,7 @@ import re, textwrap
 from PyQt5.Qt import QApplication
 from PyQt5.QtCore import QTimer, QModelIndex, Qt, QEvent, pyqtSignal, QRegExp, QLocale, QPersistentModelIndex, QMutex
 from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat, QFont, QColor, QIcon, QMouseEvent, QTextCursor
-from PyQt5.QtWidgets import QWidget, QTextEdit, qApp, QAction, QMenu, QToolTip
+from PyQt5.QtWidgets import QWidget, QTextEdit, qApp, QAction, QMenu, QToolTip, QLabel
 
 from manuskript import settings
 from manuskript.enums import Outline, World, Character, Plot
@@ -57,6 +57,7 @@ class textEditView(QTextEdit):
         self.highligtCS = False
         self._dict = None
         self._tooltip = { 'depth' : 0, 'active' : 0 }
+        self._vim = None
 
         # Submit text changed only after 500ms without modifications
         self.updateTimer = QTimer()
@@ -88,6 +89,28 @@ class textEditView(QTextEdit):
             self.highlighter = self._highlighterClass(self)
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
     
+    def enableVim(self):
+        if self._vim is not None:
+            return
+        from manuskript.ui.views.vimMode import VimMode
+        self._vim = VimMode(self)
+        self._vim.modeChanged.connect(self._vimModeChanged)
+
+    def _vimModeChanged(self, text):
+        win = self.window()
+        if hasattr(win, 'statusBar'):
+            bar = win.statusBar()
+            if bar is not None:
+                if not hasattr(win, '_vimModeLabel'):
+                    win._vimModeLabel = QLabel(win)
+                    bar.addPermanentWidget(win._vimModeLabel)
+                win._vimModeLabel.setText(text)
+
+    def focusInEvent(self, event):
+        QTextEdit.focusInEvent(self, event)
+        if self._vim is not None:
+            self._vim.refreshIndicator()
+
     def cleanupTimer(self):
         if self.updateTimer:
             self.disconnectDocument()

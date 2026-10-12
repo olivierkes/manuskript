@@ -56,6 +56,8 @@ class MDEditView(textEditView):
     ###########################################################################
 
     def keyPressEvent(self, event):
+        if self._vim is not None and self._vim.handleKey(event):
+            return
         k = event.key()
         m = event.modifiers()
         cursor = self.textCursor()
@@ -183,6 +185,8 @@ class MDEditView(textEditView):
 
     def setCurrentModelIndex(self, index):
         textEditView.setCurrentModelIndex(self, index)
+        if self._vim is not None:
+            self._vim.reset()
         self.centerCursor()
 
     def cursorPositionHasChanged(self):
