@@ -164,7 +164,14 @@ class VimMode(QObject):
             return True
 
         if self.pending_motion is not None:
-            self._executeFind(text)
+            if self.pending_motion == 'g':
+                self.pending_motion = None
+                if text == 'g':
+                    self._executeG(gg=True)
+                else:
+                    self._cancelPending()
+            else:
+                self._executeFind(text)
             return True
 
         if self.pending_operator == 'g' and text and text.isprintable() and not text.isspace():
@@ -232,6 +239,20 @@ class VimMode(QObject):
             self._takeCount()
             self._cancelPending()
             self.editor.undo()
+        elif ch == 'D':
+            cursor = self.editor.textCursor()
+            self._takeCount()
+            self._operateRange('d', cursor.position(),
+                               cursor.block().position() + max(cursor.block().length() - 1, 0))
+        elif ch == 'C':
+            cursor = self.editor.textCursor()
+            self._takeCount()
+            self._operateRange('c', cursor.position(),
+                               cursor.block().position() + max(cursor.block().length() - 1, 0))
+        elif ch == 'p':
+            self._executePaste(True, self._takeCount())
+        elif ch == 'P':
+            self._executePaste(False, self._takeCount())
         elif ch in 'wWbBeE':
             self._executeWordMotion(ch)
         elif ch in 'ftFT':
@@ -291,8 +312,22 @@ class VimMode(QObject):
         self._setCursorPos(target)
 
     def _executeG(self, gg=False):
+        op = self.pending_operator if self.pending_operator in ('d', 'c', 'y') else None
         count = int(self.count) if self.count else 0
+        cursor_block = self.editor.textCursor().block()
         self._cancelPending()
+        if op is not None:
+            first = self._document().firstBlock() if gg else cursor_block
+            last = cursor_block if gg else self._lastLineBlock()
+            if count:
+                block = self._document().findBlockByNumber(count - 1)
+                if block.isValid():
+                    if gg:
+                        last = block
+                    else:
+                        first = block
+            self._applyLinewiseRange(op, first, last)
+            return
         if count:
             block = self._document().findBlockByNumber(count - 1)
             if not block.isValid():
@@ -349,6 +384,29 @@ class VimMode(QObject):
         self.pending_motion = None
         if not ch or not ch.isprintable():
             self._cancelPending()
+            return
+        op = self.pending_operator if self.pending_operator in ('d', 'c', 'y') else None
+        if op is not None:
+            text = self._text()
+            position = self.editor.textCursor().position()
+            if cmd in 'ft':
+                idx = text.find(ch, position + 1)
+            else:
+                idx = text.rfind(ch, 0, position)
+            if idx < 0:
+                self._cancelPending()
+                return
+            if cmd == 'f':
+                start, end = position, idx + 1
+            elif cmd == 't':
+                start, end = position, idx
+            elif cmd == 'F':
+                start, end = idx, position + 1
+            else:
+                start, end = idx + 1, position
+            self._cancelPending()
+            if start != end:
+                self._operateRange(op, start, end)
             return
         for _ in range(int(self.count) if self.count else 1):
             if not self._find_char(cmd, ch):
@@ -468,7 +526,168 @@ class VimMode(QObject):
         self._setCursorPos(position)
         self._enterInsert()
 
-    # -- operators (filled in Task 4) --
+    # -- operators --
 
-    def _handleOperatorKey(self, text):
+    def _handleOperatorKey(self, ch):
+        op = self.pending_operator
+        cursor = self.editor.textCursor()
+        block = cursor.block()
+        position = cursor.position()
+        text = self._text()
+
+        if ch == op:
+            count = (self.operator_count or 1) * self._takeCount()
+            self._cancelPending()
+            self._applyLinewiseRange(op, block, self._blockBelow(block, count - 1))
+            return
+        if ch == 'G':
+            self._cancelPending()
+            self._applyLinewiseRange(op, block, self._lastLineBlock())
+            return
+        if ch == 'g':
+            self.pending_motion = 'g'
+            return
+        if ch in 'ftFT':
+            self.pending_motion = ch
+            return
+
+        count = (self.operator_count or 1) * self._takeCount()
+        if ch in 'jk':
+            if ch == 'j':
+                first, last = block, self._blockBelow(block, count)
+            else:
+                first, last = self._blockAbove(block, count), block
+            self._cancelPending()
+            self._applyLinewiseRange(op, first, last)
+            return
+
+        if op == 'c' and ch in 'wW':
+            ch = 'e' if ch == 'w' else 'E'
+        big = ch.isupper()
+        if ch in 'wW':
+            target = _motion_w(text, position, big, count)
+        elif ch in 'bB':
+            target = _motion_b(text, position, big, count)
+        elif ch in 'eE':
+            target = _motion_e(text, position, big, count)
+        elif ch == 'h':
+            target = max(block.position(), position - count)
+        elif ch == 'l':
+            target = min(block.position() + max(block.length() - 2, 0), position + count)
+        elif ch == '0':
+            target = block.position()
+        elif ch == '^':
+            target = self._firstNonBlank(block)
+        elif ch == '$':
+            target = block.position() + max(block.length() - 1, 0)
+        else:
+            self._cancelPending()
+            return
+
+        start = min(position, target)
+        end = max(position, target)
+        if ch in 'eE':
+            end += 1
         self._cancelPending()
+        if start >= end and op in ('d', 'c'):
+            return
+        self._operateRange(op, start, end)
+
+    def _operateRange(self, op, start, end):
+        n = self._document().characterCount() - 1
+        start = max(0, min(start, n))
+        end = max(0, min(end, n))
+        self.register = self._text()[start:end]
+        self.register_linewise = False
+        if op == 'y':
+            self._setCursorPos(start)
+            return
+        if start == end:
+            if op == 'c':
+                self._enterInsert()
+            return
+        edit_cursor = QTextCursor(self._document())
+        edit_cursor.setPosition(start)
+        edit_cursor.setPosition(end, QTextCursor.KeepAnchor)
+        edit_cursor.beginEditBlock()
+        edit_cursor.removeSelectedText()
+        edit_cursor.endEditBlock()
+        self._setCursorPos(start)
+        if op == 'c':
+            self._enterInsert()
+
+    def _applyLinewiseRange(self, op, first, last):
+        n = self._document().characterCount() - 1
+        start = first.position()
+        end = min(last.position() + last.length(), n)
+        self.register = self._text()[start:end]
+        self.register_linewise = True
+        if op == 'y':
+            self._setCursorPos(start, fnb=True)
+            return
+        edit_cursor = QTextCursor(self._document())
+        edit_cursor.setPosition(start)
+        if op == 'c' and last.next().isValid() and last.next().position() < n:
+            edit_cursor.setPosition(end - 1, QTextCursor.KeepAnchor)
+        else:
+            edit_cursor.setPosition(end, QTextCursor.KeepAnchor)
+        edit_cursor.beginEditBlock()
+        edit_cursor.removeSelectedText()
+        edit_cursor.endEditBlock()
+        self._setCursorPos(start, fnb=True)
+        if op == 'c':
+            self._enterInsert()
+
+    def _blockBelow(self, block, count):
+        text = self._text()
+        for _ in range(count):
+            nxt = block.next()
+            if not nxt.isValid() or nxt.position() >= len(text):
+                return block
+            block = nxt
+        return block
+
+    def _blockAbove(self, block, count):
+        for _ in range(count):
+            nxt = block.previous()
+            if not nxt.isValid():
+                return block
+            block = nxt
+        return block
+
+    def _executePaste(self, below, count):
+        if not self.register:
+            return
+        if self.register_linewise:
+            reg = self.register.rstrip('\n')
+            block = self.editor.textCursor().block()
+            edit_cursor = QTextCursor(self._document())
+            if below:
+                at = block.position() + block.length() - 1
+                edit_cursor.setPosition(at)
+                edit_cursor.beginEditBlock()
+                for _ in range(count):
+                    edit_cursor.insertText('\n' + reg)
+                edit_cursor.endEditBlock()
+                self._setCursorPos(at + 1, fnb=True)
+            else:
+                at = block.position()
+                edit_cursor.setPosition(at)
+                edit_cursor.beginEditBlock()
+                for _ in range(count):
+                    edit_cursor.insertText(reg + '\n')
+                edit_cursor.endEditBlock()
+                self._setCursorPos(at, fnb=True)
+            return
+        text = self._text()
+        position = self.editor.textCursor().position()
+        if below:
+            at = position + 1 if position < len(text) and text[position] != '\n' else position
+        else:
+            at = position
+        edit_cursor = QTextCursor(self._document())
+        edit_cursor.setPosition(at)
+        edit_cursor.beginEditBlock()
+        edit_cursor.insertText(self.register * count)
+        edit_cursor.endEditBlock()
+        self._setCursorPos(at + len(self.register) * count - 1)

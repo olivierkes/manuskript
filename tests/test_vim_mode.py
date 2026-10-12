@@ -379,3 +379,136 @@ def test_replace_with_space(editor):
     assert editor.textCursor().position() == 2
     send(editor, 'z')
     assert editor.toPlainText() == 'ab '
+
+
+def test_dw(editor):
+    load(editor, 'one two three\n')
+    send(editor, 'dw')
+    assert editor.toPlainText() == 'two three\n'
+    assert pos(editor) == 0
+
+
+def test_de(editor):
+    load(editor, 'one two\n')
+    send(editor, 'de')
+    assert editor.toPlainText() == ' two\n'
+
+
+def test_lD(editor):
+    load(editor, 'abc def')
+    send(editor, 'lD')
+    assert editor.toPlainText() == 'a'
+
+
+def test_llC(editor):
+    load(editor, 'abc def')
+    send(editor, 'llC')
+    send(editor, 'X')
+    esc(editor)
+    assert editor.toPlainText() == 'abX'
+
+
+def test_dd(editor):
+    load(editor, 'aa\nbb\ncc\n', 3)
+    send(editor, 'dd')
+    assert editor.toPlainText() == 'aa\ncc\n'
+    assert pos(editor) == 3
+
+
+def test_2dd(editor):
+    load(editor, 'aa\nbb\ncc\ndd\n')
+    send(editor, '2dd')
+    assert editor.toPlainText() == 'cc\ndd\n'
+    assert pos(editor) == 0
+
+
+def test_yy_and_p_linewise(editor):
+    load(editor, 'aa\nbb\ncc\n', 3)
+    send(editor, 'yy')
+    assert editor._vim.register == 'bb\n'
+    assert editor._vim.register_linewise is True
+    send(editor, 'p')
+    assert editor.toPlainText() == 'aa\nbb\nbb\ncc\n'
+    assert pos(editor) == 6
+
+
+def test_yy_and_P_linewise(editor):
+    load(editor, 'aa\nbb\ncc\n', 3)
+    send(editor, 'yyP')
+    assert editor.toPlainText() == 'aa\nbb\nbb\ncc\n'
+    assert pos(editor) == 3
+
+
+def test_yw_and_p_charwise(editor):
+    load(editor, 'one two')
+    send(editor, 'yw')
+    assert editor._vim.register == 'one '
+    send(editor, 'p')
+    assert editor.toPlainText() == 'oone ne two'
+    assert pos(editor) == 4
+
+
+def test_cw(editor):
+    load(editor, 'one two')
+    send(editor, 'cw')
+    assert editor._vim.mode == MODE_INSERT
+    send(editor, 'X')
+    esc(editor)
+    assert editor.toPlainText() == 'X two'
+
+
+def test_cc(editor):
+    load(editor, 'aa\nbb\ncc\n', 3)
+    send(editor, 'cc')
+    assert editor._vim.mode == MODE_INSERT
+    send(editor, 'X')
+    esc(editor)
+    assert editor.toPlainText() == 'aa\nX\ncc\n'
+
+
+def test_dj(editor):
+    load(editor, 'aa\nbb\ncc\n', 3)
+    send(editor, 'dj')
+    assert editor.toPlainText() == 'aa\n'
+
+
+def test_dk(editor):
+    load(editor, 'aa\nbb\ncc\n', 3)
+    send(editor, 'dk')
+    assert editor.toPlainText() == 'cc\n'
+
+
+def test_dG(editor):
+    load(editor, 'aa\nbb\ncc\n', 3)
+    send(editor, 'dG')
+    assert editor.toPlainText() == 'aa\n'
+
+
+def test_dgg(editor):
+    load(editor, 'aa\nbb\ncc\n', 3)
+    send(editor, 'dgg')
+    assert editor.toPlainText() == 'cc\n'
+
+
+def test_dtx(editor):
+    load(editor, 'abcxdef')
+    send(editor, 'dtx')
+    assert editor.toPlainText() == 'xdef'
+
+
+def test_dFx(editor):
+    load(editor, 'abcxdef', 6)
+    send(editor, 'dFx')
+    assert editor.toPlainText() == 'abc'
+
+
+def test_undo_grouping(editor):
+    load(editor, 'aa bb\ncc dd\n')
+    send(editor, 'dw')
+    assert editor.toPlainText() == 'bb\ncc dd\n'
+    send(editor, 'dd')
+    assert editor.toPlainText() == 'cc dd\n'
+    send(editor, 'u')
+    assert editor.toPlainText() == 'bb\ncc dd\n'
+    send(editor, 'u')
+    assert editor.toPlainText() == 'aa bb\ncc dd\n'
