@@ -181,3 +181,75 @@ def test_ctrl_bracket_enters_normal(editor):
     send(editor, 'i')
     send_key(editor, Qt.Key_BracketLeft, '\x1b', Qt.ControlModifier)
     assert editor._vim.mode == MODE_NORMAL
+
+
+def test_word_motions(editor):
+    load(editor, 'one, two three\nfour\n')
+    send(editor, 'w')
+    assert pos(editor) == 3
+    send(editor, 'w')
+    assert pos(editor) == 5
+    send(editor, 'e')
+    assert pos(editor) == 7
+    send(editor, 'b')
+    assert pos(editor) == 5
+    send(editor, 'b')
+    assert pos(editor) == 3
+
+
+def test_big_word_motions(editor):
+    load(editor, 'one, two three\nfour\n')
+    send(editor, 'W')
+    assert pos(editor) == 5
+    send(editor, 'E')
+    assert pos(editor) == 7
+    send(editor, 'B')
+    assert pos(editor) == 5
+
+
+def test_count_word_motion(editor):
+    load(editor, 'one two three four\n')
+    send(editor, '2w')
+    assert pos(editor) == 8
+
+
+def test_find_char(editor):
+    load(editor, 'hello world\n')
+    send(editor, 'fo')
+    assert pos(editor) == 4
+    send(editor, ';')
+    assert pos(editor) == 7
+    send(editor, ',')
+    assert pos(editor) == 4
+
+
+def test_find_with_count(editor):
+    load(editor, 'hello world\n')
+    send(editor, '2fo')
+    assert pos(editor) == 7
+
+
+def test_till_char(editor):
+    load(editor, 'hello world\n')
+    send(editor, 'to')
+    assert pos(editor) == 3
+
+
+def test_find_backwards(editor):
+    load(editor, 'hello world\n', 10)
+    send(editor, 'Fo')
+    assert pos(editor) == 7
+    send(editor, ';')
+    assert pos(editor) == 4
+
+
+def test_till_backwards(editor):
+    load(editor, 'hello world\n', 10)
+    send(editor, 'To')
+    assert pos(editor) == 8
+
+
+def test_find_missing_char_does_not_move(editor):
+    load(editor, 'hello world\n')
+    send(editor, 'fz')
+    assert pos(editor) == 0

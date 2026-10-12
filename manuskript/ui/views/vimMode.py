@@ -5,6 +5,64 @@ MODE_NORMAL = '-- NORMAL --'
 MODE_INSERT = '-- INSERT --'
 
 
+def _char_class(ch, big):
+    if ch.isspace():
+        return 0
+    if big:
+        return 1
+    if ch.isalnum() or ch == '_':
+        return 1
+    return 2
+
+
+def _motion_w(text, position, big, count):
+    n = len(text)
+    for _ in range(count):
+        if position >= n:
+            break
+        cls = _char_class(text[position], big)
+        if cls == 0:
+            while position < n and _char_class(text[position], big) == 0:
+                position += 1
+        else:
+            while position < n and _char_class(text[position], big) == cls:
+                position += 1
+            while position < n and _char_class(text[position], big) == 0:
+                position += 1
+    return position
+
+
+def _motion_b(text, position, big, count):
+    for _ in range(count):
+        if position <= 0:
+            break
+        position -= 1
+        while position > 0 and _char_class(text[position], big) == 0:
+            position -= 1
+        cls = _char_class(text[position], big)
+        if cls != 0:
+            while position > 0 and _char_class(text[position - 1], big) == cls:
+                position -= 1
+    return position
+
+
+def _motion_e(text, position, big, count):
+    n = len(text)
+    for _ in range(count):
+        if position >= n - 1:
+            break
+        position += 1
+        while position < n and _char_class(text[position], big) == 0:
+            position += 1
+        if position >= n:
+            position = max(n - 1, 0)
+            break
+        cls = _char_class(text[position], big)
+        while position + 1 < n and _char_class(text[position + 1], big) == cls and cls != 0:
+            position += 1
+    return position
+
+
 class VimMode(QObject):
     modeChanged = pyqtSignal(str)
 
@@ -105,6 +163,10 @@ class VimMode(QObject):
             self._cancelPending()
             return True
 
+        if self.pending_motion is not None:
+            self._executeFind(text)
+            return True
+
         if self.pending_operator == 'g' and text and text.isprintable() and not text.isspace():
             if text == 'g':
                 self._executeG(gg=True)
@@ -152,6 +214,19 @@ class VimMode(QObject):
             self.count = ''
         elif ch == 'G':
             self._executeG()
+        elif ch in 'wWbBeE':
+            self._executeWordMotion(ch)
+        elif ch in 'ftFT':
+            self.pending_motion = ch
+        elif ch in ';,':
+            if self.last_find is not None:
+                cmd, fch = self.last_find
+                if ch == ',':
+                    cmd = {'f': 'F', 'F': 'f', 't': 'T', 'T': 't'}[cmd]
+                for _ in range(int(self.count) if self.count else 1):
+                    if not self._find_char(cmd, fch, store=False):
+                        break
+                self.count = ''
 
     # -- motions --
 
@@ -236,6 +311,52 @@ class VimMode(QObject):
             self._takeCount()
             return True
         return False
+
+    def _executeWordMotion(self, ch):
+        count = self._takeCount()
+        self._cancelPending()
+        big = ch.isupper()
+        text = self._text()
+        position = self.editor.textCursor().position()
+        if ch in 'wW':
+            position = _motion_w(text, position, big, count)
+        elif ch in 'bB':
+            position = _motion_b(text, position, big, count)
+        else:
+            position = _motion_e(text, position, big, count)
+        self._setCursorPos(position)
+
+    def _executeFind(self, ch):
+        cmd = self.pending_motion
+        self.pending_motion = None
+        if not ch or not ch.isprintable():
+            self._cancelPending()
+            return
+        for _ in range(int(self.count) if self.count else 1):
+            if not self._find_char(cmd, ch):
+                break
+        self.count = ''
+
+    def _find_char(self, cmd, ch, store=True):
+        text = self._text()
+        position = self.editor.textCursor().position()
+        if cmd in 'ft':
+            idx = text.find(ch, position + 1)
+        else:
+            idx = text.rfind(ch, 0, position)
+        if idx < 0:
+            return False
+        if store:
+            self.last_find = (cmd, ch)
+        if cmd == 'f':
+            self._setCursorPos(idx)
+        elif cmd == 't':
+            self._setCursorPos(idx - 1)
+        elif cmd == 'F':
+            self._setCursorPos(idx)
+        else:
+            self._setCursorPos(idx + 1)
+        return True
 
     # -- operators (filled in Task 4) --
 
