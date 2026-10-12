@@ -119,6 +119,14 @@ def test_G_gg_and_count_G(editor):
     assert pos(editor) == 4
 
 
+def test_counted_gg(editor):
+    load(editor, '  aa\n  bb\n  cc\n', 11)
+    send(editor, '2gg')
+    assert pos(editor) == 7
+    send(editor, '3gg')
+    assert pos(editor) == 12
+
+
 def test_return_moves_to_first_non_blank_of_next_line(editor):
     load(editor, '  aa\n  bb\n', 2)
     send(editor, '\n')
@@ -441,6 +449,14 @@ def test_yy_and_P_linewise(editor):
     assert pos(editor) == 3
 
 
+def test_yy_leaves_cursor_in_place(editor):
+    load(editor, '  abc\n', 4)
+    send(editor, 'yy')
+    assert pos(editor) == 4
+    assert editor._vim.register == '  abc\n'
+    assert editor._vim.register_linewise is True
+
+
 def test_yw_and_p_charwise(editor):
     load(editor, 'one two')
     send(editor, 'yw')
@@ -522,10 +538,59 @@ def test_dtx(editor):
     assert editor.toPlainText() == 'xdef'
 
 
+def test_2D(editor):
+    load(editor, 'aa\nbb\ncc\n')
+    send(editor, '2D')
+    assert editor.toPlainText() == '\ncc\n'
+    assert pos(editor) == 0
+
+
+def test_2C(editor):
+    load(editor, 'aa\nbb\ncc\n')
+    send(editor, '2C')
+    assert editor.toPlainText() == '\ncc\n'
+    assert editor._vim.mode == MODE_INSERT
+    assert pos(editor) == 0
+
+
 def test_dFx(editor):
     load(editor, 'abcxdef', 6)
     send(editor, 'dFx')
     assert editor.toPlainText() == 'abc'
+
+
+def test_d2fa(editor):
+    load(editor, 'aabaa\n')
+    send(editor, 'd2fa')
+    assert editor.toPlainText() == 'a\n'
+    assert pos(editor) == 0
+
+
+def test_d2ta(editor):
+    load(editor, 'aabaa\n')
+    send(editor, 'd2ta')
+    assert editor.toPlainText() == 'aa\n'
+
+
+def test_d2Fa(editor):
+    load(editor, 'aabaa\n', 4)
+    send(editor, 'd2Fa')
+    assert editor.toPlainText() == 'a\n'
+
+
+def test_2dfa_uses_operator_count(editor):
+    load(editor, 'aabaa\n')
+    send(editor, '2dfa')
+    assert editor.toPlainText() == 'a\n'
+
+
+def test_c2fa_enters_insert(editor):
+    load(editor, 'aabaa\n')
+    send(editor, 'c2fa')
+    assert editor._vim.mode == MODE_INSERT
+    send(editor, 'X')
+    esc(editor)
+    assert editor.toPlainText() == 'Xa\n'
 
 
 def test_undo_grouping(editor):

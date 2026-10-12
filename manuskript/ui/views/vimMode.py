@@ -274,16 +274,18 @@ class VimMode(QObject):
             self._takeCount()
             self._cancelPending()
             self.editor.undo()
-        elif ch == 'D':
+        elif ch in 'DC':
+            count = self._takeCount()
             cursor = self.editor.textCursor()
-            self._takeCount()
-            self._operateRange('d', cursor.position(),
-                               cursor.block().position() + max(cursor.block().length() - 1, 0))
-        elif ch == 'C':
-            cursor = self.editor.textCursor()
-            self._takeCount()
-            self._operateRange('c', cursor.position(),
-                               cursor.block().position() + max(cursor.block().length() - 1, 0))
+            block = cursor.block()
+            end = block.position() + max(block.length() - 1, 0)
+            for _ in range(count - 1):
+                nxt = block.next()
+                if not nxt.isValid() or nxt.position() >= len(self._text()):
+                    break
+                block = nxt
+                end = block.position() + max(block.length() - 1, 0)
+            self._operateRange('d' if ch == 'D' else 'c', cursor.position(), end)
         elif ch == 'p':
             self._executePaste(True, self._takeCount())
         elif ch == 'P':
@@ -363,6 +365,8 @@ class VimMode(QObject):
             first, last = (cursor_block, target) if cursor_block.position() <= target.position() else (target, cursor_block)
             self._applyLinewiseRange(op, first, last)
             return
+        if gg and not count:
+            count = op_count
         if count:
             block = self._document().findBlockByNumber(count - 1)
             if not block.isValid():
@@ -422,12 +426,17 @@ class VimMode(QObject):
             return
         op = self.pending_operator if self.pending_operator in ('d', 'c', 'y') else None
         if op is not None:
+            total = (self.operator_count or 1) * (int(self.count) if self.count else 1)
             text = self._text()
             position = self.editor.textCursor().position()
-            if cmd in 'ft':
-                idx = text.find(ch, position + 1)
-            else:
-                idx = text.rfind(ch, 0, position)
+            idx = position
+            for _ in range(total):
+                if cmd in 'ft':
+                    idx = text.find(ch, idx + 1)
+                else:
+                    idx = text.rfind(ch, 0, idx)
+                if idx < 0:
+                    break
             if idx < 0:
                 self._cancelPending()
                 return
@@ -657,7 +666,6 @@ class VimMode(QObject):
         self.register = self._text()[start:end]
         self.register_linewise = True
         if op == 'y':
-            self._setCursorPos(start, fnb=True)
             return
         edit_cursor = QTextCursor(self._document())
         edit_cursor.setPosition(start)
