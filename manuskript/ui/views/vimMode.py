@@ -174,7 +174,7 @@ class VimMode(QObject):
                 self._cancelPending()
             return True
 
-        if self.pending_operator == 'r' and text and text.isprintable() and not text.isspace():
+        if self.pending_operator == 'r' and text and len(text) == 1 and text.isprintable():
             self._executeReplace(text)
             return True
 
@@ -416,6 +416,8 @@ class VimMode(QObject):
     def _executeJoin(self):
         count = int(self.count) if self.count else 1
         self.count = ''
+        edit_cursor = QTextCursor(self._document())
+        edit_cursor.beginEditBlock()
         for _ in range(count):
             cursor = self.editor.textCursor()
             block = cursor.block()
@@ -431,13 +433,11 @@ class VimMode(QObject):
             else:
                 end = nxt.position() + len(text_next) - len(text_next.lstrip())
                 replacement = ' '
-            edit_cursor = QTextCursor(self._document())
             edit_cursor.setPosition(eob)
             edit_cursor.setPosition(end, QTextCursor.KeepAnchor)
-            edit_cursor.beginEditBlock()
             edit_cursor.insertText(replacement)
-            edit_cursor.endEditBlock()
             self._setCursorPos(eob)
+        edit_cursor.endEditBlock()
 
     def _executeInsertGesture(self, ch):
         cursor = self.editor.textCursor()

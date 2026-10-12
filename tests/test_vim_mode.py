@@ -362,3 +362,20 @@ def test_ctrl_v_consumed_in_normal(editor):
     load(editor, 'abc')
     send_key(editor, Qt.Key_V, '\x16', Qt.ControlModifier)
     assert editor.toPlainText() == 'abc'
+
+
+def test_counted_join_is_single_undo(editor):
+    load(editor, 'aa\nbb\ncc\n', 0)
+    send(editor, '2J')
+    assert editor.toPlainText() == 'aa bb cc\n'
+    send(editor, 'u')
+    assert editor.toPlainText() == 'aa\nbb\ncc\n'
+
+
+def test_replace_with_space(editor):
+    load(editor, 'abc', 2)
+    send(editor, 'r ')
+    assert editor.toPlainText() == 'ab '
+    assert editor.textCursor().position() == 2
+    send(editor, 'z')
+    assert editor.toPlainText() == 'ab '
