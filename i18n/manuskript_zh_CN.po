@@ -1,0 +1,3920 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-04 21:22+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.20.0\n"
+
+#: Export%231
+msgid "Basic HTML output using the Python module 'markdown'."
+msgstr "使用Python的'markdown'模块输出HTML。"
+
+#: Export%232
+msgid "Python module 'markdown'."
+msgstr "Python模块'markdown'。"
+
+#: Export%233
+msgid "Markdown source"
+msgstr "Markdown 源文件"
+
+#: Export%234
+msgid "HTML Source"
+msgstr "HTML 源文件"
+
+#: Export%235
+msgid "HTML Output"
+msgstr "HTML 输出"
+
+#: Export%236
+msgid "Default exporter, provides basic formats used by other exporters."
+msgstr "默认的导出工具提供了一些其他导出工具使用的基本格式。"
+
+#: Export%237
+msgid "Preview with highlighter."
+msgstr "带高亮的预览。"
+
+#: Export%238
+msgid "Plain text"
+msgstr "纯文本"
+
+#: Export%239
+msgid "A little known format modestly used. You know, web sites for example."
+msgstr "适当地采用了一些已知格式，例如网站。"
+
+#: Export%2310
+msgid "Needs LaTeX to be installed."
+msgstr "需要安装 LaTeX。"
+
+#: Export%2311
+msgctxt "Export#11"
+msgid "Error"
+msgstr "错误"
+
+#: Export%2312
+msgid "Standalone document (not just a fragment)"
+msgstr "独立文档（不仅是片段）"
+
+#: Export%2313
+msgid "Include a table of contents."
+msgstr "包括目录。"
+
+#: Export%2314
+msgid "Number of sections level to include in TOC: "
+msgstr "目录中需要包含的段落级别数量： "
+
+#: Export%2315
+msgid "Typographically correct output"
+msgstr "排版正确的输出"
+
+#: Export%2316
+msgid "Normalize the document (cleaner)"
+msgstr "规范化文档（清理器）"
+
+#: Export%2317
+msgid "Specify the base level for headers: "
+msgstr "选择默认的 Header 级别： "
+
+#: Export%2318
+msgid "Use reference-style links instead of inline links"
+msgstr "使用引用链接而不是内联链接"
+
+#: Export%2319
+msgid "Use ATX-style headers"
+msgstr "使用 ATX 风格的标题"
+
+#: Export%2320
+msgid "Self-contained HTML files, with no dependencies"
+msgstr "自包含的无依赖 HTML 文档"
+
+#: Export%2321
+msgid "Use <q> tags for quotes in HTML"
+msgstr "使用 <q> 标签来在 HTML 中表示引用"
+
+#: Export%2322
+msgid "LaTeX engine used to produce the PDF."
+msgstr "用于生成 PDF 的 LaTeX 引擎。"
+
+#: Export%2323
+msgid "Paper size:"
+msgstr "纸张尺寸:"
+
+#: Export%2324
+msgctxt "Export#24"
+msgid "Font size:"
+msgstr "字体大小:"
+
+#: Export%2325
+msgid "Class:"
+msgstr "级别："
+
+#: Export%2326
+msgctxt "Export#26"
+msgid "Line spacing:"
+msgstr "行间距:"
+
+#: Export%2327
+msgid "Books that don't kill trees."
+msgstr "不破坏树形结构的书籍。"
+
+#: Export%2328
+msgid "OpenDocument format. Used by LibreOffice for example."
+msgstr "OpenDocument 格式，LibreOffice 等软件使用。"
+
+#: Export%2329
+msgid "Microsoft Office (.docx) document."
+msgstr "Microsoft Office (.docx) 文档。"
+
+#: Export%2330
+msgid "reStructuredText is a lightweight markup language."
+msgstr "reStructuredText 是一个轻量级的标记语言。"
+
+#: Export%2331
+msgid ""
+"Just like plain text, excepts adds markdown titles.\n"
+"                          Presupposes that texts are formatted in markdown."
+msgstr ""
+"除了添加 markdown 标题外与纯文本一致。\n"
+"                          假设文本是 markdown 的格式。"
+
+#: Export%2332
+msgid ""
+"Simplest export to plain text. Allows you to use your own markup not "
+"understood\n"
+"                  by Manuskript, for example <a href='www.fountain.io'>"
+"Fountain</a>."
+msgstr ""
+"简单导出到纯文本。你可以使用 Manuskript 中不识别的自定义\n"
+"标记，例如 <a href='www.fountain.io'>Fountain</a>。"
+
+#: Export%2333
+msgid ""
+"<p>A universal document converter. Can be used to convert Markdown to a wide "
+"range of other\n"
+"    formats.</p>\n"
+"    <p>Website: <a href=\"http://www.pandoc.org\">http://pandoc.org/</a></p>"
+"\n"
+"    "
+msgstr ""
+"<p>一个通用的转换器，可以把 markdown 转为很多种其他的格式</p>\n"
+"    <p>官网：<a href=\"http://www.pandoc.org\">http://pandoc.org/</a></p>\n"
+"    "
+
+#: Export%2334
+msgid ""
+"a valid LaTeX installation. Pandoc recommendations can be found on:\n"
+"                     <a href=\"https://pandoc.org/installing.html\">"
+"pandoc.org/installing.html</a>. If you want Unicode support, you need "
+"XeLaTeX."
+msgstr ""
+"一个有效的 LaTeX 安装. Pandoc 推荐可以在以下找到：\n"
+"                     <a href=\"https://pandoc.org/installing.html\">"
+"pandoc.org/installing.html</a>. 如果你想要 Unicode 支持，你需要 XeLaTeX。"
+
+#: Export%2335
+msgid ""
+"Export to markdown, using pandoc. Allows more formatting options\n"
+"    than the basic manuskript exporter."
+msgstr ""
+"使用 pandoc 来导出到 markdown 允许比默认的 manuskript 导出器更多\n"
+"      的格式化选项。"
+
+#: Export%2336
+msgid ""
+"LaTeX is a word processor and document markup language used to create\n"
+"                                              beautiful documents."
+msgstr "LaTeX 是一种文字处理器和文档标记语言，用于创建漂亮的文档。"
+
+#: Export%2337
+msgid ""
+"The purpose of this format is to provide a way to exchange information\n"
+"                                              between outliners and Internet "
+"services that can be browsed or controlled\n"
+"                                              through an outliner."
+msgstr ""
+"它的目标是提供一种可以通过大纲来浏览或控制的在大纲和网络服务间交换信息的\n"
+"                                              方式。"
+
+#: Export%2338
+msgid ""
+"Disable YAML metadata block.\n"
+"Use that if you get YAML related error."
+msgstr ""
+"关闭 YAML 元数据块。\n"
+"如果你遇到了 YAML 有关的问题，可以尝试使用它。"
+
+#: Export%2339
+msgid "Convert to ePUB3"
+msgstr "导出为 ePUB3"
+
+#: Export%2340
+msgid ""
+"Could not process regular expression: \n"
+"{}"
+msgstr ""
+"不能处理正则表达式：\n"
+"{}"
+
+#: Export%2341
+msgid "Choose output fileâ¦"
+msgstr "选择导出文件地址"
+
+#: ExportersManager%231
+msgid "Manage Exporters"
+msgstr "管理导出器"
+
+#: ExportersManager%232
+msgctxt "ExportersManager#2"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: ExportersManager%233
+msgctxt "ExportersManager#3"
+msgid "Description"
+msgstr "描述"
+
+#: ExportersManager%234
+msgid "Offers export to"
+msgstr "提供导出到"
+
+#: ExportersManager%235
+msgctxt "ExportersManager#5"
+msgid "Status"
+msgstr "状态"
+
+#: ExportersManager%236
+msgctxt "ExportersManager#6"
+msgid "Status:"
+msgstr "状态："
+
+#: ExportersManager%237
+msgid "Version:"
+msgstr "版本："
+
+#: ExportersManager%238
+msgctxt "ExportersManager#8"
+msgid "Path:"
+msgstr "路径："
+
+#: ExportersManager%239
+msgid "..."
+msgstr "..."
+
+#: ExportersManager%2310
+msgid "{HelpText}"
+msgstr "没有找到 {}，是否没有安装？或手动指定路径。"
+
+#: FrequencyAnalyzer%231
+msgid "Frequency Analyzer"
+msgstr "频率分析"
+
+#: FrequencyAnalyzer%232
+msgid "Word frequency"
+msgstr "词频"
+
+#: FrequencyAnalyzer%233
+msgctxt "FrequencyAnalyzer#3"
+msgid "Settings"
+msgstr "设置"
+
+#: FrequencyAnalyzer%234
+msgid "Minimum size:"
+msgstr "最小大小:"
+
+#: FrequencyAnalyzer%235
+msgid "Exclude words (comma separated):"
+msgstr "排除单词（以逗号分隔）："
+
+#: FrequencyAnalyzer%236
+msgid "Analyze"
+msgstr "分析"
+
+#: FrequencyAnalyzer%237
+msgid "Phrase frequency"
+msgstr "短语频率"
+
+#: FrequencyAnalyzer%238
+msgid "Number of words: from"
+msgstr "字数：从"
+
+#: FrequencyAnalyzer%239
+msgid "to"
+msgstr "到"
+
+#: Import%231
+msgid "Markdown import"
+msgstr "导入 Markdown"
+
+#: Import%232
+msgid ""
+"<b>Info:</b> A very simple\n"
+"                        parser that will go through a markdown document and\n"
+"                        create items for each titles.<br/>&nbsp;"
+msgstr ""
+"<b>信息：</b>一个非常简单的\n"
+"                        遍历 Markdown 文本和为每个标题创建项目的\n"
+"                        语法分析器<br/>&nbsp;"
+
+#: Import%233
+msgid "Folder import"
+msgstr "导入文件夹"
+
+#: Import%234
+msgid ""
+"<p><b>Info:</b> Imports a whole\n"
+"                        directory structure. Folders are added as folders, "
+"and\n"
+"                        plaintext documents within (you chose which ones by "
+"extension)\n"
+"                        are added as scene.</p>\n"
+"                        <p>Only text files are supported (not images, binary "
+"or others).</p>"
+msgstr ""
+"<p><b>信息</b> 导入为一个整体的\n"
+"                        文档结构。文件夹被添加为文件夹，\n"
+"                        内部的纯文本文档 (你可以通过拓展选择其中的几个)\n"
+"                        被添加为场景</p>\n"
+"                        <p>仅支持文本文档 (不支持图片、二进制文件等其他格式)"
+"。</p>"
+
+#: Import%235
+msgid "Include only those extensions:"
+msgstr "只包含如下扩展:"
+
+#: Import%236
+msgid "Comma separated values"
+msgstr "逗号分隔值"
+
+#: Import%237
+msgid "Sort items by name"
+msgstr "按名称对项目排序"
+
+#: Import%238
+msgid "Import folder then files"
+msgstr "导入文件夹和文件"
+
+#: Import%239
+msgid "OPML Import"
+msgstr "导入 OPML 文件"
+
+#: Import%2310
+msgid "File open failed."
+msgstr "打开文件失败。"
+
+#: Import%2311
+msgid "This does not appear to be a valid OPML file."
+msgstr "不是一个合法的 OPML 文件。"
+
+#: Import%2312
+msgid "Pandoc import"
+msgstr "导入 Pandoc"
+
+#: Import%2313
+msgid ""
+"<b>Info:</b> Manuskript can\n"
+"                        import from <b>markdown</b> or <b>OPML</b>. Pandoc "
+"will\n"
+"                        convert your document to either (see option below), "
+"and\n"
+"                        then it will be imported in manuskript. One or the "
+"other\n"
+"                        might give better result depending on your "
+"document.\n"
+"                        <br/>&nbsp;"
+msgstr ""
+"<b>信息</b> Manuskript 能够\n"
+"                        从 <b>markdown</b> 或者<b>OPML</b>导入。Pandoc 将会\n"
+"                        将你的文档转化为其中的一个 (见下方选项)，然后\n"
+"                        再将其导入 Manuskript。两者中的一个\n"
+"                        效果不同，这取决于你的文档。\n"
+"                        <br/>&nbsp;"
+
+#: Import%2314
+msgid "Import using:"
+msgstr "使用的导入方法："
+
+#: Import%2315
+msgid "Wrap lines:"
+msgstr "填充线："
+
+#: Import%2316
+msgid ""
+"<p>Should pandoc create\n"
+"                        cosmetic / non-semantic line-breaks?</p><p>\n"
+"                        <b>auto</b>: wraps at 72 characters.<br>\n"
+"                        <b>none</b>: no line wrap.<br>\n"
+"                        <b>preserve</b>: tries to preserves line wrap from "
+"the\n"
+"                        original document.</p>"
+msgstr ""
+
+#: Import%2317
+msgid "Mind Map Import"
+msgstr "导入思维导图"
+
+#: Import%2318
+msgid "This does not appear to be a valid Mind Map file."
+msgstr "这不是一个合法的思维导图文件。"
+
+#: Import%2319
+msgid "Mind Map import"
+msgstr "导入思维导图"
+
+#: Import%2320
+msgid "Import tip as:"
+msgstr "导入 tip 为："
+
+#: Import%2321
+msgid "Untitled"
+msgstr "无标题"
+
+#: MDEditCompleter%231
+msgid "Insert reference"
+msgstr "导入参考"
+
+#: MainWindow%231
+msgctxt "MainWindow#1"
+msgid "General"
+msgstr "通用"
+
+#: MainWindow%232
+msgctxt "MainWindow#2"
+msgid "Title"
+msgstr "标题"
+
+#: MainWindow%233
+msgid "Subtitle"
+msgstr "子标题"
+
+#: MainWindow%234
+msgid "Series"
+msgstr "系列"
+
+#: MainWindow%235
+msgid "Volume"
+msgstr "卷"
+
+#: MainWindow%236
+msgid "Genre"
+msgstr "类型"
+
+#: MainWindow%237
+msgid "License"
+msgstr "证书"
+
+#: MainWindow%238
+msgid "Author"
+msgstr "作者"
+
+#: MainWindow%239
+msgctxt "MainWindow#9"
+msgid "Name"
+msgstr "名字"
+
+#: MainWindow%2310
+msgid "Email"
+msgstr "电子邮件"
+
+#: MainWindow%2311
+msgctxt "MainWindow#11"
+msgid "Summary"
+msgstr "摘要"
+
+#: MainWindow%2312
+msgid "Situation:"
+msgstr "场景："
+
+#: MainWindow%2313
+msgid "Summary:"
+msgstr "摘要："
+
+#: MainWindow%2314
+msgid "One sentence"
+msgstr "一句话"
+
+#: MainWindow%2315
+msgid "One paragraph"
+msgstr "一段"
+
+#: MainWindow%2316
+msgid "One page"
+msgstr "一页"
+
+#: MainWindow%2317
+msgid "Full"
+msgstr "完整的"
+
+#: MainWindow%2318
+msgid "One sentence summary"
+msgstr "一句话摘要"
+
+#: MainWindow%2319
+msgid "One paragraph summary"
+msgstr "一段话摘要"
+
+#: MainWindow%2320
+msgid "Expand each sentence of your one paragraph summary to a paragraph"
+msgstr "将你的一段话摘要中的每个句子都展开为一段"
+
+#: MainWindow%2321
+msgid "One page summary"
+msgstr "一页摘要"
+
+#: MainWindow%2322
+msgctxt "MainWindow#22"
+msgid "Full summary"
+msgstr "完整摘要"
+
+#: MainWindow%2323
+msgid "Next"
+msgstr "下一个"
+
+#: MainWindow%2324
+msgid "What if...?"
+msgstr "如果……？"
+
+#: MainWindow%2325
+msgctxt "MainWindow#25"
+msgid "Characters"
+msgstr "角色"
+
+#: MainWindow%2326
+msgid "Names"
+msgstr "名字"
+
+#: MainWindow%2327
+msgid "Filter"
+msgstr "过滤"
+
+#: MainWindow%2328
+msgctxt "MainWindow#28"
+msgid "Basic info"
+msgstr "基本信息"
+
+#: MainWindow%2329
+msgid "Importance"
+msgstr "重要性"
+
+#: MainWindow%2330
+msgctxt "MainWindow#30"
+msgid "Motivation"
+msgstr "动机"
+
+#: MainWindow%2331
+msgctxt "MainWindow#31"
+msgid "Goal"
+msgstr "目标"
+
+#: MainWindow%2332
+msgctxt "MainWindow#32"
+msgid "Conflict"
+msgstr "冲突"
+
+#: MainWindow%2333
+msgctxt "MainWindow#33"
+msgid "Epiphany"
+msgstr "顿悟"
+
+#: MainWindow%2334
+msgid ""
+"<html><head/><body><p align=\"right\">One sentence<br/>summary</p></body></"
+"html>"
+msgstr "<html><head/><body><p align=\"right\">单句<br/>概述</p></body></html>"
+
+#: MainWindow%2335
+msgid ""
+"<html><head/><body><p align=\"right\">One paragraph<br/>summary</p></body></"
+"html>"
+msgstr "<html><head/><body><p align=\"right\">单段<br/>概述</p></body></html>"
+
+#: MainWindow%2336
+msgid "Notes"
+msgstr "笔记"
+
+#: MainWindow%2337
+msgctxt "MainWindow#37"
+msgid "Detailed info"
+msgstr "详细信息"
+
+#: MainWindow%2338
+msgctxt "MainWindow#38"
+msgid "Plots"
+msgstr "情节"
+
+#: MainWindow%2339
+msgid "Plot"
+msgstr "情节"
+
+#: MainWindow%2340
+msgid "Character(s)"
+msgstr "角色"
+
+#: MainWindow%2341
+msgctxt "MainWindow#41"
+msgid "Description"
+msgstr "描述"
+
+#: MainWindow%2342
+msgctxt "MainWindow#42"
+msgid "Result"
+msgstr "结果"
+
+#: MainWindow%2343
+msgctxt "MainWindow#43"
+msgid "Resolution steps"
+msgstr "解决步骤"
+
+#: MainWindow%2344
+msgctxt "MainWindow#44"
+msgid "World"
+msgstr "世界"
+
+#: MainWindow%2345
+msgid "Populates with empty data"
+msgstr "生成空数据"
+
+#: MainWindow%2346
+msgid "More"
+msgstr "更多"
+
+#: MainWindow%2347
+msgid "Source of passion"
+msgstr "想法来源"
+
+#: MainWindow%2348
+msgid "Source of conflict"
+msgstr "冲突来源"
+
+#: MainWindow%2349
+msgctxt "MainWindow#49"
+msgid "Outline"
+msgstr "大纲"
+
+#: MainWindow%2350
+msgid "Editor"
+msgstr "编辑器"
+
+#: MainWindow%2351
+msgid "Debug"
+msgstr "Debug"
+
+#: MainWindow%2352
+msgid "FlatData"
+msgstr "FlatData"
+
+#: MainWindow%2353
+msgid "Persos"
+msgstr "Persos"
+
+#: MainWindow%2354
+msgctxt "MainWindow#54"
+msgid "Labels"
+msgstr "标签"
+
+#: MainWindow%2355
+msgid "&File"
+msgstr "文件（&F）"
+
+#: MainWindow%2356
+msgid "&Recent"
+msgstr "最近使用（&R）"
+
+#: MainWindow%2357
+msgid "&Help"
+msgstr "帮助（&H）"
+
+#: MainWindow%2358
+msgid "&Tools"
+msgstr "工具（&T）"
+
+#: MainWindow%2359
+msgid "&Edit"
+msgstr "编辑（&E）"
+
+#: MainWindow%2360
+msgid "&View"
+msgstr "查看&（V）"
+
+#: MainWindow%2361
+msgid "&Mode"
+msgstr "模式（&M）"
+
+#: MainWindow%2362
+msgid "&Cheat sheet"
+msgstr "备忘录"
+
+#: MainWindow%2363
+msgid "Sea&rch"
+msgstr "搜索（&R）"
+
+#: MainWindow%2364
+msgid "&Navigation"
+msgstr "导航（&N）"
+
+#: MainWindow%2365
+msgid "&Open"
+msgstr "打开（&O）"
+
+#: MainWindow%2366
+msgid "Ctrl+O"
+msgstr "Ctrl+O"
+
+#: MainWindow%2367
+msgid "&Save"
+msgstr "保存（&S）"
+
+#: MainWindow%2368
+msgctxt "MainWindow#68"
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: MainWindow%2369
+msgid "Sa&ve as..."
+msgstr "另存为（&V）"
+
+#: MainWindow%2370
+msgid "Ctrl+Shift+S"
+msgstr "Ctrl+Shift+S"
+
+#: MainWindow%2371
+msgid "&Quit"
+msgstr "退出（&Q）"
+
+#: MainWindow%2372
+msgid "Ctrl+Q"
+msgstr "Ctrl+Q"
+
+#: MainWindow%2373
+msgid "&Show help texts"
+msgstr "显示帮助（&S）"
+
+#: MainWindow%2374
+msgid "Ctrl+Shift+B"
+msgstr "Ctrl+Shift+B"
+
+#: MainWindow%2375
+msgid "&Spellcheck"
+msgstr "拼写检查（&S）"
+
+#: MainWindow%2376
+msgid "F9"
+msgstr "F9"
+
+#: MainWindow%2377
+msgid "&Labels..."
+msgstr "标签...（&L）"
+
+#: MainWindow%2378
+msgid "&Status..."
+msgstr "状态...（&S）"
+
+#: MainWindow%2379
+msgctxt "MainWindow#79"
+msgid "Tree"
+msgstr "树"
+
+#: MainWindow%2380
+msgid "&Simple"
+msgstr "简单（&S）"
+
+#: MainWindow%2381
+msgid "&Fiction"
+msgstr "虚构小说"
+
+#: MainWindow%2382
+msgctxt "MainWindow#82"
+msgid "Index cards"
+msgstr "索引卡"
+
+#: MainWindow%2383
+msgid "S&ettings"
+msgstr "设置（&E）"
+
+#: MainWindow%2384
+msgid "F8"
+msgstr "F8"
+
+#: MainWindow%2385
+msgid "&Close project"
+msgstr "关闭项目（&C）"
+
+#: MainWindow%2386
+msgid "Co&mpile"
+msgstr "编译（&M）"
+
+#: MainWindow%2387
+msgid "F6"
+msgstr "F6"
+
+#: MainWindow%2388
+msgid "&Frequency Analyzer"
+msgstr "频率分析（&F）"
+
+#: MainWindow%2389
+msgid "Book information"
+msgstr "书籍信息"
+
+#: MainWindow%2390
+msgid "&About"
+msgstr "关于（&A）"
+
+#: MainWindow%2391
+msgctxt "MainWindow#91"
+msgid "About Manuskript"
+msgstr "关于 Manuskript"
+
+#: MainWindow%2392
+msgctxt "MainWindow#92"
+msgid "Manuskript"
+msgstr "ManuSkript"
+
+#: MainWindow%2393
+#, fuzzy
+msgid "Project {} saved."
+msgstr "* {} 没有在项目文件中找到。"
+
+#: MainWindow%2394
+msgid "WARNING: Project {} not saved."
+msgstr "警告：项目 {} 未保存。"
+
+#: MainWindow%2395
+msgid "Project {} loaded."
+msgstr "项目 {} 已载入。"
+
+#: MainWindow%2396
+msgid "Project {} loaded with some errors."
+msgstr "载入项目 {} 时遇到错误。"
+
+#: MainWindow%2397
+msgid " (~{} pages)"
+msgstr "（约 {} 页）"
+
+#: MainWindow%2398
+msgid "Words: {}{}"
+msgstr "字数： {}{}"
+
+#: MainWindow%2399
+msgid "Book summary"
+msgstr "书籍摘要"
+
+#: MainWindow%23100
+msgid "Project tree"
+msgstr "项目树"
+
+#: MainWindow%23101
+msgid "Metadata"
+msgstr "元信息"
+
+#: MainWindow%23102
+msgid "Story line"
+msgstr "故事线"
+
+#: MainWindow%23103
+msgid "Enter information about your book, and yourself."
+msgstr "输入有关你的书和你自己的信息。"
+
+#: MainWindow%23104
+msgid ""
+"The basic situation, in the form of a 'What if...?' question. Ex: 'What if "
+"the most dangerous\n"
+"                     evil wizard wasn't able to kill a baby?' (Harry Potter)"
+msgstr ""
+"基本情况是形如'如果...？'的问题。例如：'如果一个最危险的巫师没能成功杀死一个"
+"婴儿……？'（哈利·波特）"
+
+#: MainWindow%23105
+msgid ""
+"Take time to think about a one sentence (~50 words) summary of your book. "
+"Then expand it to\n"
+"                     a paragraph, then to a page, then to a full summary."
+msgstr ""
+"花一些时间想一个 50 字左右的一句话摘要来描述你的书。然后将它扩展成一段，一页"
+"，最后写成一个完整的摘要。"
+
+#: MainWindow%23106
+msgid "Create your characters."
+msgstr "建立你的角色。"
+
+#: MainWindow%23107
+msgid "Develop plots."
+msgstr "构造情节。"
+
+#: MainWindow%23108
+msgid ""
+"Build worlds.  Create hierarchy of broad categories down to specific details."
+msgstr "构建世界。创造层次丰富包含方方面面的结构，直至具体细节。"
+
+#: MainWindow%23109
+msgid "Create the outline of your masterpiece."
+msgstr "建立你的作品的大纲。"
+
+#: MainWindow%23110
+msgid "Write."
+msgstr "写作。"
+
+#: MainWindow%23111
+msgid "Debug info. Sometimes useful."
+msgstr "Debug 信息。有时候是有用的。"
+
+#: MainWindow%23112
+msgid "Dictionary"
+msgstr "字典"
+
+#: MainWindow%23113
+msgctxt "MainWindow#113"
+msgid "Nothing"
+msgstr "无"
+
+#: MainWindow%23114
+msgctxt "MainWindow#114"
+msgid "POV"
+msgstr "POV"
+
+#: MainWindow%23115
+msgctxt "MainWindow#115"
+msgid "Label"
+msgstr "标签"
+
+#: MainWindow%23116
+msgctxt "MainWindow#116"
+msgid "Progress"
+msgstr "进度"
+
+#: MainWindow%23117
+msgctxt "MainWindow#117"
+msgid "Compile"
+msgstr "编译"
+
+#: MainWindow%23118
+msgid "Icon color"
+msgstr "图标颜色"
+
+#: MainWindow%23119
+msgid "Text color"
+msgstr "文本颜色"
+
+#: MainWindow%23120
+msgid "Background color"
+msgstr "背景色"
+
+#: MainWindow%23121
+msgid "Icon"
+msgstr "图标"
+
+#: MainWindow%23122
+msgctxt "MainWindow#122"
+msgid "Text"
+msgstr "文本"
+
+#: MainWindow%23123
+msgctxt "MainWindow#123"
+msgid "Background"
+msgstr "背景"
+
+#: MainWindow%23124
+msgid "Border"
+msgstr "边缘"
+
+#: MainWindow%23125
+msgid "Corner"
+msgstr "角落"
+
+#: MainWindow%23126
+msgid "Add plot step"
+msgstr "添加情节步骤"
+
+#: MainWindow%23127
+#, fuzzy
+msgid "&Importâ¦"
+msgstr "导入（&I）"
+
+#: MainWindow%23128
+msgid "F7"
+msgstr "F7"
+
+#: MainWindow%23129
+msgctxt "MainWindow#129"
+msgid "&Copy"
+msgstr "复制（&C）"
+
+#: MainWindow%23130
+msgid "Ctrl+C"
+msgstr "Ctrl+C"
+
+#: MainWindow%23131
+msgctxt "MainWindow#131"
+msgid "C&ut"
+msgstr "剪切（&U）"
+
+#: MainWindow%23132
+msgid "Ctrl+X"
+msgstr "Ctrl+X"
+
+#: MainWindow%23133
+msgctxt "MainWindow#133"
+msgid "&Paste"
+msgstr "粘贴（&P）"
+
+#: MainWindow%23134
+msgid "Ctrl+V"
+msgstr "Ctrl+V"
+
+#: MainWindow%23135
+#, fuzzy
+msgid "&Splitâ¦"
+msgstr "分割（&S）"
+
+#: MainWindow%23136
+msgid "Ctrl+Shift+K"
+msgstr "Ctrl+Shift+K"
+
+#: MainWindow%23137
+msgid "Sp&lit at cursor"
+msgstr "在光标处分割（&L）"
+
+#: MainWindow%23138
+msgid "Ctrl+K"
+msgstr "Ctrl+K"
+
+#: MainWindow%23139
+msgid "Ctrl+M"
+msgstr "Ctrl+M"
+
+#: MainWindow%23140
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: MainWindow%23141
+msgid "Del"
+msgstr "Del"
+
+#: MainWindow%23142
+msgid "&Move Up"
+msgstr "向上移动（&M）"
+
+#: MainWindow%23143
+msgid "Ctrl+Shift+Up"
+msgstr "Ctrl+Shift+Up"
+
+#: MainWindow%23144
+msgid "M&ove Down"
+msgstr "向下移动（&O）"
+
+#: MainWindow%23145
+msgid "Ctrl+Shift+Down"
+msgstr "Ctrl+Shift+Down"
+
+#: MainWindow%23146
+msgid "Dupl&icate"
+msgstr "复写（&I）"
+
+#: MainWindow%23147
+msgctxt "MainWindow#147"
+msgid "&Delete"
+msgstr "删除（&D）"
+
+#: MainWindow%23148
+msgctxt "MainWindow#148"
+msgid "&Rename"
+msgstr "重命名（&R）"
+
+#: MainWindow%23149
+msgid "F2"
+msgstr "F2"
+
+#: MainWindow%23150
+msgid "Organi&ze"
+msgstr "管理（&Z）"
+
+#: MainWindow%23151
+msgid "M&erge"
+msgstr "合并（&E）"
+
+#: MainWindow%23152
+msgid "&Format"
+msgstr "格式（&F）"
+
+#: MainWindow%23153
+msgid "&Header"
+msgstr "头（&H）"
+
+#: MainWindow%23154
+msgid "&Level 1 (setext)"
+msgstr "一级标题 (setext风格)"
+
+#: MainWindow%23155
+msgid "Ctrl+Alt+1"
+msgstr "Ctrl+Alt+1"
+
+#: MainWindow%23156
+msgid "Level &2"
+msgstr "二级标题"
+
+#: MainWindow%23157
+msgid "Ctrl+Alt+2"
+msgstr "Ctrl+Alt+2"
+
+#: MainWindow%23158
+msgid "Level &1 (atx)"
+msgstr "一级标题 (atx风格)"
+
+#: MainWindow%23159
+msgid "Ctrl+1"
+msgstr "Ctrl+1"
+
+#: MainWindow%23160
+msgid "L&evel 2"
+msgstr "二级标题"
+
+#: MainWindow%23161
+msgid "Ctrl+2"
+msgstr "Ctrl+2"
+
+#: MainWindow%23162
+msgid "Level &3"
+msgstr "三级标题"
+
+#: MainWindow%23163
+msgid "Ctrl+3"
+msgstr "Ctrl+3"
+
+#: MainWindow%23164
+msgid "Level &4"
+msgstr "四级标题"
+
+#: MainWindow%23165
+msgid "Ctrl+4"
+msgstr "Ctrl+4"
+
+#: MainWindow%23166
+msgid "Level &5"
+msgstr "五级标题"
+
+#: MainWindow%23167
+msgid "Ctrl+5"
+msgstr "Ctrl+5"
+
+#: MainWindow%23168
+msgid "Level &6"
+msgstr "六级标题"
+
+#: MainWindow%23169
+msgid "Ctrl+6"
+msgstr "Ctrl+6"
+
+#: MainWindow%23170
+msgid "&Bold"
+msgstr "加粗（&B）"
+
+#: MainWindow%23171
+msgid "Ctrl+B"
+msgstr "Ctrl+B"
+
+#: MainWindow%23172
+msgid "&Italic"
+msgstr "斜体（&I）"
+
+#: MainWindow%23173
+msgid "Ctrl+I"
+msgstr "Ctrl+I"
+
+#: MainWindow%23174
+msgid "&Strike"
+msgstr "删除线（&S）"
+
+#: MainWindow%23175
+msgid "&Verbatim"
+msgstr "逐字（&V）"
+
+#: MainWindow%23176
+msgid "Su&perscript"
+msgstr "上标（&P）"
+
+#: MainWindow%23177
+msgid "Ctrl++"
+msgstr "Ctrl++"
+
+#: MainWindow%23178
+msgid "Subsc&ript"
+msgstr "下标（&R）"
+
+#: MainWindow%23179
+msgid "Ctrl+-"
+msgstr "Ctrl+-"
+
+#: MainWindow%23180
+msgid "Co&mment block"
+msgstr "注释块（&M）"
+
+#: MainWindow%23181
+msgid "Ctrl+Shift+C"
+msgstr "Ctrl+Shift+C"
+
+#: MainWindow%23182
+msgid "Clear &formats"
+msgstr "清除格式（&F）"
+
+#: MainWindow%23183
+msgid "Ctrl+0"
+msgstr "Ctrl+0"
+
+#: MainWindow%23184
+msgid "&Comment line(s)"
+msgstr "行注释（&C）"
+
+#: MainWindow%23185
+msgid "&Ordered list"
+msgstr "有序列表（&O）"
+
+#: MainWindow%23186
+msgid "&Unordered list"
+msgstr "无序列表（&U）"
+
+#: MainWindow%23187
+msgid "B&lockquote"
+msgstr "引用块（&L）"
+
+#: MainWindow%23188
+msgid "Remove selected plot step(s)"
+msgstr "删除选择的情节段"
+
+#: MainWindow%23189
+msgid "The file {} does not exist. Has it been moved or deleted?"
+msgstr "文件 {} 不存在。是否被移动或删除？"
+
+#: MainWindow%23190
+msgid "Install {}{} to use spellcheck"
+msgstr "安装 {}{} 为拼写检查"
+
+#: MainWindow%23191
+msgid "{} has no installed dictionaries"
+msgstr "{} 未安装词典"
+
+#: MainWindow%23192
+msgid "{}{} is not installed"
+msgstr "{}{} 未安装"
+
+#: MainWindow%23193
+msgid "Save project?"
+msgstr "保存项目？"
+
+#: MainWindow%23194
+msgid "Save changes to project \"{}\" before closing?"
+msgstr "在关闭前保存对项目“{}”的更改？"
+
+#: MainWindow%23195
+msgid "Your changes will be lost if you don't save them."
+msgstr "如果不保存，项目改动会丢失。"
+
+#: MainWindow%23196
+msgid ""
+"PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might "
+"result in a loss of data."
+msgstr "已知 PyQt / Qt 5.11 和 5.12 版本会引起崩溃，导致数据丢失。"
+
+#: MainWindow%23197
+msgid "PyQt {} and Qt {} are in use."
+msgstr "正在使用 PyQt {} 和Qt {} 。"
+
+#: MainWindow%23198
+msgid "Proceed with import at your own risk"
+msgstr "继续导入，后果自负"
+
+#: MainWindow%23199
+msgid "Allow POV"
+msgstr ""
+
+#: MainWindow%23200
+msgid "Search"
+msgstr ""
+
+#: MainWindow%23201
+msgid "Ctrl+F"
+msgstr ""
+
+#: MainWindow%23202
+msgid "&Technical Support"
+msgstr ""
+
+#: MainWindow%23203
+msgid "How to obtain technical support for Manuskript."
+msgstr ""
+
+#: MainWindow%23204
+#, fuzzy
+msgid "F1"
+msgstr "F1"
+
+#: MainWindow%23205
+msgid "&Locate log file..."
+msgstr ""
+
+#: MainWindow%23206
+msgid "Locate log file"
+msgstr ""
+
+#: MainWindow%23207
+msgid "Locate the diagnostic log file used for this session."
+msgstr ""
+
+#: MainWindow%23208
+msgid "Shift+F1"
+msgstr ""
+
+#: MainWindow%23209
+msgid "Sorry!"
+msgstr ""
+
+#: MainWindow%23210
+msgid "This session is not being logged."
+msgstr ""
+
+#: MainWindow%23211
+msgid "A log file is a Work in Progress!"
+msgstr ""
+
+#: MainWindow%23212
+msgid ""
+"The log file \"{}\" will continue to be written to until Manuskript is "
+"closed."
+msgstr ""
+
+#: MainWindow%23213
+msgid ""
+"It will now be displayed in your file manager, but is of limited use until "
+"you close Manuskript."
+msgstr ""
+
+#: MainWindow%23214
+msgid "Error!"
+msgstr ""
+
+#: MainWindow%23215
+msgid ""
+"An error was encountered while trying to show the log file below in your "
+"file manager."
+msgstr ""
+
+#: MainWindow%23216
+#, fuzzy
+msgid "F3"
+msgstr "F3"
+
+#: MainWindow%23217
+msgid "Shift+F3"
+msgstr ""
+
+#: MainWindow%23218
+msgid "Situation"
+msgstr ""
+
+#: MainWindow%23219
+#, fuzzy
+msgctxt "MainWindow#219"
+msgid "Status"
+msgstr "状态"
+
+#: Search%231
+msgid "No results found"
+msgstr ""
+
+#: Settings%231
+msgctxt "Settings#1"
+msgid "Settings"
+msgstr "设置"
+
+#: Settings%232
+msgctxt "Settings#2"
+msgid "General"
+msgstr "通用"
+
+#: Settings%233
+msgctxt "Settings#3"
+msgid "Revisions"
+msgstr "副本"
+
+#: Settings%234
+msgid "Views"
+msgstr "查看"
+
+#: Settings%235
+msgctxt "Settings#5"
+msgid "Labels"
+msgstr "标签"
+
+#: Settings%236
+msgctxt "Settings#6"
+msgid "Status"
+msgstr "状态"
+
+#: Settings%237
+msgid "Fullscreen"
+msgstr "全屏"
+
+#: Settings%238
+msgid "General settings"
+msgstr "通用设置"
+
+#: Settings%239
+msgid "Application settings"
+msgstr "应用设置"
+
+#: Settings%2310
+msgid "Loading"
+msgstr "载入"
+
+#: Settings%2311
+msgid "Automatically load last project on startup"
+msgstr "启动时打开最后关闭的项目"
+
+#: Settings%2312
+msgid "Saving"
+msgstr "保存"
+
+#: Settings%2313
+msgid "Automatically save every"
+msgstr "自动保存间隔"
+
+#: Settings%2314
+msgid "minutes."
+msgstr "分钟。"
+
+#: Settings%2315
+msgid "If no changes during"
+msgstr "无变动"
+
+#: Settings%2316
+msgid "seconds."
+msgstr "秒。"
+
+#: Settings%2317
+msgid "Save on project close"
+msgstr "退出时保存"
+
+#: Settings%2318
+msgid ""
+"<html><head/><body><p>If you check this option, your project will be saved "
+"as one single file. Easier to copy or backup, but does not allow "
+"collaborative editing, or versioning.<br/>If this is unchecked, your project "
+"will be saved as a folder containing many small files.</p></body></html>"
+msgstr ""
+"<html><head/><body><p>如果你勾选了这个选项，你的项目会被保存到单个文件中。这"
+"更易于复制与备份，但无法协作编辑或者进行版本控制。<br/>如果不勾选，你的项目会"
+"被保存为一个包含许多小文件的文件夹。</p></body></html>"
+
+#: Settings%2319
+msgid "Save to one single file"
+msgstr "保存到单个文件"
+
+#: Settings%2320
+msgid ""
+"Revisions are a way to keep track of modifications. For each text item, it "
+"stores any changes you make to the main text, allowing you to see and "
+"restoring previous versions."
+msgstr ""
+"副本是一种跟踪您编辑的内容的方法。 对于每个文本项，它会存储您对主文本所做的任"
+"何更改，以便您查看和恢复以前的版本。"
+
+#: Settings%2321
+msgid "Keep revisions"
+msgstr "保留副本"
+
+#: Settings%2322
+msgid "S&mart remove"
+msgstr "智能整理（&M）"
+
+#: Settings%2323
+msgid "Keep:"
+msgstr "保留："
+
+#: Settings%2324
+msgid ""
+"Smart remove allows you to keep only a certain number of revisions. It is "
+"strongly recommended to use it, lest you file will becomes full of thousands "
+"of insignificant changes."
+msgstr "智能整理允许你保存一定量的副本。推荐开启以避免产生成千上万的改动副本。"
+
+#: Settings%2325
+msgid "revisions per day for the last month"
+msgstr "份版本(每天)——在过去的一个月内"
+
+#: Settings%2326
+msgid "revisions per minute for the last 10 minutes"
+msgstr "份版本(每分钟)——在过去的 10 分钟内"
+
+#: Settings%2327
+msgid "revisions per hour for the last day"
+msgstr "份版本(每小时)——在过去的一天内"
+
+#: Settings%2328
+msgid "revisions per 10 minutes for the last hour"
+msgstr "份版本(每 10 分钟)——在过去的一小时内"
+
+#: Settings%2329
+msgid "revisions per week till the end of time"
+msgstr "份版本(每星期)——在创建之日起"
+
+#: Settings%2330
+msgid "Views settings"
+msgstr "查看设置"
+
+#: Settings%2331
+msgctxt "Settings#31"
+msgid "Tree"
+msgstr "树"
+
+#: Settings%2332
+msgid "Colors"
+msgstr "颜色"
+
+#: Settings%2333
+msgid "Icon color:"
+msgstr "图标颜色："
+
+#: Settings%2334
+msgctxt "Settings#34"
+msgid "Nothing"
+msgstr "不显示"
+
+#: Settings%2335
+msgctxt "Settings#35"
+msgid "POV"
+msgstr "POV"
+
+#: Settings%2336
+msgctxt "Settings#36"
+msgid "Label"
+msgstr "标签"
+
+#: Settings%2337
+msgctxt "Settings#37"
+msgid "Progress"
+msgstr "进度"
+
+#: Settings%2338
+msgctxt "Settings#38"
+msgid "Compile"
+msgstr "编译"
+
+#: Settings%2339
+msgid "Text color:"
+msgstr "文本颜色："
+
+#: Settings%2340
+msgid "Background color:"
+msgstr "背景色："
+
+#: Settings%2341
+msgid "Folders"
+msgstr "文件夹"
+
+#: Settings%2342
+msgid "Show ite&m count"
+msgstr "显示条目数量（&M）"
+
+#: Settings%2343
+msgid "Show summary"
+msgstr "显示概要"
+
+#: Settings%2344
+msgid "&Nothing"
+msgstr "不显示（&N）"
+
+#: Settings%2345
+msgctxt "Settings#45"
+msgid "Text"
+msgstr "文本"
+
+#: Settings%2346
+msgctxt "Settings#46"
+msgid "Outline"
+msgstr "大纲"
+
+#: Settings%2347
+msgid "Visible columns"
+msgstr "可见列"
+
+#: Settings%2348
+msgctxt "Settings#48"
+msgid "Goal"
+msgstr "目标"
+
+#: Settings%2349
+msgctxt "Settings#49"
+msgid "Word count"
+msgstr "字数统计"
+
+#: Settings%2350
+msgid "Percentage"
+msgstr "百分比"
+
+#: Settings%2351
+msgctxt "Settings#51"
+msgid "Title"
+msgstr "标题"
+
+#: Settings%2352
+msgctxt "Settings#52"
+msgid "Index cards"
+msgstr "索引卡"
+
+#: Settings%2353
+msgid "Item colors"
+msgstr "条目颜色"
+
+#: Settings%2354
+msgid "Border color:"
+msgstr "边界颜色："
+
+#: Settings%2355
+msgid "Corner color:"
+msgstr "角落颜色："
+
+#: Settings%2356
+msgctxt "Settings#56"
+msgid "Background"
+msgstr "背景"
+
+#: Settings%2357
+msgid "Color:"
+msgstr "颜色："
+
+#: Settings%2358
+msgctxt "Settings#58"
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: Settings%2359
+msgid "Image:"
+msgstr "图像："
+
+#: Settings%2360
+msgid "Text editor"
+msgstr "文本编辑器"
+
+#: Settings%2361
+msgctxt "Settings#61"
+msgid "Font"
+msgstr "字体"
+
+#: Settings%2362
+msgid "Family:"
+msgstr "字体："
+
+#: Settings%2363
+msgid "Size:"
+msgstr "大小："
+
+#: Settings%2364
+msgid "Misspelled:"
+msgstr "拼写错误："
+
+#: Settings%2365
+msgid "Background:"
+msgstr "背景："
+
+#: Settings%2366
+msgid "Paragraphs"
+msgstr "段落"
+
+#: Settings%2367
+msgctxt "Settings#67"
+msgid "Line spacing:"
+msgstr "行间距："
+
+#: Settings%2368
+msgid "Single"
+msgstr "单个"
+
+#: Settings%2369
+msgid "1.5 lines"
+msgstr "1.5 行"
+
+#: Settings%2370
+msgid "Double"
+msgstr "两倍"
+
+#: Settings%2371
+msgid "Proportional"
+msgstr "成比例"
+
+#: Settings%2372
+msgid "%"
+msgstr "%"
+
+#: Settings%2373
+msgid "Tab width:"
+msgstr "Tab 宽度："
+
+#: Settings%2374
+msgid " px"
+msgstr " 像素"
+
+#: Settings%2375
+msgid "Indent 1st line"
+msgstr "首行缩进"
+
+#: Settings%2376
+msgid "Spacing:"
+msgstr "间距："
+
+#: Settings%2377
+msgctxt "Settings#77"
+msgid "New"
+msgstr "新建"
+
+#: Settings%2378
+msgid "Edit"
+msgstr "编辑"
+
+#: Settings%2379
+msgctxt "Settings#79"
+msgid "Delete"
+msgstr "删除"
+
+#: Settings%2380
+msgid "Theme name:"
+msgstr "主题名："
+
+#: Settings%2381
+msgid "Apply"
+msgstr "应用"
+
+#: Settings%2382
+msgid "Cancel"
+msgstr "取消"
+
+#: Settings%2383
+msgid "Window Background"
+msgstr "窗口背景"
+
+#: Settings%2384
+msgid "Text Background"
+msgstr "文本背景"
+
+#: Settings%2385
+msgid "Text Options"
+msgstr "文本选项"
+
+#: Settings%2386
+msgid "Paragraph Options"
+msgstr "段落选项"
+
+#: Settings%2387
+msgid "Type:"
+msgstr "类型："
+
+#: Settings%2388
+msgid "No Image"
+msgstr "无图像"
+
+#: Settings%2389
+msgid "Tiled"
+msgstr "平铺"
+
+#: Settings%2390
+msgid "Centered"
+msgstr "中心"
+
+#: Settings%2391
+msgid "Stretched"
+msgstr "拉伸"
+
+#: Settings%2392
+msgid "Scaled"
+msgstr "成比例"
+
+#: Settings%2393
+msgid "Zoomed"
+msgstr "放大"
+
+#: Settings%2394
+msgid "Opacity:"
+msgstr "透明度："
+
+#: Settings%2395
+msgid "Position:"
+msgstr "位置："
+
+#: Settings%2396
+msgid "Left"
+msgstr "左"
+
+#: Settings%2397
+msgid "Center"
+msgstr "中心"
+
+#: Settings%2398
+msgid "Right"
+msgstr "右"
+
+#: Settings%2399
+msgid "Width:"
+msgstr "宽度："
+
+#: Settings%23100
+msgid "Corner radius:"
+msgstr "角落半径："
+
+#: Settings%23101
+msgid "Margins:"
+msgstr "外间距："
+
+#: Settings%23102
+msgid "Padding:"
+msgstr "内间距："
+
+#: Settings%23103
+msgctxt "Settings#103"
+msgid "Font:"
+msgstr "字体："
+
+#: Settings%23104
+msgid "Style"
+msgstr "样式"
+
+#: Settings%23105
+msgid "Cursor"
+msgstr "光标"
+
+#: Settings%23106
+msgid "Use block insertion of"
+msgstr "使用块级插入"
+
+#: Settings%23107
+msgid "Alignment:"
+msgstr "对齐："
+
+#: Settings%23108
+msgid "Justify"
+msgstr "校正"
+
+#: Settings%23109
+msgid "Alignment"
+msgstr "对齐"
+
+#: Settings%23110
+msgid "Icon Size"
+msgstr "图标大小"
+
+#: Settings%23111
+msgctxt "Settings#111"
+msgid "TextLabel"
+msgstr "文本标签"
+
+#: Settings%23112
+msgid "Disable blinking"
+msgstr "关闭闪烁"
+
+#: Settings%23113
+msgid "Text area"
+msgstr "文本框"
+
+#: Settings%23114
+msgid "Max width"
+msgstr "最大宽度"
+
+#: Settings%23115
+msgid "Left/Right margins:"
+msgstr "左右外间距："
+
+#: Settings%23116
+msgid "Top/Bottom margins:"
+msgstr "上下外间距："
+
+#: Settings%23117
+msgid "S&how progress"
+msgstr "显示进度（&H）"
+
+#: Settings%23118
+msgid "Show summar&y"
+msgstr "显示概要（&Y）"
+
+#: Settings%23119
+msgid "Show p&rogress"
+msgstr "显示进度（&R）"
+
+#: Settings%23120
+msgid "Old st&yle"
+msgstr "旧样式（&Y）"
+
+#: Settings%23121
+msgid "Transparent"
+msgstr "透明"
+
+#: Settings%23122
+msgid "Restore defaults"
+msgstr "恢复默认值"
+
+#: Settings%23123
+msgid "Style:"
+msgstr "样式："
+
+#: Settings%23124
+msgid "Language:"
+msgstr "语言："
+
+#: Settings%23125
+msgctxt "Settings#125"
+msgid "Font size:"
+msgstr "字体大小："
+
+#: Settings%23126
+msgid "Restarting Manuskript ensures all settings take effect."
+msgstr "你需要重启 Manuskript 以使设置生效。"
+
+#: Settings%23127
+msgid "Show &word count"
+msgstr "显示字数（&W）"
+
+#: Settings%23128
+msgid "&Show word count"
+msgstr "显示字数（&S)"
+
+#: Settings%23129
+msgid "&New style"
+msgstr "新样式(&N)"
+
+#: Settings%23130
+msgid "Typewriter mode"
+msgstr "打字机模式"
+
+#: Settings%23131
+msgid "Focus mode"
+msgstr "专注模式"
+
+#: Settings%23132
+msgctxt "Settings#132"
+msgid "None"
+msgstr "无"
+
+#: Settings%23133
+msgid "Sentence"
+msgstr "句子"
+
+#: Settings%23134
+msgid "Line"
+msgstr "行"
+
+#: Settings%23135
+msgid "Paragraph"
+msgstr "段落"
+
+#: Settings%23136
+msgid ""
+"<p><b>The Revisions feature has been at the source of many reported issues. "
+"In this version of Manuskript it has been turned off by default for new "
+"projects in order to provide the best experience.</b></p><p>Why aren't these "
+"issues fixed already? <a href=\"https://www.theologeek.ch/manuskript/"
+"contribute/\">We need your help to make Manuskript better!</a></p>"
+msgstr ""
+"<p><b>历史版本功能被报告存在许多问题。在这个版本的 Manuskript 中，当创建新项"
+"目时，它被默认关闭以提供最佳体验。</b></p><p>为什么这些问题还没有被修复？<a "
+"href=\"https://www.theologeek.ch/manuskript/contribute/\">我们需要你的帮助来"
+"改善 Manuskript ！</a></p>"
+
+#: Settings%23137
+msgid ""
+"Show progress in chars next\n"
+" to words"
+msgstr ""
+
+#: Settings%23138
+msgid "Char/Word Counter"
+msgstr ""
+
+#: Settings%23139
+msgid "Count spaces as chars"
+msgstr ""
+
+#: Settings%23140
+msgid "Show char c&ount"
+msgstr ""
+
+#: Settings%23141
+msgid "Sho&w char count"
+msgstr ""
+
+#: SpellAction%231
+msgid "Spelling Suggestions"
+msgstr "拼写建议"
+
+#: SpellAction%232
+msgid "&Add to dictionary"
+msgstr "加入字典（&A）"
+
+#: SpellAction%233
+msgid "&Remove from custom dictionary"
+msgstr "从个人字典中删除（&R）"
+
+#: SpellAction%234
+msgid "&New Character"
+msgstr ""
+
+#: SpellAction%235
+msgid "&New Plot Item"
+msgstr ""
+
+#: SpellAction%236
+msgid "&New World Item"
+msgstr ""
+
+#: SpellAction%237
+msgid "&Correction Suggestions"
+msgstr ""
+
+#: SpellAction%238
+msgid "&Correction Suggestion"
+msgstr ""
+
+#: about%231
+msgctxt "about#1"
+msgid "About Manuskript"
+msgstr "关于 Manuskript"
+
+#: about%232
+msgctxt "about#2"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: aboutDialog%231
+msgid "Version"
+msgstr "版本"
+
+#: aboutDialog%232
+msgid "Software Versions in Use:"
+msgstr "使用的软件版本："
+
+#: abstractModel%231
+msgctxt "abstractModel#1"
+msgid "Title"
+msgstr "标题"
+
+#: abstractModel%232
+msgctxt "abstractModel#2"
+msgid "POV"
+msgstr "POV"
+
+#: abstractModel%233
+msgctxt "abstractModel#3"
+msgid "Label"
+msgstr "标签"
+
+#: abstractModel%234
+msgctxt "abstractModel#4"
+msgid "Status"
+msgstr "状态"
+
+#: abstractModel%235
+msgctxt "abstractModel#5"
+msgid "Compile"
+msgstr "编译"
+
+#: abstractModel%236
+msgctxt "abstractModel#6"
+msgid "Word count"
+msgstr "字数统计"
+
+#: abstractModel%237
+msgctxt "abstractModel#7"
+msgid "Goal"
+msgstr "目标"
+
+#: basicItemView%231
+msgctxt "basicItemView#1"
+msgid "Form"
+msgstr ""
+
+#: basicItemView%232
+msgctxt "basicItemView#2"
+msgid "POV:"
+msgstr "POV："
+
+#: basicItemView%233
+msgid "Goal:"
+msgstr "目标："
+
+#: basicItemView%234
+msgctxt "basicItemView#4"
+msgid "Word count"
+msgstr "字数统计"
+
+#: basicItemView%235
+msgctxt "basicItemView#5"
+msgid "One line summary"
+msgstr "一句话摘要"
+
+#: basicItemView%236
+msgid "Few sentences summary:"
+msgstr "几句话摘要："
+
+#: characterModel%231
+msgctxt "characterModel#1"
+msgid "Name"
+msgstr "名字"
+
+#: characterModel%232
+msgid "Value"
+msgstr "值"
+
+#: characterTreeView%231
+msgctxt "characterTreeView#1"
+msgid "Main"
+msgstr "主要"
+
+#: characterTreeView%232
+msgctxt "characterTreeView#2"
+msgid "Secondary"
+msgstr "次要"
+
+#: characterTreeView%233
+msgctxt "characterTreeView#3"
+msgid "Minor"
+msgstr "不重要的"
+
+#: cheatSheet%231
+msgctxt "cheatSheet#1"
+msgid "Form"
+msgstr ""
+
+#: cheatSheet%232
+msgid "Filter (type the name of anything in your project)"
+msgstr "过滤（项目中任意名字）"
+
+#: cheatSheet%233
+msgctxt "cheatSheet#3"
+msgid "Minor"
+msgstr "不重要的"
+
+#: cheatSheet%234
+msgctxt "cheatSheet#4"
+msgid "Secondary"
+msgstr "次要"
+
+#: cheatSheet%235
+msgctxt "cheatSheet#5"
+msgid "Main"
+msgstr "主要"
+
+#: cheatSheet%236
+msgctxt "cheatSheet#6"
+msgid "Characters"
+msgstr "角色"
+
+#: cheatSheet%237
+msgid "Texts"
+msgstr "文本"
+
+#: cheatSheet%238
+msgctxt "cheatSheet#8"
+msgid "Plots"
+msgstr "情节"
+
+#: cheatSheet%239
+msgctxt "cheatSheet#9"
+msgid "World"
+msgstr "世界"
+
+#: cmbOutlineCharacterChoser%231
+msgctxt "cmbOutlineCharacterChoser#1"
+msgid "None"
+msgstr "无"
+
+#: cmbOutlineCharacterChoser%232
+msgctxt "cmbOutlineCharacterChoser#2"
+msgid "Main"
+msgstr "主要"
+
+#: cmbOutlineCharacterChoser%233
+msgctxt "cmbOutlineCharacterChoser#3"
+msgid "Secondary"
+msgstr "次要"
+
+#: cmbOutlineCharacterChoser%234
+msgctxt "cmbOutlineCharacterChoser#4"
+msgid "Minor"
+msgstr "不重要的"
+
+#: cmbOutlineCharacterChoser%235
+msgctxt "cmbOutlineCharacterChoser#5"
+msgid "Various"
+msgstr "可变"
+
+#: cmbOutlineLabelChoser%231
+msgctxt "cmbOutlineLabelChoser#1"
+msgid "Various"
+msgstr "可变"
+
+#: cmbOutlineStatusChoser%231
+msgctxt "cmbOutlineStatusChoser#1"
+msgid "Various"
+msgstr "可变"
+
+#: collapsibleDockWidgets%231
+msgid "Dock Widgets Toolbar"
+msgstr "Dock Widgets 工具栏"
+
+#: completer%231
+msgctxt "completer#1"
+msgid "Form"
+msgstr ""
+
+#: corkDelegate%231
+msgctxt "corkDelegate#1"
+msgid "One line summary"
+msgstr "一句话摘要"
+
+#: corkDelegate%232
+msgctxt "corkDelegate#2"
+msgid "Full summary"
+msgstr "完整摘要"
+
+#: editorWidget_ui%231
+msgctxt "editorWidget_ui#1"
+msgid "Form"
+msgstr ""
+
+#: exporter%231
+msgid "Export"
+msgstr "导出"
+
+#: exporter%232
+msgid "Export to:"
+msgstr "导出到："
+
+#: exporter%233
+msgid "Manage exporters"
+msgstr "管理导出工具"
+
+#: exporter%234
+msgctxt "exporter#4"
+msgid "Preview"
+msgstr "预览"
+
+#: exporter%235
+msgctxt "exporter#5"
+msgid "Settings"
+msgstr "设置"
+
+#: exporterDialog%231
+msgid "{} (not implemented yet)"
+msgstr "{} （尚未实现）"
+
+#: exporterSettings%231
+msgctxt "exporterSettings#1"
+msgid "Form"
+msgstr ""
+
+#: exporterSettings%232
+msgid "Content"
+msgstr "内容"
+
+#: exporterSettings%233
+msgid "Decide here what will be included in the final export."
+msgstr "决定哪些最后会被导出。"
+
+#: exporterSettings%234
+msgid "Type"
+msgstr "类型"
+
+#: exporterSettings%235
+msgctxt "exporterSettings#5"
+msgid "Title"
+msgstr "标题"
+
+#: exporterSettings%236
+msgctxt "exporterSettings#6"
+msgid "Text"
+msgstr "文本"
+
+#: exporterSettings%237
+msgid "I need more granularity"
+msgstr "我需要更细的粒度"
+
+#: exporterSettings%238
+msgid "Fi&lters"
+msgstr "过滤（&L）"
+
+#: exporterSettings%239
+msgid ""
+"<html><head/><body><p>Filters what items will be included in the final "
+"export.<br/><span style=\" color:#773333;\">(Not fully implemented yet.)</"
+"span></p></body></html>"
+msgstr ""
+"<html><head/><body><p>项目过滤器会被包括在最终导出中<br/><span style=\" "
+"color:#773333;\">(尚未完全应用。)</span></p></body></html>"
+
+#: exporterSettings%2310
+msgid "Ignore compile status (include all items)"
+msgstr "忽略编译状态（包括所有条目）"
+
+#: exporterSettings%2311
+msgid "Subitems of:"
+msgstr "子项："
+
+#: exporterSettings%2312
+msgctxt "exporterSettings#12"
+msgid "Labels"
+msgstr "标签"
+
+#: exporterSettings%2313
+msgctxt "exporterSettings#13"
+msgid "Status"
+msgstr "状态"
+
+#: exporterSettings%2314
+msgid "Separations"
+msgstr "分隔"
+
+#: exporterSettings%2315
+msgid "Between folders:"
+msgstr "在文件夹之间："
+
+#: exporterSettings%2316
+msgid "Empty line"
+msgstr "空行"
+
+#: exporterSettings%2317
+msgctxt "exporterSettings#17"
+msgid "Custom"
+msgstr "自定义"
+
+#: exporterSettings%2318
+msgid "Between texts:"
+msgstr "在文本之间："
+
+#: exporterSettings%2319
+msgid "Between folder and text:"
+msgstr "在文件夹和文本之间："
+
+#: exporterSettings%2320
+msgid "Between text and folder:"
+msgstr "在文本和文件夹之间："
+
+#: exporterSettings%2321
+msgid "Transformations"
+msgstr "转换"
+
+#: exporterSettings%2322
+msgid "Typographic replacements:"
+msgstr "排版替换："
+
+#: exporterSettings%2323
+msgid "Replace double quotes (\") with:"
+msgstr "将双引号（\"）替换为："
+
+#: exporterSettings%2324
+msgid "Replace single quotes (') with:"
+msgstr "将单引号（'）替换为："
+
+#: exporterSettings%2325
+msgid "Remove multiple spaces"
+msgstr "删除重复的空格"
+
+#: exporterSettings%2326
+msgid "Custom replacements:"
+msgstr "自定义替换："
+
+#: exporterSettings%2327
+msgid "Enabled"
+msgstr "开启"
+
+#: exporterSettings%2328
+msgid "Replace"
+msgstr "替换"
+
+#: exporterSettings%2329
+msgid "With"
+msgstr "用"
+
+#: exporterSettings%2330
+msgid "RegExp"
+msgstr "正则表达式"
+
+#: exporterSettings%2331
+msgid ""
+"If checked, uses regular expression for replacement. If unchecked, replaced "
+"as plain text."
+msgstr "如果选中，则使用正则表达式进行替换。 如果未选中，则替换为纯文本。"
+
+#: exporterSettings%2332
+msgctxt "exporterSettings#32"
+msgid "Preview"
+msgstr "预览"
+
+#: exporterSettings%2333
+msgctxt "exporterSettings#33"
+msgid "Font"
+msgstr "字体"
+
+#: exporterSettings%2334
+msgctxt "exporterSettings#34"
+msgid "Font:"
+msgstr "字体："
+
+#: exporterSettings%2335
+msgctxt "exporterSettings#35"
+msgid "Font size:"
+msgstr "字体大小："
+
+#: exporterSettings%2336
+msgid "Folder"
+msgstr "文件夹"
+
+#: exporterSettings%2337
+msgid "{}Level {} folder"
+msgstr "级别{} {} 文件夹"
+
+#: exporterSettings%2338
+msgid "{}Level {} text"
+msgstr ""
+
+#: exporterSettings%2339
+#, fuzzy
+msgid "Replace ... with â¦"
+msgstr "将 ... 替换为 …"
+
+#: exporterSettings%2340
+#, fuzzy
+msgid "Replace --- with â"
+msgstr "将 --- 替换为 —"
+
+#: exportersManager%231
+msgid "Installed"
+msgstr "已安装"
+
+#: exportersManager%232
+msgctxt "exportersManager#2"
+msgid "Custom"
+msgstr "自定义"
+
+#: exportersManager%233
+msgid "Not found"
+msgstr "没有找到"
+
+#: exportersManager%234
+msgid "{} not found. Install it, or set path manually."
+msgstr "没有找到 {}，是否没有安装？或手动指定路径。"
+
+#: exportersManager%235
+msgid "<b>Status:</b> uninstalled."
+msgstr "<b>状态：</b> 未安装。"
+
+#: exportersManager%236
+msgid "<b>Requires:</b> "
+msgstr "<b>需要：</b> "
+
+#: exportersManager%237
+msgid "Set {} executable path."
+msgstr "设置 {} 可执行文件的路径。"
+
+#: frequencyAnalyzer%231
+msgid "Phrases"
+msgstr "短语"
+
+#: frequencyAnalyzer%232
+msgid "Frequency"
+msgstr "频率"
+
+#: frequencyAnalyzer%233
+msgid "Word"
+msgstr "字"
+
+#: fullScreenEditor%231
+msgid "Theme:"
+msgstr "主题："
+
+#: fullScreenEditor%232
+msgid "{} words / {}"
+msgstr "{} 字 / {}"
+
+#: fullScreenEditor%233
+msgctxt "fullScreenEditor#3"
+msgid "{} words"
+msgstr "{} 字"
+
+#: fullScreenEditor%234
+msgid "Spellcheck"
+msgstr ""
+
+#: fullScreenEditor%235
+msgid "Navigation"
+msgstr ""
+
+#: fullScreenEditor%236
+msgid "New Text"
+msgstr ""
+
+#: fullScreenEditor%237
+#, fuzzy
+msgctxt "fullScreenEditor#7"
+msgid "Title"
+msgstr "标题"
+
+#: fullScreenEditor%238
+msgid "Title: Show Full Path"
+msgstr ""
+
+#: fullScreenEditor%239
+msgid "Theme selector"
+msgstr ""
+
+#: fullScreenEditor%2310
+#, fuzzy
+msgctxt "fullScreenEditor#10"
+msgid "Word count"
+msgstr "字数统计"
+
+#: fullScreenEditor%2311
+msgctxt "fullScreenEditor#11"
+msgid "Progress"
+msgstr ""
+
+#: fullScreenEditor%2312
+msgid "Progress: Auto Show/Hide"
+msgstr ""
+
+#: fullScreenEditor%2313
+msgid "Clock"
+msgstr ""
+
+#: fullScreenEditor%2314
+msgid "Clock: Show Seconds"
+msgstr ""
+
+#: generalSettings%231
+msgctxt "generalSettings#1"
+msgid "General"
+msgstr "通用"
+
+#: generalSettings%232
+msgid "Split scenes at:"
+msgstr ""
+
+#: generalSettings%233
+msgid "\\n---\\n"
+msgstr "\\n---\\n"
+
+#: generalSettings%234
+msgid "Trim long titles (> 32 chars)"
+msgstr ""
+
+#: generalSettings%235
+msgid "Import under:"
+msgstr "导入到："
+
+#: generalSettings%236
+msgid "Import in a top-level folder"
+msgstr "导入到顶层文件夹"
+
+#: helpLabel%231
+msgid "If you don't wanna see me, you can hide me in Help menu."
+msgstr ""
+
+#: importer%231
+msgid "Import"
+msgstr "导入"
+
+#: importer%232
+msgid "Format:"
+msgstr "格式："
+
+#: importer%233
+#, fuzzy
+msgid "Choose file"
+msgstr "选择文件"
+
+#: importer%234
+msgid "Clear file"
+msgstr "清除文件"
+
+#: importer%235
+msgctxt "importer#5"
+msgid "Preview"
+msgstr "预览"
+
+#: importer%236
+msgctxt "importer#6"
+msgid "Settings"
+msgstr "设置"
+
+#: lineEditView%231
+msgctxt "lineEditView#1"
+msgid "Various"
+msgstr "可变"
+
+#: locker%231
+msgctxt "locker#1"
+msgid "Form"
+msgstr ""
+
+#: locker%232
+msgid "Lock screen:"
+msgstr "锁定屏幕："
+
+#: locker%233
+msgid "Word target"
+msgstr "字数目标"
+
+#: locker%234
+msgid "Time target"
+msgstr "时间目标"
+
+#: locker%235
+msgid " words"
+msgstr " 字"
+
+#: locker%236
+msgid " minutes"
+msgstr " 分钟"
+
+#: locker%237
+msgid "Lock !"
+msgstr "锁定！"
+
+#: locker%238
+msgid "~{} h."
+msgstr "~{} 小时。"
+
+#: locker%239
+msgid "~{} mn."
+msgstr "~{} 分钟。"
+
+#: locker%2310
+msgid "{}:{}"
+msgstr "{}:{}"
+
+#: locker%2311
+msgid "{} s."
+msgstr "{} 秒。"
+
+#: locker%2312
+msgid "{} remaining"
+msgstr "剩余 {}"
+
+#: locker%2313
+msgid "{} words remaining"
+msgstr "剩余 {} 字"
+
+#: mainEditor%231
+msgctxt "mainEditor#1"
+msgid "Form"
+msgstr ""
+
+#: mainEditor%232
+msgctxt "mainEditor#2"
+msgid "Text"
+msgstr "文本"
+
+#: mainEditor%233
+msgctxt "mainEditor#3"
+msgid "Index cards"
+msgstr "索引卡"
+
+#: mainEditor%234
+msgctxt "mainEditor#4"
+msgid "Outline"
+msgstr "大纲"
+
+#: mainEditor%235
+msgid "F11"
+msgstr "F11"
+
+#: mainEditor%236
+msgid "Go to parent item"
+msgstr "到父条目"
+
+#: mainEditor%237
+msgid "Alt+Up"
+msgstr "Alt+Up"
+
+#: mainEditor%238
+msgctxt "mainEditor#8"
+msgid "Root"
+msgstr "根"
+
+#: mainEditor%239
+msgid "{} words "
+msgstr "{} 字 "
+
+#: mainEditor%2310
+msgid "({} chars) {}  words / {} "
+msgstr ""
+
+#: mainEditor%2311
+msgid "{}  words / {} "
+msgstr ""
+
+#: mainEditor%2312
+msgid "{} chars"
+msgstr ""
+
+#: mainEditor%2313
+msgid "{} chars "
+msgstr ""
+
+#: markdownSettings%231
+msgid "Markdown"
+msgstr "Markdown"
+
+#: metadataView%231
+msgctxt "metadataView#1"
+msgid "Form"
+msgstr ""
+
+#: metadataView%232
+msgid "Properties"
+msgstr "属性"
+
+#: metadataView%233
+msgctxt "metadataView#3"
+msgid "Summary"
+msgstr "摘要"
+
+#: metadataView%234
+msgctxt "metadataView#4"
+msgid "One line summary"
+msgstr "一句话摘要"
+
+#: metadataView%235
+msgctxt "metadataView#5"
+msgid "Full summary"
+msgstr "完整摘要"
+
+#: metadataView%236
+msgid "Notes / References"
+msgstr "笔记/参考"
+
+#: metadataView%237
+msgctxt "metadataView#7"
+msgid "Revisions"
+msgstr "副本"
+
+#: myPanel%231
+msgid "Auto-hide"
+msgstr "自动隐藏"
+
+#: outlineBasics%231
+msgid "Set POV"
+msgstr "设置 POV"
+
+#: outlineBasics%232
+msgctxt "outlineBasics#2"
+msgid "None"
+msgstr "无"
+
+#: outlineBasics%233
+msgid "Set Status"
+msgstr "设置状态"
+
+#: outlineBasics%234
+msgid "Set Label"
+msgstr "设置标签"
+
+#: outlineBasics%235
+msgctxt "outlineBasics#5"
+msgid "New"
+msgstr "新建"
+
+#: outlineBasics%236
+msgctxt "outlineBasics#6"
+msgid "Main"
+msgstr "主要"
+
+#: outlineBasics%237
+msgctxt "outlineBasics#7"
+msgid "Secondary"
+msgstr "次要"
+
+#: outlineBasics%238
+msgctxt "outlineBasics#8"
+msgid "Minor"
+msgstr "不重要的"
+
+#: outlineBasics%239
+msgid "Set Custom Icon"
+msgstr "设置自定义图标"
+
+#: outlineBasics%2310
+msgid "Restore to default"
+msgstr "恢复默认值"
+
+#: outlineBasics%2311
+msgctxt "outlineBasics#11"
+msgid "Root"
+msgstr "根"
+
+#: outlineBasics%2312
+msgid "Open {} items in new tabs"
+msgstr "在新标签页打开 {} 条目"
+
+#: outlineBasics%2313
+msgid "Open {} in a new tab"
+msgstr "在新标签页打开 {}"
+
+#: outlineBasics%2314
+msgid "About to remove"
+msgstr "关于删除"
+
+#: outlineBasics%2315
+msgid "<p><b>You're about to delete {} item(s).</b></p><p>Are you sure?</p>"
+msgstr "<p><b>你即将删除 {} 。</b></p><p>是否确认？</p>"
+
+#: outlineBasics%2316
+msgid "Select at least two items. Folders are ignored."
+msgstr "选择最后两项条目。忽略文件夹。"
+
+#: outlineBasics%2317
+msgid "All items must be on the same level (share the same parent)."
+msgstr "所有条目都需要同级（具有相同的父项）。"
+
+#: outlineBasics%2318
+msgid "New &Folder"
+msgstr "新建文件夹（&F）"
+
+#: outlineBasics%2319
+msgid "New &Text"
+msgstr "新建文本（&T）"
+
+#: outlineBasics%2320
+msgctxt "outlineBasics#20"
+msgid "&Copy"
+msgstr "复制（&C）"
+
+#: outlineBasics%2321
+msgctxt "outlineBasics#21"
+msgid "C&ut"
+msgstr "剪切（&U）"
+
+#: outlineBasics%2322
+msgctxt "outlineBasics#22"
+msgid "&Paste"
+msgstr "粘贴（&P）"
+
+#: outlineBasics%2323
+msgctxt "outlineBasics#23"
+msgid "&Rename"
+msgstr "重命名（&R）"
+
+#: outlineBasics%2324
+msgctxt "outlineBasics#24"
+msgid "&Delete"
+msgstr "删除（&D）"
+
+#: outlineCharacterDelegate%231
+msgctxt "outlineCharacterDelegate#1"
+msgid "None"
+msgstr "无"
+
+#: outlineCharacterDelegate%232
+msgctxt "outlineCharacterDelegate#2"
+msgid "Main"
+msgstr "主要"
+
+#: outlineCharacterDelegate%233
+msgctxt "outlineCharacterDelegate#3"
+msgid "Secondary"
+msgstr "次要"
+
+#: outlineCharacterDelegate%234
+msgctxt "outlineCharacterDelegate#4"
+msgid "Minor"
+msgstr "不重要的"
+
+#: outlineItem%231
+msgid "{} words / {} ({})"
+msgstr "{} 字 / {} （{}）"
+
+#: outlineItem%232
+msgctxt "outlineItem#2"
+msgid "{} words"
+msgstr "{} 字"
+
+#: pandocSettings%231
+msgctxt "pandocSettings#1"
+msgid "General"
+msgstr "通用"
+
+#: pandocSettings%232
+msgid "Table of Content"
+msgstr "内容表格（TOC）"
+
+#: pandocSettings%233
+msgid "Custom settings for {}"
+msgstr "{} 的自定义设置"
+
+#: persosProxyModel%231
+msgctxt "persosProxyModel#1"
+msgid "Main"
+msgstr "主要"
+
+#: persosProxyModel%232
+msgctxt "persosProxyModel#2"
+msgid "Secondary"
+msgstr "第二"
+
+#: persosProxyModel%233
+msgctxt "persosProxyModel#3"
+msgid "Minors"
+msgstr "不重要的"
+
+#: plotDelegate%231
+msgctxt "plotDelegate#1"
+msgid "General"
+msgstr "通用"
+
+#: plotDelegate%232
+msgid "Promise"
+msgstr "诺言"
+
+#: plotDelegate%233
+msgid "Problem"
+msgstr "问题"
+
+#: plotDelegate%234
+msgctxt "plotDelegate#4"
+msgid "Progress"
+msgstr "进展"
+
+#: plotDelegate%235
+msgid "Resolution"
+msgstr "决心"
+
+#: plotDelegate%236
+msgid "Try / Fail"
+msgstr "尝试/失败"
+
+#: plotDelegate%237
+msgid "No and"
+msgstr "不，但"
+
+#: plotDelegate%238
+msgid "Yes but"
+msgstr "是的，但"
+
+#: plotDelegate%239
+msgid "Freytag's pyramid"
+msgstr "弗雷塔格的金字塔"
+
+#: plotDelegate%2310
+msgid "Exposition"
+msgstr "揭露"
+
+#: plotDelegate%2311
+msgid "Rising action"
+msgstr "指向高潮的情景"
+
+#: plotDelegate%2312
+msgid "Climax"
+msgstr "高潮"
+
+#: plotDelegate%2313
+msgid "Falling action"
+msgstr "急转直下的行动"
+
+#: plotDelegate%2314
+msgid "Three acts"
+msgstr "三幕"
+
+#: plotDelegate%2315
+msgid "1. Setup"
+msgstr "1. 建立"
+
+#: plotDelegate%2316
+msgid "1. Inciting event"
+msgstr "1. 煽动性的事件"
+
+#: plotDelegate%2317
+msgid "1. Turning point"
+msgstr "1. 转折点"
+
+#: plotDelegate%2318
+msgid "2. Choice"
+msgstr "2. 选择"
+
+#: plotDelegate%2319
+msgid "2. Reversal"
+msgstr "2. 反转"
+
+#: plotDelegate%2320
+msgid "2. Disaster"
+msgstr "2. 灾难"
+
+#: plotDelegate%2321
+msgid "3. Stand up"
+msgstr "3. 站起来"
+
+#: plotDelegate%2322
+msgid "3. Climax"
+msgstr "3. 高潮"
+
+#: plotDelegate%2323
+msgid "3. Ending"
+msgstr "3. 结束"
+
+#: plotDelegate%2324
+msgid "Hero's journey"
+msgstr "英雄的旅程"
+
+#: plotDelegate%2325
+msgid "Ordinary world"
+msgstr "平凡的世界"
+
+#: plotDelegate%2326
+msgid "Call to adventure"
+msgstr "冒险的召唤"
+
+#: plotDelegate%2327
+msgid "Refusal of the call"
+msgstr "拒绝召唤"
+
+#: plotDelegate%2328
+msgid "Meeting with mentor"
+msgstr "与导师见面"
+
+#: plotDelegate%2329
+msgid "Tests"
+msgstr "测试"
+
+#: plotDelegate%2330
+msgid "Approach"
+msgstr "接近"
+
+#: plotDelegate%2331
+msgid "Abyss"
+msgstr "深远"
+
+#: plotDelegate%2332
+msgid "Reward / Revelation"
+msgstr "奖励/启示"
+
+#: plotDelegate%2333
+msgid "Transformation"
+msgstr "转换"
+
+#: plotDelegate%2334
+msgid "Atonement"
+msgstr "赎罪"
+
+#: plotDelegate%2335
+msgid "Return"
+msgstr "返回"
+
+#: plotModel%231
+msgctxt "plotModel#1"
+msgid "Name"
+msgstr "名字"
+
+#: plotModel%232
+msgid "Meta"
+msgstr "元（Meta）"
+
+#: plotModel%233
+msgid "New step"
+msgstr "新一步"
+
+#: plotModel%234
+msgctxt "plotModel#4"
+msgid "Main"
+msgstr "主要"
+
+#: plotModel%235
+msgctxt "plotModel#5"
+msgid "Secondary"
+msgstr "次要"
+
+#: plotModel%236
+msgctxt "plotModel#6"
+msgid "Minor"
+msgstr "不重要的"
+
+#: plotTreeView%231
+msgctxt "plotTreeView#1"
+msgid "Main"
+msgstr "主要"
+
+#: plotTreeView%232
+msgctxt "plotTreeView#2"
+msgid "Secondary"
+msgstr "次要"
+
+#: plotTreeView%233
+msgctxt "plotTreeView#3"
+msgid "Minor"
+msgstr "不重要的"
+
+#: plotTreeView%234
+msgid "**Plot:** {}"
+msgstr "**情节：** {}"
+
+#: plotsProxyModel%231
+msgctxt "plotsProxyModel#1"
+msgid "Main"
+msgstr "主要"
+
+#: plotsProxyModel%232
+msgctxt "plotsProxyModel#2"
+msgid "Secondary"
+msgstr "次要"
+
+#: plotsProxyModel%233
+msgctxt "plotsProxyModel#3"
+msgid "Minors"
+msgstr "不重要的"
+
+#: propertiesView%231
+msgctxt "propertiesView#1"
+msgid "Form"
+msgstr ""
+
+#: propertiesView%232
+msgctxt "propertiesView#2"
+msgid "POV"
+msgstr "POV"
+
+#: propertiesView%233
+msgctxt "propertiesView#3"
+msgid "Status"
+msgstr "状态"
+
+#: propertiesView%234
+msgctxt "propertiesView#4"
+msgid "Label"
+msgstr "标签"
+
+#: propertiesView%235
+msgctxt "propertiesView#5"
+msgid "Compile"
+msgstr "编译"
+
+#: propertiesView%236
+msgctxt "propertiesView#6"
+msgid "Goal"
+msgstr "目标"
+
+#: propertiesView%237
+msgctxt "propertiesView#7"
+msgid "Word count"
+msgstr "字数统计"
+
+#: references%231
+msgid "Not a reference: {}."
+msgstr "不是一个参考文档：{}。"
+
+#: references%232
+msgid "Unknown reference: {}."
+msgstr "未知参考文档：{}。"
+
+#: references%233
+msgctxt "references#3"
+msgid "Path:"
+msgstr "路径："
+
+#: references%234
+msgid "Stats:"
+msgstr "统计："
+
+#: references%235
+msgctxt "references#5"
+msgid "POV:"
+msgstr "POV："
+
+#: references%236
+msgctxt "references#6"
+msgid "Status:"
+msgstr "状态："
+
+#: references%237
+msgid "Label:"
+msgstr "标签："
+
+#: references%238
+msgid "Short summary:"
+msgstr "短摘要："
+
+#: references%239
+msgid "Long summary:"
+msgstr "长摘要："
+
+#: references%2310
+msgid "Notes:"
+msgstr "笔记："
+
+#: references%2311
+msgctxt "references#11"
+msgid "Basic info"
+msgstr "基本信息"
+
+#: references%2312
+msgctxt "references#12"
+msgid "Detailed info"
+msgstr "详细信息"
+
+#: references%2313
+msgid "POV of:"
+msgstr "POV 对象："
+
+#: references%2314
+msgid "Go to {}."
+msgstr "转到 {}。"
+
+#: references%2315
+msgctxt "references#15"
+msgid "Description"
+msgstr "描述"
+
+#: references%2316
+msgctxt "references#16"
+msgid "Result"
+msgstr "结果"
+
+#: references%2317
+msgctxt "references#17"
+msgid "Characters"
+msgstr "角色"
+
+#: references%2318
+msgctxt "references#18"
+msgid "Resolution steps"
+msgstr "解决步骤"
+
+#: references%2319
+msgid "Passion"
+msgstr "动机"
+
+#: references%2320
+msgctxt "references#20"
+msgid "Conflict"
+msgstr "冲突"
+
+#: references%2321
+msgid "<b>Unknown reference:</b> {}."
+msgstr "<b>未知参考</b> {}。"
+
+#: references%2322
+msgid "Folder: <b>{}</b>"
+msgstr "文件夹：<b>{}</b>"
+
+#: references%2323
+msgid "Text: <b>{}</b>"
+msgstr "文本：<b>{}</b>"
+
+#: references%2324
+msgid "Character: <b>{}</b>"
+msgstr "角色：<b>{}</b>"
+
+#: references%2325
+msgid "Plot: <b>{}</b>"
+msgstr "情节：<b>{}</b>"
+
+#: references%2326
+msgid "World: <b>{name}</b>{path}"
+msgstr "世界：<b>{name}</b>{path}"
+
+#: references%2327
+msgid "Referenced in:"
+msgstr "引用于："
+
+#: references%2328
+msgctxt "references#28"
+msgid "Motivation"
+msgstr "激励"
+
+#: references%2329
+msgctxt "references#29"
+msgid "Goal"
+msgstr "目标"
+
+#: references%2330
+msgctxt "references#30"
+msgid "Epiphany"
+msgstr "顿悟"
+
+#: references%2331
+msgid "Short summary"
+msgstr "短摘要"
+
+#: references%2332
+msgid "Longer summary"
+msgstr "长摘要"
+
+#: revisions%231
+msgctxt "revisions#1"
+msgid "Form"
+msgstr ""
+
+#: revisions%232
+msgid "Options"
+msgstr ""
+
+#: revisions%233
+msgid "Restore"
+msgstr ""
+
+#: revisions%234
+#, fuzzy
+msgctxt "revisions#4"
+msgid "Delete"
+msgstr "删除"
+
+#: revisions%235
+msgid "Show modifications"
+msgstr ""
+
+#: revisions%236
+msgid "Show ancient version"
+msgstr ""
+
+#: revisions%237
+msgid "Show spaces"
+msgstr ""
+
+#: revisions%238
+msgid "Show modifications only"
+msgstr ""
+
+#: revisions%239
+msgid "{} years ago"
+msgstr ""
+
+#: revisions%2310
+msgid "{} months ago"
+msgstr ""
+
+#: revisions%2311
+msgid "{} days ago"
+msgstr ""
+
+#: revisions%2312
+msgid "1 day ago"
+msgstr ""
+
+#: revisions%2313
+msgid "{} hours ago"
+msgstr ""
+
+#: revisions%2314
+msgid "{} minutes ago"
+msgstr ""
+
+#: revisions%2315
+msgid "{} seconds ago"
+msgstr ""
+
+#: revisions%2316
+msgid "Line {}:"
+msgstr ""
+
+#: revisions%2317
+msgid "Clear all"
+msgstr ""
+
+#: search%231
+msgctxt "search#1"
+msgid "Form"
+msgstr ""
+
+#: search%232
+msgid "Search for..."
+msgstr ""
+
+#: settingsWindow%231
+msgid "New status"
+msgstr "新建状态"
+
+#: settingsWindow%232
+msgid "New label"
+msgstr "新标签"
+
+#: settingsWindow%233
+msgid "newtheme"
+msgstr "新主题"
+
+#: settingsWindow%234
+msgid "New theme"
+msgstr "新建主题"
+
+#: settingsWindow%235
+msgid " (read-only)"
+msgstr " （只读）"
+
+#: settingsWindow%236
+msgid "Open Image"
+msgstr ""
+
+#: settingsWindow%237
+msgid "Image files (*.jpg; *.jpeg; *.png)"
+msgstr ""
+
+#: settingsWindow%238
+#, fuzzy
+msgctxt "settingsWindow#8"
+msgid "Error"
+msgstr "错误"
+
+#: settingsWindow%239
+msgid "Unable to load selected file"
+msgstr ""
+
+#: settingsWindow%2310
+msgid ""
+"Unable to add selected image:\n"
+"{}"
+msgstr ""
+
+#: sldImportance%231
+msgctxt "sldImportance#1"
+msgid "Form"
+msgstr ""
+
+#: sldImportance%232
+#, fuzzy
+msgctxt "sldImportance#2"
+msgid "TextLabel"
+msgstr "文本标签"
+
+#: sldImportance%233
+#, fuzzy
+msgctxt "sldImportance#3"
+msgid "Minor"
+msgstr "不重要的"
+
+#: sldImportance%234
+msgctxt "sldImportance#4"
+msgid "Secondary"
+msgstr ""
+
+#: sldImportance%235
+#, fuzzy
+msgctxt "sldImportance#5"
+msgid "Main"
+msgstr "主要"
+
+#: splitDialog%231
+msgid ""
+"\n"
+"            <p>Split selected item(s) at the given mark.</p>\n"
+"\n"
+"            <p>If one of the selected item is a folder, it will be applied\n"
+"            recursively to <i>all</i> of it's children items.</p>\n"
+"\n"
+"            <p>The split mark can contain following escape sequences:\n"
+"                <ul>\n"
+"                    <li><b><code>\\n</code></b>: line break</li>\n"
+"                    <li><b><code>\\t</code></b>: tab</li>\n"
+"                </ul>\n"
+"            </p>\n"
+"\n"
+"            <p><b>Mark:</b></p>\n"
+"            "
+msgstr ""
+
+#: splitDialog%232
+msgid "Split '{}'"
+msgstr ""
+
+#: splitDialog%233
+msgid "Split items"
+msgstr ""
+
+#: storylineView%231
+msgctxt "storylineView#1"
+msgid "Form"
+msgstr ""
+
+#: storylineView%232
+msgid "Show Plots"
+msgstr ""
+
+#: storylineView%233
+msgid "Show Characters"
+msgstr ""
+
+#: tabSplitter%231
+msgid "Open selected items in that view."
+msgstr ""
+
+#: tabSplitter%232
+msgid "Split horizontally"
+msgstr ""
+
+#: tabSplitter%233
+msgid "Close split"
+msgstr ""
+
+#: tabSplitter%234
+msgid "Split vertically"
+msgstr ""
+
+#: textEditView%231
+msgctxt "textEditView#1"
+msgid "Various"
+msgstr "可变的"
+
+#: textFormat%231
+msgctxt "textFormat#1"
+msgid "Form"
+msgstr ""
+
+#: textFormat%232
+msgid "CTRL+B"
+msgstr "CTRL+B"
+
+#: textFormat%233
+msgid "CTRL+I"
+msgstr "CTRL+I"
+
+#: textFormat%234
+msgid "CTRL+U"
+msgstr "CTRL+U"
+
+#: textFormat%235
+msgid "CTRL+P"
+msgstr "CTRL+P"
+
+#: textFormat%236
+msgid "CTRL+L"
+msgstr "CTRL+L"
+
+#: textFormat%237
+msgid "CTRL+E"
+msgstr "CTRL+E"
+
+#: textFormat%238
+msgid "CTRL+R"
+msgstr "CTRL+R"
+
+#: textFormat%239
+msgid "CTRL+J"
+msgstr "CTRL+J"
+
+#: treeView%231
+msgid "Expand {}"
+msgstr "展开 {}"
+
+#: treeView%232
+msgid "Collapse {}"
+msgstr "折叠 {}"
+
+#: treeView%233
+msgid "Expand All"
+msgstr "全部展开"
+
+#: treeView%234
+msgid "Collapse All"
+msgstr "全部折叠"
+
+#: welcome%231
+msgctxt "welcome#1"
+msgid "Form"
+msgstr ""
+
+#: welcome%232
+msgid "1"
+msgstr "1"
+
+#: welcome%233
+msgid "Templates"
+msgstr "模板"
+
+#: welcome%234
+msgid "Empty"
+msgstr "空"
+
+#: welcome%235
+msgid "Novel"
+msgstr "长篇小说"
+
+#: welcome%236
+msgid "Novella"
+msgstr "中篇小说"
+
+#: welcome%237
+msgid "Short Story"
+msgstr "短篇小说"
+
+#: welcome%238
+msgid "Research paper"
+msgstr "研究论文"
+
+#: welcome%239
+msgid "Demo projects"
+msgstr "示例项目"
+
+#: welcome%2310
+msgid "Add level"
+msgstr "增加层级"
+
+#: welcome%2311
+msgid "Add word count"
+msgstr "增加字数统计"
+
+#: welcome%2312
+msgid "Next time, automatically open last project"
+msgstr "下次自动打开最后关闭的项目"
+
+#: welcome%2313
+msgid "Open..."
+msgstr "打开..."
+
+#: welcome%2314
+msgid "Recent"
+msgstr "近期使用"
+
+#: welcome%2315
+msgid "Create"
+msgstr "创建"
+
+#: welcome%2316
+msgid "Open project"
+msgstr "打开项目"
+
+#: welcome%2317
+msgid "Manuskript project (*.msk);;All files (*)"
+msgstr "Manuskript 项目 (*.msk);;所有文件 (*)"
+
+#: welcome%2318
+msgid "Save project as..."
+msgstr "另存项目为..."
+
+#: welcome%2319
+msgid "Manuskript project (*.msk)"
+msgstr "Manuskript 项目 (*.msk)"
+
+#: welcome%2320
+msgctxt "welcome#20"
+msgid "Manuskript"
+msgstr "ManuSkript"
+
+#: welcome%2321
+msgid "Create New Project"
+msgstr "创建新项目"
+
+#: welcome%2322
+msgid "Warning"
+msgstr "警告"
+
+#: welcome%2323
+msgid "Overwrite existing project {} ?"
+msgstr "覆盖已有项目"
+
+#: welcome%2324
+msgid "Empty fiction"
+msgstr "空虚构效果"
+
+#: welcome%2325
+msgid "Chapter"
+msgstr "章节"
+
+#: welcome%2326
+msgid "Scene"
+msgstr "场景"
+
+#: welcome%2327
+msgid "Trilogy"
+msgstr "三部曲"
+
+#: welcome%2328
+msgid "Book"
+msgstr "部"
+
+#: welcome%2329
+msgid "Section"
+msgstr "部分"
+
+#: welcome%2330
+msgid "Empty non-fiction"
+msgstr "空非虚构效果"
+
+#: welcome%2331
+#, fuzzy
+msgid "words each."
+msgstr "字（每项）。"
+
+#: welcome%2332
+msgid "of"
+msgstr ""
+
+#: welcome%2333
+msgctxt "welcome#33"
+msgid "Text"
+msgstr "文本"
+
+#: welcome%2334
+msgid "Something"
+msgstr ""
+
+#: welcome%2335
+#, fuzzy
+msgid "<b>Total:</b> {} words (~ {} pages)"
+msgstr "<b>总计：</b> {} 字 (约 {} 页)"
+
+#: welcome%2336
+msgid "Fiction"
+msgstr "虚构小说"
+
+#: welcome%2337
+msgid "Non-fiction"
+msgstr "非虚构小说"
+
+#: welcome%2338
+msgid "Idea"
+msgstr "创意"
+
+#: welcome%2339
+msgid "Note"
+msgstr "笔记"
+
+#: welcome%2340
+msgid "Research"
+msgstr "研究"
+
+#: welcome%2341
+msgid "TODO"
+msgstr "TODO"
+
+#: welcome%2342
+msgid "First draft"
+msgstr "初稿"
+
+#: welcome%2343
+msgid "Second draft"
+msgstr "二稿"
+
+#: welcome%2344
+msgid "Final"
+msgstr "完成稿"
+
+#: worldModel%231
+msgid "New item"
+msgstr ""
+
+#: worldModel%232
+msgid "Fantasy world building"
+msgstr ""
+
+#: worldModel%233
+msgid "Physical"
+msgstr ""
+
+#: worldModel%234
+msgid "Climate"
+msgstr ""
+
+#: worldModel%235
+msgid "Topography"
+msgstr ""
+
+#: worldModel%236
+msgid "Astronomy"
+msgstr ""
+
+#: worldModel%237
+msgid "Wild life"
+msgstr ""
+
+#: worldModel%238
+msgid "Flora"
+msgstr ""
+
+#: worldModel%239
+msgid "History"
+msgstr ""
+
+#: worldModel%2310
+msgid "Races"
+msgstr ""
+
+#: worldModel%2311
+msgid "Diseases"
+msgstr ""
+
+#: worldModel%2312
+msgid "Cultural"
+msgstr ""
+
+#: worldModel%2313
+msgid "Customs"
+msgstr ""
+
+#: worldModel%2314
+msgid "Food"
+msgstr ""
+
+#: worldModel%2315
+msgid "Languages"
+msgstr ""
+
+#: worldModel%2316
+msgid "Education"
+msgstr ""
+
+#: worldModel%2317
+msgid "Dresses"
+msgstr ""
+
+#: worldModel%2318
+msgid "Science"
+msgstr ""
+
+#: worldModel%2319
+msgid "Calendar"
+msgstr ""
+
+#: worldModel%2320
+msgid "Bodily language"
+msgstr ""
+
+#: worldModel%2321
+msgid "Ethics"
+msgstr ""
+
+#: worldModel%2322
+msgid "Religion"
+msgstr ""
+
+#: worldModel%2323
+msgid "Government"
+msgstr ""
+
+#: worldModel%2324
+msgid "Politics"
+msgstr ""
+
+#: worldModel%2325
+msgid "Gender roles"
+msgstr ""
+
+#: worldModel%2326
+msgid "Music and arts"
+msgstr ""
+
+#: worldModel%2327
+msgid "Architecture"
+msgstr ""
+
+#: worldModel%2328
+msgid "Military"
+msgstr ""
+
+#: worldModel%2329
+msgid "Technology"
+msgstr ""
+
+#: worldModel%2330
+msgid "Courtship"
+msgstr ""
+
+#: worldModel%2331
+msgid "Demography"
+msgstr ""
+
+#: worldModel%2332
+msgid "Transportation"
+msgstr ""
+
+#: worldModel%2333
+msgid "Medicine"
+msgstr ""
+
+#: worldModel%2334
+msgid "Magic system"
+msgstr ""
+
+#: worldModel%2335
+msgid "Rules"
+msgstr ""
+
+#: worldModel%2336
+msgid "Organization"
+msgstr ""
+
+#: worldModel%2337
+msgid "Magical objects"
+msgstr ""
+
+#: worldModel%2338
+msgid "Magical places"
+msgstr ""
+
+#: worldModel%2339
+msgid "Magical races"
+msgstr ""
+
+#: worldModel%2340
+msgid "Important places"
+msgstr ""
+
+#: worldModel%2341
+msgid "Important objects"
+msgstr ""
+
+#: worldModel%2342
+msgid "Natural resources"
+msgstr ""

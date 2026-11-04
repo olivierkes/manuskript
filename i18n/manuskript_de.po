@@ -1,0 +1,3984 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-04 21:21+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.20.0\n"
+
+#: Export%231
+msgid "Basic HTML output using the Python module 'markdown'."
+msgstr "Einfacher HTML-Export mit dem Python-Modul „markdown“."
+
+#: Export%232
+msgid "Python module 'markdown'."
+msgstr "Python-Modul „markdown“."
+
+#: Export%233
+msgid "Markdown source"
+msgstr "Markdown-Quelle"
+
+#: Export%234
+msgid "HTML Source"
+msgstr "HTML-Quelle"
+
+#: Export%235
+msgid "HTML Output"
+msgstr "HTML-Ausgabe"
+
+#: Export%236
+msgid "Default exporter, provides basic formats used by other exporters."
+msgstr ""
+"Standardexport: Bietet Basis-Formate, die von anderen Exports genutzt werden."
+
+#: Export%237
+msgid "Preview with highlighter."
+msgstr "Vorschau mit Hervorhebung."
+
+#: Export%238
+msgid "Plain text"
+msgstr "Einfacher Text"
+
+#: Export%239
+msgid "A little known format modestly used. You know, web sites for example."
+msgstr ""
+"Ein kaum bekanntes Format wird verwendet. Du weißt schon, für Webseiten und "
+"so."
+
+#: Export%2310
+msgid "Needs LaTeX to be installed."
+msgstr "LaTeX muss installiert sein."
+
+#: Export%2311
+msgctxt "Export#11"
+msgid "Error"
+msgstr "Fehler"
+
+#: Export%2312
+msgid "Standalone document (not just a fragment)"
+msgstr "Eigenständiges Dokument (nicht nur ein Fragment)"
+
+#: Export%2313
+msgid "Include a table of contents."
+msgstr "Füge ein Inhaltsverzeichnis ein."
+
+#: Export%2314
+msgid "Number of sections level to include in TOC: "
+msgstr "Anzahl der Ebenen im Inhaltsverzeichnis: "
+
+#: Export%2315
+msgid "Typographically correct output"
+msgstr "Typographisch korrekte Ausgabe"
+
+#: Export%2316
+msgid "Normalize the document (cleaner)"
+msgstr "Automatische Bereinigung des Dokuments"
+
+#: Export%2317
+msgid "Specify the base level for headers: "
+msgstr "Lege die Basisebene für Überschriften fest: "
+
+#: Export%2318
+msgid "Use reference-style links instead of inline links"
+msgstr "Verwende Referenz-Verweise, anstatt Inline-Verweise"
+
+#: Export%2319
+msgid "Use ATX-style headers"
+msgstr "Verwende ATX-Headers"
+
+#: Export%2320
+msgid "Self-contained HTML files, with no dependencies"
+msgstr "Eigenständige HTML-Dateien, ohne Abhängigkeiten"
+
+#: Export%2321
+msgid "Use <q> tags for quotes in HTML"
+msgstr "Nutzt <p>-Tags für Zitate in HTML"
+
+#: Export%2322
+msgid "LaTeX engine used to produce the PDF."
+msgstr "LaTeX-Engine wird für Erzeugung des PDFs genutzt."
+
+#: Export%2323
+msgid "Paper size:"
+msgstr "Seitengröße:"
+
+#: Export%2324
+msgctxt "Export#24"
+msgid "Font size:"
+msgstr "Schriftgröße:"
+
+#: Export%2325
+msgid "Class:"
+msgstr "Klasse:"
+
+#: Export%2326
+msgctxt "Export#26"
+msgid "Line spacing:"
+msgstr "Zeilenabstand:"
+
+#: Export%2327
+msgid "Books that don't kill trees."
+msgstr "Bücher, für die keine Bäume sterben mussten."
+
+#: Export%2328
+msgid "OpenDocument format. Used by LibreOffice for example."
+msgstr "OpenDocument-Format. Wird beispielsweise von LibreOffice genutzt."
+
+#: Export%2329
+msgid "Microsoft Office (.docx) document."
+msgstr "Microsoft Office-Dokument (.docx)."
+
+#: Export%2330
+msgid "reStructuredText is a lightweight markup language."
+msgstr "reStructuredText ist eine leichtgewichtige Auszeichnungssprache."
+
+#: Export%2331
+msgid ""
+"Just like plain text, excepts adds markdown titles.\n"
+"                          Presupposes that texts are formatted in markdown."
+msgstr ""
+"Ähnlich Plaintext, erlaubt aber Hervorhebungen für Titel\n"
+"                          Setzt voraus, dass Texte bereits in Markdown "
+"formatiert sind."
+
+#: Export%2332
+msgid ""
+"Simplest export to plain text. Allows you to use your own markup not "
+"understood\n"
+"                  by Manuskript, for example <a href='www.fountain.io'>"
+"Fountain</a>."
+msgstr ""
+"Einfachster Export als reine Textdatei. Erlaubt die Benutzung von Markups, "
+"die von Manuskript nicht\n"
+"interpretiert werden können, wie zum Beispiel <a href='www.fountain.io'>"
+"Fountain</a>."
+
+#: Export%2333
+msgid ""
+"<p>A universal document converter. Can be used to convert Markdown to a wide "
+"range of other\n"
+"    formats.</p>\n"
+"    <p>Website: <a href=\"http://www.pandoc.org\">http://pandoc.org/</a></p>"
+"\n"
+"    "
+msgstr ""
+"<p>Ein universaler Dokumenten-Konverter. Kann zur Konvertierung von Markup "
+"in eine Reihe von anderen Formaten genutzt\n"
+"    werden.</p>\n"
+"    <p>Website: <a href=\"http://www.pandoc.org\">http://pandoc.org/</a></p>"
+"\n"
+"    "
+
+#: Export%2334
+msgid ""
+"a valid LaTeX installation. Pandoc recommendations can be found on:\n"
+"                     <a href=\"https://pandoc.org/installing.html\">"
+"pandoc.org/installing.html</a>. If you want Unicode support, you need "
+"XeLaTeX."
+msgstr ""
+"eine funktionierende LaTex-Installation. Siehe Systemvorausetzungen für "
+"Pandoc:\n"
+"                     <a href=\"http://pandoc.org/installing.html\">http://"
+"pandoc.org/installing.html</a>. Wenn Unicode unterstützt werden soll, wird "
+"xelatex benötigt."
+
+#: Export%2335
+msgid ""
+"Export to markdown, using pandoc. Allows more formatting options\n"
+"    than the basic manuskript exporter."
+msgstr ""
+"Exportiert nach Markdown via pandoc. Erlaubt mehr Formatierungen\n"
+"    als der Basis-Manuskript-Export."
+
+#: Export%2336
+msgid ""
+"LaTeX is a word processor and document markup language used to create\n"
+"                                              beautiful documents."
+msgstr ""
+"LaTeX ist Textsatzprogramm und Markup-Language zur Erstellung\n"
+"                                              wunderschöner Dokumente."
+
+#: Export%2337
+msgid ""
+"The purpose of this format is to provide a way to exchange information\n"
+"                                              between outliners and Internet "
+"services that can be browsed or controlled\n"
+"                                              through an outliner."
+msgstr ""
+"Dieses Format dient zum Austausch von Informationen\n"
+"                                              zwischen Outlinern und "
+"Internetservices, die von Outlinern\n"
+"                                              durchsucht oder kontrolliert "
+"werden können."
+
+#: Export%2338
+msgid ""
+"Disable YAML metadata block.\n"
+"Use that if you get YAML related error."
+msgstr ""
+"Entfernt den YAML-Metadaten-Block.\n"
+"Nutze das, wenn du YAML-Errors bekommst."
+
+#: Export%2339
+msgid "Convert to ePUB3"
+msgstr "Konvertierung nach ePUB3"
+
+#: Export%2340
+msgid ""
+"Could not process regular expression: \n"
+"{}"
+msgstr ""
+"Konnte regulären Ausdruck nicht verarbeiten: \n"
+"{}"
+
+#: Export%2341
+msgid "Choose output fileâ¦"
+msgstr "Ausgabe-Datei wählenâ¦"
+
+#: ExportersManager%231
+msgid "Manage Exporters"
+msgstr "Exportverwaltung"
+
+#: ExportersManager%232
+msgctxt "ExportersManager#2"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: ExportersManager%233
+msgctxt "ExportersManager#3"
+msgid "Description"
+msgstr "Beschreibung"
+
+#: ExportersManager%234
+msgid "Offers export to"
+msgstr "Exportieren nach"
+
+#: ExportersManager%235
+msgctxt "ExportersManager#5"
+msgid "Status"
+msgstr "Status"
+
+#: ExportersManager%236
+msgctxt "ExportersManager#6"
+msgid "Status:"
+msgstr "Status:"
+
+#: ExportersManager%237
+msgid "Version:"
+msgstr "Version:"
+
+#: ExportersManager%238
+msgctxt "ExportersManager#8"
+msgid "Path:"
+msgstr "Pfad:"
+
+#: ExportersManager%239
+msgid "..."
+msgstr "Durchsuchen ..."
+
+#: ExportersManager%2310
+msgid "{HelpText}"
+msgstr "{Hilfetext}"
+
+#: FrequencyAnalyzer%231
+msgid "Frequency Analyzer"
+msgstr "Häufigkeitsanalyse"
+
+#: FrequencyAnalyzer%232
+msgid "Word frequency"
+msgstr "Worthäufigkeit"
+
+#: FrequencyAnalyzer%233
+msgctxt "FrequencyAnalyzer#3"
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: FrequencyAnalyzer%234
+msgid "Minimum size:"
+msgstr "Mindestwortlänge:"
+
+#: FrequencyAnalyzer%235
+msgid "Exclude words (comma separated):"
+msgstr "Wörter ausschließen: <br>(Trennen mit Komma):"
+
+#: FrequencyAnalyzer%236
+msgid "Analyze"
+msgstr "Analysieren"
+
+#: FrequencyAnalyzer%237
+msgid "Phrase frequency"
+msgstr "Häufigkeit von Phrasen"
+
+#: FrequencyAnalyzer%238
+msgid "Number of words: from"
+msgstr "Anzahl der Wörter: Von"
+
+#: FrequencyAnalyzer%239
+msgid "to"
+msgstr "bis"
+
+#: Import%231
+msgid "Markdown import"
+msgstr "Markdown-Import"
+
+#: Import%232
+msgid ""
+"<b>Info:</b> A very simple\n"
+"                        parser that will go through a markdown document and\n"
+"                        create items for each titles.<br/>&nbsp;"
+msgstr ""
+"<b>Info:</b> Ein sehr einfacher\n"
+"                        Parser, der ein Markdown-Dokument durchläuft und\n"
+"                        für jeden Titel eigene Einträge anlegt.<br/>&nbsp;"
+
+#: Import%233
+msgid "Folder import"
+msgstr "Ordnerimport"
+
+#: Import%234
+msgid ""
+"<p><b>Info:</b> Imports a whole\n"
+"                        directory structure. Folders are added as folders, "
+"and\n"
+"                        plaintext documents within (you chose which ones by "
+"extension)\n"
+"                        are added as scene.</p>\n"
+"                        <p>Only text files are supported (not images, binary "
+"or others).</p>"
+msgstr ""
+"<p><b>Info:</b> Importiert eine ganze Verzeichnisstruktur.\n"
+"                        Ordner werden als Ordner hinzugefügt, und Reintext-"
+"Dokumente\n"
+"                        (Sie wählen welche, entsprechend der Erweiterung) "
+"werden als Szene\n"
+"                        hinzugefügt.</p>\n"
+"                        <p>Es werden nur Textdateien unterstützt (keine "
+"Bilder, Binärdateien oder andere).</p>"
+
+#: Import%235
+msgid "Include only those extensions:"
+msgstr "Nur diese Dateinamenerweiterungen hinzufügen:"
+
+#: Import%236
+msgid "Comma separated values"
+msgstr "Komma-getrennte Werte"
+
+#: Import%237
+msgid "Sort items by name"
+msgstr "Elemente nach Namen sortieren"
+
+#: Import%238
+msgid "Import folder then files"
+msgstr "Erst Ordner, danach Dateien importieren"
+
+#: Import%239
+msgid "OPML Import"
+msgstr "OPML importieren"
+
+#: Import%2310
+msgid "File open failed."
+msgstr "Öffnen der Datei fehlgeschlagen."
+
+#: Import%2311
+msgid "This does not appear to be a valid OPML file."
+msgstr "Dies scheint keine gültige OPML-Datei zu sein."
+
+#: Import%2312
+msgid "Pandoc import"
+msgstr "Pandoc importieren"
+
+#: Import%2313
+msgid ""
+"<b>Info:</b> Manuskript can\n"
+"                        import from <b>markdown</b> or <b>OPML</b>. Pandoc "
+"will\n"
+"                        convert your document to either (see option below), "
+"and\n"
+"                        then it will be imported in manuskript. One or the "
+"other\n"
+"                        might give better result depending on your "
+"document.\n"
+"                        <br/>&nbsp;"
+msgstr ""
+"<b>Info:</b> Manuskript kann\n"
+"                        <b>Markdown</b> oder <b>OPML</b> importieren. Pandoc "
+"konvertiert\n"
+"                        Ihr Dokument in das jeweilige Format, bevor\n"
+"                        Manuskript es importiert. Das Ergebnis\n"
+"                        hängt von der Art Ihres Dokuments ab.\n"
+"                        <br/>&nbsp;"
+
+#: Import%2314
+msgid "Import using:"
+msgstr "Importieren mit:"
+
+#: Import%2315
+msgid "Wrap lines:"
+msgstr "Zeilenumbruch:"
+
+#: Import%2316
+msgid ""
+"<p>Should pandoc create\n"
+"                        cosmetic / non-semantic line-breaks?</p><p>\n"
+"                        <b>auto</b>: wraps at 72 characters.<br>\n"
+"                        <b>none</b>: no line wrap.<br>\n"
+"                        <b>preserve</b>: tries to preserves line wrap from "
+"the\n"
+"                        original document.</p>"
+msgstr ""
+"<p>Soll pandoc\n"
+"                        jede einzelne Zeile umbrechen?</p><p>\n"
+"                        <b>auto</b>: bricht nach 72 Zeichen um.<br>\n"
+"                        <b>none</b>: keine Zeilenumbrüche.<br>\n"
+"                        <b>preserve</b>: versucht, Umbrüche aus dem "
+"Originaldokument zu erhalten.</p>"
+
+#: Import%2317
+msgid "Mind Map Import"
+msgstr "Mind Map importieren"
+
+#: Import%2318
+msgid "This does not appear to be a valid Mind Map file."
+msgstr "Dies scheint keine gültige Mind Map-Datei zu sein."
+
+#: Import%2319
+msgid "Mind Map import"
+msgstr "Mind Map importieren"
+
+#: Import%2320
+msgid "Import tip as:"
+msgstr "Hinweis importieren als:"
+
+#: Import%2321
+msgid "Untitled"
+msgstr "Ohne Titel"
+
+#: MDEditCompleter%231
+msgid "Insert reference"
+msgstr "Referenz einfügen"
+
+#: MainWindow%231
+msgctxt "MainWindow#1"
+msgid "General"
+msgstr "Allgemein"
+
+#: MainWindow%232
+msgctxt "MainWindow#2"
+msgid "Title"
+msgstr "Titel"
+
+#: MainWindow%233
+msgid "Subtitle"
+msgstr "Untertitel"
+
+#: MainWindow%234
+msgid "Series"
+msgstr "Serie"
+
+#: MainWindow%235
+msgid "Volume"
+msgstr "Band"
+
+#: MainWindow%236
+msgid "Genre"
+msgstr "Genre"
+
+#: MainWindow%237
+msgid "License"
+msgstr "Lizenz"
+
+#: MainWindow%238
+msgid "Author"
+msgstr "Autor"
+
+#: MainWindow%239
+msgctxt "MainWindow#9"
+msgid "Name"
+msgstr "Name"
+
+#: MainWindow%2310
+msgid "Email"
+msgstr "E-Mail"
+
+#: MainWindow%2311
+msgctxt "MainWindow#11"
+msgid "Summary"
+msgstr "Zusammenfassung"
+
+#: MainWindow%2312
+msgid "Situation:"
+msgstr "Situation:"
+
+#: MainWindow%2313
+msgid "Summary:"
+msgstr "Zusammenfassung:"
+
+#: MainWindow%2314
+msgid "One sentence"
+msgstr "Ein Satz"
+
+#: MainWindow%2315
+msgid "One paragraph"
+msgstr "Ein Absatz"
+
+#: MainWindow%2316
+msgid "One page"
+msgstr "Eine Seite"
+
+#: MainWindow%2317
+msgid "Full"
+msgstr "Ausführlich"
+
+#: MainWindow%2318
+msgid "One sentence summary"
+msgstr "Zusammenfassung in einem Satz"
+
+#: MainWindow%2319
+msgid "One paragraph summary"
+msgstr "Zusammenfassung in einem Absatz"
+
+#: MainWindow%2320
+msgid "Expand each sentence of your one paragraph summary to a paragraph"
+msgstr ""
+"Erweitern Sie jeden Satz Ihrer Ein-Absatz-Zusammenfassung zu einem eigenen "
+"Absatz"
+
+#: MainWindow%2321
+msgid "One page summary"
+msgstr "Zusammenfassung auf einer Seite"
+
+#: MainWindow%2322
+msgctxt "MainWindow#22"
+msgid "Full summary"
+msgstr "Ausführliche Zusammenfassung"
+
+#: MainWindow%2323
+msgid "Next"
+msgstr "Weiter"
+
+#: MainWindow%2324
+msgid "What if...?"
+msgstr "Was wäre wenn ...?"
+
+#: MainWindow%2325
+msgctxt "MainWindow#25"
+msgid "Characters"
+msgstr "Charaktere"
+
+#: MainWindow%2326
+msgid "Names"
+msgstr "Namen"
+
+#: MainWindow%2327
+msgid "Filter"
+msgstr "Filter"
+
+#: MainWindow%2328
+msgctxt "MainWindow#28"
+msgid "Basic info"
+msgstr "Basisinformationen"
+
+#: MainWindow%2329
+msgid "Importance"
+msgstr "Bedeutung"
+
+#: MainWindow%2330
+msgctxt "MainWindow#30"
+msgid "Motivation"
+msgstr "Motivation"
+
+#: MainWindow%2331
+msgctxt "MainWindow#31"
+msgid "Goal"
+msgstr "Ziel"
+
+#: MainWindow%2332
+msgctxt "MainWindow#32"
+msgid "Conflict"
+msgstr "Konflikt"
+
+#: MainWindow%2333
+msgctxt "MainWindow#33"
+msgid "Epiphany"
+msgstr "Schicksal"
+
+#: MainWindow%2334
+msgid ""
+"<html><head/><body><p align=\"right\">One sentence<br/>summary</p></body></"
+"html>"
+msgstr ""
+"<html><head/><body><p align=\"right\">Zusammenfassung<br/>in einem Satz</p></"
+"body></html>"
+
+#: MainWindow%2335
+msgid ""
+"<html><head/><body><p align=\"right\">One paragraph<br/>summary</p></body></"
+"html>"
+msgstr ""
+"<html><head/><body><p align=\"right\">Zusammenfassung<br/>in einem Absatz</p>"
+"</body></html>"
+
+#: MainWindow%2336
+msgid "Notes"
+msgstr "Notizen"
+
+#: MainWindow%2337
+msgctxt "MainWindow#37"
+msgid "Detailed info"
+msgstr "Details"
+
+#: MainWindow%2338
+msgctxt "MainWindow#38"
+msgid "Plots"
+msgstr "Handlungsstränge"
+
+#: MainWindow%2339
+msgid "Plot"
+msgstr "Handlungsstrang"
+
+#: MainWindow%2340
+msgid "Character(s)"
+msgstr "Charakter(e)"
+
+#: MainWindow%2341
+msgctxt "MainWindow#41"
+msgid "Description"
+msgstr "Beschreibung"
+
+#: MainWindow%2342
+msgctxt "MainWindow#42"
+msgid "Result"
+msgstr "Lösung"
+
+#: MainWindow%2343
+msgctxt "MainWindow#43"
+msgid "Resolution steps"
+msgstr "Lösungsschritte"
+
+#: MainWindow%2344
+msgctxt "MainWindow#44"
+msgid "World"
+msgstr "Welt"
+
+#: MainWindow%2345
+msgid "Populates with empty data"
+msgstr "Wird mit leeren Daten aufgefüllt"
+
+#: MainWindow%2346
+msgid "More"
+msgstr "Mehr"
+
+#: MainWindow%2347
+msgid "Source of passion"
+msgstr "Quelle der Leidenschaft"
+
+#: MainWindow%2348
+msgid "Source of conflict"
+msgstr "Quelle des Konflikts"
+
+#: MainWindow%2349
+msgctxt "MainWindow#49"
+msgid "Outline"
+msgstr "Struktur"
+
+#: MainWindow%2350
+msgid "Editor"
+msgstr "Textverarbeitung"
+
+#: MainWindow%2351
+msgid "Debug"
+msgstr "Debug"
+
+#: MainWindow%2352
+msgid "FlatData"
+msgstr "Projektdaten"
+
+#: MainWindow%2353
+msgid "Persos"
+msgstr "Charaktere"
+
+#: MainWindow%2354
+msgctxt "MainWindow#54"
+msgid "Labels"
+msgstr "Labels"
+
+#: MainWindow%2355
+msgid "&File"
+msgstr "&Datei"
+
+#: MainWindow%2356
+msgid "&Recent"
+msgstr "&Zuletzt verwendet"
+
+#: MainWindow%2357
+msgid "&Help"
+msgstr "&Hilfe"
+
+#: MainWindow%2358
+msgid "&Tools"
+msgstr "&Werkzeuge"
+
+#: MainWindow%2359
+msgid "&Edit"
+msgstr "&Bearbeiten"
+
+#: MainWindow%2360
+msgid "&View"
+msgstr "&Ansicht"
+
+#: MainWindow%2361
+msgid "&Mode"
+msgstr "&Modus"
+
+#: MainWindow%2362
+msgid "&Cheat sheet"
+msgstr "&Spickzettel"
+
+#: MainWindow%2363
+msgid "Sea&rch"
+msgstr "Su&che"
+
+#: MainWindow%2364
+msgid "&Navigation"
+msgstr "&Navigation"
+
+#: MainWindow%2365
+msgid "&Open"
+msgstr "&Öffnen"
+
+#: MainWindow%2366
+msgid "Ctrl+O"
+msgstr "Strg+O"
+
+#: MainWindow%2367
+msgid "&Save"
+msgstr "&Speichern"
+
+#: MainWindow%2368
+msgctxt "MainWindow#68"
+msgid "Ctrl+S"
+msgstr "Strg+S"
+
+#: MainWindow%2369
+msgid "Sa&ve as..."
+msgstr "Sp&eichern als ..."
+
+#: MainWindow%2370
+msgid "Ctrl+Shift+S"
+msgstr "Strg+Shift+S"
+
+#: MainWindow%2371
+msgid "&Quit"
+msgstr "&Schließen"
+
+#: MainWindow%2372
+msgid "Ctrl+Q"
+msgstr "Strg+Q"
+
+#: MainWindow%2373
+msgid "&Show help texts"
+msgstr "&Zeige Hilfetext"
+
+#: MainWindow%2374
+msgid "Ctrl+Shift+B"
+msgstr "Strg+Shift+B"
+
+#: MainWindow%2375
+msgid "&Spellcheck"
+msgstr "&Rechtschreibprüfung"
+
+#: MainWindow%2376
+msgid "F9"
+msgstr "F9"
+
+#: MainWindow%2377
+msgid "&Labels..."
+msgstr "&Labels..."
+
+#: MainWindow%2378
+msgid "&Status..."
+msgstr "&Status ..."
+
+#: MainWindow%2379
+msgctxt "MainWindow#79"
+msgid "Tree"
+msgstr "Baum"
+
+#: MainWindow%2380
+msgid "&Simple"
+msgstr "&Einfach"
+
+#: MainWindow%2381
+msgid "&Fiction"
+msgstr "&Fiktionaler Text"
+
+#: MainWindow%2382
+msgctxt "MainWindow#82"
+msgid "Index cards"
+msgstr "Karteikarten"
+
+#: MainWindow%2383
+msgid "S&ettings"
+msgstr "E&instellungen"
+
+#: MainWindow%2384
+msgid "F8"
+msgstr "F8"
+
+#: MainWindow%2385
+msgid "&Close project"
+msgstr "&Projekt schließen"
+
+#: MainWindow%2386
+msgid "Co&mpile"
+msgstr "Ko&mpilieren"
+
+#: MainWindow%2387
+msgid "F6"
+msgstr "F6"
+
+#: MainWindow%2388
+msgid "&Frequency Analyzer"
+msgstr "&Häufigkeitsanalyse"
+
+#: MainWindow%2389
+msgid "Book information"
+msgstr "Buchinformationen"
+
+#: MainWindow%2390
+msgid "&About"
+msgstr "&Über"
+
+#: MainWindow%2391
+msgctxt "MainWindow#91"
+msgid "About Manuskript"
+msgstr "Über Manuskript"
+
+#: MainWindow%2392
+msgctxt "MainWindow#92"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: MainWindow%2393
+msgid "Project {} saved."
+msgstr "Projekt {} wurde gespeichert."
+
+#: MainWindow%2394
+msgid "WARNING: Project {} not saved."
+msgstr "WARNUNG: Projekt {} nicht gespeichert."
+
+#: MainWindow%2395
+msgid "Project {} loaded."
+msgstr "Projekt {} geladen."
+
+#: MainWindow%2396
+msgid "Project {} loaded with some errors."
+msgstr "Projekt {} wurde mit einigen Fehlern geladen."
+
+#: MainWindow%2397
+msgid " (~{} pages)"
+msgstr " (~{} Seiten)"
+
+#: MainWindow%2398
+msgid "Words: {}{}"
+msgstr "Wörter: {}{}"
+
+#: MainWindow%2399
+msgid "Book summary"
+msgstr "Buchzusammenfassung"
+
+#: MainWindow%23100
+msgid "Project tree"
+msgstr "Projektbaum"
+
+#: MainWindow%23101
+msgid "Metadata"
+msgstr "Metadaten"
+
+#: MainWindow%23102
+msgid "Story line"
+msgstr "Handlung"
+
+#: MainWindow%23103
+msgid "Enter information about your book, and yourself."
+msgstr "Gib Informationen über dein Buch und dich ein."
+
+#: MainWindow%23104
+msgid ""
+"The basic situation, in the form of a 'What if...?' question. Ex: 'What if "
+"the most dangerous\n"
+"                     evil wizard wasn't able to kill a baby?' (Harry Potter)"
+msgstr ""
+"Die Ausgangssituation, in Form von „Was wäre wenn ...?“ Fragen. Beispiel: „"
+"Was wäre wenn der gefährlichste\n"
+"                     böse Zauberer nicht einmal ein Baby töten könnte?“ "
+"(Harry Potter)"
+
+#: MainWindow%23105
+msgid ""
+"Take time to think about a one sentence (~50 words) summary of your book. "
+"Then expand it to\n"
+"                     a paragraph, then to a page, then to a full summary."
+msgstr ""
+"Nehmen Sie sich Zeit, sich einen Satz auszudenken (~15 Wörter), der Ihr Buch "
+"zusammenfasst. Dann erweitern Sie ihn\n"
+"                     zu einem Absatz, dann zu einer ganzen Seite und "
+"abschließend zu einer ausführlichen Zusammenfassung."
+
+#: MainWindow%23106
+msgid "Create your characters."
+msgstr "Erschaffen Sie Ihre Charaktere."
+
+#: MainWindow%23107
+msgid "Develop plots."
+msgstr "Entwickle Handlungsstränge."
+
+#: MainWindow%23108
+msgid ""
+"Build worlds.  Create hierarchy of broad categories down to specific details."
+msgstr ""
+"Erbaue Welten. Erstelle Hierachien breitgefächterter Kategorien, bis hin zu "
+"spezifischen Details."
+
+#: MainWindow%23109
+msgid "Create the outline of your masterpiece."
+msgstr "Arbeiten Sie die Struktur Ihres Meisterwerks aus."
+
+#: MainWindow%23110
+msgid "Write."
+msgstr "Schreibe."
+
+#: MainWindow%23111
+msgid "Debug info. Sometimes useful."
+msgstr "Debuginformationen. Manchmal hilfreich."
+
+#: MainWindow%23112
+msgid "Dictionary"
+msgstr "Wörterbuch"
+
+#: MainWindow%23113
+msgctxt "MainWindow#113"
+msgid "Nothing"
+msgstr "Keine"
+
+#: MainWindow%23114
+msgctxt "MainWindow#114"
+msgid "POV"
+msgstr "Perspektive"
+
+#: MainWindow%23115
+msgctxt "MainWindow#115"
+msgid "Label"
+msgstr "Label"
+
+#: MainWindow%23116
+msgctxt "MainWindow#116"
+msgid "Progress"
+msgstr "Fortschritt"
+
+#: MainWindow%23117
+msgctxt "MainWindow#117"
+msgid "Compile"
+msgstr "Kompiliere"
+
+#: MainWindow%23118
+msgid "Icon color"
+msgstr "Iconfarbe"
+
+#: MainWindow%23119
+msgid "Text color"
+msgstr "Textfarbe"
+
+#: MainWindow%23120
+msgid "Background color"
+msgstr "Hintergrundfarbe"
+
+#: MainWindow%23121
+msgid "Icon"
+msgstr "Icon"
+
+#: MainWindow%23122
+msgctxt "MainWindow#122"
+msgid "Text"
+msgstr "Text"
+
+#: MainWindow%23123
+msgctxt "MainWindow#123"
+msgid "Background"
+msgstr "Hintergrund"
+
+#: MainWindow%23124
+msgid "Border"
+msgstr "Rahmen"
+
+#: MainWindow%23125
+msgid "Corner"
+msgstr "Ecke"
+
+#: MainWindow%23126
+msgid "Add plot step"
+msgstr "Füge Handlungsschritt hinzu (Strg+Enter)"
+
+#: MainWindow%23127
+msgid "&Importâ¦"
+msgstr "&Importieren"
+
+#: MainWindow%23128
+msgid "F7"
+msgstr "F7"
+
+#: MainWindow%23129
+msgctxt "MainWindow#129"
+msgid "&Copy"
+msgstr "&Kopieren"
+
+#: MainWindow%23130
+msgid "Ctrl+C"
+msgstr "Strg+C"
+
+#: MainWindow%23131
+msgctxt "MainWindow#131"
+msgid "C&ut"
+msgstr "A&usschneiden"
+
+#: MainWindow%23132
+msgid "Ctrl+X"
+msgstr "Strg+X"
+
+#: MainWindow%23133
+msgctxt "MainWindow#133"
+msgid "&Paste"
+msgstr "&Einfügen"
+
+#: MainWindow%23134
+msgid "Ctrl+V"
+msgstr "Strg+V"
+
+#: MainWindow%23135
+msgid "&Splitâ¦"
+msgstr "&Aufteilen"
+
+#: MainWindow%23136
+msgid "Ctrl+Shift+K"
+msgstr "Strg+Umschalt+K"
+
+#: MainWindow%23137
+msgid "Sp&lit at cursor"
+msgstr "Am Mauszeiger aufteilen"
+
+#: MainWindow%23138
+msgid "Ctrl+K"
+msgstr "Strg+K"
+
+#: MainWindow%23139
+msgid "Ctrl+M"
+msgstr "Strg+M"
+
+#: MainWindow%23140
+msgid "Ctrl+D"
+msgstr "Strg+D"
+
+#: MainWindow%23141
+msgid "Del"
+msgstr "Löschen"
+
+#: MainWindow%23142
+msgid "&Move Up"
+msgstr "&Nach oben"
+
+#: MainWindow%23143
+msgid "Ctrl+Shift+Up"
+msgstr "Strg ➕ Umschalttaste ➕ Aufwärts"
+
+#: MainWindow%23144
+msgid "M&ove Down"
+msgstr "N&ach unten"
+
+#: MainWindow%23145
+msgid "Ctrl+Shift+Down"
+msgstr "Strg+Umschalt+Abwärts"
+
+#: MainWindow%23146
+msgid "Dupl&icate"
+msgstr "Dupl&izieren"
+
+#: MainWindow%23147
+msgctxt "MainWindow#147"
+msgid "&Delete"
+msgstr "&Löschen"
+
+#: MainWindow%23148
+msgctxt "MainWindow#148"
+msgid "&Rename"
+msgstr "&Umbenennen"
+
+#: MainWindow%23149
+msgid "F2"
+msgstr "F2"
+
+#: MainWindow%23150
+msgid "Organi&ze"
+msgstr "Verwal&ten"
+
+#: MainWindow%23151
+msgid "M&erge"
+msgstr "Zusamm&enführen"
+
+#: MainWindow%23152
+msgid "&Format"
+msgstr "&Format"
+
+#: MainWindow%23153
+msgid "&Header"
+msgstr "Übersc&hrift"
+
+#: MainWindow%23154
+msgid "&Level 1 (setext)"
+msgstr "&Level 1 (setext)"
+
+#: MainWindow%23155
+msgid "Ctrl+Alt+1"
+msgstr "Strg+Alt+1"
+
+#: MainWindow%23156
+msgid "Level &2"
+msgstr "Level &2"
+
+#: MainWindow%23157
+msgid "Ctrl+Alt+2"
+msgstr "Strg+Alt+2"
+
+#: MainWindow%23158
+msgid "Level &1 (atx)"
+msgstr "Level &1 (atx)"
+
+#: MainWindow%23159
+msgid "Ctrl+1"
+msgstr "Strg+1"
+
+#: MainWindow%23160
+msgid "L&evel 2"
+msgstr "L&evel 2"
+
+#: MainWindow%23161
+msgid "Ctrl+2"
+msgstr "Strg+2"
+
+#: MainWindow%23162
+msgid "Level &3"
+msgstr "Level &3"
+
+#: MainWindow%23163
+msgid "Ctrl+3"
+msgstr "Strg+3"
+
+#: MainWindow%23164
+msgid "Level &4"
+msgstr "Level &4"
+
+#: MainWindow%23165
+msgid "Ctrl+4"
+msgstr "Strg+4"
+
+#: MainWindow%23166
+msgid "Level &5"
+msgstr "Level &5"
+
+#: MainWindow%23167
+msgid "Ctrl+5"
+msgstr "Ctrl+5"
+
+#: MainWindow%23168
+msgid "Level &6"
+msgstr "Level &6"
+
+#: MainWindow%23169
+msgid "Ctrl+6"
+msgstr "Strg+6"
+
+#: MainWindow%23170
+msgid "&Bold"
+msgstr "&Fett"
+
+#: MainWindow%23171
+msgid "Ctrl+B"
+msgstr "Strg+B"
+
+#: MainWindow%23172
+msgid "&Italic"
+msgstr "&Kursiv"
+
+#: MainWindow%23173
+msgid "Ctrl+I"
+msgstr "Strg+I"
+
+#: MainWindow%23174
+msgid "&Strike"
+msgstr "Durchge&strichen"
+
+#: MainWindow%23175
+msgid "&Verbatim"
+msgstr "&Wörtlich"
+
+#: MainWindow%23176
+msgid "Su&perscript"
+msgstr "H&ochgestellt"
+
+#: MainWindow%23177
+msgid "Ctrl++"
+msgstr "Strg++"
+
+#: MainWindow%23178
+msgid "Subsc&ript"
+msgstr "&Tiefgestellt"
+
+#: MainWindow%23179
+msgid "Ctrl+-"
+msgstr "Strg+-"
+
+#: MainWindow%23180
+msgid "Co&mment block"
+msgstr "Ko&mmentarblock"
+
+#: MainWindow%23181
+msgid "Ctrl+Shift+C"
+msgstr "Strg+Umschalt+C"
+
+#: MainWindow%23182
+msgid "Clear &formats"
+msgstr "&Formatierung löschen"
+
+#: MainWindow%23183
+msgid "Ctrl+0"
+msgstr "Strg+0"
+
+#: MainWindow%23184
+msgid "&Comment line(s)"
+msgstr "&Kommentarzeile(n)"
+
+#: MainWindow%23185
+msgid "&Ordered list"
+msgstr "Ge&ordnete Liste"
+
+#: MainWindow%23186
+msgid "&Unordered list"
+msgstr "&Ungeordnete Liste"
+
+#: MainWindow%23187
+msgid "B&lockquote"
+msgstr "&Blockzitat"
+
+#: MainWindow%23188
+msgid "Remove selected plot step(s)"
+msgstr "Ausgewählte Plot-Schritt(e) entfernen"
+
+#: MainWindow%23189
+msgid "The file {} does not exist. Has it been moved or deleted?"
+msgstr "Die Datei {} existiert nicht. Wurde sie verschoben oder gelöscht?"
+
+#: MainWindow%23190
+msgid "Install {}{} to use spellcheck"
+msgstr "Installieren Sie {}{} um die Rechtschreibprüfung zu nutzen"
+
+#: MainWindow%23191
+msgid "{} has no installed dictionaries"
+msgstr "{} hat keine installierten Wörterbücher"
+
+#: MainWindow%23192
+msgid "{}{} is not installed"
+msgstr "{}{} ist nicht installiert"
+
+#: MainWindow%23193
+msgid "Save project?"
+msgstr "Projekt speichern?"
+
+#: MainWindow%23194
+msgid "Save changes to project \"{}\" before closing?"
+msgstr "Änderungen an Projekt „{}“ vor dem Schließen speichern?"
+
+#: MainWindow%23195
+msgid "Your changes will be lost if you don't save them."
+msgstr "Wenn Sie nicht speichern, gehen Ihre Änderungen verloren."
+
+#: MainWindow%23196
+msgid ""
+"PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might "
+"result in a loss of data."
+msgstr ""
+"Es ist bekannt, dass PyQt / Qt in den Versionen 5.11 und 5.12 Abstürze "
+"verursacht, wodurch Daten verloren gehen könnten."
+
+#: MainWindow%23197
+msgid "PyQt {} and Qt {} are in use."
+msgstr "Sie verwenden PyQt {} und Qt {}."
+
+#: MainWindow%23198
+msgid "Proceed with import at your own risk"
+msgstr ""
+"Wenn Sie fortfahren, könnte das einen Absturz und Datenverlust zur Folge "
+"haben"
+
+#: MainWindow%23199
+msgid "Allow POV"
+msgstr "Erlaube POV"
+
+#: MainWindow%23200
+msgid "Search"
+msgstr "Suche"
+
+#: MainWindow%23201
+msgid "Ctrl+F"
+msgstr "Strg+F"
+
+#: MainWindow%23202
+msgid "&Technical Support"
+msgstr "&Technischer Support"
+
+#: MainWindow%23203
+msgid "How to obtain technical support for Manuskript."
+msgstr "Wie man technischen Support für Manuskript erhält."
+
+#: MainWindow%23204
+msgid "F1"
+msgstr "F1"
+
+#: MainWindow%23205
+msgid "&Locate log file..."
+msgstr "&Zeige Log-Datei..."
+
+#: MainWindow%23206
+msgid "Locate log file"
+msgstr "Zeige Log-Datei"
+
+#: MainWindow%23207
+msgid "Locate the diagnostic log file used for this session."
+msgstr "Zeige die diagnostische Log-Datei für die aktuelle Session."
+
+#: MainWindow%23208
+msgid "Shift+F1"
+msgstr "Shift+F1"
+
+#: MainWindow%23209
+msgid "Sorry!"
+msgstr "Ups!"
+
+#: MainWindow%23210
+msgid "This session is not being logged."
+msgstr "Diese Session wird nicht protokolliert."
+
+#: MainWindow%23211
+msgid "A log file is a Work in Progress!"
+msgstr "Eine Log-Datei ist in Verwendung!"
+
+#: MainWindow%23212
+msgid ""
+"The log file \"{}\" will continue to be written to until Manuskript is "
+"closed."
+msgstr ""
+"Die Log-Datei \"{}\" wird weiterhin beschrieben bis Manuskript beendet wurde."
+
+#: MainWindow%23213
+msgid ""
+"It will now be displayed in your file manager, but is of limited use until "
+"you close Manuskript."
+msgstr ""
+"Sie wird nun in deinem Datei-Manager angezeigt. Allerdings sollte sie nicht "
+"verwendet werden bis Manuskript geschlossen wurde."
+
+#: MainWindow%23214
+msgid "Error!"
+msgstr "Fehler!"
+
+#: MainWindow%23215
+msgid ""
+"An error was encountered while trying to show the log file below in your "
+"file manager."
+msgstr ""
+"Es ist ein Fehler aufgetreten beim Versuch die aktuelle Log-Datei im Datei-"
+"Manager anzuzeigen."
+
+#: MainWindow%23216
+msgid "F3"
+msgstr "F3"
+
+#: MainWindow%23217
+msgid "Shift+F3"
+msgstr "Shift+F3"
+
+#: MainWindow%23218
+msgid "Situation"
+msgstr "Situation"
+
+#: MainWindow%23219
+msgctxt "MainWindow#219"
+msgid "Status"
+msgstr "Status"
+
+#: Search%231
+msgid "No results found"
+msgstr "Keine Ergebnisse gefunden"
+
+#: Settings%231
+msgctxt "Settings#1"
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: Settings%232
+msgctxt "Settings#2"
+msgid "General"
+msgstr "Allgemein"
+
+#: Settings%233
+msgctxt "Settings#3"
+msgid "Revisions"
+msgstr "Revisionen"
+
+#: Settings%234
+msgid "Views"
+msgstr "Ansichten"
+
+#: Settings%235
+msgctxt "Settings#5"
+msgid "Labels"
+msgstr "Labels"
+
+#: Settings%236
+msgctxt "Settings#6"
+msgid "Status"
+msgstr "Status"
+
+#: Settings%237
+msgid "Fullscreen"
+msgstr "Vollbildmodus"
+
+#: Settings%238
+msgid "General settings"
+msgstr "Allgemeine Einstellungen"
+
+#: Settings%239
+msgid "Application settings"
+msgstr "Anwendungseinstellungen"
+
+#: Settings%2310
+msgid "Loading"
+msgstr "Laden"
+
+#: Settings%2311
+msgid "Automatically load last project on startup"
+msgstr "Läd automatisch das letzte Projekt beim Start"
+
+#: Settings%2312
+msgid "Saving"
+msgstr "Speichern"
+
+#: Settings%2313
+msgid "Automatically save every"
+msgstr "Speichert automatisch alle"
+
+#: Settings%2314
+msgid "minutes."
+msgstr "Minuten."
+
+#: Settings%2315
+msgid "If no changes during"
+msgstr "Speichert, wenn keine Änderungen in den letzten"
+
+#: Settings%2316
+msgid "seconds."
+msgstr "Sekunden."
+
+#: Settings%2317
+msgid "Save on project close"
+msgstr "Projekt beim Schließen speichern"
+
+#: Settings%2318
+msgid ""
+"<html><head/><body><p>If you check this option, your project will be saved "
+"as one single file. Easier to copy or backup, but does not allow "
+"collaborative editing, or versioning.<br/>If this is unchecked, your project "
+"will be saved as a folder containing many small files.</p></body></html>"
+msgstr ""
+"<html><head/><body><p>Wenn Sie diese Option auswählen, wird das Projekt in "
+"einer einzigen Datei gespeichert. Es ist dann leichter zu kopieren oder zu "
+"sichern, aber nicht für gemeinsame Bearbeitung oder Versionierung "
+"geeignet.<br/>Wenn Sie diese Option nicht auswählen, wird das Projekt in "
+"einem Ordner mit vielen kleinen einzelnen Dateien gespeichert.</p></body></"
+"html>"
+
+#: Settings%2319
+msgid "Save to one single file"
+msgstr "In einer Datei speichern"
+
+#: Settings%2320
+msgid ""
+"Revisions are a way to keep track of modifications. For each text item, it "
+"stores any changes you make to the main text, allowing you to see and "
+"restoring previous versions."
+msgstr ""
+"Revisionen sind ein Weg, um die Bearbeitung zu dokumentieren. Für jedes "
+"Element werden die Änderungen im Haupttext nachgehalten und erlauben es, "
+"sich diese anzusehen oder alte Versionen wiederherzustellen."
+
+#: Settings%2321
+msgid "Keep revisions"
+msgstr "Revisionen aufbewahren"
+
+#: Settings%2322
+msgid "S&mart remove"
+msgstr "&Archivierung"
+
+#: Settings%2323
+msgid "Keep:"
+msgstr "Behalte:"
+
+#: Settings%2324
+msgid ""
+"Smart remove allows you to keep only a certain number of revisions. It is "
+"strongly recommended to use it, lest you file will becomes full of thousands "
+"of insignificant changes."
+msgstr ""
+"Die Archivierung erlaubt es, nur eine geringe Anzahl von Revisionen "
+"vorzuhalten. Es wird ausdrücklich empfohlen, sie zu nutzen, damit das "
+"Projekt nicht mit tausenden von unwichtigen Änderungen gefüllt wird."
+
+#: Settings%2325
+msgid "revisions per day for the last month"
+msgstr "Revisionen pro Tag im letzten Monat"
+
+#: Settings%2326
+msgid "revisions per minute for the last 10 minutes"
+msgstr "Revisionen pro Minute in den letzten 10 Minuten"
+
+#: Settings%2327
+msgid "revisions per hour for the last day"
+msgstr "Revisionen pro Stunde am letzten Tag"
+
+#: Settings%2328
+msgid "revisions per 10 minutes for the last hour"
+msgstr "Revisionen pro 10 Minuten in der letzten Stunde"
+
+#: Settings%2329
+msgid "revisions per week till the end of time"
+msgstr "Revisionen pro Woche"
+
+#: Settings%2330
+msgid "Views settings"
+msgstr "Ansicht - Einstellungen"
+
+#: Settings%2331
+msgctxt "Settings#31"
+msgid "Tree"
+msgstr "Baum"
+
+#: Settings%2332
+msgid "Colors"
+msgstr "Farben"
+
+#: Settings%2333
+msgid "Icon color:"
+msgstr "Iconfarbe:"
+
+#: Settings%2334
+msgctxt "Settings#34"
+msgid "Nothing"
+msgstr "Keine"
+
+#: Settings%2335
+msgctxt "Settings#35"
+msgid "POV"
+msgstr "POV"
+
+#: Settings%2336
+msgctxt "Settings#36"
+msgid "Label"
+msgstr "Label"
+
+#: Settings%2337
+msgctxt "Settings#37"
+msgid "Progress"
+msgstr "Fortschritt"
+
+#: Settings%2338
+msgctxt "Settings#38"
+msgid "Compile"
+msgstr "Kompilieren"
+
+#: Settings%2339
+msgid "Text color:"
+msgstr "Textfarbe:"
+
+#: Settings%2340
+msgid "Background color:"
+msgstr "Hintergrundfarbe:"
+
+#: Settings%2341
+msgid "Folders"
+msgstr "Ordner"
+
+#: Settings%2342
+msgid "Show ite&m count"
+msgstr "Zeige Anzahl enthaltener &Dateien"
+
+#: Settings%2343
+msgid "Show summary"
+msgstr "Zeige Inhaltsangabe"
+
+#: Settings%2344
+msgid "&Nothing"
+msgstr "&Nichts"
+
+#: Settings%2345
+msgctxt "Settings#45"
+msgid "Text"
+msgstr "Text"
+
+#: Settings%2346
+msgctxt "Settings#46"
+msgid "Outline"
+msgstr "Reißbrett"
+
+#: Settings%2347
+msgid "Visible columns"
+msgstr "Sichtbare Spalten"
+
+#: Settings%2348
+msgctxt "Settings#48"
+msgid "Goal"
+msgstr "Ziel"
+
+#: Settings%2349
+msgctxt "Settings#49"
+msgid "Word count"
+msgstr "Wortanzahl"
+
+#: Settings%2350
+msgid "Percentage"
+msgstr "Prozentsatz"
+
+#: Settings%2351
+msgctxt "Settings#51"
+msgid "Title"
+msgstr "Titel"
+
+#: Settings%2352
+msgctxt "Settings#52"
+msgid "Index cards"
+msgstr "Karteikarten"
+
+#: Settings%2353
+msgid "Item colors"
+msgstr "Farben"
+
+#: Settings%2354
+msgid "Border color:"
+msgstr "Rahmenfarbe:"
+
+#: Settings%2355
+msgid "Corner color:"
+msgstr "Eckenfarbe:"
+
+#: Settings%2356
+msgctxt "Settings#56"
+msgid "Background"
+msgstr "Hintergrund"
+
+#: Settings%2357
+msgid "Color:"
+msgstr "Farbe:"
+
+#: Settings%2358
+msgctxt "Settings#58"
+msgid "Ctrl+S"
+msgstr "Strg+S"
+
+#: Settings%2359
+msgid "Image:"
+msgstr "Bild:"
+
+#: Settings%2360
+msgid "Text editor"
+msgstr "Texteditor"
+
+#: Settings%2361
+msgctxt "Settings#61"
+msgid "Font"
+msgstr "Schrift"
+
+#: Settings%2362
+msgid "Family:"
+msgstr "Schriftart:"
+
+#: Settings%2363
+msgid "Size:"
+msgstr "Größe:"
+
+#: Settings%2364
+msgid "Misspelled:"
+msgstr "Rechtschreibprüfung:"
+
+#: Settings%2365
+msgid "Background:"
+msgstr "Hintergrund:"
+
+#: Settings%2366
+msgid "Paragraphs"
+msgstr "Absätze"
+
+#: Settings%2367
+msgctxt "Settings#67"
+msgid "Line spacing:"
+msgstr "Zeilenabstand:"
+
+#: Settings%2368
+msgid "Single"
+msgstr "Einfach"
+
+#: Settings%2369
+msgid "1.5 lines"
+msgstr "1,5 Zeilen"
+
+#: Settings%2370
+msgid "Double"
+msgstr "Doppelt"
+
+#: Settings%2371
+msgid "Proportional"
+msgstr "Proportional"
+
+#: Settings%2372
+msgid "%"
+msgstr "%"
+
+#: Settings%2373
+msgid "Tab width:"
+msgstr "Tabulator:"
+
+#: Settings%2374
+msgid " px"
+msgstr " pt"
+
+#: Settings%2375
+msgid "Indent 1st line"
+msgstr "Einzug der ersten Zeile"
+
+#: Settings%2376
+msgid "Spacing:"
+msgstr "Abstand:"
+
+#: Settings%2377
+msgctxt "Settings#77"
+msgid "New"
+msgstr "Neu"
+
+#: Settings%2378
+msgid "Edit"
+msgstr "Ändern"
+
+#: Settings%2379
+msgctxt "Settings#79"
+msgid "Delete"
+msgstr "Löschen"
+
+#: Settings%2380
+msgid "Theme name:"
+msgstr "Themenname:"
+
+#: Settings%2381
+msgid "Apply"
+msgstr "Anwenden"
+
+#: Settings%2382
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: Settings%2383
+msgid "Window Background"
+msgstr "Fensterhintergrund"
+
+#: Settings%2384
+msgid "Text Background"
+msgstr "Texthintergrund"
+
+#: Settings%2385
+msgid "Text Options"
+msgstr "Textoptionen"
+
+#: Settings%2386
+msgid "Paragraph Options"
+msgstr "Absatzoptionen"
+
+#: Settings%2387
+msgid "Type:"
+msgstr "Typ:"
+
+#: Settings%2388
+msgid "No Image"
+msgstr "Kein Bild"
+
+#: Settings%2389
+msgid "Tiled"
+msgstr "Gekachelt"
+
+#: Settings%2390
+msgid "Centered"
+msgstr "Zentriert"
+
+#: Settings%2391
+msgid "Stretched"
+msgstr "Gestreckt"
+
+#: Settings%2392
+msgid "Scaled"
+msgstr "Skaliert"
+
+#: Settings%2393
+msgid "Zoomed"
+msgstr "Zoom"
+
+#: Settings%2394
+msgid "Opacity:"
+msgstr "Deckkraft:"
+
+#: Settings%2395
+msgid "Position:"
+msgstr "Position:"
+
+#: Settings%2396
+msgid "Left"
+msgstr "Links"
+
+#: Settings%2397
+msgid "Center"
+msgstr "Zentriert"
+
+#: Settings%2398
+msgid "Right"
+msgstr "Rechts"
+
+#: Settings%2399
+msgid "Width:"
+msgstr "Breite:"
+
+#: Settings%23100
+msgid "Corner radius:"
+msgstr "Eckrundung:"
+
+#: Settings%23101
+msgid "Margins:"
+msgstr "Außenabstände:"
+
+#: Settings%23102
+msgid "Padding:"
+msgstr "Innenabstände:"
+
+#: Settings%23103
+msgctxt "Settings#103"
+msgid "Font:"
+msgstr "Schrift:"
+
+#: Settings%23104
+msgid "Style"
+msgstr "Stil"
+
+#: Settings%23105
+msgid "Cursor"
+msgstr "Zeiger"
+
+#: Settings%23106
+msgid "Use block insertion of"
+msgstr "Nutze Absatzeinrückung von"
+
+#: Settings%23107
+msgid "Alignment:"
+msgstr "Ausrichtung:"
+
+#: Settings%23108
+msgid "Justify"
+msgstr "Blocksatz"
+
+#: Settings%23109
+msgid "Alignment"
+msgstr "Ausrichtung"
+
+#: Settings%23110
+msgid "Icon Size"
+msgstr "Icongröße"
+
+#: Settings%23111
+msgctxt "Settings#111"
+msgid "TextLabel"
+msgstr "Textbeschriftung"
+
+#: Settings%23112
+msgid "Disable blinking"
+msgstr "Blinken Aus"
+
+#: Settings%23113
+msgid "Text area"
+msgstr "Textfeld"
+
+#: Settings%23114
+msgid "Max width"
+msgstr "Max. Breite"
+
+#: Settings%23115
+msgid "Left/Right margins:"
+msgstr "Abstände Rechts/Links:"
+
+#: Settings%23116
+msgid "Top/Bottom margins:"
+msgstr "Abstände Oben/Unten:"
+
+#: Settings%23117
+msgid "S&how progress"
+msgstr "Fortschritt anzeigen"
+
+#: Settings%23118
+msgid "Show summar&y"
+msgstr "&Zusammenfassung anzeigen"
+
+#: Settings%23119
+msgid "Show p&rogress"
+msgstr "Fo&rtschritt anzeigen"
+
+#: Settings%23120
+msgid "Old st&yle"
+msgstr "Alter St&il"
+
+#: Settings%23121
+msgid "Transparent"
+msgstr "Transparent"
+
+#: Settings%23122
+msgid "Restore defaults"
+msgstr "Standardwerte wiederherstellen"
+
+#: Settings%23123
+msgid "Style:"
+msgstr "Stil:"
+
+#: Settings%23124
+msgid "Language:"
+msgstr "Sprache:"
+
+#: Settings%23125
+msgctxt "Settings#125"
+msgid "Font size:"
+msgstr "Schriftgröße:"
+
+#: Settings%23126
+msgid "Restarting Manuskript ensures all settings take effect."
+msgstr "Wenn Sie Manuskript neu starten, werden alle Einstellungen wirksam."
+
+#: Settings%23127
+msgid "Show &word count"
+msgstr "Anzahl der &Wörter anzeigen"
+
+#: Settings%23128
+msgid "&Show word count"
+msgstr "Anzahl der &Wörter anzeigen"
+
+#: Settings%23129
+msgid "&New style"
+msgstr "&Neuer Stil"
+
+#: Settings%23130
+msgid "Typewriter mode"
+msgstr "Schreibmaschinenmodus"
+
+#: Settings%23131
+msgid "Focus mode"
+msgstr "Ablenkungsfreier Modus"
+
+#: Settings%23132
+msgctxt "Settings#132"
+msgid "None"
+msgstr "Keiner"
+
+#: Settings%23133
+msgid "Sentence"
+msgstr "Satz"
+
+#: Settings%23134
+msgid "Line"
+msgstr "Zeile"
+
+#: Settings%23135
+msgid "Paragraph"
+msgstr "Absatz"
+
+#: Settings%23136
+msgid ""
+"<p><b>The Revisions feature has been at the source of many reported issues. "
+"In this version of Manuskript it has been turned off by default for new "
+"projects in order to provide the best experience.</b></p><p>Why aren't these "
+"issues fixed already? <a href=\"https://www.theologeek.ch/manuskript/"
+"contribute/\">We need your help to make Manuskript better!</a></p>"
+msgstr ""
+"<p><b>Das Feature \"Revisionen\" war die Quelle von vielen Problemberichten. "
+"In dieser Version von Manuskript ist es deswegen für besseren Bedienkomfort "
+"bei neuen Projekten standardmäßig deaktiviert.</b></p><p>Warum sind diese "
+"Probleme noch nicht behoben?<a href=\"https://www.theologeek.ch/manuskript/"
+"contribute/\">Wir brauchen Ihre Hilfe, um Manuskript zu verbessern!</a></p>"
+
+#: Settings%23137
+msgid ""
+"Show progress in chars next\n"
+" to words"
+msgstr ""
+"Zeige Fortschritt in Zeichen und\n"
+"Wörtern an"
+
+#: Settings%23138
+msgid "Char/Word Counter"
+msgstr "Zeichen-/Wörter-Zähler"
+
+#: Settings%23139
+msgid "Count spaces as chars"
+msgstr "Zähle Leerzeichen mit"
+
+#: Settings%23140
+msgid "Show char c&ount"
+msgstr "Anzahl der &Zeichen anzeigen"
+
+#: Settings%23141
+msgid "Sho&w char count"
+msgstr "Anzahl der &Zeichen anzeigen"
+
+#: SpellAction%231
+msgid "Spelling Suggestions"
+msgstr "Korrekturvorschläge"
+
+#: SpellAction%232
+msgid "&Add to dictionary"
+msgstr "Zum Wörterbuch &hinzufügen"
+
+#: SpellAction%233
+msgid "&Remove from custom dictionary"
+msgstr "Aus dem Wörterbuch &entfernen"
+
+#: SpellAction%234
+msgid "&New Character"
+msgstr "&Neuer Charakter"
+
+#: SpellAction%235
+msgid "&New Plot Item"
+msgstr "&Neues Plot-Element"
+
+#: SpellAction%236
+msgid "&New World Item"
+msgstr "&Neues Welt-Element"
+
+#: SpellAction%237
+msgid "&Correction Suggestions"
+msgstr "&Korrektur-Vorschläge"
+
+#: SpellAction%238
+msgid "&Correction Suggestion"
+msgstr "Korrekturvorschläge"
+
+#: about%231
+msgctxt "about#1"
+msgid "About Manuskript"
+msgstr "Über Manuskript"
+
+#: about%232
+msgctxt "about#2"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: aboutDialog%231
+msgid "Version"
+msgstr "Version"
+
+#: aboutDialog%232
+msgid "Software Versions in Use:"
+msgstr "Verwendete Software-Versionen:"
+
+#: abstractModel%231
+msgctxt "abstractModel#1"
+msgid "Title"
+msgstr "Titel"
+
+#: abstractModel%232
+msgctxt "abstractModel#2"
+msgid "POV"
+msgstr "POV"
+
+#: abstractModel%233
+msgctxt "abstractModel#3"
+msgid "Label"
+msgstr "Kategorie"
+
+#: abstractModel%234
+msgctxt "abstractModel#4"
+msgid "Status"
+msgstr "Status"
+
+#: abstractModel%235
+msgctxt "abstractModel#5"
+msgid "Compile"
+msgstr "Kompilieren"
+
+#: abstractModel%236
+msgctxt "abstractModel#6"
+msgid "Word count"
+msgstr "Wortanzahl"
+
+#: abstractModel%237
+msgctxt "abstractModel#7"
+msgid "Goal"
+msgstr "Ziel"
+
+#: basicItemView%231
+msgctxt "basicItemView#1"
+msgid "Form"
+msgstr "Formular"
+
+#: basicItemView%232
+msgctxt "basicItemView#2"
+msgid "POV:"
+msgstr "POV:"
+
+#: basicItemView%233
+msgid "Goal:"
+msgstr "Ziel:"
+
+#: basicItemView%234
+msgctxt "basicItemView#4"
+msgid "Word count"
+msgstr "Wortanzahl"
+
+#: basicItemView%235
+msgctxt "basicItemView#5"
+msgid "One line summary"
+msgstr "Zusammenfassung in einem Satz"
+
+#: basicItemView%236
+msgid "Few sentences summary:"
+msgstr "Zusammenfassung in wenigen Sätzen:"
+
+#: characterModel%231
+msgctxt "characterModel#1"
+msgid "Name"
+msgstr "Name"
+
+#: characterModel%232
+msgid "Value"
+msgstr "Wert"
+
+#: characterTreeView%231
+msgctxt "characterTreeView#1"
+msgid "Main"
+msgstr "Primär"
+
+#: characterTreeView%232
+msgctxt "characterTreeView#2"
+msgid "Secondary"
+msgstr "Sekundär"
+
+#: characterTreeView%233
+msgctxt "characterTreeView#3"
+msgid "Minor"
+msgstr "Nebensächlich"
+
+#: cheatSheet%231
+msgctxt "cheatSheet#1"
+msgid "Form"
+msgstr "Formular"
+
+#: cheatSheet%232
+msgid "Filter (type the name of anything in your project)"
+msgstr "Filter (Tippe die Bezeichnung von irgendwas aus dem Projekt ein)"
+
+#: cheatSheet%233
+msgctxt "cheatSheet#3"
+msgid "Minor"
+msgstr "Nebensächlich"
+
+#: cheatSheet%234
+msgctxt "cheatSheet#4"
+msgid "Secondary"
+msgstr "Sekundär"
+
+#: cheatSheet%235
+msgctxt "cheatSheet#5"
+msgid "Main"
+msgstr "Primär"
+
+#: cheatSheet%236
+msgctxt "cheatSheet#6"
+msgid "Characters"
+msgstr "Charaktere"
+
+#: cheatSheet%237
+msgid "Texts"
+msgstr "Texte"
+
+#: cheatSheet%238
+msgctxt "cheatSheet#8"
+msgid "Plots"
+msgstr "Handlungsstränge"
+
+#: cheatSheet%239
+msgctxt "cheatSheet#9"
+msgid "World"
+msgstr "Welt"
+
+#: cmbOutlineCharacterChoser%231
+msgctxt "cmbOutlineCharacterChoser#1"
+msgid "None"
+msgstr "Nichts"
+
+#: cmbOutlineCharacterChoser%232
+msgctxt "cmbOutlineCharacterChoser#2"
+msgid "Main"
+msgstr "Primär"
+
+#: cmbOutlineCharacterChoser%233
+msgctxt "cmbOutlineCharacterChoser#3"
+msgid "Secondary"
+msgstr "Sekundär"
+
+#: cmbOutlineCharacterChoser%234
+msgctxt "cmbOutlineCharacterChoser#4"
+msgid "Minor"
+msgstr "Nebensächlich"
+
+#: cmbOutlineCharacterChoser%235
+msgctxt "cmbOutlineCharacterChoser#5"
+msgid "Various"
+msgstr "Verschiedene"
+
+#: cmbOutlineLabelChoser%231
+msgctxt "cmbOutlineLabelChoser#1"
+msgid "Various"
+msgstr "Verschiedene"
+
+#: cmbOutlineStatusChoser%231
+msgctxt "cmbOutlineStatusChoser#1"
+msgid "Various"
+msgstr "Verschiedene"
+
+#: collapsibleDockWidgets%231
+msgid "Dock Widgets Toolbar"
+msgstr "Dock Widgets-Symbolleiste"
+
+#: completer%231
+msgctxt "completer#1"
+msgid "Form"
+msgstr "Formular"
+
+#: corkDelegate%231
+msgctxt "corkDelegate#1"
+msgid "One line summary"
+msgstr "Inhaltsangabe in einem Satz"
+
+#: corkDelegate%232
+msgctxt "corkDelegate#2"
+msgid "Full summary"
+msgstr "Vollständige Zusammenfassung"
+
+#: editorWidget_ui%231
+msgctxt "editorWidget_ui#1"
+msgid "Form"
+msgstr "Formular"
+
+#: exporter%231
+msgid "Export"
+msgstr "Exportieren"
+
+#: exporter%232
+msgid "Export to:"
+msgstr "Ausgabe in:"
+
+#: exporter%233
+msgid "Manage exporters"
+msgstr "Speicherort"
+
+#: exporter%234
+msgctxt "exporter#4"
+msgid "Preview"
+msgstr "Vorschau"
+
+#: exporter%235
+msgctxt "exporter#5"
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: exporterDialog%231
+msgid "{} (not implemented yet)"
+msgstr "{} (noch nicht implementiert)"
+
+#: exporterSettings%231
+msgctxt "exporterSettings#1"
+msgid "Form"
+msgstr "Formular"
+
+#: exporterSettings%232
+msgid "Content"
+msgstr "Inhalt"
+
+#: exporterSettings%233
+msgid "Decide here what will be included in the final export."
+msgstr "Entscheide, was im finalen Export enthalten sein soll."
+
+#: exporterSettings%234
+msgid "Type"
+msgstr "Typ"
+
+#: exporterSettings%235
+msgctxt "exporterSettings#5"
+msgid "Title"
+msgstr "Titel"
+
+#: exporterSettings%236
+msgctxt "exporterSettings#6"
+msgid "Text"
+msgstr "Text"
+
+#: exporterSettings%237
+msgid "I need more granularity"
+msgstr "Ich brauche mehr Granularität"
+
+#: exporterSettings%238
+msgid "Fi&lters"
+msgstr "Fi&lter"
+
+#: exporterSettings%239
+msgid ""
+"<html><head/><body><p>Filters what items will be included in the final "
+"export.<br/><span style=\" color:#773333;\">(Not fully implemented yet.)</"
+"span></p></body></html>"
+msgstr ""
+"<html><head/><body><p>Filtert, welche Objekte beim finalen Export mit "
+"einbezogen werden sollen.<br/><span style=\" color:#773333;\">(Noch nicht "
+"vollständig implementiert.)</span></p></body></html>"
+
+#: exporterSettings%2310
+msgid "Ignore compile status (include all items)"
+msgstr "Ignoriere den Compile-Status (Bezieht alle Objekte mit ein)"
+
+#: exporterSettings%2311
+msgid "Subitems of:"
+msgstr "Alle Objekte von:"
+
+#: exporterSettings%2312
+msgctxt "exporterSettings#12"
+msgid "Labels"
+msgstr "Labels"
+
+#: exporterSettings%2313
+msgctxt "exporterSettings#13"
+msgid "Status"
+msgstr "Status"
+
+#: exporterSettings%2314
+msgid "Separations"
+msgstr "Trennzeichen"
+
+#: exporterSettings%2315
+msgid "Between folders:"
+msgstr "Zwischen Ordnern:"
+
+#: exporterSettings%2316
+msgid "Empty line"
+msgstr "Leere Zeile"
+
+#: exporterSettings%2317
+msgctxt "exporterSettings#17"
+msgid "Custom"
+msgstr "Benutzerdefiniert"
+
+#: exporterSettings%2318
+msgid "Between texts:"
+msgstr "Zwischen Texten:"
+
+#: exporterSettings%2319
+msgid "Between folder and text:"
+msgstr "Zwischen Ordner und Text:"
+
+#: exporterSettings%2320
+msgid "Between text and folder:"
+msgstr "Zwischen Text und Ordner:"
+
+#: exporterSettings%2321
+msgid "Transformations"
+msgstr "Suchen und Ersetzen"
+
+#: exporterSettings%2322
+msgid "Typographic replacements:"
+msgstr "Typografisches Ersetzen:"
+
+#: exporterSettings%2323
+msgid "Replace double quotes (\") with:"
+msgstr "Doppelte Anführungszeichen (\") ersetzen durch:"
+
+#: exporterSettings%2324
+msgid "Replace single quotes (') with:"
+msgstr "Einfache Anführungszeichen (') ersetzen durch:"
+
+#: exporterSettings%2325
+msgid "Remove multiple spaces"
+msgstr "Entferne mehrfache Leerzeichen"
+
+#: exporterSettings%2326
+msgid "Custom replacements:"
+msgstr "Benutzerdefiniertes Ersetzen:"
+
+#: exporterSettings%2327
+msgid "Enabled"
+msgstr "Aktiv"
+
+#: exporterSettings%2328
+msgid "Replace"
+msgstr "Ersetze"
+
+#: exporterSettings%2329
+msgid "With"
+msgstr "durch"
+
+#: exporterSettings%2330
+msgid "RegExp"
+msgstr "RegExp"
+
+#: exporterSettings%2331
+msgid ""
+"If checked, uses regular expression for replacement. If unchecked, replaced "
+"as plain text."
+msgstr ""
+"Wenn aktiv, werden Reguläre Ausdrücke für das Ersetzen genutzt. Wenn nicht "
+"aktiv, wird einfacher Text ersetzt."
+
+#: exporterSettings%2332
+msgctxt "exporterSettings#32"
+msgid "Preview"
+msgstr "Vorschau"
+
+#: exporterSettings%2333
+msgctxt "exporterSettings#33"
+msgid "Font"
+msgstr "Schrift"
+
+#: exporterSettings%2334
+msgctxt "exporterSettings#34"
+msgid "Font:"
+msgstr "Schrift:"
+
+#: exporterSettings%2335
+msgctxt "exporterSettings#35"
+msgid "Font size:"
+msgstr "Schriftgröße:"
+
+#: exporterSettings%2336
+msgid "Folder"
+msgstr "Ordner"
+
+#: exporterSettings%2337
+msgid "{}Level {} folder"
+msgstr "{}Level {} Ordner"
+
+#: exporterSettings%2338
+msgid "{}Level {} text"
+msgstr "{}Level {} Text"
+
+#: exporterSettings%2339
+msgid "Replace ... with â¦"
+msgstr "Ersetze ... durch"
+
+#: exporterSettings%2340
+msgid "Replace --- with â"
+msgstr "Ersetze --- durch"
+
+#: exportersManager%231
+msgid "Installed"
+msgstr "Installiert"
+
+#: exportersManager%232
+msgctxt "exportersManager#2"
+msgid "Custom"
+msgstr "Benutzerdefiniert"
+
+#: exportersManager%233
+msgid "Not found"
+msgstr "Nicht gefunden"
+
+#: exportersManager%234
+msgid "{} not found. Install it, or set path manually."
+msgstr "{} nicht gefunden. Installiere es oder gib den Pfad manuell ein."
+
+#: exportersManager%235
+msgid "<b>Status:</b> uninstalled."
+msgstr "<b>Status:</b> Nicht installiert."
+
+#: exportersManager%236
+msgid "<b>Requires:</b> "
+msgstr "<b>Voraussetzung</b> "
+
+#: exportersManager%237
+msgid "Set {} executable path."
+msgstr "Setze {} ausführbaren Pfad."
+
+#: frequencyAnalyzer%231
+msgid "Phrases"
+msgstr "Phrasen"
+
+#: frequencyAnalyzer%232
+msgid "Frequency"
+msgstr "Häufigkeit"
+
+#: frequencyAnalyzer%233
+msgid "Word"
+msgstr "Wort"
+
+#: fullScreenEditor%231
+msgid "Theme:"
+msgstr "Thema:"
+
+#: fullScreenEditor%232
+msgid "{} words / {}"
+msgstr "{} Wörter / {}"
+
+#: fullScreenEditor%233
+msgctxt "fullScreenEditor#3"
+msgid "{} words"
+msgstr "{} Wörter"
+
+#: fullScreenEditor%234
+msgid "Spellcheck"
+msgstr "Rechtschreibprüfung"
+
+#: fullScreenEditor%235
+msgid "Navigation"
+msgstr "Navigation"
+
+#: fullScreenEditor%236
+msgid "New Text"
+msgstr "Neuer Text"
+
+#: fullScreenEditor%237
+msgctxt "fullScreenEditor#7"
+msgid "Title"
+msgstr "Titel"
+
+#: fullScreenEditor%238
+msgid "Title: Show Full Path"
+msgstr "Titel: Zeige kompletten Dateipfad"
+
+#: fullScreenEditor%239
+msgid "Theme selector"
+msgstr "Thema auswählen"
+
+#: fullScreenEditor%2310
+msgctxt "fullScreenEditor#10"
+msgid "Word count"
+msgstr "Wortanzahl"
+
+#: fullScreenEditor%2311
+msgctxt "fullScreenEditor#11"
+msgid "Progress"
+msgstr "Fortschritt"
+
+#: fullScreenEditor%2312
+msgid "Progress: Auto Show/Hide"
+msgstr "Fortschritt: Automatisch Zeigen/Verstecken"
+
+#: fullScreenEditor%2313
+msgid "Clock"
+msgstr "Uhr"
+
+#: fullScreenEditor%2314
+msgid "Clock: Show Seconds"
+msgstr "Uhr: Zeige Sekunden"
+
+#: generalSettings%231
+msgctxt "generalSettings#1"
+msgid "General"
+msgstr "Allgemein"
+
+#: generalSettings%232
+msgid "Split scenes at:"
+msgstr "Szenen aufteilen bei:"
+
+#: generalSettings%233
+msgid "\\n---\\n"
+msgstr "\\n---\\n"
+
+#: generalSettings%234
+msgid "Trim long titles (> 32 chars)"
+msgstr "Lange Titel trimmen (> 32 Zeichen)"
+
+#: generalSettings%235
+msgid "Import under:"
+msgstr "Importieren unter:"
+
+#: generalSettings%236
+msgid "Import in a top-level folder"
+msgstr "In einen übergeordneten Ordner importieren"
+
+#: helpLabel%231
+msgid "If you don't wanna see me, you can hide me in Help menu."
+msgstr ""
+"Wenn du mich nicht sehen willst, kannst du mich über das Hilfemenü "
+"verschwinden lassen."
+
+#: importer%231
+msgid "Import"
+msgstr "Importieren"
+
+#: importer%232
+msgid "Format:"
+msgstr "Format:"
+
+#: importer%233
+msgid "Choose file"
+msgstr "Datei wählen"
+
+#: importer%234
+msgid "Clear file"
+msgstr "Datei leeren"
+
+#: importer%235
+msgctxt "importer#5"
+msgid "Preview"
+msgstr "Vorschau"
+
+#: importer%236
+msgctxt "importer#6"
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: lineEditView%231
+msgctxt "lineEditView#1"
+msgid "Various"
+msgstr "Verschiedenes"
+
+#: locker%231
+msgctxt "locker#1"
+msgid "Form"
+msgstr "Formular"
+
+#: locker%232
+msgid "Lock screen:"
+msgstr "Sperrbildschirm:"
+
+#: locker%233
+msgid "Word target"
+msgstr "Wortziel"
+
+#: locker%234
+msgid "Time target"
+msgstr "Zeitziel"
+
+#: locker%235
+msgid " words"
+msgstr " Wörter"
+
+#: locker%236
+msgid " minutes"
+msgstr " Minuten"
+
+#: locker%237
+msgid "Lock !"
+msgstr "Sperren!"
+
+#: locker%238
+msgid "~{} h."
+msgstr "~{} h."
+
+#: locker%239
+msgid "~{} mn."
+msgstr "~{} m."
+
+#: locker%2310
+msgid "{}:{}"
+msgstr ""
+
+#: locker%2311
+msgid "{} s."
+msgstr "{} s."
+
+#: locker%2312
+msgid "{} remaining"
+msgstr "{} verbleibend"
+
+#: locker%2313
+msgid "{} words remaining"
+msgstr "{} Wörter verbleiben"
+
+#: mainEditor%231
+msgctxt "mainEditor#1"
+msgid "Form"
+msgstr "Formular"
+
+#: mainEditor%232
+msgctxt "mainEditor#2"
+msgid "Text"
+msgstr "Text"
+
+#: mainEditor%233
+msgctxt "mainEditor#3"
+msgid "Index cards"
+msgstr "Karteikarten"
+
+#: mainEditor%234
+msgctxt "mainEditor#4"
+msgid "Outline"
+msgstr "Reißbrett"
+
+#: mainEditor%235
+msgid "F11"
+msgstr "F11"
+
+#: mainEditor%236
+msgid "Go to parent item"
+msgstr "Gehe zum übergeordneten Element"
+
+#: mainEditor%237
+msgid "Alt+Up"
+msgstr "Alt+Nach oben"
+
+#: mainEditor%238
+msgctxt "mainEditor#8"
+msgid "Root"
+msgstr "Stamm"
+
+#: mainEditor%239
+msgid "{} words "
+msgstr "{} Wörter "
+
+#: mainEditor%2310
+msgid "({} chars) {}  words / {} "
+msgstr "({} Zeichen) {} Wörter / {} "
+
+#: mainEditor%2311
+msgid "{}  words / {} "
+msgstr "{} Wörter / {} "
+
+#: mainEditor%2312
+msgid "{} chars"
+msgstr "{} Zeichen"
+
+#: mainEditor%2313
+msgid "{} chars "
+msgstr "{} Zeichen "
+
+#: markdownSettings%231
+msgid "Markdown"
+msgstr "Markdown"
+
+#: metadataView%231
+msgctxt "metadataView#1"
+msgid "Form"
+msgstr "Formular"
+
+#: metadataView%232
+msgid "Properties"
+msgstr "Einstellungen"
+
+#: metadataView%233
+msgctxt "metadataView#3"
+msgid "Summary"
+msgstr "Inhaltsangabe"
+
+#: metadataView%234
+msgctxt "metadataView#4"
+msgid "One line summary"
+msgstr "Inhaltsangabe in einem Satz"
+
+#: metadataView%235
+msgctxt "metadataView#5"
+msgid "Full summary"
+msgstr "Vollständige Inhaltsangabe"
+
+#: metadataView%236
+msgid "Notes / References"
+msgstr "Notizen / Referenzen"
+
+#: metadataView%237
+msgctxt "metadataView#7"
+msgid "Revisions"
+msgstr "Revisionen"
+
+#: myPanel%231
+msgid "Auto-hide"
+msgstr "Automatisches Ausblenden"
+
+#: outlineBasics%231
+msgid "Set POV"
+msgstr "Wähle POV"
+
+#: outlineBasics%232
+msgctxt "outlineBasics#2"
+msgid "None"
+msgstr "Nichts"
+
+#: outlineBasics%233
+msgid "Set Status"
+msgstr "Wähle Status"
+
+#: outlineBasics%234
+msgid "Set Label"
+msgstr "Wähle Label"
+
+#: outlineBasics%235
+msgctxt "outlineBasics#5"
+msgid "New"
+msgstr "Neu"
+
+#: outlineBasics%236
+msgctxt "outlineBasics#6"
+msgid "Main"
+msgstr "Primär"
+
+#: outlineBasics%237
+msgctxt "outlineBasics#7"
+msgid "Secondary"
+msgstr "Sekundär"
+
+#: outlineBasics%238
+msgctxt "outlineBasics#8"
+msgid "Minor"
+msgstr "Nebensächlich"
+
+#: outlineBasics%239
+msgid "Set Custom Icon"
+msgstr "Benutzerdefinierten Icon einfügen"
+
+#: outlineBasics%2310
+msgid "Restore to default"
+msgstr "Auf Standard zurücksetzen"
+
+#: outlineBasics%2311
+msgctxt "outlineBasics#11"
+msgid "Root"
+msgstr "Stamm"
+
+#: outlineBasics%2312
+msgid "Open {} items in new tabs"
+msgstr "{} Elemente in neuen Tabs öffnen"
+
+#: outlineBasics%2313
+msgid "Open {} in a new tab"
+msgstr "{} in einem neuen Tab öffnen"
+
+#: outlineBasics%2314
+msgid "About to remove"
+msgstr "Im Begriff, dies zu entfernen"
+
+#: outlineBasics%2315
+msgid "<p><b>You're about to delete {} item(s).</b></p><p>Are you sure?</p>"
+msgstr "<p><b>Möchten Sie wirklich {} Element(e) löschen?</b></p>"
+
+#: outlineBasics%2316
+msgid "Select at least two items. Folders are ignored."
+msgstr "Wählen Sie mindestens zwei Elemente aus. Ordner werden ignoriert."
+
+#: outlineBasics%2317
+msgid "All items must be on the same level (share the same parent)."
+msgstr ""
+"Alle Elemente müssen sich auf der gleichen Ebene befinden (teilen sich die "
+"gleiche übergeordnete Ebene)."
+
+#: outlineBasics%2318
+msgid "New &Folder"
+msgstr "Neuer &Ordner"
+
+#: outlineBasics%2319
+msgid "New &Text"
+msgstr "Neuer &Text"
+
+#: outlineBasics%2320
+msgctxt "outlineBasics#20"
+msgid "&Copy"
+msgstr "&Kopieren"
+
+#: outlineBasics%2321
+msgctxt "outlineBasics#21"
+msgid "C&ut"
+msgstr "A&usschneiden"
+
+#: outlineBasics%2322
+msgctxt "outlineBasics#22"
+msgid "&Paste"
+msgstr "&Einfügen"
+
+#: outlineBasics%2323
+msgctxt "outlineBasics#23"
+msgid "&Rename"
+msgstr "&Umbenennen"
+
+#: outlineBasics%2324
+msgctxt "outlineBasics#24"
+msgid "&Delete"
+msgstr "&Löschen"
+
+#: outlineCharacterDelegate%231
+msgctxt "outlineCharacterDelegate#1"
+msgid "None"
+msgstr "Nichts"
+
+#: outlineCharacterDelegate%232
+msgctxt "outlineCharacterDelegate#2"
+msgid "Main"
+msgstr "Primär"
+
+#: outlineCharacterDelegate%233
+msgctxt "outlineCharacterDelegate#3"
+msgid "Secondary"
+msgstr "Sekundär"
+
+#: outlineCharacterDelegate%234
+msgctxt "outlineCharacterDelegate#4"
+msgid "Minor"
+msgstr "Nebensächlich"
+
+#: outlineItem%231
+msgid "{} words / {} ({})"
+msgstr "{} Wörter / {} ({})"
+
+#: outlineItem%232
+msgctxt "outlineItem#2"
+msgid "{} words"
+msgstr "{} Wörter"
+
+#: pandocSettings%231
+msgctxt "pandocSettings#1"
+msgid "General"
+msgstr "Allgemein"
+
+#: pandocSettings%232
+msgid "Table of Content"
+msgstr "Inhaltsverzeichnis"
+
+#: pandocSettings%233
+msgid "Custom settings for {}"
+msgstr "Benutzerdefinierte Einstellungen für {}"
+
+#: persosProxyModel%231
+msgctxt "persosProxyModel#1"
+msgid "Main"
+msgstr "Primär"
+
+#: persosProxyModel%232
+msgctxt "persosProxyModel#2"
+msgid "Secondary"
+msgstr "Sekundär"
+
+#: persosProxyModel%233
+msgctxt "persosProxyModel#3"
+msgid "Minors"
+msgstr "Nebensächlich"
+
+#: plotDelegate%231
+msgctxt "plotDelegate#1"
+msgid "General"
+msgstr "Allgemein"
+
+#: plotDelegate%232
+msgid "Promise"
+msgstr "Versprechen"
+
+#: plotDelegate%233
+msgid "Problem"
+msgstr "Problem"
+
+#: plotDelegate%234
+msgctxt "plotDelegate#4"
+msgid "Progress"
+msgstr "Fortschritt"
+
+#: plotDelegate%235
+msgid "Resolution"
+msgstr "Lösung"
+
+#: plotDelegate%236
+msgid "Try / Fail"
+msgstr "Versuch / Scheitern"
+
+#: plotDelegate%237
+msgid "No and"
+msgstr "Nein und"
+
+#: plotDelegate%238
+msgid "Yes but"
+msgstr "Ja, aber"
+
+#: plotDelegate%239
+msgid "Freytag's pyramid"
+msgstr "Freytags Pyramide"
+
+#: plotDelegate%2310
+msgid "Exposition"
+msgstr "Darstellung"
+
+#: plotDelegate%2311
+msgid "Rising action"
+msgstr "Spannungsanstieg"
+
+#: plotDelegate%2312
+msgid "Climax"
+msgstr "Klimax"
+
+#: plotDelegate%2313
+msgid "Falling action"
+msgstr "Spannungsabfall"
+
+#: plotDelegate%2314
+msgid "Three acts"
+msgstr "Drei Akte"
+
+#: plotDelegate%2315
+msgid "1. Setup"
+msgstr "1. Aufbau"
+
+#: plotDelegate%2316
+msgid "1. Inciting event"
+msgstr "Auslösendes Ereignis"
+
+#: plotDelegate%2317
+msgid "1. Turning point"
+msgstr "1. Wendepunkt"
+
+#: plotDelegate%2318
+msgid "2. Choice"
+msgstr "2. Wahl"
+
+#: plotDelegate%2319
+msgid "2. Reversal"
+msgstr "2. Wende"
+
+#: plotDelegate%2320
+msgid "2. Disaster"
+msgstr "2. Katastrophe"
+
+#: plotDelegate%2321
+msgid "3. Stand up"
+msgstr "3. Gegenwehr"
+
+#: plotDelegate%2322
+msgid "3. Climax"
+msgstr "3. Klimax"
+
+#: plotDelegate%2323
+msgid "3. Ending"
+msgstr "3. Ende"
+
+#: plotDelegate%2324
+msgid "Hero's journey"
+msgstr "Heldenreise"
+
+#: plotDelegate%2325
+msgid "Ordinary world"
+msgstr "Gewöhnliche Welt"
+
+#: plotDelegate%2326
+msgid "Call to adventure"
+msgstr "Ruf des Abenteuers"
+
+#: plotDelegate%2327
+msgid "Refusal of the call"
+msgstr "Absage des Rufs"
+
+#: plotDelegate%2328
+msgid "Meeting with mentor"
+msgstr "Treffen mit dem Mentor"
+
+#: plotDelegate%2329
+msgid "Tests"
+msgstr "Prüfungen"
+
+#: plotDelegate%2330
+msgid "Approach"
+msgstr "Annäherung"
+
+#: plotDelegate%2331
+msgid "Abyss"
+msgstr "Abgrund"
+
+#: plotDelegate%2332
+msgid "Reward / Revelation"
+msgstr "Belohnung / Offenbarung"
+
+#: plotDelegate%2333
+msgid "Transformation"
+msgstr "Verwandlung"
+
+#: plotDelegate%2334
+msgid "Atonement"
+msgstr "Sühne"
+
+#: plotDelegate%2335
+msgid "Return"
+msgstr "Rückkehr"
+
+#: plotModel%231
+msgctxt "plotModel#1"
+msgid "Name"
+msgstr "Name"
+
+#: plotModel%232
+msgid "Meta"
+msgstr "Meta"
+
+#: plotModel%233
+msgid "New step"
+msgstr "Neuer Schritt"
+
+#: plotModel%234
+msgctxt "plotModel#4"
+msgid "Main"
+msgstr "Primär"
+
+#: plotModel%235
+msgctxt "plotModel#5"
+msgid "Secondary"
+msgstr "Sekundär"
+
+#: plotModel%236
+msgctxt "plotModel#6"
+msgid "Minor"
+msgstr "Nebensächlich"
+
+#: plotTreeView%231
+msgctxt "plotTreeView#1"
+msgid "Main"
+msgstr "Primär"
+
+#: plotTreeView%232
+msgctxt "plotTreeView#2"
+msgid "Secondary"
+msgstr "Sekundär"
+
+#: plotTreeView%233
+msgctxt "plotTreeView#3"
+msgid "Minor"
+msgstr "Nebensächlich"
+
+#: plotTreeView%234
+msgid "**Plot:** {}"
+msgstr "**Handlungsstrang:** {}"
+
+#: plotsProxyModel%231
+msgctxt "plotsProxyModel#1"
+msgid "Main"
+msgstr "Primär"
+
+#: plotsProxyModel%232
+msgctxt "plotsProxyModel#2"
+msgid "Secondary"
+msgstr "Sekundär"
+
+#: plotsProxyModel%233
+msgctxt "plotsProxyModel#3"
+msgid "Minors"
+msgstr "Nebensächlich"
+
+#: propertiesView%231
+msgctxt "propertiesView#1"
+msgid "Form"
+msgstr "Formular"
+
+#: propertiesView%232
+msgctxt "propertiesView#2"
+msgid "POV"
+msgstr "POV"
+
+#: propertiesView%233
+msgctxt "propertiesView#3"
+msgid "Status"
+msgstr "Status"
+
+#: propertiesView%234
+msgctxt "propertiesView#4"
+msgid "Label"
+msgstr "Label"
+
+#: propertiesView%235
+msgctxt "propertiesView#5"
+msgid "Compile"
+msgstr "Kompilieren"
+
+#: propertiesView%236
+msgctxt "propertiesView#6"
+msgid "Goal"
+msgstr "Ziel"
+
+#: propertiesView%237
+msgctxt "propertiesView#7"
+msgid "Word count"
+msgstr "Wortanzahl"
+
+#: references%231
+msgid "Not a reference: {}."
+msgstr "Keine Referenz: {}."
+
+#: references%232
+msgid "Unknown reference: {}."
+msgstr "Unbekannte Referenz: {}."
+
+#: references%233
+msgctxt "references#3"
+msgid "Path:"
+msgstr "Pfad:"
+
+#: references%234
+msgid "Stats:"
+msgstr "Status:"
+
+#: references%235
+msgctxt "references#5"
+msgid "POV:"
+msgstr "POV:"
+
+#: references%236
+msgctxt "references#6"
+msgid "Status:"
+msgstr "Status:"
+
+#: references%237
+msgid "Label:"
+msgstr "Label:"
+
+#: references%238
+msgid "Short summary:"
+msgstr "Kurzinhaltsangabe:"
+
+#: references%239
+msgid "Long summary:"
+msgstr "Ausführliche Inhaltsangabe:"
+
+#: references%2310
+msgid "Notes:"
+msgstr "Notizen:"
+
+#: references%2311
+msgctxt "references#11"
+msgid "Basic info"
+msgstr "Baisinformationen"
+
+#: references%2312
+msgctxt "references#12"
+msgid "Detailed info"
+msgstr "Detailierte Informationen"
+
+#: references%2313
+msgid "POV of:"
+msgstr "POV von:"
+
+#: references%2314
+msgid "Go to {}."
+msgstr "Gehe zu {}."
+
+#: references%2315
+msgctxt "references#15"
+msgid "Description"
+msgstr "Beschreibung"
+
+#: references%2316
+msgctxt "references#16"
+msgid "Result"
+msgstr "Ergebnis"
+
+#: references%2317
+msgctxt "references#17"
+msgid "Characters"
+msgstr "Charaktere"
+
+#: references%2318
+msgctxt "references#18"
+msgid "Resolution steps"
+msgstr "Lösungsschritte"
+
+#: references%2319
+msgid "Passion"
+msgstr "Leidenschaft"
+
+#: references%2320
+msgctxt "references#20"
+msgid "Conflict"
+msgstr "Konflikt"
+
+#: references%2321
+msgid "<b>Unknown reference:</b> {}."
+msgstr "<b>Unbekannte Referenz:</b> {}."
+
+#: references%2322
+msgid "Folder: <b>{}</b>"
+msgstr "Ordner:<b>{}</b>"
+
+#: references%2323
+msgid "Text: <b>{}</b>"
+msgstr "Text:<b>{}</b>"
+
+#: references%2324
+msgid "Character: <b>{}</b>"
+msgstr "Charakter:<b>{}</b>"
+
+#: references%2325
+msgid "Plot: <b>{}</b>"
+msgstr "Plot:<b>{}</b>"
+
+#: references%2326
+msgid "World: <b>{name}</b>{path}"
+msgstr "Welt:<b>{name}</b>{path}"
+
+#: references%2327
+msgid "Referenced in:"
+msgstr "Referenziert in:"
+
+#: references%2328
+msgctxt "references#28"
+msgid "Motivation"
+msgstr "Motivation"
+
+#: references%2329
+msgctxt "references#29"
+msgid "Goal"
+msgstr "Ziel"
+
+#: references%2330
+msgctxt "references#30"
+msgid "Epiphany"
+msgstr "Schicksal"
+
+#: references%2331
+msgid "Short summary"
+msgstr "Kurzzusammenfassung"
+
+#: references%2332
+msgid "Longer summary"
+msgstr "Lange Zusammenfassung"
+
+#: revisions%231
+msgctxt "revisions#1"
+msgid "Form"
+msgstr "Formular"
+
+#: revisions%232
+msgid "Options"
+msgstr "Optionen"
+
+#: revisions%233
+msgid "Restore"
+msgstr "Wiederherstellen"
+
+#: revisions%234
+msgctxt "revisions#4"
+msgid "Delete"
+msgstr "Löschen"
+
+#: revisions%235
+msgid "Show modifications"
+msgstr "Zeige Modifikationen"
+
+#: revisions%236
+msgid "Show ancient version"
+msgstr "Zeige vorherige Version"
+
+#: revisions%237
+msgid "Show spaces"
+msgstr "Zeige Leerzeichen"
+
+#: revisions%238
+msgid "Show modifications only"
+msgstr "Zeige nur die Modifikationen"
+
+#: revisions%239
+msgid "{} years ago"
+msgstr "{} Jahre zuvor"
+
+#: revisions%2310
+msgid "{} months ago"
+msgstr "{} Monate zuvor"
+
+#: revisions%2311
+msgid "{} days ago"
+msgstr "{} Tage zuvor"
+
+#: revisions%2312
+msgid "1 day ago"
+msgstr "1 Tag zuvor"
+
+#: revisions%2313
+msgid "{} hours ago"
+msgstr "{} Stunden zuvor"
+
+#: revisions%2314
+msgid "{} minutes ago"
+msgstr "{} Minuten zuvor"
+
+#: revisions%2315
+msgid "{} seconds ago"
+msgstr "{} Sekunden zuvor"
+
+#: revisions%2316
+msgid "Line {}:"
+msgstr "Zeile {}:"
+
+#: revisions%2317
+msgid "Clear all"
+msgstr "Leeren"
+
+#: search%231
+msgctxt "search#1"
+msgid "Form"
+msgstr "Formular"
+
+#: search%232
+msgid "Search for..."
+msgstr "Suche nach ..."
+
+#: settingsWindow%231
+msgid "New status"
+msgstr "Neuer Status"
+
+#: settingsWindow%232
+msgid "New label"
+msgstr "Neue Beschriftung"
+
+#: settingsWindow%233
+msgid "newtheme"
+msgstr "Neues Thema"
+
+#: settingsWindow%234
+msgid "New theme"
+msgstr "Neues Thema"
+
+#: settingsWindow%235
+msgid " (read-only)"
+msgstr " (schreibgeschützt)"
+
+#: settingsWindow%236
+msgid "Open Image"
+msgstr "Bild öffnen"
+
+#: settingsWindow%237
+msgid "Image files (*.jpg; *.jpeg; *.png)"
+msgstr "Bilddateien"
+
+#: settingsWindow%238
+msgctxt "settingsWindow#8"
+msgid "Error"
+msgstr "Fehler"
+
+#: settingsWindow%239
+msgid "Unable to load selected file"
+msgstr "Laden der Datei fehlgeschlagen"
+
+#: settingsWindow%2310
+msgid ""
+"Unable to add selected image:\n"
+"{}"
+msgstr ""
+"Hinzufügen des Bildes fehgeschlagen:\n"
+"{}"
+
+#: sldImportance%231
+msgctxt "sldImportance#1"
+msgid "Form"
+msgstr "Formular"
+
+#: sldImportance%232
+msgctxt "sldImportance#2"
+msgid "TextLabel"
+msgstr "Textlabel"
+
+#: sldImportance%233
+msgctxt "sldImportance#3"
+msgid "Minor"
+msgstr "Nebensächlich"
+
+#: sldImportance%234
+msgctxt "sldImportance#4"
+msgid "Secondary"
+msgstr "Sekundär"
+
+#: sldImportance%235
+msgctxt "sldImportance#5"
+msgid "Main"
+msgstr "Primär"
+
+#: splitDialog%231
+msgid ""
+"\n"
+"            <p>Split selected item(s) at the given mark.</p>\n"
+"\n"
+"            <p>If one of the selected item is a folder, it will be applied\n"
+"            recursively to <i>all</i> of it's children items.</p>\n"
+"\n"
+"            <p>The split mark can contain following escape sequences:\n"
+"                <ul>\n"
+"                    <li><b><code>\\n</code></b>: line break</li>\n"
+"                    <li><b><code>\\t</code></b>: tab</li>\n"
+"                </ul>\n"
+"            </p>\n"
+"\n"
+"            <p><b>Mark:</b></p>\n"
+"            "
+msgstr ""
+"\n"
+"            <p>Ausgewählte(s) Element(e) an der angegebenen Markierung "
+"aufteilen</p>\n"
+"\n"
+"            <p>Wenn eines der ausgewählten Elemente ein Ordner ist, wird es\n"
+"            rekursiv auf <i>alle</i> untergeordneten Elemente übertragen.</p>"
+"\n"
+"\n"
+"            <p>Die Trennmarkierung kann folgende Escape-Zeichen enthalten:\n"
+"                <ul>\n"
+"                    <li><b><code>\\n</code></b>: Zeilenumbruch</li>\n"
+"                    <li><b><code>\\t</code></b>: Tab</li>\n"
+"                </ul>\n"
+"            </p>\n"
+"\n"
+"            <p><b>Markierung:</b></p>\n"
+"            "
+
+#: splitDialog%232
+msgid "Split '{}'"
+msgstr "„{}“ aufteilen"
+
+#: splitDialog%233
+msgid "Split items"
+msgstr "Elemente aufteilen"
+
+#: storylineView%231
+msgctxt "storylineView#1"
+msgid "Form"
+msgstr "Formular"
+
+#: storylineView%232
+msgid "Show Plots"
+msgstr "Zeige Handlungsstränge"
+
+#: storylineView%233
+msgid "Show Characters"
+msgstr "Zeige Charaktere"
+
+#: tabSplitter%231
+msgid "Open selected items in that view."
+msgstr "Öffne markierte Elemente in dieser Ansicht."
+
+#: tabSplitter%232
+msgid "Split horizontally"
+msgstr "Ansicht horizontal teilen"
+
+#: tabSplitter%233
+msgid "Close split"
+msgstr "Teilung beenden"
+
+#: tabSplitter%234
+msgid "Split vertically"
+msgstr "Ansicht vertikal teilen"
+
+#: textEditView%231
+msgctxt "textEditView#1"
+msgid "Various"
+msgstr "Verschiedenes"
+
+#: textFormat%231
+msgctxt "textFormat#1"
+msgid "Form"
+msgstr "Formular"
+
+#: textFormat%232
+msgid "CTRL+B"
+msgstr "Strg+B"
+
+#: textFormat%233
+msgid "CTRL+I"
+msgstr "Strg+I"
+
+#: textFormat%234
+msgid "CTRL+U"
+msgstr "Strg+U"
+
+#: textFormat%235
+msgid "CTRL+P"
+msgstr "Strg+P"
+
+#: textFormat%236
+msgid "CTRL+L"
+msgstr "Strg+L"
+
+#: textFormat%237
+msgid "CTRL+E"
+msgstr "Strg+E"
+
+#: textFormat%238
+msgid "CTRL+R"
+msgstr "Strg+R"
+
+#: textFormat%239
+msgid "CTRL+J"
+msgstr "Strg+J"
+
+#: treeView%231
+msgid "Expand {}"
+msgstr "{} ausklappen"
+
+#: treeView%232
+msgid "Collapse {}"
+msgstr "{} einklappen"
+
+#: treeView%233
+msgid "Expand All"
+msgstr "Alles ausklappen"
+
+#: treeView%234
+msgid "Collapse All"
+msgstr "Alles einklappen"
+
+#: welcome%231
+msgctxt "welcome#1"
+msgid "Form"
+msgstr "Formular"
+
+#: welcome%232
+msgid "1"
+msgstr "1"
+
+#: welcome%233
+msgid "Templates"
+msgstr "Vorlage"
+
+#: welcome%234
+msgid "Empty"
+msgstr "Leer"
+
+#: welcome%235
+msgid "Novel"
+msgstr "Roman"
+
+#: welcome%236
+msgid "Novella"
+msgstr "Novelle"
+
+#: welcome%237
+msgid "Short Story"
+msgstr "Kurzgeschichte"
+
+#: welcome%238
+msgid "Research paper"
+msgstr "Forschungsbericht"
+
+#: welcome%239
+msgid "Demo projects"
+msgstr "Demo Projekte"
+
+#: welcome%2310
+msgid "Add level"
+msgstr "Ebene hinzufügen"
+
+#: welcome%2311
+msgid "Add word count"
+msgstr "Wortziel festlegen"
+
+#: welcome%2312
+msgid "Next time, automatically open last project"
+msgstr "Beim nächsten Start automatisch das letzte Projekt öffnen"
+
+#: welcome%2313
+msgid "Open..."
+msgstr "Öffnen ..."
+
+#: welcome%2314
+msgid "Recent"
+msgstr "Zuletzt verwendete Dokumente"
+
+#: welcome%2315
+msgid "Create"
+msgstr "Erstellen"
+
+#: welcome%2316
+msgid "Open project"
+msgstr "Öffne Projekt"
+
+#: welcome%2317
+msgid "Manuskript project (*.msk);;All files (*)"
+msgstr "Manuskript Projekt (*.msk);;Alle Dateien (*)"
+
+#: welcome%2318
+msgid "Save project as..."
+msgstr "Speichern als ..."
+
+#: welcome%2319
+msgid "Manuskript project (*.msk)"
+msgstr "Manuskript Projekt (*.msk)"
+
+#: welcome%2320
+msgctxt "welcome#20"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: welcome%2321
+msgid "Create New Project"
+msgstr "Erzeuge neues Projekt"
+
+#: welcome%2322
+msgid "Warning"
+msgstr "Warnung"
+
+#: welcome%2323
+msgid "Overwrite existing project {} ?"
+msgstr "Existierendes Projekt {} überschreiben?"
+
+#: welcome%2324
+msgid "Empty fiction"
+msgstr "Leere Geschichte"
+
+#: welcome%2325
+msgid "Chapter"
+msgstr "Kapitel"
+
+#: welcome%2326
+msgid "Scene"
+msgstr "Szene"
+
+#: welcome%2327
+msgid "Trilogy"
+msgstr "Trilogie"
+
+#: welcome%2328
+msgid "Book"
+msgstr "Buch"
+
+#: welcome%2329
+msgid "Section"
+msgstr "Absatz"
+
+#: welcome%2330
+msgid "Empty non-fiction"
+msgstr "Leeres Sachbuch"
+
+#: welcome%2331
+msgid "words each."
+msgstr "Wörter."
+
+#: welcome%2332
+msgid "of"
+msgstr "von"
+
+#: welcome%2333
+msgctxt "welcome#33"
+msgid "Text"
+msgstr "Text"
+
+#: welcome%2334
+msgid "Something"
+msgstr "Irgendwas"
+
+#: welcome%2335
+msgid "<b>Total:</b> {} words (~ {} pages)"
+msgstr "<b>Gesamt:</b> {} Wörter (~ {} Seiten)"
+
+#: welcome%2336
+msgid "Fiction"
+msgstr "Geschichte"
+
+#: welcome%2337
+msgid "Non-fiction"
+msgstr "Sachtext"
+
+#: welcome%2338
+msgid "Idea"
+msgstr "Idee"
+
+#: welcome%2339
+msgid "Note"
+msgstr "Notiz"
+
+#: welcome%2340
+msgid "Research"
+msgstr "Recherche"
+
+#: welcome%2341
+msgid "TODO"
+msgstr "ToDo"
+
+#: welcome%2342
+msgid "First draft"
+msgstr "Erster Entwurf"
+
+#: welcome%2343
+msgid "Second draft"
+msgstr "Zweiter Entwurf"
+
+#: welcome%2344
+msgid "Final"
+msgstr "Endgültig"
+
+#: worldModel%231
+msgid "New item"
+msgstr "Neues Element"
+
+#: worldModel%232
+msgid "Fantasy world building"
+msgstr "Bau einer Fantasy-Welt"
+
+#: worldModel%233
+msgid "Physical"
+msgstr "Geographie"
+
+#: worldModel%234
+msgid "Climate"
+msgstr "Klima"
+
+#: worldModel%235
+msgid "Topography"
+msgstr "Relief"
+
+#: worldModel%236
+msgid "Astronomy"
+msgstr "Astronomie"
+
+#: worldModel%237
+msgid "Wild life"
+msgstr "Fauna"
+
+#: worldModel%238
+msgid "Flora"
+msgstr "Flora"
+
+#: worldModel%239
+msgid "History"
+msgstr "Geschichte"
+
+#: worldModel%2310
+msgid "Races"
+msgstr "Arten"
+
+#: worldModel%2311
+msgid "Diseases"
+msgstr "Krankheiten"
+
+#: worldModel%2312
+msgid "Cultural"
+msgstr "Kultur"
+
+#: worldModel%2313
+msgid "Customs"
+msgstr "Bräuche"
+
+#: worldModel%2314
+msgid "Food"
+msgstr "Essen"
+
+#: worldModel%2315
+msgid "Languages"
+msgstr "Sprachen"
+
+#: worldModel%2316
+msgid "Education"
+msgstr "Erziehung"
+
+#: worldModel%2317
+msgid "Dresses"
+msgstr "Kleidung"
+
+#: worldModel%2318
+msgid "Science"
+msgstr "Wissenschaft"
+
+#: worldModel%2319
+msgid "Calendar"
+msgstr "Zeitrechnung"
+
+#: worldModel%2320
+msgid "Bodily language"
+msgstr "Körpersprache"
+
+#: worldModel%2321
+msgid "Ethics"
+msgstr "Ethik"
+
+#: worldModel%2322
+msgid "Religion"
+msgstr "Religion"
+
+#: worldModel%2323
+msgid "Government"
+msgstr "Regierung"
+
+#: worldModel%2324
+msgid "Politics"
+msgstr "Politik"
+
+#: worldModel%2325
+msgid "Gender roles"
+msgstr "Geschlechterrollen"
+
+#: worldModel%2326
+msgid "Music and arts"
+msgstr "Musik und Kunst"
+
+#: worldModel%2327
+msgid "Architecture"
+msgstr "Architektur"
+
+#: worldModel%2328
+msgid "Military"
+msgstr "Militär"
+
+#: worldModel%2329
+msgid "Technology"
+msgstr "Technologie"
+
+#: worldModel%2330
+msgid "Courtship"
+msgstr "Balzverhalten"
+
+#: worldModel%2331
+msgid "Demography"
+msgstr "Demographie"
+
+#: worldModel%2332
+msgid "Transportation"
+msgstr "Transportmittel"
+
+#: worldModel%2333
+msgid "Medicine"
+msgstr "Medizin"
+
+#: worldModel%2334
+msgid "Magic system"
+msgstr "Magiesystem"
+
+#: worldModel%2335
+msgid "Rules"
+msgstr "Regeln"
+
+#: worldModel%2336
+msgid "Organization"
+msgstr "Organisation"
+
+#: worldModel%2337
+msgid "Magical objects"
+msgstr "Magische Objekte"
+
+#: worldModel%2338
+msgid "Magical places"
+msgstr "Magische Orte"
+
+#: worldModel%2339
+msgid "Magical races"
+msgstr "Magische Wesen"
+
+#: worldModel%2340
+msgid "Important places"
+msgstr "Wichtige Orte"
+
+#: worldModel%2341
+msgid "Important objects"
+msgstr "Wichtige Objekte"
+
+#: worldModel%2342
+msgid "Natural resources"
+msgstr "Natürliche Ressourcen"

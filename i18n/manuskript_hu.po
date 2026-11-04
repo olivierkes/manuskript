@@ -1,0 +1,3988 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-04 21:21+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.20.0\n"
+
+#: Export%231
+#, fuzzy
+msgid "Basic HTML output using the Python module 'markdown'."
+msgstr "Alap HTML kimenet a python 'markdown' modult használva."
+
+#: Export%232
+#, fuzzy
+msgid "Python module 'markdown'."
+msgstr "python modul 'markdown'."
+
+#: Export%233
+msgid "Markdown source"
+msgstr "Markdown forrás"
+
+#: Export%234
+msgid "HTML Source"
+msgstr "HTML Forrás"
+
+#: Export%235
+msgid "HTML Output"
+msgstr "HTML Kimenet"
+
+#: Export%236
+msgid "Default exporter, provides basic formats used by other exporters."
+msgstr "Alapértelmezett exportáló, egyszerű formátumokat biztosít."
+
+#: Export%237
+msgid "Preview with highlighter."
+msgstr "Előnézet kiemelővel."
+
+#: Export%238
+msgid "Plain text"
+msgstr "Egyszerű szöveg"
+
+#: Export%239
+msgid "A little known format modestly used. You know, web sites for example."
+msgstr "Kevésbé ismert formátum. Pl. weboldalak esetében."
+
+#: Export%2310
+#, fuzzy
+msgid "Needs LaTeX to be installed."
+msgstr "Szükséges a latex telepítése."
+
+#: Export%2311
+msgctxt "Export#11"
+msgid "Error"
+msgstr "Hiba"
+
+#: Export%2312
+msgid "Standalone document (not just a fragment)"
+msgstr "Egyedülálló dokumentum (nem csak töredék)"
+
+#: Export%2313
+msgid "Include a table of contents."
+msgstr "Tartalomjegyzék belefoglalása."
+
+#: Export%2314
+msgid "Number of sections level to include in TOC: "
+msgstr "Szekció szintek száma, melyek bekerülnek a Tartalomjegyzékbe: "
+
+#: Export%2315
+msgid "Typographically correct output"
+msgstr "Tipográfiailag helyes kimenet"
+
+#: Export%2316
+msgid "Normalize the document (cleaner)"
+msgstr "Dokumentum normalizálása (tisztító)"
+
+#: Export%2317
+msgid "Specify the base level for headers: "
+msgstr "Adja meg az alapszintet a tartalomjegyzékhez: "
+
+#: Export%2318
+msgid "Use reference-style links instead of inline links"
+msgstr "Referencia-stílus linkek helyett inline linkek használata"
+
+#: Export%2319
+msgid "Use ATX-style headers"
+msgstr "ATX stílusú fejlécek használata"
+
+#: Export%2320
+msgid "Use <q> tags for quotes in HTML"
+msgstr "Használja a <q> címkéket a HTML idézetekhez"
+
+#: Export%2321
+msgid "LaTeX engine used to produce the PDF."
+msgstr "A LaTeX motort PDF generálására használjuk."
+
+#: Export%2322
+msgid "Paper size:"
+msgstr "Papírméret:"
+
+#: Export%2323
+msgctxt "Export#23"
+msgid "Font size:"
+msgstr "Betűméret:"
+
+#: Export%2324
+msgid "Class:"
+msgstr "Osztály:"
+
+#: Export%2325
+msgctxt "Export#25"
+msgid "Line spacing:"
+msgstr "Sortávolság:"
+
+#: Export%2326
+msgid "Books that don't kill trees."
+msgstr "Könyvek, melyek nem ölnek fákat."
+
+#: Export%2327
+msgid "OpenDocument format. Used by LibreOffice for example."
+msgstr "OpenDocument formátum. Pl. LibreOffice is ezt használja."
+
+#: Export%2328
+msgid "Microsoft Office (.docx) document."
+msgstr "Microsoft Office (.docx) dokumentum."
+
+#: Export%2329
+#, fuzzy
+msgid "reStructuredText is a lightweight markup language."
+msgstr "reStructuredText egy könnyűsúlyú jelölőnyelv..."
+
+#: Export%2330
+msgid ""
+"Just like plain text, excepts adds markdown titles.\n"
+"                          Presupposes that texts are formatted in markdown."
+msgstr ""
+"Csakúgy, mint az egyszerű szöveg, kivéve a jelölőnyelv címeket\n"
+"                          Feltételezi, hogy a szövegek a markdown-ban vannak "
+"formázva."
+
+#: Export%2331
+#, fuzzy
+msgid ""
+"Simplest export to plain text. Allows you to use your own markup not "
+"understood\n"
+"                  by Manuskript, for example <a href='www.fountain.io'>"
+"Fountain</a>."
+msgstr ""
+"A legegyszerűbb lehetőség sima szöveg exportálására. Lehetővé teszi saját "
+"jelölőnyelv használatát, melyet\n"
+"                  a  manuskript nem tud feldolgozni, mint például a <a "
+"href='www.fountain.io'>Fountain</a>."
+
+#: Export%2332
+#, fuzzy
+msgid ""
+"<p>A universal document converter. Can be used to convert Markdown to a wide "
+"range of other\n"
+"    formats.</p>\n"
+"    <p>Website: <a href=\"http://www.pandoc.org\">http://pandoc.org/</a></p>"
+"\n"
+"    "
+msgstr ""
+"<p>Univerzális dokumentum konvertáló. Arra használható , hogy markdown "
+"tartalmakat alakítson át\n"
+"egy egész sor más formátumra</p>\n"
+"    <p>Weboldald: <a href=\"http://www.pandoc.org\">http://pandoc.org/</a></"
+"p>\n"
+"    "
+
+#: Export%2333
+#, fuzzy
+msgid ""
+"a valid LaTeX installation. Pandoc recommendations can be found on:\n"
+"                     <a href=\"https://pandoc.org/installing.html\">"
+"pandoc.org/installing.html</a>. If you want Unicode support, you need "
+"XeLaTeX."
+msgstr ""
+"egy érvényes latex telepítés. Lásd a pandoc javaslatait erre:\n"
+"                     <a href=\"http://pandoc.org/installing.html\">http://"
+"pandoc.org/installing.html</a>. Unicode támogatáshoz szüksége van a xelatex -"
+"re."
+
+#: Export%2334
+msgid ""
+"Export to markdown, using pandoc. Allows more formatting options\n"
+"    than the basic manuskript exporter."
+msgstr ""
+"Markdown exportálása a pandoc-kal.  Több formázási lehetőséges biztosít,\n"
+"    mint az alap Manuskript exportáló."
+
+#: Export%2335
+msgid ""
+"LaTeX is a word processor and document markup language used to create\n"
+"                                              beautiful documents."
+msgstr ""
+"A LaTeX egy szövegszerkesztő és dokumentum jelölőnyelv\n"
+"                                              gyönyörű dokumentumok "
+"létrehozásához."
+
+#: Export%2336
+msgid ""
+"The purpose of this format is to provide a way to exchange information\n"
+"                                              between outliners and Internet "
+"services that can be browsed or controlled\n"
+"                                              through an outliner."
+msgstr ""
+"Ennek a formátumnak az a célja, hogy lehetőséget biztosítson az "
+"információcserére\n"
+"                                              azon szövegkiemelők és "
+"Internet szolgáltatások között, mely egy kiemelőn keresztül\n"
+"                                              böngészhetők vagy vezérelhetők."
+
+#: Export%2337
+msgid ""
+"Disable YAML metadata block.\n"
+"Use that if you get YAML related error."
+msgstr ""
+"YAML metaadt blokk letiltása.\n"
+"Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak."
+
+#: Export%2338
+msgid "Convert to ePUB3"
+msgstr "Konvertálás ePUB3 formátumra"
+
+#: Export%2339
+msgid "Self-contained HTML files, with no dependencies"
+msgstr ""
+
+#: Export%2340
+msgid ""
+"Could not process regular expression: \n"
+"{}"
+msgstr ""
+
+#: Export%2341
+msgid "Choose output fileâ¦"
+msgstr ""
+
+#: ExportersManager%231
+msgid "Manage Exporters"
+msgstr "Exportálók Kezelése"
+
+#: ExportersManager%232
+msgctxt "ExportersManager#2"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: ExportersManager%233
+msgctxt "ExportersManager#3"
+msgid "Description"
+msgstr "Leírás"
+
+#: ExportersManager%234
+msgid "Offers export to"
+msgstr "Exportálási lehetősége biztosít erre"
+
+#: ExportersManager%235
+msgctxt "ExportersManager#5"
+msgid "Status"
+msgstr "Státusz"
+
+#: ExportersManager%236
+msgctxt "ExportersManager#6"
+msgid "Status:"
+msgstr "Státusz:"
+
+#: ExportersManager%237
+msgid "Version:"
+msgstr "Verzió:"
+
+#: ExportersManager%238
+msgctxt "ExportersManager#8"
+msgid "Path:"
+msgstr "Elérési út:"
+
+#: ExportersManager%239
+msgid "..."
+msgstr "..."
+
+#: ExportersManager%2310
+msgid "{HelpText}"
+msgstr "{HelpText}"
+
+#: FrequencyAnalyzer%231
+msgid "Frequency Analyzer"
+msgstr "Gyakoriság Elemző"
+
+#: FrequencyAnalyzer%232
+msgid "Word frequency"
+msgstr "Szó gyakoriság"
+
+#: FrequencyAnalyzer%233
+msgctxt "FrequencyAnalyzer#3"
+msgid "Settings"
+msgstr "Beállítások"
+
+#: FrequencyAnalyzer%234
+msgid "Minimum size:"
+msgstr "Minimum méret:"
+
+#: FrequencyAnalyzer%235
+#, fuzzy
+msgid "Exclude words (comma separated):"
+msgstr "Szavak kizárása (vesszővel elválasztva):"
+
+#: FrequencyAnalyzer%236
+msgid "Analyze"
+msgstr "Elemzés"
+
+#: FrequencyAnalyzer%237
+msgid "Phrase frequency"
+msgstr "Kifejezés gyakoriság"
+
+#: FrequencyAnalyzer%238
+msgid "Number of words: from"
+msgstr "Szavak száma: ebből"
+
+#: FrequencyAnalyzer%239
+msgid "to"
+msgstr "to"
+
+#: Import%231
+msgid "Markdown import"
+msgstr "Markdown importálása"
+
+#: Import%232
+msgid ""
+"<b>Info:</b> A very simple\n"
+"                        parser that will go through a markdown document and\n"
+"                        create items for each titles.<br/>&nbsp;"
+msgstr ""
+"<b>Infó:</b> Egy nagyon egyszerű\n"
+"                        elemző, amely végigfut a dokumentum markdown-ján és\n"
+"                        elemeket hoz létre minden egyes címhez.<br/>&nbsp;"
+
+#: Import%233
+msgid "Folder import"
+msgstr "Mappa importálása"
+
+#: Import%234
+msgid ""
+"<p><b>Info:</b> Imports a whole\n"
+"                        directory structure. Folders are added as folders, "
+"and\n"
+"                        plaintext documents within (you chose which ones by "
+"extension)\n"
+"                        are added as scene.</p>\n"
+"                        <p>Only text files are supported (not images, binary "
+"or others).</p>"
+msgstr ""
+"<p><b>Infó:</b> Teljes mappastruktúra importálása.\n"
+"                        A mappák mappaként adódnak hozzá, és az azokban lévő "
+"\n"
+"                        egyszerű szöveges dokumentumok  (kiválaszthatja "
+"melyek, kiterjesztés alapján)\n"
+"                        pedig, mint jelentek adódnak hozzá..</p>\n"
+"                        <p>Csak szövegfájlokat támogat (sem képeket, sem "
+"bináris állományokat vagy egyebet nem támogat).</p>"
+
+#: Import%235
+msgid "Include only those extensions:"
+msgstr "Csak a következő kiterjesztésűek belefoglalása:"
+
+#: Import%236
+#, fuzzy
+msgid "Comma separated values"
+msgstr "Veszővel elválasztott értékek"
+
+#: Import%237
+msgid "Sort items by name"
+msgstr "Elemek rendezése név szerint"
+
+#: Import%238
+msgid "Import folder then files"
+msgstr "Mappa, majd fájlok importálása"
+
+#: Import%239
+msgid "OPML Import"
+msgstr "OPML importálás"
+
+#: Import%2310
+msgid "File open failed."
+msgstr "Fájlmegnyitás sikertelen."
+
+#: Import%2311
+msgid "This does not appear to be a valid OPML file."
+msgstr "Ez egy érvénytelen OPML fájlnak tűnik."
+
+#: Import%2312
+msgid "Pandoc import"
+msgstr "Pandoc importálása"
+
+#: Import%2313
+msgid ""
+"<b>Info:</b> Manuskript can\n"
+"                        import from <b>markdown</b> or <b>OPML</b>. Pandoc "
+"will\n"
+"                        convert your document to either (see option below), "
+"and\n"
+"                        then it will be imported in manuskript. One or the "
+"other\n"
+"                        might give better result depending on your "
+"document.\n"
+"                        <br/>&nbsp;"
+msgstr ""
+"<b>Infó:</b>A  Manuskript képes\n"
+"                        importálni  <b>markdown-ból</b> vagy <b>OPML-ből</b>"
+". A Pandoc \n"
+"                        konvertálni fogja az dokumentumát mindkettőről "
+"(lássa a lenti beállításokat), \n"
+"                        majd importálja őket . A dokumentuma típusától "
+"függően\n"
+"                        egyik lehetőség jobb eredménnyel járhat, mint  a "
+"másik.\n"
+"                        <br/>&nbsp;"
+
+#: Import%2314
+msgid "Import using:"
+msgstr "Importálás ezzel:"
+
+#: Import%2315
+msgid "Wrap lines:"
+msgstr "Sorok tördelése:"
+
+#: Import%2316
+msgid ""
+"<p>Should pandoc create\n"
+"                        cosmetic / non-semantic line-breaks?</p><p>\n"
+"                        <b>auto</b>: wraps at 72 characters.<br>\n"
+"                        <b>none</b>: no line wrap.<br>\n"
+"                        <b>preserve</b>: tries to preserves line wrap from "
+"the\n"
+"                        original document.</p>"
+msgstr ""
+"<p>Szükséges, hogy a pandoc\n"
+"                        szépítő / nem-szemantikus sortöréseket hozzon "
+"létre?</p><p>\n"
+"                        <b>automatikus</b>: a 72. karakternél töri.<br>\n"
+"                        <b>egyik sem</b>: nincs sortörés.<br>\n"
+"                        <b>megőrzés</b>:megpróbálja megőrizni az eredeti "
+"sortöréseket.</p>"
+
+#: Import%2317
+msgid "Mind Map Import"
+msgstr "Elmetérkép importálása"
+
+#: Import%2318
+msgid "This does not appear to be a valid Mind Map file."
+msgstr "Ez egy érvénytelen Elmetérkép fájlnak tűnik."
+
+#: Import%2319
+msgid "Mind Map import"
+msgstr "Elmetérkép importálása"
+
+#: Import%2320
+msgid "Import tip as:"
+msgstr "Importálás mint:"
+
+#: Import%2321
+msgid "Untitled"
+msgstr "Név nélküli"
+
+#: MDEditCompleter%231
+msgid "Insert reference"
+msgstr "Hivatkozás beszúrása"
+
+#: MainWindow%231
+msgctxt "MainWindow#1"
+msgid "General"
+msgstr "Általános"
+
+#: MainWindow%232
+msgctxt "MainWindow#2"
+msgid "Title"
+msgstr "Cím"
+
+#: MainWindow%233
+msgid "Subtitle"
+msgstr "Alcím"
+
+#: MainWindow%234
+msgid "Series"
+msgstr "Sorozat"
+
+#: MainWindow%235
+msgid "Volume"
+msgstr "Kötet"
+
+#: MainWindow%236
+msgid "Genre"
+msgstr "Műfaj"
+
+#: MainWindow%237
+msgid "License"
+msgstr "Licenc"
+
+#: MainWindow%238
+msgid "Author"
+msgstr "Szerző"
+
+#: MainWindow%239
+msgctxt "MainWindow#9"
+msgid "Name"
+msgstr "Név"
+
+#: MainWindow%2310
+msgid "Email"
+msgstr "Email cím"
+
+#: MainWindow%2311
+msgctxt "MainWindow#11"
+msgid "Summary"
+msgstr "Összefoglaló"
+
+#: MainWindow%2312
+msgid "Situation:"
+msgstr "Szituáció:"
+
+#: MainWindow%2313
+msgid "Summary:"
+msgstr "Összefoglaló:"
+
+#: MainWindow%2314
+msgid "One sentence"
+msgstr "Egy mondat"
+
+#: MainWindow%2315
+msgid "One paragraph"
+msgstr "Egy bekezdés"
+
+#: MainWindow%2316
+msgid "One page"
+msgstr "Egy oldal"
+
+#: MainWindow%2317
+msgid "Full"
+msgstr "Teljes"
+
+#: MainWindow%2318
+msgid "One sentence summary"
+msgstr "Egy mondatos összefoglaló"
+
+#: MainWindow%2319
+msgid "One paragraph summary"
+msgstr "Egy bekezdéses összefoglaló"
+
+#: MainWindow%2320
+msgid "Expand each sentence of your one paragraph summary to a paragraph"
+msgstr "Bővítse ki az  egybekezdéses összefoglalók mondatait egy-egy bekezdéssé"
+
+#: MainWindow%2321
+msgid "One page summary"
+msgstr "Egyoldalas összefoglaló"
+
+#: MainWindow%2322
+msgctxt "MainWindow#22"
+msgid "Full summary"
+msgstr "Teljes összefoglaló"
+
+#: MainWindow%2323
+msgid "Next"
+msgstr "Következő"
+
+#: MainWindow%2324
+msgid "What if...?"
+msgstr "Mi lenne ha...?"
+
+#: MainWindow%2325
+msgctxt "MainWindow#25"
+msgid "Characters"
+msgstr "Szereplők"
+
+#: MainWindow%2326
+msgid "Names"
+msgstr "Nevek"
+
+#: MainWindow%2327
+msgid "Filter"
+msgstr "Szűrő"
+
+#: MainWindow%2328
+msgctxt "MainWindow#28"
+msgid "Basic info"
+msgstr "Alapinformáció"
+
+#: MainWindow%2329
+msgid "Importance"
+msgstr "Fontosság"
+
+#: MainWindow%2330
+msgctxt "MainWindow#30"
+msgid "Motivation"
+msgstr "Motiváció"
+
+#: MainWindow%2331
+msgctxt "MainWindow#31"
+msgid "Goal"
+msgstr "Cél"
+
+#: MainWindow%2332
+msgctxt "MainWindow#32"
+msgid "Conflict"
+msgstr "Konfliktus"
+
+#: MainWindow%2333
+msgctxt "MainWindow#33"
+msgid "Epiphany"
+msgstr "Fordulópont"
+
+#: MainWindow%2334
+msgid ""
+"<html><head/><body><p align=\"right\">One sentence<br/>summary</p></body></"
+"html>"
+msgstr ""
+"<html><head/><body><p align=\"right\">Egy mondat<br/>összefoglaló</p></body>"
+"</html>"
+
+#: MainWindow%2335
+msgid ""
+"<html><head/><body><p align=\"right\">One paragraph<br/>summary</p></body></"
+"html>"
+msgstr ""
+"<html><head/><body><p align=\"right\">Egy bekezdés<br/>összefoglaló</p></"
+"body></html>"
+
+#: MainWindow%2336
+msgid "Notes"
+msgstr "Jegyzetek"
+
+#: MainWindow%2337
+msgctxt "MainWindow#37"
+msgid "Detailed info"
+msgstr "Részletes információ"
+
+#: MainWindow%2338
+msgctxt "MainWindow#38"
+msgid "Plots"
+msgstr "Cselekmények"
+
+#: MainWindow%2339
+msgid "Plot"
+msgstr "Cselekmény"
+
+#: MainWindow%2340
+msgid "Character(s)"
+msgstr "Szereplő(k)"
+
+#: MainWindow%2341
+msgctxt "MainWindow#41"
+msgid "Description"
+msgstr "Leírás"
+
+#: MainWindow%2342
+msgctxt "MainWindow#42"
+msgid "Result"
+msgstr "Eredmény"
+
+#: MainWindow%2343
+msgctxt "MainWindow#43"
+msgid "Resolution steps"
+msgstr "Megoldás lépései"
+
+#: MainWindow%2344
+msgctxt "MainWindow#44"
+msgid "World"
+msgstr "Világ"
+
+#: MainWindow%2345
+msgid "Populates with empty data"
+msgstr "Feltöltés üres adatokkal"
+
+#: MainWindow%2346
+msgid "More"
+msgstr "Több"
+
+#: MainWindow%2347
+msgid "Source of passion"
+msgstr "Szenvedély forrása"
+
+#: MainWindow%2348
+msgid "Source of conflict"
+msgstr "Konfliktus forrása"
+
+#: MainWindow%2349
+msgctxt "MainWindow#49"
+msgid "Outline"
+msgstr "Áttekintés"
+
+#: MainWindow%2350
+msgid "Editor"
+msgstr "Szerkesztő"
+
+#: MainWindow%2351
+msgid "Debug"
+msgstr "Hibakeresés"
+
+#: MainWindow%2352
+msgid "FlatData"
+msgstr "SimaAdat"
+
+#: MainWindow%2353
+msgid "Persos"
+msgstr "Személyek"
+
+#: MainWindow%2354
+msgctxt "MainWindow#54"
+msgid "Labels"
+msgstr "Címkék"
+
+#: MainWindow%2355
+msgid "&File"
+msgstr "&Fájl"
+
+#: MainWindow%2356
+msgid "&Recent"
+msgstr "&Előző"
+
+#: MainWindow%2357
+msgid "&Help"
+msgstr "&Súgó"
+
+#: MainWindow%2358
+msgid "&Tools"
+msgstr "&Eszközök"
+
+#: MainWindow%2359
+msgid "&Edit"
+msgstr "&Szerkesztés"
+
+#: MainWindow%2360
+msgid "&View"
+msgstr "&Nézet"
+
+#: MainWindow%2361
+msgid "&Mode"
+msgstr "&Mód"
+
+#: MainWindow%2362
+msgid "&Cheat sheet"
+msgstr "&Puska"
+
+#: MainWindow%2363
+msgid "Sea&rch"
+msgstr "&Keresés"
+
+#: MainWindow%2364
+msgid "&Navigation"
+msgstr "&Navigáció"
+
+#: MainWindow%2365
+msgid "&Open"
+msgstr "Megn&yitás"
+
+#: MainWindow%2366
+msgid "Ctrl+O"
+msgstr "Ctrl+O"
+
+#: MainWindow%2367
+msgid "&Save"
+msgstr "&Mentés"
+
+#: MainWindow%2368
+msgctxt "MainWindow#68"
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: MainWindow%2369
+msgid "Sa&ve as..."
+msgstr "Mentés m&ásként..."
+
+#: MainWindow%2370
+msgid "Ctrl+Shift+S"
+msgstr "Ctrl+Shift+S"
+
+#: MainWindow%2371
+msgid "&Quit"
+msgstr "&Kilépés"
+
+#: MainWindow%2372
+msgid "Ctrl+Q"
+msgstr "Ctrl+Q"
+
+#: MainWindow%2373
+msgid "&Show help texts"
+msgstr "Sú&gó szövegek mutatása"
+
+#: MainWindow%2374
+msgid "Ctrl+Shift+B"
+msgstr "Ctrl+Shift+B"
+
+#: MainWindow%2375
+msgid "&Spellcheck"
+msgstr "&Helyesírás-ellenőrzés"
+
+#: MainWindow%2376
+msgid "F9"
+msgstr "F9"
+
+#: MainWindow%2377
+msgid "&Labels..."
+msgstr "&Címkék..."
+
+#: MainWindow%2378
+msgid "&Status..."
+msgstr "&Státusz..."
+
+#: MainWindow%2379
+msgctxt "MainWindow#79"
+msgid "Tree"
+msgstr "Fa"
+
+#: MainWindow%2380
+msgid "&Simple"
+msgstr "&Egyszerű"
+
+#: MainWindow%2381
+msgid "&Fiction"
+msgstr "&Fikció"
+
+#: MainWindow%2382
+msgctxt "MainWindow#82"
+msgid "Index cards"
+msgstr "Tárgymutató kártyák"
+
+#: MainWindow%2383
+msgid "S&ettings"
+msgstr "&Beállítások"
+
+#: MainWindow%2384
+msgid "F8"
+msgstr "F8"
+
+#: MainWindow%2385
+msgid "&Close project"
+msgstr "&Projekt bezárása"
+
+#: MainWindow%2386
+msgid "Co&mpile"
+msgstr "&Összeállítás"
+
+#: MainWindow%2387
+msgid "F6"
+msgstr "F6"
+
+#: MainWindow%2388
+msgid "&Frequency Analyzer"
+msgstr "&Gyakoriság Elemző"
+
+#: MainWindow%2389
+msgid "Book information"
+msgstr "Könyv információk"
+
+#: MainWindow%2390
+msgid "&About"
+msgstr "&Névjegy"
+
+#: MainWindow%2391
+msgctxt "MainWindow#91"
+msgid "About Manuskript"
+msgstr "A Manuskript -ről"
+
+#: MainWindow%2392
+msgctxt "MainWindow#92"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: MainWindow%2393
+msgid "Project {} saved."
+msgstr "{} projekt mentve."
+
+#: MainWindow%2394
+msgid "WARNING: Project {} not saved."
+msgstr "FIGYELEM: {} projekt nem került mentésre."
+
+#: MainWindow%2395
+msgid "Project {} loaded."
+msgstr "{} projekt betöltve."
+
+#: MainWindow%2396
+msgid "Project {} loaded with some errors."
+msgstr "{} projekt betöltve, hibákkal."
+
+#: MainWindow%2397
+msgid " (~{} pages)"
+msgstr " (~{} oldal)"
+
+#: MainWindow%2398
+msgid "Words: {}{}"
+msgstr "Szó: {}{}"
+
+#: MainWindow%2399
+msgid "Book summary"
+msgstr "Könyv összefoglalása"
+
+#: MainWindow%23100
+msgid "Project tree"
+msgstr "Projektfa"
+
+#: MainWindow%23101
+msgid "Metadata"
+msgstr "Metaadat"
+
+#: MainWindow%23102
+msgid "Story line"
+msgstr "Történetív"
+
+#: MainWindow%23103
+msgid "Enter information about your book, and yourself."
+msgstr "Adjon meg információt a könyvéről és önmagáról."
+
+#: MainWindow%23104
+msgid ""
+"The basic situation, in the form of a 'What if...?' question. Ex: 'What if "
+"the most dangerous\n"
+"                     evil wizard wasn't able to kill a baby?' (Harry Potter)"
+msgstr ""
+"Az alapszituáció 'Mi lenne ha...?' kérdésként feltéve. Pl.. 'Mi lenne ha a "
+"legveszélyesebb\n"
+"'                     gonosz varázsló ne lenne képes megölni egy csecsemőt?' "
+"(Harry Potter)"
+
+#: MainWindow%23105
+msgid ""
+"Take time to think about a one sentence (~50 words) summary of your book. "
+"Then expand it to\n"
+"                     a paragraph, then to a page, then to a full summary."
+msgstr ""
+"Szánjon rá időt, hogy elgondolkodjon a könyve egymondatos (-50 szavas) "
+"összefoglalóján. Aztán bővítse ki\n"
+"                     egy bekezdéssé, majd egy oldallá, majd egy teljes "
+"összefoglalóvá."
+
+#: MainWindow%23106
+msgid "Create your characters."
+msgstr "Alkossa meg a szereplőit."
+
+#: MainWindow%23107
+msgid "Develop plots."
+msgstr "Cselekmények kidolgozása."
+
+#: MainWindow%23108
+msgid ""
+"Build worlds.  Create hierarchy of broad categories down to specific details."
+msgstr ""
+"Építsen világokat.  Készítse el az átfogó kategóriák (és az specifikus "
+"részleteinek) hierarchiáját."
+
+#: MainWindow%23109
+msgid "Create the outline of your masterpiece."
+msgstr "Készítse el a mesterműve áttekintését."
+
+#: MainWindow%23110
+msgid "Write."
+msgstr "Írjon."
+
+#: MainWindow%23111
+msgid "Debug info. Sometimes useful."
+msgstr "Hibakeresési információ. Valami hasznos."
+
+#: MainWindow%23112
+msgid "Dictionary"
+msgstr "Szótár"
+
+#: MainWindow%23113
+msgctxt "MainWindow#113"
+msgid "Nothing"
+msgstr "Semmi"
+
+#: MainWindow%23114
+msgctxt "MainWindow#114"
+msgid "POV"
+msgstr "Szempont"
+
+#: MainWindow%23115
+msgctxt "MainWindow#115"
+msgid "Label"
+msgstr "Címke"
+
+#: MainWindow%23116
+msgctxt "MainWindow#116"
+msgid "Progress"
+msgstr "Előrehaladás"
+
+#: MainWindow%23117
+msgctxt "MainWindow#117"
+msgid "Compile"
+msgstr "Összeállítás"
+
+#: MainWindow%23118
+msgid "Icon color"
+msgstr "Ikonszín"
+
+#: MainWindow%23119
+msgid "Text color"
+msgstr "Szövegszín"
+
+#: MainWindow%23120
+msgid "Background color"
+msgstr "Háttérszín"
+
+#: MainWindow%23121
+msgid "Icon"
+msgstr "Ikon"
+
+#: MainWindow%23122
+msgctxt "MainWindow#122"
+msgid "Text"
+msgstr "Szöveg"
+
+#: MainWindow%23123
+msgctxt "MainWindow#123"
+msgid "Background"
+msgstr "Háttér"
+
+#: MainWindow%23124
+msgid "Border"
+msgstr "Szegély"
+
+#: MainWindow%23125
+msgid "Corner"
+msgstr "Sarok"
+
+#: MainWindow%23126
+#, fuzzy
+msgid "Add plot step"
+msgstr "Cselekmény lépés hozzáadása (CTRL+Enter)"
+
+#: MainWindow%23127
+msgid "&Import…"
+msgstr "&Importálás…"
+
+#: MainWindow%23128
+msgid "F7"
+msgstr "F7"
+
+#: MainWindow%23129
+msgctxt "MainWindow#129"
+msgid "&Copy"
+msgstr "&Másolás"
+
+#: MainWindow%23130
+msgid "Ctrl+C"
+msgstr "Ctrl+C"
+
+#: MainWindow%23131
+msgctxt "MainWindow#131"
+msgid "C&ut"
+msgstr "&Kivágás"
+
+#: MainWindow%23132
+msgid "Ctrl+X"
+msgstr "Ctrl+X"
+
+#: MainWindow%23133
+msgctxt "MainWindow#133"
+msgid "&Paste"
+msgstr "&Beillesztés"
+
+#: MainWindow%23134
+msgid "Ctrl+V"
+msgstr "Ctrl+V"
+
+#: MainWindow%23135
+msgid "&Split…"
+msgstr "&Felosztás…"
+
+#: MainWindow%23136
+msgid "Ctrl+Shift+K"
+msgstr "Ctrl+Shift+K"
+
+#: MainWindow%23137
+msgid "Sp&lit at cursor"
+msgstr "Fe&losztás kurzornál"
+
+#: MainWindow%23138
+msgid "Ctrl+K"
+msgstr "Ctrl+K"
+
+#: MainWindow%23139
+msgid "Ctrl+M"
+msgstr "Ctrl+M"
+
+#: MainWindow%23140
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: MainWindow%23141
+msgid "Del"
+msgstr "Törlés"
+
+#: MainWindow%23142
+msgid "&Move Up"
+msgstr "&Mozgatás Fel"
+
+#: MainWindow%23143
+msgid "Ctrl+Shift+Up"
+msgstr "Ctrl+Shift+Up"
+
+#: MainWindow%23144
+msgid "M&ove Down"
+msgstr "M&ozgatás Le"
+
+#: MainWindow%23145
+msgid "Ctrl+Shift+Down"
+msgstr "Ctrl+Shift+Down"
+
+#: MainWindow%23146
+msgid "Dupl&icate"
+msgstr "&Duplikálás"
+
+#: MainWindow%23147
+msgctxt "MainWindow#147"
+msgid "&Delete"
+msgstr "&Törlés"
+
+#: MainWindow%23148
+msgctxt "MainWindow#148"
+msgid "&Rename"
+msgstr "&Átnevezés"
+
+#: MainWindow%23149
+msgid "F2"
+msgstr "F2"
+
+#: MainWindow%23150
+msgid "Organi&ze"
+msgstr "&Rendszerezés"
+
+#: MainWindow%23151
+msgid "M&erge"
+msgstr "Össze&fésülés"
+
+#: MainWindow%23152
+msgid "Remove selected plot step(s)"
+msgstr ""
+
+#: MainWindow%23153
+msgid "&Format"
+msgstr ""
+
+#: MainWindow%23154
+msgid "&Header"
+msgstr ""
+
+#: MainWindow%23155
+msgid "&Level 1 (setext)"
+msgstr ""
+
+#: MainWindow%23156
+msgid "Ctrl+Alt+1"
+msgstr ""
+
+#: MainWindow%23157
+msgid "Level &2"
+msgstr ""
+
+#: MainWindow%23158
+msgid "Ctrl+Alt+2"
+msgstr ""
+
+#: MainWindow%23159
+msgid "Level &1 (atx)"
+msgstr ""
+
+#: MainWindow%23160
+msgid "Ctrl+1"
+msgstr ""
+
+#: MainWindow%23161
+msgid "L&evel 2"
+msgstr ""
+
+#: MainWindow%23162
+msgid "Ctrl+2"
+msgstr ""
+
+#: MainWindow%23163
+msgid "Level &3"
+msgstr ""
+
+#: MainWindow%23164
+msgid "Ctrl+3"
+msgstr ""
+
+#: MainWindow%23165
+msgid "Level &4"
+msgstr ""
+
+#: MainWindow%23166
+msgid "Ctrl+4"
+msgstr ""
+
+#: MainWindow%23167
+msgid "Level &5"
+msgstr ""
+
+#: MainWindow%23168
+msgid "Ctrl+5"
+msgstr ""
+
+#: MainWindow%23169
+msgid "Level &6"
+msgstr ""
+
+#: MainWindow%23170
+msgid "Ctrl+6"
+msgstr ""
+
+#: MainWindow%23171
+msgid "&Bold"
+msgstr ""
+
+#: MainWindow%23172
+msgid "Ctrl+B"
+msgstr ""
+
+#: MainWindow%23173
+msgid "&Italic"
+msgstr ""
+
+#: MainWindow%23174
+msgid "Ctrl+I"
+msgstr ""
+
+#: MainWindow%23175
+msgid "&Strike"
+msgstr ""
+
+#: MainWindow%23176
+msgid "&Verbatim"
+msgstr ""
+
+#: MainWindow%23177
+msgid "Su&perscript"
+msgstr ""
+
+#: MainWindow%23178
+msgid "Ctrl++"
+msgstr ""
+
+#: MainWindow%23179
+msgid "Subsc&ript"
+msgstr ""
+
+#: MainWindow%23180
+msgid "Ctrl+-"
+msgstr ""
+
+#: MainWindow%23181
+msgid "Co&mment block"
+msgstr ""
+
+#: MainWindow%23182
+msgid "Ctrl+Shift+C"
+msgstr ""
+
+#: MainWindow%23183
+msgid "Clear &formats"
+msgstr ""
+
+#: MainWindow%23184
+msgid "Ctrl+0"
+msgstr ""
+
+#: MainWindow%23185
+msgid "&Comment line(s)"
+msgstr ""
+
+#: MainWindow%23186
+msgid "&Ordered list"
+msgstr ""
+
+#: MainWindow%23187
+msgid "&Unordered list"
+msgstr ""
+
+#: MainWindow%23188
+msgid "B&lockquote"
+msgstr ""
+
+#: MainWindow%23189
+msgid "The file {} does not exist. Has it been moved or deleted?"
+msgstr ""
+
+#: MainWindow%23190
+msgid "Install {}{} to use spellcheck"
+msgstr ""
+
+#: MainWindow%23191
+msgid "{} has no installed dictionaries"
+msgstr ""
+
+#: MainWindow%23192
+msgid "{}{} is not installed"
+msgstr ""
+
+#: MainWindow%23193
+msgid "Save project?"
+msgstr ""
+
+#: MainWindow%23194
+msgid "Save changes to project \"{}\" before closing?"
+msgstr ""
+
+#: MainWindow%23195
+msgid "Your changes will be lost if you don't save them."
+msgstr ""
+
+#: MainWindow%23196
+msgid ""
+"PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might "
+"result in a loss of data."
+msgstr ""
+
+#: MainWindow%23197
+msgid "PyQt {} and Qt {} are in use."
+msgstr ""
+
+#: MainWindow%23198
+msgid "Proceed with import at your own risk"
+msgstr ""
+
+#: MainWindow%23199
+msgid "Allow POV"
+msgstr ""
+
+#: MainWindow%23200
+msgid "Search"
+msgstr ""
+
+#: MainWindow%23201
+msgid "Ctrl+F"
+msgstr ""
+
+#: MainWindow%23202
+#, fuzzy
+msgid "F3"
+msgstr "F3"
+
+#: MainWindow%23203
+msgid "Shift+F3"
+msgstr ""
+
+#: MainWindow%23204
+msgid "Situation"
+msgstr ""
+
+#: MainWindow%23205
+#, fuzzy
+msgctxt "MainWindow#205"
+msgid "Status"
+msgstr "Státusz"
+
+#: MainWindow%23206
+msgid "&Technical Support"
+msgstr ""
+
+#: MainWindow%23207
+msgid "How to obtain technical support for Manuskript."
+msgstr ""
+
+#: MainWindow%23208
+#, fuzzy
+msgid "F1"
+msgstr "F1"
+
+#: MainWindow%23209
+msgid "&Locate log file..."
+msgstr ""
+
+#: MainWindow%23210
+msgid "Locate log file"
+msgstr ""
+
+#: MainWindow%23211
+msgid "Locate the diagnostic log file used for this session."
+msgstr ""
+
+#: MainWindow%23212
+msgid "Shift+F1"
+msgstr ""
+
+#: MainWindow%23213
+msgid "Sorry!"
+msgstr ""
+
+#: MainWindow%23214
+msgid "This session is not being logged."
+msgstr ""
+
+#: MainWindow%23215
+msgid "A log file is a Work in Progress!"
+msgstr ""
+
+#: MainWindow%23216
+msgid ""
+"The log file \"{}\" will continue to be written to until Manuskript is "
+"closed."
+msgstr ""
+
+#: MainWindow%23217
+msgid ""
+"It will now be displayed in your file manager, but is of limited use until "
+"you close Manuskript."
+msgstr ""
+
+#: MainWindow%23218
+msgid "Error!"
+msgstr ""
+
+#: MainWindow%23219
+msgid ""
+"An error was encountered while trying to show the log file below in your "
+"file manager."
+msgstr ""
+
+#: Search%231
+msgid "No results found"
+msgstr ""
+
+#: Settings%231
+msgctxt "Settings#1"
+msgid "Settings"
+msgstr "Beállítások"
+
+#: Settings%232
+msgctxt "Settings#2"
+msgid "General"
+msgstr "Általános"
+
+#: Settings%233
+msgctxt "Settings#3"
+msgid "Revisions"
+msgstr "Felülvizsgálatok"
+
+#: Settings%234
+msgid "Views"
+msgstr "Nézetek"
+
+#: Settings%235
+msgctxt "Settings#5"
+msgid "Labels"
+msgstr "Címkék"
+
+#: Settings%236
+msgctxt "Settings#6"
+msgid "Status"
+msgstr "Státusz"
+
+#: Settings%237
+msgid "Fullscreen"
+msgstr "Teljes képernyő"
+
+#: Settings%238
+msgid "General settings"
+msgstr "Általános beállítások"
+
+#: Settings%239
+#, fuzzy
+msgid "Application settings"
+msgstr "Alkalmazás stílusa"
+
+#: Settings%2310
+msgid "Loading"
+msgstr "Betöltés"
+
+#: Settings%2311
+msgid "Automatically load last project on startup"
+msgstr "Automatikusan töltse be a legutóbbi projektet induláskor"
+
+#: Settings%2312
+msgid "Saving"
+msgstr "Mentés"
+
+#: Settings%2313
+msgid "Automatically save every"
+msgstr "Automatikusan mentsen minden"
+
+#: Settings%2314
+msgid "minutes."
+msgstr "percben."
+
+#: Settings%2315
+msgid "If no changes during"
+msgstr "Ha nem történik változás"
+
+#: Settings%2316
+msgid "seconds."
+msgstr "másodpercig."
+
+#: Settings%2317
+#, fuzzy
+msgid "Save on project close"
+msgstr "Mentés kilépéskor"
+
+#: Settings%2318
+#, fuzzy
+msgid ""
+"<html><head/><body><p>If you check this option, your project will be saved "
+"as one single file. Easier to copy or backup, but does not allow "
+"collaborative editing, or versioning.<br/>If this is unchecked, your project "
+"will be saved as a folder containing many small files.</p></body></html>"
+msgstr ""
+"<html><head/><body><p>Ha ezt a lehetőséget bejelöli, a projektje egyetlen "
+"fájlként kerül mentésre. Így egyszerűbb másolni vagy biztonsági mentést "
+"készíteni róla, de elesik a csapatmunka és a verziókezelés "
+"lehetőségétől.<br/>Amennyiben nincs bejelölve, a projektje mappaként kerül "
+"mentésre, amely sok kis fáljt tartalmaz</p></body></html>"
+
+#: Settings%2319
+msgid "Save to one single file"
+msgstr "Mentés egyetlen fájlba"
+
+#: Settings%2320
+msgid ""
+"Revisions are a way to keep track of modifications. For each text item, it "
+"stores any changes you make to the main text, allowing you to see and "
+"restoring previous versions."
+msgstr ""
+"A felülvizsgálatok használata egy módszer a módosítások követésére. Minden "
+"szöveges elem számára tartalmazza annak minden módosulatát, lehetővé téve, "
+"hogy megtekintse és visszaállítsa az előző verziókat."
+
+#: Settings%2321
+msgid "Keep revisions"
+msgstr "Felülvizsgálatok megtartása"
+
+#: Settings%2322
+msgid "S&mart remove"
+msgstr "&Intelligens eltávolítás"
+
+#: Settings%2323
+msgid "Keep:"
+msgstr "Megtartás:"
+
+#: Settings%2324
+msgid ""
+"Smart remove allows you to keep only a certain number of revisions. It is "
+"strongly recommended to use it, lest you file will becomes full of thousands "
+"of insignificant changes."
+msgstr ""
+"Az intelligens eltávolítás lehetővé teszi, hogy csak bizonyos számú "
+"felülvizsgálatot tartson meg. Használata erősen javasolt, ellenkező esetben "
+"a fájlja tele lesz jelentéktelen módosítások ezreivel."
+
+#: Settings%2325
+msgid "revisions per day for the last month"
+msgstr "felülvizsgálat naponta, a múlt hónapban"
+
+#: Settings%2326
+msgid "revisions per minute for the last 10 minutes"
+msgstr "felülvizsgálat percenként, az elmúlt 10 percben"
+
+#: Settings%2327
+msgid "revisions per hour for the last day"
+msgstr "felülvizsgálat óránként a legutóbbi napra"
+
+#: Settings%2328
+msgid "revisions per 10 minutes for the last hour"
+msgstr "felülvizsgálat 10 percenként,  az utóbbi egy órában"
+
+#: Settings%2329
+msgid "revisions per week till the end of time"
+msgstr "felülvizsgálat hetente, valaha"
+
+#: Settings%2330
+msgid "Views settings"
+msgstr "Beállítások megtekintése"
+
+#: Settings%2331
+msgctxt "Settings#31"
+msgid "Tree"
+msgstr "Fa"
+
+#: Settings%2332
+msgid "Colors"
+msgstr "Színek"
+
+#: Settings%2333
+msgid "Icon color:"
+msgstr "Ikon színe:"
+
+#: Settings%2334
+msgctxt "Settings#34"
+msgid "Nothing"
+msgstr "Semmi"
+
+#: Settings%2335
+msgctxt "Settings#35"
+msgid "POV"
+msgstr "Szempont"
+
+#: Settings%2336
+msgctxt "Settings#36"
+msgid "Label"
+msgstr "Címke"
+
+#: Settings%2337
+msgctxt "Settings#37"
+msgid "Progress"
+msgstr "Előrehaladás"
+
+#: Settings%2338
+msgctxt "Settings#38"
+msgid "Compile"
+msgstr "Összeállítás"
+
+#: Settings%2339
+msgid "Text color:"
+msgstr "Szövegszín:"
+
+#: Settings%2340
+msgid "Background color:"
+msgstr "Háttérszín:"
+
+#: Settings%2341
+msgid "Folders"
+msgstr "Mappák"
+
+#: Settings%2342
+msgid "Show ite&m count"
+msgstr "Ele&mszám mutatása"
+
+#: Settings%2343
+msgid "Show summary"
+msgstr "Összefoglaló mutatása"
+
+#: Settings%2344
+msgid "&Nothing"
+msgstr "&Semmi"
+
+#: Settings%2345
+msgctxt "Settings#45"
+msgid "Text"
+msgstr "Szöveg"
+
+#: Settings%2346
+msgctxt "Settings#46"
+msgid "Outline"
+msgstr "Körvonal"
+
+#: Settings%2347
+msgid "Visible columns"
+msgstr "Látható oszlopok"
+
+#: Settings%2348
+msgctxt "Settings#48"
+msgid "Goal"
+msgstr "Cél"
+
+#: Settings%2349
+msgctxt "Settings#49"
+msgid "Word count"
+msgstr "Szószám"
+
+#: Settings%2350
+msgid "Percentage"
+msgstr "Százalék"
+
+#: Settings%2351
+msgctxt "Settings#51"
+msgid "Title"
+msgstr "Cím"
+
+#: Settings%2352
+msgctxt "Settings#52"
+msgid "Index cards"
+msgstr "Kartotéklapok"
+
+#: Settings%2353
+msgid "Item colors"
+msgstr "Elemszínek"
+
+#: Settings%2354
+msgid "Border color:"
+msgstr "Szegélyszín:"
+
+#: Settings%2355
+msgid "Corner color:"
+msgstr "Sarokszín:"
+
+#: Settings%2356
+msgctxt "Settings#56"
+msgid "Background"
+msgstr "Háttér"
+
+#: Settings%2357
+msgid "Color:"
+msgstr "Szín:"
+
+#: Settings%2358
+msgctxt "Settings#58"
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: Settings%2359
+msgid "Image:"
+msgstr "Kép:"
+
+#: Settings%2360
+msgid "Text editor"
+msgstr "Szövegszerkesztő"
+
+#: Settings%2361
+msgctxt "Settings#61"
+msgid "Font"
+msgstr "Betűtípus"
+
+#: Settings%2362
+msgid "Family:"
+msgstr "Család:"
+
+#: Settings%2363
+msgid "Size:"
+msgstr "Méret:"
+
+#: Settings%2364
+msgid "Misspelled:"
+msgstr "Elírt:"
+
+#: Settings%2365
+msgid "Background:"
+msgstr "Háttér:"
+
+#: Settings%2366
+msgid "Paragraphs"
+msgstr "Bekezdések"
+
+#: Settings%2367
+msgctxt "Settings#67"
+msgid "Line spacing:"
+msgstr "Vonaltávolság:"
+
+#: Settings%2368
+msgid "Single"
+msgstr "Egyes"
+
+#: Settings%2369
+msgid "1.5 lines"
+msgstr "1.5 sor"
+
+#: Settings%2370
+msgid "Double"
+msgstr "Dupla"
+
+#: Settings%2371
+msgid "Proportional"
+msgstr "Arányos"
+
+#: Settings%2372
+msgid "%"
+msgstr "%"
+
+#: Settings%2373
+msgid "Tab width:"
+msgstr "Tabulátorszélesség:"
+
+#: Settings%2374
+msgid " px"
+msgstr " :px"
+
+#: Settings%2375
+msgid "Indent 1st line"
+msgstr "Első sor behúzása"
+
+#: Settings%2376
+msgid "Spacing:"
+msgstr "Szóközölés:"
+
+#: Settings%2377
+msgctxt "Settings#77"
+msgid "New"
+msgstr "Új"
+
+#: Settings%2378
+msgid "Edit"
+msgstr "Szerkesztés"
+
+#: Settings%2379
+msgctxt "Settings#79"
+msgid "Delete"
+msgstr "Törlés"
+
+#: Settings%2380
+msgid "Theme name:"
+msgstr "Témanév:"
+
+#: Settings%2381
+msgid "Apply"
+msgstr "Elfogadás"
+
+#: Settings%2382
+msgid "Cancel"
+msgstr "Mégsem"
+
+#: Settings%2383
+msgid "Window Background"
+msgstr "Ablakháttér"
+
+#: Settings%2384
+msgid "Text Background"
+msgstr "Szövegháttér"
+
+#: Settings%2385
+msgid "Text Options"
+msgstr "Szövegbeállítások"
+
+#: Settings%2386
+msgid "Paragraph Options"
+msgstr "Bekezdés Beállítások"
+
+#: Settings%2387
+msgid "Type:"
+msgstr "Típus:"
+
+#: Settings%2388
+msgid "No Image"
+msgstr "Nincs Kép"
+
+#: Settings%2389
+msgid "Tiled"
+msgstr "Csempék"
+
+#: Settings%2390
+msgid "Centered"
+msgstr "Középrezárt"
+
+#: Settings%2391
+msgid "Stretched"
+msgstr "Kinyújtott"
+
+#: Settings%2392
+msgid "Scaled"
+msgstr "Skálázott"
+
+#: Settings%2393
+msgid "Zoomed"
+msgstr "Nagyított"
+
+#: Settings%2394
+msgid "Opacity:"
+msgstr "Telítettség:"
+
+#: Settings%2395
+msgid "Position:"
+msgstr "Pozíció:"
+
+#: Settings%2396
+msgid "Left"
+msgstr "Bal"
+
+#: Settings%2397
+msgid "Center"
+msgstr "Közép"
+
+#: Settings%2398
+msgid "Right"
+msgstr "Jobb"
+
+#: Settings%2399
+msgid "Width:"
+msgstr "Szélesség:"
+
+#: Settings%23100
+msgid "Corner radius:"
+msgstr "Sarok rádiusza:"
+
+#: Settings%23101
+msgid "Margins:"
+msgstr "Margók:"
+
+#: Settings%23102
+msgid "Padding:"
+msgstr "Párnázottság:"
+
+#: Settings%23103
+msgctxt "Settings#103"
+msgid "Font:"
+msgstr "Betű:"
+
+#: Settings%23104
+msgid "Style"
+msgstr "Stílus"
+
+#: Settings%23105
+msgid "Cursor"
+msgstr "Kurzor"
+
+#: Settings%23106
+msgid "Use block insertion of"
+msgstr "Blokkbeillesztés használata"
+
+#: Settings%23107
+msgid "Alignment:"
+msgstr "Elrendezés:"
+
+#: Settings%23108
+msgid "Justify"
+msgstr "Kiegyenlítés"
+
+#: Settings%23109
+msgid "Alignment"
+msgstr "Elrendezés"
+
+#: Settings%23110
+msgid "Icon Size"
+msgstr "Ikonméret"
+
+#: Settings%23111
+msgctxt "Settings#111"
+msgid "TextLabel"
+msgstr "SzövegCímke"
+
+#: Settings%23112
+msgid "Disable blinking"
+msgstr "Villogás letiltása"
+
+#: Settings%23113
+msgid "Text area"
+msgstr "Szövegterület"
+
+#: Settings%23114
+msgid "Max width"
+msgstr "Max távolság"
+
+#: Settings%23115
+msgid "Left/Right margins:"
+msgstr "Bal/Jobb margók:"
+
+#: Settings%23116
+msgid "Top/Bottom margins:"
+msgstr "Felső/Alsó margók:"
+
+#: Settings%23117
+msgid "S&how progress"
+msgstr "Előrehaladás &mutatása"
+
+#: Settings%23118
+msgid "Show summar&y"
+msgstr "&Összegzés mutatása"
+
+#: Settings%23119
+msgid "Show p&rogress"
+msgstr "&Előrehaladás mutatása"
+
+#: Settings%23120
+msgid "Old st&yle"
+msgstr "Régi &stílus"
+
+#: Settings%23121
+msgid "Transparent"
+msgstr "Átlátszó"
+
+#: Settings%23122
+msgid "Restore defaults"
+msgstr "Alapértelmezés visszaállítása"
+
+#: Settings%23123
+msgid "Style:"
+msgstr ""
+
+#: Settings%23124
+msgid "Language:"
+msgstr ""
+
+#: Settings%23125
+#, fuzzy
+msgctxt "Settings#125"
+msgid "Font size:"
+msgstr "Betűméret:"
+
+#: Settings%23126
+msgid "Restarting Manuskript ensures all settings take effect."
+msgstr ""
+
+#: Settings%23127
+msgid "Show &word count"
+msgstr ""
+
+#: Settings%23128
+msgid "&Show word count"
+msgstr ""
+
+#: Settings%23129
+msgid "&New style"
+msgstr ""
+
+#: Settings%23130
+msgid "Typewriter mode"
+msgstr ""
+
+#: Settings%23131
+msgid "Focus mode"
+msgstr ""
+
+#: Settings%23132
+#, fuzzy
+msgctxt "Settings#132"
+msgid "None"
+msgstr "Egyik sem"
+
+#: Settings%23133
+msgid "Sentence"
+msgstr ""
+
+#: Settings%23134
+msgid "Line"
+msgstr ""
+
+#: Settings%23135
+msgid "Paragraph"
+msgstr ""
+
+#: Settings%23136
+msgid ""
+"<p><b>The Revisions feature has been at the source of many reported issues. "
+"In this version of Manuskript it has been turned off by default for new "
+"projects in order to provide the best experience.</b></p><p>Why aren't these "
+"issues fixed already? <a href=\"https://www.theologeek.ch/manuskript/"
+"contribute/\">We need your help to make Manuskript better!</a></p>"
+msgstr ""
+
+#: Settings%23137
+msgid ""
+"Show progress in chars next\n"
+" to words"
+msgstr ""
+
+#: Settings%23138
+msgid "Char/Word Counter"
+msgstr ""
+
+#: Settings%23139
+msgid "Count spaces as chars"
+msgstr ""
+
+#: Settings%23140
+msgid "Show char c&ount"
+msgstr ""
+
+#: Settings%23141
+msgid "Sho&w char count"
+msgstr ""
+
+#: SpellAction%231
+msgid "Spelling Suggestions"
+msgstr "Helyesírási javaslatok"
+
+#: SpellAction%232
+msgid "&Add to dictionary"
+msgstr "&Hozzáadás a szótárhoz"
+
+#: SpellAction%233
+msgid "&Remove from custom dictionary"
+msgstr "&Eltávolítás az egyéni szótárból"
+
+#: SpellAction%234
+msgid "&New Character"
+msgstr ""
+
+#: SpellAction%235
+msgid "&New Plot Item"
+msgstr ""
+
+#: SpellAction%236
+msgid "&New World Item"
+msgstr ""
+
+#: SpellAction%237
+msgid "&Correction Suggestions"
+msgstr ""
+
+#: SpellAction%238
+msgid "&Correction Suggestion"
+msgstr ""
+
+#: about%231
+msgctxt "about#1"
+msgid "About Manuskript"
+msgstr "A Manuskript névjegye"
+
+#: about%232
+msgctxt "about#2"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: aboutDialog%231
+msgid "Version"
+msgstr "Verzió"
+
+#: aboutDialog%232
+msgid "Software Versions in Use:"
+msgstr "Használatban lévő szoftververzió:"
+
+#: abstractModel%231
+msgctxt "abstractModel#1"
+msgid "Title"
+msgstr "Cím"
+
+#: abstractModel%232
+msgctxt "abstractModel#2"
+msgid "POV"
+msgstr "Szempont"
+
+#: abstractModel%233
+msgctxt "abstractModel#3"
+msgid "Label"
+msgstr "Cím"
+
+#: abstractModel%234
+msgctxt "abstractModel#4"
+msgid "Status"
+msgstr "Státusz"
+
+#: abstractModel%235
+msgctxt "abstractModel#5"
+msgid "Compile"
+msgstr "Összeállítás"
+
+#: abstractModel%236
+msgctxt "abstractModel#6"
+msgid "Word count"
+msgstr "Szószám"
+
+#: abstractModel%237
+msgctxt "abstractModel#7"
+msgid "Goal"
+msgstr "Cél"
+
+#: basicItemView%231
+msgctxt "basicItemView#1"
+msgid "Form"
+msgstr "Űrlap"
+
+#: basicItemView%232
+msgctxt "basicItemView#2"
+msgid "POV:"
+msgstr "Szempont:"
+
+#: basicItemView%233
+msgid "Goal:"
+msgstr "Cél:"
+
+#: basicItemView%234
+msgctxt "basicItemView#4"
+msgid "Word count"
+msgstr "Szószám"
+
+#: basicItemView%235
+msgctxt "basicItemView#5"
+msgid "One line summary"
+msgstr "Egysoros összefoglaló"
+
+#: basicItemView%236
+msgid "Few sentences summary:"
+msgstr "Pár mondatos összefoglaló:"
+
+#: characterModel%231
+msgctxt "characterModel#1"
+msgid "Name"
+msgstr "Név"
+
+#: characterModel%232
+msgid "Value"
+msgstr "Érték"
+
+#: characterTreeView%231
+msgctxt "characterTreeView#1"
+msgid "Main"
+msgstr "Fő"
+
+#: characterTreeView%232
+msgctxt "characterTreeView#2"
+msgid "Secondary"
+msgstr "Másodlagos"
+
+#: characterTreeView%233
+msgctxt "characterTreeView#3"
+msgid "Minor"
+msgstr "Kisebb jelentőségű"
+
+#: cheatSheet%231
+msgctxt "cheatSheet#1"
+msgid "Form"
+msgstr "Űrlap"
+
+#: cheatSheet%232
+msgid "Filter (type the name of anything in your project)"
+msgstr "Szűrő (gépelje be bárminek a nevét a projektjében )"
+
+#: cheatSheet%233
+msgctxt "cheatSheet#3"
+msgid "Minor"
+msgstr "Kisebb jelentőségű"
+
+#: cheatSheet%234
+msgctxt "cheatSheet#4"
+msgid "Secondary"
+msgstr "Másodlagos"
+
+#: cheatSheet%235
+msgctxt "cheatSheet#5"
+msgid "Main"
+msgstr "Fő"
+
+#: cheatSheet%236
+msgctxt "cheatSheet#6"
+msgid "Characters"
+msgstr "Szereplők"
+
+#: cheatSheet%237
+msgid "Texts"
+msgstr "Szövegek"
+
+#: cheatSheet%238
+msgctxt "cheatSheet#8"
+msgid "Plots"
+msgstr "Cselekmények"
+
+#: cheatSheet%239
+msgctxt "cheatSheet#9"
+msgid "World"
+msgstr "Világ"
+
+#: cmbOutlineCharacterChoser%231
+msgctxt "cmbOutlineCharacterChoser#1"
+msgid "None"
+msgstr "Egyik sem"
+
+#: cmbOutlineCharacterChoser%232
+msgctxt "cmbOutlineCharacterChoser#2"
+msgid "Main"
+msgstr "Fő"
+
+#: cmbOutlineCharacterChoser%233
+msgctxt "cmbOutlineCharacterChoser#3"
+msgid "Secondary"
+msgstr "Másodlagos"
+
+#: cmbOutlineCharacterChoser%234
+msgctxt "cmbOutlineCharacterChoser#4"
+msgid "Minor"
+msgstr "Kisebb jelentőségű"
+
+#: cmbOutlineCharacterChoser%235
+msgctxt "cmbOutlineCharacterChoser#5"
+msgid "Various"
+msgstr "Különféle"
+
+#: cmbOutlineLabelChoser%231
+msgctxt "cmbOutlineLabelChoser#1"
+msgid "Various"
+msgstr "Különféle"
+
+#: cmbOutlineStatusChoser%231
+msgctxt "cmbOutlineStatusChoser#1"
+msgid "Various"
+msgstr "Különféle"
+
+#: collapsibleDockWidgets%231
+msgid "Dock Widgets Toolbar"
+msgstr "Widgetek Eszköztárának Dokkolása"
+
+#: completer%231
+msgctxt "completer#1"
+msgid "Form"
+msgstr "Űrlap"
+
+#: corkDelegate%231
+msgctxt "corkDelegate#1"
+msgid "One line summary"
+msgstr "Egysoros összefoglaló"
+
+#: corkDelegate%232
+msgctxt "corkDelegate#2"
+msgid "Full summary"
+msgstr "Teljes összefoglaló"
+
+#: editorWidget_ui%231
+msgctxt "editorWidget_ui#1"
+msgid "Form"
+msgstr "Űrlap"
+
+#: exporter%231
+msgid "Export"
+msgstr "Exportálás"
+
+#: exporter%232
+msgid "Export to:"
+msgstr "Exportálás ide:"
+
+#: exporter%233
+msgid "Manage exporters"
+msgstr "Exportálók kezelése"
+
+#: exporter%234
+msgctxt "exporter#4"
+msgid "Preview"
+msgstr "Előnézet"
+
+#: exporter%235
+msgctxt "exporter#5"
+msgid "Settings"
+msgstr "Beállítások"
+
+#: exporterDialog%231
+msgid "{} (not implemented yet)"
+msgstr "{} (még nem került fejlesztésre)"
+
+#: exporterSettings%231
+msgctxt "exporterSettings#1"
+msgid "Form"
+msgstr "Űrlap"
+
+#: exporterSettings%232
+msgid "Content"
+msgstr "Tartalom"
+
+#: exporterSettings%233
+msgid "Decide here what will be included in the final export."
+msgstr "Itt eldöntheti, hogy mi szerepeljen a végső exportba."
+
+#: exporterSettings%234
+msgid "Type"
+msgstr "Típus"
+
+#: exporterSettings%235
+msgctxt "exporterSettings#5"
+msgid "Title"
+msgstr "Cím"
+
+#: exporterSettings%236
+msgctxt "exporterSettings#6"
+msgid "Text"
+msgstr "Szöveg"
+
+#: exporterSettings%237
+msgid "I need more granularity"
+msgstr "Több részletre van szükség"
+
+#: exporterSettings%238
+msgid "Fi&lters"
+msgstr "Sz&űrők"
+
+#: exporterSettings%239
+msgid ""
+"<html><head/><body><p>Filters what items will be included in the final "
+"export.<br/><span style=\" color:#773333;\">(Not fully implemented yet.)</"
+"span></p></body></html>"
+msgstr ""
+"<html><head/><body><p>Azt szűri, hogy mi kerüljön bele a végső "
+"exportálásba<br/><span style=\" color:#773333;\">(Nem teljesen "
+"kifejlesztett.)</span></p></body></html>"
+
+#: exporterSettings%2310
+msgid "Ignore compile status (include all items)"
+msgstr ""
+"Összeállítás státuszának figyelmen kívül hagyása (minden elem belefoglalása)"
+
+#: exporterSettings%2311
+msgid "Subitems of:"
+msgstr "Al-elemei ennek:"
+
+#: exporterSettings%2312
+msgctxt "exporterSettings#12"
+msgid "Labels"
+msgstr "Címkék"
+
+#: exporterSettings%2313
+msgctxt "exporterSettings#13"
+msgid "Status"
+msgstr "Státusz"
+
+#: exporterSettings%2314
+msgid "Separations"
+msgstr "Elválasztások"
+
+#: exporterSettings%2315
+msgid "Between folders:"
+msgstr "A következő mappák között:"
+
+#: exporterSettings%2316
+msgid "Empty line"
+msgstr "Üres sor"
+
+#: exporterSettings%2317
+msgctxt "exporterSettings#17"
+msgid "Custom"
+msgstr "Egyedi"
+
+#: exporterSettings%2318
+msgid "Between texts:"
+msgstr "A következő szövegek között:"
+
+#: exporterSettings%2319
+msgid "Between folder and text:"
+msgstr "A következő mappa és szöveg között:"
+
+#: exporterSettings%2320
+msgid "Between text and folder:"
+msgstr "A következő szöveg és mappa között:"
+
+#: exporterSettings%2321
+msgid "Transformations"
+msgstr "Átalakítások"
+
+#: exporterSettings%2322
+msgid "Typographic replacements:"
+msgstr "Tipográfiai cserék:"
+
+#: exporterSettings%2323
+msgid "Replace double quotes (\") with:"
+msgstr "Dupla idézőjelet (\") cseréje ezzel:"
+
+#: exporterSettings%2324
+msgid "Replace single quotes (') with:"
+msgstr "Egyszeri idézőjelek (') cseréje ezzel:"
+
+#: exporterSettings%2325
+msgid "Remove multiple spaces"
+msgstr "Többszöri szóközök eltávolítása"
+
+#: exporterSettings%2326
+msgid "Custom replacements:"
+msgstr "Egyedi cserék:"
+
+#: exporterSettings%2327
+msgid "Enabled"
+msgstr "Engedélyezve"
+
+#: exporterSettings%2328
+msgid "Replace"
+msgstr "Csere"
+
+#: exporterSettings%2329
+msgid "With"
+msgstr "Vele"
+
+#: exporterSettings%2330
+msgid "RegExp"
+msgstr "Reguláris Kifejezés"
+
+#: exporterSettings%2331
+msgid ""
+"If checked, uses regular expression for replacement. If unchecked, replaced "
+"as plain text."
+msgstr ""
+"Ha be van jelölve, a cseréhez reguláris kifejezéseket használhat. Ha nincs "
+"bejelölve, egyszerű szövegként cseréli."
+
+#: exporterSettings%2332
+msgctxt "exporterSettings#32"
+msgid "Preview"
+msgstr "Előnézet"
+
+#: exporterSettings%2333
+msgctxt "exporterSettings#33"
+msgid "Font"
+msgstr "Betű"
+
+#: exporterSettings%2334
+msgctxt "exporterSettings#34"
+msgid "Font:"
+msgstr "Betű:"
+
+#: exporterSettings%2335
+msgctxt "exporterSettings#35"
+msgid "Font size:"
+msgstr "Betűméret:"
+
+#: exporterSettings%2336
+msgid "Folder"
+msgstr "Mappa"
+
+#: exporterSettings%2337
+msgid "{}Level {} folder"
+msgstr "{}Szint {} mappa"
+
+#: exporterSettings%2338
+msgid "{}Level {} text"
+msgstr "{}Szint {} szöveg"
+
+#: exporterSettings%2339
+msgid "Replace ... with …"
+msgstr "Csere ... ezzel …"
+
+#: exporterSettings%2340
+msgid "Replace --- with —"
+msgstr "Csere --- ezzel —"
+
+#: exportersManager%231
+msgid "Installed"
+msgstr "Telepítve"
+
+#: exportersManager%232
+msgctxt "exportersManager#2"
+msgid "Custom"
+msgstr "Egyedi"
+
+#: exportersManager%233
+msgid "Not found"
+msgstr "Nem található"
+
+#: exportersManager%234
+msgid "{} not found. Install it, or set path manually."
+msgstr "{} nem található. Telepítse vagy állítsa be az elérési utat kézzel."
+
+#: exportersManager%235
+msgid "<b>Status:</b> uninstalled."
+msgstr "<b>Státusz:</b> nincs telepítve."
+
+#: exportersManager%236
+msgid "<b>Requires:</b> "
+msgstr "<b>Követelmény:</b> "
+
+#: exportersManager%237
+msgid "Set {} executable path."
+msgstr "{} futtatható fájl elérési útja."
+
+#: frequencyAnalyzer%231
+msgid "Phrases"
+msgstr "Kifejezések"
+
+#: frequencyAnalyzer%232
+msgid "Frequency"
+msgstr "Gyakoriság"
+
+#: frequencyAnalyzer%233
+msgid "Word"
+msgstr "Szó"
+
+#: fullScreenEditor%231
+msgid "Theme:"
+msgstr "Téma:"
+
+#: fullScreenEditor%232
+msgid "{} words / {}"
+msgstr "{} szó / {}"
+
+#: fullScreenEditor%233
+msgctxt "fullScreenEditor#3"
+msgid "{} words"
+msgstr "{} szó"
+
+#: fullScreenEditor%234
+msgid "Spellcheck"
+msgstr ""
+
+#: fullScreenEditor%235
+msgid "Navigation"
+msgstr ""
+
+#: fullScreenEditor%236
+msgid "New Text"
+msgstr ""
+
+#: fullScreenEditor%237
+#, fuzzy
+msgctxt "fullScreenEditor#7"
+msgid "Title"
+msgstr "Cím"
+
+#: fullScreenEditor%238
+msgid "Title: Show Full Path"
+msgstr ""
+
+#: fullScreenEditor%239
+msgid "Theme selector"
+msgstr ""
+
+#: fullScreenEditor%2310
+#, fuzzy
+msgctxt "fullScreenEditor#10"
+msgid "Word count"
+msgstr "Szószám"
+
+#: fullScreenEditor%2311
+#, fuzzy
+msgctxt "fullScreenEditor#11"
+msgid "Progress"
+msgstr "Előrehaladás"
+
+#: fullScreenEditor%2312
+msgid "Progress: Auto Show/Hide"
+msgstr ""
+
+#: fullScreenEditor%2313
+msgid "Clock"
+msgstr ""
+
+#: fullScreenEditor%2314
+msgid "Clock: Show Seconds"
+msgstr ""
+
+#: generalSettings%231
+msgctxt "generalSettings#1"
+msgid "General"
+msgstr "Általános"
+
+#: generalSettings%232
+msgid "Split scenes at:"
+msgstr "Jelenetek vágása itt:"
+
+#: generalSettings%233
+msgid "\\n---\\n"
+msgstr "\\n---\\n"
+
+#: generalSettings%234
+msgid "Trim long titles (> 32 chars)"
+msgstr "Hosszú címek nyirbálása (> 32 karakter)"
+
+#: generalSettings%235
+msgid "Import under:"
+msgstr "Importálás ez alá:"
+
+#: generalSettings%236
+msgid "Import in a top-level folder"
+msgstr "Legfelső-szintű mappába importálás"
+
+#: helpLabel%231
+msgid "If you don't wanna see me, you can hide me in Help menu."
+msgstr "Amennyiben nem szeretné ezt látni, el tudja rejteni a Sugó menüben."
+
+#: importer%231
+msgid "Import"
+msgstr "Importálás"
+
+#: importer%232
+msgid "Format:"
+msgstr "Formátum:"
+
+#: importer%233
+#, fuzzy
+msgid "Choose file"
+msgstr "Fájl kiválasztása"
+
+#: importer%234
+msgid "Clear file"
+msgstr "Fájl tisztítása"
+
+#: importer%235
+msgctxt "importer#5"
+msgid "Preview"
+msgstr "Előnézet"
+
+#: importer%236
+msgctxt "importer#6"
+msgid "Settings"
+msgstr "Beállítások"
+
+#: lineEditView%231
+msgctxt "lineEditView#1"
+msgid "Various"
+msgstr "Különféle"
+
+#: locker%231
+msgctxt "locker#1"
+msgid "Form"
+msgstr "Űrlap"
+
+#: locker%232
+msgid "Lock screen:"
+msgstr "Képernyőzár:"
+
+#: locker%233
+msgid "Word target"
+msgstr "Célszószám (szint)"
+
+#: locker%234
+msgid "Time target"
+msgstr "Célidő (szint)"
+
+#: locker%235
+msgid " words"
+msgstr " :szó"
+
+#: locker%236
+msgid " minutes"
+msgstr " :perc"
+
+#: locker%237
+msgid "Lock !"
+msgstr "Zárolva !"
+
+#: locker%238
+msgid "~{} h."
+msgstr "~{} ó."
+
+#: locker%239
+msgid "~{} mn."
+msgstr "~{} p."
+
+#: locker%2310
+msgid "{}:{}"
+msgstr "{}:{}"
+
+#: locker%2311
+msgid "{} s."
+msgstr "{} mp."
+
+#: locker%2312
+msgid "{} remaining"
+msgstr "{} hátralévő"
+
+#: locker%2313
+msgid "{} words remaining"
+msgstr "{} szó van még hátra"
+
+#: mainEditor%231
+msgctxt "mainEditor#1"
+msgid "Form"
+msgstr "Űrlap"
+
+#: mainEditor%232
+msgctxt "mainEditor#2"
+msgid "Text"
+msgstr "Szöveg"
+
+#: mainEditor%233
+msgctxt "mainEditor#3"
+msgid "Index cards"
+msgstr "Kartotéklapok"
+
+#: mainEditor%234
+msgctxt "mainEditor#4"
+msgid "Outline"
+msgstr "Körvonal"
+
+#: mainEditor%235
+msgid "F11"
+msgstr "F11"
+
+#: mainEditor%236
+msgid "Go to parent item"
+msgstr "Ugrás a szülőelemre"
+
+#: mainEditor%237
+msgid "Alt+Up"
+msgstr "Alt+Up"
+
+#: mainEditor%238
+msgctxt "mainEditor#8"
+msgid "Root"
+msgstr "Gyökér"
+
+#: mainEditor%239
+msgid "{} words "
+msgstr "{} szó. "
+
+#: mainEditor%2310
+msgid "({} chars) {}  words / {} "
+msgstr ""
+
+#: mainEditor%2311
+msgid "{}  words / {} "
+msgstr ""
+
+#: mainEditor%2312
+msgid "{} chars"
+msgstr ""
+
+#: mainEditor%2313
+msgid "{} chars "
+msgstr ""
+
+#: markdownSettings%231
+msgid "Markdown"
+msgstr "Markdown"
+
+#: metadataView%231
+msgctxt "metadataView#1"
+msgid "Form"
+msgstr "Űrlap"
+
+#: metadataView%232
+msgid "Properties"
+msgstr "Tulajdonságok"
+
+#: metadataView%233
+msgctxt "metadataView#3"
+msgid "Summary"
+msgstr "Összefoglaló"
+
+#: metadataView%234
+msgctxt "metadataView#4"
+msgid "One line summary"
+msgstr "Egysoros összefoglaló"
+
+#: metadataView%235
+msgctxt "metadataView#5"
+msgid "Full summary"
+msgstr "Teljes összefoglaló"
+
+#: metadataView%236
+msgid "Notes / References"
+msgstr "Jegyzetek / Hivatkozások"
+
+#: metadataView%237
+msgctxt "metadataView#7"
+msgid "Revisions"
+msgstr "Felülvizsgálatok"
+
+#: myPanel%231
+msgid "Auto-hide"
+msgstr "Auto-rejtés"
+
+#: outlineBasics%231
+msgid "Set POV"
+msgstr "Szempont beállítása"
+
+#: outlineBasics%232
+msgctxt "outlineBasics#2"
+msgid "None"
+msgstr "Egyik sem"
+
+#: outlineBasics%233
+msgid "Set Status"
+msgstr "Státusz Beállítása"
+
+#: outlineBasics%234
+msgid "Set Label"
+msgstr "Címke beállítása"
+
+#: outlineBasics%235
+msgctxt "outlineBasics#5"
+msgid "New"
+msgstr "Új"
+
+#: outlineBasics%236
+msgctxt "outlineBasics#6"
+msgid "Main"
+msgstr "Fő"
+
+#: outlineBasics%237
+msgctxt "outlineBasics#7"
+msgid "Secondary"
+msgstr "Másodlagos"
+
+#: outlineBasics%238
+msgctxt "outlineBasics#8"
+msgid "Minor"
+msgstr "Kisebb jelentőségű"
+
+#: outlineBasics%239
+msgid "Set Custom Icon"
+msgstr "Egyedi Ikon Beállítása"
+
+#: outlineBasics%2310
+msgid "Restore to default"
+msgstr "Visszaállítása alapértelmezettre"
+
+#: outlineBasics%2311
+msgctxt "outlineBasics#11"
+msgid "Root"
+msgstr "Gyökér"
+
+#: outlineBasics%2312
+msgid "Open {} items in new tabs"
+msgstr "{} elemek megnyitása új füleken"
+
+#: outlineBasics%2313
+msgid "Open {} in a new tab"
+msgstr "{} megnyitása új fülön"
+
+#: outlineBasics%2314
+msgid "About to remove"
+msgstr "Eltávolítás"
+
+#: outlineBasics%2315
+msgid "<p><b>You're about to delete {} item(s).</b></p><p>Are you sure?</p>"
+msgstr ""
+"<p><b>Ezzel törli a következő eleme(ke)t {} .</b></p><p>Biztos benne?</p>"
+
+#: outlineBasics%2316
+msgid "Select at least two items. Folders are ignored."
+msgstr "Válasszon ki legalább két elemet. A mappákat figyelmen kívül hagyja."
+
+#: outlineBasics%2317
+msgid "All items must be on the same level (share the same parent)."
+msgstr ""
+"Minden elemnek ugyanazon a szinten kell lennie (közös szülőn kell osztoznia)."
+
+#: outlineBasics%2318
+msgid "New &Folder"
+msgstr "Új &Mappa"
+
+#: outlineBasics%2319
+msgid "New &Text"
+msgstr "Új &Szöveg"
+
+#: outlineBasics%2320
+msgctxt "outlineBasics#20"
+msgid "&Copy"
+msgstr "&Másolás"
+
+#: outlineBasics%2321
+msgctxt "outlineBasics#21"
+msgid "C&ut"
+msgstr "&Kivágás"
+
+#: outlineBasics%2322
+msgctxt "outlineBasics#22"
+msgid "&Paste"
+msgstr "&Beillesztés"
+
+#: outlineBasics%2323
+msgctxt "outlineBasics#23"
+msgid "&Rename"
+msgstr "&Átnevezés"
+
+#: outlineBasics%2324
+msgctxt "outlineBasics#24"
+msgid "&Delete"
+msgstr "&Törlés"
+
+#: outlineCharacterDelegate%231
+msgctxt "outlineCharacterDelegate#1"
+msgid "None"
+msgstr "Egyik sem"
+
+#: outlineCharacterDelegate%232
+msgctxt "outlineCharacterDelegate#2"
+msgid "Main"
+msgstr "Fő"
+
+#: outlineCharacterDelegate%233
+msgctxt "outlineCharacterDelegate#3"
+msgid "Secondary"
+msgstr "Másodlagos"
+
+#: outlineCharacterDelegate%234
+msgctxt "outlineCharacterDelegate#4"
+msgid "Minor"
+msgstr "Kisebb jelentőségű"
+
+#: outlineItem%231
+msgid "{} words / {} ({})"
+msgstr "{} szó / {} ({})"
+
+#: outlineItem%232
+msgctxt "outlineItem#2"
+msgid "{} words"
+msgstr "{} szó"
+
+#: pandocSettings%231
+msgctxt "pandocSettings#1"
+msgid "General"
+msgstr "Általános"
+
+#: pandocSettings%232
+msgid "Table of Content"
+msgstr "Tartalomjegyzék"
+
+#: pandocSettings%233
+msgid "Custom settings for {}"
+msgstr "Egyedi beállítások erre {}"
+
+#: persosProxyModel%231
+msgctxt "persosProxyModel#1"
+msgid "Main"
+msgstr "Fő"
+
+#: persosProxyModel%232
+#, fuzzy
+msgctxt "persosProxyModel#2"
+msgid "Secondary"
+msgstr "Másodlagos"
+
+#: persosProxyModel%233
+msgctxt "persosProxyModel#3"
+msgid "Minors"
+msgstr "Kisebb jelentőségűek"
+
+#: plotDelegate%231
+msgctxt "plotDelegate#1"
+msgid "General"
+msgstr "Általános"
+
+#: plotDelegate%232
+msgid "Promise"
+msgstr "Ígéret"
+
+#: plotDelegate%233
+msgid "Problem"
+msgstr "Probléma"
+
+#: plotDelegate%234
+msgctxt "plotDelegate#4"
+msgid "Progress"
+msgstr "Előrehaladás"
+
+#: plotDelegate%235
+msgid "Resolution"
+msgstr "Megoldás"
+
+#: plotDelegate%236
+msgid "Try / Fail"
+msgstr "Próbálkozás / Elbukás"
+
+#: plotDelegate%237
+msgid "No and"
+msgstr "Nem, és"
+
+#: plotDelegate%238
+msgid "Yes but"
+msgstr "Igen, de"
+
+#: plotDelegate%239
+msgid "Freytag's pyramid"
+msgstr "Freytag piramis"
+
+#: plotDelegate%2310
+msgid "Exposition"
+msgstr "Kifejtés"
+
+#: plotDelegate%2311
+msgid "Rising action"
+msgstr "Emelkedő akció"
+
+#: plotDelegate%2312
+msgid "Climax"
+msgstr "Tetőpont"
+
+#: plotDelegate%2313
+msgid "Falling action"
+msgstr "Csökkenő akció"
+
+#: plotDelegate%2314
+msgid "Three acts"
+msgstr "A három felvonás"
+
+#: plotDelegate%2315
+msgid "1. Setup"
+msgstr "1. Felépítés"
+
+#: plotDelegate%2316
+#, fuzzy
+msgid "1. Inciting event"
+msgstr "Kilépés az ajtón"
+
+#: plotDelegate%2317
+msgid "1. Turning point"
+msgstr "1. Fordulópont"
+
+#: plotDelegate%2318
+msgid "2. Choice"
+msgstr "2. Választás"
+
+#: plotDelegate%2319
+msgid "2. Reversal"
+msgstr "2. Fordulat"
+
+#: plotDelegate%2320
+msgid "2. Disaster"
+msgstr "2. Csapás (katasztrofális esemény)"
+
+#: plotDelegate%2321
+msgid "3. Stand up"
+msgstr "3. Felocsúdás"
+
+#: plotDelegate%2322
+msgid "3. Climax"
+msgstr "3. Tetőpont"
+
+#: plotDelegate%2323
+msgid "3. Ending"
+msgstr "3. Befejezés"
+
+#: plotDelegate%2324
+msgid "Hero's journey"
+msgstr "A Hős útja"
+
+#: plotDelegate%2325
+msgid "Ordinary world"
+msgstr "Hétköznapi világ"
+
+#: plotDelegate%2326
+msgid "Call to adventure"
+msgstr "Kalandra hívás"
+
+#: plotDelegate%2327
+msgid "Refusal of the call"
+msgstr "A hívás visszautasítása"
+
+#: plotDelegate%2328
+msgid "Meeting with mentor"
+msgstr "Találkozás a mentorral"
+
+#: plotDelegate%2329
+msgid "Tests"
+msgstr "Próbák"
+
+#: plotDelegate%2330
+msgid "Approach"
+msgstr "Közeledés"
+
+#: plotDelegate%2331
+msgid "Abyss"
+msgstr "Mélység"
+
+#: plotDelegate%2332
+msgid "Reward / Revelation"
+msgstr "Jutalom / Felismerés"
+
+#: plotDelegate%2333
+msgid "Transformation"
+msgstr "Átalakulás"
+
+#: plotDelegate%2334
+msgid "Atonement"
+msgstr "Bűnhődés"
+
+#: plotDelegate%2335
+msgid "Return"
+msgstr "Visszatérés"
+
+#: plotModel%231
+msgctxt "plotModel#1"
+msgid "Name"
+msgstr "Név"
+
+#: plotModel%232
+msgid "Meta"
+msgstr "Meta"
+
+#: plotModel%233
+msgid "New step"
+msgstr "Új lépés"
+
+#: plotModel%234
+msgctxt "plotModel#4"
+msgid "Main"
+msgstr "Fő"
+
+#: plotModel%235
+msgctxt "plotModel#5"
+msgid "Secondary"
+msgstr "Másodlagos"
+
+#: plotModel%236
+msgctxt "plotModel#6"
+msgid "Minor"
+msgstr "Kisebb jelentőségű"
+
+#: plotTreeView%231
+msgctxt "plotTreeView#1"
+msgid "Main"
+msgstr "Fő"
+
+#: plotTreeView%232
+msgctxt "plotTreeView#2"
+msgid "Secondary"
+msgstr "Másodlagos"
+
+#: plotTreeView%233
+msgctxt "plotTreeView#3"
+msgid "Minor"
+msgstr "Kisebb jelentőségű"
+
+#: plotTreeView%234
+msgid "**Plot:** {}"
+msgstr "**Cselekmény:** {}"
+
+#: plotsProxyModel%231
+msgctxt "plotsProxyModel#1"
+msgid "Main"
+msgstr "Fő"
+
+#: plotsProxyModel%232
+#, fuzzy
+msgctxt "plotsProxyModel#2"
+msgid "Secondary"
+msgstr "Másodlagos"
+
+#: plotsProxyModel%233
+msgctxt "plotsProxyModel#3"
+msgid "Minors"
+msgstr "Kisebb jelentőségűek"
+
+#: propertiesView%231
+msgctxt "propertiesView#1"
+msgid "Form"
+msgstr "Űrlap"
+
+#: propertiesView%232
+msgctxt "propertiesView#2"
+msgid "POV"
+msgstr "Szempont"
+
+#: propertiesView%233
+msgctxt "propertiesView#3"
+msgid "Status"
+msgstr "Státusz"
+
+#: propertiesView%234
+msgctxt "propertiesView#4"
+msgid "Label"
+msgstr "Címke"
+
+#: propertiesView%235
+msgctxt "propertiesView#5"
+msgid "Compile"
+msgstr "Összeállítás"
+
+#: propertiesView%236
+msgctxt "propertiesView#6"
+msgid "Goal"
+msgstr "Cél"
+
+#: propertiesView%237
+msgctxt "propertiesView#7"
+msgid "Word count"
+msgstr "Szószám"
+
+#: references%231
+msgid "Not a reference: {}."
+msgstr "Ez nem hivatkozás: {}."
+
+#: references%232
+msgid "Unknown reference: {}."
+msgstr "Ismeretlen hivatkozás: {}."
+
+#: references%233
+msgctxt "references#3"
+msgid "Path:"
+msgstr "Elérési út:"
+
+#: references%234
+msgid "Stats:"
+msgstr "Statisztika:"
+
+#: references%235
+msgctxt "references#5"
+msgid "POV:"
+msgstr "Szempont:"
+
+#: references%236
+msgctxt "references#6"
+msgid "Status:"
+msgstr "Státusz:"
+
+#: references%237
+msgid "Label:"
+msgstr "Címke:"
+
+#: references%238
+msgid "Short summary:"
+msgstr "Rövid összefoglaló:"
+
+#: references%239
+msgid "Long summary:"
+msgstr "Hosszú összefoglaló:"
+
+#: references%2310
+msgid "Notes:"
+msgstr "Jegyzetek:"
+
+#: references%2311
+msgctxt "references#11"
+msgid "Basic info"
+msgstr "Alapinformáció"
+
+#: references%2312
+msgctxt "references#12"
+msgid "Detailed info"
+msgstr "Részletes információ"
+
+#: references%2313
+msgid "POV of:"
+msgstr "A következő szempontja:"
+
+#: references%2314
+msgid "Go to {}."
+msgstr "Menj ide {}."
+
+#: references%2315
+msgctxt "references#15"
+msgid "Description"
+msgstr "Leírás"
+
+#: references%2316
+msgctxt "references#16"
+msgid "Result"
+msgstr "Eredmény"
+
+#: references%2317
+msgctxt "references#17"
+msgid "Characters"
+msgstr "Szereplők"
+
+#: references%2318
+msgctxt "references#18"
+msgid "Resolution steps"
+msgstr "Megoldási lépések"
+
+#: references%2319
+msgid "Passion"
+msgstr "Szenvedély"
+
+#: references%2320
+msgctxt "references#20"
+msgid "Conflict"
+msgstr "Konfliktus"
+
+#: references%2321
+msgid "<b>Unknown reference:</b> {}."
+msgstr "<b>Ismeretlen hivatkozás:</b> {}."
+
+#: references%2322
+msgid "Folder: <b>{}</b>"
+msgstr "Mappa: <b>{}</b>"
+
+#: references%2323
+msgid "Text: <b>{}</b>"
+msgstr "Szöveg: <b>{}</b>"
+
+#: references%2324
+msgid "Character: <b>{}</b>"
+msgstr "Szereplő: <b>{}</b>"
+
+#: references%2325
+msgid "Plot: <b>{}</b>"
+msgstr "Cselekmény: <b>{}</b>"
+
+#: references%2326
+msgid "World: <b>{name}</b>{path}"
+msgstr "Világ: <b>{name}</b>{path}"
+
+#: references%2327
+msgid "Referenced in:"
+msgstr "Hivatkozva itt:"
+
+#: references%2328
+msgctxt "references#28"
+msgid "Motivation"
+msgstr "Motiváció"
+
+#: references%2329
+msgctxt "references#29"
+msgid "Goal"
+msgstr "Cél"
+
+#: references%2330
+msgctxt "references#30"
+msgid "Epiphany"
+msgstr "Fordulópont"
+
+#: references%2331
+msgid "Short summary"
+msgstr "Rövid összefoglaló"
+
+#: references%2332
+msgid "Longer summary"
+msgstr "Hosszabb összefoglaló"
+
+#: revisions%231
+msgctxt "revisions#1"
+msgid "Form"
+msgstr "Űrlap"
+
+#: revisions%232
+msgid "Options"
+msgstr "Lehetőségek"
+
+#: revisions%233
+msgid "Restore"
+msgstr "Visszaállítás"
+
+#: revisions%234
+msgctxt "revisions#4"
+msgid "Delete"
+msgstr "Törlés"
+
+#: revisions%235
+msgid "Show modifications"
+msgstr "Módosítások mutatása"
+
+#: revisions%236
+msgid "Show ancient version"
+msgstr "Korábbi verzió mutatása"
+
+#: revisions%237
+msgid "Show spaces"
+msgstr "Szóközök mutatása"
+
+#: revisions%238
+msgid "Show modifications only"
+msgstr "Csak a módosítások mutatása"
+
+#: revisions%239
+msgid "{} years ago"
+msgstr "{} éve"
+
+#: revisions%2310
+msgid "{} months ago"
+msgstr "{} hónapja"
+
+#: revisions%2311
+msgid "{} days ago"
+msgstr "{} napja"
+
+#: revisions%2312
+msgid "1 day ago"
+msgstr "1 nappal ezelőtt"
+
+#: revisions%2313
+msgid "{} hours ago"
+msgstr "{} órával ezelőtt"
+
+#: revisions%2314
+msgid "{} minutes ago"
+msgstr "{} perccel ezelőtt"
+
+#: revisions%2315
+msgid "{} seconds ago"
+msgstr "{} másodperccel ezelőtt"
+
+#: revisions%2316
+msgid "Line {}:"
+msgstr "Sor {}:"
+
+#: revisions%2317
+msgid "Clear all"
+msgstr "Minden törlése"
+
+#: search%231
+msgctxt "search#1"
+msgid "Form"
+msgstr "Űrlap"
+
+#: search%232
+msgid "Search for..."
+msgstr "Keresés..."
+
+#: settingsWindow%231
+msgid "New status"
+msgstr "Új státusz"
+
+#: settingsWindow%232
+msgid "New label"
+msgstr "Új címke"
+
+#: settingsWindow%233
+msgid "newtheme"
+msgstr "újtéma"
+
+#: settingsWindow%234
+msgid "New theme"
+msgstr "Új téma"
+
+#: settingsWindow%235
+msgid " (read-only)"
+msgstr " (csak-olvasható)"
+
+#: settingsWindow%236
+msgid "Open Image"
+msgstr ""
+
+#: settingsWindow%237
+msgid "Image files (*.jpg; *.jpeg; *.png)"
+msgstr ""
+
+#: settingsWindow%238
+#, fuzzy
+msgctxt "settingsWindow#8"
+msgid "Error"
+msgstr "Hiba"
+
+#: settingsWindow%239
+msgid "Unable to load selected file"
+msgstr ""
+
+#: settingsWindow%2310
+msgid ""
+"Unable to add selected image:\n"
+"{}"
+msgstr ""
+
+#: sldImportance%231
+msgctxt "sldImportance#1"
+msgid "Form"
+msgstr "Űrlap"
+
+#: sldImportance%232
+msgctxt "sldImportance#2"
+msgid "TextLabel"
+msgstr "SzövegCímke"
+
+#: sldImportance%233
+msgctxt "sldImportance#3"
+msgid "Minor"
+msgstr "Kisebb jelentőségű"
+
+#: sldImportance%234
+msgctxt "sldImportance#4"
+msgid "Secondary"
+msgstr "Másodlagos"
+
+#: sldImportance%235
+msgctxt "sldImportance#5"
+msgid "Main"
+msgstr "Fő"
+
+#: splitDialog%231
+#, fuzzy
+msgid ""
+"\n"
+"            <p>Split selected item(s) at the given mark.</p>\n"
+"\n"
+"            <p>If one of the selected item is a folder, it will be applied\n"
+"            recursively to <i>all</i> of it's children items.</p>\n"
+"\n"
+"            <p>The split mark can contain following escape sequences:\n"
+"                <ul>\n"
+"                    <li><b><code>\\n</code></b>: line break</li>\n"
+"                    <li><b><code>\\t</code></b>: tab</li>\n"
+"                </ul>\n"
+"            </p>\n"
+"\n"
+"            <p><b>Mark:</b></p>\n"
+"            "
+msgstr ""
+"\n"
+"            <p>Kiválasztott elem(ek) vágása a megadott jelnél.</p>\n"
+"\n"
+"            <p>Ha a kiválasztott elem egy mappa, a végrehajtás\n"
+"            örökletesen történik  <i>minden</i> gyermek elemre.</p>\n"
+"\n"
+"            <p>A megosztott jel tartalmazhatja a következő menekülési "
+"szekvenciákat:\n"
+"                <ul>\n"
+"                    <li><b><code>\\n</code></b>: sortörés</li>\n"
+"                    <li><b><code>\\t</code></b>: tabulátor</li>\n"
+"                </ul>\n"
+"            </p>\n"
+"\n"
+"            <p><b>Jel:</b></p>\n"
+"            "
+
+#: splitDialog%232
+msgid "Split '{}'"
+msgstr "Vágás '{}'"
+
+#: splitDialog%233
+msgid "Split items"
+msgstr "Elemek vágása"
+
+#: storylineView%231
+msgctxt "storylineView#1"
+msgid "Form"
+msgstr "Űrlap"
+
+#: storylineView%232
+msgid "Show Plots"
+msgstr "Cselekmények mutatása"
+
+#: storylineView%233
+msgid "Show Characters"
+msgstr "Szereplők mutatása"
+
+#: tabSplitter%231
+msgid "Open selected items in that view."
+msgstr "Kijelölt elemek megnyitása abban a nézetben."
+
+#: tabSplitter%232
+msgid "Split horizontally"
+msgstr "Vízszintes felosztás"
+
+#: tabSplitter%233
+msgid "Close split"
+msgstr "Felosztás bezárása"
+
+#: tabSplitter%234
+msgid "Split vertically"
+msgstr "Függőleges felosztás"
+
+#: textEditView%231
+msgctxt "textEditView#1"
+msgid "Various"
+msgstr "Különféle"
+
+#: textFormat%231
+msgctxt "textFormat#1"
+msgid "Form"
+msgstr "Űrlap"
+
+#: textFormat%232
+msgid "CTRL+B"
+msgstr "CTRL+B"
+
+#: textFormat%233
+msgid "CTRL+I"
+msgstr "CTRL+I"
+
+#: textFormat%234
+msgid "CTRL+U"
+msgstr "CTRL+U"
+
+#: textFormat%235
+msgid "CTRL+P"
+msgstr "CTRL+P"
+
+#: textFormat%236
+msgid "CTRL+L"
+msgstr "CTRL+L"
+
+#: textFormat%237
+msgid "CTRL+E"
+msgstr "CTRL+E"
+
+#: textFormat%238
+msgid "CTRL+R"
+msgstr "CTRL+R"
+
+#: textFormat%239
+msgid "CTRL+J"
+msgstr "CTRL+J"
+
+#: treeView%231
+msgid "Expand {}"
+msgstr "Kinyit {}"
+
+#: treeView%232
+msgid "Collapse {}"
+msgstr "Összezár {}"
+
+#: treeView%233
+msgid "Expand All"
+msgstr "Mindent Kinyit"
+
+#: treeView%234
+msgid "Collapse All"
+msgstr "Mindet Összezár"
+
+#: welcome%231
+msgctxt "welcome#1"
+msgid "Form"
+msgstr "Űrlap"
+
+#: welcome%232
+msgid "1"
+msgstr "1"
+
+#: welcome%233
+msgid "Templates"
+msgstr "Sablonok"
+
+#: welcome%234
+msgid "Empty"
+msgstr "Üres"
+
+#: welcome%235
+msgid "Novel"
+msgstr "Regény"
+
+#: welcome%236
+msgid "Novella"
+msgstr "Kisregény"
+
+#: welcome%237
+msgid "Short Story"
+msgstr "Elbeszélés"
+
+#: welcome%238
+msgid "Research paper"
+msgstr "Kutatási jegyzet"
+
+#: welcome%239
+msgid "Demo projects"
+msgstr "Bemutató projektet"
+
+#: welcome%2310
+msgid "Add level"
+msgstr "Szint hozzáadása"
+
+#: welcome%2311
+#, fuzzy
+msgid "Add word count"
+msgstr "Szószámlálás hozzáadása"
+
+#: welcome%2312
+msgid "Next time, automatically open last project"
+msgstr "Legközelebb, automatikusa nyissa meg a legutóbbi projektet"
+
+#: welcome%2313
+msgid "Open..."
+msgstr "Megnyitás..."
+
+#: welcome%2314
+msgid "Recent"
+msgstr "Legutóbbi"
+
+#: welcome%2315
+msgid "Create"
+msgstr "Létrehozás"
+
+#: welcome%2316
+msgid "Open project"
+msgstr "Projekt megnyitása"
+
+#: welcome%2317
+msgid "Manuskript project (*.msk);;All files (*)"
+msgstr "Manuskript projekt (*.msk);;Minden fájl (*)"
+
+#: welcome%2318
+msgid "Save project as..."
+msgstr "Projekt mentése másként..."
+
+#: welcome%2319
+msgid "Manuskript project (*.msk)"
+msgstr "Manuskript projekt (*.msk)"
+
+#: welcome%2320
+msgctxt "welcome#20"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: welcome%2321
+msgid "Create New Project"
+msgstr "Új Projekt Létrehozása"
+
+#: welcome%2322
+msgid "Warning"
+msgstr "Figyelmeztetés"
+
+#: welcome%2323
+msgid "Overwrite existing project {} ?"
+msgstr "Felülírja a létező projektet {} ?"
+
+#: welcome%2324
+msgid "Empty fiction"
+msgstr "Üres regény"
+
+#: welcome%2325
+msgid "Chapter"
+msgstr "Fejezet"
+
+#: welcome%2326
+msgid "Scene"
+msgstr "Jelenet"
+
+#: welcome%2327
+msgid "Trilogy"
+msgstr "Trilógia"
+
+#: welcome%2328
+msgid "Book"
+msgstr "Könyv"
+
+#: welcome%2329
+msgid "Section"
+msgstr "Szakasz"
+
+#: welcome%2330
+msgid "Empty non-fiction"
+msgstr "Üres nem-kitalált"
+
+#: welcome%2331
+msgid "words each."
+msgstr "szó mindegyik."
+
+#: welcome%2332
+msgid "of"
+msgstr "a"
+
+#: welcome%2333
+msgctxt "welcome#33"
+msgid "Text"
+msgstr "Szöveg"
+
+#: welcome%2334
+msgid "Something"
+msgstr "Valami"
+
+#: welcome%2335
+msgid "<b>Total:</b> {} words (~ {} pages)"
+msgstr "<b>Összesen:</b> {} szó (~ {} oldal)"
+
+#: welcome%2336
+msgid "Fiction"
+msgstr "Kitalált"
+
+#: welcome%2337
+msgid "Non-fiction"
+msgstr "Valós alapú"
+
+#: welcome%2338
+msgid "Idea"
+msgstr "Ötlet"
+
+#: welcome%2339
+msgid "Note"
+msgstr "Jegyzet"
+
+#: welcome%2340
+msgid "Research"
+msgstr "Kutatás"
+
+#: welcome%2341
+msgid "TODO"
+msgstr "TODO"
+
+#: welcome%2342
+msgid "First draft"
+msgstr "Első vázlat"
+
+#: welcome%2343
+msgid "Second draft"
+msgstr "Második vázlat"
+
+#: welcome%2344
+msgid "Final"
+msgstr "Végső"
+
+#: worldModel%231
+msgid "New item"
+msgstr "Új elem"
+
+#: worldModel%232
+msgid "Fantasy world building"
+msgstr "Fantáziavilág építése"
+
+#: worldModel%233
+msgid "Physical"
+msgstr "Fizikai"
+
+#: worldModel%234
+msgid "Climate"
+msgstr "Éghajlat"
+
+#: worldModel%235
+msgid "Topography"
+msgstr "Domborzat"
+
+#: worldModel%236
+msgid "Astronomy"
+msgstr "Csillagászat"
+
+#: worldModel%237
+msgid "Wild life"
+msgstr "Vadvilág"
+
+#: worldModel%238
+msgid "Flora"
+msgstr "Növényvilág"
+
+#: worldModel%239
+msgid "History"
+msgstr "Történelem"
+
+#: worldModel%2310
+msgid "Races"
+msgstr "Fajok"
+
+#: worldModel%2311
+msgid "Diseases"
+msgstr "Betegségek"
+
+#: worldModel%2312
+msgid "Cultural"
+msgstr "Kulturális"
+
+#: worldModel%2313
+msgid "Customs"
+msgstr "Szokások"
+
+#: worldModel%2314
+msgid "Food"
+msgstr "Étel"
+
+#: worldModel%2315
+msgid "Languages"
+msgstr "Nyelvek"
+
+#: worldModel%2316
+msgid "Education"
+msgstr "Oktatás"
+
+#: worldModel%2317
+msgid "Dresses"
+msgstr "Öltözékek"
+
+#: worldModel%2318
+msgid "Science"
+msgstr "Tudomány"
+
+#: worldModel%2319
+msgid "Calendar"
+msgstr "Naptár"
+
+#: worldModel%2320
+msgid "Bodily language"
+msgstr "Testbeszéd"
+
+#: worldModel%2321
+msgid "Ethics"
+msgstr "Erkölcsök"
+
+#: worldModel%2322
+msgid "Religion"
+msgstr "Vallás"
+
+#: worldModel%2323
+msgid "Government"
+msgstr "Kormány"
+
+#: worldModel%2324
+msgid "Politics"
+msgstr "Politikák"
+
+#: worldModel%2325
+msgid "Gender roles"
+msgstr "Nemi szerepek"
+
+#: worldModel%2326
+msgid "Music and arts"
+msgstr "Zene és művészetek"
+
+#: worldModel%2327
+msgid "Architecture"
+msgstr "Építészet"
+
+#: worldModel%2328
+msgid "Military"
+msgstr "Katonaság"
+
+#: worldModel%2329
+msgid "Technology"
+msgstr "Technológia"
+
+#: worldModel%2330
+msgid "Courtship"
+msgstr "Udvarlás"
+
+#: worldModel%2331
+msgid "Demography"
+msgstr "Demográfia"
+
+#: worldModel%2332
+msgid "Transportation"
+msgstr "Közlekedés"
+
+#: worldModel%2333
+msgid "Medicine"
+msgstr "Orvosság"
+
+#: worldModel%2334
+msgid "Magic system"
+msgstr "Mágiarendszer"
+
+#: worldModel%2335
+msgid "Rules"
+msgstr "Szabályok"
+
+#: worldModel%2336
+msgid "Organization"
+msgstr "Szervezet"
+
+#: worldModel%2337
+msgid "Magical objects"
+msgstr "Varázstárgyak"
+
+#: worldModel%2338
+msgid "Magical places"
+msgstr "Mágikus helyek"
+
+#: worldModel%2339
+msgid "Magical races"
+msgstr "Mágikus fajok"
+
+#: worldModel%2340
+msgid "Important places"
+msgstr "Fontos helyek"
+
+#: worldModel%2341
+msgid "Important objects"
+msgstr "Fontos tárgyak"
+
+#: worldModel%2342
+msgid "Natural resources"
+msgstr ""

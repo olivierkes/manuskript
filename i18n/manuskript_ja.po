@@ -1,0 +1,3975 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-04 21:21+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.20.0\n"
+
+#: Export%231
+msgid "Basic HTML output using the Python module 'markdown'."
+msgstr "Pythonの 'markdown'モジュールを使ってHTMLを出力する。"
+
+#: Export%232
+msgid "Python module 'markdown'."
+msgstr "Pythonモジュール 'markdown'."
+
+#: Export%233
+msgid "Markdown source"
+msgstr "Markdown ソース"
+
+#: Export%234
+msgid "HTML Source"
+msgstr "HTML ソース"
+
+#: Export%235
+msgid "HTML Output"
+msgstr "HTML 出力"
+
+#: Export%236
+msgid "Default exporter, provides basic formats used by other exporters."
+msgstr ""
+"Manuskriptのデフォルトの出力機能は、他の出力ソフトウェアで使用される基本的な"
+"フォーマットに対応しています。"
+
+#: Export%237
+msgid "Preview with highlighter."
+msgstr "構文をハイライトで事前確認する。"
+
+#: Export%238
+msgid "Plain text"
+msgstr "プレーンテキスト"
+
+#: Export%239
+msgid "A little known format modestly used. You know, web sites for example."
+msgstr ""
+"このフォーマットはあまり知られておらず、滅多に使用されません。ごく稀に、"
+"ウェブサイトで使用されることがあります。"
+
+#: Export%2310
+msgid "Needs LaTeX to be installed."
+msgstr "LaTeXをインストールする必要があります。"
+
+#: Export%2311
+msgctxt "Export#11"
+msgid "Error"
+msgstr "エラー"
+
+#: Export%2312
+msgid "Standalone document (not just a fragment)"
+msgstr "独立文書 (単なる断片ではない)"
+
+#: Export%2313
+msgid "Include a table of contents."
+msgstr "目次に含める。"
+
+#: Export%2314
+msgid "Number of sections level to include in TOC: "
+msgstr "目次に含めるセクションレベルの数： "
+
+#: Export%2315
+msgid "Typographically correct output"
+msgstr "印刷上正しく出力"
+
+#: Export%2316
+msgid "Normalize the document (cleaner)"
+msgstr "文書の正規化 (整理)"
+
+#: Export%2317
+msgid "Specify the base level for headers: "
+msgstr "見出しのデフォルトレベルを指定します。 "
+
+#: Export%2318
+msgid "Use reference-style links instead of inline links"
+msgstr "インラインリンクの代わりに、参照リンクを使用"
+
+#: Export%2319
+msgid "Use ATX-style headers"
+msgstr "ATX形式のスタイルを使用"
+
+#: Export%2320
+msgid "Self-contained HTML files, with no dependencies"
+msgstr "外部依存のない自己完結型のHTMLファイル"
+
+#: Export%2321
+msgid "Use <q> tags for quotes in HTML"
+msgstr "HTMLで引用符を示すには、`<q>`タグを使用"
+
+#: Export%2322
+msgid "LaTeX engine used to produce the PDF."
+msgstr "PDFを生成するためには、LaTeXエンジンを使用する。"
+
+#: Export%2323
+msgid "Paper size:"
+msgstr "用紙サイズ："
+
+#: Export%2324
+msgctxt "Export#24"
+msgid "Font size:"
+msgstr "フォントサイズ："
+
+#: Export%2325
+msgid "Class:"
+msgstr "Class："
+
+#: Export%2326
+msgctxt "Export#26"
+msgid "Line spacing:"
+msgstr "行間："
+
+#: Export%2327
+msgid "Books that don't kill trees."
+msgstr "本のツリーを破棄しない。"
+
+#: Export%2328
+msgid "OpenDocument format. Used by LibreOffice for example."
+msgstr "OpenDocument フォーマット。この形式は、例えば LibreOffice 等で使用される。"
+
+#: Export%2329
+msgid "Microsoft Office (.docx) document."
+msgstr "Microsoft Office (.docx)文書 。"
+
+#: Export%2330
+msgid "reStructuredText is a lightweight markup language."
+msgstr "reStructuredText は軽量のマークアップ言語である。"
+
+#: Export%2331
+msgid ""
+"Just like plain text, excepts adds markdown titles.\n"
+"                          Presupposes that texts are formatted in markdown."
+msgstr ""
+"マークダウンと同じ形で見出しが追加できることを除いて、プレーンテキストと同じ"
+"である。\n"
+"                          テキストはマークダウンでフォーマットされていること"
+"を前提としている。"
+
+#: Export%2332
+#, fuzzy
+msgid ""
+"Simplest export to plain text. Allows you to use your own markup not "
+"understood\n"
+"                  by Manuskript, for example <a href='www.fountain.io'>"
+"Fountain</a>."
+msgstr ""
+"プレーンテキストに出力する最も簡単な設定です。\n"
+"                  <a href='www.fountain.io'>噴水</a>など、Manuskriptにはない"
+"タグを使用できます。"
+
+#: Export%2333
+msgid ""
+"<p>A universal document converter. Can be used to convert Markdown to a wide "
+"range of other\n"
+"    formats.</p>\n"
+"    <p>Website: <a href=\"http://www.pandoc.org\">http://pandoc.org/</a></p>"
+"\n"
+"    "
+msgstr ""
+"<p>ユニバーサル文書コンバータ。Markdownを様々な形式に\n"
+"    変換出来ます。</p>\n"
+"    <p>Website: <a href=\"http://www.pandoc.org\">http://pandoc.org/</a></p>"
+"\n"
+"    "
+
+#: Export%2334
+msgid ""
+"a valid LaTeX installation. Pandoc recommendations can be found on:\n"
+"                     <a href=\"https://pandoc.org/installing.html\">"
+"pandoc.org/installing.html</a>. If you want Unicode support, you need "
+"XeLaTeX."
+msgstr ""
+"有効なLaTeXのインストール。Pandocの推奨事項は次の場所で確認できます:\n"
+"                     <a href=\"https://pandoc.org/installing.html\">"
+"pandoc.org/installing.html</a>Unicodeをサポートする場合、XeLaTeXが必要です。"
+
+#: Export%2335
+msgid ""
+"Export to markdown, using pandoc. Allows more formatting options\n"
+"    than the basic manuskript exporter."
+msgstr ""
+"pandocを使用してマークダウンに出力する。pandocはHaskell製のドキュメント変換"
+"ツールであり、様々な文書形式に対応している。\n"
+"      pandocは、manuskriptの標準出力機能よりも高機能である。"
+
+#: Export%2336
+msgid ""
+"LaTeX is a word processor and document markup language used to create\n"
+"                                              beautiful documents."
+msgstr ""
+"LaTeXは、美しい文書を作成するためのワードプロセッサと文書マークアップ言語であ"
+"る。"
+
+#: Export%2337
+msgid ""
+"The purpose of this format is to provide a way to exchange information\n"
+"                                              between outliners and Internet "
+"services that can be browsed or controlled\n"
+"                                              through an outliner."
+msgstr ""
+"この形式は、アウトライナーとそれを介して閲覧または制御可能な、\n"
+"                                              ネットサービス間における情報交"
+"換の\n"
+"                                              方法を提供します。"
+
+#: Export%2338
+msgid ""
+"Disable YAML metadata block.\n"
+"Use that if you get YAML related error."
+msgstr ""
+"YAMLメタデータブロックを無効にします。\n"
+"YAML関連のエラーが発生した場合は、このオプションを有効にして、再度試してくだ"
+"さい。"
+
+#: Export%2339
+msgid "Convert to ePUB3"
+msgstr "ePUB3に変換"
+
+#: Export%2340
+msgid ""
+"Could not process regular expression: \n"
+"{}"
+msgstr ""
+"正規表現の処理中にエラーが発生しました：\n"
+"{}"
+
+#: Export%2341
+msgid "Choose output fileâ¦"
+msgstr "出力ファイルを選択¦"
+
+#: ExportersManager%231
+msgid "Manage Exporters"
+msgstr "出力機能の管理"
+
+#: ExportersManager%232
+msgctxt "ExportersManager#2"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: ExportersManager%233
+msgctxt "ExportersManager#3"
+msgid "Description"
+msgstr "説明"
+
+#: ExportersManager%234
+msgid "Offers export to"
+msgstr "へのエクスポートを提供"
+
+#: ExportersManager%235
+msgctxt "ExportersManager#5"
+msgid "Status"
+msgstr "状態"
+
+#: ExportersManager%236
+msgctxt "ExportersManager#6"
+msgid "Status:"
+msgstr "状態："
+
+#: ExportersManager%237
+msgid "Version:"
+msgstr "バージョン："
+
+#: ExportersManager%238
+msgctxt "ExportersManager#8"
+msgid "Path:"
+msgstr "パス："
+
+#: ExportersManager%239
+msgid "..."
+msgstr "..."
+
+#: ExportersManager%2310
+#, fuzzy
+msgid "{HelpText}"
+msgstr "{ヘルプテキスト}"
+
+#: FrequencyAnalyzer%231
+msgid "Frequency Analyzer"
+msgstr "頻度数アナライザ"
+
+#: FrequencyAnalyzer%232
+msgid "Word frequency"
+msgstr "単語の頻度"
+
+#: FrequencyAnalyzer%233
+msgctxt "FrequencyAnalyzer#3"
+msgid "Settings"
+msgstr "設定"
+
+#: FrequencyAnalyzer%234
+msgid "Minimum size:"
+msgstr "最小サイズ："
+
+#: FrequencyAnalyzer%235
+msgid "Exclude words (comma separated):"
+msgstr "カンマ区切りの単語を除外："
+
+#: FrequencyAnalyzer%236
+msgid "Analyze"
+msgstr "解析"
+
+#: FrequencyAnalyzer%237
+msgid "Phrase frequency"
+msgstr "フレーズの頻度"
+
+#: FrequencyAnalyzer%238
+msgid "Number of words: from"
+msgstr "字数：from"
+
+#: FrequencyAnalyzer%239
+msgid "to"
+msgstr "へ"
+
+#: Import%231
+msgid "Markdown import"
+msgstr "マークダウンの読み込み"
+
+#: Import%232
+msgid ""
+"<b>Info:</b> A very simple\n"
+"                        parser that will go through a markdown document and\n"
+"                        create items for each titles.<br/>&nbsp;"
+msgstr ""
+"<b>情報:</b> マークダウンドキュメントを調べ、\n"
+"                        各タイトルのアイテムを作成する\n"
+"                        非常にシンプルなパーサーです。<br/>&nbsp;"
+
+#: Import%233
+msgid "Folder import"
+msgstr "フォルダーを追加"
+
+#: Import%234
+msgid ""
+"<p><b>Info:</b> Imports a whole\n"
+"                        directory structure. Folders are added as folders, "
+"and\n"
+"                        plaintext documents within (you chose which ones by "
+"extension)\n"
+"                        are added as scene.</p>\n"
+"                        <p>Only text files are supported (not images, binary "
+"or others).</p>"
+msgstr ""
+"<p><b>情報:</b> ディレクトリ構造全体を\n"
+"                        インポートします。 フォルダはフォルダとして追加され"
+"、\n"
+"                        その中のプレーンテキストドキュメント (拡張で選択した"
+"もの)\n"
+"                        がシーンとして追加されます。</p>\n"
+"                        <p>テキストファイルのみ対応しています（画像、バイナリ"
+"等はサポートされていません）。</p>"
+
+#: Import%235
+msgid "Include only those extensions:"
+msgstr "次の拡張子のみを追加する："
+
+#: Import%236
+msgid "Comma separated values"
+msgstr "カンマ区切り値"
+
+#: Import%237
+msgid "Sort items by name"
+msgstr "項目を名前順に並べ替える"
+
+#: Import%238
+msgid "Import folder then files"
+msgstr "フォルダとファイルを追加"
+
+#: Import%239
+msgid "OPML Import"
+msgstr "OPML 読み込み"
+
+#: Import%2310
+msgid "File open failed."
+msgstr "ファイルを開くことができません。"
+
+#: Import%2311
+msgid "This does not appear to be a valid OPML file."
+msgstr "これは有効なOPMLファイルではありません。"
+
+#: Import%2312
+msgid "Pandoc import"
+msgstr "Pandoc 追加"
+
+#: Import%2313
+msgid ""
+"<b>Info:</b> Manuskript can\n"
+"                        import from <b>markdown</b> or <b>OPML</b>. Pandoc "
+"will\n"
+"                        convert your document to either (see option below), "
+"and\n"
+"                        then it will be imported in manuskript. One or the "
+"other\n"
+"                        might give better result depending on your "
+"document.\n"
+"                        <br/>&nbsp;"
+msgstr ""
+"<b>情報:</b> Manuskriptは\n"
+"                        <b>markdown</b> や <b>OPML</b>からインポート可能です"
+"。 Pandocは\n"
+"                        ドキュメントをいずれかに変換し（以下のオプションを参"
+"照）、\n"
+"                        manuskriptにインポートされます。ドキュメントによって"
+"は、\n"
+"                        どちらか一方が良い結果が得られる場合があります。\n"
+"                        <br/>&nbsp;"
+
+#: Import%2314
+msgid "Import using:"
+msgstr "インポートの使用:"
+
+#: Import%2315
+msgid "Wrap lines:"
+msgstr "行を折り返す："
+
+#: Import%2316
+msgid ""
+"<p>Should pandoc create\n"
+"                        cosmetic / non-semantic line-breaks?</p><p>\n"
+"                        <b>auto</b>: wraps at 72 characters.<br>\n"
+"                        <b>none</b>: no line wrap.<br>\n"
+"                        <b>preserve</b>: tries to preserves line wrap from "
+"the\n"
+"                        original document.</p>"
+msgstr ""
+"<p>pandocは、\n"
+"                        表面的/非セマンティックな改行を作成する必要があります"
+"か？</p><p>\n"
+"                        <b>自動</b>: 72文字で折り返します。<br>\n"
+"                        <b>無し</b>: 行の折り返しはありません。<br>\n"
+"                        <b>保存</b>: 元のドキュメントから\n"
+"                        行の折り返しを保持します。</p>"
+
+#: Import%2317
+msgid "Mind Map Import"
+msgstr "Mind Mapのインポート"
+
+#: Import%2318
+msgid "This does not appear to be a valid Mind Map file."
+msgstr "これは有効なマインドマップのファイルではありません。"
+
+#: Import%2319
+msgid "Mind Map import"
+msgstr "Mind Map インポート"
+
+#: Import%2320
+msgid "Import tip as:"
+msgstr "インポートのヒントは以下のとおりです。"
+
+#: Import%2321
+msgid "Untitled"
+msgstr "無題"
+
+#: MDEditCompleter%231
+msgid "Insert reference"
+msgstr "参照を挿入"
+
+#: MainWindow%231
+msgctxt "MainWindow#1"
+msgid "General"
+msgstr "全般"
+
+#: MainWindow%232
+msgctxt "MainWindow#2"
+msgid "Title"
+msgstr "タイトル"
+
+#: MainWindow%233
+msgid "Subtitle"
+msgstr "サブタイトル"
+
+#: MainWindow%234
+msgid "Series"
+msgstr "シリーズ"
+
+#: MainWindow%235
+msgid "Volume"
+msgstr "巻"
+
+#: MainWindow%236
+msgid "Genre"
+msgstr "ジャンル"
+
+#: MainWindow%237
+msgid "License"
+msgstr "ライセンス"
+
+#: MainWindow%238
+msgid "Author"
+msgstr "作者"
+
+#: MainWindow%239
+msgctxt "MainWindow#9"
+msgid "Name"
+msgstr "名前"
+
+#: MainWindow%2310
+msgid "Email"
+msgstr "電子メール"
+
+#: MainWindow%2311
+msgctxt "MainWindow#11"
+msgid "Summary"
+msgstr "要約："
+
+#: MainWindow%2312
+msgid "Situation:"
+msgstr "シチュエーション："
+
+#: MainWindow%2313
+msgid "Summary:"
+msgstr "要約："
+
+#: MainWindow%2314
+msgid "One sentence"
+msgstr "一文"
+
+#: MainWindow%2315
+msgid "One paragraph"
+msgstr "一段落"
+
+#: MainWindow%2316
+msgid "One page"
+msgstr "一ページ"
+
+#: MainWindow%2317
+msgid "Full"
+msgstr "全体"
+
+#: MainWindow%2318
+msgid "One sentence summary"
+msgstr "一文の要約"
+
+#: MainWindow%2319
+msgid "One paragraph summary"
+msgstr "一段落の要約"
+
+#: MainWindow%2320
+msgid "Expand each sentence of your one paragraph summary to a paragraph"
+msgstr "段落の要約の各文を、段落に展開"
+
+#: MainWindow%2321
+msgid "One page summary"
+msgstr "1ページの要約"
+
+#: MainWindow%2322
+msgctxt "MainWindow#22"
+msgid "Full summary"
+msgstr "全体の要約"
+
+#: MainWindow%2323
+msgid "Next"
+msgstr "次へ"
+
+#: MainWindow%2324
+msgid "What if...?"
+msgstr "もし……？"
+
+#: MainWindow%2325
+msgctxt "MainWindow#25"
+msgid "Characters"
+msgstr "登場人物"
+
+#: MainWindow%2326
+msgid "Names"
+msgstr "名前"
+
+#: MainWindow%2327
+msgid "Filter"
+msgstr "フィルター"
+
+#: MainWindow%2328
+msgctxt "MainWindow#28"
+msgid "Basic info"
+msgstr "基本情報"
+
+#: MainWindow%2329
+msgid "Importance"
+msgstr "重要設定"
+
+#: MainWindow%2330
+msgctxt "MainWindow#30"
+msgid "Motivation"
+msgstr "動機づけ"
+
+#: MainWindow%2331
+msgctxt "MainWindow#31"
+msgid "Goal"
+msgstr "目的"
+
+#: MainWindow%2332
+msgctxt "MainWindow#32"
+msgid "Conflict"
+msgstr "対立"
+
+#: MainWindow%2333
+msgctxt "MainWindow#33"
+msgid "Epiphany"
+msgstr "本質・意味・悟り"
+
+#: MainWindow%2334
+msgid ""
+"<html><head/><body><p align=\"right\">One sentence<br/>summary</p></body></"
+"html>"
+msgstr "<html><head/><body><p align=\"right\">一文<br/>要約</p></body></html>"
+
+#: MainWindow%2335
+msgid ""
+"<html><head/><body><p align=\"right\">One paragraph<br/>summary</p></body></"
+"html>"
+msgstr "<html><head/><body><p align=\"right\">一段落<br/>要約</p></body></html>"
+
+#: MainWindow%2336
+msgid "Notes"
+msgstr "備考"
+
+#: MainWindow%2337
+msgctxt "MainWindow#37"
+msgid "Detailed info"
+msgstr "詳細情報"
+
+#: MainWindow%2338
+msgctxt "MainWindow#38"
+msgid "Plots"
+msgstr "プロット"
+
+#: MainWindow%2339
+msgid "Plot"
+msgstr "プロット"
+
+#: MainWindow%2340
+msgid "Character(s)"
+msgstr "登場人物"
+
+#: MainWindow%2341
+msgctxt "MainWindow#41"
+msgid "Description"
+msgstr "説明"
+
+#: MainWindow%2342
+msgctxt "MainWindow#42"
+msgid "Result"
+msgstr "結果"
+
+#: MainWindow%2343
+msgctxt "MainWindow#43"
+msgid "Resolution steps"
+msgstr "解決手順"
+
+#: MainWindow%2344
+msgctxt "MainWindow#44"
+msgid "World"
+msgstr "世界"
+
+#: MainWindow%2345
+msgid "Populates with empty data"
+msgstr "空データの生成"
+
+#: MainWindow%2346
+msgid "More"
+msgstr "もっと"
+
+#: MainWindow%2347
+msgid "Source of passion"
+msgstr "情熱の源 (行動原理)"
+
+#: MainWindow%2348
+msgid "Source of conflict"
+msgstr "対立の原因"
+
+#: MainWindow%2349
+msgctxt "MainWindow#49"
+msgid "Outline"
+msgstr "概要"
+
+#: MainWindow%2350
+msgid "Editor"
+msgstr "編集者"
+
+#: MainWindow%2351
+msgid "Debug"
+msgstr "デバッグ"
+
+#: MainWindow%2352
+msgid "FlatData"
+msgstr "フラットデータ"
+
+#: MainWindow%2353
+#, fuzzy
+msgid "Persos"
+msgstr "人"
+
+#: MainWindow%2354
+msgctxt "MainWindow#54"
+msgid "Labels"
+msgstr "ラベル"
+
+#: MainWindow%2355
+msgid "&File"
+msgstr "ファイル (&F)"
+
+#: MainWindow%2356
+msgid "&Recent"
+msgstr "最近使用したファイル (&R)"
+
+#: MainWindow%2357
+msgid "&Help"
+msgstr "ヘルプ (&H)"
+
+#: MainWindow%2358
+msgid "&Tools"
+msgstr "ツール (&T)"
+
+#: MainWindow%2359
+msgid "&Edit"
+msgstr "編集 (&E)"
+
+#: MainWindow%2360
+msgid "&View"
+msgstr "閲覧 (&V)"
+
+#: MainWindow%2361
+msgid "&Mode"
+msgstr "モード (&M)"
+
+#: MainWindow%2362
+msgid "&Cheat sheet"
+msgstr "備忘録"
+
+#: MainWindow%2363
+msgid "Sea&rch"
+msgstr "検索 (&R)"
+
+#: MainWindow%2364
+msgid "&Navigation"
+msgstr "ナビゲーション (&N)"
+
+#: MainWindow%2365
+msgid "&Open"
+msgstr "開く (&O)"
+
+#: MainWindow%2366
+msgid "Ctrl+O"
+msgstr "Ctrl+O"
+
+#: MainWindow%2367
+msgid "&Save"
+msgstr "保存 (&S)"
+
+#: MainWindow%2368
+msgctxt "MainWindow#68"
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: MainWindow%2369
+msgid "Sa&ve as..."
+msgstr "名前を付けて保存... (&V)"
+
+#: MainWindow%2370
+msgid "Ctrl+Shift+S"
+msgstr "Ctrl+Shift+S"
+
+#: MainWindow%2371
+msgid "&Quit"
+msgstr "終了 (&Q)"
+
+#: MainWindow%2372
+msgid "Ctrl+Q"
+msgstr "Ctrl+Q"
+
+#: MainWindow%2373
+msgid "&Show help texts"
+msgstr "ヘルプ文書を表示 (&S)"
+
+#: MainWindow%2374
+msgid "Ctrl+Shift+B"
+msgstr "Ctrl+Shift+B"
+
+#: MainWindow%2375
+msgid "&Spellcheck"
+msgstr "スペルチェック"
+
+#: MainWindow%2376
+msgid "F9"
+msgstr "F9"
+
+#: MainWindow%2377
+msgid "&Labels..."
+msgstr "ラベル... (&L)"
+
+#: MainWindow%2378
+msgid "&Status..."
+msgstr "状態... (&S)"
+
+#: MainWindow%2379
+msgctxt "MainWindow#79"
+msgid "Tree"
+msgstr "ツリー"
+
+#: MainWindow%2380
+msgid "&Simple"
+msgstr "シンプル"
+
+#: MainWindow%2381
+msgid "&Fiction"
+msgstr "フィクション"
+
+#: MainWindow%2382
+msgctxt "MainWindow#82"
+msgid "Index cards"
+msgstr "索引カード"
+
+#: MainWindow%2383
+msgid "S&ettings"
+msgstr "設定"
+
+#: MainWindow%2384
+msgid "F8"
+msgstr "F8"
+
+#: MainWindow%2385
+msgid "&Close project"
+msgstr "プロジェクトを閉じる (&C)"
+
+#: MainWindow%2386
+msgid "Co&mpile"
+msgstr "コンパイル"
+
+#: MainWindow%2387
+msgid "F6"
+msgstr "F6"
+
+#: MainWindow%2388
+msgid "&Frequency Analyzer"
+msgstr "単語の頻度数解析"
+
+#: MainWindow%2389
+msgid "Book information"
+msgstr "本の情報"
+
+#: MainWindow%2390
+msgid "&About"
+msgstr "About (&A)"
+
+#: MainWindow%2391
+msgctxt "MainWindow#91"
+msgid "About Manuskript"
+msgstr "Manuskriptについて"
+
+#: MainWindow%2392
+msgctxt "MainWindow#92"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: MainWindow%2393
+#, fuzzy
+msgid "Project {} saved."
+msgstr " * {} がプロジェクトファイルに見つかりませんでした。"
+
+#: MainWindow%2394
+msgid "WARNING: Project {} not saved."
+msgstr "警告：プロジェクト {} は保存されていません。"
+
+#: MainWindow%2395
+msgid "Project {} loaded."
+msgstr "プロジェクト {} が読み込まれました。"
+
+#: MainWindow%2396
+msgid "Project {} loaded with some errors."
+msgstr "プロジェクト {} にいくつかのエラーが読み込まれました。"
+
+#: MainWindow%2397
+msgid " (~{} pages)"
+msgstr " (~{} ページ)"
+
+#: MainWindow%2398
+msgid "Words: {}{}"
+msgstr "字数：{}{}"
+
+#: MainWindow%2399
+msgid "Book summary"
+msgstr "本の要約"
+
+#: MainWindow%23100
+msgid "Project tree"
+msgstr "プロジェクトツリー"
+
+#: MainWindow%23101
+msgid "Metadata"
+msgstr "メタデータ"
+
+#: MainWindow%23102
+msgid "Story line"
+msgstr "ストーリーライン"
+
+#: MainWindow%23103
+msgid "Enter information about your book, and yourself."
+msgstr "あなたの本とあなた自身に関する情報を入力してください。"
+
+#: MainWindow%23104
+msgid ""
+"The basic situation, in the form of a 'What if...?' question. Ex: 'What if "
+"the most dangerous\n"
+"                     evil wizard wasn't able to kill a baby?' (Harry Potter)"
+msgstr ""
+"基本的な状況、「もしも・・・？」形式の質問です。 例：「最も危険で邪悪な\n"
+"                     魔法使いが、赤ん坊を殺せなかったら？」 (ハリー・"
+"ポッター)"
+
+#: MainWindow%23105
+msgid ""
+"Take time to think about a one sentence (~50 words) summary of your book. "
+"Then expand it to\n"
+"                     a paragraph, then to a page, then to a full summary."
+msgstr ""
+"あなたの本の要約を50単語ほどで考えてください。この作業は時間をかけるべきでし"
+"ょう。\n"
+"                     それを段落、ページに落とし込み、最後に完全な要約を書きま"
+"す。"
+
+#: MainWindow%23106
+msgid "Create your characters."
+msgstr "あなたの登場人物を作りましょう。"
+
+#: MainWindow%23107
+msgid "Develop plots."
+msgstr "プロットを作成します。"
+
+#: MainWindow%23108
+msgid ""
+"Build worlds.  Create hierarchy of broad categories down to specific details."
+msgstr ""
+"世界を創造しましょう。Manuskriptは、一般的なものから詳細なものまで、様々な設"
+"定を作成します。"
+
+#: MainWindow%23109
+msgid "Create the outline of your masterpiece."
+msgstr "あなたの傑作の輪郭を作ります。"
+
+#: MainWindow%23110
+msgid "Write."
+msgstr "書く。"
+
+#: MainWindow%23111
+msgid "Debug info. Sometimes useful."
+msgstr "デバッグ情報。時に便利なものです。"
+
+#: MainWindow%23112
+msgid "Dictionary"
+msgstr "辞書"
+
+#: MainWindow%23113
+msgctxt "MainWindow#113"
+msgid "Nothing"
+msgstr "無し"
+
+#: MainWindow%23114
+msgctxt "MainWindow#114"
+msgid "POV"
+msgstr "POV"
+
+#: MainWindow%23115
+msgctxt "MainWindow#115"
+msgid "Label"
+msgstr "ラベル"
+
+#: MainWindow%23116
+msgctxt "MainWindow#116"
+msgid "Progress"
+msgstr "進捗"
+
+#: MainWindow%23117
+msgctxt "MainWindow#117"
+msgid "Compile"
+msgstr "編纂"
+
+#: MainWindow%23118
+msgid "Icon color"
+msgstr "アイコンの色"
+
+#: MainWindow%23119
+msgid "Text color"
+msgstr "文字色"
+
+#: MainWindow%23120
+msgid "Background color"
+msgstr "背景色"
+
+#: MainWindow%23121
+msgid "Icon"
+msgstr "アイコン"
+
+#: MainWindow%23122
+msgctxt "MainWindow#122"
+msgid "Text"
+msgstr "テキスト"
+
+#: MainWindow%23123
+msgctxt "MainWindow#123"
+msgid "Background"
+msgstr "背景"
+
+#: MainWindow%23124
+msgid "Border"
+msgstr "境界線"
+
+#: MainWindow%23125
+msgid "Corner"
+msgstr "角"
+
+#: MainWindow%23126
+msgid "Add plot step"
+msgstr "プロットステップを追加"
+
+#: MainWindow%23127
+msgid "&Import…"
+msgstr "インポート…"
+
+#: MainWindow%23128
+msgid "F7"
+msgstr "F7"
+
+#: MainWindow%23129
+msgctxt "MainWindow#129"
+msgid "&Copy"
+msgstr "コピー"
+
+#: MainWindow%23130
+msgid "Ctrl+C"
+msgstr "Ctrl+C"
+
+#: MainWindow%23131
+msgctxt "MainWindow#131"
+msgid "C&ut"
+msgstr "切り取り"
+
+#: MainWindow%23132
+msgid "Ctrl+X"
+msgstr "Ctrl+X"
+
+#: MainWindow%23133
+msgctxt "MainWindow#133"
+msgid "&Paste"
+msgstr "貼り付け"
+
+#: MainWindow%23134
+msgid "Ctrl+V"
+msgstr "Ctrl+V"
+
+#: MainWindow%23135
+msgid "&Split…"
+msgstr "分割…"
+
+#: MainWindow%23136
+msgid "Ctrl+Shift+K"
+msgstr "Ctrl+Shift+K"
+
+#: MainWindow%23137
+msgid "Sp&lit at cursor"
+msgstr "カーソル位置で分割"
+
+#: MainWindow%23138
+msgid "Ctrl+K"
+msgstr "Ctrl+K"
+
+#: MainWindow%23139
+msgid "Ctrl+M"
+msgstr "Ctrl+M"
+
+#: MainWindow%23140
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: MainWindow%23141
+msgid "Del"
+msgstr "Del"
+
+#: MainWindow%23142
+msgid "&Move Up"
+msgstr "上に移動 (&M)"
+
+#: MainWindow%23143
+msgid "Ctrl+Shift+Up"
+msgstr "Ctrl+Shift+Up"
+
+#: MainWindow%23144
+msgid "M&ove Down"
+msgstr "下に移動 (&O)"
+
+#: MainWindow%23145
+msgid "Ctrl+Shift+Down"
+msgstr "Ctrl+Shift+Down"
+
+#: MainWindow%23146
+msgid "Dupl&icate"
+msgstr "コピー"
+
+#: MainWindow%23147
+msgctxt "MainWindow#147"
+msgid "&Delete"
+msgstr "削除"
+
+#: MainWindow%23148
+msgctxt "MainWindow#148"
+msgid "&Rename"
+msgstr "名前の変更"
+
+#: MainWindow%23149
+msgid "F2"
+msgstr "F2"
+
+#: MainWindow%23150
+msgid "Organi&ze"
+msgstr "整理"
+
+#: MainWindow%23151
+msgid "M&erge"
+msgstr "マージ"
+
+#: MainWindow%23152
+msgid "&Format"
+msgstr "フォーマット"
+
+#: MainWindow%23153
+msgid "&Header"
+msgstr "ヘッダ"
+
+#: MainWindow%23154
+msgid "&Level 1 (setext)"
+msgstr "&レベル1 (setext)"
+
+#: MainWindow%23155
+msgid "Ctrl+Alt+1"
+msgstr "Ctrl+Alt+1"
+
+#: MainWindow%23156
+msgid "Level &2"
+msgstr "レベル &2"
+
+#: MainWindow%23157
+msgid "Ctrl+Alt+2"
+msgstr "Ctrl+Alt+2"
+
+#: MainWindow%23158
+msgid "Level &1 (atx)"
+msgstr "レベル &1 (atx)"
+
+#: MainWindow%23159
+msgid "Ctrl+1"
+msgstr "Ctrl+1"
+
+#: MainWindow%23160
+msgid "L&evel 2"
+msgstr ""
+
+#: MainWindow%23161
+msgid "Ctrl+2"
+msgstr "Ctrl+2"
+
+#: MainWindow%23162
+msgid "Level &3"
+msgstr "レベル &3"
+
+#: MainWindow%23163
+msgid "Ctrl+3"
+msgstr "Ctrl+3"
+
+#: MainWindow%23164
+msgid "Level &4"
+msgstr "レベル &4"
+
+#: MainWindow%23165
+msgid "Ctrl+4"
+msgstr "Ctrl+4"
+
+#: MainWindow%23166
+msgid "Level &5"
+msgstr "レベル &5"
+
+#: MainWindow%23167
+msgid "Ctrl+5"
+msgstr "Ctrl+5"
+
+#: MainWindow%23168
+msgid "Level &6"
+msgstr "レベル &6"
+
+#: MainWindow%23169
+msgid "Ctrl+6"
+msgstr "Ctrl+6"
+
+#: MainWindow%23170
+msgid "&Bold"
+msgstr "&太字"
+
+#: MainWindow%23171
+msgid "Ctrl+B"
+msgstr "Ctrl+B"
+
+#: MainWindow%23172
+msgid "&Italic"
+msgstr "斜体(&I)"
+
+#: MainWindow%23173
+msgid "Ctrl+I"
+msgstr "Ctrl+I"
+
+#: MainWindow%23174
+msgid "&Strike"
+msgstr "取消し線(&S)"
+
+#: MainWindow%23175
+msgid "&Verbatim"
+msgstr "等幅(&V)"
+
+#: MainWindow%23176
+msgid "Su&perscript"
+msgstr "上付き文字 (&P)"
+
+#: MainWindow%23177
+msgid "Ctrl++"
+msgstr "Ctrl++"
+
+#: MainWindow%23178
+msgid "Subsc&ript"
+msgstr "下付き文字(&R)"
+
+#: MainWindow%23179
+msgid "Ctrl+-"
+msgstr "Ctrl+-"
+
+#: MainWindow%23180
+msgid "Co&mment block"
+msgstr "コメントブロック (&M)"
+
+#: MainWindow%23181
+msgid "Ctrl+Shift+C"
+msgstr "Ctrl+Shift+C"
+
+#: MainWindow%23182
+msgid "Clear &formats"
+msgstr "書式をクリア (&F)"
+
+#: MainWindow%23183
+msgid "Ctrl+0"
+msgstr "Ctrl+0"
+
+#: MainWindow%23184
+msgid "&Comment line(s)"
+msgstr "注釈行 (&C)"
+
+#: MainWindow%23185
+msgid "&Ordered list"
+msgstr "番号リスト (&O)"
+
+#: MainWindow%23186
+msgid "&Unordered list"
+msgstr "番号なしリスト (&U)"
+
+#: MainWindow%23187
+msgid "B&lockquote"
+msgstr "引用符 (&B)"
+
+#: MainWindow%23188
+msgid "Remove selected plot step(s)"
+msgstr "選択したプロットを削除する"
+
+#: MainWindow%23189
+msgid "The file {} does not exist. Has it been moved or deleted?"
+msgstr "ファイル {} は存在しません。移動または削除しましたか？"
+
+#: MainWindow%23190
+msgid "Install {}{} to use spellcheck"
+msgstr "スペルチェックを使用するには {}{} をインストールします"
+
+#: MainWindow%23191
+msgid "{} has no installed dictionaries"
+msgstr "{} には辞書がインストールされていません"
+
+#: MainWindow%23192
+msgid "{}{} is not installed"
+msgstr "{}{} がインストールされていません"
+
+#: MainWindow%23193
+msgid "Save project?"
+msgstr "プロジェクトを保存しますか？"
+
+#: MainWindow%23194
+msgid "Save changes to project \"{}\" before closing?"
+msgstr "閉じる前にプロジェクト \"{}\" への変更を保存しますか？"
+
+#: MainWindow%23195
+msgid "Your changes will be lost if you don't save them."
+msgstr "保存しないと、変更内容は失われます。"
+
+#: MainWindow%23196
+msgid ""
+"PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might "
+"result in a loss of data."
+msgstr ""
+"PyQt / Qtバージョン5.11および5.12は、データの損失につながる可能性のある"
+"クラッシュを引き起こすことがわかっています。"
+
+#: MainWindow%23197
+msgid "PyQt {} and Qt {} are in use."
+msgstr "PyQt {} と Qt {} が使用されています。"
+
+#: MainWindow%23198
+msgid "Proceed with import at your own risk"
+msgstr "自己責任でインポートを続行"
+
+#: MainWindow%23199
+msgid "Allow POV"
+msgstr ""
+
+#: MainWindow%23200
+msgid "Search"
+msgstr ""
+
+#: MainWindow%23201
+msgid "Ctrl+F"
+msgstr ""
+
+#: MainWindow%23202
+msgid "&Technical Support"
+msgstr ""
+
+#: MainWindow%23203
+msgid "How to obtain technical support for Manuskript."
+msgstr ""
+
+#: MainWindow%23204
+#, fuzzy
+msgid "F1"
+msgstr "F1"
+
+#: MainWindow%23205
+msgid "&Locate log file..."
+msgstr ""
+
+#: MainWindow%23206
+msgid "Locate log file"
+msgstr ""
+
+#: MainWindow%23207
+msgid "Locate the diagnostic log file used for this session."
+msgstr ""
+
+#: MainWindow%23208
+msgid "Shift+F1"
+msgstr ""
+
+#: MainWindow%23209
+msgid "Sorry!"
+msgstr ""
+
+#: MainWindow%23210
+msgid "This session is not being logged."
+msgstr ""
+
+#: MainWindow%23211
+msgid "A log file is a Work in Progress!"
+msgstr ""
+
+#: MainWindow%23212
+msgid ""
+"The log file \"{}\" will continue to be written to until Manuskript is "
+"closed."
+msgstr ""
+
+#: MainWindow%23213
+msgid ""
+"It will now be displayed in your file manager, but is of limited use until "
+"you close Manuskript."
+msgstr ""
+
+#: MainWindow%23214
+msgid "Error!"
+msgstr ""
+
+#: MainWindow%23215
+msgid ""
+"An error was encountered while trying to show the log file below in your "
+"file manager."
+msgstr ""
+
+#: MainWindow%23216
+#, fuzzy
+msgid "F3"
+msgstr "F3"
+
+#: MainWindow%23217
+msgid "Shift+F3"
+msgstr ""
+
+#: MainWindow%23218
+msgid "Situation"
+msgstr ""
+
+#: MainWindow%23219
+#, fuzzy
+msgctxt "MainWindow#219"
+msgid "Status"
+msgstr "状態"
+
+#: Search%231
+msgid "No results found"
+msgstr ""
+
+#: Settings%231
+msgctxt "Settings#1"
+msgid "Settings"
+msgstr "設定"
+
+#: Settings%232
+msgctxt "Settings#2"
+msgid "General"
+msgstr "全般"
+
+#: Settings%233
+msgctxt "Settings#3"
+msgid "Revisions"
+msgstr "改訂"
+
+#: Settings%234
+msgid "Views"
+msgstr "ビュー"
+
+#: Settings%235
+msgctxt "Settings#5"
+msgid "Labels"
+msgstr "ラベル"
+
+#: Settings%236
+msgctxt "Settings#6"
+msgid "Status"
+msgstr "状態"
+
+#: Settings%237
+msgid "Fullscreen"
+msgstr "全画面表示"
+
+#: Settings%238
+msgid "General settings"
+msgstr "全般の設定"
+
+#: Settings%239
+msgid "Application settings"
+msgstr "アプリケーションの設定"
+
+#: Settings%2310
+msgid "Loading"
+msgstr "読み込み中"
+
+#: Settings%2311
+msgid "Automatically load last project on startup"
+msgstr "起動時、前回の終了時に開いていたプロジェクトを開く"
+
+#: Settings%2312
+msgid "Saving"
+msgstr "自動保存"
+
+#: Settings%2313
+msgid "Automatically save every"
+msgstr "自動保存の間隔"
+
+#: Settings%2314
+msgid "minutes."
+msgstr "分。"
+
+#: Settings%2315
+msgid "If no changes during"
+msgstr "変更がない場合"
+
+#: Settings%2316
+msgid "seconds."
+msgstr "秒。"
+
+#: Settings%2317
+msgid "Save on project close"
+msgstr "プロジェクト終了時に保存"
+
+#: Settings%2318
+msgid ""
+"<html><head/><body><p>If you check this option, your project will be saved "
+"as one single file. Easier to copy or backup, but does not allow "
+"collaborative editing, or versioning.<br/>If this is unchecked, your project "
+"will be saved as a folder containing many small files.</p></body></html>"
+msgstr ""
+"<html><head/><body><p>この設定を有効にすると、プロジェクトは単一のファイルと"
+"して保存されます。コピーやバックアップは簡単ですが、多人数での共同編集や"
+"バージョン管理には不向きです。<br/>この設定を無効にした場合、プロジェクトは多"
+"数の小さなファイルとして、指定のフォルダに保存されます。</p></body></html>"
+
+#: Settings%2319
+msgid "Save to one single file"
+msgstr "単一のファイルに保存"
+
+#: Settings%2320
+msgid ""
+"Revisions are a way to keep track of modifications. For each text item, it "
+"stores any changes you make to the main text, allowing you to see and "
+"restoring previous versions."
+msgstr ""
+"リビジョンは、変更を追跡するための機能です。各テキストは、メインテキストに加"
+"えた変更点を保存し、以前のバージョンを表示・複合できるようになっています。"
+
+#: Settings%2321
+msgid "Keep revisions"
+msgstr "改訂の継続"
+
+#: Settings%2322
+msgid "S&mart remove"
+msgstr "定期的な削除"
+
+#: Settings%2323
+msgid "Keep:"
+msgstr "保留："
+
+#: Settings%2324
+msgid ""
+"Smart remove allows you to keep only a certain number of revisions. It is "
+"strongly recommended to use it, lest you file will becomes full of thousands "
+"of insignificant changes."
+msgstr ""
+"定期的な削除を利用すると、リビジョンの保存数を制限できます。この機能は、有効"
+"にすることを強くお勧めします。この機能を使用しない場合、リビジョンのファイル"
+"が数千もの数に膨らむ恐れがあります。"
+
+#: Settings%2325
+msgid "revisions per day for the last month"
+msgstr "先月の一日あたりの改訂"
+
+#: Settings%2326
+msgid "revisions per minute for the last 10 minutes"
+msgstr "過去10分間における1分あたりの改訂"
+
+#: Settings%2327
+msgid "revisions per hour for the last day"
+msgstr "最終日の1時間あたりの改訂"
+
+#: Settings%2328
+msgid "revisions per 10 minutes for the last hour"
+msgstr "過去1時間における10分ごとの改訂"
+
+#: Settings%2329
+msgid "revisions per week till the end of time"
+msgstr "終了時まで週ごとの改訂"
+
+#: Settings%2330
+msgid "Views settings"
+msgstr "ビューの設定"
+
+#: Settings%2331
+msgctxt "Settings#31"
+msgid "Tree"
+msgstr "ツリー"
+
+#: Settings%2332
+msgid "Colors"
+msgstr "色"
+
+#: Settings%2333
+msgid "Icon color:"
+msgstr "アイコンの色："
+
+#: Settings%2334
+msgctxt "Settings#34"
+msgid "Nothing"
+msgstr "無し"
+
+#: Settings%2335
+msgctxt "Settings#35"
+msgid "POV"
+msgstr "POV"
+
+#: Settings%2336
+msgctxt "Settings#36"
+msgid "Label"
+msgstr "ラベル"
+
+#: Settings%2337
+msgctxt "Settings#37"
+msgid "Progress"
+msgstr "進捗"
+
+#: Settings%2338
+msgctxt "Settings#38"
+msgid "Compile"
+msgstr "編纂"
+
+#: Settings%2339
+msgid "Text color:"
+msgstr "文字色："
+
+#: Settings%2340
+msgid "Background color:"
+msgstr "背景色："
+
+#: Settings%2341
+msgid "Folders"
+msgstr "フォルダ"
+
+#: Settings%2342
+msgid "Show ite&m count"
+msgstr "項目数を表示(&M)"
+
+#: Settings%2343
+msgid "Show summary"
+msgstr "要約を閲覧"
+
+#: Settings%2344
+msgid "&Nothing"
+msgstr "無し(&N)"
+
+#: Settings%2345
+msgctxt "Settings#45"
+msgid "Text"
+msgstr "テキスト"
+
+#: Settings%2346
+msgctxt "Settings#46"
+msgid "Outline"
+msgstr "概要"
+
+#: Settings%2347
+msgid "Visible columns"
+msgstr "表示列"
+
+#: Settings%2348
+msgctxt "Settings#48"
+msgid "Goal"
+msgstr "目的"
+
+#: Settings%2349
+msgctxt "Settings#49"
+msgid "Word count"
+msgstr "単語数"
+
+#: Settings%2350
+msgid "Percentage"
+msgstr "割合 (%)"
+
+#: Settings%2351
+msgctxt "Settings#51"
+msgid "Title"
+msgstr "表題"
+
+#: Settings%2352
+msgctxt "Settings#52"
+msgid "Index cards"
+msgstr "索引目録"
+
+#: Settings%2353
+msgid "Item colors"
+msgstr "項目の色"
+
+#: Settings%2354
+msgid "Border color:"
+msgstr "線の色："
+
+#: Settings%2355
+msgid "Corner color:"
+msgstr "角の色："
+
+#: Settings%2356
+msgctxt "Settings#56"
+msgid "Background"
+msgstr "背景"
+
+#: Settings%2357
+msgid "Color:"
+msgstr "色："
+
+#: Settings%2358
+msgctxt "Settings#58"
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: Settings%2359
+msgid "Image:"
+msgstr "画像："
+
+#: Settings%2360
+msgid "Text editor"
+msgstr "テキストエディタ"
+
+#: Settings%2361
+msgctxt "Settings#61"
+msgid "Font"
+msgstr "フォント"
+
+#: Settings%2362
+msgid "Family:"
+msgstr "字体："
+
+#: Settings%2363
+msgid "Size:"
+msgstr "大きさ："
+
+#: Settings%2364
+msgid "Misspelled:"
+msgstr "綴り間違い："
+
+#: Settings%2365
+msgid "Background:"
+msgstr "背景："
+
+#: Settings%2366
+msgid "Paragraphs"
+msgstr "段落"
+
+#: Settings%2367
+msgctxt "Settings#67"
+msgid "Line spacing:"
+msgstr "行間隔："
+
+#: Settings%2368
+msgid "Single"
+msgstr "シングル"
+
+#: Settings%2369
+msgid "1.5 lines"
+msgstr "1.5 行"
+
+#: Settings%2370
+msgid "Double"
+msgstr "2倍"
+
+#: Settings%2371
+msgid "Proportional"
+msgstr "プロポーショナル"
+
+#: Settings%2372
+msgid "%"
+msgstr "%"
+
+#: Settings%2373
+msgid "Tab width:"
+msgstr "タブ幅："
+
+#: Settings%2374
+msgid " px"
+msgstr " px"
+
+#: Settings%2375
+msgid "Indent 1st line"
+msgstr "1行目を字下げ"
+
+#: Settings%2376
+msgid "Spacing:"
+msgstr "間隔："
+
+#: Settings%2377
+msgctxt "Settings#77"
+msgid "New"
+msgstr "新規"
+
+#: Settings%2378
+msgid "Edit"
+msgstr "編集"
+
+#: Settings%2379
+msgctxt "Settings#79"
+msgid "Delete"
+msgstr "削除"
+
+#: Settings%2380
+msgid "Theme name:"
+msgstr "主題名："
+
+#: Settings%2381
+msgid "Apply"
+msgstr "適用"
+
+#: Settings%2382
+msgid "Cancel"
+msgstr "取消"
+
+#: Settings%2383
+msgid "Window Background"
+msgstr "ウィンドウの背景"
+
+#: Settings%2384
+msgid "Text Background"
+msgstr "テキストの背景"
+
+#: Settings%2385
+msgid "Text Options"
+msgstr "テキストオプション"
+
+#: Settings%2386
+msgid "Paragraph Options"
+msgstr "段落オプション"
+
+#: Settings%2387
+msgid "Type:"
+msgstr "型："
+
+#: Settings%2388
+msgid "No Image"
+msgstr "画像なし"
+
+#: Settings%2389
+msgid "Tiled"
+msgstr "タイル"
+
+#: Settings%2390
+msgid "Centered"
+msgstr "中央揃え"
+
+#: Settings%2391
+msgid "Stretched"
+msgstr "伸縮"
+
+#: Settings%2392
+msgid "Scaled"
+msgstr "縮尺"
+
+#: Settings%2393
+msgid "Zoomed"
+msgstr "拡大"
+
+#: Settings%2394
+msgid "Opacity:"
+msgstr "透明度："
+
+#: Settings%2395
+msgid "Position:"
+msgstr "位置："
+
+#: Settings%2396
+msgid "Left"
+msgstr "左"
+
+#: Settings%2397
+msgid "Center"
+msgstr "中央"
+
+#: Settings%2398
+msgid "Right"
+msgstr "右"
+
+#: Settings%2399
+msgid "Width:"
+msgstr "幅："
+
+#: Settings%23100
+msgid "Corner radius:"
+msgstr "角の半径："
+
+#: Settings%23101
+msgid "Margins:"
+msgstr "外側余白："
+
+#: Settings%23102
+msgid "Padding:"
+msgstr "内側余白："
+
+#: Settings%23103
+msgctxt "Settings#103"
+msgid "Font:"
+msgstr "フォント："
+
+#: Settings%23104
+msgid "Style"
+msgstr "スタイル"
+
+#: Settings%23105
+msgid "Cursor"
+msgstr "カーソル"
+
+#: Settings%23106
+msgid "Use block insertion of"
+msgstr "ブロック挿入を使用"
+
+#: Settings%23107
+msgid "Alignment:"
+msgstr "位置合わせ："
+
+#: Settings%23108
+msgid "Justify"
+msgstr "校正"
+
+#: Settings%23109
+msgid "Alignment"
+msgstr "位置合わせ"
+
+#: Settings%23110
+msgid "Icon Size"
+msgstr "アイコンの大きさ"
+
+#: Settings%23111
+msgctxt "Settings#111"
+msgid "TextLabel"
+msgstr "テキストラベル"
+
+#: Settings%23112
+msgid "Disable blinking"
+msgstr "点滅を無効にする"
+
+#: Settings%23113
+msgid "Text area"
+msgstr "テキストエリア"
+
+#: Settings%23114
+msgid "Max width"
+msgstr "最大幅"
+
+#: Settings%23115
+msgid "Left/Right margins:"
+msgstr "左右の外側余白："
+
+#: Settings%23116
+msgid "Top/Bottom margins:"
+msgstr "上下の外側余白："
+
+#: Settings%23117
+msgid "S&how progress"
+msgstr "進捗状況を表示 (&H)"
+
+#: Settings%23118
+msgid "Show summar&y"
+msgstr "要約を表示 (&Y)"
+
+#: Settings%23119
+msgid "Show p&rogress"
+msgstr "進行状況を表示 (&S)"
+
+#: Settings%23120
+msgid "Old st&yle"
+msgstr "旧スタイル (&Y)"
+
+#: Settings%23121
+msgid "Transparent"
+msgstr "透過 (Transparent)"
+
+#: Settings%23122
+msgid "Restore defaults"
+msgstr "デフォルトに戻す"
+
+#: Settings%23123
+msgid "Style:"
+msgstr "スタイル："
+
+#: Settings%23124
+msgid "Language:"
+msgstr "言語："
+
+#: Settings%23125
+msgctxt "Settings#125"
+msgid "Font size:"
+msgstr "フォントサイズ："
+
+#: Settings%23126
+msgid "Restarting Manuskript ensures all settings take effect."
+msgstr "設定を有効にするためには、Manuskriptを再起動してください。"
+
+#: Settings%23127
+msgid "Show &word count"
+msgstr "単語数を表示 (&W)"
+
+#: Settings%23128
+msgid "&Show word count"
+msgstr "単語数を表示 (&S)"
+
+#: Settings%23129
+msgid "&New style"
+msgstr "新しいスタイル"
+
+#: Settings%23130
+msgid "Typewriter mode"
+msgstr "タイプライターモード"
+
+#: Settings%23131
+msgid "Focus mode"
+msgstr "集中モード (Zen mode)"
+
+#: Settings%23132
+msgctxt "Settings#132"
+msgid "None"
+msgstr "いいえ"
+
+#: Settings%23133
+msgid "Sentence"
+msgstr "文"
+
+#: Settings%23134
+msgid "Line"
+msgstr "行"
+
+#: Settings%23135
+msgid "Paragraph"
+msgstr "段落"
+
+#: Settings%23136
+msgid ""
+"<p><b>The Revisions feature has been at the source of many reported issues. "
+"In this version of Manuskript it has been turned off by default for new "
+"projects in order to provide the best experience.</b></p><p>Why aren't these "
+"issues fixed already? <a href=\"https://www.theologeek.ch/manuskript/"
+"contribute/\">We need your help to make Manuskript better!</a></p>"
+msgstr ""
+"<p><b>改訂機能は、多数報告された問題の原因となっています。このバージョンの"
+"Manuskriptでは、最高のエクスペリエンスを提供するために、新規プロジェクトの既"
+"定でオフになっています。</b></p><p>なぜ問題はまだ修正されていないのですか"
+"？<a href=\"https://www.theologeek.ch/manuskript/contribute/\">Manuskriptをよ"
+"り良くするために、あなたの助けが必要です！</a></p>"
+
+#: Settings%23137
+msgid ""
+"Show progress in chars next\n"
+" to words"
+msgstr ""
+
+#: Settings%23138
+msgid "Char/Word Counter"
+msgstr ""
+
+#: Settings%23139
+msgid "Count spaces as chars"
+msgstr ""
+
+#: Settings%23140
+msgid "Show char c&ount"
+msgstr ""
+
+#: Settings%23141
+msgid "Sho&w char count"
+msgstr ""
+
+#: SpellAction%231
+msgid "Spelling Suggestions"
+msgstr "綴りの候補"
+
+#: SpellAction%232
+msgid "&Add to dictionary"
+msgstr "辞書を追加 (&A)"
+
+#: SpellAction%233
+msgid "&Remove from custom dictionary"
+msgstr "カスタム辞書から削除 (&R)"
+
+#: SpellAction%234
+msgid "&New Character"
+msgstr ""
+
+#: SpellAction%235
+msgid "&New Plot Item"
+msgstr ""
+
+#: SpellAction%236
+msgid "&New World Item"
+msgstr ""
+
+#: SpellAction%237
+msgid "&Correction Suggestions"
+msgstr ""
+
+#: SpellAction%238
+msgid "&Correction Suggestion"
+msgstr ""
+
+#: about%231
+msgctxt "about#1"
+msgid "About Manuskript"
+msgstr "Manuskriptについて"
+
+#: about%232
+msgctxt "about#2"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: aboutDialog%231
+msgid "Version"
+msgstr "バージョン"
+
+#: aboutDialog%232
+msgid "Software Versions in Use:"
+msgstr "使用中のソフトウェアバージョン："
+
+#: abstractModel%231
+msgctxt "abstractModel#1"
+msgid "Title"
+msgstr "表題"
+
+#: abstractModel%232
+msgctxt "abstractModel#2"
+msgid "POV"
+msgstr "POV"
+
+#: abstractModel%233
+msgctxt "abstractModel#3"
+msgid "Label"
+msgstr "ラベル"
+
+#: abstractModel%234
+msgctxt "abstractModel#4"
+msgid "Status"
+msgstr "状態"
+
+#: abstractModel%235
+msgctxt "abstractModel#5"
+msgid "Compile"
+msgstr "編纂"
+
+#: abstractModel%236
+msgctxt "abstractModel#6"
+msgid "Word count"
+msgstr "単語数"
+
+#: abstractModel%237
+msgctxt "abstractModel#7"
+msgid "Goal"
+msgstr "目的"
+
+#: basicItemView%231
+msgctxt "basicItemView#1"
+msgid "Form"
+msgstr "フォーム"
+
+#: basicItemView%232
+msgctxt "basicItemView#2"
+msgid "POV:"
+msgstr "POV："
+
+#: basicItemView%233
+msgid "Goal:"
+msgstr "目的："
+
+#: basicItemView%234
+msgctxt "basicItemView#4"
+msgid "Word count"
+msgstr "単語数"
+
+#: basicItemView%235
+msgctxt "basicItemView#5"
+msgid "One line summary"
+msgstr "一行の要約"
+
+#: basicItemView%236
+msgid "Few sentences summary:"
+msgstr "文章の要約："
+
+#: characterModel%231
+msgctxt "characterModel#1"
+msgid "Name"
+msgstr "名前"
+
+#: characterModel%232
+msgid "Value"
+msgstr "値"
+
+#: characterTreeView%231
+msgctxt "characterTreeView#1"
+msgid "Main"
+msgstr "メイン"
+
+#: characterTreeView%232
+msgctxt "characterTreeView#2"
+msgid "Secondary"
+msgstr "セカンダリ"
+
+#: characterTreeView%233
+msgctxt "characterTreeView#3"
+msgid "Minor"
+msgstr "マイナー"
+
+#: cheatSheet%231
+msgctxt "cheatSheet#1"
+msgid "Form"
+msgstr "フォーム"
+
+#: cheatSheet%232
+msgid "Filter (type the name of anything in your project)"
+msgstr "絞り込み（プロジェクト内の任意の名前を入力）"
+
+#: cheatSheet%233
+msgctxt "cheatSheet#3"
+msgid "Minor"
+msgstr "マイナー"
+
+#: cheatSheet%234
+msgctxt "cheatSheet#4"
+msgid "Secondary"
+msgstr "セカンダリ"
+
+#: cheatSheet%235
+msgctxt "cheatSheet#5"
+msgid "Main"
+msgstr "メイン"
+
+#: cheatSheet%236
+msgctxt "cheatSheet#6"
+msgid "Characters"
+msgstr "登場人物"
+
+#: cheatSheet%237
+msgid "Texts"
+msgstr "テキスト"
+
+#: cheatSheet%238
+msgctxt "cheatSheet#8"
+msgid "Plots"
+msgstr "プロット"
+
+#: cheatSheet%239
+msgctxt "cheatSheet#9"
+msgid "World"
+msgstr "世界"
+
+#: cmbOutlineCharacterChoser%231
+msgctxt "cmbOutlineCharacterChoser#1"
+msgid "None"
+msgstr "なし"
+
+#: cmbOutlineCharacterChoser%232
+msgctxt "cmbOutlineCharacterChoser#2"
+msgid "Main"
+msgstr "メイン"
+
+#: cmbOutlineCharacterChoser%233
+msgctxt "cmbOutlineCharacterChoser#3"
+msgid "Secondary"
+msgstr "セカンダリ"
+
+#: cmbOutlineCharacterChoser%234
+msgctxt "cmbOutlineCharacterChoser#4"
+msgid "Minor"
+msgstr "マイナー"
+
+#: cmbOutlineCharacterChoser%235
+msgctxt "cmbOutlineCharacterChoser#5"
+msgid "Various"
+msgstr "雑多"
+
+#: cmbOutlineLabelChoser%231
+msgctxt "cmbOutlineLabelChoser#1"
+msgid "Various"
+msgstr "雑多"
+
+#: cmbOutlineStatusChoser%231
+msgctxt "cmbOutlineStatusChoser#1"
+msgid "Various"
+msgstr "雑多"
+
+#: collapsibleDockWidgets%231
+msgid "Dock Widgets Toolbar"
+msgstr "ウィジェットをツールバーと結合"
+
+#: completer%231
+msgctxt "completer#1"
+msgid "Form"
+msgstr "フォーム"
+
+#: corkDelegate%231
+msgctxt "corkDelegate#1"
+msgid "One line summary"
+msgstr "一行の要約"
+
+#: corkDelegate%232
+msgctxt "corkDelegate#2"
+msgid "Full summary"
+msgstr "すべての要約"
+
+#: editorWidget_ui%231
+msgctxt "editorWidget_ui#1"
+msgid "Form"
+msgstr "フォーム"
+
+#: exporter%231
+msgid "Export"
+msgstr "出力"
+
+#: exporter%232
+msgid "Export to:"
+msgstr "出力先："
+
+#: exporter%233
+msgid "Manage exporters"
+msgstr "出力機能の管理"
+
+#: exporter%234
+msgctxt "exporter#4"
+msgid "Preview"
+msgstr "事前確認 (プレビュー)"
+
+#: exporter%235
+msgctxt "exporter#5"
+msgid "Settings"
+msgstr "設定"
+
+#: exporterDialog%231
+msgid "{} (not implemented yet)"
+msgstr "{} (まだ実装されていません)"
+
+#: exporterSettings%231
+msgctxt "exporterSettings#1"
+msgid "Form"
+msgstr "フォーム"
+
+#: exporterSettings%232
+msgid "Content"
+msgstr "コンテンツ"
+
+#: exporterSettings%233
+msgid "Decide here what will be included in the final export."
+msgstr "最終的に出力する物を決定します。"
+
+#: exporterSettings%234
+msgid "Type"
+msgstr "型"
+
+#: exporterSettings%235
+msgctxt "exporterSettings#5"
+msgid "Title"
+msgstr "表題"
+
+#: exporterSettings%236
+msgctxt "exporterSettings#6"
+msgid "Text"
+msgstr "テキスト"
+
+#: exporterSettings%237
+msgid "I need more granularity"
+msgstr "もっと細かくする必要があります"
+
+#: exporterSettings%238
+msgid "Fi&lters"
+msgstr "絞り込み (&L)"
+
+#: exporterSettings%239
+msgid ""
+"<html><head/><body><p>Filters what items will be included in the final "
+"export.<br/><span style=\" color:#773333;\">(Not fully implemented yet.)</"
+"span></p></body></html>"
+msgstr ""
+"<html><head/><body><p>最終の出力に含める項目を絞り込みます。<br/><span "
+"style=\" color:#773333;\">(注意：この機能は、まだ完全ではなく、実験的な実装で"
+"す)</span></p></body></html>"
+
+#: exporterSettings%2310
+msgid "Ignore compile status (include all items)"
+msgstr "編纂の状態を無視する (すべての項目を含める)"
+
+#: exporterSettings%2311
+msgid "Subitems of:"
+msgstr "子項目："
+
+#: exporterSettings%2312
+msgctxt "exporterSettings#12"
+msgid "Labels"
+msgstr "ラベル"
+
+#: exporterSettings%2313
+msgctxt "exporterSettings#13"
+msgid "Status"
+msgstr "状態"
+
+#: exporterSettings%2314
+msgid "Separations"
+msgstr "分離"
+
+#: exporterSettings%2315
+msgid "Between folders:"
+msgstr "フォルダ間："
+
+#: exporterSettings%2316
+msgid "Empty line"
+msgstr "空行"
+
+#: exporterSettings%2317
+msgctxt "exporterSettings#17"
+msgid "Custom"
+msgstr "カスタム"
+
+#: exporterSettings%2318
+msgid "Between texts:"
+msgstr "文章間："
+
+#: exporterSettings%2319
+msgid "Between folder and text:"
+msgstr "フォルダとテキストの間："
+
+#: exporterSettings%2320
+msgid "Between text and folder:"
+msgstr "テキストとフォルダの間："
+
+#: exporterSettings%2321
+msgid "Transformations"
+msgstr "変換"
+
+#: exporterSettings%2322
+msgid "Typographic replacements:"
+msgstr "構文の置換："
+
+#: exporterSettings%2323
+msgid "Replace double quotes (\") with:"
+msgstr "二重引用符 (\") を、次に置き換える："
+
+#: exporterSettings%2324
+msgid "Replace single quotes (') with:"
+msgstr "一重引用符 (') を、次に置き換える："
+
+#: exporterSettings%2325
+msgid "Remove multiple spaces"
+msgstr "重複した空白を削除"
+
+#: exporterSettings%2326
+msgid "Custom replacements:"
+msgstr "カスタム置換："
+
+#: exporterSettings%2327
+msgid "Enabled"
+msgstr "有効"
+
+#: exporterSettings%2328
+msgid "Replace"
+msgstr "置換"
+
+#: exporterSettings%2329
+msgid "With"
+msgstr "と"
+
+#: exporterSettings%2330
+msgid "RegExp"
+msgstr "正規表現"
+
+#: exporterSettings%2331
+msgid ""
+"If checked, uses regular expression for replacement. If unchecked, replaced "
+"as plain text."
+msgstr ""
+"チェックすると、置換には正規表現を使用します。チェックしない場合は、通常の"
+"テキストとして置換します。"
+
+#: exporterSettings%2332
+msgctxt "exporterSettings#32"
+msgid "Preview"
+msgstr "事前確認 (プレビュー)"
+
+#: exporterSettings%2333
+msgctxt "exporterSettings#33"
+msgid "Font"
+msgstr "フォント"
+
+#: exporterSettings%2334
+msgctxt "exporterSettings#34"
+msgid "Font:"
+msgstr "フォント："
+
+#: exporterSettings%2335
+msgctxt "exporterSettings#35"
+msgid "Font size:"
+msgstr "フォントサイズ："
+
+#: exporterSettings%2336
+msgid "Folder"
+msgstr "フォルダ"
+
+#: exporterSettings%2337
+msgid "{}Level {} folder"
+msgstr "{}レベル {} フォルダ"
+
+#: exporterSettings%2338
+msgid "{}Level {} text"
+msgstr "{}レベル {} テキスト"
+
+#: exporterSettings%2339
+msgid "Replace ... with …"
+msgstr "… を … に置き換える"
+
+#: exporterSettings%2340
+msgid "Replace --- with —"
+msgstr "--- を — に置き換える"
+
+#: exportersManager%231
+msgid "Installed"
+msgstr "インストール済"
+
+#: exportersManager%232
+msgctxt "exportersManager#2"
+msgid "Custom"
+msgstr "カスタム"
+
+#: exportersManager%233
+msgid "Not found"
+msgstr "見つかりません"
+
+#: exportersManager%234
+msgid "{} not found. Install it, or set path manually."
+msgstr ""
+"{} は、見つかりません。インストールするか、もしくは、実行ファイルを手動でパス"
+"に指定してください。"
+
+#: exportersManager%235
+msgid "<b>Status:</b> uninstalled."
+msgstr "<b>状態：</b> uninstalled."
+
+#: exportersManager%236
+msgid "<b>Requires:</b> "
+msgstr "<b>必要：</b> "
+
+#: exportersManager%237
+msgid "Set {} executable path."
+msgstr "実行パスを {} に設定します。"
+
+#: frequencyAnalyzer%231
+msgid "Phrases"
+msgstr "フレーズ"
+
+#: frequencyAnalyzer%232
+msgid "Frequency"
+msgstr "頻度"
+
+#: frequencyAnalyzer%233
+msgid "Word"
+msgstr "単語"
+
+#: fullScreenEditor%231
+msgid "Theme:"
+msgstr "主題："
+
+#: fullScreenEditor%232
+msgid "{} words / {}"
+msgstr "{} 単語 / {}"
+
+#: fullScreenEditor%233
+msgctxt "fullScreenEditor#3"
+msgid "{} words"
+msgstr "{} 単語"
+
+#: fullScreenEditor%234
+msgid "Spellcheck"
+msgstr "綴り照合"
+
+#: fullScreenEditor%235
+msgid "Navigation"
+msgstr "ナビゲーション"
+
+#: fullScreenEditor%236
+msgid "New Text"
+msgstr "新規テキスト"
+
+#: fullScreenEditor%237
+msgctxt "fullScreenEditor#7"
+msgid "Title"
+msgstr "表題"
+
+#: fullScreenEditor%238
+msgid "Title: Show Full Path"
+msgstr "表題：フルパスを表示"
+
+#: fullScreenEditor%239
+msgid "Theme selector"
+msgstr "主題の選択"
+
+#: fullScreenEditor%2310
+msgctxt "fullScreenEditor#10"
+msgid "Word count"
+msgstr "単語数"
+
+#: fullScreenEditor%2311
+msgctxt "fullScreenEditor#11"
+msgid "Progress"
+msgstr "進捗"
+
+#: fullScreenEditor%2312
+msgid "Progress: Auto Show/Hide"
+msgstr "進捗： Auto Show/Hide"
+
+#: fullScreenEditor%2313
+msgid "Clock"
+msgstr "時計"
+
+#: fullScreenEditor%2314
+msgid "Clock: Show Seconds"
+msgstr "時計: 秒を表示"
+
+#: generalSettings%231
+msgctxt "generalSettings#1"
+msgid "General"
+msgstr "全般"
+
+#: generalSettings%232
+msgid "Split scenes at:"
+msgstr "シーンの分割:"
+
+#: generalSettings%233
+msgid "\\n---\\n"
+msgstr "\\n---\\n"
+
+#: generalSettings%234
+msgid "Trim long titles (> 32 chars)"
+msgstr "長い表題を削る (表題は32文字まで)"
+
+#: generalSettings%235
+msgid "Import under:"
+msgstr "インポート元:"
+
+#: generalSettings%236
+msgid "Import in a top-level folder"
+msgstr "最上位フォルダにインポート"
+
+#: helpLabel%231
+msgid "If you don't wanna see me, you can hide me in Help menu."
+msgstr "これを見たくない場合、ヘルプメニューで非表示にできます。"
+
+#: importer%231
+msgid "Import"
+msgstr "読み込み"
+
+#: importer%232
+msgid "Format:"
+msgstr "フォーマット:"
+
+#: importer%233
+msgid "Choose file"
+msgstr "ファイルを選択"
+
+#: importer%234
+msgid "Clear file"
+msgstr "ファイルを消去"
+
+#: importer%235
+msgctxt "importer#5"
+msgid "Preview"
+msgstr "プレビュー"
+
+#: importer%236
+msgctxt "importer#6"
+msgid "Settings"
+msgstr "設定"
+
+#: lineEditView%231
+msgctxt "lineEditView#1"
+msgid "Various"
+msgstr "雑多"
+
+#: locker%231
+msgctxt "locker#1"
+msgid "Form"
+msgstr "フォーム"
+
+#: locker%232
+msgid "Lock screen:"
+msgstr "画面ロック:"
+
+#: locker%233
+msgid "Word target"
+msgstr "対象単語"
+
+#: locker%234
+msgid "Time target"
+msgstr "時間目標"
+
+#: locker%235
+msgid " words"
+msgstr " 単語"
+
+#: locker%236
+msgid " minutes"
+msgstr " 分"
+
+#: locker%237
+msgid "Lock !"
+msgstr "ロック！"
+
+#: locker%238
+msgid "~{} h."
+msgstr "~{} 時."
+
+#: locker%239
+msgid "~{} mn."
+msgstr "~{} 分."
+
+#: locker%2310
+msgid "{}:{}"
+msgstr "{}:{}"
+
+#: locker%2311
+msgid "{} s."
+msgstr "{} 秒."
+
+#: locker%2312
+msgid "{} remaining"
+msgstr "残り {}"
+
+#: locker%2313
+msgid "{} words remaining"
+msgstr "{} 余剰単語"
+
+#: mainEditor%231
+msgctxt "mainEditor#1"
+msgid "Form"
+msgstr "フォーム"
+
+#: mainEditor%232
+msgctxt "mainEditor#2"
+msgid "Text"
+msgstr "テキスト"
+
+#: mainEditor%233
+msgctxt "mainEditor#3"
+msgid "Index cards"
+msgstr "索引目録"
+
+#: mainEditor%234
+msgctxt "mainEditor#4"
+msgid "Outline"
+msgstr "概要"
+
+#: mainEditor%235
+msgid "F11"
+msgstr "F11"
+
+#: mainEditor%236
+msgid "Go to parent item"
+msgstr "親の項目に移動"
+
+#: mainEditor%237
+msgid "Alt+Up"
+msgstr "Alt+Up"
+
+#: mainEditor%238
+msgctxt "mainEditor#8"
+msgid "Root"
+msgstr "ルート"
+
+#: mainEditor%239
+msgid "{} words "
+msgstr "{} 単語 "
+
+#: mainEditor%2310
+msgid "({} chars) {}  words / {} "
+msgstr ""
+
+#: mainEditor%2311
+msgid "{}  words / {} "
+msgstr ""
+
+#: mainEditor%2312
+msgid "{} chars"
+msgstr ""
+
+#: mainEditor%2313
+msgid "{} chars "
+msgstr ""
+
+#: markdownSettings%231
+msgid "Markdown"
+msgstr "Markdown"
+
+#: metadataView%231
+msgctxt "metadataView#1"
+msgid "Form"
+msgstr "フォーム"
+
+#: metadataView%232
+msgid "Properties"
+msgstr "属性"
+
+#: metadataView%233
+msgctxt "metadataView#3"
+msgid "Summary"
+msgstr "要約"
+
+#: metadataView%234
+msgctxt "metadataView#4"
+msgid "One line summary"
+msgstr "一行の要約"
+
+#: metadataView%235
+msgctxt "metadataView#5"
+msgid "Full summary"
+msgstr "すべての要約"
+
+#: metadataView%236
+msgid "Notes / References"
+msgstr "ノート/参照"
+
+#: metadataView%237
+msgctxt "metadataView#7"
+msgid "Revisions"
+msgstr "改訂"
+
+#: myPanel%231
+msgid "Auto-hide"
+msgstr "自動的に隠す"
+
+#: outlineBasics%231
+msgid "Set POV"
+msgstr "POV 設定"
+
+#: outlineBasics%232
+msgctxt "outlineBasics#2"
+msgid "None"
+msgstr "なし"
+
+#: outlineBasics%233
+msgid "Set Status"
+msgstr "状態を設定"
+
+#: outlineBasics%234
+msgid "Set Label"
+msgstr "ラベルを設定"
+
+#: outlineBasics%235
+msgctxt "outlineBasics#5"
+msgid "New"
+msgstr "新規"
+
+#: outlineBasics%236
+msgctxt "outlineBasics#6"
+msgid "Main"
+msgstr "メイン"
+
+#: outlineBasics%237
+msgctxt "outlineBasics#7"
+msgid "Secondary"
+msgstr "セカンダリ"
+
+#: outlineBasics%238
+msgctxt "outlineBasics#8"
+msgid "Minor"
+msgstr "マイナー"
+
+#: outlineBasics%239
+msgid "Set Custom Icon"
+msgstr "カスタムアイコンを設定"
+
+#: outlineBasics%2310
+msgid "Restore to default"
+msgstr "標準値に戻す"
+
+#: outlineBasics%2311
+msgctxt "outlineBasics#11"
+msgid "Root"
+msgstr "ルート"
+
+#: outlineBasics%2312
+msgid "Open {} items in new tabs"
+msgstr "新しいタブで {} 項目を開く"
+
+#: outlineBasics%2313
+msgid "Open {} in a new tab"
+msgstr "新しいタブで {} を開く"
+
+#: outlineBasics%2314
+msgid "About to remove"
+msgstr "削除しようとしています"
+
+#: outlineBasics%2315
+msgid "<p><b>You're about to delete {} item(s).</b></p><p>Are you sure?</p>"
+msgstr "<p><b>{} 個の項目を削除しようとしています。</b></p><p>よろしいですか？</p>"
+
+#: outlineBasics%2316
+msgid "Select at least two items. Folders are ignored."
+msgstr "少なくとも2つの項目を選択してください。フォルダは無視されます。"
+
+#: outlineBasics%2317
+msgid "All items must be on the same level (share the same parent)."
+msgstr "すべての項目は同じレベルになければなりません (同じ親を持ちます)。"
+
+#: outlineBasics%2318
+msgid "New &Folder"
+msgstr "新しいフォルダ (&F)"
+
+#: outlineBasics%2319
+msgid "New &Text"
+msgstr "新しいテキスト (&T)"
+
+#: outlineBasics%2320
+msgctxt "outlineBasics#20"
+msgid "&Copy"
+msgstr "コピー (&C)"
+
+#: outlineBasics%2321
+msgctxt "outlineBasics#21"
+msgid "C&ut"
+msgstr "切り取り (&U)"
+
+#: outlineBasics%2322
+msgctxt "outlineBasics#22"
+msgid "&Paste"
+msgstr "貼り付け (&P)"
+
+#: outlineBasics%2323
+msgctxt "outlineBasics#23"
+msgid "&Rename"
+msgstr "名前を変更 (&R)"
+
+#: outlineBasics%2324
+msgctxt "outlineBasics#24"
+msgid "&Delete"
+msgstr "削除 (&D)"
+
+#: outlineCharacterDelegate%231
+msgctxt "outlineCharacterDelegate#1"
+msgid "None"
+msgstr "いいえ"
+
+#: outlineCharacterDelegate%232
+msgctxt "outlineCharacterDelegate#2"
+msgid "Main"
+msgstr "メイン"
+
+#: outlineCharacterDelegate%233
+msgctxt "outlineCharacterDelegate#3"
+msgid "Secondary"
+msgstr "セカンダリ"
+
+#: outlineCharacterDelegate%234
+msgctxt "outlineCharacterDelegate#4"
+msgid "Minor"
+msgstr "マイナー"
+
+#: outlineItem%231
+msgid "{} words / {} ({})"
+msgstr "{} 単語 / {} ({})"
+
+#: outlineItem%232
+msgctxt "outlineItem#2"
+msgid "{} words"
+msgstr "{} 単語"
+
+#: pandocSettings%231
+msgctxt "pandocSettings#1"
+msgid "General"
+msgstr "全般"
+
+#: pandocSettings%232
+msgid "Table of Content"
+msgstr "目次"
+
+#: pandocSettings%233
+msgid "Custom settings for {}"
+msgstr "{}のカスタム設定"
+
+#: persosProxyModel%231
+msgctxt "persosProxyModel#1"
+msgid "Main"
+msgstr "メイン"
+
+#: persosProxyModel%232
+msgctxt "persosProxyModel#2"
+msgid "Secondary"
+msgstr "セカンダリ"
+
+#: persosProxyModel%233
+msgctxt "persosProxyModel#3"
+msgid "Minors"
+msgstr "マイナー"
+
+#: plotDelegate%231
+msgctxt "plotDelegate#1"
+msgid "General"
+msgstr "全般"
+
+#: plotDelegate%232
+msgid "Promise"
+msgstr "約束"
+
+#: plotDelegate%233
+msgid "Problem"
+msgstr "問題"
+
+#: plotDelegate%234
+msgctxt "plotDelegate#4"
+msgid "Progress"
+msgstr "進捗"
+
+#: plotDelegate%235
+msgid "Resolution"
+msgstr "解決"
+
+#: plotDelegate%236
+msgid "Try / Fail"
+msgstr "試み / 失敗"
+
+#: plotDelegate%237
+msgid "No and"
+msgstr "いいえ、それで"
+
+#: plotDelegate%238
+msgid "Yes but"
+msgstr "はい、でも"
+
+#: plotDelegate%239
+#, fuzzy
+msgid "Freytag's pyramid"
+msgstr "Freytagのピラミッド"
+
+#: plotDelegate%2310
+msgid "Exposition"
+msgstr "主題の提示"
+
+#: plotDelegate%2311
+msgid "Rising action"
+msgstr "緊張の高まり"
+
+#: plotDelegate%2312
+msgid "Climax"
+msgstr "クライマックス"
+
+#: plotDelegate%2313
+msgid "Falling action"
+msgstr "悲劇的な働き"
+
+#: plotDelegate%2314
+msgid "Three acts"
+msgstr "三幕"
+
+#: plotDelegate%2315
+msgid "1. Setup"
+msgstr "1. 設定"
+
+#: plotDelegate%2316
+msgid "1. Inciting event"
+msgstr "1. 誘発イベント"
+
+#: plotDelegate%2317
+msgid "1. Turning point"
+msgstr "1. 転換点"
+
+#: plotDelegate%2318
+msgid "2. Choice"
+msgstr "2. 選択"
+
+#: plotDelegate%2319
+msgid "2. Reversal"
+msgstr "2. 逆転"
+
+#: plotDelegate%2320
+msgid "2. Disaster"
+msgstr "2. 災害"
+
+#: plotDelegate%2321
+msgid "3. Stand up"
+msgstr "3. 立ち上がる"
+
+#: plotDelegate%2322
+msgid "3. Climax"
+msgstr "3. クライマックス"
+
+#: plotDelegate%2323
+msgid "3. Ending"
+msgstr "3. 結末"
+
+#: plotDelegate%2324
+msgid "Hero's journey"
+msgstr "主人公の旅"
+
+#: plotDelegate%2325
+msgid "Ordinary world"
+msgstr "普段の世界"
+
+#: plotDelegate%2326
+msgid "Call to adventure"
+msgstr "冒険への呼び掛け"
+
+#: plotDelegate%2327
+msgid "Refusal of the call"
+msgstr "呼び掛けの拒否"
+
+#: plotDelegate%2328
+msgid "Meeting with mentor"
+msgstr "導き手との出会い"
+
+#: plotDelegate%2329
+msgid "Tests"
+msgstr "テスト"
+
+#: plotDelegate%2330
+msgid "Approach"
+msgstr "アプローチ"
+
+#: plotDelegate%2331
+msgid "Abyss"
+msgstr "深淵"
+
+#: plotDelegate%2332
+msgid "Reward / Revelation"
+msgstr "報酬 / 発覚"
+
+#: plotDelegate%2333
+msgid "Transformation"
+msgstr "変容"
+
+#: plotDelegate%2334
+msgid "Atonement"
+msgstr "償い"
+
+#: plotDelegate%2335
+msgid "Return"
+msgstr ""
+
+#: plotModel%231
+msgctxt "plotModel#1"
+msgid "Name"
+msgstr "名前"
+
+#: plotModel%232
+msgid "Meta"
+msgstr ""
+
+#: plotModel%233
+msgid "New step"
+msgstr ""
+
+#: plotModel%234
+msgctxt "plotModel#4"
+msgid "Main"
+msgstr "メイン"
+
+#: plotModel%235
+msgctxt "plotModel#5"
+msgid "Secondary"
+msgstr "セカンダリ"
+
+#: plotModel%236
+msgctxt "plotModel#6"
+msgid "Minor"
+msgstr "マイナー"
+
+#: plotTreeView%231
+msgctxt "plotTreeView#1"
+msgid "Main"
+msgstr "メイン"
+
+#: plotTreeView%232
+msgctxt "plotTreeView#2"
+msgid "Secondary"
+msgstr "セカンダリ"
+
+#: plotTreeView%233
+msgctxt "plotTreeView#3"
+msgid "Minor"
+msgstr "マイナー"
+
+#: plotTreeView%234
+msgid "**Plot:** {}"
+msgstr "**プロット:** {}"
+
+#: plotsProxyModel%231
+msgctxt "plotsProxyModel#1"
+msgid "Main"
+msgstr "メイン"
+
+#: plotsProxyModel%232
+msgctxt "plotsProxyModel#2"
+msgid "Secondary"
+msgstr "セカンダリ"
+
+#: plotsProxyModel%233
+msgctxt "plotsProxyModel#3"
+msgid "Minors"
+msgstr "マイナー"
+
+#: propertiesView%231
+msgctxt "propertiesView#1"
+msgid "Form"
+msgstr "フォーム"
+
+#: propertiesView%232
+#, fuzzy
+msgctxt "propertiesView#2"
+msgid "POV"
+msgstr "POV"
+
+#: propertiesView%233
+msgctxt "propertiesView#3"
+msgid "Status"
+msgstr "状態"
+
+#: propertiesView%234
+msgctxt "propertiesView#4"
+msgid "Label"
+msgstr "ラベル"
+
+#: propertiesView%235
+msgctxt "propertiesView#5"
+msgid "Compile"
+msgstr "編纂"
+
+#: propertiesView%236
+msgctxt "propertiesView#6"
+msgid "Goal"
+msgstr "目的"
+
+#: propertiesView%237
+msgctxt "propertiesView#7"
+msgid "Word count"
+msgstr "単語数"
+
+#: references%231
+msgid "Not a reference: {}."
+msgstr ""
+
+#: references%232
+msgid "Unknown reference: {}."
+msgstr ""
+
+#: references%233
+#, fuzzy
+msgctxt "references#3"
+msgid "Path:"
+msgstr "パス："
+
+#: references%234
+msgid "Stats:"
+msgstr "統計:"
+
+#: references%235
+#, fuzzy
+msgctxt "references#5"
+msgid "POV:"
+msgstr "POV："
+
+#: references%236
+msgctxt "references#6"
+msgid "Status:"
+msgstr "状態："
+
+#: references%237
+msgid "Label:"
+msgstr "ラベル："
+
+#: references%238
+msgid "Short summary:"
+msgstr "短い要約："
+
+#: references%239
+msgid "Long summary:"
+msgstr "長い要約："
+
+#: references%2310
+msgid "Notes:"
+msgstr "ノート:"
+
+#: references%2311
+#, fuzzy
+msgctxt "references#11"
+msgid "Basic info"
+msgstr "基本情報"
+
+#: references%2312
+#, fuzzy
+msgctxt "references#12"
+msgid "Detailed info"
+msgstr "詳細情報"
+
+#: references%2313
+msgid "POV of:"
+msgstr ""
+
+#: references%2314
+msgid "Go to {}."
+msgstr ""
+
+#: references%2315
+#, fuzzy
+msgctxt "references#15"
+msgid "Description"
+msgstr "説明"
+
+#: references%2316
+#, fuzzy
+msgctxt "references#16"
+msgid "Result"
+msgstr "結果"
+
+#: references%2317
+msgctxt "references#17"
+msgid "Characters"
+msgstr "登場人物"
+
+#: references%2318
+#, fuzzy
+msgctxt "references#18"
+msgid "Resolution steps"
+msgstr "解決手順"
+
+#: references%2319
+msgid "Passion"
+msgstr ""
+
+#: references%2320
+#, fuzzy
+msgctxt "references#20"
+msgid "Conflict"
+msgstr "対立"
+
+#: references%2321
+msgid "<b>Unknown reference:</b> {}."
+msgstr ""
+
+#: references%2322
+msgid "Folder: <b>{}</b>"
+msgstr ""
+
+#: references%2323
+msgid "Text: <b>{}</b>"
+msgstr ""
+
+#: references%2324
+msgid "Character: <b>{}</b>"
+msgstr "登場人物： <b>{}</b>"
+
+#: references%2325
+msgid "Plot: <b>{}</b>"
+msgstr ""
+
+#: references%2326
+msgid "World: <b>{name}</b>{path}"
+msgstr "世界：<b>{name}</b>{path}"
+
+#: references%2327
+msgid "Referenced in:"
+msgstr ""
+
+#: references%2328
+#, fuzzy
+msgctxt "references#28"
+msgid "Motivation"
+msgstr "動機づけ"
+
+#: references%2329
+msgctxt "references#29"
+msgid "Goal"
+msgstr "目的"
+
+#: references%2330
+#, fuzzy
+msgctxt "references#30"
+msgid "Epiphany"
+msgstr "本質・意味・悟り"
+
+#: references%2331
+msgid "Short summary"
+msgstr "より短い要約"
+
+#: references%2332
+msgid "Longer summary"
+msgstr "より長い要約"
+
+#: revisions%231
+#, fuzzy
+msgctxt "revisions#1"
+msgid "Form"
+msgstr "フォーム"
+
+#: revisions%232
+msgid "Options"
+msgstr ""
+
+#: revisions%233
+msgid "Restore"
+msgstr ""
+
+#: revisions%234
+#, fuzzy
+msgctxt "revisions#4"
+msgid "Delete"
+msgstr "削除"
+
+#: revisions%235
+msgid "Show modifications"
+msgstr ""
+
+#: revisions%236
+msgid "Show ancient version"
+msgstr ""
+
+#: revisions%237
+msgid "Show spaces"
+msgstr "空白を表示"
+
+#: revisions%238
+msgid "Show modifications only"
+msgstr "変更のみを表示"
+
+#: revisions%239
+msgid "{} years ago"
+msgstr "{} 年前"
+
+#: revisions%2310
+msgid "{} months ago"
+msgstr "{} ヶ月前"
+
+#: revisions%2311
+msgid "{} days ago"
+msgstr "{} 日前"
+
+#: revisions%2312
+msgid "1 day ago"
+msgstr "1 日前"
+
+#: revisions%2313
+msgid "{} hours ago"
+msgstr "{} 時間前"
+
+#: revisions%2314
+msgid "{} minutes ago"
+msgstr "{} 分前"
+
+#: revisions%2315
+msgid "{} seconds ago"
+msgstr "{} 秒前"
+
+#: revisions%2316
+msgid "Line {}:"
+msgstr "行 {}："
+
+#: revisions%2317
+msgid "Clear all"
+msgstr "すべて消去"
+
+#: search%231
+#, fuzzy
+msgctxt "search#1"
+msgid "Form"
+msgstr "フォーム"
+
+#: search%232
+msgid "Search for..."
+msgstr "検索する..."
+
+#: settingsWindow%231
+msgid "New status"
+msgstr "新しい状態"
+
+#: settingsWindow%232
+msgid "New label"
+msgstr "新しいラベル"
+
+#: settingsWindow%233
+msgid "newtheme"
+msgstr "新しい主題"
+
+#: settingsWindow%234
+msgid "New theme"
+msgstr "新しい主題"
+
+#: settingsWindow%235
+msgid " (read-only)"
+msgstr " (読み取り専用)"
+
+#: settingsWindow%236
+msgid "Open Image"
+msgstr "画像を開く"
+
+#: settingsWindow%237
+msgid "Image files (*.jpg; *.jpeg; *.png)"
+msgstr "画像 (*.jpg; *.jpeg; *.png)"
+
+#: settingsWindow%238
+msgctxt "settingsWindow#8"
+msgid "Error"
+msgstr "Error"
+
+#: settingsWindow%239
+msgid "Unable to load selected file"
+msgstr "選択したファイルを読み込めませんでした"
+
+#: settingsWindow%2310
+msgid ""
+"Unable to add selected image:\n"
+"{}"
+msgstr ""
+"選択した画像を追加できません：\n"
+"{}"
+
+#: sldImportance%231
+#, fuzzy
+msgctxt "sldImportance#1"
+msgid "Form"
+msgstr "フォーム"
+
+#: sldImportance%232
+msgctxt "sldImportance#2"
+msgid "TextLabel"
+msgstr "テキストラベル"
+
+#: sldImportance%233
+msgctxt "sldImportance#3"
+msgid "Minor"
+msgstr "重要ではない"
+
+#: sldImportance%234
+msgctxt "sldImportance#4"
+msgid "Secondary"
+msgstr "第二項"
+
+#: sldImportance%235
+msgctxt "sldImportance#5"
+msgid "Main"
+msgstr "メイン"
+
+#: splitDialog%231
+msgid ""
+"\n"
+"            <p>Split selected item(s) at the given mark.</p>\n"
+"\n"
+"            <p>If one of the selected item is a folder, it will be applied\n"
+"            recursively to <i>all</i> of it's children items.</p>\n"
+"\n"
+"            <p>The split mark can contain following escape sequences:\n"
+"                <ul>\n"
+"                    <li><b><code>\\n</code></b>: line break</li>\n"
+"                    <li><b><code>\\t</code></b>: tab</li>\n"
+"                </ul>\n"
+"            </p>\n"
+"\n"
+"            <p><b>Mark:</b></p>\n"
+"            "
+msgstr ""
+
+#: splitDialog%232
+msgid "Split '{}'"
+msgstr "分割 '{}'"
+
+#: splitDialog%233
+msgid "Split items"
+msgstr "選択した項目を分割する"
+
+#: storylineView%231
+#, fuzzy
+msgctxt "storylineView#1"
+msgid "Form"
+msgstr "フォーム"
+
+#: storylineView%232
+msgid "Show Plots"
+msgstr "プロットを表示"
+
+#: storylineView%233
+msgid "Show Characters"
+msgstr "登場人物を表示"
+
+#: tabSplitter%231
+msgid "Open selected items in that view."
+msgstr "この画面で選択した項目を開きます。"
+
+#: tabSplitter%232
+msgid "Split horizontally"
+msgstr "画面を水平方向に分割する"
+
+#: tabSplitter%233
+msgid "Close split"
+msgstr "画面の分割を閉じる"
+
+#: tabSplitter%234
+msgid "Split vertically"
+msgstr "縦に分割"
+
+#: textEditView%231
+#, fuzzy
+msgctxt "textEditView#1"
+msgid "Various"
+msgstr "雑多"
+
+#: textFormat%231
+#, fuzzy
+msgctxt "textFormat#1"
+msgid "Form"
+msgstr "フォーム"
+
+#: textFormat%232
+msgid "CTRL+B"
+msgstr "CTRL+B"
+
+#: textFormat%233
+msgid "CTRL+I"
+msgstr "CTRL+I"
+
+#: textFormat%234
+msgid "CTRL+U"
+msgstr "CTRL+U"
+
+#: textFormat%235
+msgid "CTRL+P"
+msgstr "CTRL+P"
+
+#: textFormat%236
+msgid "CTRL+L"
+msgstr "CTRL+L"
+
+#: textFormat%237
+msgid "CTRL+E"
+msgstr "CTRL+E"
+
+#: textFormat%238
+msgid "CTRL+R"
+msgstr "CTRL+R"
+
+#: textFormat%239
+msgid "CTRL+J"
+msgstr "CTRL+J"
+
+#: treeView%231
+msgid "Expand {}"
+msgstr "展開 {}"
+
+#: treeView%232
+msgid "Collapse {}"
+msgstr "折り畳む {}"
+
+#: treeView%233
+msgid "Expand All"
+msgstr "すべて展開"
+
+#: treeView%234
+msgid "Collapse All"
+msgstr "すべて折り畳む"
+
+#: welcome%231
+#, fuzzy
+msgctxt "welcome#1"
+msgid "Form"
+msgstr "フォーム"
+
+#: welcome%232
+msgid "1"
+msgstr "1"
+
+#: welcome%233
+msgid "Templates"
+msgstr "テンプレート"
+
+#: welcome%234
+msgid "Empty"
+msgstr "空"
+
+#: welcome%235
+msgid "Novel"
+msgstr "小説"
+
+#: welcome%236
+msgid "Novella"
+msgstr "中編小説"
+
+#: welcome%237
+msgid "Short Story"
+msgstr "短編小説"
+
+#: welcome%238
+msgid "Research paper"
+msgstr "研究論文"
+
+#: welcome%239
+msgid "Demo projects"
+msgstr "デモプロジェクト"
+
+#: welcome%2310
+msgid "Add level"
+msgstr "レベルを追加"
+
+#: welcome%2311
+msgid "Add word count"
+msgstr "増加した単語数"
+
+#: welcome%2312
+msgid "Next time, automatically open last project"
+msgstr "次回起動時は、前回終了時に開いていたプロジェクトを自動的に開く"
+
+#: welcome%2313
+msgid "Open..."
+msgstr "開く..."
+
+#: welcome%2314
+msgid "Recent"
+msgstr "最近使った"
+
+#: welcome%2315
+msgid "Create"
+msgstr "作成"
+
+#: welcome%2316
+msgid "Open project"
+msgstr "プロジェクトを開く"
+
+#: welcome%2317
+msgid "Manuskript project (*.msk);;All files (*)"
+msgstr "Manuskript プロジェクト (*.msk);;すべてのファイル (*)"
+
+#: welcome%2318
+msgid "Save project as..."
+msgstr "名前を付けてプロジェクトを保存..."
+
+#: welcome%2319
+msgid "Manuskript project (*.msk)"
+msgstr "Manuskript プロジェクト (*.msk)"
+
+#: welcome%2320
+msgctxt "welcome#20"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: welcome%2321
+msgid "Create New Project"
+msgstr "新しいプロジェクトを作成する"
+
+#: welcome%2322
+msgid "Warning"
+msgstr "警告"
+
+#: welcome%2323
+msgid "Overwrite existing project {} ?"
+msgstr "既存のプロジェクト {} を上書きしますか？"
+
+#: welcome%2324
+msgid "Empty fiction"
+msgstr ""
+
+#: welcome%2325
+msgid "Chapter"
+msgstr "チャプター"
+
+#: welcome%2326
+msgid "Scene"
+msgstr "シーン"
+
+#: welcome%2327
+msgid "Trilogy"
+msgstr "三部作"
+
+#: welcome%2328
+msgid "Book"
+msgstr "本"
+
+#: welcome%2329
+msgid "Section"
+msgstr "セクション"
+
+#: welcome%2330
+msgid "Empty non-fiction"
+msgstr ""
+
+#: welcome%2331
+msgid "words each."
+msgstr "単語 (各項目)。"
+
+#: welcome%2332
+msgid "of"
+msgstr ""
+
+#: welcome%2333
+msgctxt "welcome#33"
+msgid "Text"
+msgstr "テキスト"
+
+#: welcome%2334
+msgid "Something"
+msgstr ""
+
+#: welcome%2335
+msgid "<b>Total:</b> {} words (~ {} pages)"
+msgstr "<b>合計：</b> {} 単語 (約 {} ページ)"
+
+#: welcome%2336
+msgid "Fiction"
+msgstr ""
+
+#: welcome%2337
+msgid "Non-fiction"
+msgstr ""
+
+#: welcome%2338
+msgid "Idea"
+msgstr "アイディア"
+
+#: welcome%2339
+msgid "Note"
+msgstr "ノート"
+
+#: welcome%2340
+msgid "Research"
+msgstr "研究"
+
+#: welcome%2341
+msgid "TODO"
+msgstr "TODO"
+
+#: welcome%2342
+msgid "First draft"
+msgstr "初稿"
+
+#: welcome%2343
+msgid "Second draft"
+msgstr "第二稿"
+
+#: welcome%2344
+msgid "Final"
+msgstr "決定稿"
+
+#: worldModel%231
+msgid "New item"
+msgstr "新しい項目"
+
+#: worldModel%232
+msgid "Fantasy world building"
+msgstr "空想の世界を築く"
+
+#: worldModel%233
+msgid "Physical"
+msgstr "自然"
+
+#: worldModel%234
+msgid "Climate"
+msgstr "気候"
+
+#: worldModel%235
+msgid "Topography"
+msgstr "地形"
+
+#: worldModel%236
+msgid "Astronomy"
+msgstr "天文"
+
+#: worldModel%237
+msgid "Wild life"
+msgstr "野生動物"
+
+#: worldModel%238
+msgid "Flora"
+msgstr "植物"
+
+#: worldModel%239
+msgid "History"
+msgstr "歴史"
+
+#: worldModel%2310
+msgid "Races"
+msgstr "人種・民族・種族"
+
+#: worldModel%2311
+msgid "Diseases"
+msgstr "病気"
+
+#: worldModel%2312
+msgid "Cultural"
+msgstr "文化"
+
+#: worldModel%2313
+msgid "Customs"
+msgstr "風習"
+
+#: worldModel%2314
+msgid "Food"
+msgstr "食"
+
+#: worldModel%2315
+msgid "Languages"
+msgstr "言語"
+
+#: worldModel%2316
+msgid "Education"
+msgstr "学問"
+
+#: worldModel%2317
+msgid "Dresses"
+msgstr "服装"
+
+#: worldModel%2318
+msgid "Science"
+msgstr "科学"
+
+#: worldModel%2319
+msgid "Calendar"
+msgstr "暦"
+
+#: worldModel%2320
+msgid "Bodily language"
+msgstr "身振り手振り等の仕草による意思の伝え方"
+
+#: worldModel%2321
+msgid "Ethics"
+msgstr "倫理"
+
+#: worldModel%2322
+msgid "Religion"
+msgstr "宗教"
+
+#: worldModel%2323
+msgid "Government"
+msgstr "統治体"
+
+#: worldModel%2324
+msgid "Politics"
+msgstr "政治"
+
+#: worldModel%2325
+msgid "Gender roles"
+msgstr "性別による役割"
+
+#: worldModel%2326
+msgid "Music and arts"
+msgstr "音楽、芸術"
+
+#: worldModel%2327
+msgid "Architecture"
+msgstr "建築術"
+
+#: worldModel%2328
+msgid "Military"
+msgstr "軍事"
+
+#: worldModel%2329
+msgid "Technology"
+msgstr "技術"
+
+#: worldModel%2330
+msgid "Courtship"
+msgstr "求婚"
+
+#: worldModel%2331
+msgid "Demography"
+msgstr "人口統計"
+
+#: worldModel%2332
+msgid "Transportation"
+msgstr "交通"
+
+#: worldModel%2333
+msgid "Medicine"
+msgstr "医療"
+
+#: worldModel%2334
+msgid "Magic system"
+msgstr "魔術体系"
+
+#: worldModel%2335
+msgid "Rules"
+msgstr "規則・規範"
+
+#: worldModel%2336
+msgid "Organization"
+msgstr "団体"
+
+#: worldModel%2337
+msgid "Magical objects"
+msgstr "魔術道具"
+
+#: worldModel%2338
+msgid "Magical places"
+msgstr "魔術の場所"
+
+#: worldModel%2339
+msgid "Magical races"
+msgstr "魔術による品種"
+
+#: worldModel%2340
+msgid "Important places"
+msgstr "重要な場所"
+
+#: worldModel%2341
+msgid "Important objects"
+msgstr "重要な道具"
+
+#: worldModel%2342
+msgid "Natural resources"
+msgstr "天然資源"

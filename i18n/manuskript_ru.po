@@ -1,0 +1,3970 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-04 21:21+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.20.0\n"
+
+#: Export%231
+msgid "Basic HTML output using the Python module 'markdown'."
+msgstr "Базовый вывод HTML с использованием Python модуля 'markdown'."
+
+#: Export%232
+msgid "Python module 'markdown'."
+msgstr "Python модуль 'markdown'."
+
+#: Export%233
+msgid "Markdown source"
+msgstr "Markdown исходный код"
+
+#: Export%234
+msgid "HTML Source"
+msgstr "HTML исходный текст"
+
+#: Export%235
+msgid "HTML Output"
+msgstr "HTML результат"
+
+#: Export%236
+msgid "Default exporter, provides basic formats used by other exporters."
+msgstr ""
+"Экспортер по умолчанию, предоставляет основные форматы, используемые другими "
+"экспортерами."
+
+#: Export%237
+msgid "Preview with highlighter."
+msgstr "Предварительный просмотр с highlighter."
+
+#: Export%238
+msgid "Plain text"
+msgstr "Обычный текст"
+
+#: Export%239
+msgid "A little known format modestly used. You know, web sites for example."
+msgstr ""
+"Мало известный формат, практически не используется. Вы знаете, для веб-"
+"сайтов на пример."
+
+#: Export%2310
+msgid "Needs LaTeX to be installed."
+msgstr "Необходим установленный редактор LaTeX."
+
+#: Export%2311
+msgctxt "Export#11"
+msgid "Error"
+msgstr "Ошибка"
+
+#: Export%2312
+msgid "Standalone document (not just a fragment)"
+msgstr "Отдельный документ (а не фрагмент)"
+
+#: Export%2313
+msgid "Include a table of contents."
+msgstr "Включить оглавление."
+
+#: Export%2314
+msgid "Number of sections level to include in TOC: "
+msgstr "Число уровней разделов для включения в оглавление: "
+
+#: Export%2315
+msgid "Typographically correct output"
+msgstr "Типографически правильный вывод"
+
+#: Export%2316
+msgid "Normalize the document (cleaner)"
+msgstr "Нормализовать документа (чистильщик)"
+
+#: Export%2317
+msgid "Specify the base level for headers: "
+msgstr "Укажите базовый уровень для заголовков: "
+
+#: Export%2318
+msgid "Use reference-style links instead of inline links"
+msgstr "Использовать прямые ссылку в виде ссылки, а не встроенные ссылки"
+
+#: Export%2319
+msgid "Use ATX-style headers"
+msgstr "Использование ATX-стиль заголовков"
+
+#: Export%2320
+msgid "Self-contained HTML files, with no dependencies"
+msgstr "Автономные HTML файлы, без каких-либо зависимостей"
+
+#: Export%2321
+msgid "Use <q> tags for quotes in HTML"
+msgstr "Используйте теги <q> для цитат в HTML"
+
+#: Export%2322
+msgid "LaTeX engine used to produce the PDF."
+msgstr "LaTeX использован для создания PDF."
+
+#: Export%2323
+msgid "Paper size:"
+msgstr "Размер бумаги:"
+
+#: Export%2324
+msgctxt "Export#24"
+msgid "Font size:"
+msgstr "Размер шрифта:"
+
+#: Export%2325
+msgid "Class:"
+msgstr "Класс:"
+
+#: Export%2326
+msgctxt "Export#26"
+msgid "Line spacing:"
+msgstr "Междустрочный интервал:"
+
+#: Export%2327
+msgid "Books that don't kill trees."
+msgstr "Книги, которые не убивают деревья."
+
+#: Export%2328
+msgid "OpenDocument format. Used by LibreOffice for example."
+msgstr "Это Формат OpenDocument. Открывается с помощью LibreOffice."
+
+#: Export%2329
+msgid "Microsoft Office (.docx) document."
+msgstr "Документ Microsoft Office (.docx)."
+
+#: Export%2330
+msgid "reStructuredText is a lightweight markup language."
+msgstr "reStructuredText это легкий язык разметки."
+
+#: Export%2331
+msgid ""
+"Just like plain text, excepts adds markdown titles.\n"
+"                          Presupposes that texts are formatted in markdown."
+msgstr ""
+"Как обычный текст, за исключением markdown заголовков.\n"
+"                          Предполагается, что тексты форматируются в "
+"markdown."
+
+#: Export%2332
+msgid ""
+"Simplest export to plain text. Allows you to use your own markup not "
+"understood\n"
+"                  by Manuskript, for example <a href='www.fountain.io'>"
+"Fountain</a>."
+msgstr ""
+"Простой экспорт в обычный текст. Позволяет вам использовать ваши собственные "
+"метки, не распознанные\n"
+"                  manuskript, например <a href='www.fountain.io'>Фонтан</a>."
+
+#: Export%2333
+msgid ""
+"<p>A universal document converter. Can be used to convert Markdown to a wide "
+"range of other\n"
+"    formats.</p>\n"
+"    <p>Website: <a href=\"http://www.pandoc.org\">http://pandoc.org/</a></p>"
+"\n"
+"    "
+msgstr ""
+"<p>Универсальный конвертер документов. Может использоваться для "
+"преобразования документов в формате markdown \n"
+"     в широкий диапазон других форматов.</p>\n"
+"     <p>Вебсайт: <a href=\"http://www.pandoc.org\">http://pandoc.org/</a></p>"
+"\n"
+"    "
+
+#: Export%2334
+msgid ""
+"a valid LaTeX installation. Pandoc recommendations can be found on:\n"
+"                     <a href=\"https://pandoc.org/installing.html\">"
+"pandoc.org/installing.html</a>. If you want Unicode support, you need "
+"XeLaTeX."
+msgstr ""
+"действующая установка LaTeX. См. рекомендации pandoc на:\n"
+"                     <a href=\"http://pandoc.org/installing.html\">http://"
+"pandoc.org/installing.html</a>. Если вам нужна поддержка юникода, вам "
+"необходим XeLaTeX."
+
+#: Export%2335
+msgid ""
+"Export to markdown, using pandoc. Allows more formatting options\n"
+"    than the basic manuskript exporter."
+msgstr ""
+"Экспорт в markdown, используя pandoc. Имеет больше настроек форматирования,\n"
+"    чем экспортер manuskript."
+
+#: Export%2336
+msgid ""
+"LaTeX is a word processor and document markup language used to create\n"
+"                                              beautiful documents."
+msgstr ""
+"Latex это текстовый процессор и язык разметки документов, используемый для "
+"создания\n"
+"                                                красивых документов."
+
+#: Export%2337
+msgid ""
+"The purpose of this format is to provide a way to exchange information\n"
+"                                              between outliners and Internet "
+"services that can be browsed or controlled\n"
+"                                              through an outliner."
+msgstr ""
+"Цель этого формата-обеспечить возможность обмена информацией\n"
+"                                              между планировщиком и интернет-"
+"сервисами, которые можно просматривать\n"
+"                                              или контролировать через "
+"планировщик."
+
+#: Export%2338
+msgid ""
+"Disable YAML metadata block.\n"
+"Use that if you get YAML related error."
+msgstr ""
+"Отключить блок метаданных YAML.\n"
+"Используйте это, если получаете ошибки связанные с YAML."
+
+#: Export%2339
+msgid "Convert to ePUB3"
+msgstr "Преобразовать в формат ePUB3"
+
+#: Export%2340
+msgid ""
+"Could not process regular expression: \n"
+"{}"
+msgstr ""
+"Не удалось обработать регулярное выражение: \n"
+"{}"
+
+#: Export%2341
+msgid "Choose output fileâ¦"
+msgstr "Выберите выходной файлâ¦"
+
+#: ExportersManager%231
+msgid "Manage Exporters"
+msgstr "Управление экспортерами"
+
+#: ExportersManager%232
+msgctxt "ExportersManager#2"
+msgid "Manuskript"
+msgstr "Манускрипт"
+
+#: ExportersManager%233
+msgctxt "ExportersManager#3"
+msgid "Description"
+msgstr "Описание"
+
+#: ExportersManager%234
+msgid "Offers export to"
+msgstr "Экспортирует в"
+
+#: ExportersManager%235
+msgctxt "ExportersManager#5"
+msgid "Status"
+msgstr "Статус"
+
+#: ExportersManager%236
+msgctxt "ExportersManager#6"
+msgid "Status:"
+msgstr "Статус:"
+
+#: ExportersManager%237
+msgid "Version:"
+msgstr "Версия:"
+
+#: ExportersManager%238
+msgctxt "ExportersManager#8"
+msgid "Path:"
+msgstr "Путь:"
+
+#: ExportersManager%239
+msgid "..."
+msgstr ""
+
+#: ExportersManager%2310
+msgid "{HelpText}"
+msgstr ""
+
+#: FrequencyAnalyzer%231
+msgid "Frequency Analyzer"
+msgstr "Анализатор частых повторений"
+
+#: FrequencyAnalyzer%232
+msgid "Word frequency"
+msgstr "Частота слов"
+
+#: FrequencyAnalyzer%233
+msgctxt "FrequencyAnalyzer#3"
+msgid "Settings"
+msgstr "Настройки"
+
+#: FrequencyAnalyzer%234
+msgid "Minimum size:"
+msgstr "Минимальный размер:"
+
+#: FrequencyAnalyzer%235
+msgid "Exclude words (comma separated):"
+msgstr "Исключить слова (разделенные запятой):"
+
+#: FrequencyAnalyzer%236
+msgid "Analyze"
+msgstr "Анализировать"
+
+#: FrequencyAnalyzer%237
+msgid "Phrase frequency"
+msgstr "Частота фраз"
+
+#: FrequencyAnalyzer%238
+msgid "Number of words: from"
+msgstr "Количество слов: от"
+
+#: FrequencyAnalyzer%239
+msgid "to"
+msgstr "до"
+
+#: Import%231
+msgid "Markdown import"
+msgstr "Markdown импорт"
+
+#: Import%232
+msgid ""
+"<b>Info:</b> A very simple\n"
+"                        parser that will go through a markdown document and\n"
+"                        create items for each titles.<br/>&nbsp;"
+msgstr ""
+"<b>Информация:</b> Очень простой\n"
+"                        парсер, который пройдет по документу markdown и\n"
+"                        создаст элементы для каждого заголовка.<br/>&nbsp;"
+
+#: Import%233
+msgid "Folder import"
+msgstr "Импорт папки"
+
+#: Import%234
+msgid ""
+"<p><b>Info:</b> Imports a whole\n"
+"                        directory structure. Folders are added as folders, "
+"and\n"
+"                        plaintext documents within (you chose which ones by "
+"extension)\n"
+"                        are added as scene.</p>\n"
+"                        <p>Only text files are supported (not images, binary "
+"or others).</p>"
+msgstr ""
+"<p><b>Информация:</b> Импортирует всю структуру каталогов. \n"
+"                        Папки добавляются в виде папок, и текстовые "
+"документы в них\n"
+"                        (вы решили, какие из них по расширению)\n"
+"                        добавляются в качестве сцены.</p>\n"
+"                        <p>Поддерживаются только текстовые файлы (не "
+"изображения, двоичный или другие).</p>"
+
+#: Import%235
+msgid "Include only those extensions:"
+msgstr "Включить только эти расширения:"
+
+#: Import%236
+msgid "Comma separated values"
+msgstr "Значения, разделенные запятыми"
+
+#: Import%237
+msgid "Sort items by name"
+msgstr "Сортировка элементов по имени"
+
+#: Import%238
+msgid "Import folder then files"
+msgstr "Импорт папки потом файлов"
+
+#: Import%239
+msgid "OPML Import"
+msgstr "Импорт OPML"
+
+#: Import%2310
+msgid "File open failed."
+msgstr "Файл открыть не удалось."
+
+#: Import%2311
+msgid "This does not appear to be a valid OPML file."
+msgstr "Это не допустимый OPML файл."
+
+#: Import%2312
+msgid "Pandoc import"
+msgstr "Импорт Pandoc"
+
+#: Import%2313
+msgid ""
+"<b>Info:</b> Manuskript can\n"
+"                        import from <b>markdown</b> or <b>OPML</b>. Pandoc "
+"will\n"
+"                        convert your document to either (see option below), "
+"and\n"
+"                        then it will be imported in manuskript. One or the "
+"other\n"
+"                        might give better result depending on your "
+"document.\n"
+"                        <br/>&nbsp;"
+msgstr ""
+"<b>Информация:</b> Manuskript может\n"
+"                        импортировать из <b>markdown</b> или <b>OPML</b>. "
+"Pandoc\n"
+"                        может преобразовать ваш документ в любой из них (см. "
+"ниже),\n"
+"                        и тогда он будет импортирован в manuskript. Один или "
+"другой\n"
+"                        могут дать лучший результат, в зависимости от вашего "
+"документа.\n"
+"                        <br/>&nbsp;"
+
+#: Import%2314
+msgid "Import using:"
+msgstr "Импортировать используя:"
+
+#: Import%2315
+msgid "Wrap lines:"
+msgstr "Перенос строк:"
+
+#: Import%2316
+msgid ""
+"<p>Should pandoc create\n"
+"                        cosmetic / non-semantic line-breaks?</p><p>\n"
+"                        <b>auto</b>: wraps at 72 characters.<br>\n"
+"                        <b>none</b>: no line wrap.<br>\n"
+"                        <b>preserve</b>: tries to preserves line wrap from "
+"the\n"
+"                        original document.</p>"
+msgstr ""
+"<p>Следует ли pandoc создать \n"
+"                        косметические / не семантической разрывы?</p><p>\n"
+"                        <b>авто</b>: разрывает на 72 символе.<br>\n"
+"                        <b>нет</b>: без переноса строки.<br>\n"
+"                        <b>сохранить</b>: старается сохранить разрывы строк "
+"из\n"
+"                        исходного документа.</p>"
+
+#: Import%2317
+msgid "Mind Map Import"
+msgstr "Импорт Mind Map"
+
+#: Import%2318
+msgid "This does not appear to be a valid Mind Map file."
+msgstr "Это не допустимый Mind Map файл."
+
+#: Import%2319
+msgid "Mind Map import"
+msgstr "Импортировать Mind Map"
+
+#: Import%2320
+msgid "Import tip as:"
+msgstr "Советуем импортировать как:"
+
+#: Import%2321
+msgid "Untitled"
+msgstr "Без имени"
+
+#: MDEditCompleter%231
+msgid "Insert reference"
+msgstr "Вставить ссылку"
+
+#: MainWindow%231
+msgctxt "MainWindow#1"
+msgid "General"
+msgstr "Основные"
+
+#: MainWindow%232
+msgctxt "MainWindow#2"
+msgid "Title"
+msgstr "Заголовок"
+
+#: MainWindow%233
+msgid "Subtitle"
+msgstr "Подзаголовок"
+
+#: MainWindow%234
+msgid "Series"
+msgstr ""
+
+#: MainWindow%235
+msgid "Volume"
+msgstr "Объем"
+
+#: MainWindow%236
+msgid "Genre"
+msgstr "Жанр"
+
+#: MainWindow%237
+msgid "License"
+msgstr "Лицензия"
+
+#: MainWindow%238
+msgid "Author"
+msgstr "Автор"
+
+#: MainWindow%239
+msgctxt "MainWindow#9"
+msgid "Name"
+msgstr "Имя"
+
+#: MainWindow%2310
+msgid "Email"
+msgstr "Эл. адрес"
+
+#: MainWindow%2311
+msgctxt "MainWindow#11"
+msgid "Summary"
+msgstr "Сводка"
+
+#: MainWindow%2312
+msgid "Situation:"
+msgstr "Ситуация:"
+
+#: MainWindow%2313
+msgid "Summary:"
+msgstr "Сводка:"
+
+#: MainWindow%2314
+msgid "One sentence"
+msgstr "Одно предложение"
+
+#: MainWindow%2315
+msgid "One paragraph"
+msgstr "Один абзац"
+
+#: MainWindow%2316
+msgid "One page"
+msgstr "Одна страница"
+
+#: MainWindow%2317
+msgid "Full"
+msgstr "Все"
+
+#: MainWindow%2318
+msgid "One sentence summary"
+msgstr "Описание одной фразой"
+
+#: MainWindow%2319
+msgid "One paragraph summary"
+msgstr "Сводка одним абзацем"
+
+#: MainWindow%2320
+msgid "Expand each sentence of your one paragraph summary to a paragraph"
+msgstr "Разверните каждое предложение вашего описания одним абзацем к абзацу"
+
+#: MainWindow%2321
+msgid "One page summary"
+msgstr "Описание одной страницей"
+
+#: MainWindow%2322
+msgctxt "MainWindow#22"
+msgid "Full summary"
+msgstr "Полное описание"
+
+#: MainWindow%2323
+msgid "Next"
+msgstr "Следующий"
+
+#: MainWindow%2324
+msgid "What if...?"
+msgstr "Что если...?"
+
+#: MainWindow%2325
+msgctxt "MainWindow#25"
+msgid "Characters"
+msgstr "Персонаж"
+
+#: MainWindow%2326
+msgid "Names"
+msgstr "Имя"
+
+#: MainWindow%2327
+msgid "Filter"
+msgstr "Фильтр"
+
+#: MainWindow%2328
+msgctxt "MainWindow#28"
+msgid "Basic info"
+msgstr "Основная информация"
+
+#: MainWindow%2329
+msgid "Importance"
+msgstr "Значение"
+
+#: MainWindow%2330
+msgctxt "MainWindow#30"
+msgid "Motivation"
+msgstr "Мотивация"
+
+#: MainWindow%2331
+msgctxt "MainWindow#31"
+msgid "Goal"
+msgstr "Цель"
+
+#: MainWindow%2332
+msgctxt "MainWindow#32"
+msgid "Conflict"
+msgstr "Конфликт"
+
+#: MainWindow%2333
+msgctxt "MainWindow#33"
+msgid "Epiphany"
+msgstr "Прозрение"
+
+#: MainWindow%2334
+msgid ""
+"<html><head/><body><p align=\"right\">One sentence<br/>summary</p></body></"
+"html>"
+msgstr ""
+"<html><head/><body><p align=\"right\">Одно предложение<br/>резюме</p></body>"
+"</html>"
+
+#: MainWindow%2335
+msgid ""
+"<html><head/><body><p align=\"right\">One paragraph<br/>summary</p></body></"
+"html>"
+msgstr ""
+"<html><head/><body><p align=\"right\">Один параграф<br/>резюме</p></body></"
+"html>"
+
+#: MainWindow%2336
+msgid "Notes"
+msgstr "Заметки"
+
+#: MainWindow%2337
+msgctxt "MainWindow#37"
+msgid "Detailed info"
+msgstr "Подробная информация"
+
+#: MainWindow%2338
+msgctxt "MainWindow#38"
+msgid "Plots"
+msgstr "Сюжеты"
+
+#: MainWindow%2339
+msgid "Plot"
+msgstr "Сюжет"
+
+#: MainWindow%2340
+msgid "Character(s)"
+msgstr "Персонаж"
+
+#: MainWindow%2341
+msgctxt "MainWindow#41"
+msgid "Description"
+msgstr "Описание"
+
+#: MainWindow%2342
+msgctxt "MainWindow#42"
+msgid "Result"
+msgstr "Результат"
+
+#: MainWindow%2343
+msgctxt "MainWindow#43"
+msgid "Resolution steps"
+msgstr "Шаги развязки"
+
+#: MainWindow%2344
+msgctxt "MainWindow#44"
+msgid "World"
+msgstr "Мир"
+
+#: MainWindow%2345
+msgid "Populates with empty data"
+msgstr "Заполняет пустые данные"
+
+#: MainWindow%2346
+msgid "More"
+msgstr "Еще"
+
+#: MainWindow%2347
+msgid "Source of passion"
+msgstr "Источник страсти"
+
+#: MainWindow%2348
+msgid "Source of conflict"
+msgstr "Источник конфликта"
+
+#: MainWindow%2349
+msgctxt "MainWindow#49"
+msgid "Outline"
+msgstr "Схема"
+
+#: MainWindow%2350
+msgid "Editor"
+msgstr "Редактор"
+
+#: MainWindow%2351
+msgid "Debug"
+msgstr "Отладка"
+
+#: MainWindow%2352
+msgid "FlatData"
+msgstr "Сырые Данные"
+
+#: MainWindow%2353
+msgid "Persos"
+msgstr "Персонаж"
+
+#: MainWindow%2354
+msgctxt "MainWindow#54"
+msgid "Labels"
+msgstr "Метки"
+
+#: MainWindow%2355
+msgid "&File"
+msgstr "&Файл"
+
+#: MainWindow%2356
+msgid "&Recent"
+msgstr "&Последний"
+
+#: MainWindow%2357
+msgid "&Help"
+msgstr "&Помощь"
+
+#: MainWindow%2358
+msgid "&Tools"
+msgstr "&Инструменты"
+
+#: MainWindow%2359
+msgid "&Edit"
+msgstr "&Редактировать"
+
+#: MainWindow%2360
+msgid "&View"
+msgstr "&Просмотр"
+
+#: MainWindow%2361
+msgid "&Mode"
+msgstr "&Режим"
+
+#: MainWindow%2362
+msgid "&Cheat sheet"
+msgstr "&Шпаргалка"
+
+#: MainWindow%2363
+msgid "Sea&rch"
+msgstr "Пои&ск"
+
+#: MainWindow%2364
+msgid "&Navigation"
+msgstr "&Навигация"
+
+#: MainWindow%2365
+msgid "&Open"
+msgstr "&Открыть"
+
+#: MainWindow%2366
+msgid "Ctrl+O"
+msgstr ""
+
+#: MainWindow%2367
+msgid "&Save"
+msgstr "&Сохранить"
+
+#: MainWindow%2368
+msgctxt "MainWindow#68"
+msgid "Ctrl+S"
+msgstr ""
+
+#: MainWindow%2369
+msgid "Sa&ve as..."
+msgstr "Сохра&нить как..."
+
+#: MainWindow%2370
+msgid "Ctrl+Shift+S"
+msgstr ""
+
+#: MainWindow%2371
+msgid "&Quit"
+msgstr "&Выход"
+
+#: MainWindow%2372
+msgid "Ctrl+Q"
+msgstr ""
+
+#: MainWindow%2373
+msgid "&Show help texts"
+msgstr "&Показать текст подсказки"
+
+#: MainWindow%2374
+msgid "Ctrl+Shift+B"
+msgstr ""
+
+#: MainWindow%2375
+msgid "&Spellcheck"
+msgstr "&Проверка орфографии"
+
+#: MainWindow%2376
+msgid "F9"
+msgstr ""
+
+#: MainWindow%2377
+msgid "&Labels..."
+msgstr "&Метки..."
+
+#: MainWindow%2378
+msgid "&Status..."
+msgstr "&Статус..."
+
+#: MainWindow%2379
+msgctxt "MainWindow#79"
+msgid "Tree"
+msgstr "Дерево"
+
+#: MainWindow%2380
+msgid "&Simple"
+msgstr "&Простой"
+
+#: MainWindow%2381
+msgid "&Fiction"
+msgstr "&Вымысел"
+
+#: MainWindow%2382
+msgctxt "MainWindow#82"
+msgid "Index cards"
+msgstr "Индекс карты"
+
+#: MainWindow%2383
+msgid "S&ettings"
+msgstr "Н&астройки"
+
+#: MainWindow%2384
+msgid "F8"
+msgstr ""
+
+#: MainWindow%2385
+msgid "&Close project"
+msgstr "&Закрыть проект"
+
+#: MainWindow%2386
+msgid "Co&mpile"
+msgstr "Со&брать"
+
+#: MainWindow%2387
+msgid "F6"
+msgstr ""
+
+#: MainWindow%2388
+msgid "&Frequency Analyzer"
+msgstr "&Анализатор частоты повторений"
+
+#: MainWindow%2389
+msgid "Book information"
+msgstr "Информация о книге"
+
+#: MainWindow%2390
+msgid "&About"
+msgstr "&О программе"
+
+#: MainWindow%2391
+msgctxt "MainWindow#91"
+msgid "About Manuskript"
+msgstr "О Манускрипт"
+
+#: MainWindow%2392
+msgctxt "MainWindow#92"
+msgid "Manuskript"
+msgstr "Манускрипт"
+
+#: MainWindow%2393
+#, fuzzy
+msgid "Project {} saved."
+msgstr " * {} не найден в файле проекта."
+
+#: MainWindow%2394
+msgid "WARNING: Project {} not saved."
+msgstr "ВНИМАНИЕ: Проект {} не сохранён."
+
+#: MainWindow%2395
+msgid "Project {} loaded."
+msgstr "Проект {} загружен."
+
+#: MainWindow%2396
+msgid "Project {} loaded with some errors."
+msgstr "Проект {} загружен с некоторыми ошибками."
+
+#: MainWindow%2397
+msgid " (~{} pages)"
+msgstr " (~{} страниц)"
+
+#: MainWindow%2398
+msgid "Words: {}{}"
+msgstr "Слова: {}{}"
+
+#: MainWindow%2399
+msgid "Book summary"
+msgstr "Краткое содержание книги"
+
+#: MainWindow%23100
+msgid "Project tree"
+msgstr "Дерево проекта"
+
+#: MainWindow%23101
+msgid "Metadata"
+msgstr "Метаданные"
+
+#: MainWindow%23102
+msgid "Story line"
+msgstr "Сюжетная линия"
+
+#: MainWindow%23103
+msgid "Enter information about your book, and yourself."
+msgstr "Введите информацию о своей книге и о себе."
+
+#: MainWindow%23104
+msgid ""
+"The basic situation, in the form of a 'What if...?' question. Ex: 'What if "
+"the most dangerous\n"
+"                     evil wizard wasn't able to kill a baby?' (Harry Potter)"
+msgstr ""
+"Основная ситуация, в виде 'Что если ...?'. Вопрос. Пример: «Что, если самая "
+"опасная\n"
+"                      злой волшебник не смог бы убить ребенка? (Гарри Поттер)"
+
+#: MainWindow%23105
+msgid ""
+"Take time to think about a one sentence (~50 words) summary of your book. "
+"Then expand it to\n"
+"                     a paragraph, then to a page, then to a full summary."
+msgstr ""
+"Потратьте время, чтобы придумать одно предложение (~50 слов) о вашей книге. "
+"Затем дополните его до\n"
+"                      абзаца, затем до страницы, а затем до полного резюме."
+
+#: MainWindow%23106
+msgid "Create your characters."
+msgstr "Создайте своих персонажей."
+
+#: MainWindow%23107
+msgid "Develop plots."
+msgstr "Разработайте сюжет."
+
+#: MainWindow%23108
+msgid ""
+"Build worlds.  Create hierarchy of broad categories down to specific details."
+msgstr ""
+"Строить миры. Создайте иерархию общих категорий и до конкретных деталей."
+
+#: MainWindow%23109
+msgid "Create the outline of your masterpiece."
+msgstr "Создайте план вашего шедевра."
+
+#: MainWindow%23110
+msgid "Write."
+msgstr "Писать."
+
+#: MainWindow%23111
+msgid "Debug info. Sometimes useful."
+msgstr "Отладочная информация. Иногда полезно."
+
+#: MainWindow%23112
+msgid "Dictionary"
+msgstr "Словарь"
+
+#: MainWindow%23113
+msgctxt "MainWindow#113"
+msgid "Nothing"
+msgstr "Ничего"
+
+#: MainWindow%23114
+msgctxt "MainWindow#114"
+msgid "POV"
+msgstr "Точка зрения"
+
+#: MainWindow%23115
+msgctxt "MainWindow#115"
+msgid "Label"
+msgstr "Метка"
+
+#: MainWindow%23116
+msgctxt "MainWindow#116"
+msgid "Progress"
+msgstr "Прогресс"
+
+#: MainWindow%23117
+msgctxt "MainWindow#117"
+msgid "Compile"
+msgstr "Собрать"
+
+#: MainWindow%23118
+msgid "Icon color"
+msgstr "Цвет иконки"
+
+#: MainWindow%23119
+msgid "Text color"
+msgstr "Цвет текста"
+
+#: MainWindow%23120
+msgid "Background color"
+msgstr "Цвет фона"
+
+#: MainWindow%23121
+msgid "Icon"
+msgstr "Иконка"
+
+#: MainWindow%23122
+msgctxt "MainWindow#122"
+msgid "Text"
+msgstr "Текст"
+
+#: MainWindow%23123
+msgctxt "MainWindow#123"
+msgid "Background"
+msgstr "Фон"
+
+#: MainWindow%23124
+msgid "Border"
+msgstr "Граница"
+
+#: MainWindow%23125
+msgid "Corner"
+msgstr "Угол"
+
+#: MainWindow%23126
+msgid "Add plot step"
+msgstr "Добавить шаги сюжета"
+
+#: MainWindow%23127
+msgid "&Import…"
+msgstr ""
+
+#: MainWindow%23128
+msgid "F7"
+msgstr ""
+
+#: MainWindow%23129
+msgctxt "MainWindow#129"
+msgid "&Copy"
+msgstr "&Копировать"
+
+#: MainWindow%23130
+msgid "Ctrl+C"
+msgstr ""
+
+#: MainWindow%23131
+msgctxt "MainWindow#131"
+msgid "C&ut"
+msgstr "В&ырезать"
+
+#: MainWindow%23132
+msgid "Ctrl+X"
+msgstr ""
+
+#: MainWindow%23133
+msgctxt "MainWindow#133"
+msgid "&Paste"
+msgstr "&Вставить"
+
+#: MainWindow%23134
+msgid "Ctrl+V"
+msgstr ""
+
+#: MainWindow%23135
+msgid "&Split…"
+msgstr "&Разделить…"
+
+#: MainWindow%23136
+msgid "Ctrl+Shift+K"
+msgstr ""
+
+#: MainWindow%23137
+msgid "Sp&lit at cursor"
+msgstr "Ра&зделить на курсор"
+
+#: MainWindow%23138
+msgid "Ctrl+K"
+msgstr ""
+
+#: MainWindow%23139
+msgid "Ctrl+M"
+msgstr ""
+
+#: MainWindow%23140
+msgid "Ctrl+D"
+msgstr ""
+
+#: MainWindow%23141
+msgid "Del"
+msgstr "Удалить"
+
+#: MainWindow%23142
+msgid "&Move Up"
+msgstr "&Переместить вверх"
+
+#: MainWindow%23143
+msgid "Ctrl+Shift+Up"
+msgstr ""
+
+#: MainWindow%23144
+msgid "M&ove Down"
+msgstr "П&ереместить вниз"
+
+#: MainWindow%23145
+msgid "Ctrl+Shift+Down"
+msgstr ""
+
+#: MainWindow%23146
+msgid "Dupl&icate"
+msgstr "Дупли&каты"
+
+#: MainWindow%23147
+msgctxt "MainWindow#147"
+msgid "&Delete"
+msgstr "&Удалить"
+
+#: MainWindow%23148
+msgctxt "MainWindow#148"
+msgid "&Rename"
+msgstr "&Переименовать"
+
+#: MainWindow%23149
+msgid "F2"
+msgstr ""
+
+#: MainWindow%23150
+msgid "Organi&ze"
+msgstr "Органи&зовать"
+
+#: MainWindow%23151
+msgid "M&erge"
+msgstr "С&оединить"
+
+#: MainWindow%23152
+msgid "&Format"
+msgstr "&Формат"
+
+#: MainWindow%23153
+msgid "&Header"
+msgstr "&Заголовок"
+
+#: MainWindow%23154
+msgid "&Level 1 (setext)"
+msgstr "&Уровень 1 (с текстом)"
+
+#: MainWindow%23155
+msgid "Ctrl+Alt+1"
+msgstr "Ctrl+Alt+1"
+
+#: MainWindow%23156
+msgid "Level &2"
+msgstr "Уровень &2"
+
+#: MainWindow%23157
+msgid "Ctrl+Alt+2"
+msgstr "Ctrl+Alt+2"
+
+#: MainWindow%23158
+msgid "Level &1 (atx)"
+msgstr "Уровень &1 (atx)"
+
+#: MainWindow%23159
+msgid "Ctrl+1"
+msgstr "Ctrl+1"
+
+#: MainWindow%23160
+msgid "L&evel 2"
+msgstr "У&ровень 2"
+
+#: MainWindow%23161
+msgid "Ctrl+2"
+msgstr "Ctrl+2"
+
+#: MainWindow%23162
+msgid "Level &3"
+msgstr "Уровень &3"
+
+#: MainWindow%23163
+msgid "Ctrl+3"
+msgstr "Ctrl+3"
+
+#: MainWindow%23164
+msgid "Level &4"
+msgstr "Уровень &4"
+
+#: MainWindow%23165
+msgid "Ctrl+4"
+msgstr "Ctrl+4"
+
+#: MainWindow%23166
+msgid "Level &5"
+msgstr "Уровень &5"
+
+#: MainWindow%23167
+msgid "Ctrl+5"
+msgstr "Ctrl+5"
+
+#: MainWindow%23168
+msgid "Level &6"
+msgstr "Уровень &6"
+
+#: MainWindow%23169
+msgid "Ctrl+6"
+msgstr "Ctrl+6"
+
+#: MainWindow%23170
+msgid "&Bold"
+msgstr "&Жирный"
+
+#: MainWindow%23171
+msgid "Ctrl+B"
+msgstr "Ctrl+B"
+
+#: MainWindow%23172
+msgid "&Italic"
+msgstr "&Курсив"
+
+#: MainWindow%23173
+msgid "Ctrl+I"
+msgstr "Ctrl+I"
+
+#: MainWindow%23174
+msgid "&Strike"
+msgstr "&Зачеркнутый"
+
+#: MainWindow%23175
+msgid "&Verbatim"
+msgstr "&Дословный"
+
+#: MainWindow%23176
+msgid "Su&perscript"
+msgstr "Ве&рхний индекс"
+
+#: MainWindow%23177
+msgid "Ctrl++"
+msgstr "Ctrl++"
+
+#: MainWindow%23178
+msgid "Subsc&ript"
+msgstr "Инд&екс"
+
+#: MainWindow%23179
+msgid "Ctrl+-"
+msgstr "Ctrl+-"
+
+#: MainWindow%23180
+msgid "Co&mment block"
+msgstr "Бл&ок комментариев"
+
+#: MainWindow%23181
+msgid "Ctrl+Shift+C"
+msgstr "Ctrl+Shift+C"
+
+#: MainWindow%23182
+msgid "Clear &formats"
+msgstr "Очистить &форматирование"
+
+#: MainWindow%23183
+msgid "Ctrl+0"
+msgstr "Ctrl+0"
+
+#: MainWindow%23184
+msgid "&Comment line(s)"
+msgstr "&Строка комментария"
+
+#: MainWindow%23185
+msgid "&Ordered list"
+msgstr "&Упорядоченный список"
+
+#: MainWindow%23186
+msgid "&Unordered list"
+msgstr "&Неупорядоченный список"
+
+#: MainWindow%23187
+msgid "B&lockquote"
+msgstr "Бло&к цитата"
+
+#: MainWindow%23188
+msgid "Remove selected plot step(s)"
+msgstr "Удалить выбранный шаг сюжета"
+
+#: MainWindow%23189
+msgid "The file {} does not exist. Has it been moved or deleted?"
+msgstr "Файл {} не существует. Он был перемещен или удален?"
+
+#: MainWindow%23190
+msgid "Install {}{} to use spellcheck"
+msgstr "Установите {}{}, чтобы использовать проверку орфографии"
+
+#: MainWindow%23191
+msgid "{} has no installed dictionaries"
+msgstr "{} не имеет установленных словарей"
+
+#: MainWindow%23192
+msgid "{}{} is not installed"
+msgstr "{}{} не установлен"
+
+#: MainWindow%23193
+msgid "Save project?"
+msgstr "Сохранить проект?"
+
+#: MainWindow%23194
+msgid "Save changes to project \"{}\" before closing?"
+msgstr "Сохранить изменения в проекте \"{}\" перед закрытием?"
+
+#: MainWindow%23195
+msgid "Your changes will be lost if you don't save them."
+msgstr "Ваши изменения будут потеряны, если вы не сохраните их."
+
+#: MainWindow%23196
+msgid ""
+"PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might "
+"result in a loss of data."
+msgstr ""
+"PyQt / Qt версий 5.11 и 5.12 могут вызывать сбой, который может привести к "
+"потере данных."
+
+#: MainWindow%23197
+msgid "PyQt {} and Qt {} are in use."
+msgstr "PyQt {} и Qt {} используются."
+
+#: MainWindow%23198
+msgid "Proceed with import at your own risk"
+msgstr "Продолжайте импорт на свой страх и риск"
+
+#: MainWindow%23199
+msgid "Allow POV"
+msgstr ""
+
+#: MainWindow%23200
+msgid "Search"
+msgstr ""
+
+#: MainWindow%23201
+msgid "Ctrl+F"
+msgstr ""
+
+#: MainWindow%23202
+msgid "&Technical Support"
+msgstr ""
+
+#: MainWindow%23203
+msgid "How to obtain technical support for Manuskript."
+msgstr ""
+
+#: MainWindow%23204
+msgid "F1"
+msgstr ""
+
+#: MainWindow%23205
+msgid "&Locate log file..."
+msgstr ""
+
+#: MainWindow%23206
+msgid "Locate log file"
+msgstr ""
+
+#: MainWindow%23207
+msgid "Locate the diagnostic log file used for this session."
+msgstr ""
+
+#: MainWindow%23208
+msgid "Shift+F1"
+msgstr ""
+
+#: MainWindow%23209
+msgid "Sorry!"
+msgstr ""
+
+#: MainWindow%23210
+msgid "This session is not being logged."
+msgstr ""
+
+#: MainWindow%23211
+msgid "A log file is a Work in Progress!"
+msgstr ""
+
+#: MainWindow%23212
+msgid ""
+"The log file \"{}\" will continue to be written to until Manuskript is "
+"closed."
+msgstr ""
+
+#: MainWindow%23213
+msgid ""
+"It will now be displayed in your file manager, but is of limited use until "
+"you close Manuskript."
+msgstr ""
+
+#: MainWindow%23214
+msgid "Error!"
+msgstr ""
+
+#: MainWindow%23215
+msgid ""
+"An error was encountered while trying to show the log file below in your "
+"file manager."
+msgstr ""
+
+#: MainWindow%23216
+msgid "F3"
+msgstr ""
+
+#: MainWindow%23217
+msgid "Shift+F3"
+msgstr ""
+
+#: MainWindow%23218
+msgid "Situation"
+msgstr ""
+
+#: MainWindow%23219
+#, fuzzy
+msgctxt "MainWindow#219"
+msgid "Status"
+msgstr "Статус"
+
+#: Search%231
+msgid "No results found"
+msgstr ""
+
+#: Settings%231
+msgctxt "Settings#1"
+msgid "Settings"
+msgstr "Настройки"
+
+#: Settings%232
+msgctxt "Settings#2"
+msgid "General"
+msgstr "Основные"
+
+#: Settings%233
+msgctxt "Settings#3"
+msgid "Revisions"
+msgstr "Вариант"
+
+#: Settings%234
+msgid "Views"
+msgstr "Просмотры"
+
+#: Settings%235
+msgctxt "Settings#5"
+msgid "Labels"
+msgstr "Меток"
+
+#: Settings%236
+msgctxt "Settings#6"
+msgid "Status"
+msgstr "Статус"
+
+#: Settings%237
+msgid "Fullscreen"
+msgstr "Полный экран"
+
+#: Settings%238
+msgid "General settings"
+msgstr "Основные настройки"
+
+#: Settings%239
+msgid "Application settings"
+msgstr "Настройки приложения"
+
+#: Settings%2310
+msgid "Loading"
+msgstr "Загрузка"
+
+#: Settings%2311
+msgid "Automatically load last project on startup"
+msgstr "Автоматическая загрузка последнего проекта при старте"
+
+#: Settings%2312
+msgid "Saving"
+msgstr "Сохранение"
+
+#: Settings%2313
+msgid "Automatically save every"
+msgstr "Автоматически всё сохраняет"
+
+#: Settings%2314
+msgid "minutes."
+msgstr "минуты."
+
+#: Settings%2315
+msgid "If no changes during"
+msgstr "Если никаких изменений в течении"
+
+#: Settings%2316
+msgid "seconds."
+msgstr "секунды."
+
+#: Settings%2317
+msgid "Save on project close"
+msgstr "Записать и закрыть проект"
+
+#: Settings%2318
+msgid ""
+"<html><head/><body><p>If you check this option, your project will be saved "
+"as one single file. Easier to copy or backup, but does not allow "
+"collaborative editing, or versioning.<br/>If this is unchecked, your project "
+"will be saved as a folder containing many small files.</p></body></html>"
+msgstr ""
+"<html><head/><body><p>Если вы включите эту опцию, ваш проект будет сохранён "
+"в один единый файл. Проще для копирования или резервного сохранения, но не "
+"допускает совместного редактирования или управления версиями.<br/>если эта "
+"опция отключена, ваш проект будет сохранён как папка, содержащая несколько "
+"файлов.</p></body></html>"
+
+#: Settings%2319
+msgid "Save to one single file"
+msgstr "Записать в один файл"
+
+#: Settings%2320
+msgid ""
+"Revisions are a way to keep track of modifications. For each text item, it "
+"stores any changes you make to the main text, allowing you to see and "
+"restoring previous versions."
+msgstr ""
+"Варианты - это способ отслеживания изменений. Для каждого текстового "
+"элемента он сохраняет все изменения, внесенные в основной текст, что "
+"позволяет просматривать и восстанавливать предыдущие версии."
+
+#: Settings%2321
+msgid "Keep revisions"
+msgstr "Сохранить Вариант"
+
+#: Settings%2322
+msgid "S&mart remove"
+msgstr "У&мный стиратель"
+
+#: Settings%2323
+msgid "Keep:"
+msgstr "Сохранить:"
+
+#: Settings%2324
+msgid ""
+"Smart remove allows you to keep only a certain number of revisions. It is "
+"strongly recommended to use it, lest you file will becomes full of thousands "
+"of insignificant changes."
+msgstr ""
+"Умный стиратель - позволяет сохранить только определенное количество "
+"изменений. Настоятельно рекомендуется использовать его, чтобы файл не "
+"заполнился тысячами незначительных изменений."
+
+#: Settings%2325
+msgid "revisions per day for the last month"
+msgstr "Варианты в день за последний месяц"
+
+#: Settings%2326
+msgid "revisions per minute for the last 10 minutes"
+msgstr "Варианты за минуту за последние 10 минут"
+
+#: Settings%2327
+msgid "revisions per hour for the last day"
+msgstr "Варианты за час за последний день"
+
+#: Settings%2328
+msgid "revisions per 10 minutes for the last hour"
+msgstr "Варианты за 10 минут за последний час"
+
+#: Settings%2329
+msgid "revisions per week till the end of time"
+msgstr "Варианты за неделю до окончания времени"
+
+#: Settings%2330
+msgid "Views settings"
+msgstr "Настройки просмотров"
+
+#: Settings%2331
+msgctxt "Settings#31"
+msgid "Tree"
+msgstr "Дерево"
+
+#: Settings%2332
+msgid "Colors"
+msgstr "Цвета"
+
+#: Settings%2333
+msgid "Icon color:"
+msgstr "Цвета иконок:"
+
+#: Settings%2334
+msgctxt "Settings#34"
+msgid "Nothing"
+msgstr "Нечего"
+
+#: Settings%2335
+msgctxt "Settings#35"
+msgid "POV"
+msgstr "Точка зрения"
+
+#: Settings%2336
+msgctxt "Settings#36"
+msgid "Label"
+msgstr "Метка"
+
+#: Settings%2337
+msgctxt "Settings#37"
+msgid "Progress"
+msgstr "Прогресс"
+
+#: Settings%2338
+msgctxt "Settings#38"
+msgid "Compile"
+msgstr "Сборка"
+
+#: Settings%2339
+msgid "Text color:"
+msgstr "Цвет текста:"
+
+#: Settings%2340
+msgid "Background color:"
+msgstr "Цвет фона:"
+
+#: Settings%2341
+msgid "Folders"
+msgstr "Папки"
+
+#: Settings%2342
+msgid "Show ite&m count"
+msgstr "Показывать ко&личество элементов"
+
+#: Settings%2343
+msgid "Show summary"
+msgstr "Показать резюме"
+
+#: Settings%2344
+msgid "&Nothing"
+msgstr "&Нечего"
+
+#: Settings%2345
+msgctxt "Settings#45"
+msgid "Text"
+msgstr "Текст"
+
+#: Settings%2346
+msgctxt "Settings#46"
+msgid "Outline"
+msgstr "Контур"
+
+#: Settings%2347
+msgid "Visible columns"
+msgstr "Видимые столбцы"
+
+#: Settings%2348
+msgctxt "Settings#48"
+msgid "Goal"
+msgstr "Цель"
+
+#: Settings%2349
+msgctxt "Settings#49"
+msgid "Word count"
+msgstr "Количество слов"
+
+#: Settings%2350
+msgid "Percentage"
+msgstr "Процент"
+
+#: Settings%2351
+msgctxt "Settings#51"
+msgid "Title"
+msgstr "Заглавие"
+
+#: Settings%2352
+msgctxt "Settings#52"
+msgid "Index cards"
+msgstr "Индекс карты"
+
+#: Settings%2353
+msgid "Item colors"
+msgstr "Цвета предметов"
+
+#: Settings%2354
+msgid "Border color:"
+msgstr "Цвет границы:"
+
+#: Settings%2355
+msgid "Corner color:"
+msgstr "Цвет угла:"
+
+#: Settings%2356
+msgctxt "Settings#56"
+msgid "Background"
+msgstr "Фон"
+
+#: Settings%2357
+msgid "Color:"
+msgstr "Цвет:"
+
+#: Settings%2358
+msgctxt "Settings#58"
+msgid "Ctrl+S"
+msgstr ""
+
+#: Settings%2359
+msgid "Image:"
+msgstr "Изображение:"
+
+#: Settings%2360
+msgid "Text editor"
+msgstr "Текстовый редактор"
+
+#: Settings%2361
+msgctxt "Settings#61"
+msgid "Font"
+msgstr "Шрифт"
+
+#: Settings%2362
+msgid "Family:"
+msgstr "Семья:"
+
+#: Settings%2363
+msgid "Size:"
+msgstr "Размер:"
+
+#: Settings%2364
+msgid "Misspelled:"
+msgstr "Орфографическая ошибка:"
+
+#: Settings%2365
+msgid "Background:"
+msgstr "Фон:"
+
+#: Settings%2366
+msgid "Paragraphs"
+msgstr "Параграф"
+
+#: Settings%2367
+msgctxt "Settings#67"
+msgid "Line spacing:"
+msgstr "Междустрочный интервал:"
+
+#: Settings%2368
+msgid "Single"
+msgstr "Одиночный"
+
+#: Settings%2369
+msgid "1.5 lines"
+msgstr "1.5 линии"
+
+#: Settings%2370
+msgid "Double"
+msgstr "Двойной"
+
+#: Settings%2371
+msgid "Proportional"
+msgstr "Пропорциональный"
+
+#: Settings%2372
+msgid "%"
+msgstr ""
+
+#: Settings%2373
+msgid "Tab width:"
+msgstr "Ширина вкладок:"
+
+#: Settings%2374
+msgid " px"
+msgstr " пиксель"
+
+#: Settings%2375
+msgid "Indent 1st line"
+msgstr "Отступ 1-й линии"
+
+#: Settings%2376
+msgid "Spacing:"
+msgstr "Расстояние:"
+
+#: Settings%2377
+msgctxt "Settings#77"
+msgid "New"
+msgstr "Новый"
+
+#: Settings%2378
+msgid "Edit"
+msgstr "Редактировать"
+
+#: Settings%2379
+msgctxt "Settings#79"
+msgid "Delete"
+msgstr "Удалить"
+
+#: Settings%2380
+msgid "Theme name:"
+msgstr "Название темы:"
+
+#: Settings%2381
+msgid "Apply"
+msgstr "Применить"
+
+#: Settings%2382
+msgid "Cancel"
+msgstr "Отмена"
+
+#: Settings%2383
+msgid "Window Background"
+msgstr "Фон окна"
+
+#: Settings%2384
+msgid "Text Background"
+msgstr "Фон текста"
+
+#: Settings%2385
+msgid "Text Options"
+msgstr "Параметры Текста"
+
+#: Settings%2386
+msgid "Paragraph Options"
+msgstr "Параметры абзаца"
+
+#: Settings%2387
+msgid "Type:"
+msgstr "Символ:"
+
+#: Settings%2388
+msgid "No Image"
+msgstr "Нет изображения"
+
+#: Settings%2389
+msgid "Tiled"
+msgstr "Замостить"
+
+#: Settings%2390
+msgid "Centered"
+msgstr "По центру"
+
+#: Settings%2391
+msgid "Stretched"
+msgstr "Растянуть"
+
+#: Settings%2392
+msgid "Scaled"
+msgstr "Масштабировать"
+
+#: Settings%2393
+msgid "Zoomed"
+msgstr "Увеличино"
+
+#: Settings%2394
+msgid "Opacity:"
+msgstr "Непрозрачность:"
+
+#: Settings%2395
+msgid "Position:"
+msgstr "Позиция:"
+
+#: Settings%2396
+msgid "Left"
+msgstr "Слева"
+
+#: Settings%2397
+msgid "Center"
+msgstr "Центр"
+
+#: Settings%2398
+msgid "Right"
+msgstr "Право"
+
+#: Settings%2399
+msgid "Width:"
+msgstr "Ширина:"
+
+#: Settings%23100
+msgid "Corner radius:"
+msgstr "Радиус угла:"
+
+#: Settings%23101
+msgid "Margins:"
+msgstr "Поля:"
+
+#: Settings%23102
+msgid "Padding:"
+msgstr "Отступ:"
+
+#: Settings%23103
+msgctxt "Settings#103"
+msgid "Font:"
+msgstr "Шрифт:"
+
+#: Settings%23104
+msgid "Style"
+msgstr "Стиль"
+
+#: Settings%23105
+msgid "Cursor"
+msgstr "Курсор"
+
+#: Settings%23106
+msgid "Use block insertion of"
+msgstr "Используйте блок вставки"
+
+#: Settings%23107
+msgid "Alignment:"
+msgstr "Выравнивание:"
+
+#: Settings%23108
+msgid "Justify"
+msgstr "Выровнять"
+
+#: Settings%23109
+msgid "Alignment"
+msgstr "Выравнивание"
+
+#: Settings%23110
+msgid "Icon Size"
+msgstr "Размер Иконки"
+
+#: Settings%23111
+msgctxt "Settings#111"
+msgid "TextLabel"
+msgstr "Текстовая метка"
+
+#: Settings%23112
+msgid "Disable blinking"
+msgstr "Отключить мигание"
+
+#: Settings%23113
+msgid "Text area"
+msgstr "Текстовая область"
+
+#: Settings%23114
+msgid "Max width"
+msgstr "Максимальная ширина"
+
+#: Settings%23115
+msgid "Left/Right margins:"
+msgstr "Влево/Вправо поля:"
+
+#: Settings%23116
+msgid "Top/Bottom margins:"
+msgstr "Верхние/Нижние поля:"
+
+#: Settings%23117
+msgid "S&how progress"
+msgstr "П&оказать успехи"
+
+#: Settings%23118
+msgid "Show summar&y"
+msgstr "Показать резюм&е"
+
+#: Settings%23119
+msgid "Show p&rogress"
+msgstr "Показать у&спехи"
+
+#: Settings%23120
+msgid "Old st&yle"
+msgstr "Старый ст&иль"
+
+#: Settings%23121
+msgid "Transparent"
+msgstr "Прозрачный"
+
+#: Settings%23122
+msgid "Restore defaults"
+msgstr "Восстановить значения по умолчанию"
+
+#: Settings%23123
+msgid "Style:"
+msgstr "Стиль:"
+
+#: Settings%23124
+msgid "Language:"
+msgstr "Язык:"
+
+#: Settings%23125
+msgctxt "Settings#125"
+msgid "Font size:"
+msgstr "Размер шрифта:"
+
+#: Settings%23126
+msgid "Restarting Manuskript ensures all settings take effect."
+msgstr "Перезапуск Manuskript гарантирует, что все настройки вступят в силу."
+
+#: Settings%23127
+msgid "Show &word count"
+msgstr "Показать &количество слов"
+
+#: Settings%23128
+msgid "&Show word count"
+msgstr "&Показать количество слов"
+
+#: Settings%23129
+msgid "&New style"
+msgstr "&Новый стиль"
+
+#: Settings%23130
+msgid "Typewriter mode"
+msgstr "Режим пишущей машинки"
+
+#: Settings%23131
+msgid "Focus mode"
+msgstr "Режим фокусировки"
+
+#: Settings%23132
+msgctxt "Settings#132"
+msgid "None"
+msgstr "Пусто"
+
+#: Settings%23133
+msgid "Sentence"
+msgstr "Предложение"
+
+#: Settings%23134
+msgid "Line"
+msgstr "Линия"
+
+#: Settings%23135
+msgid "Paragraph"
+msgstr "Параграф"
+
+#: Settings%23136
+msgid ""
+"<p><b>The Revisions feature has been at the source of many reported issues. "
+"In this version of Manuskript it has been turned off by default for new "
+"projects in order to provide the best experience.</b></p><p>Why aren't these "
+"issues fixed already? <a href=\"https://www.theologeek.ch/manuskript/"
+"contribute/\">We need your help to make Manuskript better!</a></p>"
+msgstr ""
+"<p><b>Функция доработка была источником многих сообщений о проблемах. В этой "
+"версии Manuskript он был отключен по умолчанию для новых проектов, чтобы "
+"обеспечить лучший функционал.</b></p><p>Почему эти проблемы уже не "
+"устранены? <a href=\"https://www.theologeek.ch/manuskript/contribute/\">Нам "
+"нужна ваша помощь, чтобы сделать Manuskript лучше!</a></p>"
+
+#: Settings%23137
+msgid ""
+"Show progress in chars next\n"
+" to words"
+msgstr ""
+
+#: Settings%23138
+msgid "Char/Word Counter"
+msgstr ""
+
+#: Settings%23139
+msgid "Count spaces as chars"
+msgstr ""
+
+#: Settings%23140
+msgid "Show char c&ount"
+msgstr ""
+
+#: Settings%23141
+msgid "Sho&w char count"
+msgstr ""
+
+#: SpellAction%231
+msgid "Spelling Suggestions"
+msgstr "Варианты правописания"
+
+#: SpellAction%232
+msgid "&Add to dictionary"
+msgstr "&Добавить в словарь"
+
+#: SpellAction%233
+msgid "&Remove from custom dictionary"
+msgstr "&Удалить из пользовательского словаря"
+
+#: SpellAction%234
+msgid "&New Character"
+msgstr ""
+
+#: SpellAction%235
+msgid "&New Plot Item"
+msgstr ""
+
+#: SpellAction%236
+msgid "&New World Item"
+msgstr ""
+
+#: SpellAction%237
+msgid "&Correction Suggestions"
+msgstr ""
+
+#: SpellAction%238
+msgid "&Correction Suggestion"
+msgstr ""
+
+#: about%231
+msgctxt "about#1"
+msgid "About Manuskript"
+msgstr "О Манускрипт"
+
+#: about%232
+msgctxt "about#2"
+msgid "Manuskript"
+msgstr "Манускрипт"
+
+#: aboutDialog%231
+msgid "Version"
+msgstr "Версия"
+
+#: aboutDialog%232
+msgid "Software Versions in Use:"
+msgstr "Используемые версии программного обеспечения:"
+
+#: abstractModel%231
+msgctxt "abstractModel#1"
+msgid "Title"
+msgstr "Заголовок"
+
+#: abstractModel%232
+msgctxt "abstractModel#2"
+msgid "POV"
+msgstr "Точка зрения"
+
+#: abstractModel%233
+msgctxt "abstractModel#3"
+msgid "Label"
+msgstr "Метка"
+
+#: abstractModel%234
+msgctxt "abstractModel#4"
+msgid "Status"
+msgstr "Статус"
+
+#: abstractModel%235
+msgctxt "abstractModel#5"
+msgid "Compile"
+msgstr "Сборка"
+
+#: abstractModel%236
+msgctxt "abstractModel#6"
+msgid "Word count"
+msgstr "Количество слов"
+
+#: abstractModel%237
+msgctxt "abstractModel#7"
+msgid "Goal"
+msgstr "Цель"
+
+#: basicItemView%231
+msgctxt "basicItemView#1"
+msgid "Form"
+msgstr "Форма"
+
+#: basicItemView%232
+msgctxt "basicItemView#2"
+msgid "POV:"
+msgstr "Точка зрения:"
+
+#: basicItemView%233
+msgid "Goal:"
+msgstr "Цель:"
+
+#: basicItemView%234
+msgctxt "basicItemView#4"
+msgid "Word count"
+msgstr "Количество слов"
+
+#: basicItemView%235
+msgctxt "basicItemView#5"
+msgid "One line summary"
+msgstr "Описание одной строкой"
+
+#: basicItemView%236
+msgid "Few sentences summary:"
+msgstr "Описание в несколько предложений:"
+
+#: characterModel%231
+msgctxt "characterModel#1"
+msgid "Name"
+msgstr "Имя"
+
+#: characterModel%232
+msgid "Value"
+msgstr "Значение"
+
+#: characterTreeView%231
+msgctxt "characterTreeView#1"
+msgid "Main"
+msgstr "Главная"
+
+#: characterTreeView%232
+msgctxt "characterTreeView#2"
+msgid "Secondary"
+msgstr "Вторичный"
+
+#: characterTreeView%233
+msgctxt "characterTreeView#3"
+msgid "Minor"
+msgstr "Незначительный"
+
+#: cheatSheet%231
+msgctxt "cheatSheet#1"
+msgid "Form"
+msgstr "Форма"
+
+#: cheatSheet%232
+msgid "Filter (type the name of anything in your project)"
+msgstr "Фильтр (введите название чего-либо в вашем проекте)"
+
+#: cheatSheet%233
+msgctxt "cheatSheet#3"
+msgid "Minor"
+msgstr "Незначительный"
+
+#: cheatSheet%234
+msgctxt "cheatSheet#4"
+msgid "Secondary"
+msgstr "Вторичный"
+
+#: cheatSheet%235
+msgctxt "cheatSheet#5"
+msgid "Main"
+msgstr "Главная"
+
+#: cheatSheet%236
+msgctxt "cheatSheet#6"
+msgid "Characters"
+msgstr "Персонажи"
+
+#: cheatSheet%237
+msgid "Texts"
+msgstr "Тексты"
+
+#: cheatSheet%238
+msgctxt "cheatSheet#8"
+msgid "Plots"
+msgstr "Сюжеты"
+
+#: cheatSheet%239
+msgctxt "cheatSheet#9"
+msgid "World"
+msgstr "Мир"
+
+#: cmbOutlineCharacterChoser%231
+msgctxt "cmbOutlineCharacterChoser#1"
+msgid "None"
+msgstr ""
+
+#: cmbOutlineCharacterChoser%232
+msgctxt "cmbOutlineCharacterChoser#2"
+msgid "Main"
+msgstr "Главная"
+
+#: cmbOutlineCharacterChoser%233
+msgctxt "cmbOutlineCharacterChoser#3"
+msgid "Secondary"
+msgstr "Вторичный"
+
+#: cmbOutlineCharacterChoser%234
+msgctxt "cmbOutlineCharacterChoser#4"
+msgid "Minor"
+msgstr "Незначительный"
+
+#: cmbOutlineCharacterChoser%235
+msgctxt "cmbOutlineCharacterChoser#5"
+msgid "Various"
+msgstr "Различные"
+
+#: cmbOutlineLabelChoser%231
+msgctxt "cmbOutlineLabelChoser#1"
+msgid "Various"
+msgstr "Различные"
+
+#: cmbOutlineStatusChoser%231
+msgctxt "cmbOutlineStatusChoser#1"
+msgid "Various"
+msgstr "Различные"
+
+#: collapsibleDockWidgets%231
+msgid "Dock Widgets Toolbar"
+msgstr "Панель инструментов Dock Widgets"
+
+#: completer%231
+msgctxt "completer#1"
+msgid "Form"
+msgstr "Форма"
+
+#: corkDelegate%231
+msgctxt "corkDelegate#1"
+msgid "One line summary"
+msgstr "Описание одной строкой"
+
+#: corkDelegate%232
+msgctxt "corkDelegate#2"
+msgid "Full summary"
+msgstr "Полное резюме"
+
+#: editorWidget_ui%231
+msgctxt "editorWidget_ui#1"
+msgid "Form"
+msgstr "Форма"
+
+#: exporter%231
+msgid "Export"
+msgstr "Экспорт"
+
+#: exporter%232
+msgid "Export to:"
+msgstr "Экспорт в:"
+
+#: exporter%233
+msgid "Manage exporters"
+msgstr "Управление экспортерами"
+
+#: exporter%234
+msgctxt "exporter#4"
+msgid "Preview"
+msgstr "Предварительный просмотр"
+
+#: exporter%235
+msgctxt "exporter#5"
+msgid "Settings"
+msgstr "Параметры"
+
+#: exporterDialog%231
+msgid "{} (not implemented yet)"
+msgstr "{} (пока не реализовано)"
+
+#: exporterSettings%231
+msgctxt "exporterSettings#1"
+msgid "Form"
+msgstr "Форма"
+
+#: exporterSettings%232
+msgid "Content"
+msgstr "Содержание"
+
+#: exporterSettings%233
+msgid "Decide here what will be included in the final export."
+msgstr "Решите здесь, что будет включено в окончательный экспорт."
+
+#: exporterSettings%234
+msgid "Type"
+msgstr "Тип"
+
+#: exporterSettings%235
+msgctxt "exporterSettings#5"
+msgid "Title"
+msgstr "Заголовок"
+
+#: exporterSettings%236
+msgctxt "exporterSettings#6"
+msgid "Text"
+msgstr "Текст"
+
+#: exporterSettings%237
+msgid "I need more granularity"
+msgstr "Мне нужно более детализации"
+
+#: exporterSettings%238
+msgid "Fi&lters"
+msgstr "Фи&льтры"
+
+#: exporterSettings%239
+msgid ""
+"<html><head/><body><p>Filters what items will be included in the final "
+"export.<br/><span style=\" color:#773333;\">(Not fully implemented yet.)</"
+"span></p></body></html>"
+msgstr ""
+"<html><head/><body><p>Фильтры, какие элементы будут включены в окончательный "
+"экспорт.<br/><span style=\" color:#773333;\">(не полностью реализована.)</"
+"span></p></body></html>"
+
+#: exporterSettings%2310
+msgid "Ignore compile status (include all items)"
+msgstr "Игнорировать статус сборки (включая все элементы)"
+
+#: exporterSettings%2311
+msgid "Subitems of:"
+msgstr "Подэлементы:"
+
+#: exporterSettings%2312
+msgctxt "exporterSettings#12"
+msgid "Labels"
+msgstr "Метки"
+
+#: exporterSettings%2313
+msgctxt "exporterSettings#13"
+msgid "Status"
+msgstr "Статус"
+
+#: exporterSettings%2314
+msgid "Separations"
+msgstr "Цветоделение"
+
+#: exporterSettings%2315
+msgid "Between folders:"
+msgstr "Между папками:"
+
+#: exporterSettings%2316
+msgid "Empty line"
+msgstr "Пустая строка"
+
+#: exporterSettings%2317
+msgctxt "exporterSettings#17"
+msgid "Custom"
+msgstr "Пользовательские"
+
+#: exporterSettings%2318
+msgid "Between texts:"
+msgstr "Между текстами:"
+
+#: exporterSettings%2319
+msgid "Between folder and text:"
+msgstr "Между папками и текстом:"
+
+#: exporterSettings%2320
+msgid "Between text and folder:"
+msgstr "Между текстом и папками:"
+
+#: exporterSettings%2321
+msgid "Transformations"
+msgstr "Преобразования"
+
+#: exporterSettings%2322
+msgid "Typographic replacements:"
+msgstr "Типографические замены:"
+
+#: exporterSettings%2323
+msgid "Replace double quotes (\") with:"
+msgstr "Заменить двойные кавычки (\") с:"
+
+#: exporterSettings%2324
+msgid "Replace single quotes (') with:"
+msgstr "Заменить одинарные кавычки (') с:"
+
+#: exporterSettings%2325
+msgid "Remove multiple spaces"
+msgstr "Удалить повторяющиеся пробелы"
+
+#: exporterSettings%2326
+msgid "Custom replacements:"
+msgstr "Пользовательские замены:"
+
+#: exporterSettings%2327
+msgid "Enabled"
+msgstr "Включено"
+
+#: exporterSettings%2328
+msgid "Replace"
+msgstr "Заменить"
+
+#: exporterSettings%2329
+msgid "With"
+msgstr "С"
+
+#: exporterSettings%2330
+msgid "RegExp"
+msgstr "Регулярное выражение"
+
+#: exporterSettings%2331
+msgid ""
+"If checked, uses regular expression for replacement. If unchecked, replaced "
+"as plain text."
+msgstr ""
+"Если этот флажок установлен, использует регулярное выражение для замены. "
+"Если флажок снят, будет заменен как обычный текст."
+
+#: exporterSettings%2332
+msgctxt "exporterSettings#32"
+msgid "Preview"
+msgstr "Предварительный просмотр"
+
+#: exporterSettings%2333
+msgctxt "exporterSettings#33"
+msgid "Font"
+msgstr "Шрифт"
+
+#: exporterSettings%2334
+msgctxt "exporterSettings#34"
+msgid "Font:"
+msgstr "Шрифт:"
+
+#: exporterSettings%2335
+msgctxt "exporterSettings#35"
+msgid "Font size:"
+msgstr "Размер шрифта:"
+
+#: exporterSettings%2336
+msgid "Folder"
+msgstr "Папка"
+
+#: exporterSettings%2337
+msgid "{}Level {} folder"
+msgstr "{}Уровень {} папка"
+
+#: exporterSettings%2338
+msgid "{}Level {} text"
+msgstr "{}Уровень {} текст"
+
+#: exporterSettings%2339
+msgid "Replace ... with …"
+msgstr "Заменить ... на …"
+
+#: exporterSettings%2340
+msgid "Replace --- with —"
+msgstr "Заменить --- на —"
+
+#: exportersManager%231
+msgid "Installed"
+msgstr "Установлен"
+
+#: exportersManager%232
+msgctxt "exportersManager#2"
+msgid "Custom"
+msgstr "Пользовательский"
+
+#: exportersManager%233
+msgid "Not found"
+msgstr "Не найдено"
+
+#: exportersManager%234
+msgid "{} not found. Install it, or set path manually."
+msgstr "{} не найден. Установить его, или задать путь вручную."
+
+#: exportersManager%235
+msgid "<b>Status:</b> uninstalled."
+msgstr "<b>Статус:</b> удалены."
+
+#: exportersManager%236
+msgid "<b>Requires:</b> "
+msgstr "<b>Требует:</b> "
+
+#: exportersManager%237
+msgid "Set {} executable path."
+msgstr "Установить {} путь к исполняемому файлу."
+
+#: frequencyAnalyzer%231
+msgid "Phrases"
+msgstr "Фразы"
+
+#: frequencyAnalyzer%232
+msgid "Frequency"
+msgstr "Частота"
+
+#: frequencyAnalyzer%233
+msgid "Word"
+msgstr "Слово"
+
+#: fullScreenEditor%231
+msgid "Theme:"
+msgstr "Тема:"
+
+#: fullScreenEditor%232
+msgid "{} words / {}"
+msgstr "{} слова / {}"
+
+#: fullScreenEditor%233
+msgctxt "fullScreenEditor#3"
+msgid "{} words"
+msgstr "{} слова"
+
+#: fullScreenEditor%234
+msgid "Spellcheck"
+msgstr "Проверка орфографии"
+
+#: fullScreenEditor%235
+msgid "Navigation"
+msgstr "Навигация"
+
+#: fullScreenEditor%236
+msgid "New Text"
+msgstr "Новый текст"
+
+#: fullScreenEditor%237
+msgctxt "fullScreenEditor#7"
+msgid "Title"
+msgstr "Заголовок"
+
+#: fullScreenEditor%238
+msgid "Title: Show Full Path"
+msgstr "Название: Показать полный путь"
+
+#: fullScreenEditor%239
+msgid "Theme selector"
+msgstr "Выбор темы"
+
+#: fullScreenEditor%2310
+msgctxt "fullScreenEditor#10"
+msgid "Word count"
+msgstr "Количество слов"
+
+#: fullScreenEditor%2311
+msgctxt "fullScreenEditor#11"
+msgid "Progress"
+msgstr "Прогресс"
+
+#: fullScreenEditor%2312
+msgid "Progress: Auto Show/Hide"
+msgstr "Прогресс: Авто Показать/Скрыть"
+
+#: fullScreenEditor%2313
+msgid "Clock"
+msgstr "Часы"
+
+#: fullScreenEditor%2314
+msgid "Clock: Show Seconds"
+msgstr "Часы: Показать секунды"
+
+#: generalSettings%231
+msgctxt "generalSettings#1"
+msgid "General"
+msgstr "Основные"
+
+#: generalSettings%232
+msgid "Split scenes at:"
+msgstr "Разделение сцены на:"
+
+#: generalSettings%233
+msgid "\\n---\\n"
+msgstr ""
+
+#: generalSettings%234
+msgid "Trim long titles (> 32 chars)"
+msgstr "Обрезать длинные названия (> 32 символов)"
+
+#: generalSettings%235
+msgid "Import under:"
+msgstr "Импорт по:"
+
+#: generalSettings%236
+msgid "Import in a top-level folder"
+msgstr "Импорт в папку верхнего уровня"
+
+#: helpLabel%231
+msgid "If you don't wanna see me, you can hide me in Help menu."
+msgstr "Если Вы не хотите меня видеть, вы можете меня спрятать в меню Помощь."
+
+#: importer%231
+msgid "Import"
+msgstr "Импорт"
+
+#: importer%232
+msgid "Format:"
+msgstr "Формат:"
+
+#: importer%233
+msgid "Choose file"
+msgstr "Выберите файл"
+
+#: importer%234
+msgid "Clear file"
+msgstr "Очистить файл"
+
+#: importer%235
+msgctxt "importer#5"
+msgid "Preview"
+msgstr "Предварительный просмотр"
+
+#: importer%236
+msgctxt "importer#6"
+msgid "Settings"
+msgstr "Параметры"
+
+#: lineEditView%231
+msgctxt "lineEditView#1"
+msgid "Various"
+msgstr "Различные"
+
+#: locker%231
+msgctxt "locker#1"
+msgid "Form"
+msgstr "Форма"
+
+#: locker%232
+msgid "Lock screen:"
+msgstr "Экран блокировки:"
+
+#: locker%233
+msgid "Word target"
+msgstr "Целевые слова"
+
+#: locker%234
+msgid "Time target"
+msgstr "Целевые слова"
+
+#: locker%235
+msgid " words"
+msgstr " слова"
+
+#: locker%236
+msgid " minutes"
+msgstr " минуты"
+
+#: locker%237
+msgid "Lock !"
+msgstr "Заблокировано !"
+
+#: locker%238
+msgid "~{} h."
+msgstr "~{} ч."
+
+#: locker%239
+msgid "~{} mn."
+msgstr "~{} мин."
+
+#: locker%2310
+msgid "{}:{}"
+msgstr ""
+
+#: locker%2311
+msgid "{} s."
+msgstr "{} сек."
+
+#: locker%2312
+msgid "{} remaining"
+msgstr "{} оставшиеся"
+
+#: locker%2313
+msgid "{} words remaining"
+msgstr "{} слова оставшиеся"
+
+#: mainEditor%231
+msgctxt "mainEditor#1"
+msgid "Form"
+msgstr "Форма"
+
+#: mainEditor%232
+msgctxt "mainEditor#2"
+msgid "Text"
+msgstr "Текст"
+
+#: mainEditor%233
+msgctxt "mainEditor#3"
+msgid "Index cards"
+msgstr "Карточки индекса"
+
+#: mainEditor%234
+msgctxt "mainEditor#4"
+msgid "Outline"
+msgstr "Контур"
+
+#: mainEditor%235
+msgid "F11"
+msgstr ""
+
+#: mainEditor%236
+msgid "Go to parent item"
+msgstr "Перейти к родительскому элементу"
+
+#: mainEditor%237
+msgid "Alt+Up"
+msgstr ""
+
+#: mainEditor%238
+msgctxt "mainEditor#8"
+msgid "Root"
+msgstr "Корневой"
+
+#: mainEditor%239
+msgid "{} words "
+msgstr "{} слова "
+
+#: mainEditor%2310
+msgid "({} chars) {}  words / {} "
+msgstr ""
+
+#: mainEditor%2311
+msgid "{}  words / {} "
+msgstr ""
+
+#: mainEditor%2312
+msgid "{} chars"
+msgstr ""
+
+#: mainEditor%2313
+msgid "{} chars "
+msgstr ""
+
+#: markdownSettings%231
+msgid "Markdown"
+msgstr ""
+
+#: metadataView%231
+msgctxt "metadataView#1"
+msgid "Form"
+msgstr "Форма"
+
+#: metadataView%232
+msgid "Properties"
+msgstr "Свойства"
+
+#: metadataView%233
+msgctxt "metadataView#3"
+msgid "Summary"
+msgstr "Сводка"
+
+#: metadataView%234
+msgctxt "metadataView#4"
+msgid "One line summary"
+msgstr "Описание одной строкой"
+
+#: metadataView%235
+msgctxt "metadataView#5"
+msgid "Full summary"
+msgstr "Полное резюме"
+
+#: metadataView%236
+msgid "Notes / References"
+msgstr "Примечания / Ссылки"
+
+#: metadataView%237
+msgctxt "metadataView#7"
+msgid "Revisions"
+msgstr "Изменения"
+
+#: myPanel%231
+msgid "Auto-hide"
+msgstr "Автоматически скрывать"
+
+#: outlineBasics%231
+msgid "Set POV"
+msgstr "Установить точку зрения"
+
+#: outlineBasics%232
+msgctxt "outlineBasics#2"
+msgid "None"
+msgstr "Пусто"
+
+#: outlineBasics%233
+msgid "Set Status"
+msgstr "Установить статус"
+
+#: outlineBasics%234
+msgid "Set Label"
+msgstr "Установить метку"
+
+#: outlineBasics%235
+msgctxt "outlineBasics#5"
+msgid "New"
+msgstr "Новый"
+
+#: outlineBasics%236
+msgctxt "outlineBasics#6"
+msgid "Main"
+msgstr "Главная"
+
+#: outlineBasics%237
+msgctxt "outlineBasics#7"
+msgid "Secondary"
+msgstr "Вторичный"
+
+#: outlineBasics%238
+msgctxt "outlineBasics#8"
+msgid "Minor"
+msgstr "Незначительный"
+
+#: outlineBasics%239
+msgid "Set Custom Icon"
+msgstr "Установить Пользовательскую Иконку"
+
+#: outlineBasics%2310
+msgid "Restore to default"
+msgstr "Восстановить значения по умолчанию"
+
+#: outlineBasics%2311
+msgctxt "outlineBasics#11"
+msgid "Root"
+msgstr "Корневой"
+
+#: outlineBasics%2312
+msgid "Open {} items in new tabs"
+msgstr "Открыть {} элементы в новых вкладках"
+
+#: outlineBasics%2313
+msgid "Open {} in a new tab"
+msgstr "Открыть {} в новой вкладке"
+
+#: outlineBasics%2314
+msgid "About to remove"
+msgstr "Удаление"
+
+#: outlineBasics%2315
+msgid "<p><b>You're about to delete {} item(s).</b></p><p>Are you sure?</p>"
+msgstr "<p><b>Вы собираетесь удалить {} элемент(ы).</b></p><p>Вы уверены?</p>"
+
+#: outlineBasics%2316
+msgid "Select at least two items. Folders are ignored."
+msgstr "Выберите по крайней мере два элемента. Папки игнорируются."
+
+#: outlineBasics%2317
+msgid "All items must be on the same level (share the same parent)."
+msgstr "Все предметы должны быть на том же уровне (иметь одного родителя)."
+
+#: outlineBasics%2318
+msgid "New &Folder"
+msgstr "Новые &Папки"
+
+#: outlineBasics%2319
+msgid "New &Text"
+msgstr "Новый &Текст"
+
+#: outlineBasics%2320
+msgctxt "outlineBasics#20"
+msgid "&Copy"
+msgstr "&Копировать"
+
+#: outlineBasics%2321
+msgctxt "outlineBasics#21"
+msgid "C&ut"
+msgstr "В&ырезать"
+
+#: outlineBasics%2322
+msgctxt "outlineBasics#22"
+msgid "&Paste"
+msgstr "&Вставить"
+
+#: outlineBasics%2323
+msgctxt "outlineBasics#23"
+msgid "&Rename"
+msgstr "&Переименовать"
+
+#: outlineBasics%2324
+msgctxt "outlineBasics#24"
+msgid "&Delete"
+msgstr "&Удалить"
+
+#: outlineCharacterDelegate%231
+msgctxt "outlineCharacterDelegate#1"
+msgid "None"
+msgstr "Пусто"
+
+#: outlineCharacterDelegate%232
+msgctxt "outlineCharacterDelegate#2"
+msgid "Main"
+msgstr "Главная"
+
+#: outlineCharacterDelegate%233
+msgctxt "outlineCharacterDelegate#3"
+msgid "Secondary"
+msgstr "Вторичный"
+
+#: outlineCharacterDelegate%234
+msgctxt "outlineCharacterDelegate#4"
+msgid "Minor"
+msgstr "Незначительный"
+
+#: outlineItem%231
+msgid "{} words / {} ({})"
+msgstr "{} слова / {} ({})"
+
+#: outlineItem%232
+msgctxt "outlineItem#2"
+msgid "{} words"
+msgstr "{} слова"
+
+#: pandocSettings%231
+msgctxt "pandocSettings#1"
+msgid "General"
+msgstr "Основные"
+
+#: pandocSettings%232
+msgid "Table of Content"
+msgstr "Содержание"
+
+#: pandocSettings%233
+msgid "Custom settings for {}"
+msgstr "Пользовательские настройки для {}"
+
+#: persosProxyModel%231
+msgctxt "persosProxyModel#1"
+msgid "Main"
+msgstr "Главная"
+
+#: persosProxyModel%232
+msgctxt "persosProxyModel#2"
+msgid "Secondary"
+msgstr "Второстепенный"
+
+#: persosProxyModel%233
+msgctxt "persosProxyModel#3"
+msgid "Minors"
+msgstr "Второстепенный"
+
+#: plotDelegate%231
+msgctxt "plotDelegate#1"
+msgid "General"
+msgstr "Основные"
+
+#: plotDelegate%232
+msgid "Promise"
+msgstr "Обещание"
+
+#: plotDelegate%233
+msgid "Problem"
+msgstr "Проблема"
+
+#: plotDelegate%234
+msgctxt "plotDelegate#4"
+msgid "Progress"
+msgstr "Прогресс"
+
+#: plotDelegate%235
+msgid "Resolution"
+msgstr "Разрешение"
+
+#: plotDelegate%236
+msgid "Try / Fail"
+msgstr "Попытка / Неудача"
+
+#: plotDelegate%237
+msgid "No and"
+msgstr "Нет и"
+
+#: plotDelegate%238
+msgid "Yes but"
+msgstr "Да, но"
+
+#: plotDelegate%239
+msgid "Freytag's pyramid"
+msgstr "Freytag's пирамида"
+
+#: plotDelegate%2310
+msgid "Exposition"
+msgstr "Экспозиция"
+
+#: plotDelegate%2311
+msgid "Rising action"
+msgstr "Набирающее популярность"
+
+#: plotDelegate%2312
+msgid "Climax"
+msgstr "Кульминация"
+
+#: plotDelegate%2313
+msgid "Falling action"
+msgstr "Падение"
+
+#: plotDelegate%2314
+msgid "Three acts"
+msgstr "Три акта"
+
+#: plotDelegate%2315
+msgid "1. Setup"
+msgstr "1. Установки"
+
+#: plotDelegate%2316
+msgid "1. Inciting event"
+msgstr "1. Подстрекательское событие"
+
+#: plotDelegate%2317
+msgid "1. Turning point"
+msgstr "1. Поворотный момент"
+
+#: plotDelegate%2318
+msgid "2. Choice"
+msgstr "2. Выбор"
+
+#: plotDelegate%2319
+msgid "2. Reversal"
+msgstr "2. Разворот"
+
+#: plotDelegate%2320
+msgid "2. Disaster"
+msgstr "2. Катастрофа"
+
+#: plotDelegate%2321
+msgid "3. Stand up"
+msgstr "3. Вставать"
+
+#: plotDelegate%2322
+msgid "3. Climax"
+msgstr "3. Кульминация"
+
+#: plotDelegate%2323
+msgid "3. Ending"
+msgstr "3. Концовка"
+
+#: plotDelegate%2324
+msgid "Hero's journey"
+msgstr "Путешествие героя"
+
+#: plotDelegate%2325
+msgid "Ordinary world"
+msgstr "Обычный мир"
+
+#: plotDelegate%2326
+msgid "Call to adventure"
+msgstr "Зов приключений"
+
+#: plotDelegate%2327
+msgid "Refusal of the call"
+msgstr "Отказ от вызова"
+
+#: plotDelegate%2328
+msgid "Meeting with mentor"
+msgstr "Встреча с наставником"
+
+#: plotDelegate%2329
+msgid "Tests"
+msgstr "Тесты"
+
+#: plotDelegate%2330
+msgid "Approach"
+msgstr "Подход"
+
+#: plotDelegate%2331
+msgid "Abyss"
+msgstr "Бездна"
+
+#: plotDelegate%2332
+msgid "Reward / Revelation"
+msgstr "Награда / Откровение"
+
+#: plotDelegate%2333
+msgid "Transformation"
+msgstr "Преобразование"
+
+#: plotDelegate%2334
+msgid "Atonement"
+msgstr "Искупление"
+
+#: plotDelegate%2335
+msgid "Return"
+msgstr "Возврат"
+
+#: plotModel%231
+msgctxt "plotModel#1"
+msgid "Name"
+msgstr "Имя"
+
+#: plotModel%232
+msgid "Meta"
+msgstr ""
+
+#: plotModel%233
+msgid "New step"
+msgstr "Новый шаг"
+
+#: plotModel%234
+msgctxt "plotModel#4"
+msgid "Main"
+msgstr "Главная"
+
+#: plotModel%235
+msgctxt "plotModel#5"
+msgid "Secondary"
+msgstr "Вторичный"
+
+#: plotModel%236
+msgctxt "plotModel#6"
+msgid "Minor"
+msgstr "Незначительный"
+
+#: plotTreeView%231
+msgctxt "plotTreeView#1"
+msgid "Main"
+msgstr "Главная"
+
+#: plotTreeView%232
+msgctxt "plotTreeView#2"
+msgid "Secondary"
+msgstr "Вторичный"
+
+#: plotTreeView%233
+msgctxt "plotTreeView#3"
+msgid "Minor"
+msgstr "Незначительный"
+
+#: plotTreeView%234
+msgid "**Plot:** {}"
+msgstr "**Сюжет:** {}"
+
+#: plotsProxyModel%231
+msgctxt "plotsProxyModel#1"
+msgid "Main"
+msgstr "Главная"
+
+#: plotsProxyModel%232
+msgctxt "plotsProxyModel#2"
+msgid "Secondary"
+msgstr "Второстепенный"
+
+#: plotsProxyModel%233
+msgctxt "plotsProxyModel#3"
+msgid "Minors"
+msgstr "Второстепенный"
+
+#: propertiesView%231
+msgctxt "propertiesView#1"
+msgid "Form"
+msgstr "Форма"
+
+#: propertiesView%232
+msgctxt "propertiesView#2"
+msgid "POV"
+msgstr "Точка зрения"
+
+#: propertiesView%233
+msgctxt "propertiesView#3"
+msgid "Status"
+msgstr "Статус"
+
+#: propertiesView%234
+msgctxt "propertiesView#4"
+msgid "Label"
+msgstr "Метка"
+
+#: propertiesView%235
+msgctxt "propertiesView#5"
+msgid "Compile"
+msgstr "Сборка"
+
+#: propertiesView%236
+msgctxt "propertiesView#6"
+msgid "Goal"
+msgstr "Цель"
+
+#: propertiesView%237
+msgctxt "propertiesView#7"
+msgid "Word count"
+msgstr "Количество слов"
+
+#: references%231
+msgid "Not a reference: {}."
+msgstr "Не является ссылкой: {}."
+
+#: references%232
+msgid "Unknown reference: {}."
+msgstr "Неизвестная ссылка: {}."
+
+#: references%233
+msgctxt "references#3"
+msgid "Path:"
+msgstr "Путь:"
+
+#: references%234
+msgid "Stats:"
+msgstr "Статистика:"
+
+#: references%235
+msgctxt "references#5"
+msgid "POV:"
+msgstr "Точка зрения:"
+
+#: references%236
+msgctxt "references#6"
+msgid "Status:"
+msgstr "Статус:"
+
+#: references%237
+msgid "Label:"
+msgstr "Метка:"
+
+#: references%238
+msgid "Short summary:"
+msgstr "Короткое резюме:"
+
+#: references%239
+msgid "Long summary:"
+msgstr "Длинное резюме:"
+
+#: references%2310
+msgid "Notes:"
+msgstr "Примечания:"
+
+#: references%2311
+msgctxt "references#11"
+msgid "Basic info"
+msgstr "Основная информация"
+
+#: references%2312
+msgctxt "references#12"
+msgid "Detailed info"
+msgstr "Подробная информация"
+
+#: references%2313
+msgid "POV of:"
+msgstr "Точки зрения:"
+
+#: references%2314
+msgid "Go to {}."
+msgstr "Пойти в {}."
+
+#: references%2315
+msgctxt "references#15"
+msgid "Description"
+msgstr "Описание"
+
+#: references%2316
+msgctxt "references#16"
+msgid "Result"
+msgstr "Результат"
+
+#: references%2317
+msgctxt "references#17"
+msgid "Characters"
+msgstr "Персонажи"
+
+#: references%2318
+msgctxt "references#18"
+msgid "Resolution steps"
+msgstr "Шаги решения"
+
+#: references%2319
+msgid "Passion"
+msgstr "Увлечение"
+
+#: references%2320
+msgctxt "references#20"
+msgid "Conflict"
+msgstr "Конфликт"
+
+#: references%2321
+msgid "<b>Unknown reference:</b> {}."
+msgstr "<b>Неизвестная ссылка:</b> {}."
+
+#: references%2322
+msgid "Folder: <b>{}</b>"
+msgstr "Папка: <b>{}</b>"
+
+#: references%2323
+msgid "Text: <b>{}</b>"
+msgstr "Текст: <b>{}</b>"
+
+#: references%2324
+msgid "Character: <b>{}</b>"
+msgstr "Персонаж: <b>{}</b>"
+
+#: references%2325
+msgid "Plot: <b>{}</b>"
+msgstr "Сюжет: <b>{}</b>"
+
+#: references%2326
+msgid "World: <b>{name}</b>{path}"
+msgstr "Мир: <b>{name}</b>{path}"
+
+#: references%2327
+msgid "Referenced in:"
+msgstr "Ссылка в:"
+
+#: references%2328
+msgctxt "references#28"
+msgid "Motivation"
+msgstr "Мотивация"
+
+#: references%2329
+msgctxt "references#29"
+msgid "Goal"
+msgstr "Цель"
+
+#: references%2330
+msgctxt "references#30"
+msgid "Epiphany"
+msgstr "Прозрение"
+
+#: references%2331
+msgid "Short summary"
+msgstr "Короткое резюме"
+
+#: references%2332
+msgid "Longer summary"
+msgstr "Большое резюме"
+
+#: revisions%231
+msgctxt "revisions#1"
+msgid "Form"
+msgstr "Форма"
+
+#: revisions%232
+msgid "Options"
+msgstr "Параметры"
+
+#: revisions%233
+msgid "Restore"
+msgstr "Востановить"
+
+#: revisions%234
+msgctxt "revisions#4"
+msgid "Delete"
+msgstr "Удалить"
+
+#: revisions%235
+msgid "Show modifications"
+msgstr "Показать изменения"
+
+#: revisions%236
+msgid "Show ancient version"
+msgstr "Показать древнюю версию"
+
+#: revisions%237
+msgid "Show spaces"
+msgstr "Показать пробелы"
+
+#: revisions%238
+msgid "Show modifications only"
+msgstr "Показать только изменения"
+
+#: revisions%239
+msgid "{} years ago"
+msgstr "{} лет назад"
+
+#: revisions%2310
+msgid "{} months ago"
+msgstr "{} месяцев назад"
+
+#: revisions%2311
+msgid "{} days ago"
+msgstr "{} дней назад"
+
+#: revisions%2312
+msgid "1 day ago"
+msgstr "1 день назад"
+
+#: revisions%2313
+msgid "{} hours ago"
+msgstr "{} часов назад"
+
+#: revisions%2314
+msgid "{} minutes ago"
+msgstr "{} минут назад"
+
+#: revisions%2315
+msgid "{} seconds ago"
+msgstr "{} секунд назад"
+
+#: revisions%2316
+msgid "Line {}:"
+msgstr "Строка {}:"
+
+#: revisions%2317
+msgid "Clear all"
+msgstr "Очистить все"
+
+#: search%231
+msgctxt "search#1"
+msgid "Form"
+msgstr "Форма"
+
+#: search%232
+msgid "Search for..."
+msgstr "Поиск по..."
+
+#: settingsWindow%231
+msgid "New status"
+msgstr "Новый статус"
+
+#: settingsWindow%232
+msgid "New label"
+msgstr "Новая метка"
+
+#: settingsWindow%233
+msgid "newtheme"
+msgstr "Новая тема"
+
+#: settingsWindow%234
+msgid "New theme"
+msgstr "Новая тема"
+
+#: settingsWindow%235
+msgid " (read-only)"
+msgstr " (только чтение)"
+
+#: settingsWindow%236
+msgid "Open Image"
+msgstr "Открытое изображение"
+
+#: settingsWindow%237
+msgid "Image files (*.jpg; *.jpeg; *.png)"
+msgstr "Файлы изображений (*.jpg *.jpeg *.png)"
+
+#: settingsWindow%238
+msgctxt "settingsWindow#8"
+msgid "Error"
+msgstr "Ошибка"
+
+#: settingsWindow%239
+msgid "Unable to load selected file"
+msgstr "Не удалось загрузить выбранный файл"
+
+#: settingsWindow%2310
+msgid ""
+"Unable to add selected image:\n"
+"{}"
+msgstr ""
+"Невозможно добавить выбранное изображение:\n"
+"{}"
+
+#: sldImportance%231
+msgctxt "sldImportance#1"
+msgid "Form"
+msgstr "Форма"
+
+#: sldImportance%232
+msgctxt "sldImportance#2"
+msgid "TextLabel"
+msgstr "Текстовая Метка"
+
+#: sldImportance%233
+msgctxt "sldImportance#3"
+msgid "Minor"
+msgstr "Незначительный"
+
+#: sldImportance%234
+msgctxt "sldImportance#4"
+msgid "Secondary"
+msgstr "Вторичный"
+
+#: sldImportance%235
+msgctxt "sldImportance#5"
+msgid "Main"
+msgstr "Главная"
+
+#: splitDialog%231
+msgid ""
+"\n"
+"            <p>Split selected item(s) at the given mark.</p>\n"
+"\n"
+"            <p>If one of the selected item is a folder, it will be applied\n"
+"            recursively to <i>all</i> of it's children items.</p>\n"
+"\n"
+"            <p>The split mark can contain following escape sequences:\n"
+"                <ul>\n"
+"                    <li><b><code>\\n</code></b>: line break</li>\n"
+"                    <li><b><code>\\t</code></b>: tab</li>\n"
+"                </ul>\n"
+"            </p>\n"
+"\n"
+"            <p><b>Mark:</b></p>\n"
+"            "
+msgstr ""
+"\n"
+"            <p>разделить выбранный элемент(ы) по данной метке.</p>\n"
+"\n"
+"            <p>Если один из выбранных элементов папка, она будет применяться "
+"\n"
+"            последовательно <i>все</i> у дочерних элементов.</p>\n"
+"\n"
+"            <p>Знак разделения может содержать следующие управляющие "
+"последовательности:\n"
+"                <ul>\n"
+"                    <li><b><code>\\n</code></b>: линия разрыва</li>\n"
+"                    <li><b><code>\\t</code></b>: табуляция</li>\n"
+"                </ul>\n"
+"            </p>\n"
+"\n"
+"            <p><b>Знак:</b></p>\n"
+"            "
+
+#: splitDialog%232
+msgid "Split '{}'"
+msgstr "Разделить '{}'"
+
+#: splitDialog%233
+msgid "Split items"
+msgstr "Разделить элементы"
+
+#: storylineView%231
+msgctxt "storylineView#1"
+msgid "Form"
+msgstr "Форма"
+
+#: storylineView%232
+msgid "Show Plots"
+msgstr "Показать Сюжеты"
+
+#: storylineView%233
+msgid "Show Characters"
+msgstr "Показать Персонажи"
+
+#: tabSplitter%231
+msgid "Open selected items in that view."
+msgstr "Открыть выбранные элементы в этом виде."
+
+#: tabSplitter%232
+msgid "Split horizontally"
+msgstr "Отразить по горизонтали"
+
+#: tabSplitter%233
+msgid "Close split"
+msgstr "Закрыть разделение"
+
+#: tabSplitter%234
+msgid "Split vertically"
+msgstr "Разделить по вертикали"
+
+#: textEditView%231
+msgctxt "textEditView#1"
+msgid "Various"
+msgstr "Различные"
+
+#: textFormat%231
+msgctxt "textFormat#1"
+msgid "Form"
+msgstr "Форма"
+
+#: textFormat%232
+msgid "CTRL+B"
+msgstr ""
+
+#: textFormat%233
+msgid "CTRL+I"
+msgstr ""
+
+#: textFormat%234
+msgid "CTRL+U"
+msgstr ""
+
+#: textFormat%235
+msgid "CTRL+P"
+msgstr ""
+
+#: textFormat%236
+msgid "CTRL+L"
+msgstr ""
+
+#: textFormat%237
+msgid "CTRL+E"
+msgstr ""
+
+#: textFormat%238
+msgid "CTRL+R"
+msgstr ""
+
+#: textFormat%239
+msgid "CTRL+J"
+msgstr ""
+
+#: treeView%231
+msgid "Expand {}"
+msgstr "Развернуть {}"
+
+#: treeView%232
+msgid "Collapse {}"
+msgstr "Свернуть {}"
+
+#: treeView%233
+msgid "Expand All"
+msgstr "Развернуть все"
+
+#: treeView%234
+msgid "Collapse All"
+msgstr "Свернуть все"
+
+#: welcome%231
+msgctxt "welcome#1"
+msgid "Form"
+msgstr "Форма"
+
+#: welcome%232
+msgid "1"
+msgstr ""
+
+#: welcome%233
+msgid "Templates"
+msgstr "Шаблоны"
+
+#: welcome%234
+msgid "Empty"
+msgstr "Пустые"
+
+#: welcome%235
+msgid "Novel"
+msgstr "Роман"
+
+#: welcome%236
+msgid "Novella"
+msgstr "Повесть"
+
+#: welcome%237
+msgid "Short Story"
+msgstr "Короткий рассказ"
+
+#: welcome%238
+msgid "Research paper"
+msgstr "Научная статья"
+
+#: welcome%239
+msgid "Demo projects"
+msgstr "Демонстрационные проекты"
+
+#: welcome%2310
+msgid "Add level"
+msgstr "Добавить уровень"
+
+#: welcome%2311
+msgid "Add word count"
+msgstr "Добавить количество слов"
+
+#: welcome%2312
+msgid "Next time, automatically open last project"
+msgstr "В следующий раз, автоматически открывать последний проект"
+
+#: welcome%2313
+msgid "Open..."
+msgstr "Открыть..."
+
+#: welcome%2314
+msgid "Recent"
+msgstr "Последние"
+
+#: welcome%2315
+msgid "Create"
+msgstr "Создать"
+
+#: welcome%2316
+msgid "Open project"
+msgstr "Открыть проект"
+
+#: welcome%2317
+msgid "Manuskript project (*.msk);;All files (*)"
+msgstr "Манускрипт проект (*.msk);;Все файлы (*)"
+
+#: welcome%2318
+msgid "Save project as..."
+msgstr "Сохранить проект как..."
+
+#: welcome%2319
+msgid "Manuskript project (*.msk)"
+msgstr "Манускрипт проект (*.msk)"
+
+#: welcome%2320
+msgctxt "welcome#20"
+msgid "Manuskript"
+msgstr "Манускрипт"
+
+#: welcome%2321
+msgid "Create New Project"
+msgstr "Создать новый проект"
+
+#: welcome%2322
+msgid "Warning"
+msgstr "Внимание"
+
+#: welcome%2323
+msgid "Overwrite existing project {} ?"
+msgstr "Перезаписать существующий проект {} ?"
+
+#: welcome%2324
+msgid "Empty fiction"
+msgstr "Чистый лист"
+
+#: welcome%2325
+msgid "Chapter"
+msgstr "Глава"
+
+#: welcome%2326
+msgid "Scene"
+msgstr "Сцена"
+
+#: welcome%2327
+msgid "Trilogy"
+msgstr "Трилогия"
+
+#: welcome%2328
+msgid "Book"
+msgstr "Книга"
+
+#: welcome%2329
+msgid "Section"
+msgstr "Раздел"
+
+#: welcome%2330
+msgid "Empty non-fiction"
+msgstr "Пустая научная литература"
+
+#: welcome%2331
+msgid "words each."
+msgstr "слов каждый."
+
+#: welcome%2332
+msgid "of"
+msgstr "из"
+
+#: welcome%2333
+msgctxt "welcome#33"
+msgid "Text"
+msgstr "Текст"
+
+#: welcome%2334
+msgid "Something"
+msgstr "Что-то"
+
+#: welcome%2335
+msgid "<b>Total:</b> {} words (~ {} pages)"
+msgstr "<b>Итого:</b> {} слова (~ {} страниц)"
+
+#: welcome%2336
+msgid "Fiction"
+msgstr "Художественная литература"
+
+#: welcome%2337
+msgid "Non-fiction"
+msgstr "Научно-популярные"
+
+#: welcome%2338
+msgid "Idea"
+msgstr "Идея"
+
+#: welcome%2339
+msgid "Note"
+msgstr "Заметка"
+
+#: welcome%2340
+msgid "Research"
+msgstr "Исследования"
+
+#: welcome%2341
+msgid "TODO"
+msgstr "Список дел"
+
+#: welcome%2342
+msgid "First draft"
+msgstr "Первый черновик"
+
+#: welcome%2343
+msgid "Second draft"
+msgstr "Второй черновик"
+
+#: welcome%2344
+msgid "Final"
+msgstr "Окончательный"
+
+#: worldModel%231
+msgid "New item"
+msgstr "Новый элемент"
+
+#: worldModel%232
+msgid "Fantasy world building"
+msgstr "Здание мира фэнтези"
+
+#: worldModel%233
+msgid "Physical"
+msgstr "Физические"
+
+#: worldModel%234
+msgid "Climate"
+msgstr "Климат"
+
+#: worldModel%235
+msgid "Topography"
+msgstr "Топография"
+
+#: worldModel%236
+msgid "Astronomy"
+msgstr "Астрономия"
+
+#: worldModel%237
+msgid "Wild life"
+msgstr "Дикая жизнь"
+
+#: worldModel%238
+msgid "Flora"
+msgstr "Флора"
+
+#: worldModel%239
+msgid "History"
+msgstr "История"
+
+#: worldModel%2310
+msgid "Races"
+msgstr "Гонки"
+
+#: worldModel%2311
+msgid "Diseases"
+msgstr "Заболевания"
+
+#: worldModel%2312
+msgid "Cultural"
+msgstr "Культурные"
+
+#: worldModel%2313
+msgid "Customs"
+msgstr "Таможня"
+
+#: worldModel%2314
+msgid "Food"
+msgstr "Еда"
+
+#: worldModel%2315
+msgid "Languages"
+msgstr "Языки"
+
+#: worldModel%2316
+msgid "Education"
+msgstr "Образование"
+
+#: worldModel%2317
+msgid "Dresses"
+msgstr "Платья"
+
+#: worldModel%2318
+msgid "Science"
+msgstr "Наука"
+
+#: worldModel%2319
+msgid "Calendar"
+msgstr "Календарь"
+
+#: worldModel%2320
+msgid "Bodily language"
+msgstr "Язык тела"
+
+#: worldModel%2321
+msgid "Ethics"
+msgstr "Этика"
+
+#: worldModel%2322
+msgid "Religion"
+msgstr "Религия"
+
+#: worldModel%2323
+msgid "Government"
+msgstr "Правительство"
+
+#: worldModel%2324
+msgid "Politics"
+msgstr "Политика"
+
+#: worldModel%2325
+msgid "Gender roles"
+msgstr "Гендерные роли"
+
+#: worldModel%2326
+msgid "Music and arts"
+msgstr "Музыка и искусство"
+
+#: worldModel%2327
+msgid "Architecture"
+msgstr "Архитектура"
+
+#: worldModel%2328
+msgid "Military"
+msgstr "Военные"
+
+#: worldModel%2329
+msgid "Technology"
+msgstr "Технология"
+
+#: worldModel%2330
+msgid "Courtship"
+msgstr "Ухаживания"
+
+#: worldModel%2331
+msgid "Demography"
+msgstr "Демография"
+
+#: worldModel%2332
+msgid "Transportation"
+msgstr "Транспорт"
+
+#: worldModel%2333
+msgid "Medicine"
+msgstr "Медицина"
+
+#: worldModel%2334
+msgid "Magic system"
+msgstr "Магическая система"
+
+#: worldModel%2335
+msgid "Rules"
+msgstr "Правила"
+
+#: worldModel%2336
+msgid "Organization"
+msgstr "Организация"
+
+#: worldModel%2337
+msgid "Magical objects"
+msgstr "Магические предметы"
+
+#: worldModel%2338
+msgid "Magical places"
+msgstr "Волшебные места"
+
+#: worldModel%2339
+msgid "Magical races"
+msgstr "Магические расы"
+
+#: worldModel%2340
+msgid "Important places"
+msgstr "Важные места"
+
+#: worldModel%2341
+msgid "Important objects"
+msgstr "Важные объекты"
+
+#: worldModel%2342
+msgid "Natural resources"
+msgstr "Природные ресурсы"

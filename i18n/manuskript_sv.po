@@ -1,0 +1,3988 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-04 21:21+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.20.0\n"
+
+#: Export%231
+msgid "Default exporter, provides basic formats used by other exporters."
+msgstr ""
+"Standardexportör. Erbjuder grundläggande format som andra exportörer "
+"använder."
+
+#: Export%232
+#, fuzzy
+msgid "Basic HTML output using the Python module 'markdown'."
+msgstr "Grundläggande HTML-export via python-modulen 'markdown'."
+
+#: Export%233
+#, fuzzy
+msgid "Python module 'markdown'."
+msgstr "python-modulen 'markdown'."
+
+#: Export%234
+msgid "Markdown source"
+msgstr "Markdown-källkod"
+
+#: Export%235
+msgid "HTML Source"
+msgstr "HTML-källkod"
+
+#: Export%236
+msgid "HTML Output"
+msgstr "HTML-utdata"
+
+#: Export%237
+msgid ""
+"Just like plain text, excepts adds markdown titles.\n"
+"                          Presupposes that texts are formatted in markdown."
+msgstr ""
+"Ren text med markdown-titlar\n"
+"                          Förutsätter att texterna har formaterats i "
+"markdown."
+
+#: Export%238
+msgid "Preview with highlighter."
+msgstr "Förhandsgranskning med märkpenna."
+
+#: Export%239
+msgid "Plain text"
+msgstr "Ren text"
+
+#: Export%2310
+#, fuzzy
+msgid ""
+"Simplest export to plain text. Allows you to use your own markup not "
+"understood\n"
+"                  by Manuskript, for example <a href='www.fountain.io'>"
+"Fountain</a>."
+msgstr ""
+"Enkel export till ren text. Låter dig använda egna markup-format som annars\n"
+"                  inte förstås av Manuskript, t.ex. <a "
+"href='www.fountain.io'>Fountain</a>."
+
+#: Export%2311
+msgid "A little known format modestly used. You know, web sites for example."
+msgstr "Ett relativt okänt format som används blygsamt, t.ex. på websidor."
+
+#: Export%2312
+#, fuzzy
+msgid ""
+"<p>A universal document converter. Can be used to convert Markdown to a wide "
+"range of other\n"
+"    formats.</p>\n"
+"    <p>Website: <a href=\"http://www.pandoc.org\">http://pandoc.org/</a></p>"
+"\n"
+"    "
+msgstr ""
+"<p>Universellt konverteringsverktyg för dokument. Kan användas för att "
+"konvertera markdown till många olika\n"
+"    format.</p>\n"
+"    <p>Websida: <a href=\"http://www.pandoc.org\">http://pandoc.org/</a></p>"
+"\n"
+"    "
+
+#: Export%2313
+msgctxt "Export#13"
+msgid "Error"
+msgstr "Fel"
+
+#: Export%2314
+msgid "Books that don't kill trees."
+msgstr "Böcker som inte mördar träd."
+
+#: Export%2315
+msgid "OpenDocument format. Used by LibreOffice for example."
+msgstr "OpenDocument-format. Används t.ex. av LibreOffice."
+
+#: Export%2316
+msgid "Microsoft Office (.docx) document."
+msgstr "Microsoft Office (.docx)-dokument."
+
+#: Export%2317
+#, fuzzy
+msgid "Needs LaTeX to be installed."
+msgstr "Kräver att LaTex är installerat."
+
+#: Export%2318
+#, fuzzy
+msgid ""
+"a valid LaTeX installation. Pandoc recommendations can be found on:\n"
+"                     <a href=\"https://pandoc.org/installing.html\">"
+"pandoc.org/installing.html</a>. If you want Unicode support, you need "
+"XeLaTeX."
+msgstr ""
+"en giltig LaTex-installation. Se vad pandoc rekommenderar på:\n"
+"                     <a href=\"http://pandoc.org/installing.html\">http://"
+"pandoc.org/installing.html</a>. Vill du ha stöd för unicode behöver du "
+"xelatex."
+
+#: Export%2319
+msgid ""
+"Export to markdown, using pandoc. Allows more formatting options\n"
+"    than the basic manuskript exporter."
+msgstr ""
+"Exportera till markdown via pandoc. Ger stöd för fler "
+"formateringsmöjligheter\n"
+"    jämfört med den grundläggande Manuskript-exportören."
+
+#: Export%2320
+#, fuzzy
+msgid "reStructuredText is a lightweight markup language."
+msgstr "reStructuredText är ett lättvikts-markupspråk..."
+
+#: Export%2321
+msgid ""
+"LaTeX is a word processor and document markup language used to create\n"
+"                                              beautiful documents."
+msgstr ""
+"LaTeX är ett markupspråk för ordbehandlare och dokument som används för att "
+"skapa\n"
+"                                              vackra dokument."
+
+#: Export%2322
+msgid ""
+"The purpose of this format is to provide a way to exchange information\n"
+"                                              between outliners and Internet "
+"services that can be browsed or controlled\n"
+"                                              through an outliner."
+msgstr ""
+"Detta format erbjuder en metod för informationsutbyte mellan outliners och "
+"internettjänster som\n"
+"                                              kan visas eller kontrolleras "
+"via en outliner."
+
+#: Export%2323
+msgid "Standalone document (not just a fragment)"
+msgstr "Fristående dokument (inte bara ett fragment)"
+
+#: Export%2324
+msgid "Include a table of contents."
+msgstr "Inkludera innehållsförteckning."
+
+#: Export%2325
+msgid "Number of sections level to include in TOC: "
+msgstr "Antal av sektionsnivåer för inkludering i innehållsförteckningen: "
+
+#: Export%2326
+msgid "Typographically correct output"
+msgstr "Typografiskt korrekt utdata"
+
+#: Export%2327
+msgid "Normalize the document (cleaner)"
+msgstr "Normalisera dokumentet (renare)"
+
+#: Export%2328
+msgid "Specify the base level for headers: "
+msgstr "Välj rotnivå för rubriker: "
+
+#: Export%2329
+msgid "Use reference-style links instead of inline links"
+msgstr "Använd referenslänkar i stället för infogade länkar"
+
+#: Export%2330
+msgid "Use ATX-style headers"
+msgstr "Använd ATX-rubriker"
+
+#: Export%2331
+#, fuzzy
+msgid "Self-contained HTML files, with no dependencies"
+msgstr "Fristående HTML-filer utan andra beroenden"
+
+#: Export%2332
+msgid "Use <q> tags for quotes in HTML"
+msgstr "Använd <q>-taggar för citat i HTML"
+
+#: Export%2333
+msgid "LaTeX engine used to produce the PDF."
+msgstr "LaTeX-motor som används för att skapa PDF-dokumentet."
+
+#: Export%2334
+msgid "Paper size:"
+msgstr "Pappersstorlek:"
+
+#: Export%2335
+msgctxt "Export#35"
+msgid "Font size:"
+msgstr "Teckenstorlek:"
+
+#: Export%2336
+msgid "Class:"
+msgstr "Klass:"
+
+#: Export%2337
+msgctxt "Export#37"
+msgid "Line spacing:"
+msgstr "Radavstånd:"
+
+#: Export%2338
+msgid ""
+"Disable YAML metadata block.\n"
+"Use that if you get YAML related error."
+msgstr ""
+"Avaktivera YAML metadata block.\n"
+"Använd detta om du får ett felmeddelande angående YAML."
+
+#: Export%2339
+msgid "Convert to ePUB3"
+msgstr "Konvertera till ePUB3"
+
+#: Export%2340
+msgid ""
+"Could not process regular expression: \n"
+"{}"
+msgstr ""
+"Kunde inte behandla uttrycket: \n"
+"{}"
+
+#: Export%2341
+msgid "Choose output fileâ¦"
+msgstr ""
+
+#: ExportersManager%231
+msgid "Manage Exporters"
+msgstr "Hantera Exportörer"
+
+#: ExportersManager%232
+msgctxt "ExportersManager#2"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: ExportersManager%233
+msgctxt "ExportersManager#3"
+msgid "Description"
+msgstr "Beskrivning"
+
+#: ExportersManager%234
+msgid "Offers export to"
+msgstr "Kan exportera till"
+
+#: ExportersManager%235
+msgctxt "ExportersManager#5"
+msgid "Status"
+msgstr "Status"
+
+#: ExportersManager%236
+msgctxt "ExportersManager#6"
+msgid "Status:"
+msgstr "Status:"
+
+#: ExportersManager%237
+msgid "Version:"
+msgstr "Version:"
+
+#: ExportersManager%238
+msgctxt "ExportersManager#8"
+msgid "Path:"
+msgstr "Sökväg:"
+
+#: ExportersManager%239
+msgid "..."
+msgstr "..."
+
+#: ExportersManager%2310
+msgid "{HelpText}"
+msgstr "{HelpText}"
+
+#: FrequencyAnalyzer%231
+msgid "Frequency Analyzer"
+msgstr "Frekvensanalys"
+
+#: FrequencyAnalyzer%232
+msgid "Word frequency"
+msgstr "Ordfrekvens"
+
+#: FrequencyAnalyzer%233
+msgctxt "FrequencyAnalyzer#3"
+msgid "Settings"
+msgstr "Inställningar"
+
+#: FrequencyAnalyzer%234
+msgid "Minimum size:"
+msgstr "Minsta storlek:"
+
+#: FrequencyAnalyzer%235
+#, fuzzy
+msgid "Exclude words (comma separated):"
+msgstr "Exkludera ord (komma-separerade):"
+
+#: FrequencyAnalyzer%236
+msgid "Analyze"
+msgstr "Analysera"
+
+#: FrequencyAnalyzer%237
+msgid "Phrase frequency"
+msgstr "Frasfrekvens"
+
+#: FrequencyAnalyzer%238
+msgid "Number of words: from"
+msgstr "Antal ord: från"
+
+#: FrequencyAnalyzer%239
+msgid "to"
+msgstr "till"
+
+#: Import%231
+msgid "Markdown import"
+msgstr "Import av Markdown"
+
+#: Import%232
+msgid ""
+"<b>Info:</b> A very simple\n"
+"                        parser that will go through a markdown document and\n"
+"                        create items for each titles.<br/>&nbsp;"
+msgstr ""
+"<b>Info:</b> En väldigt enkel\n"
+"                        tolk som kommer att gå genom ett Markdown-dokument\n"
+"                        och skapar objekt för varje titel.<br/>&nbsp;"
+
+#: Import%233
+msgid "Folder import"
+msgstr "Import av mappar"
+
+#: Import%234
+msgid ""
+"<p><b>Info:</b> Imports a whole\n"
+"                        directory structure. Folders are added as folders, "
+"and\n"
+"                        plaintext documents within (you chose which ones by "
+"extension)\n"
+"                        are added as scene.</p>\n"
+"                        <p>Only text files are supported (not images, binary "
+"or others).</p>"
+msgstr ""
+"<p><b>Info:</b> Importerar en hel\n"
+"                        katalogstruktur. Mappar läggs till som mappar, och\n"
+"                        vanliga textdokument inuti (du väljer vilka efter "
+"filändelse)\n"
+"                        läggs till som scener.</p>\n"
+"                        <p>Endast textfiler stöds (inte bilder, binärer "
+"eller annat).</p>"
+
+#: Import%235
+msgid "Include only those extensions:"
+msgstr "Inkludera endast dessa filändelserna:"
+
+#: Import%236
+#, fuzzy
+msgid "Comma separated values"
+msgstr "Kommasepareradevärden"
+
+#: Import%237
+msgid "Sort items by name"
+msgstr "Sortera objekt efter namn"
+
+#: Import%238
+msgid "Import folder then files"
+msgstr "Importera mapp och sedan filer"
+
+#: Import%239
+msgid "OPML Import"
+msgstr "OPML-import"
+
+#: Import%2310
+msgid "File open failed."
+msgstr "Misslyckades med att öppna fil."
+
+#: Import%2311
+msgid "This does not appear to be a valid OPML file."
+msgstr "Detta verkar inte vara en giltig OPML-fil."
+
+#: Import%2312
+msgid "Pandoc import"
+msgstr "Pandoc-import"
+
+#: Import%2313
+msgid ""
+"<b>Info:</b> Manuskript can\n"
+"                        import from <b>markdown</b> or <b>OPML</b>. Pandoc "
+"will\n"
+"                        convert your document to either (see option below), "
+"and\n"
+"                        then it will be imported in manuskript. One or the "
+"other\n"
+"                        might give better result depending on your "
+"document.\n"
+"                        <br/>&nbsp;"
+msgstr ""
+"<b>Info:</b> Manuskript kan\n"
+"                        importera från <b>markdown</b> eller <b>OPML</b>. "
+"Pandoc kommer att\n"
+"                        konvertera ditt dokument till endera (se alterntiv "
+"nedan), och\n"
+"                        sedan kommer det att importeras i manuskript. Endera "
+"kan ge\n"
+"                        bättre resultat beroende på ditt dokument.\n"
+"                        <br/>&nbsp;"
+
+#: Import%2314
+msgid "Import using:"
+msgstr "Importera via:"
+
+#: Import%2315
+msgid "Wrap lines:"
+msgstr "Radbryt rader:"
+
+#: Import%2316
+msgid ""
+"<p>Should pandoc create\n"
+"                        cosmetic / non-semantic line-breaks?</p><p>\n"
+"                        <b>auto</b>: wraps at 72 characters.<br>\n"
+"                        <b>none</b>: no line wrap.<br>\n"
+"                        <b>preserve</b>: tries to preserves line wrap from "
+"the\n"
+"                        original document.</p>"
+msgstr ""
+"<p>Ska pandoc skapa\n"
+"                        kosmetiska / icke-semantiska radbrytningar?</p><p>\n"
+"                        <b>auto</b>: radbryter efter 72 tecken.<br>\n"
+"                        <b>none</b>: inga radbrytningar.<br>\n"
+"                        <b>preserve</b>: försöker att bevara radbrytningar "
+"från\n"
+"                        originaldokumentet.</p>"
+
+#: Import%2317
+msgid "Mind Map Import"
+msgstr "Import av Mind Map"
+
+#: Import%2318
+msgid "This does not appear to be a valid Mind Map file."
+msgstr "Detta verkar inte vara en giltig Mind Map-fil."
+
+#: Import%2319
+msgid "Mind Map import"
+msgstr "Mind Map-import"
+
+#: Import%2320
+msgid "Import tip as:"
+msgstr "Importera tips som:"
+
+#: Import%2321
+msgid "Untitled"
+msgstr "Namnlös"
+
+#: MDEditCompleter%231
+msgid "Insert reference"
+msgstr "Infoga referens"
+
+#: MainWindow%231
+msgctxt "MainWindow#1"
+msgid "General"
+msgstr "Allmänt"
+
+#: MainWindow%232
+msgid "Book information"
+msgstr "Information om boken"
+
+#: MainWindow%233
+msgctxt "MainWindow#3"
+msgid "Title"
+msgstr "Titel"
+
+#: MainWindow%234
+msgid "Subtitle"
+msgstr "Undertitel"
+
+#: MainWindow%235
+msgid "Series"
+msgstr "Serie"
+
+#: MainWindow%236
+msgid "Volume"
+msgstr "Volym"
+
+#: MainWindow%237
+msgid "Genre"
+msgstr "Genre"
+
+#: MainWindow%238
+msgid "License"
+msgstr "Licens"
+
+#: MainWindow%239
+msgid "Author"
+msgstr "Författare"
+
+#: MainWindow%2310
+msgctxt "MainWindow#10"
+msgid "Name"
+msgstr "Namn"
+
+#: MainWindow%2311
+msgid "Email"
+msgstr "E-post"
+
+#: MainWindow%2312
+msgctxt "MainWindow#12"
+msgid "Summary"
+msgstr "Sammanfattning"
+
+#: MainWindow%2313
+msgid "Situation:"
+msgstr "Situation:"
+
+#: MainWindow%2314
+msgid "Summary:"
+msgstr "Sammanfattning:"
+
+#: MainWindow%2315
+msgid "One sentence"
+msgstr "En mening"
+
+#: MainWindow%2316
+msgid "One paragraph"
+msgstr "Ett stycke"
+
+#: MainWindow%2317
+msgid "One page"
+msgstr "En sida"
+
+#: MainWindow%2318
+msgid "Full"
+msgstr "Full"
+
+#: MainWindow%2319
+msgid "One sentence summary"
+msgstr "Sammanfattning i en mening"
+
+#: MainWindow%2320
+msgid "One paragraph summary"
+msgstr "Sammanfattning i ett stycke"
+
+#: MainWindow%2321
+msgid "Expand each sentence of your one paragraph summary to a paragraph"
+msgstr "Utvidga varje mening till ett stycke"
+
+#: MainWindow%2322
+msgid "One page summary"
+msgstr "Sammanfattning på en sida"
+
+#: MainWindow%2323
+msgctxt "MainWindow#23"
+msgid "Full summary"
+msgstr "Full sammanfattning"
+
+#: MainWindow%2324
+msgid "Next"
+msgstr "Nästa"
+
+#: MainWindow%2325
+msgid "What if...?"
+msgstr "Tänk om...?"
+
+#: MainWindow%2326
+msgctxt "MainWindow#26"
+msgid "Characters"
+msgstr "Karaktärer"
+
+#: MainWindow%2327
+msgid "Names"
+msgstr "Namn"
+
+#: MainWindow%2328
+msgid "Filter"
+msgstr "Filter"
+
+#: MainWindow%2329
+msgctxt "MainWindow#29"
+msgid "Basic info"
+msgstr "Grundläggande info"
+
+#: MainWindow%2330
+msgctxt "MainWindow#30"
+msgid "Motivation"
+msgstr "Motivation"
+
+#: MainWindow%2331
+msgctxt "MainWindow#31"
+msgid "Goal"
+msgstr "Mål"
+
+#: MainWindow%2332
+msgctxt "MainWindow#32"
+msgid "Conflict"
+msgstr "Konflikt"
+
+#: MainWindow%2333
+msgctxt "MainWindow#33"
+msgid "Epiphany"
+msgstr "Uppenbarelse"
+
+#: MainWindow%2334
+msgid ""
+"<html><head/><body><p align=\"right\">One sentence<br/>summary</p></body></"
+"html>"
+msgstr ""
+"<html><head/><body><p align=\"right\">Sammanfattning i en<br/>mening</p></"
+"body></html>"
+
+#: MainWindow%2335
+msgid ""
+"<html><head/><body><p align=\"right\">One paragraph<br/>summary</p></body></"
+"html>"
+msgstr ""
+"<html><head/><body><p align=\"right\">Sammanfattning i ett<br/>stycke</p></"
+"body></html>"
+
+#: MainWindow%2336
+msgid "Importance"
+msgstr "Signifikans"
+
+#: MainWindow%2337
+msgid "Notes"
+msgstr "Anteckningar"
+
+#: MainWindow%2338
+msgctxt "MainWindow#38"
+msgid "Detailed info"
+msgstr "Detaljerad info"
+
+#: MainWindow%2339
+msgctxt "MainWindow#39"
+msgid "Plots"
+msgstr "Handlingar"
+
+#: MainWindow%2340
+msgid "Plot"
+msgstr "Handling"
+
+#: MainWindow%2341
+msgid "Character(s)"
+msgstr "Karaktär(er)"
+
+#: MainWindow%2342
+msgctxt "MainWindow#42"
+msgid "Description"
+msgstr "Beskrivning"
+
+#: MainWindow%2343
+msgctxt "MainWindow#43"
+msgid "Result"
+msgstr "Resultat"
+
+#: MainWindow%2344
+msgctxt "MainWindow#44"
+msgid "Resolution steps"
+msgstr "Lösningssteg"
+
+#: MainWindow%2345
+msgctxt "MainWindow#45"
+msgid "World"
+msgstr "Värld"
+
+#: MainWindow%2346
+msgid "Populates with empty data"
+msgstr "Fylls med tom data"
+
+#: MainWindow%2347
+msgid "More"
+msgstr "Mer"
+
+#: MainWindow%2348
+msgid "Source of passion"
+msgstr "Passionskälla"
+
+#: MainWindow%2349
+msgid "Source of conflict"
+msgstr "Konfliktkälla"
+
+#: MainWindow%2350
+msgctxt "MainWindow#50"
+msgid "Outline"
+msgstr "Utkast"
+
+#: MainWindow%2351
+msgid "Editor"
+msgstr "Redigerare"
+
+#: MainWindow%2352
+msgid "Debug"
+msgstr "Debug"
+
+#: MainWindow%2353
+msgid "FlatData"
+msgstr "FlatData"
+
+#: MainWindow%2354
+msgid "Persos"
+msgstr "Persos"
+
+#: MainWindow%2355
+msgctxt "MainWindow#55"
+msgid "Labels"
+msgstr "Etiketter"
+
+#: MainWindow%2356
+msgid "&File"
+msgstr "&Arkiv"
+
+#: MainWindow%2357
+msgid "&Recent"
+msgstr "S&enaste"
+
+#: MainWindow%2358
+msgid "&Help"
+msgstr "&Hjälp"
+
+#: MainWindow%2359
+msgid "&Tools"
+msgstr "&Verktyg"
+
+#: MainWindow%2360
+msgid "&Edit"
+msgstr "&Redigera"
+
+#: MainWindow%2361
+msgid "&View"
+msgstr "&Visa"
+
+#: MainWindow%2362
+msgid "&Mode"
+msgstr "&Läge"
+
+#: MainWindow%2363
+msgid "&Cheat sheet"
+msgstr "&Fusklapp"
+
+#: MainWindow%2364
+msgid "Sea&rch"
+msgstr "S&ök"
+
+#: MainWindow%2365
+msgid "&Navigation"
+msgstr "&Navigation"
+
+#: MainWindow%2366
+msgid "&Open"
+msgstr "&Öppna"
+
+#: MainWindow%2367
+msgid "Ctrl+O"
+msgstr "Ctrl+O"
+
+#: MainWindow%2368
+msgid "&Save"
+msgstr "&Spara"
+
+#: MainWindow%2369
+msgctxt "MainWindow#69"
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: MainWindow%2370
+msgid "Sa&ve as..."
+msgstr "Spara s&om..."
+
+#: MainWindow%2371
+msgid "Ctrl+Shift+S"
+msgstr "Ctrl+Shift+S"
+
+#: MainWindow%2372
+msgid "&Quit"
+msgstr "&Avsluta"
+
+#: MainWindow%2373
+msgid "Ctrl+Q"
+msgstr "Ctrl+Q"
+
+#: MainWindow%2374
+msgid "&Show help texts"
+msgstr "&Visa hjälptexter"
+
+#: MainWindow%2375
+msgid "Ctrl+Shift+B"
+msgstr "Ctrl+Shift+B"
+
+#: MainWindow%2376
+msgid "&Spellcheck"
+msgstr "&Stavningskontroll"
+
+#: MainWindow%2377
+msgid "F9"
+msgstr "F9"
+
+#: MainWindow%2378
+msgid "&Labels..."
+msgstr "&Etiketter..."
+
+#: MainWindow%2379
+msgid "&Status..."
+msgstr "&Status..."
+
+#: MainWindow%2380
+msgctxt "MainWindow#80"
+msgid "Tree"
+msgstr "Träd"
+
+#: MainWindow%2381
+msgid "&Simple"
+msgstr "&Enkelt"
+
+#: MainWindow%2382
+msgid "&Fiction"
+msgstr "&Skönlitteratur"
+
+#: MainWindow%2383
+msgctxt "MainWindow#83"
+msgid "Index cards"
+msgstr "Registerkort"
+
+#: MainWindow%2384
+msgid "S&ettings"
+msgstr "I&nställningar"
+
+#: MainWindow%2385
+msgid "F8"
+msgstr "F8"
+
+#: MainWindow%2386
+msgid "&Close project"
+msgstr "S&täng projekt"
+
+#: MainWindow%2387
+msgid "Co&mpile"
+msgstr "Ko&mpilera"
+
+#: MainWindow%2388
+msgid "F6"
+msgstr "F6"
+
+#: MainWindow%2389
+msgid "&Frequency Analyzer"
+msgstr "&Frekvensanalys"
+
+#: MainWindow%2390
+msgid "&About"
+msgstr "&Om"
+
+#: MainWindow%2391
+msgctxt "MainWindow#91"
+msgid "About Manuskript"
+msgstr "Om Manuskript"
+
+#: MainWindow%2392
+msgctxt "MainWindow#92"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: MainWindow%2393
+#, fuzzy
+msgid "Project {} saved."
+msgstr " * {} hittades inte i projektfilen."
+
+#: MainWindow%2394
+msgid "WARNING: Project {} not saved."
+msgstr "VARNING: Projekt {} sparades ej."
+
+#: MainWindow%2395
+msgid "Project {} loaded."
+msgstr "Projekt {} laddades."
+
+#: MainWindow%2396
+msgid "Project {} loaded with some errors."
+msgstr "Projekt {} laddades med vissa fel."
+
+#: MainWindow%2397
+msgid " (~{} pages)"
+msgstr " (~{} sidor)"
+
+#: MainWindow%2398
+msgid "Words: {}{}"
+msgstr "Ord: {}{}"
+
+#: MainWindow%2399
+msgid "Book summary"
+msgstr "Sammanfattning av boken"
+
+#: MainWindow%23100
+msgid "Project tree"
+msgstr "Projektträd"
+
+#: MainWindow%23101
+msgid "Metadata"
+msgstr "Metadata"
+
+#: MainWindow%23102
+msgid "Story line"
+msgstr "Handling"
+
+#: MainWindow%23103
+msgid "Enter information about your book, and yourself."
+msgstr "Skriv information om din bok och dig själv."
+
+#: MainWindow%23104
+msgid ""
+"The basic situation, in the form of a 'What if...?' question. Ex: 'What if "
+"the most dangerous\n"
+"                     evil wizard wasn't able to kill a baby?' (Harry Potter)"
+msgstr ""
+"Den grundläggande situationen i form av en \"Tänk om...?\"-mening. Exempel: "
+"'Tänk om världens farligaste\n"
+"                     onda trollkarl misslyckades med att döda en baby?' "
+"(Harry Potter)"
+
+#: MainWindow%23105
+msgid ""
+"Take time to think about a one sentence (~50 words) summary of your book. "
+"Then expand it to\n"
+"                     a paragraph, then to a page, then to a full summary."
+msgstr ""
+"Tänk ut en kort (ca. 50 ord) mening som sammanfattar din bok. Utveckla den "
+"sedan till\n"
+"                     ett stycke, till en sida och sist till en full "
+"sammanfattning."
+
+#: MainWindow%23106
+msgid "Create your characters."
+msgstr "Skapa dina karaktärer."
+
+#: MainWindow%23107
+msgid "Develop plots."
+msgstr "Utveckla handlingen."
+
+#: MainWindow%23108
+msgid ""
+"Build worlds.  Create hierarchy of broad categories down to specific details."
+msgstr ""
+"Utforma världar.  Skapa en hierarki av generella kategorier ned till minsta "
+"detalj."
+
+#: MainWindow%23109
+msgid "Create the outline of your masterpiece."
+msgstr "Skapa ett utkast för ditt mästerverk."
+
+#: MainWindow%23110
+msgid "Write."
+msgstr "Skriv."
+
+#: MainWindow%23111
+msgid "Debug info. Sometimes useful."
+msgstr "Debug-information. Kan vara användbar."
+
+#: MainWindow%23112
+msgid "Dictionary"
+msgstr "Ordbok"
+
+#: MainWindow%23113
+msgctxt "MainWindow#113"
+msgid "Nothing"
+msgstr "Ingenting"
+
+#: MainWindow%23114
+msgctxt "MainWindow#114"
+msgid "POV"
+msgstr "Synvinkel"
+
+#: MainWindow%23115
+msgctxt "MainWindow#115"
+msgid "Label"
+msgstr "Etikett"
+
+#: MainWindow%23116
+msgctxt "MainWindow#116"
+msgid "Progress"
+msgstr "Framsteg"
+
+#: MainWindow%23117
+msgctxt "MainWindow#117"
+msgid "Compile"
+msgstr "Kompilera"
+
+#: MainWindow%23118
+msgid "Icon color"
+msgstr "Ikonfärg"
+
+#: MainWindow%23119
+msgid "Text color"
+msgstr "Textfärg"
+
+#: MainWindow%23120
+msgid "Background color"
+msgstr "Bakgrundsfärg"
+
+#: MainWindow%23121
+msgid "Icon"
+msgstr "Ikon"
+
+#: MainWindow%23122
+msgctxt "MainWindow#122"
+msgid "Text"
+msgstr "Text"
+
+#: MainWindow%23123
+msgctxt "MainWindow#123"
+msgid "Background"
+msgstr "Bakgrund"
+
+#: MainWindow%23124
+msgid "Border"
+msgstr "Kant"
+
+#: MainWindow%23125
+msgid "Corner"
+msgstr "Hörn"
+
+#: MainWindow%23126
+#, fuzzy
+msgid "Add plot step"
+msgstr "Lägg till nytt steg i handlingen (CTRL+Enter)"
+
+#: MainWindow%23127
+msgid "&Import…"
+msgstr "&Importera…"
+
+#: MainWindow%23128
+msgid "F7"
+msgstr "F7"
+
+#: MainWindow%23129
+msgctxt "MainWindow#129"
+msgid "&Copy"
+msgstr "&Kopiera"
+
+#: MainWindow%23130
+msgid "Ctrl+C"
+msgstr "Ctrl+C"
+
+#: MainWindow%23131
+msgctxt "MainWindow#131"
+msgid "C&ut"
+msgstr "K&lipp ut"
+
+#: MainWindow%23132
+msgid "Ctrl+X"
+msgstr "Ctrl+X"
+
+#: MainWindow%23133
+msgctxt "MainWindow#133"
+msgid "&Paste"
+msgstr "&Klistra in"
+
+#: MainWindow%23134
+msgid "Ctrl+V"
+msgstr "Ctrl+V"
+
+#: MainWindow%23135
+msgid "&Split…"
+msgstr "&Dela…"
+
+#: MainWindow%23136
+msgid "Ctrl+Shift+K"
+msgstr "Ctrl+Shift+K"
+
+#: MainWindow%23137
+msgid "Sp&lit at cursor"
+msgstr "De&la vid markör"
+
+#: MainWindow%23138
+msgid "Ctrl+K"
+msgstr "Ctrl+K"
+
+#: MainWindow%23139
+msgid "Ctrl+M"
+msgstr "Ctrl+M"
+
+#: MainWindow%23140
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: MainWindow%23141
+msgid "Del"
+msgstr "Del"
+
+#: MainWindow%23142
+msgid "&Move Up"
+msgstr "&Flytta upp"
+
+#: MainWindow%23143
+msgid "Ctrl+Shift+Up"
+msgstr "Ctrl+Shift+Pil upp"
+
+#: MainWindow%23144
+msgid "M&ove Down"
+msgstr "Fl&ytta ned"
+
+#: MainWindow%23145
+msgid "Ctrl+Shift+Down"
+msgstr "Ctrl+Shift+Pil ned"
+
+#: MainWindow%23146
+msgid "Dupl&icate"
+msgstr "Dupl&icera"
+
+#: MainWindow%23147
+msgctxt "MainWindow#147"
+msgid "&Delete"
+msgstr "&Ta bort"
+
+#: MainWindow%23148
+msgctxt "MainWindow#148"
+msgid "&Rename"
+msgstr "&Byt namn"
+
+#: MainWindow%23149
+msgid "F2"
+msgstr "F2"
+
+#: MainWindow%23150
+msgid "Organi&ze"
+msgstr "Organi&sera"
+
+#: MainWindow%23151
+msgid "M&erge"
+msgstr "Sa&mmanfoga"
+
+#: MainWindow%23152
+msgid "&Format"
+msgstr ""
+
+#: MainWindow%23153
+msgid "&Header"
+msgstr ""
+
+#: MainWindow%23154
+msgid "&Level 1 (setext)"
+msgstr ""
+
+#: MainWindow%23155
+msgid "Ctrl+Alt+1"
+msgstr ""
+
+#: MainWindow%23156
+msgid "Level &2"
+msgstr ""
+
+#: MainWindow%23157
+msgid "Ctrl+Alt+2"
+msgstr ""
+
+#: MainWindow%23158
+msgid "Level &1 (atx)"
+msgstr ""
+
+#: MainWindow%23159
+msgid "Ctrl+1"
+msgstr ""
+
+#: MainWindow%23160
+msgid "L&evel 2"
+msgstr ""
+
+#: MainWindow%23161
+msgid "Ctrl+2"
+msgstr ""
+
+#: MainWindow%23162
+msgid "Level &3"
+msgstr ""
+
+#: MainWindow%23163
+msgid "Ctrl+3"
+msgstr ""
+
+#: MainWindow%23164
+msgid "Level &4"
+msgstr ""
+
+#: MainWindow%23165
+msgid "Ctrl+4"
+msgstr ""
+
+#: MainWindow%23166
+msgid "Level &5"
+msgstr ""
+
+#: MainWindow%23167
+msgid "Ctrl+5"
+msgstr ""
+
+#: MainWindow%23168
+msgid "Level &6"
+msgstr ""
+
+#: MainWindow%23169
+msgid "Ctrl+6"
+msgstr ""
+
+#: MainWindow%23170
+msgid "&Bold"
+msgstr ""
+
+#: MainWindow%23171
+msgid "Ctrl+B"
+msgstr ""
+
+#: MainWindow%23172
+msgid "&Italic"
+msgstr ""
+
+#: MainWindow%23173
+msgid "Ctrl+I"
+msgstr ""
+
+#: MainWindow%23174
+msgid "&Strike"
+msgstr ""
+
+#: MainWindow%23175
+msgid "&Verbatim"
+msgstr ""
+
+#: MainWindow%23176
+msgid "Su&perscript"
+msgstr ""
+
+#: MainWindow%23177
+msgid "Ctrl++"
+msgstr ""
+
+#: MainWindow%23178
+msgid "Subsc&ript"
+msgstr ""
+
+#: MainWindow%23179
+msgid "Ctrl+-"
+msgstr ""
+
+#: MainWindow%23180
+msgid "Co&mment block"
+msgstr ""
+
+#: MainWindow%23181
+msgid "Ctrl+Shift+C"
+msgstr ""
+
+#: MainWindow%23182
+msgid "Clear &formats"
+msgstr ""
+
+#: MainWindow%23183
+msgid "Ctrl+0"
+msgstr ""
+
+#: MainWindow%23184
+msgid "&Comment line(s)"
+msgstr ""
+
+#: MainWindow%23185
+msgid "&Ordered list"
+msgstr ""
+
+#: MainWindow%23186
+msgid "&Unordered list"
+msgstr ""
+
+#: MainWindow%23187
+msgid "B&lockquote"
+msgstr ""
+
+#: MainWindow%23188
+msgid "Remove selected plot step(s)"
+msgstr ""
+
+#: MainWindow%23189
+msgid "The file {} does not exist. Has it been moved or deleted?"
+msgstr ""
+
+#: MainWindow%23190
+msgid "Install {}{} to use spellcheck"
+msgstr ""
+
+#: MainWindow%23191
+msgid "{} has no installed dictionaries"
+msgstr ""
+
+#: MainWindow%23192
+msgid "{}{} is not installed"
+msgstr ""
+
+#: MainWindow%23193
+msgid "Save project?"
+msgstr ""
+
+#: MainWindow%23194
+msgid "Save changes to project \"{}\" before closing?"
+msgstr ""
+
+#: MainWindow%23195
+msgid "Your changes will be lost if you don't save them."
+msgstr ""
+
+#: MainWindow%23196
+msgid ""
+"PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might "
+"result in a loss of data."
+msgstr ""
+
+#: MainWindow%23197
+msgid "PyQt {} and Qt {} are in use."
+msgstr ""
+
+#: MainWindow%23198
+msgid "Proceed with import at your own risk"
+msgstr ""
+
+#: MainWindow%23199
+msgid "Allow POV"
+msgstr ""
+
+#: MainWindow%23200
+msgid "Search"
+msgstr ""
+
+#: MainWindow%23201
+msgid "Ctrl+F"
+msgstr ""
+
+#: MainWindow%23202
+msgid "&Technical Support"
+msgstr ""
+
+#: MainWindow%23203
+msgid "How to obtain technical support for Manuskript."
+msgstr ""
+
+#: MainWindow%23204
+#, fuzzy
+msgid "F1"
+msgstr "F1"
+
+#: MainWindow%23205
+msgid "&Locate log file..."
+msgstr ""
+
+#: MainWindow%23206
+msgid "Locate log file"
+msgstr ""
+
+#: MainWindow%23207
+msgid "Locate the diagnostic log file used for this session."
+msgstr ""
+
+#: MainWindow%23208
+msgid "Shift+F1"
+msgstr ""
+
+#: MainWindow%23209
+msgid "Sorry!"
+msgstr ""
+
+#: MainWindow%23210
+msgid "This session is not being logged."
+msgstr ""
+
+#: MainWindow%23211
+msgid "A log file is a Work in Progress!"
+msgstr ""
+
+#: MainWindow%23212
+msgid ""
+"The log file \"{}\" will continue to be written to until Manuskript is "
+"closed."
+msgstr ""
+
+#: MainWindow%23213
+msgid ""
+"It will now be displayed in your file manager, but is of limited use until "
+"you close Manuskript."
+msgstr ""
+
+#: MainWindow%23214
+msgid "Error!"
+msgstr ""
+
+#: MainWindow%23215
+msgid ""
+"An error was encountered while trying to show the log file below in your "
+"file manager."
+msgstr ""
+
+#: MainWindow%23216
+#, fuzzy
+msgid "F3"
+msgstr "F3"
+
+#: MainWindow%23217
+msgid "Shift+F3"
+msgstr ""
+
+#: MainWindow%23218
+msgid "Situation"
+msgstr ""
+
+#: MainWindow%23219
+#, fuzzy
+msgctxt "MainWindow#219"
+msgid "Status"
+msgstr "Status"
+
+#: Search%231
+msgid "No results found"
+msgstr ""
+
+#: Settings%231
+msgctxt "Settings#1"
+msgid "Settings"
+msgstr "Inställningar"
+
+#: Settings%232
+msgctxt "Settings#2"
+msgid "General"
+msgstr "Allmänt"
+
+#: Settings%233
+msgctxt "Settings#3"
+msgid "Revisions"
+msgstr "Ändringshistorik"
+
+#: Settings%234
+msgid "Views"
+msgstr "Visningar"
+
+#: Settings%235
+msgctxt "Settings#5"
+msgid "Labels"
+msgstr "Etiketter"
+
+#: Settings%236
+msgctxt "Settings#6"
+msgid "Status"
+msgstr "Status"
+
+#: Settings%237
+msgid "Fullscreen"
+msgstr "Fullskärm"
+
+#: Settings%238
+msgid "General settings"
+msgstr "Allmänna inställningar"
+
+#: Settings%239
+#, fuzzy
+msgid "Application settings"
+msgstr "Applikationens utseende"
+
+#: Settings%2310
+msgid "Loading"
+msgstr "Uppstart"
+
+#: Settings%2311
+msgid "Automatically load last project on startup"
+msgstr "Ladda automatiskt senaste projekt vid uppstart"
+
+#: Settings%2312
+msgid "Saving"
+msgstr "Sparande"
+
+#: Settings%2313
+msgid "Automatically save every"
+msgstr "Spara automatiskt var"
+
+#: Settings%2314
+msgid "minutes."
+msgstr "minut."
+
+#: Settings%2315
+msgid "If no changes during"
+msgstr "Om inget har ändrats på"
+
+#: Settings%2316
+msgid "seconds."
+msgstr "sekunder."
+
+#: Settings%2317
+#, fuzzy
+msgid "Save on project close"
+msgstr "Spara vid avslut"
+
+#: Settings%2318
+#, fuzzy
+msgid ""
+"<html><head/><body><p>If you check this option, your project will be saved "
+"as one single file. Easier to copy or backup, but does not allow "
+"collaborative editing, or versioning.<br/>If this is unchecked, your project "
+"will be saved as a folder containing many small files.</p></body></html>"
+msgstr ""
+"<html><head/><body><p>Markeras detta alternativ sparas ditt projekt som en "
+"samlad fil. Detta gör det lättare att ta en backup eller göra en kopia, men "
+"tillåter inte gemensam redigering eller versionshantering.<br/>Markeras "
+"alternativet inte sparas ditt projekt som en mapp med många små filer.</p></"
+"body></html>"
+
+#: Settings%2319
+msgid "Save to one single file"
+msgstr "Spara i en samlad fil"
+
+#: Settings%2320
+msgid ""
+"Revisions are a way to keep track of modifications. For each text item, it "
+"stores any changes you make to the main text, allowing you to see and "
+"restoring previous versions."
+msgstr ""
+"Ändringshistorik låter dig följa dina ändringar. För varje textobjekt sparas "
+"ändringar som du har gjort vilket ger dig möjlighet till att se och "
+"återskapa tidigare versioner."
+
+#: Settings%2321
+msgid "Keep revisions"
+msgstr "Aktivera Ändringshistorik"
+
+#: Settings%2322
+msgid "S&mart remove"
+msgstr "S&mart borttagning"
+
+#: Settings%2323
+msgid "Keep:"
+msgstr "Behåll:"
+
+#: Settings%2324
+msgid ""
+"Smart remove allows you to keep only a certain number of revisions. It is "
+"strongly recommended to use it, lest you file will becomes full of thousands "
+"of insignificant changes."
+msgstr ""
+"Smart borttagning låter dig behålla ett visst antal ändringar. Du "
+"rekommenderas att använda den för att undvika att din fil fylls med "
+"tusentals av oviktiga ändringar."
+
+#: Settings%2325
+msgid "revisions per day for the last month"
+msgstr "ändringar per dag för senaste månaden"
+
+#: Settings%2326
+msgid "revisions per minute for the last 10 minutes"
+msgstr "ändringar per minut för senaste 10 minuterna"
+
+#: Settings%2327
+msgid "revisions per hour for the last day"
+msgstr "ändringar per timme för senaste dagen"
+
+#: Settings%2328
+msgid "revisions per 10 minutes for the last hour"
+msgstr "ändringar per 10 minuter för senaste timmen"
+
+#: Settings%2329
+msgid "revisions per week till the end of time"
+msgstr "ändringar per vecka tills vidare"
+
+#: Settings%2330
+msgid "Views settings"
+msgstr "Visningsinställningar"
+
+#: Settings%2331
+msgctxt "Settings#31"
+msgid "Tree"
+msgstr "Träd"
+
+#: Settings%2332
+msgid "Colors"
+msgstr "Färger"
+
+#: Settings%2333
+msgid "Icon color:"
+msgstr "Ikonfärg:"
+
+#: Settings%2334
+msgctxt "Settings#34"
+msgid "Nothing"
+msgstr "Ingenting"
+
+#: Settings%2335
+msgctxt "Settings#35"
+msgid "POV"
+msgstr "Synvinkel"
+
+#: Settings%2336
+msgctxt "Settings#36"
+msgid "Label"
+msgstr "Etikett"
+
+#: Settings%2337
+msgctxt "Settings#37"
+msgid "Progress"
+msgstr "Framsteg"
+
+#: Settings%2338
+msgctxt "Settings#38"
+msgid "Compile"
+msgstr "Kompilera"
+
+#: Settings%2339
+msgid "Text color:"
+msgstr "Textfärg:"
+
+#: Settings%2340
+msgid "Background color:"
+msgstr "Bakgrundsfärg:"
+
+#: Settings%2341
+msgid "Folders"
+msgstr "Mappar"
+
+#: Settings%2342
+msgid "Show ite&m count"
+msgstr "Visa antal obje&kt"
+
+#: Settings%2343
+msgid "Show summary"
+msgstr "Visa sammanfattning"
+
+#: Settings%2344
+msgid "&Nothing"
+msgstr "I&ngenting"
+
+#: Settings%2345
+msgctxt "Settings#45"
+msgid "Text"
+msgstr "Text"
+
+#: Settings%2346
+msgctxt "Settings#46"
+msgid "Outline"
+msgstr "Utkast"
+
+#: Settings%2347
+msgid "Visible columns"
+msgstr "Synliga kolumner"
+
+#: Settings%2348
+msgctxt "Settings#48"
+msgid "Goal"
+msgstr "Mål"
+
+#: Settings%2349
+msgctxt "Settings#49"
+msgid "Word count"
+msgstr "Antal ord"
+
+#: Settings%2350
+msgid "Percentage"
+msgstr "Procent"
+
+#: Settings%2351
+msgctxt "Settings#51"
+msgid "Title"
+msgstr "Titel"
+
+#: Settings%2352
+msgctxt "Settings#52"
+msgid "Index cards"
+msgstr "Registerkort"
+
+#: Settings%2353
+msgctxt "Settings#53"
+msgid "Background"
+msgstr "Bakgrund"
+
+#: Settings%2354
+msgid "Color:"
+msgstr "Färg:"
+
+#: Settings%2355
+msgctxt "Settings#55"
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: Settings%2356
+msgid "Image:"
+msgstr "Bild:"
+
+#: Settings%2357
+msgid "Style"
+msgstr "Utseende"
+
+#: Settings%2358
+msgid "Item colors"
+msgstr "Objektfärger"
+
+#: Settings%2359
+msgid "Border color:"
+msgstr "Kantfärg:"
+
+#: Settings%2360
+msgid "Corner color:"
+msgstr "Hörnfärg:"
+
+#: Settings%2361
+msgid "Text editor"
+msgstr "Textredigerare"
+
+#: Settings%2362
+msgctxt "Settings#62"
+msgid "Font"
+msgstr "Typsnitt"
+
+#: Settings%2363
+msgid "Family:"
+msgstr "Familj:"
+
+#: Settings%2364
+msgid "Size:"
+msgstr "Teckenstorlek:"
+
+#: Settings%2365
+msgid "Misspelled:"
+msgstr "Felstavat:"
+
+#: Settings%2366
+msgid "Background:"
+msgstr "Bakgrund:"
+
+#: Settings%2367
+msgid "Cursor"
+msgstr "Markör"
+
+#: Settings%2368
+msgid "Use block insertion of"
+msgstr "Använd blockmarkör på"
+
+#: Settings%2369
+msgid " px"
+msgstr " pixlar"
+
+#: Settings%2370
+msgid "Paragraphs"
+msgstr "Stycke"
+
+#: Settings%2371
+msgctxt "Settings#71"
+msgid "Line spacing:"
+msgstr "Radavstånd:"
+
+#: Settings%2372
+msgid "Single"
+msgstr "Enkelt"
+
+#: Settings%2373
+msgid "1.5 lines"
+msgstr "1.5 rader"
+
+#: Settings%2374
+msgid "Double"
+msgstr "Dubbelt"
+
+#: Settings%2375
+msgid "Proportional"
+msgstr "Proportionellt"
+
+#: Settings%2376
+msgid "%"
+msgstr "%"
+
+#: Settings%2377
+msgid "Tab width:"
+msgstr "Tabb-bredd:"
+
+#: Settings%2378
+msgid "Indent 1st line"
+msgstr "Indrag på rad 1"
+
+#: Settings%2379
+msgid "Spacing:"
+msgstr "Avstånd:"
+
+#: Settings%2380
+msgid "Alignment:"
+msgstr "Justering:"
+
+#: Settings%2381
+msgid "Left"
+msgstr "Vänster"
+
+#: Settings%2382
+msgid "Center"
+msgstr "Centrera"
+
+#: Settings%2383
+msgid "Right"
+msgstr "Höger"
+
+#: Settings%2384
+msgid "Justify"
+msgstr "Justerad"
+
+#: Settings%2385
+msgctxt "Settings#85"
+msgid "New"
+msgstr "Ny"
+
+#: Settings%2386
+msgid "Edit"
+msgstr "Redigera"
+
+#: Settings%2387
+msgctxt "Settings#87"
+msgid "Delete"
+msgstr "Ta bort"
+
+#: Settings%2388
+msgid "Theme name:"
+msgstr "Temats namn:"
+
+#: Settings%2389
+msgid "Apply"
+msgstr "Använd"
+
+#: Settings%2390
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: Settings%2391
+msgid "Window Background"
+msgstr "Fönsterbakgrund"
+
+#: Settings%2392
+msgid "Text Background"
+msgstr "Textbakgrund"
+
+#: Settings%2393
+msgid "Text Options"
+msgstr "Textinställningar"
+
+#: Settings%2394
+msgid "Paragraph Options"
+msgstr "Styckesinställningar"
+
+#: Settings%2395
+msgid "Type:"
+msgstr "Typ:"
+
+#: Settings%2396
+msgid "No Image"
+msgstr "Ingen bild"
+
+#: Settings%2397
+msgid "Tiled"
+msgstr "Sida vid sida"
+
+#: Settings%2398
+msgid "Centered"
+msgstr "Centrerad"
+
+#: Settings%2399
+msgid "Stretched"
+msgstr "Sträckt"
+
+#: Settings%23100
+msgid "Scaled"
+msgstr "Skalad"
+
+#: Settings%23101
+msgid "Zoomed"
+msgstr "Zoomad"
+
+#: Settings%23102
+msgid "Opacity:"
+msgstr "Opacitet:"
+
+#: Settings%23103
+msgid "Position:"
+msgstr "Position:"
+
+#: Settings%23104
+msgid "Width:"
+msgstr "Bredd:"
+
+#: Settings%23105
+msgid "Corner radius:"
+msgstr "Hörnradie:"
+
+#: Settings%23106
+msgid "Margins:"
+msgstr "Marginaler:"
+
+#: Settings%23107
+msgid "Padding:"
+msgstr "Utfyllnad:"
+
+#: Settings%23108
+msgctxt "Settings#108"
+msgid "Font:"
+msgstr "Typsnitt:"
+
+#: Settings%23109
+msgid "Alignment"
+msgstr "Justering"
+
+#: Settings%23110
+msgid "Icon Size"
+msgstr "Storlek på ikoner"
+
+#: Settings%23111
+msgctxt "Settings#111"
+msgid "TextLabel"
+msgstr "TextEtikett"
+
+#: Settings%23112
+msgid "Disable blinking"
+msgstr "Avaktivera blinkning"
+
+#: Settings%23113
+msgid "Text area"
+msgstr "Textområde"
+
+#: Settings%23114
+msgid "Max width"
+msgstr "Maximal bredd"
+
+#: Settings%23115
+msgid "Left/Right margins:"
+msgstr "Vänster-/Höger-marginaler:"
+
+#: Settings%23116
+msgid "Top/Bottom margins:"
+msgstr "Topp-/Botten-marginaler:"
+
+#: Settings%23117
+msgid "S&how progress"
+msgstr "Visa &framsteg"
+
+#: Settings%23118
+msgid "Show summar&y"
+msgstr "Visa samman&fattning"
+
+#: Settings%23119
+msgid "Show p&rogress"
+msgstr "Visa fram&steg"
+
+#: Settings%23120
+msgid "Old st&yle"
+msgstr "Gammal &stil"
+
+#: Settings%23121
+msgid "Transparent"
+msgstr "Transparent"
+
+#: Settings%23122
+msgid "Restore defaults"
+msgstr "Återställ standardvärden"
+
+#: Settings%23123
+msgid "Style:"
+msgstr ""
+
+#: Settings%23124
+msgid "Language:"
+msgstr ""
+
+#: Settings%23125
+#, fuzzy
+msgctxt "Settings#125"
+msgid "Font size:"
+msgstr "Teckenstorlek:"
+
+#: Settings%23126
+msgid "Restarting Manuskript ensures all settings take effect."
+msgstr ""
+
+#: Settings%23127
+msgid "Show &word count"
+msgstr ""
+
+#: Settings%23128
+msgid "&Show word count"
+msgstr ""
+
+#: Settings%23129
+msgid "&New style"
+msgstr ""
+
+#: Settings%23130
+msgid "Typewriter mode"
+msgstr ""
+
+#: Settings%23131
+msgid "Focus mode"
+msgstr ""
+
+#: Settings%23132
+#, fuzzy
+msgctxt "Settings#132"
+msgid "None"
+msgstr "Ingen"
+
+#: Settings%23133
+msgid "Sentence"
+msgstr ""
+
+#: Settings%23134
+msgid "Line"
+msgstr ""
+
+#: Settings%23135
+msgid "Paragraph"
+msgstr ""
+
+#: Settings%23136
+msgid ""
+"<p><b>The Revisions feature has been at the source of many reported issues. "
+"In this version of Manuskript it has been turned off by default for new "
+"projects in order to provide the best experience.</b></p><p>Why aren't these "
+"issues fixed already? <a href=\"https://www.theologeek.ch/manuskript/"
+"contribute/\">We need your help to make Manuskript better!</a></p>"
+msgstr ""
+
+#: Settings%23137
+msgid ""
+"Show progress in chars next\n"
+" to words"
+msgstr ""
+
+#: Settings%23138
+msgid "Char/Word Counter"
+msgstr ""
+
+#: Settings%23139
+msgid "Count spaces as chars"
+msgstr ""
+
+#: Settings%23140
+msgid "Show char c&ount"
+msgstr ""
+
+#: Settings%23141
+msgid "Sho&w char count"
+msgstr ""
+
+#: SpellAction%231
+msgid "Spelling Suggestions"
+msgstr "Stavningsförslag"
+
+#: SpellAction%232
+msgid "&Add to dictionary"
+msgstr "&Lägg till i ordbok"
+
+#: SpellAction%233
+msgid "&Remove from custom dictionary"
+msgstr "&Ta bort från ordbok"
+
+#: SpellAction%234
+msgid "&New Character"
+msgstr ""
+
+#: SpellAction%235
+msgid "&New Plot Item"
+msgstr ""
+
+#: SpellAction%236
+msgid "&New World Item"
+msgstr ""
+
+#: SpellAction%237
+msgid "&Correction Suggestions"
+msgstr ""
+
+#: SpellAction%238
+msgid "&Correction Suggestion"
+msgstr ""
+
+#: about%231
+msgctxt "about#1"
+msgid "About Manuskript"
+msgstr "Om Manuskript"
+
+#: about%232
+msgctxt "about#2"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: aboutDialog%231
+msgid "Version"
+msgstr "Version"
+
+#: aboutDialog%232
+msgid "Software Versions in Use:"
+msgstr "Programvaruversion som används:"
+
+#: abstractModel%231
+msgctxt "abstractModel#1"
+msgid "Title"
+msgstr "Titel"
+
+#: abstractModel%232
+msgctxt "abstractModel#2"
+msgid "POV"
+msgstr "Synvinkel"
+
+#: abstractModel%233
+msgctxt "abstractModel#3"
+msgid "Label"
+msgstr "Etikett"
+
+#: abstractModel%234
+msgctxt "abstractModel#4"
+msgid "Status"
+msgstr "Status"
+
+#: abstractModel%235
+msgctxt "abstractModel#5"
+msgid "Compile"
+msgstr "Kompilera"
+
+#: abstractModel%236
+msgctxt "abstractModel#6"
+msgid "Word count"
+msgstr "Antal ord"
+
+#: abstractModel%237
+msgctxt "abstractModel#7"
+msgid "Goal"
+msgstr "Mål"
+
+#: basicItemView%231
+msgctxt "basicItemView#1"
+msgid "Form"
+msgstr "Formulär"
+
+#: basicItemView%232
+msgctxt "basicItemView#2"
+msgid "POV:"
+msgstr "Synvinkel:"
+
+#: basicItemView%233
+msgid "Goal:"
+msgstr "Mål:"
+
+#: basicItemView%234
+msgctxt "basicItemView#4"
+msgid "Word count"
+msgstr "Antal ord"
+
+#: basicItemView%235
+msgctxt "basicItemView#5"
+msgid "One line summary"
+msgstr "Sammanfattning på en rad"
+
+#: basicItemView%236
+msgid "Few sentences summary:"
+msgstr "Sammanfattning i ett par meningar:"
+
+#: characterModel%231
+msgctxt "characterModel#1"
+msgid "Name"
+msgstr "Namn"
+
+#: characterModel%232
+msgid "Value"
+msgstr "Värde"
+
+#: characterTreeView%231
+msgctxt "characterTreeView#1"
+msgid "Main"
+msgstr "Huvudkaraktär"
+
+#: characterTreeView%232
+msgctxt "characterTreeView#2"
+msgid "Secondary"
+msgstr "Bikaraktär"
+
+#: characterTreeView%233
+msgctxt "characterTreeView#3"
+msgid "Minor"
+msgstr "Statist"
+
+#: cheatSheet%231
+msgctxt "cheatSheet#1"
+msgid "Form"
+msgstr "Formulär"
+
+#: cheatSheet%232
+msgid "Filter (type the name of anything in your project)"
+msgstr "Filtrera (skriv namnet på något i ditt projekt)"
+
+#: cheatSheet%233
+msgctxt "cheatSheet#3"
+msgid "Minor"
+msgstr "Statist"
+
+#: cheatSheet%234
+msgctxt "cheatSheet#4"
+msgid "Secondary"
+msgstr "Bikaraktär"
+
+#: cheatSheet%235
+msgctxt "cheatSheet#5"
+msgid "Main"
+msgstr "Huvudkaraktär"
+
+#: cheatSheet%236
+msgctxt "cheatSheet#6"
+msgid "Characters"
+msgstr "Karaktärer"
+
+#: cheatSheet%237
+msgid "Texts"
+msgstr "Texter"
+
+#: cheatSheet%238
+msgctxt "cheatSheet#8"
+msgid "Plots"
+msgstr "Handlingar"
+
+#: cheatSheet%239
+msgctxt "cheatSheet#9"
+msgid "World"
+msgstr "Värld"
+
+#: cmbOutlineCharacterChoser%231
+msgctxt "cmbOutlineCharacterChoser#1"
+msgid "None"
+msgstr "Ingen"
+
+#: cmbOutlineCharacterChoser%232
+msgctxt "cmbOutlineCharacterChoser#2"
+msgid "Main"
+msgstr "Huvudkaraktär"
+
+#: cmbOutlineCharacterChoser%233
+msgctxt "cmbOutlineCharacterChoser#3"
+msgid "Secondary"
+msgstr "Bikaraktär"
+
+#: cmbOutlineCharacterChoser%234
+msgctxt "cmbOutlineCharacterChoser#4"
+msgid "Minor"
+msgstr "Statist"
+
+#: cmbOutlineCharacterChoser%235
+msgctxt "cmbOutlineCharacterChoser#5"
+msgid "Various"
+msgstr "Diverse"
+
+#: cmbOutlineLabelChoser%231
+msgctxt "cmbOutlineLabelChoser#1"
+msgid "Various"
+msgstr "Diverse"
+
+#: cmbOutlineStatusChoser%231
+msgctxt "cmbOutlineStatusChoser#1"
+msgid "Various"
+msgstr "Diverse"
+
+#: collapsibleDockWidgets%231
+msgid "Dock Widgets Toolbar"
+msgstr "Verktygsrad för Dock Widgets"
+
+#: completer%231
+msgctxt "completer#1"
+msgid "Form"
+msgstr "Formulär"
+
+#: corkDelegate%231
+msgctxt "corkDelegate#1"
+msgid "One line summary"
+msgstr "Sammanfattning på en rad"
+
+#: corkDelegate%232
+msgctxt "corkDelegate#2"
+msgid "Full summary"
+msgstr "Full sammanfattning"
+
+#: editorWidget_ui%231
+msgctxt "editorWidget_ui#1"
+msgid "Form"
+msgstr "Formulär"
+
+#: exporter%231
+msgid "Export"
+msgstr "Exportera"
+
+#: exporter%232
+msgid "Export to:"
+msgstr "Exportera till:"
+
+#: exporter%233
+msgid "Manage exporters"
+msgstr "Hantera exportörer"
+
+#: exporter%234
+msgctxt "exporter#4"
+msgid "Preview"
+msgstr "Förhandsgranska"
+
+#: exporter%235
+msgctxt "exporter#5"
+msgid "Settings"
+msgstr "Inställningar"
+
+#: exporterDialog%231
+msgid "{} (not implemented yet)"
+msgstr "{} (ej implementerat ännu)"
+
+#: exporterSettings%231
+msgctxt "exporterSettings#1"
+msgid "Form"
+msgstr "Formulär"
+
+#: exporterSettings%232
+msgid "Content"
+msgstr "Innehåll"
+
+#: exporterSettings%233
+msgid "Decide here what will be included in the final export."
+msgstr "Här bestämmer du vad som ska inkluderas i det exporterade materialet."
+
+#: exporterSettings%234
+msgid "Type"
+msgstr "Typ"
+
+#: exporterSettings%235
+msgctxt "exporterSettings#5"
+msgid "Title"
+msgstr "Titel"
+
+#: exporterSettings%236
+msgctxt "exporterSettings#6"
+msgid "Text"
+msgstr "Text"
+
+#: exporterSettings%237
+msgid "I need more granularity"
+msgstr "Jag behöver mer precision"
+
+#: exporterSettings%238
+msgid "Fi&lters"
+msgstr "Fi&lter"
+
+#: exporterSettings%239
+msgid ""
+"<html><head/><body><p>Filters what items will be included in the final "
+"export.<br/><span style=\" color:#773333;\">(Not fully implemented yet.)</"
+"span></p></body></html>"
+msgstr ""
+"<html><head/><body><p>Filtrerar vilka objekt som inkluderas i det "
+"exporterade materialet.<br/><span style=\" color:#773333;\">(Ej helt "
+"implementerat ännu.)</span></p></body></html>"
+
+#: exporterSettings%2310
+msgid "Ignore compile status (include all items)"
+msgstr "Ignorera kompileringsstatus (inkludera alla objekt)"
+
+#: exporterSettings%2311
+msgid "Subitems of:"
+msgstr "Underordnade objekt av:"
+
+#: exporterSettings%2312
+msgctxt "exporterSettings#12"
+msgid "Labels"
+msgstr "Etiketter"
+
+#: exporterSettings%2313
+msgctxt "exporterSettings#13"
+msgid "Status"
+msgstr "Status"
+
+#: exporterSettings%2314
+msgid "Separations"
+msgstr "Uppdelningar"
+
+#: exporterSettings%2315
+msgid "Between folders:"
+msgstr "Mellan mappar:"
+
+#: exporterSettings%2316
+msgid "Empty line"
+msgstr "Tom rad"
+
+#: exporterSettings%2317
+msgctxt "exporterSettings#17"
+msgid "Custom"
+msgstr "Anpassad"
+
+#: exporterSettings%2318
+msgid "Between texts:"
+msgstr "Mellan texter:"
+
+#: exporterSettings%2319
+msgid "Between folder and text:"
+msgstr "Mellan mapp och text:"
+
+#: exporterSettings%2320
+msgid "Between text and folder:"
+msgstr "Mellan text och mapp:"
+
+#: exporterSettings%2321
+msgid "Transformations"
+msgstr "Omvandlingar"
+
+#: exporterSettings%2322
+msgid "Typographic replacements:"
+msgstr "Typografiska ersättningar:"
+
+#: exporterSettings%2323
+msgid "Replace ... with â¦"
+msgstr "Ersätt ... med â¦"
+
+#: exporterSettings%2324
+msgid "Replace --- with â"
+msgstr "Ersätt --- med —"
+
+#: exporterSettings%2325
+msgid "Replace double quotes (\") with:"
+msgstr "Ersätt dubbla citattecken (\") med:"
+
+#: exporterSettings%2326
+msgid "Replace single quotes (') with:"
+msgstr "Ersätt enkla citattecken (') med:"
+
+#: exporterSettings%2327
+msgid "Remove multiple spaces"
+msgstr "Ta bort upprepade mellanrum"
+
+#: exporterSettings%2328
+msgid "Custom replacements:"
+msgstr "Anpassade ersättningar:"
+
+#: exporterSettings%2329
+msgid "Enabled"
+msgstr "Aktiverad"
+
+#: exporterSettings%2330
+msgid "Replace"
+msgstr "Ersätt"
+
+#: exporterSettings%2331
+msgid "With"
+msgstr "Med"
+
+#: exporterSettings%2332
+msgid "RegExp"
+msgstr "Reguljärt Uttryck"
+
+#: exporterSettings%2333
+msgid ""
+"If checked, uses regular expression for replacement. If unchecked, replaced "
+"as plain text."
+msgstr ""
+"Om markerad, använd reguljära uttryck för ersättningar. Annars, ersätt som "
+"ren text."
+
+#: exporterSettings%2334
+msgctxt "exporterSettings#34"
+msgid "Preview"
+msgstr "Förhandsgranska"
+
+#: exporterSettings%2335
+msgctxt "exporterSettings#35"
+msgid "Font"
+msgstr "Typsnitt"
+
+#: exporterSettings%2336
+msgctxt "exporterSettings#36"
+msgid "Font:"
+msgstr "Typsnitt:"
+
+#: exporterSettings%2337
+msgctxt "exporterSettings#37"
+msgid "Font size:"
+msgstr "Teckenstorlek:"
+
+#: exporterSettings%2338
+msgid "Folder"
+msgstr "Mapp"
+
+#: exporterSettings%2339
+msgid "{}Level {} folder"
+msgstr "{}Nivå {} mapp"
+
+#: exporterSettings%2340
+msgid "{}Level {} text"
+msgstr "{}Nivå {} text"
+
+#: exportersManager%231
+msgid "Installed"
+msgstr "Installerad"
+
+#: exportersManager%232
+msgctxt "exportersManager#2"
+msgid "Custom"
+msgstr "Anpassad"
+
+#: exportersManager%233
+msgid "Not found"
+msgstr "Hittades ej"
+
+#: exportersManager%234
+msgid "{} not found. Install it, or set path manually."
+msgstr "{} hittades ej. Installera den, eller sätt sökvägen manuellt."
+
+#: exportersManager%235
+msgid "<b>Status:</b> uninstalled."
+msgstr "<b>Status:</b> avinstallerad."
+
+#: exportersManager%236
+msgid "<b>Requires:</b> "
+msgstr "<b>Kräver:</b> "
+
+#: exportersManager%237
+msgid "Set {} executable path."
+msgstr "Sätt sökvägen för {}."
+
+#: frequencyAnalyzer%231
+msgid "Phrases"
+msgstr "Fraser"
+
+#: frequencyAnalyzer%232
+msgid "Frequency"
+msgstr "Frekvens"
+
+#: frequencyAnalyzer%233
+msgid "Word"
+msgstr "Ord"
+
+#: fullScreenEditor%231
+msgid "Theme:"
+msgstr "Tema:"
+
+#: fullScreenEditor%232
+msgid "{} words / {}"
+msgstr "{} ord / {}"
+
+#: fullScreenEditor%233
+msgctxt "fullScreenEditor#3"
+msgid "{} words"
+msgstr "{} ord"
+
+#: fullScreenEditor%234
+msgid "Spellcheck"
+msgstr ""
+
+#: fullScreenEditor%235
+msgid "Navigation"
+msgstr ""
+
+#: fullScreenEditor%236
+msgid "New Text"
+msgstr ""
+
+#: fullScreenEditor%237
+#, fuzzy
+msgctxt "fullScreenEditor#7"
+msgid "Title"
+msgstr "Titel"
+
+#: fullScreenEditor%238
+msgid "Title: Show Full Path"
+msgstr ""
+
+#: fullScreenEditor%239
+msgid "Theme selector"
+msgstr ""
+
+#: fullScreenEditor%2310
+#, fuzzy
+msgctxt "fullScreenEditor#10"
+msgid "Word count"
+msgstr "Antal ord"
+
+#: fullScreenEditor%2311
+#, fuzzy
+msgctxt "fullScreenEditor#11"
+msgid "Progress"
+msgstr "Framsteg"
+
+#: fullScreenEditor%2312
+msgid "Progress: Auto Show/Hide"
+msgstr ""
+
+#: fullScreenEditor%2313
+msgid "Clock"
+msgstr ""
+
+#: fullScreenEditor%2314
+msgid "Clock: Show Seconds"
+msgstr ""
+
+#: generalSettings%231
+msgctxt "generalSettings#1"
+msgid "General"
+msgstr "Allmänt"
+
+#: generalSettings%232
+msgid "Split scenes at:"
+msgstr "Dela scener vid:"
+
+#: generalSettings%233
+msgid "\\n---\\n"
+msgstr "\\n---\\n"
+
+#: generalSettings%234
+msgid "Trim long titles (> 32 chars)"
+msgstr "Trimma långa titlar (> 32 tecken)"
+
+#: generalSettings%235
+msgid "Import under:"
+msgstr "Importera under:"
+
+#: generalSettings%236
+msgid "Import in a top-level folder"
+msgstr "Importera till en toppnivåmapp"
+
+#: helpLabel%231
+msgid "If you don't wanna see me, you can hide me in Help menu."
+msgstr "Om du inte vill se mig kan du gömma mig via Hjälp-menyn."
+
+#: importer%231
+msgid "Import"
+msgstr "Importera"
+
+#: importer%232
+msgid "Format:"
+msgstr "Format:"
+
+#: importer%233
+#, fuzzy
+msgid "Choose file"
+msgstr "Välj fil"
+
+#: importer%234
+msgid "Clear file"
+msgstr "Rensa fil"
+
+#: importer%235
+msgctxt "importer#5"
+msgid "Preview"
+msgstr "Förhandsgranska"
+
+#: importer%236
+msgctxt "importer#6"
+msgid "Settings"
+msgstr "Inställningar"
+
+#: lineEditView%231
+msgctxt "lineEditView#1"
+msgid "Various"
+msgstr "Diverse"
+
+#: locker%231
+msgctxt "locker#1"
+msgid "Form"
+msgstr "Formulär"
+
+#: locker%232
+msgid "Lock screen:"
+msgstr "Skärmlås:"
+
+#: locker%233
+msgid "Word target"
+msgstr "Ordmål"
+
+#: locker%234
+msgid "Time target"
+msgstr "Tidmål"
+
+#: locker%235
+msgid " words"
+msgstr " ord"
+
+#: locker%236
+msgid " minutes"
+msgstr " minuter"
+
+#: locker%237
+msgid "Lock !"
+msgstr "Lås!"
+
+#: locker%238
+msgid "~{} h."
+msgstr "~{} t."
+
+#: locker%239
+msgid "~{} mn."
+msgstr "~{} min."
+
+#: locker%2310
+msgid "{}:{}"
+msgstr "{}:{}"
+
+#: locker%2311
+msgid "{} s."
+msgstr "{} s."
+
+#: locker%2312
+msgid "{} remaining"
+msgstr "{} återstår"
+
+#: locker%2313
+msgid "{} words remaining"
+msgstr "{} ord återstår"
+
+#: mainEditor%231
+msgctxt "mainEditor#1"
+msgid "Form"
+msgstr "Formulär"
+
+#: mainEditor%232
+msgid "Go to parent item"
+msgstr "Gå till överordnat objekt"
+
+#: mainEditor%233
+msgid "Alt+Up"
+msgstr "Alt+Upp"
+
+#: mainEditor%234
+msgctxt "mainEditor#4"
+msgid "Text"
+msgstr "Text"
+
+#: mainEditor%235
+msgctxt "mainEditor#5"
+msgid "Index cards"
+msgstr "Registerkort"
+
+#: mainEditor%236
+msgctxt "mainEditor#6"
+msgid "Outline"
+msgstr "Utkast"
+
+#: mainEditor%237
+msgid "F11"
+msgstr "F11"
+
+#: mainEditor%238
+msgctxt "mainEditor#8"
+msgid "Root"
+msgstr "Rot"
+
+#: mainEditor%239
+msgid "{} words "
+msgstr "{} ord "
+
+#: mainEditor%2310
+msgid "({} chars) {}  words / {} "
+msgstr ""
+
+#: mainEditor%2311
+msgid "{}  words / {} "
+msgstr ""
+
+#: mainEditor%2312
+msgid "{} chars"
+msgstr ""
+
+#: mainEditor%2313
+msgid "{} chars "
+msgstr ""
+
+#: markdownSettings%231
+msgid "Markdown"
+msgstr "Markdown"
+
+#: metadataView%231
+msgctxt "metadataView#1"
+msgid "Form"
+msgstr "Formulär"
+
+#: metadataView%232
+msgid "Properties"
+msgstr "Egenskaper"
+
+#: metadataView%233
+msgctxt "metadataView#3"
+msgid "Summary"
+msgstr "Sammanfattning"
+
+#: metadataView%234
+msgctxt "metadataView#4"
+msgid "One line summary"
+msgstr "Sammanfattning på en rad"
+
+#: metadataView%235
+msgctxt "metadataView#5"
+msgid "Full summary"
+msgstr "Full sammanfattning"
+
+#: metadataView%236
+msgid "Notes / References"
+msgstr "Anteckningar / Referenser"
+
+#: metadataView%237
+msgctxt "metadataView#7"
+msgid "Revisions"
+msgstr "Ändringshistorik"
+
+#: myPanel%231
+msgid "Auto-hide"
+msgstr "Göm automatiskt"
+
+#: outlineBasics%231
+msgid "Set POV"
+msgstr "Ange Synvinkel"
+
+#: outlineBasics%232
+msgctxt "outlineBasics#2"
+msgid "None"
+msgstr "Ingen"
+
+#: outlineBasics%233
+msgctxt "outlineBasics#3"
+msgid "Main"
+msgstr "Huvudkaraktär"
+
+#: outlineBasics%234
+msgctxt "outlineBasics#4"
+msgid "Secondary"
+msgstr "Bikaraktär"
+
+#: outlineBasics%235
+msgctxt "outlineBasics#5"
+msgid "Minor"
+msgstr "Statist"
+
+#: outlineBasics%236
+msgid "Set Status"
+msgstr "Ange Status"
+
+#: outlineBasics%237
+msgid "Set Label"
+msgstr "Ange Etikett"
+
+#: outlineBasics%238
+msgctxt "outlineBasics#8"
+msgid "New"
+msgstr "Ny"
+
+#: outlineBasics%239
+msgid "Set Custom Icon"
+msgstr "Välj Anpassad Ikon"
+
+#: outlineBasics%2310
+msgid "Restore to default"
+msgstr "Återställ till standard"
+
+#: outlineBasics%2311
+msgctxt "outlineBasics#11"
+msgid "Root"
+msgstr "Rot"
+
+#: outlineBasics%2312
+msgid "Open {} items in new tabs"
+msgstr "Öppna {} objekt i nya flikar"
+
+#: outlineBasics%2313
+msgid "Open {} in a new tab"
+msgstr "Öppna {} i en ny flik"
+
+#: outlineBasics%2314
+msgid "About to remove"
+msgstr "Håller på att ta bort"
+
+#: outlineBasics%2315
+msgid "<p><b>You're about to delete {} item(s).</b></p><p>Are you sure?</p>"
+msgstr "<p><b>Du håller på att ta bort {} objekt.</b></p><p>Är du säker?</p>"
+
+#: outlineBasics%2316
+msgid "Select at least two items. Folders are ignored."
+msgstr "Välj åtminstone två objekt. Mappar hoppas över."
+
+#: outlineBasics%2317
+msgid "All items must be on the same level (share the same parent)."
+msgstr "Alla objekt måste vara på samma nivå (dela samma förälder)."
+
+#: outlineBasics%2318
+msgid "New &Folder"
+msgstr "Ny &mapp"
+
+#: outlineBasics%2319
+msgid "New &Text"
+msgstr "Ny &text"
+
+#: outlineBasics%2320
+msgctxt "outlineBasics#20"
+msgid "&Copy"
+msgstr "&Kopiera"
+
+#: outlineBasics%2321
+msgctxt "outlineBasics#21"
+msgid "C&ut"
+msgstr "Klipp &ut"
+
+#: outlineBasics%2322
+msgctxt "outlineBasics#22"
+msgid "&Paste"
+msgstr "&Klistra in"
+
+#: outlineBasics%2323
+msgctxt "outlineBasics#23"
+msgid "&Rename"
+msgstr "&Byt namn"
+
+#: outlineBasics%2324
+msgctxt "outlineBasics#24"
+msgid "&Delete"
+msgstr "&Ta bort"
+
+#: outlineCharacterDelegate%231
+msgctxt "outlineCharacterDelegate#1"
+msgid "None"
+msgstr "Ingen"
+
+#: outlineCharacterDelegate%232
+msgctxt "outlineCharacterDelegate#2"
+msgid "Main"
+msgstr "Huvudkaraktär"
+
+#: outlineCharacterDelegate%233
+msgctxt "outlineCharacterDelegate#3"
+msgid "Secondary"
+msgstr "Bikaraktär"
+
+#: outlineCharacterDelegate%234
+msgctxt "outlineCharacterDelegate#4"
+msgid "Minor"
+msgstr "Statist"
+
+#: outlineItem%231
+msgid "{} words / {} ({})"
+msgstr "{} ord / {} ({})"
+
+#: outlineItem%232
+msgctxt "outlineItem#2"
+msgid "{} words"
+msgstr "{} ord"
+
+#: pandocSettings%231
+msgctxt "pandocSettings#1"
+msgid "General"
+msgstr "Allmänt"
+
+#: pandocSettings%232
+msgid "Table of Content"
+msgstr "Innehållsförteckning"
+
+#: pandocSettings%233
+msgid "Custom settings for {}"
+msgstr "Anpassade inställningar för {}"
+
+#: persosProxyModel%231
+msgctxt "persosProxyModel#1"
+msgid "Main"
+msgstr "Huvudkaraktär"
+
+#: persosProxyModel%232
+#, fuzzy
+msgctxt "persosProxyModel#2"
+msgid "Secondary"
+msgstr "Bikaraktär"
+
+#: persosProxyModel%233
+msgctxt "persosProxyModel#3"
+msgid "Minors"
+msgstr "Statist"
+
+#: plotDelegate%231
+msgctxt "plotDelegate#1"
+msgid "General"
+msgstr "Allmänt"
+
+#: plotDelegate%232
+msgid "Promise"
+msgstr "Löfte"
+
+#: plotDelegate%233
+msgid "Problem"
+msgstr "Problem"
+
+#: plotDelegate%234
+msgctxt "plotDelegate#4"
+msgid "Progress"
+msgstr "Framsteg"
+
+#: plotDelegate%235
+msgid "Resolution"
+msgstr "Lösning"
+
+#: plotDelegate%236
+msgid "Try / Fail"
+msgstr "Försök och misslyckas"
+
+#: plotDelegate%237
+msgid "No and"
+msgstr "Nej, och"
+
+#: plotDelegate%238
+msgid "Yes but"
+msgstr "Ja, men"
+
+#: plotDelegate%239
+msgid "Freytag's pyramid"
+msgstr "Freytags pyramid"
+
+#: plotDelegate%2310
+msgid "Exposition"
+msgstr "Utläggning"
+
+#: plotDelegate%2311
+msgid "Rising action"
+msgstr "Stigande spänning"
+
+#: plotDelegate%2312
+msgid "Climax"
+msgstr "Klimax"
+
+#: plotDelegate%2313
+msgid "Falling action"
+msgstr "Sjunkande spänning"
+
+#: plotDelegate%2314
+msgid "Three acts"
+msgstr "Tre akter"
+
+#: plotDelegate%2315
+msgid "1. Setup"
+msgstr "1. Uppsättning"
+
+#: plotDelegate%2316
+#, fuzzy
+msgid "1. Inciting event"
+msgstr "Färden över tröskeln"
+
+#: plotDelegate%2317
+msgid "1. Turning point"
+msgstr "1. Vändpunkt"
+
+#: plotDelegate%2318
+msgid "2. Choice"
+msgstr "2. Val"
+
+#: plotDelegate%2319
+msgid "2. Reversal"
+msgstr "2. Omkastning"
+
+#: plotDelegate%2320
+msgid "2. Disaster"
+msgstr "2. Katastrof"
+
+#: plotDelegate%2321
+msgid "3. Stand up"
+msgstr "3. Stå upp"
+
+#: plotDelegate%2322
+msgid "3. Climax"
+msgstr "3. Klimax"
+
+#: plotDelegate%2323
+msgid "3. Ending"
+msgstr "3. Slut"
+
+#: plotDelegate%2324
+msgid "Hero's journey"
+msgstr "Hjälteresan"
+
+#: plotDelegate%2325
+msgid "Ordinary world"
+msgstr "En vanlig värld"
+
+#: plotDelegate%2326
+msgid "Call to adventure"
+msgstr "Kallelsen till äventyret"
+
+#: plotDelegate%2327
+msgid "Refusal of the call"
+msgstr "Kallelsen avvisas"
+
+#: plotDelegate%2328
+msgid "Meeting with mentor"
+msgstr "Mötet med mentorn"
+
+#: plotDelegate%2329
+msgid "Tests"
+msgstr "Prövningar"
+
+#: plotDelegate%2330
+msgid "Approach"
+msgstr "Närmande"
+
+#: plotDelegate%2331
+msgid "Abyss"
+msgstr "Avgrunden"
+
+#: plotDelegate%2332
+msgid "Reward / Revelation"
+msgstr "Belöning / Uppenbarelse"
+
+#: plotDelegate%2333
+msgid "Transformation"
+msgstr "Förvandling"
+
+#: plotDelegate%2334
+msgid "Atonement"
+msgstr "Försoning"
+
+#: plotDelegate%2335
+msgid "Return"
+msgstr "Återkomst"
+
+#: plotModel%231
+msgctxt "plotModel#1"
+msgid "Name"
+msgstr "Namn"
+
+#: plotModel%232
+msgid "Meta"
+msgstr "Meta"
+
+#: plotModel%233
+msgid "New step"
+msgstr "Nytt steg"
+
+#: plotModel%234
+msgctxt "plotModel#4"
+msgid "Main"
+msgstr "Huvudkaraktär"
+
+#: plotModel%235
+msgctxt "plotModel#5"
+msgid "Secondary"
+msgstr "Bikaraktär"
+
+#: plotModel%236
+msgctxt "plotModel#6"
+msgid "Minor"
+msgstr "Statist"
+
+#: plotTreeView%231
+msgctxt "plotTreeView#1"
+msgid "Main"
+msgstr "Huvudkaraktär"
+
+#: plotTreeView%232
+msgctxt "plotTreeView#2"
+msgid "Secondary"
+msgstr "Bikaraktär"
+
+#: plotTreeView%233
+msgctxt "plotTreeView#3"
+msgid "Minor"
+msgstr "Statist"
+
+#: plotTreeView%234
+msgid "**Plot:** {}"
+msgstr "**Handling:** {}"
+
+#: plotsProxyModel%231
+msgctxt "plotsProxyModel#1"
+msgid "Main"
+msgstr "Huvudkaraktär"
+
+#: plotsProxyModel%232
+#, fuzzy
+msgctxt "plotsProxyModel#2"
+msgid "Secondary"
+msgstr "Bikaraktär"
+
+#: plotsProxyModel%233
+msgctxt "plotsProxyModel#3"
+msgid "Minors"
+msgstr "Statist"
+
+#: propertiesView%231
+msgctxt "propertiesView#1"
+msgid "Form"
+msgstr "Formulär"
+
+#: propertiesView%232
+msgctxt "propertiesView#2"
+msgid "POV"
+msgstr "Synvinkel"
+
+#: propertiesView%233
+msgctxt "propertiesView#3"
+msgid "Status"
+msgstr "Status"
+
+#: propertiesView%234
+msgctxt "propertiesView#4"
+msgid "Label"
+msgstr "Etikett"
+
+#: propertiesView%235
+msgctxt "propertiesView#5"
+msgid "Compile"
+msgstr "Kompilera"
+
+#: propertiesView%236
+msgctxt "propertiesView#6"
+msgid "Goal"
+msgstr "Mål"
+
+#: propertiesView%237
+msgctxt "propertiesView#7"
+msgid "Word count"
+msgstr "Antal ord"
+
+#: references%231
+msgid "Not a reference: {}."
+msgstr "Inte en referens: {}."
+
+#: references%232
+msgid "Unknown reference: {}."
+msgstr "Okänd referens: {}."
+
+#: references%233
+msgctxt "references#3"
+msgid "Path:"
+msgstr "Sökväg:"
+
+#: references%234
+msgid "Stats:"
+msgstr "Statistik:"
+
+#: references%235
+msgctxt "references#5"
+msgid "POV:"
+msgstr "Synvinkel:"
+
+#: references%236
+msgctxt "references#6"
+msgid "Status:"
+msgstr "Status:"
+
+#: references%237
+msgid "Label:"
+msgstr "Etikett:"
+
+#: references%238
+msgid "Short summary:"
+msgstr "Kort sammanfattning:"
+
+#: references%239
+msgid "Long summary:"
+msgstr "Lång sammanfattning:"
+
+#: references%2310
+msgid "Notes:"
+msgstr "Anteckningar:"
+
+#: references%2311
+msgctxt "references#11"
+msgid "Basic info"
+msgstr "Grundläggande info"
+
+#: references%2312
+msgctxt "references#12"
+msgid "Detailed info"
+msgstr "Detaljerad info"
+
+#: references%2313
+msgid "POV of:"
+msgstr "Synvinkel:"
+
+#: references%2314
+msgid "Go to {}."
+msgstr "Gå till {}."
+
+#: references%2315
+msgctxt "references#15"
+msgid "Motivation"
+msgstr "Motivering"
+
+#: references%2316
+msgctxt "references#16"
+msgid "Goal"
+msgstr "Mål"
+
+#: references%2317
+msgctxt "references#17"
+msgid "Conflict"
+msgstr "Konflikt"
+
+#: references%2318
+msgctxt "references#18"
+msgid "Epiphany"
+msgstr "Uppenbarelse"
+
+#: references%2319
+msgid "Short summary"
+msgstr "Kort sammanfattning"
+
+#: references%2320
+msgid "Longer summary"
+msgstr "Längre sammanfattning"
+
+#: references%2321
+msgctxt "references#21"
+msgid "Description"
+msgstr "Beskrivning"
+
+#: references%2322
+msgctxt "references#22"
+msgid "Result"
+msgstr "Resultat"
+
+#: references%2323
+msgctxt "references#23"
+msgid "Characters"
+msgstr "Karaktärer"
+
+#: references%2324
+msgctxt "references#24"
+msgid "Resolution steps"
+msgstr "Lösningssteg"
+
+#: references%2325
+msgid "Passion"
+msgstr "Passion"
+
+#: references%2326
+msgid "<b>Unknown reference:</b> {}."
+msgstr "<b>Okänd referens:</b> {}."
+
+#: references%2327
+msgid "Folder: <b>{}</b>"
+msgstr "Mapp: <b>{}</b>"
+
+#: references%2328
+msgid "Text: <b>{}</b>"
+msgstr "Text: <b>{}</b>"
+
+#: references%2329
+msgid "Character: <b>{}</b>"
+msgstr "Karaktär: <b>{}</b>"
+
+#: references%2330
+msgid "Plot: <b>{}</b>"
+msgstr "Handling: <b>{}</b>"
+
+#: references%2331
+msgid "World: <b>{name}</b>{path}"
+msgstr "Värld: <b>{name}</b>{path}"
+
+#: references%2332
+msgid "Referenced in:"
+msgstr "Refereras till i:"
+
+#: revisions%231
+msgctxt "revisions#1"
+msgid "Form"
+msgstr "Formulär"
+
+#: revisions%232
+msgid "Options"
+msgstr "Alternativ"
+
+#: revisions%233
+msgid "Restore"
+msgstr "Återskapa"
+
+#: revisions%234
+msgctxt "revisions#4"
+msgid "Delete"
+msgstr "Ta bort"
+
+#: revisions%235
+msgid "Show modifications"
+msgstr "Visa ändringar"
+
+#: revisions%236
+msgid "Show ancient version"
+msgstr "Visa gammal version"
+
+#: revisions%237
+msgid "Show spaces"
+msgstr "Visa mellanrum"
+
+#: revisions%238
+msgid "Show modifications only"
+msgstr "Visa endast ändringar"
+
+#: revisions%239
+msgid "{} years ago"
+msgstr "{} år sedan"
+
+#: revisions%2310
+msgid "{} months ago"
+msgstr "{} månader sedan"
+
+#: revisions%2311
+msgid "{} days ago"
+msgstr "{} dagar sedan"
+
+#: revisions%2312
+msgid "1 day ago"
+msgstr "1 dag sedan"
+
+#: revisions%2313
+msgid "{} hours ago"
+msgstr "{} timmar sedan"
+
+#: revisions%2314
+msgid "{} minutes ago"
+msgstr "{} minuter sedan"
+
+#: revisions%2315
+msgid "{} seconds ago"
+msgstr "{} sekunder sedan"
+
+#: revisions%2316
+msgid "Line {}:"
+msgstr "Rad {}:"
+
+#: revisions%2317
+msgid "Clear all"
+msgstr "Rensa"
+
+#: search%231
+msgctxt "search#1"
+msgid "Form"
+msgstr "Formulär"
+
+#: search%232
+msgid "Search for..."
+msgstr "Sök efter..."
+
+#: settingsWindow%231
+msgid "New status"
+msgstr "Ny status"
+
+#: settingsWindow%232
+msgid "New label"
+msgstr "Ny etikett"
+
+#: settingsWindow%233
+msgid "newtheme"
+msgstr "newtheme"
+
+#: settingsWindow%234
+msgid "New theme"
+msgstr "Nytt tema"
+
+#: settingsWindow%235
+msgid " (read-only)"
+msgstr " (skrivskyddad)"
+
+#: settingsWindow%236
+msgid "Open Image"
+msgstr ""
+
+#: settingsWindow%237
+msgid "Image files (*.jpg; *.jpeg; *.png)"
+msgstr ""
+
+#: settingsWindow%238
+#, fuzzy
+msgctxt "settingsWindow#8"
+msgid "Error"
+msgstr "Fel"
+
+#: settingsWindow%239
+msgid "Unable to load selected file"
+msgstr ""
+
+#: settingsWindow%2310
+msgid ""
+"Unable to add selected image:\n"
+"{}"
+msgstr ""
+
+#: sldImportance%231
+msgctxt "sldImportance#1"
+msgid "Form"
+msgstr "Formulär"
+
+#: sldImportance%232
+msgctxt "sldImportance#2"
+msgid "TextLabel"
+msgstr "TextLabel"
+
+#: sldImportance%233
+msgctxt "sldImportance#3"
+msgid "Minor"
+msgstr "Statist"
+
+#: sldImportance%234
+msgctxt "sldImportance#4"
+msgid "Secondary"
+msgstr "Bikaraktär"
+
+#: sldImportance%235
+msgctxt "sldImportance#5"
+msgid "Main"
+msgstr "Huvudkaraktär"
+
+#: splitDialog%231
+#, fuzzy
+msgid ""
+"\n"
+"            <p>Split selected item(s) at the given mark.</p>\n"
+"\n"
+"            <p>If one of the selected item is a folder, it will be applied\n"
+"            recursively to <i>all</i> of it's children items.</p>\n"
+"\n"
+"            <p>The split mark can contain following escape sequences:\n"
+"                <ul>\n"
+"                    <li><b><code>\\n</code></b>: line break</li>\n"
+"                    <li><b><code>\\t</code></b>: tab</li>\n"
+"                </ul>\n"
+"            </p>\n"
+"\n"
+"            <p><b>Mark:</b></p>\n"
+"            "
+msgstr ""
+"\n"
+"            <p>Dela markerade objekt vid det angivna märket.</p>\n"
+"\n"
+"            <p>Om ett av de markerade objekten är en mapp kommer\n"
+"            detta att tillämpas rekursivt för <i>alla</i> dess barnobjekt.</"
+"p>\n"
+"\n"
+"            <p>Delningsmärket kan innehålla följande kontrollsekvenser:\n"
+"                <ul>\n"
+"                    <li><b><code>\\n</code></b>: radbrytning</li>\n"
+"                    <li><b><code>\\t</code></b>: tabb</li>\n"
+"                </ul>\n"
+"            </p>\n"
+"\n"
+"            <p><b>Märke:</b></p>\n"
+"            "
+
+#: splitDialog%232
+msgid "Split '{}'"
+msgstr "Dela '{}'"
+
+#: splitDialog%233
+msgid "Split items"
+msgstr "Dela objekt"
+
+#: storylineView%231
+msgctxt "storylineView#1"
+msgid "Form"
+msgstr "Formulär"
+
+#: storylineView%232
+msgid "Show Plots"
+msgstr "Visa Handlingar"
+
+#: storylineView%233
+msgid "Show Characters"
+msgstr "Visa Karaktärer"
+
+#: tabSplitter%231
+msgid "Open selected items in that view."
+msgstr "Öppna valda objekt i den visningen."
+
+#: tabSplitter%232
+msgid "Split horizontally"
+msgstr "Dela horisontellt"
+
+#: tabSplitter%233
+msgid "Close split"
+msgstr "Stäng delning"
+
+#: tabSplitter%234
+msgid "Split vertically"
+msgstr "Dela vertikalt"
+
+#: textEditView%231
+msgctxt "textEditView#1"
+msgid "Various"
+msgstr "Diverse"
+
+#: textFormat%231
+msgctxt "textFormat#1"
+msgid "Form"
+msgstr "Formulär"
+
+#: textFormat%232
+msgid "CTRL+B"
+msgstr "CTRL+B"
+
+#: textFormat%233
+msgid "CTRL+I"
+msgstr "CTRL+I"
+
+#: textFormat%234
+msgid "CTRL+U"
+msgstr "CTRL+U"
+
+#: textFormat%235
+msgid "CTRL+P"
+msgstr "CTRL+P"
+
+#: textFormat%236
+msgid "CTRL+L"
+msgstr "CTRL+L"
+
+#: textFormat%237
+msgid "CTRL+E"
+msgstr "CTRL+E"
+
+#: textFormat%238
+msgid "CTRL+R"
+msgstr "CTRL+R"
+
+#: textFormat%239
+msgid "CTRL+J"
+msgstr "CTRL+J"
+
+#: treeView%231
+msgid "Expand {}"
+msgstr "Expandera {}"
+
+#: treeView%232
+msgid "Collapse {}"
+msgstr "Minimera {}"
+
+#: treeView%233
+msgid "Expand All"
+msgstr "Expandera Alla"
+
+#: treeView%234
+msgid "Collapse All"
+msgstr "Minimera Alla"
+
+#: welcome%231
+msgctxt "welcome#1"
+msgid "Form"
+msgstr "Formulär"
+
+#: welcome%232
+msgid "1"
+msgstr "1"
+
+#: welcome%233
+msgid "Templates"
+msgstr "Mallar"
+
+#: welcome%234
+msgid "Empty"
+msgstr "Tom"
+
+#: welcome%235
+msgid "Novel"
+msgstr "Roman"
+
+#: welcome%236
+msgid "Novella"
+msgstr "Längre novell"
+
+#: welcome%237
+msgid "Short Story"
+msgstr "Kortare novell"
+
+#: welcome%238
+msgid "Research paper"
+msgstr "Uppsats"
+
+#: welcome%239
+msgid "Demo projects"
+msgstr "Demoprojekt"
+
+#: welcome%2310
+msgid "Add level"
+msgstr "Lägg till nivå"
+
+#: welcome%2311
+#, fuzzy
+msgid "Add word count"
+msgstr "Lägg till antal ord"
+
+#: welcome%2312
+msgid "Next time, automatically open last project"
+msgstr "Öppna automatiskt det senaste projektet nästa gång"
+
+#: welcome%2313
+msgid "Open..."
+msgstr "Öppna..."
+
+#: welcome%2314
+msgid "Recent"
+msgstr "Senaste"
+
+#: welcome%2315
+msgid "Create"
+msgstr "Skapa"
+
+#: welcome%2316
+msgid "Open project"
+msgstr "Öppna projekt"
+
+#: welcome%2317
+msgid "Manuskript project (*.msk);;All files (*)"
+msgstr "Manuskript-projekt (*.msk);;Alla filer (*)"
+
+#: welcome%2318
+msgid "Save project as..."
+msgstr "Spara projekt som..."
+
+#: welcome%2319
+msgid "Manuskript project (*.msk)"
+msgstr "Manuskript-projekt (*.msk)"
+
+#: welcome%2320
+msgctxt "welcome#20"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: welcome%2321
+msgid "Create New Project"
+msgstr "Skapa Nytt Projekt"
+
+#: welcome%2322
+msgid "Warning"
+msgstr "Varning"
+
+#: welcome%2323
+msgid "Overwrite existing project {} ?"
+msgstr "Skriv över existerande projekt {} ?"
+
+#: welcome%2324
+msgid "Empty fiction"
+msgstr "Tom skönlitteratur"
+
+#: welcome%2325
+msgid "Chapter"
+msgstr "Kapitel"
+
+#: welcome%2326
+msgid "Scene"
+msgstr "Scen"
+
+#: welcome%2327
+msgid "Trilogy"
+msgstr "Trilogi"
+
+#: welcome%2328
+msgid "Book"
+msgstr "Bok"
+
+#: welcome%2329
+msgid "Section"
+msgstr "Avsnitt"
+
+#: welcome%2330
+msgid "Empty non-fiction"
+msgstr "Tom facklitteratur"
+
+#: welcome%2331
+msgid "words each."
+msgstr "ord vardera."
+
+#: welcome%2332
+msgid "of"
+msgstr "av"
+
+#: welcome%2333
+msgctxt "welcome#33"
+msgid "Text"
+msgstr "Text"
+
+#: welcome%2334
+msgid "Something"
+msgstr "Någonting"
+
+#: welcome%2335
+msgid "<b>Total:</b> {} words (~ {} pages)"
+msgstr "<b>Total:</b> {} ord (~ {} sidor)"
+
+#: welcome%2336
+msgid "Fiction"
+msgstr "Skönlitteratur"
+
+#: welcome%2337
+msgid "Non-fiction"
+msgstr "Facklitteratur"
+
+#: welcome%2338
+msgid "Idea"
+msgstr "Idé"
+
+#: welcome%2339
+msgid "Note"
+msgstr "Anteckning"
+
+#: welcome%2340
+msgid "Research"
+msgstr "Referensinformation"
+
+#: welcome%2341
+msgid "TODO"
+msgstr "Att Göra"
+
+#: welcome%2342
+msgid "First draft"
+msgstr "Första utkast"
+
+#: welcome%2343
+msgid "Second draft"
+msgstr "Andra utkast"
+
+#: welcome%2344
+msgid "Final"
+msgstr "Slutgiltig"
+
+#: worldModel%231
+msgid "New item"
+msgstr "Nytt Objekt"
+
+#: worldModel%232
+msgid "Fantasy world building"
+msgstr "Utformning av fantasivärld"
+
+#: worldModel%233
+msgid "Physical"
+msgstr "Fysiska egenskaper"
+
+#: worldModel%234
+msgid "Climate"
+msgstr "Klimat"
+
+#: worldModel%235
+msgid "Topography"
+msgstr "Landskap"
+
+#: worldModel%236
+msgid "Astronomy"
+msgstr "Astronomi"
+
+#: worldModel%237
+msgid "Wild life"
+msgstr "Djurliv"
+
+#: worldModel%238
+msgid "Flora"
+msgstr "Flora"
+
+#: worldModel%239
+msgid "History"
+msgstr "Historia"
+
+#: worldModel%2310
+msgid "Races"
+msgstr "Raser"
+
+#: worldModel%2311
+msgid "Diseases"
+msgstr "Sjukdomar"
+
+#: worldModel%2312
+msgid "Cultural"
+msgstr "Kulturella egenskaper"
+
+#: worldModel%2313
+msgid "Customs"
+msgstr "Seder och skick"
+
+#: worldModel%2314
+msgid "Food"
+msgstr "Mat"
+
+#: worldModel%2315
+msgid "Languages"
+msgstr "Språk"
+
+#: worldModel%2316
+msgid "Education"
+msgstr "Utbildning"
+
+#: worldModel%2317
+msgid "Dresses"
+msgstr "Kläder"
+
+#: worldModel%2318
+msgid "Science"
+msgstr "Vetenskap"
+
+#: worldModel%2319
+msgid "Calendar"
+msgstr "Kalender"
+
+#: worldModel%2320
+msgid "Bodily language"
+msgstr "Kropsspråk"
+
+#: worldModel%2321
+msgid "Ethics"
+msgstr "Etik"
+
+#: worldModel%2322
+msgid "Religion"
+msgstr "Religion"
+
+#: worldModel%2323
+msgid "Government"
+msgstr "Statsskick"
+
+#: worldModel%2324
+msgid "Politics"
+msgstr "Politik"
+
+#: worldModel%2325
+msgid "Gender roles"
+msgstr "Könsroller"
+
+#: worldModel%2326
+msgid "Music and arts"
+msgstr "Musik och konst"
+
+#: worldModel%2327
+msgid "Architecture"
+msgstr "Arkitektur"
+
+#: worldModel%2328
+msgid "Military"
+msgstr "Militär"
+
+#: worldModel%2329
+msgid "Technology"
+msgstr "Teknologi"
+
+#: worldModel%2330
+msgid "Courtship"
+msgstr "Uppvaktning"
+
+#: worldModel%2331
+msgid "Demography"
+msgstr "Demografi"
+
+#: worldModel%2332
+msgid "Transportation"
+msgstr "Transport"
+
+#: worldModel%2333
+msgid "Medicine"
+msgstr "Medicin"
+
+#: worldModel%2334
+msgid "Magic system"
+msgstr "Magisystem"
+
+#: worldModel%2335
+msgid "Rules"
+msgstr "Regler"
+
+#: worldModel%2336
+msgid "Organization"
+msgstr "Organisering"
+
+#: worldModel%2337
+msgid "Magical objects"
+msgstr "Magiska objekt"
+
+#: worldModel%2338
+msgid "Magical places"
+msgstr "Magiska platser"
+
+#: worldModel%2339
+msgid "Magical races"
+msgstr "Magiska raser"
+
+#: worldModel%2340
+msgid "Important places"
+msgstr "Viktiga platser"
+
+#: worldModel%2341
+msgid "Important objects"
+msgstr "Viktiga objekt"
+
+#: worldModel%2342
+msgid "Natural resources"
+msgstr ""

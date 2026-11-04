@@ -1,0 +1,3984 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-04 21:21+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.20.0\n"
+
+#: Export%231
+msgid "Basic HTML output using the Python module 'markdown'."
+msgstr "파이썬 모듈 ‘마크다운’을 활용한 기본 HTML 출력."
+
+#: Export%232
+msgid "Python module 'markdown'."
+msgstr "파이썬 모듈 ‘마크다운’."
+
+#: Export%233
+msgid "Markdown source"
+msgstr "마크다운 소스"
+
+#: Export%234
+msgid "HTML Source"
+msgstr "HTML 소스"
+
+#: Export%235
+msgid "HTML Output"
+msgstr "HTML 출력"
+
+#: Export%236
+msgid "Default exporter, provides basic formats used by other exporters."
+msgstr "다른 프로그램에 쓰이는 기본 형식으로 내보냅니다."
+
+#: Export%237
+msgid "Preview with highlighter."
+msgstr "형광 표시와 함께 미리 봅니다."
+
+#: Export%238
+msgid "Plain text"
+msgstr "일반 텍스트"
+
+#: Export%239
+msgid "A little known format modestly used. You know, web sites for example."
+msgstr "웹사이트 같은 곳에 적당히 쓰이는, 어느 정도 알려진 형식입니다."
+
+#: Export%2310
+msgid "Needs LaTeX to be installed."
+msgstr "LaTeX를 깔아야 합니다."
+
+#: Export%2311
+msgctxt "Export#11"
+msgid "Error"
+msgstr "오류"
+
+#: Export%2312
+msgid "Standalone document (not just a fragment)"
+msgstr "(조각나지 않은) 독립 문서"
+
+#: Export%2313
+msgid "Include a table of contents."
+msgstr "목차를 포함합니다."
+
+#: Export%2314
+msgid "Number of sections level to include in TOC: "
+msgstr "목차에 포함할 개요 수준의 단계수: "
+
+#: Export%2315
+msgid "Typographically correct output"
+msgstr "인쇄용으로 올바르게 출력"
+
+#: Export%2316
+msgid "Normalize the document (cleaner)"
+msgstr "문서 정리"
+
+#: Export%2317
+msgid "Specify the base level for headers: "
+msgstr "제목의 기본 수준: "
+
+#: Export%2318
+msgid "Use reference-style links instead of inline links"
+msgstr "인라인 링크 대신 참조 링크 사용"
+
+#: Export%2319
+msgid "Use ATX-style headers"
+msgstr "ATX 형식의 제목 사용"
+
+#: Export%2320
+msgid "Self-contained HTML files, with no dependencies"
+msgstr "종속성이 없는 자체 HTML 파일"
+
+#: Export%2321
+msgid "Use <q> tags for quotes in HTML"
+msgstr "HTML 인용문에 <q> 태그 쓰기"
+
+#: Export%2322
+msgid "LaTeX engine used to produce the PDF."
+msgstr "PDF를 제작하는 데 쓰이는 LaTeX 엔진입니다."
+
+#: Export%2323
+msgid "Paper size:"
+msgstr "용지 크기:"
+
+#: Export%2324
+msgctxt "Export#24"
+msgid "Font size:"
+msgstr "글자 크기:"
+
+#: Export%2325
+msgid "Class:"
+msgstr "분류:"
+
+#: Export%2326
+msgctxt "Export#26"
+msgid "Line spacing:"
+msgstr "줄 간격:"
+
+#: Export%2327
+msgid "Books that don't kill trees."
+msgstr "나무를 살리는 책입니다."
+
+#: Export%2328
+msgid "OpenDocument format. Used by LibreOffice for example."
+msgstr "리브레오피스 같은 곳에 쓰이는 오픈도큐먼트 양식입니다."
+
+#: Export%2329
+msgid "Microsoft Office (.docx) document."
+msgstr "마이크로소프트 오피스(.docx) 문서입니다."
+
+#: Export%2330
+msgid "reStructuredText is a lightweight markup language."
+msgstr "reStructuredText는 경량 마크업 언어입니다."
+
+#: Export%2331
+msgid ""
+"Just like plain text, excepts adds markdown titles.\n"
+"                          Presupposes that texts are formatted in markdown."
+msgstr ""
+"마크다운이라는 이름만 떼면 일반 텍스트나 다름없습니다.\n"
+"                          텍스트가 마크다운 형식으로 되어 있다고 가정합니다."
+
+#: Export%2332
+msgid ""
+"Simplest export to plain text. Allows you to use your own markup not "
+"understood\n"
+"                  by Manuskript, for example <a href='www.fountain.io'>"
+"Fountain</a>."
+msgstr ""
+"단순히 일반 텍스트로만 내보냅니다. <a href='www.fountain.io'>Fountain</a>"
+"처럼\n"
+"                  Manuskript에서 쓰지 않는 자신만의 마크업을 허용합니다."
+
+#: Export%2333
+msgid ""
+"<p>A universal document converter. Can be used to convert Markdown to a wide "
+"range of other\n"
+"    formats.</p>\n"
+"    <p>Website: <a href=\"http://www.pandoc.org\">http://pandoc.org/</a></p>"
+"\n"
+"    "
+msgstr ""
+"<p>범용 문서 변환기입니다. 마크다운을 다양한 형식으로 변환할 수 있습니다.</p>"
+"\n"
+"    <p>웹사이트: <a href=\"http://www.pandoc.org\">http://pandoc.org/</a></p>"
+"\n"
+"    "
+
+#: Export%2334
+msgid ""
+"a valid LaTeX installation. Pandoc recommendations can be found on:\n"
+"                     <a href=\"https://pandoc.org/installing.html\">"
+"pandoc.org/installing.html</a>. If you want Unicode support, you need "
+"XeLaTeX."
+msgstr ""
+"유효한 LaTeX 설치입니다. Pandoc 권장 사항은\n"
+"                     <a href=\"https://pandoc.org/installing.html\">"
+"pandoc.org/installing.html</a>에서 확인하실 수 있습니다. 유니코드를 "
+"지원하려면, XeLaTeX가 필요합니다."
+
+#: Export%2335
+msgid ""
+"Export to markdown, using pandoc. Allows more formatting options\n"
+"    than the basic manuskript exporter."
+msgstr ""
+"Pandoc을 사용하여 마크다운을 내보냅니다. Manuskript보다 다채롭게\n"
+"    형식을 지정하실 수 있습니다."
+
+#: Export%2336
+msgid ""
+"LaTeX is a word processor and document markup language used to create\n"
+"                                              beautiful documents."
+msgstr "LaTeX는 문서를 아름답게 꾸미는 워드프로세서이자 마크업 언어입니다."
+
+#: Export%2337
+msgid ""
+"The purpose of this format is to provide a way to exchange information\n"
+"                                              between outliners and Internet "
+"services that can be browsed or controlled\n"
+"                                              through an outliner."
+msgstr ""
+"이 양식은 아웃라이너로 찾아보거나 다룰 정보를 인터넷에서 아웃라이너끼리\n"
+"                                              서로 교환할 목적으로 "
+"만들어졌습니다."
+
+#: Export%2338
+msgid ""
+"Disable YAML metadata block.\n"
+"Use that if you get YAML related error."
+msgstr ""
+"YAML 메타데이터 블록을 비활성화합니다.\n"
+"YAML에 문제가 있을 때 사용하십시오."
+
+#: Export%2339
+msgid "Convert to ePUB3"
+msgstr "ePUB3로 변환"
+
+#: Export%2340
+msgid ""
+"Could not process regular expression: \n"
+"{}"
+msgstr ""
+"정규식을 처리하지 못했습니다: \n"
+"{}"
+
+#: Export%2341
+msgid "Choose output fileâ¦"
+msgstr "내보낼 파일을 고르세요..."
+
+#: ExportersManager%231
+msgid "Manage Exporters"
+msgstr "내보내기 관리"
+
+#: ExportersManager%232
+msgctxt "ExportersManager#2"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: ExportersManager%233
+msgctxt "ExportersManager#3"
+msgid "Description"
+msgstr "설명"
+
+#: ExportersManager%234
+msgid "Offers export to"
+msgstr "제공하는 변환 양식:"
+
+#: ExportersManager%235
+msgctxt "ExportersManager#5"
+msgid "Status"
+msgstr "상태"
+
+#: ExportersManager%236
+msgctxt "ExportersManager#6"
+msgid "Status:"
+msgstr "상태:"
+
+#: ExportersManager%237
+msgid "Version:"
+msgstr "버전:"
+
+#: ExportersManager%238
+msgctxt "ExportersManager#8"
+msgid "Path:"
+msgstr "경로:"
+
+#: ExportersManager%239
+msgid "..."
+msgstr "..."
+
+#: ExportersManager%2310
+msgid "{HelpText}"
+msgstr "{도움말}"
+
+#: FrequencyAnalyzer%231
+msgid "Frequency Analyzer"
+msgstr "빈도 분석기"
+
+#: FrequencyAnalyzer%232
+msgid "Word frequency"
+msgstr "단어 빈도"
+
+#: FrequencyAnalyzer%233
+msgctxt "FrequencyAnalyzer#3"
+msgid "Settings"
+msgstr "설정"
+
+#: FrequencyAnalyzer%234
+msgid "Minimum size:"
+msgstr "최소 크기:"
+
+#: FrequencyAnalyzer%235
+msgid "Exclude words (comma separated):"
+msgstr "제외할 단어(쉼표로 구분):"
+
+#: FrequencyAnalyzer%236
+msgid "Analyze"
+msgstr "분석"
+
+#: FrequencyAnalyzer%237
+msgid "Phrase frequency"
+msgstr "구절 빈도"
+
+#: FrequencyAnalyzer%238
+msgid "Number of words: from"
+msgstr "어절 수:"
+
+#: FrequencyAnalyzer%239
+msgid "to"
+msgstr "내지"
+
+#: Import%231
+msgid "Markdown import"
+msgstr "마크다운 가져오기"
+
+#: Import%232
+msgid ""
+"<b>Info:</b> A very simple\n"
+"                        parser that will go through a markdown document and\n"
+"                        create items for each titles.<br/>&nbsp;"
+msgstr ""
+"<b>알림:</b> 마크다운\n"
+"                        문서를 통해 제목마다 항목을 만들어 주는 매우 간단한 "
+"구문\n"
+"                        분석기입니다.<br/>&nbsp;"
+
+#: Import%233
+msgid "Folder import"
+msgstr "폴더 가져오기"
+
+#: Import%234
+msgid ""
+"<p><b>Info:</b> Imports a whole\n"
+"                        directory structure. Folders are added as folders, "
+"and\n"
+"                        plaintext documents within (you chose which ones by "
+"extension)\n"
+"                        are added as scene.</p>\n"
+"                        <p>Only text files are supported (not images, binary "
+"or others).</p>"
+msgstr ""
+"<p><b>알림:</b> 디렉터리 구조\n"
+"                        전반을 가져옵니다. 폴더는 폴더로서, (확장자를 "
+"지정한) 텍스트 문서는\n"
+"                        장면으로서 추가됩니다.</p>\n"
+"                        <p>(이미지나 다른 종류가 아닌) 텍스트 파일만 "
+"지원합니다.</p>"
+
+#: Import%235
+msgid "Include only those extensions:"
+msgstr "다음 확장자만 추가:"
+
+#: Import%236
+msgid "Comma separated values"
+msgstr "콤마로 구분된 값"
+
+#: Import%237
+msgid "Sort items by name"
+msgstr "이름순으로 정렬"
+
+#: Import%238
+msgid "Import folder then files"
+msgstr "폴더와 파일 가져오기"
+
+#: Import%239
+msgid "OPML Import"
+msgstr "OPML 가져오기"
+
+#: Import%2310
+msgid "File open failed."
+msgstr "파일을 열지 못했습니다."
+
+#: Import%2311
+msgid "This does not appear to be a valid OPML file."
+msgstr "유효한 OPML 파일이 아닌 것 같습니다."
+
+#: Import%2312
+msgid "Pandoc import"
+msgstr "Pandoc 가져오기"
+
+#: Import%2313
+msgid ""
+"<b>Info:</b> Manuskript can\n"
+"                        import from <b>markdown</b> or <b>OPML</b>. Pandoc "
+"will\n"
+"                        convert your document to either (see option below), "
+"and\n"
+"                        then it will be imported in manuskript. One or the "
+"other\n"
+"                        might give better result depending on your "
+"document.\n"
+"                        <br/>&nbsp;"
+msgstr ""
+"<b>알림:</b> Manuskript는\n"
+"                        <b>마크다운</b>이나 <b>OPML</b> 양식을 가져올 수 "
+"있습니다.\n"
+"                        Pandoc은 문서를 (아래 항목 중) 한 가지 형태로 "
+"변환하고\n"
+"                        Manuskript에서 가져오실 수 있습니다. 어떤 형태가 더\n"
+"                        나은지는 문서마다 다릅니다.\n"
+"                        <br/>&nbsp;"
+
+#: Import%2314
+msgid "Import using:"
+msgstr "다음 형태로 가져오기:"
+
+#: Import%2315
+msgid "Wrap lines:"
+msgstr "줄바꿈:"
+
+#: Import%2316
+msgid ""
+"<p>Should pandoc create\n"
+"                        cosmetic / non-semantic line-breaks?</p><p>\n"
+"                        <b>auto</b>: wraps at 72 characters.<br>\n"
+"                        <b>none</b>: no line wrap.<br>\n"
+"                        <b>preserve</b>: tries to preserves line wrap from "
+"the\n"
+"                        original document.</p>"
+msgstr ""
+"<p>Pandoc으로 어떻게\n"
+"                        줄바꿈하시겠습니까?</p><p>\n"
+"                        <b>자동</b>: 72자마다 줄을 바꿉니다.<br>\n"
+"                        <b>안함</b>: 줄바꿈하지 않습니다.<br>\n"
+"                        <b>보존</b>: 원본의 줄바꿈을 그대로 따라갑니다.</p>"
+
+#: Import%2317
+msgid "Mind Map Import"
+msgstr "마인드맵 가져오기"
+
+#: Import%2318
+msgid "This does not appear to be a valid Mind Map file."
+msgstr "유효한 마인드맵 파일이 아닌 것 같습니다."
+
+#: Import%2319
+msgid "Mind Map import"
+msgstr "마인드맵 가져오기"
+
+#: Import%2320
+msgid "Import tip as:"
+msgstr "다음 형태로 가져올 때의 조언:"
+
+#: Import%2321
+msgid "Untitled"
+msgstr "무제"
+
+#: MDEditCompleter%231
+msgid "Insert reference"
+msgstr "주석 달기"
+
+#: MainWindow%231
+msgctxt "MainWindow#1"
+msgid "General"
+msgstr "일반"
+
+#: MainWindow%232
+msgctxt "MainWindow#2"
+msgid "Title"
+msgstr "제목"
+
+#: MainWindow%233
+msgid "Subtitle"
+msgstr "부제"
+
+#: MainWindow%234
+msgid "Series"
+msgstr "연속물"
+
+#: MainWindow%235
+msgid "Volume"
+msgstr "권수"
+
+#: MainWindow%236
+msgid "Genre"
+msgstr "장르"
+
+#: MainWindow%237
+msgid "License"
+msgstr "라이선스"
+
+#: MainWindow%238
+msgid "Author"
+msgstr "지은이"
+
+#: MainWindow%239
+msgctxt "MainWindow#9"
+msgid "Name"
+msgstr "이름"
+
+#: MainWindow%2310
+msgid "Email"
+msgstr "이메일"
+
+#: MainWindow%2311
+msgctxt "MainWindow#11"
+msgid "Summary"
+msgstr "요약"
+
+#: MainWindow%2312
+msgid "Situation:"
+msgstr "상황:"
+
+#: MainWindow%2313
+msgid "Summary:"
+msgstr "요약:"
+
+#: MainWindow%2314
+msgid "One sentence"
+msgstr "한 문장"
+
+#: MainWindow%2315
+msgid "One paragraph"
+msgstr "한 문단"
+
+#: MainWindow%2316
+msgid "One page"
+msgstr "한 쪽"
+
+#: MainWindow%2317
+msgid "Full"
+msgstr "전체"
+
+#: MainWindow%2318
+msgid "One sentence summary"
+msgstr "한 문장 요약"
+
+#: MainWindow%2319
+msgid "One paragraph summary"
+msgstr "한 문단 요약"
+
+#: MainWindow%2320
+msgid "Expand each sentence of your one paragraph summary to a paragraph"
+msgstr "한 문단 요약의 각 문장을 문단으로 키우기"
+
+#: MainWindow%2321
+msgid "One page summary"
+msgstr "한 쪽 요약"
+
+#: MainWindow%2322
+msgctxt "MainWindow#22"
+msgid "Full summary"
+msgstr "전체 요약"
+
+#: MainWindow%2323
+msgid "Next"
+msgstr "다음"
+
+#: MainWindow%2324
+msgid "What if...?"
+msgstr "만약……?"
+
+#: MainWindow%2325
+msgctxt "MainWindow#25"
+msgid "Characters"
+msgstr "등장인물"
+
+#: MainWindow%2326
+msgid "Names"
+msgstr "명단"
+
+#: MainWindow%2327
+msgid "Filter"
+msgstr "추리기"
+
+#: MainWindow%2328
+msgctxt "MainWindow#28"
+msgid "Basic info"
+msgstr "기본 정보"
+
+#: MainWindow%2329
+msgid "Importance"
+msgstr "중요도"
+
+#: MainWindow%2330
+msgctxt "MainWindow#30"
+msgid "Motivation"
+msgstr "동기"
+
+#: MainWindow%2331
+msgctxt "MainWindow#31"
+msgid "Goal"
+msgstr "목표"
+
+#: MainWindow%2332
+msgctxt "MainWindow#32"
+msgid "Conflict"
+msgstr "갈등"
+
+#: MainWindow%2333
+msgctxt "MainWindow#33"
+msgid "Epiphany"
+msgstr "깨달음"
+
+#: MainWindow%2334
+msgid ""
+"<html><head/><body><p align=\"right\">One sentence<br/>summary</p></body></"
+"html>"
+msgstr "<html><head/><body><p align=\"right\">한 문장<br/>요약</p></body></html>"
+
+#: MainWindow%2335
+msgid ""
+"<html><head/><body><p align=\"right\">One paragraph<br/>summary</p></body></"
+"html>"
+msgstr "<html><head/><body><p align=\"right\">한 문단<br/>요약</p></body></html>"
+
+#: MainWindow%2336
+msgid "Notes"
+msgstr "비고"
+
+#: MainWindow%2337
+msgctxt "MainWindow#37"
+msgid "Detailed info"
+msgstr "상세 정보"
+
+#: MainWindow%2338
+msgctxt "MainWindow#38"
+msgid "Plots"
+msgstr "플롯"
+
+#: MainWindow%2339
+msgid "Plot"
+msgstr "플롯"
+
+#: MainWindow%2340
+msgid "Character(s)"
+msgstr "등장인물"
+
+#: MainWindow%2341
+msgctxt "MainWindow#41"
+msgid "Description"
+msgstr "설명"
+
+#: MainWindow%2342
+msgctxt "MainWindow#42"
+msgid "Result"
+msgstr "결과"
+
+#: MainWindow%2343
+msgctxt "MainWindow#43"
+msgid "Resolution steps"
+msgstr "해결 과정"
+
+#: MainWindow%2344
+msgctxt "MainWindow#44"
+msgid "World"
+msgstr "세계관"
+
+#: MainWindow%2345
+msgid "Populates with empty data"
+msgstr "빈 데이터 생성"
+
+#: MainWindow%2346
+msgid "More"
+msgstr "더 보기"
+
+#: MainWindow%2347
+msgid "Source of passion"
+msgstr "열정 소재"
+
+#: MainWindow%2348
+msgid "Source of conflict"
+msgstr "갈등 소재"
+
+#: MainWindow%2349
+msgctxt "MainWindow#49"
+msgid "Outline"
+msgstr "개요"
+
+#: MainWindow%2350
+msgid "Editor"
+msgstr "편집"
+
+#: MainWindow%2351
+msgid "Debug"
+msgstr "디버그"
+
+#: MainWindow%2352
+msgid "FlatData"
+msgstr "플랫데이터"
+
+#: MainWindow%2353
+msgid "Persos"
+msgstr "페르소스"
+
+#: MainWindow%2354
+msgctxt "MainWindow#54"
+msgid "Labels"
+msgstr "라벨"
+
+#: MainWindow%2355
+msgid "&File"
+msgstr "파일(&F)"
+
+#: MainWindow%2356
+msgid "&Recent"
+msgstr "최근 파일(&R)"
+
+#: MainWindow%2357
+msgid "&Help"
+msgstr "도움말(&H)"
+
+#: MainWindow%2358
+msgid "&Tools"
+msgstr "도구(&T)"
+
+#: MainWindow%2359
+msgid "&Edit"
+msgstr "편집(&E)"
+
+#: MainWindow%2360
+msgid "&View"
+msgstr "보기(&V)"
+
+#: MainWindow%2361
+msgid "&Mode"
+msgstr "모드(&M)"
+
+#: MainWindow%2362
+msgid "&Cheat sheet"
+msgstr "협서(&C)"
+
+#: MainWindow%2363
+msgid "Sea&rch"
+msgstr "찾기(&r)"
+
+#: MainWindow%2364
+msgid "&Navigation"
+msgstr "내비게이션(&N)"
+
+#: MainWindow%2365
+msgid "&Open"
+msgstr "열기(&O)"
+
+#: MainWindow%2366
+msgid "Ctrl+O"
+msgstr "Ctrl+O"
+
+#: MainWindow%2367
+msgid "&Save"
+msgstr "갈무리(&S)"
+
+#: MainWindow%2368
+msgctxt "MainWindow#68"
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: MainWindow%2369
+msgid "Sa&ve as..."
+msgstr "다른 이름으로 갈무리... (&v)"
+
+#: MainWindow%2370
+msgid "Ctrl+Shift+S"
+msgstr "Ctrl+Shift+S"
+
+#: MainWindow%2371
+msgid "&Quit"
+msgstr "끝(&Q)"
+
+#: MainWindow%2372
+msgid "Ctrl+Q"
+msgstr "Ctrl+Q"
+
+#: MainWindow%2373
+msgid "&Show help texts"
+msgstr "도움말 띄우기(&S)"
+
+#: MainWindow%2374
+msgid "Ctrl+Shift+B"
+msgstr "Ctrl+Shift+B"
+
+#: MainWindow%2375
+msgid "&Spellcheck"
+msgstr "맞춤법 검사(&S)"
+
+#: MainWindow%2376
+msgid "F9"
+msgstr "F9"
+
+#: MainWindow%2377
+msgid "&Labels..."
+msgstr "라벨... (&L)"
+
+#: MainWindow%2378
+msgid "&Status..."
+msgstr "상태... (&S)"
+
+#: MainWindow%2379
+msgctxt "MainWindow#79"
+msgid "Tree"
+msgstr "나무"
+
+#: MainWindow%2380
+msgid "&Simple"
+msgstr "간단(&S)"
+
+#: MainWindow%2381
+msgid "&Fiction"
+msgstr "소설(&F)"
+
+#: MainWindow%2382
+msgctxt "MainWindow#82"
+msgid "Index cards"
+msgstr "색인 카드"
+
+#: MainWindow%2383
+msgid "S&ettings"
+msgstr "설정(&e)"
+
+#: MainWindow%2384
+msgid "F8"
+msgstr "F8"
+
+#: MainWindow%2385
+msgid "&Close project"
+msgstr "프로젝트 닫기(&C)"
+
+#: MainWindow%2386
+msgid "Co&mpile"
+msgstr "엮기(&m)"
+
+#: MainWindow%2387
+msgid "F6"
+msgstr "F6"
+
+#: MainWindow%2388
+msgid "&Frequency Analyzer"
+msgstr "빈도 분석기(&F)"
+
+#: MainWindow%2389
+msgid "Book information"
+msgstr "책 정보"
+
+#: MainWindow%2390
+msgid "&About"
+msgstr "정보(&A)"
+
+#: MainWindow%2391
+msgctxt "MainWindow#91"
+msgid "About Manuskript"
+msgstr "Manuskript란"
+
+#: MainWindow%2392
+msgctxt "MainWindow#92"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: MainWindow%2393
+#, fuzzy
+msgid "Project {} saved."
+msgstr " * {}을(를) 프로젝트 파일에서 찾지 못했습니다."
+
+#: MainWindow%2394
+msgid "WARNING: Project {} not saved."
+msgstr "경고: 프로젝트 {}을(를) 갈무리하지 않았습니다."
+
+#: MainWindow%2395
+msgid "Project {} loaded."
+msgstr "프로젝트 {}을(를) 불러왔습니다."
+
+#: MainWindow%2396
+msgid "Project {} loaded with some errors."
+msgstr "불러온 프로젝트 {}에 오류가 있습니다."
+
+#: MainWindow%2397
+msgid " (~{} pages)"
+msgstr " (~{} 쪽)"
+
+#: MainWindow%2398
+msgid "Words: {}{}"
+msgstr "낱말: {}{}"
+
+#: MainWindow%2399
+msgid "Book summary"
+msgstr "책 요약"
+
+#: MainWindow%23100
+msgid "Project tree"
+msgstr "프로젝트 나무"
+
+#: MainWindow%23101
+msgid "Metadata"
+msgstr "메타데이터"
+
+#: MainWindow%23102
+msgid "Story line"
+msgstr "줄거리"
+
+#: MainWindow%23103
+msgid "Enter information about your book, and yourself."
+msgstr "당신과 당신의 책에 대한 정보를 입력하여 주십시오."
+
+#: MainWindow%23104
+msgid ""
+"The basic situation, in the form of a 'What if...?' question. Ex: 'What if "
+"the most dangerous\n"
+"                     evil wizard wasn't able to kill a baby?' (Harry Potter)"
+msgstr ""
+"‘만약……?’이라는 질문 형태의 기본적인 상황입니다. 예: ‘만약 가장 위험하고 "
+"사악한 마법사가\n"
+"                     아기를 죽이지 못했다면?’ (해리 포터)"
+
+#: MainWindow%23105
+msgid ""
+"Take time to think about a one sentence (~50 words) summary of your book. "
+"Then expand it to\n"
+"                     a paragraph, then to a page, then to a full summary."
+msgstr ""
+"당신의 책을 한 문장(50 어절 정도)으로 간추려 보세요. 그 다음에 문단 단위, 쪽 "
+"단위, 전체 요약으로\n"
+"                     부풀리세요."
+
+#: MainWindow%23106
+msgid "Create your characters."
+msgstr "등장인물을 만듭시다."
+
+#: MainWindow%23107
+msgid "Develop plots."
+msgstr "플롯을 구성합니다."
+
+#: MainWindow%23108
+msgid ""
+"Build worlds.  Create hierarchy of broad categories down to specific details."
+msgstr ""
+"세계를 만듭니다.  광범위한 것부터 세세한 것까지 설정을 체계적으로 만들어 "
+"봅시다."
+
+#: MainWindow%23109
+msgid "Create the outline of your masterpiece."
+msgstr "당신이 만들 걸작의 테두리를 쳐 봅시다."
+
+#: MainWindow%23110
+msgid "Write."
+msgstr "써 보세요."
+
+#: MainWindow%23111
+msgid "Debug info. Sometimes useful."
+msgstr "디버그 정보입니다. 때론 도움이 됩니다."
+
+#: MainWindow%23112
+msgid "Dictionary"
+msgstr "사전"
+
+#: MainWindow%23113
+msgctxt "MainWindow#113"
+msgid "Nothing"
+msgstr "없음"
+
+#: MainWindow%23114
+msgctxt "MainWindow#114"
+msgid "POV"
+msgstr "시점"
+
+#: MainWindow%23115
+msgctxt "MainWindow#115"
+msgid "Label"
+msgstr "라벨"
+
+#: MainWindow%23116
+msgctxt "MainWindow#116"
+msgid "Progress"
+msgstr "진척"
+
+#: MainWindow%23117
+msgctxt "MainWindow#117"
+msgid "Compile"
+msgstr "엮기"
+
+#: MainWindow%23118
+msgid "Icon color"
+msgstr "아이콘 색"
+
+#: MainWindow%23119
+msgid "Text color"
+msgstr "글자 색"
+
+#: MainWindow%23120
+msgid "Background color"
+msgstr "배경 색"
+
+#: MainWindow%23121
+msgid "Icon"
+msgstr "아이콘"
+
+#: MainWindow%23122
+msgctxt "MainWindow#122"
+msgid "Text"
+msgstr "글"
+
+#: MainWindow%23123
+msgctxt "MainWindow#123"
+msgid "Background"
+msgstr "배경"
+
+#: MainWindow%23124
+msgid "Border"
+msgstr "테두리"
+
+#: MainWindow%23125
+msgid "Corner"
+msgstr "모서리"
+
+#: MainWindow%23126
+msgid "Add plot step"
+msgstr "플롯 추가"
+
+#: MainWindow%23127
+msgid "&Import…"
+msgstr "가져오기... (&I)"
+
+#: MainWindow%23128
+msgid "F7"
+msgstr "F7"
+
+#: MainWindow%23129
+msgctxt "MainWindow#129"
+msgid "&Copy"
+msgstr "복사(&C)"
+
+#: MainWindow%23130
+msgid "Ctrl+C"
+msgstr "Ctrl+C"
+
+#: MainWindow%23131
+msgctxt "MainWindow#131"
+msgid "C&ut"
+msgstr "오리기(&C)"
+
+#: MainWindow%23132
+msgid "Ctrl+X"
+msgstr "Ctrl+X"
+
+#: MainWindow%23133
+msgctxt "MainWindow#133"
+msgid "&Paste"
+msgstr "붙이기(&P)"
+
+#: MainWindow%23134
+msgid "Ctrl+V"
+msgstr "Ctrl+V"
+
+#: MainWindow%23135
+msgid "&Split…"
+msgstr "쪼개기… (&S)"
+
+#: MainWindow%23136
+msgid "Ctrl+Shift+K"
+msgstr "Ctrl+Shift+K"
+
+#: MainWindow%23137
+msgid "Sp&lit at cursor"
+msgstr "커서로 쪼개기(&l)"
+
+#: MainWindow%23138
+msgid "Ctrl+K"
+msgstr "Ctrl+K"
+
+#: MainWindow%23139
+msgid "Ctrl+M"
+msgstr "Ctrl+M"
+
+#: MainWindow%23140
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: MainWindow%23141
+msgid "Del"
+msgstr "Del"
+
+#: MainWindow%23142
+msgid "&Move Up"
+msgstr "위로 이동(&M)"
+
+#: MainWindow%23143
+msgid "Ctrl+Shift+Up"
+msgstr "Ctrl+Shift+Up"
+
+#: MainWindow%23144
+msgid "M&ove Down"
+msgstr "아래로 이동(&o)"
+
+#: MainWindow%23145
+msgid "Ctrl+Shift+Down"
+msgstr "Ctrl+Shift+Down"
+
+#: MainWindow%23146
+msgid "Dupl&icate"
+msgstr "복제(&i)"
+
+#: MainWindow%23147
+msgctxt "MainWindow#147"
+msgid "&Delete"
+msgstr "제거(&D)"
+
+#: MainWindow%23148
+msgctxt "MainWindow#148"
+msgid "&Rename"
+msgstr "이름 바꾸기(&R)"
+
+#: MainWindow%23149
+msgid "F2"
+msgstr "F2"
+
+#: MainWindow%23150
+msgid "Organi&ze"
+msgstr "정리(&z)"
+
+#: MainWindow%23151
+msgid "M&erge"
+msgstr "합치기(&e)"
+
+#: MainWindow%23152
+msgid "&Format"
+msgstr "서식(&F)"
+
+#: MainWindow%23153
+msgid "&Header"
+msgstr "제목(&H)"
+
+#: MainWindow%23154
+msgid "&Level 1 (setext)"
+msgstr "수준 1(setext) (&L)"
+
+#: MainWindow%23155
+msgid "Ctrl+Alt+1"
+msgstr "Ctrl+Alt+1"
+
+#: MainWindow%23156
+msgid "Level &2"
+msgstr "수준 &2"
+
+#: MainWindow%23157
+msgid "Ctrl+Alt+2"
+msgstr "Ctrl+Alt+2"
+
+#: MainWindow%23158
+msgid "Level &1 (atx)"
+msgstr "수준 &1(atx)"
+
+#: MainWindow%23159
+msgid "Ctrl+1"
+msgstr "Ctrl+1"
+
+#: MainWindow%23160
+msgid "L&evel 2"
+msgstr "수준 2(&e)"
+
+#: MainWindow%23161
+msgid "Ctrl+2"
+msgstr "Ctrl+2"
+
+#: MainWindow%23162
+msgid "Level &3"
+msgstr "수준 &3"
+
+#: MainWindow%23163
+msgid "Ctrl+3"
+msgstr "Ctrl+3"
+
+#: MainWindow%23164
+msgid "Level &4"
+msgstr "수준 &4"
+
+#: MainWindow%23165
+msgid "Ctrl+4"
+msgstr "Ctrl+4"
+
+#: MainWindow%23166
+msgid "Level &5"
+msgstr "수준 &5"
+
+#: MainWindow%23167
+msgid "Ctrl+5"
+msgstr "Ctrl+5"
+
+#: MainWindow%23168
+msgid "Level &6"
+msgstr "수준 &6"
+
+#: MainWindow%23169
+msgid "Ctrl+6"
+msgstr "Ctrl+6"
+
+#: MainWindow%23170
+msgid "&Bold"
+msgstr "굵게(&B)"
+
+#: MainWindow%23171
+msgid "Ctrl+B"
+msgstr "Ctrl+B"
+
+#: MainWindow%23172
+msgid "&Italic"
+msgstr "기울여(&I)"
+
+#: MainWindow%23173
+msgid "Ctrl+I"
+msgstr "Ctrl+I"
+
+#: MainWindow%23174
+msgid "&Strike"
+msgstr "취소선(&S)"
+
+#: MainWindow%23175
+msgid "&Verbatim"
+msgstr "축약(&V)"
+
+#: MainWindow%23176
+msgid "Su&perscript"
+msgstr "위 첨자(&p)"
+
+#: MainWindow%23177
+msgid "Ctrl++"
+msgstr "Ctrl++"
+
+#: MainWindow%23178
+msgid "Subsc&ript"
+msgstr "아래 첨자(&r)"
+
+#: MainWindow%23179
+msgid "Ctrl+-"
+msgstr "Ctrl+-"
+
+#: MainWindow%23180
+msgid "Co&mment block"
+msgstr ""
+
+#: MainWindow%23181
+msgid "Ctrl+Shift+C"
+msgstr "Ctrl+Shift+C"
+
+#: MainWindow%23182
+msgid "Clear &formats"
+msgstr "서식 지우기"
+
+#: MainWindow%23183
+msgid "Ctrl+0"
+msgstr "Ctrl+0"
+
+#: MainWindow%23184
+msgid "&Comment line(s)"
+msgstr ""
+
+#: MainWindow%23185
+msgid "&Ordered list"
+msgstr "번호 붙인 목록(&O)"
+
+#: MainWindow%23186
+msgid "&Unordered list"
+msgstr "번호 없는 목록(&U)"
+
+#: MainWindow%23187
+msgid "B&lockquote"
+msgstr "따옴표(&l)"
+
+#: MainWindow%23188
+msgid "Remove selected plot step(s)"
+msgstr "선택한 사건 빼기"
+
+#: MainWindow%23189
+msgid "The file {} does not exist. Has it been moved or deleted?"
+msgstr "파일 {}이(가) 없습니다. 지우거나 옮기셨습니까?"
+
+#: MainWindow%23190
+msgid "Install {}{} to use spellcheck"
+msgstr "맞춤법 검사를 사용하기 위해 {}{} 깔기"
+
+#: MainWindow%23191
+msgid "{} has no installed dictionaries"
+msgstr "{}에 설치된 사전 없음"
+
+#: MainWindow%23192
+msgid "{}{} is not installed"
+msgstr "{}{} 미설치"
+
+#: MainWindow%23193
+msgid "Save project?"
+msgstr "프로젝트 갈무리?"
+
+#: MainWindow%23194
+msgid "Save changes to project \"{}\" before closing?"
+msgstr "프로젝트 “{}”를 닫기 전에 변경 사항을 갈무리하시겠습니까?"
+
+#: MainWindow%23195
+msgid "Your changes will be lost if you don't save them."
+msgstr "갈무리하지 않으면 고친 것을 날려 버립니다."
+
+#: MainWindow%23196
+msgid ""
+"PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might "
+"result in a loss of data."
+msgstr ""
+"PyQt / Qt 버전 5.11과 5.12는 충돌을 일으켜 데이터를 날리는 것으로 알려져 "
+"있습니다."
+
+#: MainWindow%23197
+msgid "PyQt {} and Qt {} are in use."
+msgstr "PyQt {}와(과) Qt {}를 쓰고 있습니다."
+
+#: MainWindow%23198
+#, fuzzy
+msgid "Proceed with import at your own risk"
+msgstr "속행 시 충돌과 데이터 손실 우려"
+
+#: MainWindow%23199
+msgid "Allow POV"
+msgstr ""
+
+#: MainWindow%23200
+msgid "Search"
+msgstr ""
+
+#: MainWindow%23201
+msgid "Ctrl+F"
+msgstr ""
+
+#: MainWindow%23202
+msgid "&Technical Support"
+msgstr ""
+
+#: MainWindow%23203
+msgid "How to obtain technical support for Manuskript."
+msgstr ""
+
+#: MainWindow%23204
+#, fuzzy
+msgid "F1"
+msgstr "F1"
+
+#: MainWindow%23205
+msgid "&Locate log file..."
+msgstr ""
+
+#: MainWindow%23206
+msgid "Locate log file"
+msgstr ""
+
+#: MainWindow%23207
+msgid "Locate the diagnostic log file used for this session."
+msgstr ""
+
+#: MainWindow%23208
+msgid "Shift+F1"
+msgstr ""
+
+#: MainWindow%23209
+msgid "Sorry!"
+msgstr ""
+
+#: MainWindow%23210
+msgid "This session is not being logged."
+msgstr ""
+
+#: MainWindow%23211
+msgid "A log file is a Work in Progress!"
+msgstr ""
+
+#: MainWindow%23212
+msgid ""
+"The log file \"{}\" will continue to be written to until Manuskript is "
+"closed."
+msgstr ""
+
+#: MainWindow%23213
+msgid ""
+"It will now be displayed in your file manager, but is of limited use until "
+"you close Manuskript."
+msgstr ""
+
+#: MainWindow%23214
+msgid "Error!"
+msgstr ""
+
+#: MainWindow%23215
+msgid ""
+"An error was encountered while trying to show the log file below in your "
+"file manager."
+msgstr ""
+
+#: MainWindow%23216
+#, fuzzy
+msgid "F3"
+msgstr "F3"
+
+#: MainWindow%23217
+msgid "Shift+F3"
+msgstr ""
+
+#: MainWindow%23218
+msgid "Situation"
+msgstr ""
+
+#: MainWindow%23219
+#, fuzzy
+msgctxt "MainWindow#219"
+msgid "Status"
+msgstr "상태"
+
+#: Search%231
+msgid "No results found"
+msgstr ""
+
+#: Settings%231
+msgctxt "Settings#1"
+msgid "Settings"
+msgstr "설정"
+
+#: Settings%232
+msgctxt "Settings#2"
+msgid "General"
+msgstr "일반"
+
+#: Settings%233
+msgctxt "Settings#3"
+msgid "Revisions"
+msgstr "수정본"
+
+#: Settings%234
+msgid "Views"
+msgstr "보기"
+
+#: Settings%235
+msgctxt "Settings#5"
+msgid "Labels"
+msgstr "라벨"
+
+#: Settings%236
+msgctxt "Settings#6"
+msgid "Status"
+msgstr "상태"
+
+#: Settings%237
+msgid "Fullscreen"
+msgstr "전체 화면"
+
+#: Settings%238
+msgid "General settings"
+msgstr "일반 설정"
+
+#: Settings%239
+msgid "Application settings"
+msgstr "애플리케이션 설정"
+
+#: Settings%2310
+msgid "Loading"
+msgstr "불러오기"
+
+#: Settings%2311
+msgid "Automatically load last project on startup"
+msgstr "시작하자마자 알아서 마지막 프로젝트 불러오기"
+
+#: Settings%2312
+msgid "Saving"
+msgstr "갈무리"
+
+#: Settings%2313
+msgid "Automatically save every"
+msgstr "자동으로"
+
+#: Settings%2314
+msgid "minutes."
+msgstr "분마다 갈무리하기."
+
+#: Settings%2315
+msgid "If no changes during"
+msgstr "잠시 펜을 놓은"
+
+#: Settings%2316
+msgid "seconds."
+msgstr "초마다."
+
+#: Settings%2317
+msgid "Save on project close"
+msgstr "프로젝트를 닫을 때 갈무리도 하기"
+
+#: Settings%2318
+msgid ""
+"<html><head/><body><p>If you check this option, your project will be saved "
+"as one single file. Easier to copy or backup, but does not allow "
+"collaborative editing, or versioning.<br/>If this is unchecked, your project "
+"will be saved as a folder containing many small files.</p></body></html>"
+msgstr ""
+"<html><head/><body><p>이 옵션에 체크하면 프로젝트를 홑파일로 갈무리합니다. "
+"복사와 백업이 간단하지만, 합작품을 만들거나 여러 버전으로 나누지 "
+"못합니다.<br/>체크를 해제하면 프로젝트를 여러 파일이 들어있는 폴더로 "
+"갈무리합니다.</p></body></html>"
+
+#: Settings%2319
+msgid "Save to one single file"
+msgstr "홑파일로 갈무리"
+
+#: Settings%2320
+msgid ""
+"Revisions are a way to keep track of modifications. For each text item, it "
+"stores any changes you make to the main text, allowing you to see and "
+"restoring previous versions."
+msgstr ""
+"수정본은 고쳐쓴 자취를 보여줍니다. 본문의 변화를 갈무리하여, 글 항목마다 "
+"이전 판의 글을 보고 되살리실 수 있습니다."
+
+#: Settings%2321
+msgid "Keep revisions"
+msgstr "수정본 보존"
+
+#: Settings%2322
+msgid "S&mart remove"
+msgstr "주기적 삭제(&m)"
+
+#: Settings%2323
+msgid "Keep:"
+msgstr "남겨두기:"
+
+#: Settings%2324
+msgid ""
+"Smart remove allows you to keep only a certain number of revisions. It is "
+"strongly recommended to use it, lest you file will becomes full of thousands "
+"of insignificant changes."
+msgstr ""
+"주기적 삭제 기능은 일정한 수의 수정본만 남깁니다. 쓸데없는 변경 사항을 없애 "
+"파일 용량을 줄이고자 한다면, 강력히 추천하는 바입니다."
+
+#: Settings%2325
+msgid "revisions per day for the last month"
+msgstr "개 수정본(지난 달 것은 하루마다)"
+
+#: Settings%2326
+msgid "revisions per minute for the last 10 minutes"
+msgstr "개 수정본(10분 전 것은 1분마다)"
+
+#: Settings%2327
+msgid "revisions per hour for the last day"
+msgstr "개 수정본(어제 것은 시간마다)"
+
+#: Settings%2328
+msgid "revisions per 10 minutes for the last hour"
+msgstr "개 수정본(한 시간 전 것은 10분마다)"
+
+#: Settings%2329
+msgid "revisions per week till the end of time"
+msgstr "개 수정본(기간이 지난 것은 주마다)"
+
+#: Settings%2330
+msgid "Views settings"
+msgstr "보기 설정"
+
+#: Settings%2331
+msgctxt "Settings#31"
+msgid "Tree"
+msgstr "나무"
+
+#: Settings%2332
+msgid "Colors"
+msgstr "빛깔"
+
+#: Settings%2333
+msgid "Icon color:"
+msgstr "아이콘 색:"
+
+#: Settings%2334
+msgctxt "Settings#34"
+msgid "Nothing"
+msgstr "없음"
+
+#: Settings%2335
+msgctxt "Settings#35"
+msgid "POV"
+msgstr "시점"
+
+#: Settings%2336
+msgctxt "Settings#36"
+msgid "Label"
+msgstr "라벨"
+
+#: Settings%2337
+msgctxt "Settings#37"
+msgid "Progress"
+msgstr "진척"
+
+#: Settings%2338
+msgctxt "Settings#38"
+msgid "Compile"
+msgstr "엮기"
+
+#: Settings%2339
+msgid "Text color:"
+msgstr "글자 색:"
+
+#: Settings%2340
+msgid "Background color:"
+msgstr "배경 색:"
+
+#: Settings%2341
+msgid "Folders"
+msgstr "폴더"
+
+#: Settings%2342
+msgid "Show ite&m count"
+msgstr "항목 수 보기(&m)"
+
+#: Settings%2343
+msgid "Show summary"
+msgstr "요약 보기"
+
+#: Settings%2344
+msgid "&Nothing"
+msgstr "표시 없음(&N)"
+
+#: Settings%2345
+msgctxt "Settings#45"
+msgid "Text"
+msgstr "글"
+
+#: Settings%2346
+#, fuzzy
+msgctxt "Settings#46"
+msgid "Outline"
+msgstr "개요"
+
+#: Settings%2347
+msgid "Visible columns"
+msgstr "열 표시"
+
+#: Settings%2348
+msgctxt "Settings#48"
+msgid "Goal"
+msgstr "목표"
+
+#: Settings%2349
+msgctxt "Settings#49"
+msgid "Word count"
+msgstr "낱말 수"
+
+#: Settings%2350
+msgid "Percentage"
+msgstr "백분율"
+
+#: Settings%2351
+msgctxt "Settings#51"
+msgid "Title"
+msgstr "제목"
+
+#: Settings%2352
+msgctxt "Settings#52"
+msgid "Index cards"
+msgstr "색인 카드"
+
+#: Settings%2353
+msgid "Item colors"
+msgstr "항목 색"
+
+#: Settings%2354
+msgid "Border color:"
+msgstr "테두리 색:"
+
+#: Settings%2355
+msgid "Corner color:"
+msgstr "모서리 색:"
+
+#: Settings%2356
+msgctxt "Settings#56"
+msgid "Background"
+msgstr "배경"
+
+#: Settings%2357
+msgid "Color:"
+msgstr "빛깔:"
+
+#: Settings%2358
+msgctxt "Settings#58"
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: Settings%2359
+msgid "Image:"
+msgstr "그림:"
+
+#: Settings%2360
+msgid "Text editor"
+msgstr "텍스트 편집기"
+
+#: Settings%2361
+msgctxt "Settings#61"
+msgid "Font"
+msgstr "글꼴"
+
+#: Settings%2362
+msgid "Family:"
+msgstr "모음:"
+
+#: Settings%2363
+msgid "Size:"
+msgstr "크기:"
+
+#: Settings%2364
+msgid "Misspelled:"
+msgstr "오자:"
+
+#: Settings%2365
+msgid "Background:"
+msgstr "배경:"
+
+#: Settings%2366
+msgid "Paragraphs"
+msgstr "문단"
+
+#: Settings%2367
+msgctxt "Settings#67"
+msgid "Line spacing:"
+msgstr "줄 간격:"
+
+#: Settings%2368
+msgid "Single"
+msgstr "1줄"
+
+#: Settings%2369
+msgid "1.5 lines"
+msgstr "1.5줄"
+
+#: Settings%2370
+msgid "Double"
+msgstr "2줄"
+
+#: Settings%2371
+msgid "Proportional"
+msgstr "비례"
+
+#: Settings%2372
+msgid "%"
+msgstr "%"
+
+#: Settings%2373
+msgid "Tab width:"
+msgstr "탭 너비:"
+
+#: Settings%2374
+msgid " px"
+msgstr " px"
+
+#: Settings%2375
+msgid "Indent 1st line"
+msgstr "첫줄 들여쓰기"
+
+#: Settings%2376
+msgid "Spacing:"
+msgstr "문단 간격:"
+
+#: Settings%2377
+msgctxt "Settings#77"
+msgid "New"
+msgstr "추가"
+
+#: Settings%2378
+msgid "Edit"
+msgstr "편집"
+
+#: Settings%2379
+msgctxt "Settings#79"
+msgid "Delete"
+msgstr "제거"
+
+#: Settings%2380
+msgid "Theme name:"
+msgstr "테마 이름:"
+
+#: Settings%2381
+msgid "Apply"
+msgstr "적용"
+
+#: Settings%2382
+msgid "Cancel"
+msgstr "취소"
+
+#: Settings%2383
+msgid "Window Background"
+msgstr "창 배경"
+
+#: Settings%2384
+msgid "Text Background"
+msgstr "글 배경"
+
+#: Settings%2385
+msgid "Text Options"
+msgstr "텍스트 옵션"
+
+#: Settings%2386
+msgid "Paragraph Options"
+msgstr "문단 옵션"
+
+#: Settings%2387
+msgid "Type:"
+msgstr "유형:"
+
+#: Settings%2388
+msgid "No Image"
+msgstr "그림 없음"
+
+#: Settings%2389
+msgid "Tiled"
+msgstr "바둑판식"
+
+#: Settings%2390
+msgid "Centered"
+msgstr "가운데"
+
+#: Settings%2391
+msgid "Stretched"
+msgstr "채우기"
+
+#: Settings%2392
+msgid "Scaled"
+msgstr "맞춤"
+
+#: Settings%2393
+msgid "Zoomed"
+msgstr "확대"
+
+#: Settings%2394
+msgid "Opacity:"
+msgstr "불투명도:"
+
+#: Settings%2395
+msgid "Position:"
+msgstr "위치:"
+
+#: Settings%2396
+msgid "Left"
+msgstr "왼쪽"
+
+#: Settings%2397
+msgid "Center"
+msgstr "가운데"
+
+#: Settings%2398
+msgid "Right"
+msgstr "오른쪽"
+
+#: Settings%2399
+msgid "Width:"
+msgstr "폭:"
+
+#: Settings%23100
+msgid "Corner radius:"
+msgstr "모서리 곡률:"
+
+#: Settings%23101
+msgid "Margins:"
+msgstr "외부 여백:"
+
+#: Settings%23102
+msgid "Padding:"
+msgstr "내부 여백:"
+
+#: Settings%23103
+msgctxt "Settings#103"
+msgid "Font:"
+msgstr "글꼴:"
+
+#: Settings%23104
+msgid "Style"
+msgstr "맵시"
+
+#: Settings%23105
+msgid "Cursor"
+msgstr "커서"
+
+#: Settings%23106
+msgid "Use block insertion of"
+msgstr "블록 삽입"
+
+#: Settings%23107
+msgid "Alignment:"
+msgstr "정렬:"
+
+#: Settings%23108
+msgid "Justify"
+msgstr "양쪽"
+
+#: Settings%23109
+msgid "Alignment"
+msgstr "정렬"
+
+#: Settings%23110
+msgid "Icon Size"
+msgstr "아이콘 크기"
+
+#: Settings%23111
+msgctxt "Settings#111"
+msgid "TextLabel"
+msgstr "텍스트라벨"
+
+#: Settings%23112
+msgid "Disable blinking"
+msgstr "깜박이지 않기"
+
+#: Settings%23113
+msgid "Text area"
+msgstr "글상자"
+
+#: Settings%23114
+msgid "Max width"
+msgstr "최대폭"
+
+#: Settings%23115
+msgid "Left/Right margins:"
+msgstr "왼쪽/오른쪽 여백:"
+
+#: Settings%23116
+msgid "Top/Bottom margins:"
+msgstr "위/아래 여백:"
+
+#: Settings%23117
+msgid "S&how progress"
+msgstr "진척 보기(&h)"
+
+#: Settings%23118
+msgid "Show summar&y"
+msgstr "요약 보기(&y)"
+
+#: Settings%23119
+msgid "Show p&rogress"
+msgstr "진척 보기(&r)"
+
+#: Settings%23120
+msgid "Old st&yle"
+msgstr "옛 품새(&r)"
+
+#: Settings%23121
+msgid "Transparent"
+msgstr "투명하게"
+
+#: Settings%23122
+msgid "Restore defaults"
+msgstr "기본값으로 되돌리기"
+
+#: Settings%23123
+msgid "Style:"
+msgstr "맵시:"
+
+#: Settings%23124
+msgid "Language:"
+msgstr "언어:"
+
+#: Settings%23125
+msgctxt "Settings#125"
+msgid "Font size:"
+msgstr "글자 크기:"
+
+#: Settings%23126
+msgid "Restarting Manuskript ensures all settings take effect."
+msgstr "설정을 제대로 적용하려면 Manuskript를 다시 시작하셔야 합니다."
+
+#: Settings%23127
+msgid "Show &word count"
+msgstr "낱말 수 보기(&w)"
+
+#: Settings%23128
+msgid "&Show word count"
+msgstr "낱말 수 보기(&S)"
+
+#: Settings%23129
+msgid "&New style"
+msgstr "새로운 품새(&N)"
+
+#: Settings%23130
+msgid "Typewriter mode"
+msgstr "타자기 모드"
+
+#: Settings%23131
+msgid "Focus mode"
+msgstr "집중 모드"
+
+#: Settings%23132
+msgctxt "Settings#132"
+msgid "None"
+msgstr "끔"
+
+#: Settings%23133
+msgid "Sentence"
+msgstr "문장"
+
+#: Settings%23134
+msgid "Line"
+msgstr "행"
+
+#: Settings%23135
+msgid "Paragraph"
+msgstr "문단"
+
+#: Settings%23136
+msgid ""
+"<p><b>The Revisions feature has been at the source of many reported issues. "
+"In this version of Manuskript it has been turned off by default for new "
+"projects in order to provide the best experience.</b></p><p>Why aren't these "
+"issues fixed already? <a href=\"https://www.theologeek.ch/manuskript/"
+"contribute/\">We need your help to make Manuskript better!</a></p>"
+msgstr ""
+"<p><b>수정본 기능은 많은 문제의 원인으로 보고되어 왔습니다. 이번 판의 "
+"Manuskript는 최상의 경험을 제공하고자 이 기능을 새 프로젝트에서는 기본적으로 "
+"꺼 놓았습니다.</b></p><p>이 문제에 대한 해결책이 있으신가요? <a "
+"href=\"https://www.theologeek.ch/manuskript/contribute/\">저희는 여러분의 "
+"도움이 필요합니다!</a></p>"
+
+#: Settings%23137
+msgid ""
+"Show progress in chars next\n"
+" to words"
+msgstr ""
+
+#: Settings%23138
+msgid "Char/Word Counter"
+msgstr ""
+
+#: Settings%23139
+msgid "Count spaces as chars"
+msgstr ""
+
+#: Settings%23140
+msgid "Show char c&ount"
+msgstr ""
+
+#: Settings%23141
+msgid "Sho&w char count"
+msgstr ""
+
+#: SpellAction%231
+msgid "Spelling Suggestions"
+msgstr "추천 단어"
+
+#: SpellAction%232
+msgid "&Add to dictionary"
+msgstr "사전에 추가(&A)"
+
+#: SpellAction%233
+msgid "&Remove from custom dictionary"
+msgstr "사용자 사전에서 제거(&R)"
+
+#: SpellAction%234
+msgid "&New Character"
+msgstr ""
+
+#: SpellAction%235
+msgid "&New Plot Item"
+msgstr ""
+
+#: SpellAction%236
+msgid "&New World Item"
+msgstr ""
+
+#: SpellAction%237
+msgid "&Correction Suggestions"
+msgstr ""
+
+#: SpellAction%238
+msgid "&Correction Suggestion"
+msgstr ""
+
+#: about%231
+msgctxt "about#1"
+msgid "About Manuskript"
+msgstr "Manuskript란"
+
+#: about%232
+msgctxt "about#2"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: aboutDialog%231
+msgid "Version"
+msgstr "버전"
+
+#: aboutDialog%232
+msgid "Software Versions in Use:"
+msgstr "사용 중인 소프트웨어 버전:"
+
+#: abstractModel%231
+msgctxt "abstractModel#1"
+msgid "Title"
+msgstr "제목"
+
+#: abstractModel%232
+msgctxt "abstractModel#2"
+msgid "POV"
+msgstr "시점"
+
+#: abstractModel%233
+msgctxt "abstractModel#3"
+msgid "Label"
+msgstr "라벨"
+
+#: abstractModel%234
+msgctxt "abstractModel#4"
+msgid "Status"
+msgstr "상태"
+
+#: abstractModel%235
+msgctxt "abstractModel#5"
+msgid "Compile"
+msgstr "엮기"
+
+#: abstractModel%236
+msgctxt "abstractModel#6"
+msgid "Word count"
+msgstr "낱말 수"
+
+#: abstractModel%237
+msgctxt "abstractModel#7"
+msgid "Goal"
+msgstr "목표"
+
+#: basicItemView%231
+msgctxt "basicItemView#1"
+msgid "Form"
+msgstr "형식"
+
+#: basicItemView%232
+msgctxt "basicItemView#2"
+msgid "POV:"
+msgstr "시점:"
+
+#: basicItemView%233
+msgid "Goal:"
+msgstr "목표:"
+
+#: basicItemView%234
+msgctxt "basicItemView#4"
+msgid "Word count"
+msgstr "낱말 수"
+
+#: basicItemView%235
+msgctxt "basicItemView#5"
+msgid "One line summary"
+msgstr "한 줄 요약"
+
+#: basicItemView%236
+msgid "Few sentences summary:"
+msgstr "몇 마디 요약:"
+
+#: characterModel%231
+msgctxt "characterModel#1"
+msgid "Name"
+msgstr "이름"
+
+#: characterModel%232
+msgid "Value"
+msgstr "비중"
+
+#: characterTreeView%231
+msgctxt "characterTreeView#1"
+msgid "Main"
+msgstr "주연"
+
+#: characterTreeView%232
+msgctxt "characterTreeView#2"
+msgid "Secondary"
+msgstr "조연"
+
+#: characterTreeView%233
+msgctxt "characterTreeView#3"
+msgid "Minor"
+msgstr "단역"
+
+#: cheatSheet%231
+msgctxt "cheatSheet#1"
+msgid "Form"
+msgstr "형식"
+
+#: cheatSheet%232
+msgid "Filter (type the name of anything in your project)"
+msgstr "(프로젝트 내 아무 이름이나) 훑기"
+
+#: cheatSheet%233
+msgctxt "cheatSheet#3"
+msgid "Minor"
+msgstr "단역"
+
+#: cheatSheet%234
+msgctxt "cheatSheet#4"
+msgid "Secondary"
+msgstr "조연"
+
+#: cheatSheet%235
+msgctxt "cheatSheet#5"
+msgid "Main"
+msgstr "주연"
+
+#: cheatSheet%236
+msgctxt "cheatSheet#6"
+msgid "Characters"
+msgstr "등장인물"
+
+#: cheatSheet%237
+msgid "Texts"
+msgstr "글"
+
+#: cheatSheet%238
+msgctxt "cheatSheet#8"
+msgid "Plots"
+msgstr "플롯"
+
+#: cheatSheet%239
+msgctxt "cheatSheet#9"
+msgid "World"
+msgstr "세계"
+
+#: cmbOutlineCharacterChoser%231
+#, fuzzy
+msgctxt "cmbOutlineCharacterChoser#1"
+msgid "None"
+msgstr "끔"
+
+#: cmbOutlineCharacterChoser%232
+msgctxt "cmbOutlineCharacterChoser#2"
+msgid "Main"
+msgstr "주연"
+
+#: cmbOutlineCharacterChoser%233
+msgctxt "cmbOutlineCharacterChoser#3"
+msgid "Secondary"
+msgstr "조연"
+
+#: cmbOutlineCharacterChoser%234
+msgctxt "cmbOutlineCharacterChoser#4"
+msgid "Minor"
+msgstr "단역"
+
+#: cmbOutlineCharacterChoser%235
+msgctxt "cmbOutlineCharacterChoser#5"
+msgid "Various"
+msgstr "여럿"
+
+#: cmbOutlineLabelChoser%231
+msgctxt "cmbOutlineLabelChoser#1"
+msgid "Various"
+msgstr "여럿"
+
+#: cmbOutlineStatusChoser%231
+msgctxt "cmbOutlineStatusChoser#1"
+msgid "Various"
+msgstr "여럿"
+
+#: collapsibleDockWidgets%231
+msgid "Dock Widgets Toolbar"
+msgstr "위젯을 도구 모음과 결합하기"
+
+#: completer%231
+msgctxt "completer#1"
+msgid "Form"
+msgstr "형식"
+
+#: corkDelegate%231
+msgctxt "corkDelegate#1"
+msgid "One line summary"
+msgstr "한 줄 요약"
+
+#: corkDelegate%232
+msgctxt "corkDelegate#2"
+msgid "Full summary"
+msgstr "전체 요약"
+
+#: editorWidget_ui%231
+msgctxt "editorWidget_ui#1"
+msgid "Form"
+msgstr "형식"
+
+#: exporter%231
+msgid "Export"
+msgstr "내보내기"
+
+#: exporter%232
+msgid "Export to:"
+msgstr "내보낼 형식:"
+
+#: exporter%233
+msgid "Manage exporters"
+msgstr "내보내는 프로그램 관리"
+
+#: exporter%234
+msgctxt "exporter#4"
+msgid "Preview"
+msgstr "미리 보기"
+
+#: exporter%235
+msgctxt "exporter#5"
+msgid "Settings"
+msgstr "설정"
+
+#: exporterDialog%231
+msgid "{} (not implemented yet)"
+msgstr "{} (미구현)"
+
+#: exporterSettings%231
+msgctxt "exporterSettings#1"
+msgid "Form"
+msgstr "형식"
+
+#: exporterSettings%232
+msgid "Content"
+msgstr "내용"
+
+#: exporterSettings%233
+msgid "Decide here what will be included in the final export."
+msgstr "최종적으로 내보낼 것들을 결정하세요."
+
+#: exporterSettings%234
+msgid "Type"
+msgstr "형태"
+
+#: exporterSettings%235
+msgctxt "exporterSettings#5"
+msgid "Title"
+msgstr "제목"
+
+#: exporterSettings%236
+msgctxt "exporterSettings#6"
+msgid "Text"
+msgstr "글"
+
+#: exporterSettings%237
+msgid "I need more granularity"
+msgstr "세밀하게 고르고 싶습니다"
+
+#: exporterSettings%238
+msgid "Fi&lters"
+msgstr "추리기(&l)"
+
+#: exporterSettings%239
+msgid ""
+"<html><head/><body><p>Filters what items will be included in the final "
+"export.<br/><span style=\" color:#773333;\">(Not fully implemented yet.)</"
+"span></p></body></html>"
+msgstr ""
+"<html><head/><body><p>마지막으로 내보낼 때 들어갈 항목을 추려냅니다.<br/>"
+"<span style=\" color:#773333;\">(아직 완전히 구현되지 않았습니다.)</span></p>"
+"</body></html>"
+
+#: exporterSettings%2310
+msgid "Ignore compile status (include all items)"
+msgstr "엮은 상태 무시하기 (모든 항목 포함하기)"
+
+#: exporterSettings%2311
+msgid "Subitems of:"
+msgstr "다음의 하위 항목:"
+
+#: exporterSettings%2312
+msgctxt "exporterSettings#12"
+msgid "Labels"
+msgstr "라벨"
+
+#: exporterSettings%2313
+msgctxt "exporterSettings#13"
+msgid "Status"
+msgstr "상태"
+
+#: exporterSettings%2314
+msgid "Separations"
+msgstr "분리"
+
+#: exporterSettings%2315
+msgid "Between folders:"
+msgstr "폴더 사이:"
+
+#: exporterSettings%2316
+msgid "Empty line"
+msgstr "공행"
+
+#: exporterSettings%2317
+msgctxt "exporterSettings#17"
+msgid "Custom"
+msgstr "임의 설정"
+
+#: exporterSettings%2318
+msgid "Between texts:"
+msgstr "글 사이:"
+
+#: exporterSettings%2319
+msgid "Between folder and text:"
+msgstr "폴더와 글 사이:"
+
+#: exporterSettings%2320
+msgid "Between text and folder:"
+msgstr "글과 폴더 사이:"
+
+#: exporterSettings%2321
+msgid "Transformations"
+msgstr "변환"
+
+#: exporterSettings%2322
+msgid "Typographic replacements:"
+msgstr "활자 바꾸기:"
+
+#: exporterSettings%2323
+msgid "Replace double quotes (\") with:"
+msgstr "큰따옴표(\")를 대신할 것:"
+
+#: exporterSettings%2324
+msgid "Replace single quotes (') with:"
+msgstr "작은따옴표(')를 대신할 것:"
+
+#: exporterSettings%2325
+msgid "Remove multiple spaces"
+msgstr "이중 공백 제거"
+
+#: exporterSettings%2326
+msgid "Custom replacements:"
+msgstr "임의 변환:"
+
+#: exporterSettings%2327
+msgid "Enabled"
+msgstr "활성화"
+
+#: exporterSettings%2328
+msgid "Replace"
+msgstr "찾을 것"
+
+#: exporterSettings%2329
+msgid "With"
+msgstr "바꿀 것"
+
+#: exporterSettings%2330
+msgid "RegExp"
+msgstr "정규식"
+
+#: exporterSettings%2331
+msgid ""
+"If checked, uses regular expression for replacement. If unchecked, replaced "
+"as plain text."
+msgstr ""
+"체크하면 바꿀 때 정규표현식을 사용하고, 체크를 해제하면 일반 텍스트로서 "
+"바꿉니다."
+
+#: exporterSettings%2332
+msgctxt "exporterSettings#32"
+msgid "Preview"
+msgstr "미리 보기"
+
+#: exporterSettings%2333
+msgctxt "exporterSettings#33"
+msgid "Font"
+msgstr "글꼴"
+
+#: exporterSettings%2334
+msgctxt "exporterSettings#34"
+msgid "Font:"
+msgstr "글꼴:"
+
+#: exporterSettings%2335
+msgctxt "exporterSettings#35"
+msgid "Font size:"
+msgstr "글자 크기:"
+
+#: exporterSettings%2336
+msgid "Folder"
+msgstr "폴더"
+
+#: exporterSettings%2337
+msgid "{}Level {} folder"
+msgstr ""
+
+#: exporterSettings%2338
+msgid "{}Level {} text"
+msgstr ""
+
+#: exporterSettings%2339
+msgid "Replace ... with …"
+msgstr "...을 …로 바꾸기"
+
+#: exporterSettings%2340
+msgid "Replace --- with —"
+msgstr "---을 —로 바꾸기"
+
+#: exportersManager%231
+msgid "Installed"
+msgstr "깔림"
+
+#: exportersManager%232
+#, fuzzy
+msgctxt "exportersManager#2"
+msgid "Custom"
+msgstr "임의 설정"
+
+#: exportersManager%233
+msgid "Not found"
+msgstr "찾지 못함"
+
+#: exportersManager%234
+msgid "{} not found. Install it, or set path manually."
+msgstr "{}을(를) 찾지 못했습니다. 설치하시거나 수동으로 경로를 지정하세요."
+
+#: exportersManager%235
+msgid "<b>Status:</b> uninstalled."
+msgstr "<b>상태:</b> 미설치."
+
+#: exportersManager%236
+msgid "<b>Requires:</b> "
+msgstr "<b>필요:</b> "
+
+#: exportersManager%237
+msgid "Set {} executable path."
+msgstr "{}을(를) 실행 경로로 지정합니다."
+
+#: frequencyAnalyzer%231
+msgid "Phrases"
+msgstr "구절"
+
+#: frequencyAnalyzer%232
+msgid "Frequency"
+msgstr "빈도"
+
+#: frequencyAnalyzer%233
+msgid "Word"
+msgstr "단어"
+
+#: fullScreenEditor%231
+msgid "Theme:"
+msgstr "테마:"
+
+#: fullScreenEditor%232
+msgid "{} words / {}"
+msgstr "{} 단어 / {}"
+
+#: fullScreenEditor%233
+msgctxt "fullScreenEditor#3"
+msgid "{} words"
+msgstr "{} 단어"
+
+#: fullScreenEditor%234
+msgid "Spellcheck"
+msgstr "맞춤법 검사"
+
+#: fullScreenEditor%235
+msgid "Navigation"
+msgstr "내비게이션"
+
+#: fullScreenEditor%236
+msgid "New Text"
+msgstr "새 글"
+
+#: fullScreenEditor%237
+msgctxt "fullScreenEditor#7"
+msgid "Title"
+msgstr "제목"
+
+#: fullScreenEditor%238
+msgid "Title: Show Full Path"
+msgstr ""
+
+#: fullScreenEditor%239
+msgid "Theme selector"
+msgstr ""
+
+#: fullScreenEditor%2310
+#, fuzzy
+msgctxt "fullScreenEditor#10"
+msgid "Word count"
+msgstr "낱말 수"
+
+#: fullScreenEditor%2311
+msgctxt "fullScreenEditor#11"
+msgid "Progress"
+msgstr "진척"
+
+#: fullScreenEditor%2312
+msgid "Progress: Auto Show/Hide"
+msgstr ""
+
+#: fullScreenEditor%2313
+msgid "Clock"
+msgstr ""
+
+#: fullScreenEditor%2314
+msgid "Clock: Show Seconds"
+msgstr ""
+
+#: generalSettings%231
+msgctxt "generalSettings#1"
+msgid "General"
+msgstr "일반"
+
+#: generalSettings%232
+msgid "Split scenes at:"
+msgstr ""
+
+#: generalSettings%233
+msgid "\\n---\\n"
+msgstr ""
+
+#: generalSettings%234
+msgid "Trim long titles (> 32 chars)"
+msgstr ""
+
+#: generalSettings%235
+msgid "Import under:"
+msgstr ""
+
+#: generalSettings%236
+msgid "Import in a top-level folder"
+msgstr ""
+
+#: helpLabel%231
+msgid "If you don't wanna see me, you can hide me in Help menu."
+msgstr ""
+
+#: importer%231
+msgid "Import"
+msgstr "가져오기"
+
+#: importer%232
+msgid "Format:"
+msgstr "형식:"
+
+#: importer%233
+msgid "Choose file"
+msgstr "파일 선택"
+
+#: importer%234
+msgid "Clear file"
+msgstr ""
+
+#: importer%235
+msgctxt "importer#5"
+msgid "Preview"
+msgstr "미리 보기"
+
+#: importer%236
+msgctxt "importer#6"
+msgid "Settings"
+msgstr "설정"
+
+#: lineEditView%231
+#, fuzzy
+msgctxt "lineEditView#1"
+msgid "Various"
+msgstr "여럿"
+
+#: locker%231
+#, fuzzy
+msgctxt "locker#1"
+msgid "Form"
+msgstr "형식"
+
+#: locker%232
+msgid "Lock screen:"
+msgstr "화면 잠금:"
+
+#: locker%233
+msgid "Word target"
+msgstr ""
+
+#: locker%234
+msgid "Time target"
+msgstr ""
+
+#: locker%235
+msgid " words"
+msgstr " 단어"
+
+#: locker%236
+msgid " minutes"
+msgstr " 분"
+
+#: locker%237
+msgid "Lock !"
+msgstr "잠가 !"
+
+#: locker%238
+msgid "~{} h."
+msgstr "~{} 시간."
+
+#: locker%239
+msgid "~{} mn."
+msgstr "~{} 분."
+
+#: locker%2310
+msgid "{}:{}"
+msgstr "{}:{}"
+
+#: locker%2311
+msgid "{} s."
+msgstr "{} 초."
+
+#: locker%2312
+msgid "{} remaining"
+msgstr "{} 남음"
+
+#: locker%2313
+msgid "{} words remaining"
+msgstr "{} 단어 남음"
+
+#: mainEditor%231
+#, fuzzy
+msgctxt "mainEditor#1"
+msgid "Form"
+msgstr "형식"
+
+#: mainEditor%232
+msgctxt "mainEditor#2"
+msgid "Text"
+msgstr "글"
+
+#: mainEditor%233
+msgctxt "mainEditor#3"
+msgid "Index cards"
+msgstr "색인 카드"
+
+#: mainEditor%234
+#, fuzzy
+msgctxt "mainEditor#4"
+msgid "Outline"
+msgstr "개요"
+
+#: mainEditor%235
+msgid "F11"
+msgstr "F11"
+
+#: mainEditor%236
+msgid "Go to parent item"
+msgstr ""
+
+#: mainEditor%237
+msgid "Alt+Up"
+msgstr "Alt+Up"
+
+#: mainEditor%238
+msgctxt "mainEditor#8"
+msgid "Root"
+msgstr ""
+
+#: mainEditor%239
+msgid "{} words "
+msgstr "{} 단어 "
+
+#: mainEditor%2310
+msgid "({} chars) {}  words / {} "
+msgstr ""
+
+#: mainEditor%2311
+msgid "{}  words / {} "
+msgstr ""
+
+#: mainEditor%2312
+msgid "{} chars"
+msgstr ""
+
+#: mainEditor%2313
+msgid "{} chars "
+msgstr ""
+
+#: markdownSettings%231
+msgid "Markdown"
+msgstr "마크다운"
+
+#: metadataView%231
+#, fuzzy
+msgctxt "metadataView#1"
+msgid "Form"
+msgstr "형식"
+
+#: metadataView%232
+msgid "Properties"
+msgstr "속성"
+
+#: metadataView%233
+msgctxt "metadataView#3"
+msgid "Summary"
+msgstr "요약"
+
+#: metadataView%234
+msgctxt "metadataView#4"
+msgid "One line summary"
+msgstr "한 줄 요약"
+
+#: metadataView%235
+msgctxt "metadataView#5"
+msgid "Full summary"
+msgstr "전체 요약"
+
+#: metadataView%236
+msgid "Notes / References"
+msgstr ""
+
+#: metadataView%237
+#, fuzzy
+msgctxt "metadataView#7"
+msgid "Revisions"
+msgstr "수정본"
+
+#: myPanel%231
+msgid "Auto-hide"
+msgstr ""
+
+#: outlineBasics%231
+msgid "Set POV"
+msgstr ""
+
+#: outlineBasics%232
+#, fuzzy
+msgctxt "outlineBasics#2"
+msgid "None"
+msgstr "끔"
+
+#: outlineBasics%233
+msgid "Set Status"
+msgstr ""
+
+#: outlineBasics%234
+msgid "Set Label"
+msgstr ""
+
+#: outlineBasics%235
+#, fuzzy
+msgctxt "outlineBasics#5"
+msgid "New"
+msgstr "추가"
+
+#: outlineBasics%236
+#, fuzzy
+msgctxt "outlineBasics#6"
+msgid "Main"
+msgstr "주연"
+
+#: outlineBasics%237
+#, fuzzy
+msgctxt "outlineBasics#7"
+msgid "Secondary"
+msgstr "조연"
+
+#: outlineBasics%238
+#, fuzzy
+msgctxt "outlineBasics#8"
+msgid "Minor"
+msgstr "단역"
+
+#: outlineBasics%239
+msgid "Set Custom Icon"
+msgstr ""
+
+#: outlineBasics%2310
+msgid "Restore to default"
+msgstr "기본값으로 되돌리기"
+
+#: outlineBasics%2311
+msgctxt "outlineBasics#11"
+msgid "Root"
+msgstr ""
+
+#: outlineBasics%2312
+msgid "Open {} items in new tabs"
+msgstr ""
+
+#: outlineBasics%2313
+msgid "Open {} in a new tab"
+msgstr ""
+
+#: outlineBasics%2314
+msgid "About to remove"
+msgstr ""
+
+#: outlineBasics%2315
+msgid "<p><b>You're about to delete {} item(s).</b></p><p>Are you sure?</p>"
+msgstr ""
+
+#: outlineBasics%2316
+msgid "Select at least two items. Folders are ignored."
+msgstr ""
+
+#: outlineBasics%2317
+msgid "All items must be on the same level (share the same parent)."
+msgstr ""
+
+#: outlineBasics%2318
+msgid "New &Folder"
+msgstr "새 폴더(&F)"
+
+#: outlineBasics%2319
+msgid "New &Text"
+msgstr "새 글(&T)"
+
+#: outlineBasics%2320
+msgctxt "outlineBasics#20"
+msgid "&Copy"
+msgstr "복사(&C)"
+
+#: outlineBasics%2321
+msgctxt "outlineBasics#21"
+msgid "C&ut"
+msgstr "오리기(&u)"
+
+#: outlineBasics%2322
+msgctxt "outlineBasics#22"
+msgid "&Paste"
+msgstr "붙이기(&P)"
+
+#: outlineBasics%2323
+msgctxt "outlineBasics#23"
+msgid "&Rename"
+msgstr "이름 바꾸기(&R)"
+
+#: outlineBasics%2324
+msgctxt "outlineBasics#24"
+msgid "&Delete"
+msgstr "삭제(&D)"
+
+#: outlineCharacterDelegate%231
+#, fuzzy
+msgctxt "outlineCharacterDelegate#1"
+msgid "None"
+msgstr "끔"
+
+#: outlineCharacterDelegate%232
+msgctxt "outlineCharacterDelegate#2"
+msgid "Main"
+msgstr "주연"
+
+#: outlineCharacterDelegate%233
+msgctxt "outlineCharacterDelegate#3"
+msgid "Secondary"
+msgstr "조연"
+
+#: outlineCharacterDelegate%234
+msgctxt "outlineCharacterDelegate#4"
+msgid "Minor"
+msgstr "단역"
+
+#: outlineItem%231
+msgid "{} words / {} ({})"
+msgstr "{} 단어 / {} ({})"
+
+#: outlineItem%232
+msgctxt "outlineItem#2"
+msgid "{} words"
+msgstr "{} 단어"
+
+#: pandocSettings%231
+msgctxt "pandocSettings#1"
+msgid "General"
+msgstr "일반"
+
+#: pandocSettings%232
+msgid "Table of Content"
+msgstr "목차"
+
+#: pandocSettings%233
+msgid "Custom settings for {}"
+msgstr ""
+
+#: persosProxyModel%231
+#, fuzzy
+msgctxt "persosProxyModel#1"
+msgid "Main"
+msgstr "주연"
+
+#: persosProxyModel%232
+#, fuzzy
+msgctxt "persosProxyModel#2"
+msgid "Secondary"
+msgstr "조연"
+
+#: persosProxyModel%233
+msgctxt "persosProxyModel#3"
+msgid "Minors"
+msgstr ""
+
+#: plotDelegate%231
+#, fuzzy
+msgctxt "plotDelegate#1"
+msgid "General"
+msgstr "일반"
+
+#: plotDelegate%232
+msgid "Promise"
+msgstr ""
+
+#: plotDelegate%233
+msgid "Problem"
+msgstr ""
+
+#: plotDelegate%234
+#, fuzzy
+msgctxt "plotDelegate#4"
+msgid "Progress"
+msgstr "진척"
+
+#: plotDelegate%235
+msgid "Resolution"
+msgstr ""
+
+#: plotDelegate%236
+msgid "Try / Fail"
+msgstr ""
+
+#: plotDelegate%237
+msgid "No and"
+msgstr ""
+
+#: plotDelegate%238
+msgid "Yes but"
+msgstr ""
+
+#: plotDelegate%239
+msgid "Freytag's pyramid"
+msgstr ""
+
+#: plotDelegate%2310
+msgid "Exposition"
+msgstr ""
+
+#: plotDelegate%2311
+msgid "Rising action"
+msgstr ""
+
+#: plotDelegate%2312
+msgid "Climax"
+msgstr ""
+
+#: plotDelegate%2313
+msgid "Falling action"
+msgstr ""
+
+#: plotDelegate%2314
+msgid "Three acts"
+msgstr ""
+
+#: plotDelegate%2315
+msgid "1. Setup"
+msgstr ""
+
+#: plotDelegate%2316
+msgid "1. Inciting event"
+msgstr ""
+
+#: plotDelegate%2317
+msgid "1. Turning point"
+msgstr ""
+
+#: plotDelegate%2318
+msgid "2. Choice"
+msgstr ""
+
+#: plotDelegate%2319
+msgid "2. Reversal"
+msgstr ""
+
+#: plotDelegate%2320
+msgid "2. Disaster"
+msgstr ""
+
+#: plotDelegate%2321
+msgid "3. Stand up"
+msgstr ""
+
+#: plotDelegate%2322
+msgid "3. Climax"
+msgstr ""
+
+#: plotDelegate%2323
+msgid "3. Ending"
+msgstr ""
+
+#: plotDelegate%2324
+msgid "Hero's journey"
+msgstr ""
+
+#: plotDelegate%2325
+msgid "Ordinary world"
+msgstr ""
+
+#: plotDelegate%2326
+msgid "Call to adventure"
+msgstr ""
+
+#: plotDelegate%2327
+msgid "Refusal of the call"
+msgstr ""
+
+#: plotDelegate%2328
+msgid "Meeting with mentor"
+msgstr ""
+
+#: plotDelegate%2329
+msgid "Tests"
+msgstr ""
+
+#: plotDelegate%2330
+msgid "Approach"
+msgstr ""
+
+#: plotDelegate%2331
+msgid "Abyss"
+msgstr ""
+
+#: plotDelegate%2332
+msgid "Reward / Revelation"
+msgstr ""
+
+#: plotDelegate%2333
+msgid "Transformation"
+msgstr ""
+
+#: plotDelegate%2334
+msgid "Atonement"
+msgstr ""
+
+#: plotDelegate%2335
+msgid "Return"
+msgstr ""
+
+#: plotModel%231
+#, fuzzy
+msgctxt "plotModel#1"
+msgid "Name"
+msgstr "이름"
+
+#: plotModel%232
+msgid "Meta"
+msgstr ""
+
+#: plotModel%233
+msgid "New step"
+msgstr ""
+
+#: plotModel%234
+#, fuzzy
+msgctxt "plotModel#4"
+msgid "Main"
+msgstr "주연"
+
+#: plotModel%235
+#, fuzzy
+msgctxt "plotModel#5"
+msgid "Secondary"
+msgstr "조연"
+
+#: plotModel%236
+#, fuzzy
+msgctxt "plotModel#6"
+msgid "Minor"
+msgstr "단역"
+
+#: plotTreeView%231
+#, fuzzy
+msgctxt "plotTreeView#1"
+msgid "Main"
+msgstr "주연"
+
+#: plotTreeView%232
+#, fuzzy
+msgctxt "plotTreeView#2"
+msgid "Secondary"
+msgstr "조연"
+
+#: plotTreeView%233
+#, fuzzy
+msgctxt "plotTreeView#3"
+msgid "Minor"
+msgstr "단역"
+
+#: plotTreeView%234
+msgid "**Plot:** {}"
+msgstr ""
+
+#: plotsProxyModel%231
+#, fuzzy
+msgctxt "plotsProxyModel#1"
+msgid "Main"
+msgstr "주연"
+
+#: plotsProxyModel%232
+#, fuzzy
+msgctxt "plotsProxyModel#2"
+msgid "Secondary"
+msgstr "조연"
+
+#: plotsProxyModel%233
+msgctxt "plotsProxyModel#3"
+msgid "Minors"
+msgstr ""
+
+#: propertiesView%231
+#, fuzzy
+msgctxt "propertiesView#1"
+msgid "Form"
+msgstr "형식"
+
+#: propertiesView%232
+msgctxt "propertiesView#2"
+msgid "POV"
+msgstr "시점"
+
+#: propertiesView%233
+msgctxt "propertiesView#3"
+msgid "Status"
+msgstr "상태"
+
+#: propertiesView%234
+msgctxt "propertiesView#4"
+msgid "Label"
+msgstr "라벨"
+
+#: propertiesView%235
+#, fuzzy
+msgctxt "propertiesView#5"
+msgid "Compile"
+msgstr "엮기"
+
+#: propertiesView%236
+msgctxt "propertiesView#6"
+msgid "Goal"
+msgstr "목표"
+
+#: propertiesView%237
+#, fuzzy
+msgctxt "propertiesView#7"
+msgid "Word count"
+msgstr "낱말 수"
+
+#: references%231
+msgid "Not a reference: {}."
+msgstr ""
+
+#: references%232
+msgid "Unknown reference: {}."
+msgstr ""
+
+#: references%233
+msgctxt "references#3"
+msgid "Path:"
+msgstr "경로:"
+
+#: references%234
+msgid "Stats:"
+msgstr ""
+
+#: references%235
+msgctxt "references#5"
+msgid "POV:"
+msgstr "시점:"
+
+#: references%236
+msgctxt "references#6"
+msgid "Status:"
+msgstr "상태:"
+
+#: references%237
+msgid "Label:"
+msgstr "라벨:"
+
+#: references%238
+msgid "Short summary:"
+msgstr ""
+
+#: references%239
+msgid "Long summary:"
+msgstr ""
+
+#: references%2310
+msgid "Notes:"
+msgstr ""
+
+#: references%2311
+#, fuzzy
+msgctxt "references#11"
+msgid "Basic info"
+msgstr "기본 정보"
+
+#: references%2312
+#, fuzzy
+msgctxt "references#12"
+msgid "Detailed info"
+msgstr "상세 정보"
+
+#: references%2313
+msgid "POV of:"
+msgstr ""
+
+#: references%2314
+msgid "Go to {}."
+msgstr ""
+
+#: references%2315
+#, fuzzy
+msgctxt "references#15"
+msgid "Description"
+msgstr "설명"
+
+#: references%2316
+#, fuzzy
+msgctxt "references#16"
+msgid "Result"
+msgstr "결과"
+
+#: references%2317
+msgctxt "references#17"
+msgid "Characters"
+msgstr "등장인물"
+
+#: references%2318
+msgctxt "references#18"
+msgid "Resolution steps"
+msgstr "해결 과정"
+
+#: references%2319
+msgid "Passion"
+msgstr ""
+
+#: references%2320
+msgctxt "references#20"
+msgid "Conflict"
+msgstr "갈등"
+
+#: references%2321
+msgid "<b>Unknown reference:</b> {}."
+msgstr ""
+
+#: references%2322
+msgid "Folder: <b>{}</b>"
+msgstr "폴더: <b>{}</b>"
+
+#: references%2323
+msgid "Text: <b>{}</b>"
+msgstr "글: <b>{}</b>"
+
+#: references%2324
+msgid "Character: <b>{}</b>"
+msgstr "등장인물: <b>{}</b>"
+
+#: references%2325
+msgid "Plot: <b>{}</b>"
+msgstr "플롯: <b>{}</b>"
+
+#: references%2326
+msgid "World: <b>{name}</b>{path}"
+msgstr "세계: <b>{name}</b>{path}"
+
+#: references%2327
+msgid "Referenced in:"
+msgstr ""
+
+#: references%2328
+msgctxt "references#28"
+msgid "Motivation"
+msgstr "동기"
+
+#: references%2329
+msgctxt "references#29"
+msgid "Goal"
+msgstr "목표"
+
+#: references%2330
+#, fuzzy
+msgctxt "references#30"
+msgid "Epiphany"
+msgstr "깨달음"
+
+#: references%2331
+msgid "Short summary"
+msgstr ""
+
+#: references%2332
+msgid "Longer summary"
+msgstr ""
+
+#: revisions%231
+#, fuzzy
+msgctxt "revisions#1"
+msgid "Form"
+msgstr "형식"
+
+#: revisions%232
+msgid "Options"
+msgstr ""
+
+#: revisions%233
+msgid "Restore"
+msgstr ""
+
+#: revisions%234
+#, fuzzy
+msgctxt "revisions#4"
+msgid "Delete"
+msgstr "제거"
+
+#: revisions%235
+msgid "Show modifications"
+msgstr ""
+
+#: revisions%236
+msgid "Show ancient version"
+msgstr ""
+
+#: revisions%237
+msgid "Show spaces"
+msgstr ""
+
+#: revisions%238
+msgid "Show modifications only"
+msgstr ""
+
+#: revisions%239
+msgid "{} years ago"
+msgstr "{} 년 전"
+
+#: revisions%2310
+msgid "{} months ago"
+msgstr "{} 개월 전"
+
+#: revisions%2311
+msgid "{} days ago"
+msgstr "{} 일 전"
+
+#: revisions%2312
+msgid "1 day ago"
+msgstr "하루 전"
+
+#: revisions%2313
+msgid "{} hours ago"
+msgstr "{} 시간 전"
+
+#: revisions%2314
+msgid "{} minutes ago"
+msgstr "{} 분 전"
+
+#: revisions%2315
+msgid "{} seconds ago"
+msgstr "{} 초 전"
+
+#: revisions%2316
+msgid "Line {}:"
+msgstr ""
+
+#: revisions%2317
+msgid "Clear all"
+msgstr ""
+
+#: search%231
+#, fuzzy
+msgctxt "search#1"
+msgid "Form"
+msgstr "형식"
+
+#: search%232
+msgid "Search for..."
+msgstr ""
+
+#: settingsWindow%231
+msgid "New status"
+msgstr ""
+
+#: settingsWindow%232
+msgid "New label"
+msgstr "새 라벨"
+
+#: settingsWindow%233
+msgid "newtheme"
+msgstr "새테마"
+
+#: settingsWindow%234
+msgid "New theme"
+msgstr "새 테마"
+
+#: settingsWindow%235
+msgid " (read-only)"
+msgstr " (읽기 전용)"
+
+#: settingsWindow%236
+msgid "Open Image"
+msgstr "그림 열기"
+
+#: settingsWindow%237
+msgid "Image files (*.jpg; *.jpeg; *.png)"
+msgstr "그림 파일 (*.jpg; *.jpeg; *.png)"
+
+#: settingsWindow%238
+msgctxt "settingsWindow#8"
+msgid "Error"
+msgstr "오류"
+
+#: settingsWindow%239
+msgid "Unable to load selected file"
+msgstr "선택한 파일을 불러올 수 없음"
+
+#: settingsWindow%2310
+msgid ""
+"Unable to add selected image:\n"
+"{}"
+msgstr ""
+"선택한 그림을 추가할 수 없습니다:\n"
+"{}"
+
+#: sldImportance%231
+#, fuzzy
+msgctxt "sldImportance#1"
+msgid "Form"
+msgstr "형식"
+
+#: sldImportance%232
+msgctxt "sldImportance#2"
+msgid "TextLabel"
+msgstr "텍스트라벨"
+
+#: sldImportance%233
+#, fuzzy
+msgctxt "sldImportance#3"
+msgid "Minor"
+msgstr "단역"
+
+#: sldImportance%234
+#, fuzzy
+msgctxt "sldImportance#4"
+msgid "Secondary"
+msgstr "조연"
+
+#: sldImportance%235
+#, fuzzy
+msgctxt "sldImportance#5"
+msgid "Main"
+msgstr "주연"
+
+#: splitDialog%231
+msgid ""
+"\n"
+"            <p>Split selected item(s) at the given mark.</p>\n"
+"\n"
+"            <p>If one of the selected item is a folder, it will be applied\n"
+"            recursively to <i>all</i> of it's children items.</p>\n"
+"\n"
+"            <p>The split mark can contain following escape sequences:\n"
+"                <ul>\n"
+"                    <li><b><code>\\n</code></b>: line break</li>\n"
+"                    <li><b><code>\\t</code></b>: tab</li>\n"
+"                </ul>\n"
+"            </p>\n"
+"\n"
+"            <p><b>Mark:</b></p>\n"
+"            "
+msgstr ""
+
+#: splitDialog%232
+msgid "Split '{}'"
+msgstr ""
+
+#: splitDialog%233
+msgid "Split items"
+msgstr ""
+
+#: storylineView%231
+#, fuzzy
+msgctxt "storylineView#1"
+msgid "Form"
+msgstr "형식"
+
+#: storylineView%232
+msgid "Show Plots"
+msgstr ""
+
+#: storylineView%233
+msgid "Show Characters"
+msgstr ""
+
+#: tabSplitter%231
+msgid "Open selected items in that view."
+msgstr ""
+
+#: tabSplitter%232
+msgid "Split horizontally"
+msgstr ""
+
+#: tabSplitter%233
+msgid "Close split"
+msgstr ""
+
+#: tabSplitter%234
+msgid "Split vertically"
+msgstr ""
+
+#: textEditView%231
+#, fuzzy
+msgctxt "textEditView#1"
+msgid "Various"
+msgstr "여럿"
+
+#: textFormat%231
+#, fuzzy
+msgctxt "textFormat#1"
+msgid "Form"
+msgstr "형식"
+
+#: textFormat%232
+msgid "CTRL+B"
+msgstr "CTRL+B"
+
+#: textFormat%233
+msgid "CTRL+I"
+msgstr "CTRL+I"
+
+#: textFormat%234
+msgid "CTRL+U"
+msgstr "CTRL+U"
+
+#: textFormat%235
+msgid "CTRL+P"
+msgstr "CTRL+P"
+
+#: textFormat%236
+msgid "CTRL+L"
+msgstr "CTRL+L"
+
+#: textFormat%237
+msgid "CTRL+E"
+msgstr "CTRL+E"
+
+#: textFormat%238
+msgid "CTRL+R"
+msgstr "CTRL+R"
+
+#: textFormat%239
+msgid "CTRL+J"
+msgstr "CTRL+J"
+
+#: treeView%231
+msgid "Expand {}"
+msgstr ""
+
+#: treeView%232
+msgid "Collapse {}"
+msgstr ""
+
+#: treeView%233
+msgid "Expand All"
+msgstr ""
+
+#: treeView%234
+msgid "Collapse All"
+msgstr ""
+
+#: welcome%231
+#, fuzzy
+msgctxt "welcome#1"
+msgid "Form"
+msgstr "형식"
+
+#: welcome%232
+msgid "1"
+msgstr "1"
+
+#: welcome%233
+msgid "Templates"
+msgstr ""
+
+#: welcome%234
+msgid "Empty"
+msgstr ""
+
+#: welcome%235
+msgid "Novel"
+msgstr ""
+
+#: welcome%236
+msgid "Novella"
+msgstr ""
+
+#: welcome%237
+msgid "Short Story"
+msgstr ""
+
+#: welcome%238
+msgid "Research paper"
+msgstr ""
+
+#: welcome%239
+msgid "Demo projects"
+msgstr ""
+
+#: welcome%2310
+msgid "Add level"
+msgstr ""
+
+#: welcome%2311
+msgid "Add word count"
+msgstr ""
+
+#: welcome%2312
+msgid "Next time, automatically open last project"
+msgstr ""
+
+#: welcome%2313
+msgid "Open..."
+msgstr "열기..."
+
+#: welcome%2314
+msgid "Recent"
+msgstr ""
+
+#: welcome%2315
+msgid "Create"
+msgstr "만들기"
+
+#: welcome%2316
+msgid "Open project"
+msgstr "프로젝트 열기"
+
+#: welcome%2317
+msgid "Manuskript project (*.msk);;All files (*)"
+msgstr "Manuskript 프로젝트 (*.msk);;모든 파일 (*)"
+
+#: welcome%2318
+msgid "Save project as..."
+msgstr "다른 이름으로 프로젝트 갈무리..."
+
+#: welcome%2319
+msgid "Manuskript project (*.msk)"
+msgstr "Manuskript 프로젝트 (*.msk)"
+
+#: welcome%2320
+msgctxt "welcome#20"
+msgid "Manuskript"
+msgstr "Manuskript"
+
+#: welcome%2321
+msgid "Create New Project"
+msgstr "새로운 프로젝트 만들기"
+
+#: welcome%2322
+msgid "Warning"
+msgstr "경고"
+
+#: welcome%2323
+msgid "Overwrite existing project {} ?"
+msgstr "이미 존재하는 프로젝트 {}을(를) 덮어쓸까요?"
+
+#: welcome%2324
+msgid "Empty fiction"
+msgstr ""
+
+#: welcome%2325
+msgid "Chapter"
+msgstr ""
+
+#: welcome%2326
+msgid "Scene"
+msgstr ""
+
+#: welcome%2327
+msgid "Trilogy"
+msgstr ""
+
+#: welcome%2328
+msgid "Book"
+msgstr ""
+
+#: welcome%2329
+msgid "Section"
+msgstr ""
+
+#: welcome%2330
+msgid "Empty non-fiction"
+msgstr ""
+
+#: welcome%2331
+msgid "words each."
+msgstr ""
+
+#: welcome%2332
+msgid "of"
+msgstr ""
+
+#: welcome%2333
+#, fuzzy
+msgctxt "welcome#33"
+msgid "Text"
+msgstr "글"
+
+#: welcome%2334
+msgid "Something"
+msgstr ""
+
+#: welcome%2335
+msgid "<b>Total:</b> {} words (~ {} pages)"
+msgstr ""
+
+#: welcome%2336
+msgid "Fiction"
+msgstr ""
+
+#: welcome%2337
+msgid "Non-fiction"
+msgstr ""
+
+#: welcome%2338
+msgid "Idea"
+msgstr ""
+
+#: welcome%2339
+msgid "Note"
+msgstr ""
+
+#: welcome%2340
+msgid "Research"
+msgstr ""
+
+#: welcome%2341
+msgid "TODO"
+msgstr ""
+
+#: welcome%2342
+msgid "First draft"
+msgstr ""
+
+#: welcome%2343
+msgid "Second draft"
+msgstr ""
+
+#: welcome%2344
+msgid "Final"
+msgstr ""
+
+#: worldModel%231
+msgid "New item"
+msgstr ""
+
+#: worldModel%232
+msgid "Fantasy world building"
+msgstr ""
+
+#: worldModel%233
+msgid "Physical"
+msgstr ""
+
+#: worldModel%234
+msgid "Climate"
+msgstr ""
+
+#: worldModel%235
+msgid "Topography"
+msgstr ""
+
+#: worldModel%236
+msgid "Astronomy"
+msgstr ""
+
+#: worldModel%237
+msgid "Wild life"
+msgstr ""
+
+#: worldModel%238
+msgid "Flora"
+msgstr ""
+
+#: worldModel%239
+msgid "History"
+msgstr ""
+
+#: worldModel%2310
+msgid "Races"
+msgstr ""
+
+#: worldModel%2311
+msgid "Diseases"
+msgstr ""
+
+#: worldModel%2312
+msgid "Cultural"
+msgstr ""
+
+#: worldModel%2313
+msgid "Customs"
+msgstr ""
+
+#: worldModel%2314
+msgid "Food"
+msgstr ""
+
+#: worldModel%2315
+msgid "Languages"
+msgstr ""
+
+#: worldModel%2316
+msgid "Education"
+msgstr ""
+
+#: worldModel%2317
+msgid "Dresses"
+msgstr ""
+
+#: worldModel%2318
+msgid "Science"
+msgstr ""
+
+#: worldModel%2319
+msgid "Calendar"
+msgstr ""
+
+#: worldModel%2320
+msgid "Bodily language"
+msgstr ""
+
+#: worldModel%2321
+msgid "Ethics"
+msgstr ""
+
+#: worldModel%2322
+msgid "Religion"
+msgstr ""
+
+#: worldModel%2323
+msgid "Government"
+msgstr ""
+
+#: worldModel%2324
+msgid "Politics"
+msgstr ""
+
+#: worldModel%2325
+msgid "Gender roles"
+msgstr ""
+
+#: worldModel%2326
+msgid "Music and arts"
+msgstr ""
+
+#: worldModel%2327
+msgid "Architecture"
+msgstr ""
+
+#: worldModel%2328
+msgid "Military"
+msgstr ""
+
+#: worldModel%2329
+msgid "Technology"
+msgstr ""
+
+#: worldModel%2330
+msgid "Courtship"
+msgstr ""
+
+#: worldModel%2331
+msgid "Demography"
+msgstr ""
+
+#: worldModel%2332
+msgid "Transportation"
+msgstr ""
+
+#: worldModel%2333
+msgid "Medicine"
+msgstr ""
+
+#: worldModel%2334
+msgid "Magic system"
+msgstr ""
+
+#: worldModel%2335
+msgid "Rules"
+msgstr ""
+
+#: worldModel%2336
+msgid "Organization"
+msgstr ""
+
+#: worldModel%2337
+msgid "Magical objects"
+msgstr ""
+
+#: worldModel%2338
+msgid "Magical places"
+msgstr ""
+
+#: worldModel%2339
+msgid "Magical races"
+msgstr ""
+
+#: worldModel%2340
+msgid "Important places"
+msgstr ""
+
+#: worldModel%2341
+msgid "Important objects"
+msgstr ""
+
+#: worldModel%2342
+msgid "Natural resources"
+msgstr "소재"
