@@ -13,7 +13,7 @@ class AbstractRegioner:
         return str(type(self))
 
     def isValid(self) -> bool:
-        return False if len(self.self.supportedLanguages) == 0 else True
+        return len(self.supportedLanguages) != 0
 
     def splitText(self, text: str) -> SplitResult:
         result: SplitResult = SplitResult(text)
@@ -22,5 +22,13 @@ class AbstractRegioner:
         if len(self.supportedLanguages) > 0:
             language = self.supportedLanguages[0]
 
-        result.tuples.append(SplitTuple(0, len(text), language))
+        start = 0
+        while start < len(text):
+          end = text.find('\n', start)
+          if end < start:
+            end = len(text)
+
+          result.tuples.append(SplitTuple(start, end, language))
+          start = end + 1
+
         return result

@@ -2,22 +2,22 @@
 # --!-- coding: utf8 --!--
 
 try:
-    import icu
+    import langdetect
 except ModuleNotFoundError:
-    icu = None
+    langdetect = None
 
 from manuskript.plugin import AbstractPlugin
-from manuskript.plugin.icu.icuSplitter import ICUSplitter
+from manuskript.plugin.langdetect.langdetectRegioner import LangdetectRegioner
 
 
-class ICUSplitterPlugin(AbstractPlugin):
+class LangdetectPlugin(AbstractPlugin):
 
     def __init__(self):
         super().__init__()
-    
+
     def preload(self) -> bool:
-        if not icu:
+        if not langdetect:
             return False
-        
-        self.registerSplitter(ICUSplitter)
+
+        self.registerRegioner(LangdetectRegioner)
         return True

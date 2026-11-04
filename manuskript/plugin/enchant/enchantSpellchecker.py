@@ -15,26 +15,29 @@ class EnchantSpellchecker(AbstractSpellchecker):
         AbstractSpellchecker.__init__(self, [language])
 
         self.dictionary = enchant.DictWithPWL(language)
-    
+
     def getName(self) -> str:
         return "PyEnchant"
 
     def isValid(self) -> bool:
         return False if enchant is None else True
-    
+
     def isMisspelled(self, word: str) -> bool:
+        if word.isnumeric():
+          return False
+
         return not self.dictionary.check(word)
-    
+
     def getSuggestions(self, word: str) -> list[str]:
         return self.dictionary.suggest(word)
-    
+
     def isCustomWord(self, word: str) -> bool:
         return self.dictionary.is_added(word)
-    
+
     def addCustomWord(self, word: str) -> bool:
         self.dictionary.add(word)
         return True
-    
+
     def removeCustomWord(self, word: str) -> bool:
         self.dictionary.remove(word)
         return True

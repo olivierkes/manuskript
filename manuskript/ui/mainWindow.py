@@ -4,7 +4,7 @@
 from gi.repository import GLib, GObject, Gtk
 
 from manuskript.data import Project
-from manuskript.editor import AbstractSplitter, getSplitters
+from manuskript.editor import AbstractRegioner, AbstractSplitter, getRegioners, getSplitters
 from manuskript.plugin import AbstractPlugin, findPlugins, loadPlugins
 from manuskript.spellchecker import AbstractSpellchecker, getSpellcheckers
 from manuskript.ui.dialog import RenameDialog
@@ -26,6 +26,7 @@ class MainWindow:
     def __init__(self):
         self.plugins: list[AbstractPlugin] = findPlugins()
         self.project: Project = None
+        self.regioner: AbstractRegioner = None
         self.spellchecker: AbstractSpellchecker = None
 
         builder = Gtk.Builder()
@@ -118,7 +119,7 @@ class MainWindow:
 
     def getProject(self) -> Project:
         return self.project
-    
+
     def reloadDictionaries(self):
         def clearMenuItem(item: Gtk.RadioMenuItem):
             item.disconnect("toggled", self._toggledSpellcheckerItem)
@@ -128,6 +129,14 @@ class MainWindow:
         self.dictionaryMenuGroup = []
 
         selectedRadioMenuItem: Gtk.RadioMenuItem = None
+
+        self.regioner = None
+
+        for regioner in getRegioners():
+            if not regioner.isValid():
+                continue
+
+            self.regioner = regioner
 
         for spellchecker in getSpellcheckers():
             menuItem = Gtk.RadioMenuItem.new_with_label(self.dictionaryMenuGroup, spellchecker.getTitle())
@@ -165,24 +174,32 @@ class MainWindow:
         if self.project.outline is None:
             return
 
+        if not item.get_active():
+          return
+
+        mistakes = 0
+
         for outlineItem in self.project.outline.all():
             if not hasattr(outlineItem, "text"):
                 continue
 
             text = outlineItem.text
+            regions = self.regioner.splitText(text)
 
-            for t in splitter.splitText(text).tuples:
+            for t in splitter.splitRegions(regions).tuples:
                 if self.spellchecker.isMisspelled(text[t.begin:t.end]):
-                    print(text[t.begin:t.end])
+                    mistakes += 1
+
+        print(mistakes)
 
     def __checkStackSelection(self, selected=None):
         slot = self.mainStack.get_visible_child()
 
         self.idleStackSelection = GLib.timeout_add(100, self.__checkStackSelection, slot, priority=GLib.PRIORITY_HIGH_IDLE)
-        
+
         if selected == slot:
             return False
-        
+
         if self.generalSlot == selected:
             self.generalView.deactivate()
         elif self.summarySlot == selected:
@@ -197,7 +214,7 @@ class MainWindow:
             self.outlineView.deactivate()
         elif self.editorSlot == selected:
             self.editorView.deactivate()
-        
+
         if self.generalSlot == slot:
             self.generalView.activate()
         elif self.summarySlot == slot:
@@ -212,7 +229,7 @@ class MainWindow:
             self.outlineView.activate()
         elif self.editorSlot == slot:
             self.editorView.activate()
-        
+
         return False
 
     def openProject(self, path=None):

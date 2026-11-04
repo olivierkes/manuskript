@@ -29,10 +29,7 @@ class AbstractSplitter:
         for region in regions.tuples:
             text: str = regions.text[region.begin:region.end]
 
-            for part in splitText(text, region.lang).tuples:
-                part.begin += region.begin
-                part.end += region.end
-
+            for part in self.splitText(text, region.lang).tuples:
                 result.tuples.append(
                     SplitTuple(region.begin + part.begin, region.begin + part.end, part.lang)
                 )
