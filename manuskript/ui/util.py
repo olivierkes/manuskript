@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import sys
+
 from gi.repository import GdkPixbuf, Gdk
 
 from manuskript.data import Color, OutlineItem, OutlineText, OutlineFolder
-from manuskript.util import profileTime
+from manuskript.util import getTranslation, profileTime
 
 
 def rgbaFromColor(color: Color) -> Gdk.RGBA:
@@ -44,7 +45,7 @@ def packViewIntoSlot(slot, view_cls, data=None, secondaryData=None):
         if data is not None:
             args.append(data)
         if secondaryData is not None:
-            args.append(secondaryData)        
+            args.append(secondaryData)
 
         view = profileTime(view_cls, *args)
 

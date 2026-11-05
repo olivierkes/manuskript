@@ -7,6 +7,18 @@ import traceback
 import urllib.parse
 
 from manuskript.util.counter import CounterKind, CharCounter, WordCounter, PageCounter
+from manuskript.util.translation import Translation
+
+_translation = Translation()
+_translation.bind()
+
+
+def getTranslation() -> Translation:
+  return _translation
+
+
+def _(message: str, plural_message: str|None = None, n: int = 1) -> str:
+  return getTranslation().translate(message, plural_message, n)
 
 
 def safeInt(s: str, d: int) -> int:
