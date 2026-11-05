@@ -553,6 +553,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if pixmap.isNull():
             return
 
+        character = self.lstCharacters.currentCharacter()
+
+        if character is None:
+            return
+
+        character.portraitPath = filename
+
         self.lblPersoPortrait.setPixmap(
             pixmap.scaled(
                 200,
@@ -565,6 +572,26 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def changeCurrentCharacter(self, character):
         if character is None:
             return
+
+        # Display the selected character's portrait
+        self.lblPersoPortrait.clear()
+
+        if character.portraitPath:
+            pixmap = QPixmap(character.portraitPath)
+
+            if not pixmap.isNull():
+                self.lblPersoPortrait.setPixmap(
+                    pixmap.scaled(
+                        200,
+                        250,
+                        Qt.KeepAspectRatio,
+                        Qt.SmoothTransformation
+                    )
+                )
+            else:
+                self.lblPersoPortrait.setText("Image not found")
+        else:
+            self.lblPersoPortrait.setText("No portrait")
 
         index = character.index()
 
