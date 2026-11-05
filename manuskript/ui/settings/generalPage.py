@@ -4,6 +4,7 @@
 from gi.repository import Gtk, Handy
 
 from manuskript.data import Settings
+from manuskript.util import getTranslation, Translation, validString
 
 
 class GeneralPage:
@@ -16,6 +17,7 @@ class GeneralPage:
 
         self.widget = builder.get_object("general_page")
 
+        self.generalLanguage = builder.get_object("general_language")
         self.autoSave = builder.get_object("auto_save")
         self.autoSaveDelay = builder.get_object("auto_save_delay")
         self.autoSaveNoChanges = builder.get_object("auto_save_nochanges")
@@ -23,6 +25,10 @@ class GeneralPage:
         self.saveOnQuit = builder.get_object("save_on_quit")
         self.saveToZip = builder.get_object("save_to_zip")
 
+        self.languagesStore = builder.get_object("languages_store")
+        self.refreshLanguagesStore()
+
+        self.generalLanguage.set_active(0)
         self.autoSave.set_active(self.settings.get("autoSave"))
         self.autoSaveDelay.set_value(self.settings.get("autoSaveDelay"))
         self.autoSaveNoChanges.set_active(self.settings.get("autoSaveNoChanges"))
@@ -36,6 +42,20 @@ class GeneralPage:
         self.autoSaveNoChangesDelay.connect("value-changed", self._autoSaveNoChangesChanged)
         self.saveOnQuit.connect("toggled", self._saveOnQuitToggled)
         self.saveToZip.connect("toggled", self._saveToZipToggled)
+
+    def refreshLanguagesStore(self):
+      self.languagesStore.clear()
+
+      translation: Translation = getTranslation()
+      languages: list[tuple[str, str]] = [
+        (Translation.getLanguageName(language), language) for language in translation.getSupportedLanguages()
+      ]
+
+      languages.sort(key=lambda language: language[0])
+      for language in languages:
+          tree_iter = self.languagesStore.append()
+          self.languagesStore.set_value(tree_iter, 0, language[0])
+          self.languagesStore.set_value(tree_iter, 1, language[1])
 
     def _autoSaveToggled(self, button: Gtk.ToggleButton):
         self.settings.set("autoSave", button.get_active())

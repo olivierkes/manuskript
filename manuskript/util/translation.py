@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import gettext
+from io import StringIO
+import langcodes
 import locale
 import os
 
@@ -28,7 +30,7 @@ class Translation:
     locale_files: list[str] = os.listdir(self.getLocaleDirectory())
     self.languages: list[str] = [f for f in filter(isLocalizationFile, locale_files)]
 
-    self.setLanguage(language)
+    self.setLanguage(self.getLanguage())
 
   def getLanguage(self) -> str:
     return self.language
@@ -96,3 +98,53 @@ class Translation:
       return locale_id
     else:
       return locale_id[:index]
+
+  @classmethod
+  def getLanguageName(cls, language: str, autonym: bool = False) -> str:
+    try:
+      index: int = language.find('@')
+      name: str = language
+      specifier: str = ""
+
+      if index >= 0:
+        specifier = language[index+1:]
+        name = language.replace('@', '-')
+
+      lang: langcodes.Language = langcodes.Language.get(name)
+      if autonym:
+        name = lang.autonym()
+
+        if len(name) > 0:
+          s = StringIO()
+
+          s.write(name[0].upper())
+          s.write(name[1:].lower())
+
+          name = s.getvalue()
+      else:
+        name = lang.display_name()
+
+      lower_name: str = name.lower()
+      if (len(specifier) > 0) and (not specifier.lower() in lower_name):
+        s = StringIO()
+
+        s.write(name)
+        s.write(" (")
+        s.write(specifier)
+        s.write(")")
+
+        name = s.getvalue()
+
+      index = name.find('(')
+      if (index >= 0) and (name.find(')') > index + 1):
+        s = StringIO()
+
+        s.write(name[:index + 1])
+        s.write(name[index + 1].upper())
+        s.write(name[index + 2:])
+
+        name = s.getvalue()
+
+      return name
+    except ModuleNotFoundError:
+      return language
