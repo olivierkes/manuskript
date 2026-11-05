@@ -4,11 +4,11 @@ import importlib
 import os
 import re
 
-from PyQt5.Qt import qVersion, PYQT_VERSION_STR
+from PyQt5.Qt import qVersion, PYQT_VERSION_STR, Qt
 from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoint,
                           QRegExp, QUrl, QSize, QModelIndex)
-from PyQt5.QtGui import QStandardItemModel, QIcon, QColor, QStandardItem
-from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
+from PyQt5.QtGui import QStandardItemModel, QIcon, QColor, QStandardItem, QPixmap
+from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, QFileDialog,\
     QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit, QTextEdit, QTreeView, QDialog, QTableView
 
 from manuskript import settings
@@ -534,6 +534,33 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.bulkAffectedCharacters = []
         for character in self.lstCharacters.currentCharacters():
             self.bulkAffectedCharacters.append(character.name())
+
+    def chooseCharacterPortrait(self):
+        """Choose and display a character portrait."""
+
+        filename, _ = QFileDialog.getOpenFileName(
+            self,
+            self.tr("Choose Character Portrait"),
+            "",
+            self.tr("Images (*.png *.jpg *.jpeg *.bmp *.webp)")
+        )
+
+        if not filename:
+            return
+
+        pixmap = QPixmap(filename)
+
+        if pixmap.isNull():
+            return
+
+        self.lblPersoPortrait.setPixmap(
+            pixmap.scaled(
+                200,
+                250,
+                Qt.KeepAspectRatio,
+                Qt.SmoothTransformation
+            )
+        )
 
     def changeCurrentCharacter(self, character):
         if character is None:
@@ -1323,6 +1350,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.updatePersoInfoView(self.tblPersoInfos)
         self.lstCharacters.setCharactersModel(self.mdlCharacter)
         self.tblPersoInfos.setModel(self.mdlCharacter)
+        self.btnPersoPortrait.clicked.connect(self.chooseCharacterPortrait)
         try:
             self.btnAddPerso.clicked.connect(self.lstCharacters.addCharacter, F.AUC)
             self.btnRmPerso.clicked.connect(self.deleteCharacter, F.AUC)
