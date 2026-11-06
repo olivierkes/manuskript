@@ -5,12 +5,11 @@ import tempfile
 
 from gi.repository import GLib, GObject, Gtk, Handy, WebKit2
 
-from manuskript.ui.abstractDialog import AbstractDialog
-
 from manuskript.converter import getConverter
-from manuskript.exporter import getExporters, getExporterByName, AbstractExporter
-from manuskript.data import Project, OutlineItem, OutlineFolder, OutlineText
+from manuskript.data import OutlineFolder, OutlineItem, OutlineText, Project
+from manuskript.exporter import AbstractExporter, getExporterByName, getExporters
 from manuskript.io import BinaryFile
+from manuskript.ui.abstractDialog import AbstractDialog
 from manuskript.util import validString
 
 
@@ -43,8 +42,10 @@ class CompileWindow(AbstractDialog):
         self.previewBox.pack_start(self.previewWebView, True, True, 0)
         self.previewBox.show_all()
 
+        count_exporters: int = 0
         for exporter in getExporters():
             tree_iter = self.fileFormatStore.append()
+            count_exporters += 1
 
             if tree_iter is None:
                 continue
@@ -54,6 +55,8 @@ class CompileWindow(AbstractDialog):
             self.fileFormatStore.set_value(tree_iter, 2, validString(exporter.getIcon()))
 
         self.fileFormatCombobox.set_active(0)
+        self.previewButton.set_sensitive(count_exporters > 0)
+        self.exportButton.set_sensitive(count_exporters > 0)
 
         self.previewLeaflet.bind_property(
             "folded", self.back, "visible", GObject.BindingFlags.SYNC_CREATE
@@ -79,6 +82,9 @@ class CompileWindow(AbstractDialog):
 
     def getExporter(self) -> AbstractExporter | None:
         tree_iter = self.fileFormatCombobox.get_active_iter()
+        if tree_iter is None:
+            return None
+
         name = validString(self.fileFormatStore.get_value(tree_iter, 0))
         return getExporterByName(name)
 

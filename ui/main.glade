@@ -705,7 +705,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                       <packing>
                         <property name="name">page_overview</property>
-                        <property name="title" translatable="yes">General</property>
+                        <property name="title" translatable="yes" context="MainWindow#1">General</property>
                         <property name="icon-name">view-dual-symbolic</property>
                       </packing>
                     </child>
@@ -720,7 +720,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                       <packing>
                         <property name="name">page_summary</property>
-                        <property name="title" translatable="yes">Summary</property>
+                        <property name="title" translatable="yes" context="MainWindow#11">Summary</property>
                         <property name="icon-name">emblem-documents-symbolic</property>
                         <property name="position">1</property>
                       </packing>
@@ -736,7 +736,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                       <packing>
                         <property name="name">page_characters</property>
-                        <property name="title" translatable="yes">Characters</property>
+                        <property name="title" translatable="yes" context="MainWindow#25">Characters</property>
                         <property name="icon-name">system-users-symbolic</property>
                         <property name="position">2</property>
                       </packing>
@@ -752,7 +752,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                       <packing>
                         <property name="name">page_plot</property>
-                        <property name="title" translatable="yes">Plot</property>
+                        <property name="title" translatable="yes" context="MainWindow#38">Plot</property>
                         <property name="icon-name">network-wired-symbolic</property>
                         <property name="position">3</property>
                       </packing>
@@ -768,7 +768,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                       <packing>
                         <property name="name">page_world</property>
-                        <property name="title" translatable="yes">World</property>
+                        <property name="title" translatable="yes" context="MainWindow#44">World</property>
                         <property name="icon-name">weather-few-clouds-symbolic</property>
                         <property name="position">4</property>
                       </packing>
@@ -784,7 +784,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                       <packing>
                         <property name="name">page_outline</property>
-                        <property name="title" translatable="yes">Outline</property>
+                        <property name="title" translatable="yes" context="MainWindow#49">Outline</property>
                         <property name="icon-name">view-list-symbolic</property>
                         <property name="position">5</property>
                       </packing>

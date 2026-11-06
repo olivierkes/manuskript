@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 
+<!-- Generated with glade 3.40.0 
 
 Copyright (C) 2015-2021 Olivier Keshavjee et al.
 
@@ -91,7 +91,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           <object class="GtkLabel" id="label1">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">Title</property>
+                            <property name="label" translatable="yes" context="MainWindow#2">Title</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -352,7 +352,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           <object class="GtkLabel" id="label7">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">Name</property>
+                            <property name="label" translatable="yes" context="MainWindow#9">Name</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>

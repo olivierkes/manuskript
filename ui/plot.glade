@@ -361,7 +361,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="valign">start</property>
-                        <property name="label" translatable="yes">Result</property>
+                        <property name="label" translatable="yes" context="MainWindow#42">Result</property>
                         <property name="wrap">True</property>
                         <property name="xalign">0</property>
                       </object>
@@ -375,7 +375,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="valign">start</property>
-                        <property name="label" translatable="yes">Description</property>
+                        <property name="label" translatable="yes" context="MainWindow#41">Description</property>
                         <property name="wrap">True</property>
                         <property name="xalign">0</property>
                       </object>
@@ -879,7 +879,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Resolution steps</property>
+                    <property name="label" translatable="yes" context="MainWindow#43">Resolution steps</property>
                   </object>
                   <packing>
                     <property name="position">1</property>

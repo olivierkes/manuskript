@@ -401,7 +401,7 @@ summary</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="valign">start</property>
-                        <property name="label" translatable="yes">Epiphany</property>
+                        <property name="label" translatable="yes" context="MainWindow#33">Epiphany</property>
                         <property name="wrap">True</property>
                         <property name="xalign">0</property>
                       </object>
@@ -415,7 +415,7 @@ summary</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="valign">start</property>
-                        <property name="label" translatable="yes">Conflict</property>
+                        <property name="label" translatable="yes" context="MainWindow#32">Conflict</property>
                         <property name="wrap">True</property>
                         <property name="xalign">0</property>
                       </object>
@@ -429,7 +429,7 @@ summary</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="valign">start</property>
-                        <property name="label" translatable="yes">Goal</property>
+                        <property name="label" translatable="yes" context="MainWindow#31">Goal</property>
                         <property name="wrap">True</property>
                         <property name="xalign">0</property>
                       </object>
@@ -641,7 +641,7 @@ summary</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="valign">start</property>
-                        <property name="label" translatable="yes">Motivation</property>
+                        <property name="label" translatable="yes" context="MainWindow#30">Motivation</property>
                         <property name="wrap">True</property>
                         <property name="xalign">0</property>
                       </object>
@@ -761,7 +761,7 @@ summary</property>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Basic info</property>
+                    <property name="label" translatable="yes" context="MainWindow#28">Basic info</property>
                   </object>
                   <packing>
                     <property name="tab-fill">False</property>
@@ -804,7 +804,7 @@ summary</property>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Summary</property>
+                    <property name="label" translatable="yes" context="MainWindow#11">Summary</property>
                   </object>
                   <packing>
                     <property name="position">1</property>
@@ -1003,7 +1003,7 @@ summary</property>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Detailed info</property>
+                    <property name="label" translatable="yes" context="MainWindow#37">Detailed info</property>
                   </object>
                   <packing>
                     <property name="position">3</property>
