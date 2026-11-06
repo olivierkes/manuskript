@@ -2,13 +2,12 @@
 # -*- coding: utf-8 -*-
 
 from gi.repository import GObject, GdkPixbuf, Gtk
+from typing import Any, Iterable, Optional
 
-from manuskript.data.importance import Importance
+from manuskript.data import Character, Characters, Importance
 from manuskript.ui.util import pixbufFromColor
 from manuskript.ui.picker.abstractGridPicker import AbstractGridPicker
-from manuskript.data import Character, Characters
-
-from typing import Any, Iterable, Optional
+from manuskript.util import validString
 
 
 class CharacterPicker(AbstractGridPicker):
@@ -30,32 +29,37 @@ class CharacterPicker(AbstractGridPicker):
         AbstractGridPicker.show(self)
 
     def shouldIncludeItem(self, item: Any) -> bool:
-        if item is not Character:
+        if type(item) is not Character:
+            return False
+        elif item.UID is None:
             return False
 
-        return (not self.pickPovOnly or item.POV) and item.UID.value not in self.excludedCharactersUIDs
+        if (not self.pickPovOnly) or (item.POV):
+            return item.UID.value not in self.excludedCharactersUIDs
+        else:
+            return False
 
     def getItems(self) -> Iterable[Any]:
         return self.characters
 
     def getItemLabel(self, item: Any) -> str:
-        if item is Character:
-            return item.name
+        if type(item) is Character:
+            return validString(item.name)
         else:
             return ""
 
     def getItemPixbuf(self, item: Any) -> GdkPixbuf:
-        if item is Character:
+        if type(item) is Character:
             return pixbufFromColor(item.color)
         else:
             return None
 
     def getItemFilterKey(self, item: Any) -> Any:
-        if item is Character:
+        if type(item) is Character:
             return item.importance
         else:
             return Importance.MINOR
 
     def _characterItemSelected(self, picker: AbstractGridPicker, item: Any) -> None:
-        if item is Character:
+        if type(item) is Character:
             picker.emit("character-selected", item)

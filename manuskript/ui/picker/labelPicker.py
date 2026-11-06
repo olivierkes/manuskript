@@ -25,19 +25,19 @@ class LabelPicker(AbstractGridPicker):
         AbstractGridPicker.show(self)
 
     def shouldIncludeItem(self, item: Any) -> bool:
-        return item is Label
+        return type(item) is Label
 
     def getItems(self) -> Iterable[Any]:
         return self.labels
 
     def getItemLabel(self, item: Any) -> str:
-        if item is Label:
+        if type(item) is Label:
             return item.name
         else:
             return ""
 
     def getItemPixbuf(self, item: Any) -> GdkPixbuf:
-        if item is Label:
+        if type(item) is Label:
             return pixbufFromColor(item.color)
         else:
             return None
@@ -46,5 +46,5 @@ class LabelPicker(AbstractGridPicker):
         return None
 
     def _labelItemSelected(self, picker: AbstractGridPicker, item: Any) -> None:
-        if item is Label:
+        if type(item) is Label:
             picker.emit("label-selected", item)
