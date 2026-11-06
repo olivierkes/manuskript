@@ -37,7 +37,7 @@ def test_character_pinning(MWEmptyProject):
     mw.clearCharacterPins()
 
     assert mw.pinnedCharacterIDs == []
-    
+
 def test_character_creation(MWEmptyProject):
     """Creating characters should not cause shutdown errors."""
 
@@ -112,7 +112,7 @@ def test_deleting_pinned_character(MWEmptyProject):
     bob_id = bob.ID()
 
     mw.mdlCharacter.removeCharacter(alice_id)
-    
+
     assert alice_id not in [
         character.ID()
         for character in mw.mdlCharacter.characters
@@ -256,11 +256,11 @@ def test_character_portrait_persists(MWNoProject, tmp_path):
 
     # Verify that the image was saved inside the project folder.
     portrait_file = f"images/characters/{alice_id}.png"
-    
+
     portrait_on_disk = (
         project.with_suffix("") / portrait_file
     )
-    
+
     assert portrait_on_disk.exists()
     assert portrait_on_disk.read_bytes() == image_data
 

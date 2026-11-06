@@ -361,7 +361,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.pushHistory(("outline", None))
             self._previousSelectionEmpty = True
             return
-        
+
         self.pushHistory(("outline", self.mdlOutline.ID(index)))
         self._previousSelectionEmpty = False
 
@@ -590,7 +590,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Display the selected character's portrait
         self.lblPersoPortrait.clear()
-        
+
         if character.portraitData:
             pixmap = QPixmap()
 
@@ -777,17 +777,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def refreshCharacterSidebar(self, *args):
         """Display pinned and unpinned characters in separate sections."""
-    
+
         # Remove existing cards and headings
         while self.characterCardLayout.count():
             item = self.characterCardLayout.takeAt(0)
-    
+
             widget = item.widget()
-    
+
             if widget is not None:
                 widget.hide()
                 widget.deleteLater()
-    
+
         # Separate pinned and unpinned characters
         pinned = []
         unpinned = []
@@ -805,14 +805,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 pinned.append(character)
             else:
                 unpinned.append(character)
-    
+
         # Preserve the order characters were pinned
         pinned.sort(
             key=lambda character: self.pinnedCharacterIDs.index(
                 character.ID()
             )
         )
-    
+
         # Pinned Characters section
         if pinned:
             pinnedHeader = QWidget()
@@ -847,9 +847,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             allLabel.setStyleSheet(
                 "font-weight: bold; margin-top: 10px;"
             )
-    
+
             self.characterCardLayout.addWidget(allLabel)
-    
+
             for character in unpinned:
                 self.addCharacterCard(character)
 
@@ -869,17 +869,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def toggleCharacterPin(self, character):
         """Pin or unpin a character in the sidebar."""
-    
+
         characterID = character.ID()
-    
+
         if characterID in self.pinnedCharacterIDs:
             self.pinnedCharacterIDs.remove(characterID)
         else:
             self.pinnedCharacterIDs.append(characterID)
-    
+
         # Mark the project as modified
         self.startTimerNoChanges()
-    
+
         # Update the sidebar
         self.refreshCharacterSidebar()
 
@@ -898,7 +898,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Select the character
         self.lstCharacters.clearSelection()
         self.lstCharacters.setCurrentItem(item)
-            
+
     ###############################################################################
     # PLOTS
     ###############################################################################
@@ -1007,7 +1007,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.pushHistory(("redac", None))
             self._previousSelectionEmpty = True
             return
-        
+
         self.pushHistory(("redac", self.mdlOutline.ID(index)))
         self._previousSelectionEmpty = False
 
@@ -1109,7 +1109,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if self._lastFocus: self._lastFocus.merge()
 
     # Navigate
-    
+
     def navigateBack(self):
         self.history.back()
 
@@ -1220,7 +1220,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
             # Load data
             self.loadEmptyDatas()
-            
+
             if not self.loadDatas(project):
                 self.closeProject()
                 return
@@ -1547,14 +1547,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 LOGGER.error(" * {} wasn't found in project file.".format(e))
             F.statusMessage(
                     self.tr("Project {} loaded with some errors.").format(project), 5000, importance = 3)
-        
+
         if project in errors:
             LOGGER.error("Loading project {} failed.".format(project))
             F.statusMessage(
                     self.tr("Loading project {} failed.").format(project), 5000, importance = 3)
 
             return False
-        
+
         return True
 
     ###############################################################################
@@ -1837,7 +1837,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 lambda: self.tblDebugSubPlots.setRootIndex(self.mdlPlots.index(
                         self.tblDebugPlots.selectionModel().currentIndex().row(),
                         Plot.steps)))
-        
+
         self.disconnectAll(self.history.navigated)
 
     ###############################################################################

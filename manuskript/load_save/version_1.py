@@ -223,7 +223,7 @@ def saveProject(zip=None):
         str(characterID)
         for characterID in mw.pinnedCharacterIDs
     )
-    
+
     files.append(("characters/pinned.txt", pinnedContent))
 
     # Review characters
@@ -726,7 +726,7 @@ def loadProject(project, zip=None):
 
                     except (UnicodeDecodeError, FileNotFoundError, IsADirectoryError) as e:
                          LOGGER.error("Ignore file " + filename + " because of the error: " + e.reason)
-                         
+
                     except PermissionError as e:
                         LOGGER.error("Cannot open file " + filename + ": " + e.strerror)
                         errors.append(fo)
@@ -880,10 +880,10 @@ def loadProject(project, zip=None):
     mdl = mw.mdlCharacter
     # Restore pinned character IDs
     mw.pinnedCharacterIDs = []
-    
+
     if "characters/pinned.txt" in files:
         pinnedContent = files["characters/pinned.txt"]
-    
+
         mw.pinnedCharacterIDs = list(dict.fromkeys(
             characterID.strip()
             for characterID in pinnedContent.splitlines()
@@ -920,10 +920,10 @@ def loadProject(project, zip=None):
             # Character portrait
             elif desc == "Portrait":
                 c.portraitPath = val
-            
+
                 if val in files:
                     c.portraitData = files[val]
-            
+
             # Character's infos
             else:
                 c.infos.append(CharacterInfo(c, desc, val))
