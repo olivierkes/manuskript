@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-import collections
+from collections import OrderedDict
 import os
 import re
+from typing import Any, Tuple
 
 from manuskript.io.abstractFile import AbstractFile
 
@@ -13,8 +14,8 @@ class MmdFile(AbstractFile):
 
         self.metaSpacing = metaSpacing
 
-    def loadMMD(self, ignoreBody: bool = True) -> tuple(collections.OrderedDict, str | None):
-        metadata = collections.OrderedDict()
+    def loadMMD(self, ignoreBody: bool = True) -> Tuple[OrderedDict, str | None]:
+        metadata: OrderedDict = OrderedDict()
         body: str | None = None
 
         metaPattern = re.compile(r"^([^\s].*?):\s*(.*)\n$")
@@ -36,8 +37,11 @@ class MmdFile(AbstractFile):
                 else:
                     m = metaValuePattern.match(line)
 
-                    if not (m is None):
-                        metaValue += "\n" + m.group(2)
+                    if (m is not None):
+                        if metaValue is None:
+                            metaValue = m.group(2)
+                        else:
+                            metaValue += "\n" + m.group(2)
                     elif line == "\n":
                         break
 
@@ -62,10 +66,10 @@ class MmdFile(AbstractFile):
 
         return metadata, body
 
-    def load(self) -> any:
+    def load(self) -> Any:
         return self.loadMMD(False)
 
-    def save(self, content: any) -> None:
+    def save(self, content: Any) -> None:
         metadata, body = content
         metaSpacing = self.metaSpacing
 

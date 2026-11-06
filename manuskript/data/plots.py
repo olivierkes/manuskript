@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 
 import os
-from typing import Iterator, Optional
+from typing import Any, Iterator, Optional
 
 from lxml import etree
 
@@ -20,8 +20,8 @@ class PlotStep:
     ) -> None:
         self.plot = plot
 
-        self.UID = UID
-        self.name: str = name
+        self.UID: UniqueID = UID
+        self.name: Optional[str] = name
         self.meta: Optional[str] = meta
         self.summary: Optional[str] = summary
 
@@ -44,10 +44,10 @@ class PlotLine:
         if name is None:
             name = "New plot"
 
-        self.UID = UID
-        self.name = name
-        self.importance = importance
-        self.characters: list[Character] = list()
+        self.UID: UniqueID = UID
+        self.name: Optional[str] = name
+        self.importance: Importance = importance
+        self.characters: list[int] = list()
         self.description: Optional[str] = None
         self.result: Optional[str] = None
         self.steps: list[PlotStep] = list()
@@ -61,7 +61,7 @@ class PlotLine:
         self.links.call(LinkAction.UPDATE, self.UID, self)
 
     def addCharacter(self, character: Character) -> None:
-        if character is None:
+        if (character is None) or (character.UID is None):
             return
 
         character.links.add(self.__linkActionCharacter)
@@ -70,7 +70,7 @@ class PlotLine:
         self.links.call(LinkAction.UPDATE, self.UID, self)
 
     def removeCharacter(self, character: Character, unlink: bool = True) -> None:
-        if character is None:
+        if (character is None) or (character.UID is None):
             return
 
         if unlink:
@@ -210,7 +210,7 @@ class Plots(AbstractData):
             self.complete(False)
 
     @classmethod
-    def saveElementAttribute(cls, element: etree.Element, name: str, value: any) -> None:
+    def saveElementAttribute(cls, element: etree.Element, name: str, value: Any) -> None:
         if value is None:
             return
 

@@ -3,6 +3,7 @@
 
 import re
 import time
+from typing import Any, Callable
 import urllib.parse
 
 from manuskript.util.counter import CounterKind, CharCounter, WordCounter, PageCounter
@@ -30,7 +31,7 @@ def safeInt(s: str | None, d: int) -> int:
         return d
 
 
-def validString(invalid: str | None) -> str:
+def validString(invalid: Any) -> str:
     return "" if invalid is None else str(invalid)
 
 
@@ -38,7 +39,7 @@ def invalidString(valid: str) -> str | None:
     return None if len(valid) == 0 else valid
 
 
-def validInt(invalid: int | None, defaultValue: int = 0) -> int:
+def validInt(invalid: Any, defaultValue: int = 0) -> int:
     return defaultValue if invalid is None else int(invalid)
 
 
@@ -46,7 +47,7 @@ def invalidInt(valid: int) -> int | None:
     return None if valid == 0 else valid
 
 
-def validBool(invalid: bool | str | None) -> bool:
+def validBool(invalid: Any) -> bool:
     return str(invalid) != str(False)
 
 
@@ -102,7 +103,7 @@ def safeFraction(value: float, low: float, high: float) -> float:
         return 1.0 * (value - low) / (high - low)
 
 
-def profileTime(func, *args):
+def profileTime(func: Callable, *args: Any) -> Any:
     start = time.perf_counter()
     result = func(*args)
     end = time.perf_counter()

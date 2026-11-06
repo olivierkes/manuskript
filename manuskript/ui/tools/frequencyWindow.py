@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from gi.repository import GLib, GObject, Gtk
+from typing import Any
+
+from gi.repository import GLib, GObject, Gtk, Handy
 
 import re
 
@@ -32,25 +34,25 @@ class FrequencyWindow(AbstractDialog):
         self.analyzeCompleted = 0
         self.filteredAmount = 0
 
-        self.headerBar = None
-        self.back = None
-        self.wordLeaflet = None
-        self.wordsProgress = None
-        self.analyzeWords = None
-        self.phrasesProgress = None
-        self.analyzePhrases = None
-        self.wordEntry = None
-        self.removeWord = None
-        self.addWord = None
+        self.headerBar: Gtk.HeaderBar = None
+        self.back: Gtk.Button = None
+        self.wordLeaflet: Handy.Leaflet = None
+        self.wordsProgress: Gtk.ProgressBar = None
+        self.analyzeWords: Gtk.Button = None
+        self.phrasesProgress: Gtk.ProgressBar = None
+        self.analyzePhrases: Gtk.Button = None
+        self.wordEntry: Gtk.Entry = None
+        self.removeWord: Gtk.Button = None
+        self.addWord: Gtk.Button = None
 
-        self.excludeWordSelection = None
-        self.excludeWordsStore = None
-        self.wordsFrequencyStore = None
-        self.phrasesFrequencyStore = None
+        self.excludeWordSelection: Gtk.TreeSelection = None
+        self.excludeWordsStore: Gtk.ListStore = None
+        self.wordsFrequencyStore: Gtk.ListStore = None
+        self.phrasesFrequencyStore: Gtk.ListStore = None
 
-        self.phraseMinimum = None
-        self.phraseMaximum = None
-        self.wordSize = None
+        self.phraseMinimum: Gtk.Adjustment = None
+        self.phraseMaximum: Gtk.Adjustment = None
+        self.wordSize: Gtk.Adjustment = None
 
     def initWindow(self, builder: Gtk.Builder, window) -> None:
         self.headerBar = builder.get_object("header_bar")
@@ -105,7 +107,7 @@ class FrequencyWindow(AbstractDialog):
         return self.mainWindow.getProject()
 
     def _filterFrequencies(
-        self, model: Gtk.TreeModel, iterator: Gtk.TreeIter, userdata: any
+        self, model: Gtk.TreeModel, iterator: Gtk.TreeIter, userdata: Any
     ) -> bool:
         word = model[iterator][0]
 

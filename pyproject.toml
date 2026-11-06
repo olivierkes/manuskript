@@ -7,5 +7,5 @@ indent-style = "space"
 skip-magic-trailing-comma = true
 
 [tool.ruff.lint]
-ignore = ["EXE001", "I001", "UP009"]
+ignore = ["ANN401", "EXE001", "I001", "UP009"]
 select = ["ANN"]

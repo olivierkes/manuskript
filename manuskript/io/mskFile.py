@@ -4,10 +4,11 @@
 import os
 import shutil
 
+from typing import Any
 from zipfile import ZipFile as _ZipFile, BadZipFile
 from manuskript.io.textFile import TextFile
 from manuskript.io.zipFile import ZipFile
-from manuskript.util import safeInt
+from manuskript.util import safeInt, validBool
 from manuskript.data.version import LEGACY_MSK_VERSION
 
 
@@ -59,7 +60,7 @@ class MskFile(TextFile, ZipFile):
     def setVersion(self, version: int) -> None:
         self.version = str(version)
 
-    def load(self) -> any:
+    def load(self) -> Any:
         if self.zipFile:
             ZipFile.load(self)
         else:
@@ -70,7 +71,7 @@ class MskFile(TextFile, ZipFile):
 
         return str(self.zipFile)
 
-    def save(self, content: any = None) -> None:
+    def save(self, content: Any = None) -> None:
         if not (content is None):
             self.setZipFile(validBool(content))
 

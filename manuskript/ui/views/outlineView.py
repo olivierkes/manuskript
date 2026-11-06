@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 from gi.repository import GLib, Gtk, Gdk
-from typing import Optional
+from typing import Any, Optional
 
 from manuskript.ui.views.abstractView import AbstractView
 
-from manuskript.data import Outline, OutlineFolder, OutlineText, OutlineItem, OutlineState, Plots, PlotLine, Characters, Character, Importance, Goal, Color
+from manuskript.data import Outline, OutlineFolder, OutlineText, OutlineItem, OutlineState, Plots, PlotLine, Characters, Character, Importance, Goal, Color, UniqueID
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
 from manuskript.util import validString, invalidString, validInt, invalidInt, CounterKind, countText
 from manuskript.ui.picker import LabelPicker, CharacterPicker, AbstractGridPicker
@@ -163,7 +163,7 @@ class OutlineView(AbstractView):
         self.charactersStore.set_value(tree_iter, 2, pixbuf)
 
         for character in self.outline.plots.characters:
-            if not character.POV:
+            if (not character.POV) or (character.UID is None):
                 continue
 
             tree_iter = self.charactersStore.append()
@@ -212,6 +212,9 @@ class OutlineView(AbstractView):
             progress = 100 * wordCount / goal
         elif goal > 0:
             progress = 100
+
+        if outlineItem.UID is None:
+            return
 
         self.outlineStore.set_value(tree_iter, 0, outlineItem.UID.value)
         self.outlineStore.set_value(tree_iter, 1, validString(outlineItem.title))
@@ -365,7 +368,7 @@ class OutlineView(AbstractView):
         title = validString(outlineItem.title)
         return text in title.lower()
 
-    def _filterOutline(self, model: Gtk.TreeModel, iterator: Gtk.TreeIter, userdata: any) -> bool:
+    def _filterOutline(self, model: Gtk.TreeModel, iterator: Gtk.TreeIter, userdata: Any) -> bool:
         outlineItem = self.outline.getItemByID(model[iterator][0])
 
         if outlineItem is None:
@@ -388,7 +391,7 @@ class OutlineView(AbstractView):
         self.__filterOutlineChanged(buffer)
 
     def __updateGoalValue(
-        self, model: Gtk.TreeModel, path, treeiter: Gtk.TreeIter, userdata: any
+        self, model: Gtk.TreeModel, path: Gtk.TreePath, treeiter: Gtk.TreeIter, userdata: Any
     ) -> bool:
         id = model[treeiter][0]
 

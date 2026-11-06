@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from typing import Any
+
 from gi.repository import Gtk, Handy
 
 from manuskript.ui.abstractDialog import AbstractDialog
@@ -12,7 +14,7 @@ from manuskript.ui.settings import *
 class SettingsWindow(AbstractDialog):
 
     @classmethod
-    def packPage(cls, window, page_cls, settings: Settings, data: any = None) -> any:
+    def packPage(cls, window, page_cls, settings: Settings, data: Any = None) -> Any:
         if window is None:
             return None
 

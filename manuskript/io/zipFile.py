@@ -4,6 +4,7 @@
 import os
 import shutil
 import tempfile
+from typing import Any
 from zipfile import ZipFile as _ZipFile
 
 from manuskript.io.abstractFile import AbstractFile
@@ -25,7 +26,7 @@ class ZipFile(AbstractFile):
         if not (self.tmp is None):
             self.tmp.cleanup()
 
-    def load(self) -> str:
+    def load(self) -> Any:
         if self.directoryPath is None:
             self.tmp = tempfile.TemporaryDirectory()
             self.directoryPath = self.tmp.name
@@ -35,7 +36,7 @@ class ZipFile(AbstractFile):
 
         return self.directoryPath
 
-    def save(self, content: str | None = None) -> None:
+    def save(self, content: Any = None) -> None:
         if not (content is None):
             if not (self.tmp is None):
                 self.tmp.cleanup()

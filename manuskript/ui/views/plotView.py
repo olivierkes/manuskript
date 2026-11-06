@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from typing import Optional
+from typing import Any, Optional
 
 from gi.repository import Gtk
 
@@ -248,7 +248,7 @@ class PlotView(AbstractView):
         self.plots.removeLine(self.plotLine)
         self.refreshPlotsStore()
 
-    def _filterPlots(self, model: Gtk.TreeModel, iterator: Gtk.TreeIter, userdata: any) -> bool:
+    def _filterPlots(self, model: Gtk.TreeModel, iterator: Gtk.TreeIter, userdata: Any) -> bool:
         name = validString(model[iterator][1])
         text = validString(self.filterPlotsBuffer.get_text())
 
@@ -408,6 +408,9 @@ class PlotView(AbstractView):
         self.__nameChanged(buffer)
 
     def _removeCharacterClicked(self, Button: Gtk.Button) -> None:
+        if self.plotLine is None:
+            return
+
         selection = self.plotCharactersView.get_selection()
         model, treeiter = selection.get_selected()
 
@@ -417,17 +420,23 @@ class PlotView(AbstractView):
             self.plotCharactersStore.refilter()
 
     def _addCharacterClicked(self, button: Gtk.Button) -> None:
+        if self.plotLine is None:
+            return
+
         self.characterPicker.show(self.plotLine.characters)
 
     def _characterPickerCharacterPicked(
         self, characterPicker: CharacterPicker, userdata: Character
     ) -> None:
+        if (userdata.UID is None) or (self.plotLine is None):
+            return
+
         self.plotLine.characters.append(userdata.UID.value)
         self.refreshCharactersStore()
         self.plotCharactersStore.refilter()
 
     def _filterPlotCharacters(
-        self, model: Gtk.TreeModel, iterator: Gtk.TreeIter, userdata: any
+        self, model: Gtk.TreeModel, iterator: Gtk.TreeIter, userdata: Any
     ) -> bool:
         ID = validInt(model[iterator][0])
 

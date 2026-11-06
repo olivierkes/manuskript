@@ -1,17 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from gi.repository import Gtk, GObject
+from gi.repository import GdkPixbuf, Gtk, GObject
 
 from typing import Iterable, Optional, Any
 
 
 class AbstractGridPicker(Gtk.Box):
-    __gsignals__ = {
-        "item-selected": (GObject.SignalFlags.RUN_FIRST, None, (object,))
-    }
+    __gsignals__ = {"item-selected": (GObject.SignalFlags.RUN_FIRST, None, (object,))}
 
-    def __init__(self, *, button: Gtk.Button=None, enableSearch: bool=True, filters: Optional[Iterable]=None, columns: int=3):
+    def __init__(
+        self,
+        *,
+        button: Gtk.Button = None,
+        enableSearch: bool = True,
+        filters: Optional[Iterable] = None,
+        columns: int = 3,
+    ) -> None:
         super().__init__()
 
         self.columns: int = columns
@@ -44,19 +49,19 @@ class AbstractGridPicker(Gtk.Box):
         else:
             self.filterBox.hide()
 
-    def getItems(self):
+    def getItems(self) -> Iterable[Any]:
         raise NotImplementedError
 
     def getItemLabel(self, item: Any) -> str:
         raise NotImplementedError
 
-    def getItemPixbuf(self, item: Any):
+    def getItemPixbuf(self, item: Any) -> GdkPixbuf:
         raise NotImplementedError
 
-    def getItemFilterKey(self, item: Any):
+    def getItemFilterKey(self, item: Any) -> Any:
         return None
 
-    def _filterFunc(self, model, iter_, data=None):
+    def _filterFunc(self, model, iter_, data=None) -> bool:
         filterKey, item = model[iter_]
 
         if self.currentFilter is not None and filterKey != self.currentFilter:
@@ -67,11 +72,11 @@ class AbstractGridPicker(Gtk.Box):
 
         return True
 
-    def _searchEntryChanged(self, entry: Gtk.Entry):
+    def _searchEntryChanged(self, entry: Gtk.Entry) -> None:
         self.searchText = entry.get_text()
         self.refresh()
 
-    def setupFilters(self):
+    def setupFilters(self) -> None:
         self.cssProvider = Gtk.CssProvider()
         self.cssProvider.load_from_data(b"""
             .highlighted-button {
@@ -83,18 +88,14 @@ class AbstractGridPicker(Gtk.Box):
 
         buttons = [("All", None)]
 
-        if hasattr(self.filters, "__iter__"):
+        if (self.filters is not None) and (hasattr(self.filters, "__iter__")):
             if hasattr(self.filters, "__members__"):
-                buttons += [
-                    (f.name.capitalize(), f) for f in reversed(self.filters)
-                ]
+                buttons += [(f.name.capitalize(), f) for f in reversed(self.filters)]
             else:
                 buttons += self.filters
 
         Gtk.StyleContext.add_provider_for_screen(
-            self.get_screen(),
-            self.cssProvider,
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+            self.get_screen(), self.cssProvider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         )
 
         for label, value in buttons:
@@ -106,23 +107,23 @@ class AbstractGridPicker(Gtk.Box):
             btn.connect("clicked", self._filterButtonClicked, value)
             self.filterBox.pack_start(btn, False, False, 0)
 
-    def _filterButtonClicked(self, button: Gtk.Button, value: Any):
+    def _filterButtonClicked(self, button: Gtk.Button, value: Any) -> None:
         self.highlight(button)
         self.currentFilter = value
         self.refresh()
 
-    def highlight(self, button: Gtk.Button):
+    def highlight(self, button: Gtk.Button) -> None:
         if self.lastClickedButton:
             self.lastClickedButton.get_style_context().remove_class("highlighted-button")
 
         button.get_style_context().add_class("highlighted-button")
         self.lastClickedButton = button
 
-    def refresh(self):
+    def refresh(self) -> None:
         self.filterModel.refilter()
         self.rebuildGrid()
 
-    def rebuildGrid(self):
+    def rebuildGrid(self) -> None:
         for child in self.grid.get_children():
             self.grid.remove(child)
 
@@ -144,8 +145,8 @@ class AbstractGridPicker(Gtk.Box):
 
         self.grid.show_all()
 
-    def buildItemButton(self, item: Any):
-        btn = Gtk.Button()
+    def buildItemButton(self, item: Any) -> Gtk.Button:
+        button = Gtk.Button()
         box = Gtk.Box(spacing=6)
 
         image = Gtk.Image.new_from_pixbuf(self.getItemPixbuf(item))
@@ -154,38 +155,34 @@ class AbstractGridPicker(Gtk.Box):
         box.pack_start(image, False, False, 0)
         box.pack_start(label, True, True, 0)
 
-        btn.add(box)
-        btn.connect("clicked", self._itemButtonClicked, item)
+        button.add(box)
+        button.connect("clicked", self._itemButtonClicked, item)
+        return button
 
-        return btn
-
-    def _itemButtonClicked(self, button: Gtk.Button, item: Any):
+    def _itemButtonClicked(self, button: Gtk.Button, item: Any) -> None:
         self.emit("item-selected", item)
         self.popover.hide()
 
-    def shouldIncludeItem(self, item: Any):
+    def shouldIncludeItem(self, item: Any) -> bool:
         return True
-    
-    def set_relative_to(self, widget: Gtk.Widget):
+
+    def set_relative_to(self, widget: Gtk.Widget) -> None:
         self.popover.set_relative_to(widget)
 
-    def set_pointing_to(self, widget: Gtk.Widget):
+    def set_pointing_to(self, widget: Gtk.Widget) -> None:
         self.popover.set_pointing_to(widget)
 
-    def set_position(self, position: Gtk.PositionType):
+    def set_position(self, position: Gtk.PositionType) -> None:
         self.popover.set_position(position)
 
-    def show(self, *args, **kwargs):
+    def show(self, *args, **kwargs) -> None:
         self.store.clear()
 
         for item in self.getItems():
             if not self.shouldIncludeItem(item):
                 continue
 
-            self.store.append(
-                None,
-                [self.getItemFilterKey(item), item]
-            )
+            self.store.append(None, [self.getItemFilterKey(item), item])
 
         self.currentFilter = None
         self.refresh()

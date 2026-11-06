@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 
 import os
-from typing import Iterator
+from typing import Any, Iterator
 
 from manuskript.data.abstractData import AbstractData
 from manuskript.io.jsonFile import JsonFile
@@ -12,7 +12,7 @@ class Settings(AbstractData):
     def __init__(self, path: str, initDefault: bool = True) -> None:
         AbstractData.__init__(self, os.path.join(path, "settings.txt"))
         self.file = JsonFile(self.dataPath)
-        self.properties: dict[str, any] = dict()
+        self.properties: dict[str, Any] = dict()
 
         if initDefault:
             Settings.loadDefaultSettings(self)
@@ -21,24 +21,28 @@ class Settings(AbstractData):
         AbstractData.changePath(self, os.path.join(path, "settings.txt"))
         self.file = JsonFile(self.dataPath)
 
-    def get(self, key: str) -> any | None:
+    def get(self, key: str) -> Any | None:
         props = self.properties
         path = key.split(".")
 
         for part in path[:-1]:
             props = props.get(part)
+            if props is None:
+                return None
 
         return props.get(path[-1:][0])
 
     def isEnabled(self, key: str) -> bool:
         return self.properties.get(key, False) is True
 
-    def set(self, key: str, value: any | None) -> None:
-        props = self.properties
+    def set(self, key: str, value: Any) -> None:
+        props: dict[str, Any] | None = self.properties
         path = key.split(".")
 
         for part in path[:-1]:
             props = props.get(part)
+            if props is None:
+                return
 
         props[path[-1:][0]] = value
 

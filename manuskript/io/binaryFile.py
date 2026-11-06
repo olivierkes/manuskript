@@ -2,16 +2,17 @@
 # --!-- coding: utf8 --!--
 
 import os
+from typing import Any
 
 from manuskript.io.abstractFile import AbstractFile
 
 
 class BinaryFile(AbstractFile):
-    def load(self) -> any:
+    def load(self) -> Any:
         with open(self.path, "rb") as file:
             return file.read()
 
-    def save(self, content: any) -> None:
+    def save(self, content: Any) -> None:
         with open(self.path, "wb") as file:
             file.write(content)
 

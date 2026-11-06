@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+from typing import Any, Callable, Type
 
 from gi.repository import GdkPixbuf, Gdk, Gtk
 
@@ -24,7 +25,7 @@ def pixbufFromColor(color: Color | None) -> GdkPixbuf:
     return pixbuf
 
 
-def bindMenuItem(builder: Gtk.Builder, id: str, action) -> None:
+def bindMenuItem(builder: Gtk.Builder, id: str, action: Callable) -> None:
     menuItem = builder.get_object(id)
 
     if menuItem is None:
@@ -33,7 +34,7 @@ def bindMenuItem(builder: Gtk.Builder, id: str, action) -> None:
     menuItem.connect("activate", action)
 
 
-def packViewIntoSlot(slot, view_cls, data=None, secondaryData=None):
+def packViewIntoSlot(slot: Gtk.Container, view_cls: Type, data: Any = None, secondaryData: Any = None):
     if slot is None:
         return None
 
@@ -60,7 +61,7 @@ def packViewIntoSlot(slot, view_cls, data=None, secondaryData=None):
     return view
 
 
-def unpackFromSlot(slot, view) -> None:
+def unpackFromSlot(slot: Gtk.Container, view) -> None:
     if (slot is not None) and (view.widget is not None):
         slot.remove(view.widget)
 

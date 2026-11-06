@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import annotations
+from typing import Any, Iterable
 
-from gi.repository import GObject
+from gi.repository import GdkPixbuf, GObject
 
 from manuskript.data.labels import Label, LabelHost
 from manuskript.ui.util import pixbufFromColor
@@ -11,34 +12,39 @@ from manuskript.ui.picker.abstractGridPicker import AbstractGridPicker
 
 
 class LabelPicker(AbstractGridPicker):
-    __gsignals__ = {
-        "label-selected": (GObject.SignalFlags.RUN_FIRST, None, (object,))
-    }
+    __gsignals__ = {"label-selected": (GObject.SignalFlags.RUN_FIRST, None, (object,))}
 
-    def __init__(self, labels: LabelHost):
+    def __init__(self, labels: LabelHost) -> None:
         self.labels: LabelHost = labels
 
-        super().__init__(enableSearch=True, columns=3)
+        AbstractGridPicker.__init__(self, enableSearch=True, columns=3)
 
         self.connect("item-selected", self._labelItemSelected)
 
-    def show(self):
-        super().show()
+    def show(self) -> None:
+        AbstractGridPicker.show(self)
 
-    def shouldIncludeItem(self, label: Label):
-        return True
+    def shouldIncludeItem(self, item: Any) -> bool:
+        return item is Label
 
-    def getItems(self):
+    def getItems(self) -> Iterable[Any]:
         return self.labels
 
-    def getItemLabel(self, label: Label):
-        return label.name
+    def getItemLabel(self, item: Any) -> str:
+        if item is Label:
+            return item.name
+        else:
+            return ""
 
-    def getItemPixbuf(self, label: Label):
-        return pixbufFromColor(label.color)
+    def getItemPixbuf(self, item: Any) -> GdkPixbuf:
+        if item is Label:
+            return pixbufFromColor(item.color)
+        else:
+            return None
 
-    def getItemFilterKey(self, label: Label):
+    def getItemFilterKey(self, item: Any) -> Any:
         return None
 
-    def _labelItemSelected(self, picker: LabelPicker, label: Label):
-        picker.emit("label-selected", label)
+    def _labelItemSelected(self, picker: AbstractGridPicker, item: Any) -> None:
+        if item is Label:
+            picker.emit("label-selected", item)

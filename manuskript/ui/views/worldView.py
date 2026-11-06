@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from gi.repository import Gdk, Gtk
-from typing import Optional
+from typing import Any, Optional
 
 from manuskript.ui.views.abstractView import AbstractView
 
@@ -264,7 +264,7 @@ class WorldView(AbstractView):
         name = validString(worldItem.name)
         return text in name.lower()
 
-    def _filterWorld(self, model: Gtk.TreeModel, iterator: Gtk.TreeIter, userdata: any) -> bool:
+    def _filterWorld(self, model: Gtk.TreeModel, iterator: Gtk.TreeIter, userdata: Any) -> bool:
         worldItem = self.world.getItemByID(model[iterator][0])
 
         if worldItem is None:
@@ -285,7 +285,7 @@ class WorldView(AbstractView):
         self.__filterWorldChanged(buffer)
 
     def __updateWorldItemName(
-        self, model: Gtk.TreeModel, path, treeiter: Gtk.TreeIter, userdata: any
+        self, model: Gtk.TreeModel, path: Gtk.TreePath, treeiter: Gtk.TreeIter, userdata: Any
     ) -> bool:
         id = model[treeiter][0]
 

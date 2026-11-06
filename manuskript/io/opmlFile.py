@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-from typing import Iterator
+from typing import Any, Iterator
 
 from lxml import etree
 
@@ -36,7 +36,7 @@ class OpmlFile(XmlFile):
 
         return outline
 
-    def load(self) -> list[OpmlOutlineItem]:
+    def load(self) -> Any:
         tree = XmlFile.load(self)
         root = tree.getroot()
 
@@ -63,7 +63,7 @@ class OpmlFile(XmlFile):
         for child in outline.children:
             cls.saveOutline(child, element)
 
-    def save(self, content: list[OpmlOutlineItem]) -> None:
+    def save(self, content: Any) -> None:
         root = etree.Element("opml")
         root.set("version", "1.0")
 
