@@ -47,30 +47,35 @@ class CharacterCard(QWidget):
         # Character portrait
         self.portraitLabel = ClickableLabel()
         self.portraitLabel.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
-        self.portraitLabel.setMinimumSize(120, 150)
+        self.portraitLabel.setMinimumSize(120, 0)
         self.portraitLabel.setSizePolicy(
-            QSizePolicy.Expanding,
-            QSizePolicy.Fixed
+            QSizePolicy.Preferred,
+            QSizePolicy.Preferred
         )
 
         if character.portraitData:
             pixmap = QPixmap()
 
             if pixmap.loadFromData(character.portraitData):
-                self.portraitLabel.setPixmap(
-                    pixmap.scaled(
-                        180,
-                        220,
-                        Qt.KeepAspectRatio,
-                        Qt.SmoothTransformation
-                    )
+                scaledPixmap = pixmap.scaled(
+                    180,
+                    220,
+                    Qt.KeepAspectRatio,
+                    Qt.SmoothTransformation
                 )
+
+                self.portraitLabel.setFixedSize(scaledPixmap.size())
+                self.portraitLabel.setPixmap(scaledPixmap)
+
             else:
                 self.portraitLabel.setText("Invalid portrait")
         else:
             self.portraitLabel.setText("No portrait")
 
-        layout.addWidget(self.portraitLabel)
+        layout.addWidget(
+            self.portraitLabel,
+            alignment=Qt.AlignLeft | Qt.AlignTop
+        )
 
         # Pin button
         self.pinButton = QPushButton("Pin")
