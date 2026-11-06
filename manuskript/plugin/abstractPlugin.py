@@ -2,6 +2,7 @@
 # --!-- coding: utf8 --!--
 
 from functools import reduce
+from typing import Type
 
 from manuskript.converter import AbstractConverter, registerConverter, unregisterConverter
 from manuskript.editor import (
@@ -13,6 +14,7 @@ from manuskript.editor import (
     unregisterSplitter,
 )
 from manuskript.exporter import AbstractExporter, registerExporter, unregisterExporter
+from manuskript.importer import AbstractImporter, registerImporter, unregisterImporter
 from manuskript.plugin.component import PluginComponent
 from manuskript.spellchecker import (
     AbstractSpellchecker,
@@ -25,6 +27,7 @@ from manuskript.util import profileTime
 class AbstractPlugin:
     def __init__(self) -> None:
         self.converters: list[AbstractConverter] = []
+        self.importers: list[AbstractImporter] = []
         self.exporters: list[AbstractExporter] = []
         self.regioners: list[AbstractRegioner] = []
         self.splitters: list[AbstractSplitter] = []
@@ -40,7 +43,7 @@ class AbstractPlugin:
     def isValid(self) -> bool:
         return reduce(lambda x, y: x and y, self.loaded)
 
-    def registerConverter(self, converter_cls) -> bool:
+    def registerConverter(self, converter_cls: Type) -> bool:
         try:
             if not issubclass(converter_cls, AbstractConverter):
                 return False
@@ -53,7 +56,20 @@ class AbstractPlugin:
         self.converters.append(converter)
         return True
 
-    def registerExporter(self, exporter_cls) -> bool:
+    def registerImporter(self, importer_cls: Type) -> bool:
+        try:
+            if not issubclass(importer_cls, AbstractImporter):
+                return False
+
+            importer = importer_cls()
+        except TypeError as e:
+            print("PLUGIN ERROR: ( " + self.getName() + " )" + str(e))
+            return False
+
+        self.importers.append(importer)
+        return True
+
+    def registerExporter(self, exporter_cls: Type) -> bool:
         try:
             if not issubclass(exporter_cls, AbstractExporter):
                 return False
@@ -66,7 +82,7 @@ class AbstractPlugin:
         self.exporters.append(exporter)
         return True
 
-    def registerRegioner(self, regioner_cls) -> bool:
+    def registerRegioner(self, regioner_cls: Type) -> bool:
         try:
             if not issubclass(regioner_cls, AbstractRegioner):
                 return False
@@ -79,7 +95,7 @@ class AbstractPlugin:
         self.regioners.append(regioner)
         return True
 
-    def registerSplitter(self, splitter_cls) -> bool:
+    def registerSplitter(self, splitter_cls: Type) -> bool:
         try:
             if not issubclass(splitter_cls, AbstractSplitter):
                 return False
@@ -92,7 +108,7 @@ class AbstractPlugin:
         self.splitters.append(splitter)
         return True
 
-    def registerSpellchecker(self, spellchecker_cls, language: str) -> bool:
+    def registerSpellchecker(self, spellchecker_cls: Type, language: str) -> bool:
         try:
             if not issubclass(spellchecker_cls, AbstractSpellchecker):
                 return False
@@ -119,6 +135,13 @@ class AbstractPlugin:
 
             for converter in self.converters:
                 status = status and registerConverter(converter)
+
+            return status
+        elif component == PluginComponent.IMPORTERS:
+            status: bool = True
+
+            for importer in self.importers:
+                status = status and registerImporter(importer)
 
             return status
         elif component == PluginComponent.EXPORTERS:
@@ -168,6 +191,13 @@ class AbstractPlugin:
 
             for converter in self.converters:
                 status = status and unregisterConverter(converter)
+
+            return status
+        elif component == PluginComponent.IMPORTERS:
+            status: bool = True
+
+            for importer in self.importers:
+                status = status and unregisterImporter(importer)
 
             return status
         elif component == PluginComponent.EXPORTERS:

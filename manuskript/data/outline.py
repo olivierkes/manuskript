@@ -133,6 +133,13 @@ class OutlineItem(AbstractData):
     def save(self) -> None:
         AbstractData.save(self)
 
+    def delete(self) -> None:
+        AbstractData.delete(self)
+
+        parent: Optional[OutlineItem] = self.parentItem()
+        if (parent is not None) and (type(parent) is OutlineFolder):
+            parent.removeItem(self)
+
 
 class OutlineText(OutlineItem):
     text: str
@@ -187,6 +194,12 @@ class OutlineText(OutlineItem):
         self.file.save((metadata, self.text))
         self.complete()
 
+    def delete(self) -> None:
+        OutlineItem.delete(self)
+
+        self.file.remove()
+        self.complete()
+
 
 class OutlineFolder(OutlineItem):
     items: list[OutlineItem]
@@ -232,6 +245,19 @@ class OutlineFolder(OutlineItem):
 
         self.items.append(item)
         return item
+
+    def removeItem(self, item: OutlineItem) -> None:
+        if item.UID is None:
+            return
+
+        ID: int = hash(item.UID)
+        self.items.remove(item)
+
+        if item.dataStatus != DataStatus.DELETING:
+            item.delete()
+
+        if type(item) is OutlineFolder:
+            OutlineFolder.deleteItems(item)
 
     def initTemplate(self, levels: list, goal: Goal) -> None:
         level = levels[0]
@@ -280,7 +306,8 @@ class OutlineFolder(OutlineItem):
             for item in filter(
                 lambda outlineItem: type(outlineItem) is OutlineFolder, folder.items
             ):
-                cls.loadItems(outline, item, recursive)
+                if type(item) is OutlineFolder:
+                    cls.loadItems(outline, item, recursive)
 
     def textCount(self, counterKind: CounterKind | None = None) -> int:
         if counterKind is None:
@@ -318,7 +345,8 @@ class OutlineFolder(OutlineItem):
             for item in filter(
                 lambda outlineItem: type(outlineItem) is OutlineFolder, folder.items
             ):
-                cls.saveItems(item, recursive)
+                if type(item) is OutlineFolder:
+                    cls.saveItems(item, recursive)
 
     def save(self) -> None:
         self.type = "folder"
@@ -328,6 +356,26 @@ class OutlineFolder(OutlineItem):
 
         metadata = OutlineItem.saveMetadata(self)
         self.file.save((metadata, "\n"))
+        self.complete()
+
+    @classmethod
+    def deleteItems(cls, folder: OutlineFolder, recursive: bool = True) -> None:
+        for item in folder.items:
+            item.delete()
+
+        if recursive:
+            for item in filter(
+                lambda outlineItem: type(outlineItem) is OutlineFolder, folder.items
+            ):
+                if type(item) is OutlineFolder:
+                    cls.deleteItems(item, recursive)
+
+    def delete(self) -> None:
+        self.type = "folder"
+
+        OutlineItem.delete(self)
+
+        self.file.remove()
         self.complete()
 
 
@@ -382,6 +430,20 @@ class Outline(AbstractData):
         self.items.append(item)
         return item
 
+    def removeItem(self, item: OutlineItem) -> None:
+        if item.UID is None:
+            return
+
+        ID: int = hash(item.UID)
+        self.items.remove(item)
+
+        if ID in self.cache:
+            self.cache.pop(ID)
+
+        item.delete()
+        if type(item) is OutlineFolder:
+            OutlineFolder.deleteItems(item)
+
     def initTemplate(self, template: Template) -> None:
         if len(template.levels) == 0:
             return
@@ -392,11 +454,12 @@ class Outline(AbstractData):
             name = "%s %d" % (level.name, i + 1)
 
             if len(template.levels) > 1:
-                item = self.addFolder(name)
-                item.initTemplate(template.levels[1:], template.goal)
-                item.goal = Goal(item.goalCount())
+                folder: OutlineFolder = self.addFolder(name)
+                folder_goal: Goal = Goal(folder.goalCount())
+                folder.initTemplate(template.levels[1:], folder_goal if template.goal is None else template.goal)
+                folder.goal = folder_goal
             else:
-                item = self.addText(name)
+                item: OutlineText = self.addText(name)
                 item.goal = template.goal
 
     def __iter__(self) -> Iterable[OutlineItem]:
@@ -472,7 +535,8 @@ class Outline(AbstractData):
             self.items.append(item)
 
         for item in filter(lambda outlineItem: type(outlineItem) is OutlineFolder, self.items):
-            OutlineFolder.loadItems(self, item, True)
+            if type(item) is OutlineFolder:
+                OutlineFolder.loadItems(self, item, True)
 
         self.complete()
 
@@ -488,6 +552,7 @@ class Outline(AbstractData):
             item.save()
 
         for item in filter(lambda outlineItem: type(outlineItem) is OutlineFolder, self.items):
-            OutlineFolder.saveItems(item, True)
+            if type(item) is OutlineFolder:
+                OutlineFolder.saveItems(item, True)
 
         self.complete()

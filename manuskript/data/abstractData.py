@@ -12,6 +12,8 @@ class DataStatus(Enum):
     LOADED = 3
     SAVING = 4
     SAVED = 5
+    DELETING = 6
+    DELETED = 7
 
 
 class AbstractData:
@@ -29,9 +31,14 @@ class AbstractData:
             self.dataStatus = DataStatus.LOADED if statusCompletion else DataStatus.UNDEFINED
         elif self.dataStatus == DataStatus.SAVING:
             self.dataStatus = DataStatus.SAVED
+        elif self.dataStatus == DataStatus.DELETING:
+            self.dataStatus = DataStatus.DELETED
 
     def load(self) -> None:
         self.dataStatus = DataStatus.LOADING
 
     def save(self) -> None:
         self.dataStatus = DataStatus.SAVING
+
+    def delete(self) -> None:
+        self.dataStatus = DataStatus.DELETING

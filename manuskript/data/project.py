@@ -23,21 +23,21 @@ from manuskript.util import profileTime, validVariantValue
 class Project(AbstractData):
     def __init__(self, path: str) -> None:
         AbstractData.__init__(self, path)
-        self.file = MskFile(self.dataPath)
+        self.file: MskFile = MskFile(self.dataPath)
 
-        self.version = Version(self.file.directoryPath)
-        self.info = Info(self.file.directoryPath)
-        self.summary = Summary(self.file.directoryPath)
-        self.labels = LabelHost(self.file.directoryPath)
-        self.statuses = StatusHost(self.file.directoryPath)
-        self.settings = Settings(self.file.directoryPath)
-        self.characters = Characters(self.file.directoryPath)
-        self.plots = Plots(self.file.directoryPath, self.characters)
-        self.world = World(self.file.directoryPath)
-        self.outline = Outline(
+        self.version: Version = Version(self.file.directoryPath)
+        self.info: Info = Info(self.file.directoryPath)
+        self.summary: Summary = Summary(self.file.directoryPath)
+        self.labels: LabelHost = LabelHost(self.file.directoryPath)
+        self.statuses: StatusHost = StatusHost(self.file.directoryPath)
+        self.settings: Settings = Settings(self.file.directoryPath)
+        self.characters: Characters = Characters(self.file.directoryPath)
+        self.plots: Plots = Plots(self.file.directoryPath, self.characters)
+        self.world: World = World(self.file.directoryPath)
+        self.outline: Outline = Outline(
             self.file.directoryPath, self.characters, self.plots, self.labels, self.statuses
         )
-        self.revisions = Revisions(self.file.directoryPath)
+        self.revisions: Revisions = Revisions(self.file.directoryPath)
 
         self.version.value = self.file.getVersion()
         self.settings.set("saveToZip", self.file.isZipFile())

@@ -2,6 +2,7 @@
 # --!-- coding: utf8 --!--
 
 from enum import Enum, unique
+from typing import Optional
 
 from manuskript.data.goal import Goal
 from manuskript.util import validVariantValue
@@ -33,7 +34,7 @@ class Template:
         self,
         name: str,
         kind: TemplateKind,
-        goal: Goal | None = None,
+        goal: Optional[Goal] = None,
         levels: list[TemplateLevel] = [],
         levelNames: list[str] = [],
     ) -> None:
