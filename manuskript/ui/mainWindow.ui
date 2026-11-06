@@ -136,7 +136,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -326,6 +326,7 @@
                <widget class="QLabel" name="label_9">
                 <property name="font">
                  <font>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -349,6 +350,7 @@
                <widget class="QLabel" name="label_29">
                 <property name="font">
                  <font>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -688,8 +690,7 @@
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset theme="list-add">
-                      <normaloff>.</normaloff>.</iconset>
+                     <iconset theme="list-add"/>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -702,8 +703,7 @@
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset theme="list-remove">
-                      <normaloff>.</normaloff>.</iconset>
+                     <iconset theme="list-remove"/>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -767,22 +767,22 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>453</width>
-                      <height>699</height>
+                      <width>448</width>
+                      <height>695</height>
                      </rect>
                     </property>
                     <layout class="QFormLayout" name="formLayout_8">
                      <property name="fieldGrowthPolicy">
                       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
                      </property>
-                     <item row="2" column="0">
+                     <item row="4" column="0">
                       <widget class="QLabel" name="label_3">
                        <property name="text">
                         <string>Name</string>
                        </property>
                       </widget>
                      </item>
-                     <item row="2" column="1">
+                     <item row="4" column="1">
                       <layout class="QHBoxLayout" name="horizontalLayout_3">
                        <item>
                         <widget class="lineEditView" name="txtPersoName"/>
@@ -796,14 +796,14 @@
                        </item>
                       </layout>
                      </item>
-                     <item row="4" column="0">
+                     <item row="6" column="0">
                       <widget class="QLabel" name="label_18">
                        <property name="text">
                         <string>Importance</string>
                        </property>
                       </widget>
                      </item>
-                     <item row="4" column="1">
+                     <item row="6" column="1">
                       <layout class="QHBoxLayout" name="horizontalLayout_20">
                        <item>
                         <widget class="sldImportance" name="sldPersoImportance" native="true">
@@ -833,65 +833,88 @@
                        </item>
                       </layout>
                      </item>
-                     <item row="6" column="0">
+                     <item row="8" column="0">
                       <widget class="QLabel" name="label_4">
                        <property name="text">
                         <string>Motivation</string>
                        </property>
                       </widget>
                      </item>
-                     <item row="6" column="1">
+                     <item row="8" column="1">
                       <widget class="MDEditCompleter" name="txtPersoMotivation"/>
                      </item>
-                     <item row="7" column="0">
+                     <item row="9" column="0">
                       <widget class="QLabel" name="label_5">
                        <property name="text">
                         <string>Goal</string>
                        </property>
                       </widget>
                      </item>
-                     <item row="7" column="1">
+                     <item row="9" column="1">
                       <widget class="MDEditCompleter" name="txtPersoGoal"/>
                      </item>
-                     <item row="8" column="0">
+                     <item row="10" column="0">
                       <widget class="QLabel" name="label_6">
                        <property name="text">
                         <string>Conflict</string>
                        </property>
                       </widget>
                      </item>
-                     <item row="8" column="1">
+                     <item row="10" column="1">
                       <widget class="MDEditCompleter" name="txtPersoConflict"/>
                      </item>
-                     <item row="9" column="0">
+                     <item row="11" column="0">
                       <widget class="QLabel" name="label_7">
                        <property name="text">
                         <string>Epiphany</string>
                        </property>
                       </widget>
                      </item>
-                     <item row="9" column="1">
+                     <item row="11" column="1">
                       <widget class="MDEditCompleter" name="txtPersoEpiphany"/>
                      </item>
-                     <item row="10" column="0">
+                     <item row="12" column="0">
                       <widget class="QLabel" name="label_24">
                        <property name="text">
                         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                        </property>
                       </widget>
                      </item>
-                     <item row="10" column="1">
+                     <item row="12" column="1">
                       <widget class="MDEditCompleter" name="txtPersoSummarySentence"/>
                      </item>
-                     <item row="11" column="0">
+                     <item row="13" column="0">
                       <widget class="QLabel" name="label_8">
                        <property name="text">
                         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                        </property>
                       </widget>
                      </item>
-                     <item row="11" column="1">
+                     <item row="13" column="1">
                       <widget class="MDEditCompleter" name="txtPersoSummaryPara"/>
+                     </item>
+                     <item row="2" column="1">
+                      <widget class="QPushButton" name="btnPersoPortrait">
+                       <property name="text">
+                        <string>Choose Portrait</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QLabel" name="lblPersoPortrait">
+                       <property name="maximumSize">
+                        <size>
+                         <width>200</width>
+                         <height>250</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>No portrait</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
                      </item>
                     </layout>
                    </widget>
@@ -945,8 +968,7 @@
                       <string/>
                      </property>
                      <property name="icon">
-                      <iconset theme="list-add">
-                       <normaloff>.</normaloff>.</iconset>
+                      <iconset theme="list-add"/>
                      </property>
                     </widget>
                    </item>
@@ -956,8 +978,7 @@
                       <string/>
                      </property>
                      <property name="icon">
-                      <iconset theme="list-remove">
-                       <normaloff>.</normaloff>.</iconset>
+                      <iconset theme="list-remove"/>
                      </property>
                     </widget>
                    </item>
@@ -1037,8 +1058,7 @@
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset theme="list-add">
-                      <normaloff>.</normaloff>.</iconset>
+                     <iconset theme="list-add"/>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -1051,8 +1071,7 @@
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset theme="list-remove">
-                      <normaloff>.</normaloff>.</iconset>
+                     <iconset theme="list-remove"/>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -1165,8 +1184,7 @@
                         <string/>
                        </property>
                        <property name="icon">
-                        <iconset theme="list-add">
-                         <normaloff>.</normaloff>.</iconset>
+                        <iconset theme="list-add"/>
                        </property>
                        <property name="flat">
                         <bool>true</bool>
@@ -1182,8 +1200,7 @@
                         <string/>
                        </property>
                        <property name="icon">
-                        <iconset theme="list-remove">
-                         <normaloff>.</normaloff>.</iconset>
+                        <iconset theme="list-remove"/>
                        </property>
                        <property name="flat">
                         <bool>true</bool>
@@ -1256,8 +1273,7 @@
                       <string/>
                      </property>
                      <property name="icon">
-                      <iconset theme="list-add">
-                       <normaloff>.</normaloff>.</iconset>
+                      <iconset theme="list-add"/>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -1273,8 +1289,7 @@
                       <string/>
                      </property>
                      <property name="icon">
-                      <iconset theme="list-remove">
-                       <normaloff>.</normaloff>.</iconset>
+                      <iconset theme="list-remove"/>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -1300,8 +1315,7 @@
                       <string/>
                      </property>
                      <property name="icon">
-                      <iconset theme="text-x-generic">
-                       <normaloff>.</normaloff>.</iconset>
+                      <iconset theme="text-x-generic"/>
                      </property>
                      <property name="checkable">
                       <bool>true</bool>
@@ -1461,8 +1475,7 @@
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset theme="list-add">
-                      <normaloff>.</normaloff>.</iconset>
+                     <iconset theme="list-add"/>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -1475,8 +1488,7 @@
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset theme="list-remove">
-                      <normaloff>.</normaloff>.</iconset>
+                     <iconset theme="list-remove"/>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -1505,8 +1517,7 @@
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset theme="emblem-favorite">
-                      <normaloff>.</normaloff>.</iconset>
+                     <iconset theme="emblem-favorite"/>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -1674,8 +1685,7 @@
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset theme="folder-new">
-                      <normaloff>.</normaloff>.</iconset>
+                     <iconset theme="folder-new"/>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -1688,8 +1698,7 @@
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset theme="document-new">
-                      <normaloff>.</normaloff>.</iconset>
+                     <iconset theme="document-new"/>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -1702,8 +1711,7 @@
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset theme="list-remove">
-                      <normaloff>.</normaloff>.</iconset>
+                     <iconset theme="list-remove"/>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -1729,8 +1737,7 @@
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset theme="text-x-generic">
-                      <normaloff>.</normaloff>.</iconset>
+                     <iconset theme="text-x-generic"/>
                     </property>
                     <property name="checkable">
                      <bool>true</bool>
@@ -1821,8 +1828,7 @@
                       <string/>
                      </property>
                      <property name="icon">
-                      <iconset theme="folder-new">
-                       <normaloff>.</normaloff>.</iconset>
+                      <iconset theme="folder-new"/>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -1835,8 +1841,7 @@
                       <string/>
                      </property>
                      <property name="icon">
-                      <iconset theme="document-new">
-                       <normaloff>.</normaloff>.</iconset>
+                      <iconset theme="document-new"/>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -1849,8 +1854,7 @@
                       <string/>
                      </property>
                      <property name="icon">
-                      <iconset theme="list-remove">
-                       <normaloff>.</normaloff>.</iconset>
+                      <iconset theme="list-remove"/>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -1997,7 +2001,7 @@
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>23</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -2009,8 +2013,7 @@
       <string>&amp;Recent</string>
      </property>
      <property name="icon">
-      <iconset theme="folder-recent">
-       <normaloff>.</normaloff>.</iconset>
+      <iconset theme="folder-recent"/>
      </property>
     </widget>
     <addaction name="actOpen"/>
@@ -2052,8 +2055,7 @@
       <string>&amp;Format</string>
      </property>
      <property name="icon">
-      <iconset theme="format-text-bold">
-       <normaloff>.</normaloff>.</iconset>
+      <iconset theme="format-text-bold"/>
      </property>
      <widget class="QMenu" name="mnuHeader">
       <property name="title">
@@ -2165,6 +2167,7 @@
       <widget class="cheatSheet" name="cheatSheet" native="true">
        <property name="font">
         <font>
+         <weight>50</weight>
          <bold>false</bold>
         </font>
        </property>
@@ -2198,6 +2201,7 @@
       <widget class="search" name="widget" native="true">
        <property name="font">
         <font>
+         <weight>50</weight>
          <bold>false</bold>
         </font>
        </property>
@@ -2240,10 +2244,21 @@
     </layout>
    </widget>
   </widget>
+  <widget class="QDockWidget" name="dckCharacters">
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Characters</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2"/>
+  </widget>
   <action name="actOpen">
    <property name="icon">
-    <iconset theme="document-open">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="document-open"/>
    </property>
    <property name="text">
     <string>&amp;Open</string>
@@ -2254,8 +2269,7 @@
   </action>
   <action name="actSave">
    <property name="icon">
-    <iconset theme="document-save">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="document-save"/>
    </property>
    <property name="text">
     <string>&amp;Save</string>
@@ -2266,8 +2280,7 @@
   </action>
   <action name="actSaveAs">
    <property name="icon">
-    <iconset theme="document-save-as">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="document-save-as"/>
    </property>
    <property name="text">
     <string>Sa&amp;ve as...</string>
@@ -2278,8 +2291,7 @@
   </action>
   <action name="actQuit">
    <property name="icon">
-    <iconset theme="application-exit">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="application-exit"/>
    </property>
    <property name="text">
     <string>&amp;Quit</string>
@@ -2296,8 +2308,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="system-help">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="system-help"/>
    </property>
    <property name="text">
     <string>&amp;Show help texts</string>
@@ -2314,8 +2325,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="tools-check-spelling">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="tools-check-spelling"/>
    </property>
    <property name="text">
     <string>&amp;Spellcheck</string>
@@ -2326,8 +2336,7 @@
   </action>
   <action name="actLabels">
    <property name="icon">
-    <iconset theme="folder_color_picker">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="folder_color_picker"/>
    </property>
    <property name="text">
     <string>&amp;Labels...</string>
@@ -2338,8 +2347,7 @@
   </action>
   <action name="actStatus">
    <property name="icon">
-    <iconset theme="applications-development">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="applications-development"/>
    </property>
    <property name="text">
     <string>&amp;Status...</string>
@@ -2390,8 +2398,7 @@
   </action>
   <action name="actSettings">
    <property name="icon">
-    <iconset theme="preferences-system">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="preferences-system"/>
    </property>
    <property name="text">
     <string>S&amp;ettings</string>
@@ -2402,8 +2409,7 @@
   </action>
   <action name="actCloseProject">
    <property name="icon">
-    <iconset theme="window-close">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="window-close"/>
    </property>
    <property name="text">
     <string>&amp;Close project</string>
@@ -2414,8 +2420,7 @@
   </action>
   <action name="actCompile">
    <property name="icon">
-    <iconset theme="document-export">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="document-export"/>
    </property>
    <property name="text">
     <string>Co&amp;mpile</string>
@@ -2434,8 +2439,7 @@
   </action>
   <action name="actAbout">
    <property name="icon">
-    <iconset theme="stock_view-details">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="stock_view-details"/>
    </property>
    <property name="text">
     <string>&amp;About</string>
@@ -2449,8 +2453,7 @@
   </action>
   <action name="actImport">
    <property name="icon">
-    <iconset theme="document-import">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="document-import"/>
    </property>
    <property name="text">
     <string>&amp;Import…</string>
@@ -2461,8 +2464,7 @@
   </action>
   <action name="actCopy">
    <property name="icon">
-    <iconset theme="edit-copy">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="edit-copy"/>
    </property>
    <property name="text">
     <string>&amp;Copy</string>
@@ -2473,8 +2475,7 @@
   </action>
   <action name="actCut">
    <property name="icon">
-    <iconset theme="edit-cut">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="edit-cut"/>
    </property>
    <property name="text">
     <string>C&amp;ut</string>
@@ -2485,8 +2486,7 @@
   </action>
   <action name="actPaste">
    <property name="icon">
-    <iconset theme="edit-paste">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="edit-paste"/>
    </property>
    <property name="text">
     <string>&amp;Paste</string>
@@ -2497,8 +2497,7 @@
   </action>
   <action name="actSplitDialog">
    <property name="icon">
-    <iconset theme="split">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="split"/>
    </property>
    <property name="text">
     <string>&amp;Split…</string>
@@ -2509,8 +2508,7 @@
   </action>
   <action name="actSplitCursor">
    <property name="icon">
-    <iconset theme="split">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="split"/>
    </property>
    <property name="text">
     <string>Sp&amp;lit at cursor</string>
@@ -2521,8 +2519,7 @@
   </action>
   <action name="actMerge">
    <property name="icon">
-    <iconset theme="merge">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="merge"/>
    </property>
    <property name="text">
     <string>M&amp;erge</string>
@@ -2533,8 +2530,7 @@
   </action>
   <action name="actDuplicate">
    <property name="icon">
-    <iconset theme="folder-copy">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="folder-copy"/>
    </property>
    <property name="text">
     <string>Dupl&amp;icate</string>
@@ -2542,8 +2538,7 @@
   </action>
   <action name="actDelete">
    <property name="icon">
-    <iconset theme="edit-delete">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="edit-delete"/>
    </property>
    <property name="text">
     <string>&amp;Delete</string>
@@ -2554,8 +2549,7 @@
   </action>
   <action name="actMoveUp">
    <property name="icon">
-    <iconset theme="arrow-up">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="arrow-up"/>
    </property>
    <property name="text">
     <string>&amp;Move Up</string>
@@ -2566,8 +2560,7 @@
   </action>
   <action name="actMoveDown">
    <property name="icon">
-    <iconset theme="arrow-down">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="arrow-down"/>
    </property>
    <property name="text">
     <string>M&amp;ove Down</string>
@@ -2578,8 +2571,7 @@
   </action>
   <action name="actBack">
    <property name="icon">
-    <iconset theme="arrow-left">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="arrow-left"/>
    </property>
    <property name="text">
     <string>Go &amp;back</string>
@@ -2590,8 +2582,7 @@
   </action>
   <action name="actForward">
    <property name="icon">
-    <iconset theme="arrow-right">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="arrow-right"/>
    </property>
    <property name="text">
     <string>Go &amp;forward</string>
@@ -2602,8 +2593,7 @@
   </action>
   <action name="actRename">
    <property name="icon">
-    <iconset theme="edit-rename">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="edit-rename"/>
    </property>
    <property name="text">
     <string>&amp;Rename</string>
@@ -2678,8 +2668,7 @@
   </action>
   <action name="actFormatBold">
    <property name="icon">
-    <iconset theme="format-text-bold">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="format-text-bold"/>
    </property>
    <property name="text">
     <string>&amp;Bold</string>
@@ -2690,8 +2679,7 @@
   </action>
   <action name="actFormatItalic">
    <property name="icon">
-    <iconset theme="format-text-italic">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="format-text-italic"/>
    </property>
    <property name="text">
     <string>&amp;Italic</string>
@@ -2702,8 +2690,7 @@
   </action>
   <action name="actFormatStrike">
    <property name="icon">
-    <iconset theme="format-text-strikethrough">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="format-text-strikethrough"/>
    </property>
    <property name="text">
     <string>&amp;Strike</string>
@@ -2746,8 +2733,7 @@
   </action>
   <action name="actFormatClear">
    <property name="icon">
-    <iconset theme="format-text-none">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="format-text-none"/>
    </property>
    <property name="text">
     <string>Clear &amp;formats</string>
@@ -2774,8 +2760,7 @@
   </action>
   <action name="actFormatList">
    <property name="icon">
-    <iconset theme="view-list">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="view-list"/>
    </property>
    <property name="text">
     <string>&amp;Unordered list</string>
@@ -2805,8 +2790,7 @@
   </action>
   <action name="actSearch">
    <property name="icon">
-    <iconset theme="edit-find">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="edit-find"/>
    </property>
    <property name="text">
     <string>Search</string>

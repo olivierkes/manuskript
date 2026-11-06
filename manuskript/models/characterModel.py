@@ -260,6 +260,8 @@ class Character(searchableItem):
     def __init__(self, model, name=None, importance=0):
         self._model = model
         self.lastPath = ""
+        self.portraitPath = None
+        self.portraitData = None
 
         if not name:
             name = self.translate("Unknown")
