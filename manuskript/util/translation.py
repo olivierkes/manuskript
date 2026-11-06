@@ -3,15 +3,17 @@
 
 import gettext
 from io import StringIO
-import langcodes
 import locale
 import os
 
+try:
+    import langcodes
+except ModuleNotFoundError:
+    langcodes = None
+
 
 class Translation:
-    def __init__(
-        self, language: str | None = None, domain: str = "manuskript", locale_dir: str | None = None
-    ) -> None:
+    def __init__(self, language: str | None = None, domain: str = "manuskript", locale_dir: str | None = None) -> None:
         self.language = Translation.getDefaultLanguage() if language is None else language
         self.domain = domain
         self.locale_dir = Translation.getAppLocaleDirectory() if locale_dir is None else locale_dir
@@ -39,10 +41,7 @@ class Translation:
 
         if language in self.getSupportedLanguages():
             self.translation = gettext.translation(
-                self.getDomain(),
-                localedir=self.getLocaleDirectory(),
-                languages=[self.getLanguage()],
-                fallback=True,
+                self.getDomain(), localedir=self.getLocaleDirectory(), languages=[self.getLanguage()], fallback=True
             )
         else:
             self.translation = None
@@ -100,50 +99,50 @@ class Translation:
 
     @classmethod
     def getLanguageName(cls, language: str, autonym: bool = False) -> str:
-        try:
-            index: int = language.find("@")
-            name: str = language
-            specifier: str = ""
-
-            if index >= 0:
-                specifier = language[index + 1 :]
-                name = language.replace("@", "-")
-
-            lang: langcodes.Language = langcodes.Language.get(name)
-            if autonym:
-                name = lang.autonym()
-
-                if len(name) > 0:
-                    s = StringIO()
-
-                    s.write(name[0].upper())
-                    s.write(name[1:].lower())
-
-                    name = s.getvalue()
-            else:
-                name = lang.display_name()
-
-            lower_name: str = name.lower()
-            if (len(specifier) > 0) and (not specifier.lower() in lower_name):
-                s = StringIO()
-
-                s.write(name)
-                s.write(" (")
-                s.write(specifier)
-                s.write(")")
-
-                name = s.getvalue()
-
-            index = name.find("(")
-            if (index >= 0) and (name.find(")") > index + 1):
-                s = StringIO()
-
-                s.write(name[: index + 1])
-                s.write(name[index + 1].upper())
-                s.write(name[index + 2 :])
-
-                name = s.getvalue()
-
-            return name
-        except ModuleNotFoundError:
+        if langcodes is None:
             return language
+
+        index: int = language.find("@")
+        name: str = language
+        specifier: str = ""
+
+        if index >= 0:
+            specifier = language[index + 1 :]
+            name = language.replace("@", "-")
+
+        lang: langcodes.Language = langcodes.Language.get(name)
+        if autonym:
+            name = lang.autonym()
+
+            if len(name) > 0:
+                s = StringIO()
+
+                s.write(name[0].upper())
+                s.write(name[1:].lower())
+
+                name = s.getvalue()
+        else:
+            name = lang.display_name()
+
+        lower_name: str = name.lower()
+        if (len(specifier) > 0) and (not specifier.lower() in lower_name):
+            s = StringIO()
+
+            s.write(name)
+            s.write(" (")
+            s.write(specifier)
+            s.write(")")
+
+            name = s.getvalue()
+
+        index = name.find("(")
+        if (index >= 0) and (name.find(")") > index + 1):
+            s = StringIO()
+
+            s.write(name[: index + 1])
+            s.write(name[index + 1].upper())
+            s.write(name[index + 2 :])
+
+            name = s.getvalue()
+
+        return name

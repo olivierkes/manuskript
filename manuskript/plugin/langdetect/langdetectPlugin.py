@@ -11,8 +11,7 @@ from manuskript.plugin.langdetect.langdetectRegioner import LangdetectRegioner
 
 
 class LangdetectPlugin(AbstractPlugin):
-
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
     def preload(self) -> bool:

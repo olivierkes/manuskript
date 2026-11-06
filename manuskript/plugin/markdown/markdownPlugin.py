@@ -11,13 +11,12 @@ from manuskript.plugin.markdown.markdownConverter import MarkdownConverter
 
 
 class MarkdownPlugin(AbstractPlugin):
-
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
-    
+
     def preload(self) -> bool:
         if not markdown:
             return False
-        
+
         self.registerConverter(MarkdownConverter)
         return True

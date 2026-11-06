@@ -13,30 +13,21 @@ from manuskript.util import validString
 
 
 class LaTeXExporter(AbstractExporter):
-
-    def __init__(self):
+    def __init__(self) -> None:
         AbstractExporter.__init__(self, "latex")
 
     def getName(self) -> str:
         return "LaTeX"
 
     def __commandFromLevel(self, level: int) -> str | None:
-        commands = [
-            "part",
-            "chapter",
-            "section",
-            "subsection",
-            "subsubsection",
-            "paragraph",
-            "subparagraph"
-        ]
+        commands = ["part", "chapter", "section", "subsection", "subsubsection", "paragraph", "subparagraph"]
 
         if (level >= 0) and (level < len(commands)):
             return commands[level]
         else:
             return None
 
-    def __exportItem(self, outlineItem: OutlineItem, output: StringIO, level: int = 1):
+    def __exportItem(self, outlineItem: OutlineItem, output: StringIO, level: int = 1) -> None:
         if type(outlineItem) is OutlineFolder:
             sectionCommand = self.__commandFromLevel(level)
 
@@ -58,7 +49,7 @@ class LaTeXExporter(AbstractExporter):
             output.write(validString(text))
             output.write("\n")
 
-    def export(self, project: Project) -> str | None:
+    def exportText(self, project: Project) -> str | None:
         output = StringIO()
 
         output.write("\\documentclass{book}\n\n")

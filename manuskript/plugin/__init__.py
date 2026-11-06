@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-from manuskript.plugin.abstractPlugin import AbstractPlugin
-from manuskript.plugin.component import PluginComponent as Component
-
 import importlib
 import os
 import pkgutil
 import sys
+
+from manuskript.plugin.abstractPlugin import AbstractPlugin
+from manuskript.plugin.component import PluginComponent as Component
 
 __path__ = pkgutil.extend_path(__path__, __name__)
 
@@ -19,22 +19,22 @@ else:
 from importlib.machinery import FileFinder, SourceFileLoader
 
 
-def findPlugins():
-    plugins = []
-    paths = []
-    
+def findPlugins() -> list[AbstractPlugin]:
+    plugins: list[AbstractPlugin] = []
+    paths: list[str] = []
+
     for importer in pkgutil.iter_importers():
         if not importer or type(importer) is not FileFinder:
             continue
 
-        paths.append(os.path.join(importer.path, 'manuskript', 'plugin'))
-    
+        paths.append(os.path.join(importer.path, "manuskript", "plugin"))
+
     for module_info in pkgutil.iter_modules(paths):
         if not module_info or not module_info.ispkg:
             continue
 
-        name = 'manuskript.plugin.' + module_info.name
-        path = os.path.join(module_info.module_finder.path, module_info.name, '__init__.py')
+        name = "manuskript.plugin." + module_info.name
+        path = os.path.join(module_info.module_finder.path, module_info.name, "__init__.py")
 
         try:
             module = SourceFileLoader(name, path).load_module()
@@ -61,7 +61,7 @@ def findPlugins():
             continue
 
         plugins.append(plugin)
-    
+
     return plugins
 
 
@@ -74,9 +74,9 @@ def loadPlugins(plugins: list[AbstractPlugin]) -> int:
         for plugin in plugin_list:
             if plugin.loadComponent(component):
                 plugin.loaded[component.value] = True
-        
+
         plugin_list = list(filter(lambda plugin: plugin.loaded[component.value], plugin_list))
-    
+
     if len(plugin_list) < len(plugins):
         unloadPlugins(list(filter(lambda plugin: not plugin.isValid(), plugins)))
 
@@ -94,11 +94,11 @@ def unloadPlugins(plugins: list[AbstractPlugin]) -> int:
 
             if plugin.unloadComponent(component):
                 plugin.loaded[component.value] = False
-    
+
     failed: int = 0
 
     for plugin in plugins:
         if True in plugin.loaded:
             failed += 1
-    
+
     return len(plugins) - failed

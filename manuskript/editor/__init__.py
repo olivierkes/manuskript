@@ -9,17 +9,12 @@ from manuskript.editor.textRegioner import TextRegioner
 from manuskript.editor.textSplitter import TextSplitter
 
 
-__regioners__ = [
-    TextRegioner(),
-]
+__regioners__ = [TextRegioner()]
 
-__splitters__ = [
-    TextSplitter(),
-    RegexSplitter(),
-]
+__splitters__ = [TextSplitter(), RegexSplitter()]
 
 
-def getRegioners() -> list:
+def getRegioners() -> filter[AbstractRegioner]:
     global __regioners__
     return filter(lambda regioner: regioner.isValid(), __regioners__)
 
@@ -37,10 +32,10 @@ def registerRegioner(regioner: AbstractRegioner) -> bool:
 
     if not regioner.isValid():
         return False
-    
+
     if regioner in __regioners__:
         return False
-    
+
     __regioners__.append(regioner)
     return True
 
@@ -50,7 +45,7 @@ def unregisterRegioner(regioner: AbstractRegioner) -> bool:
 
     if not regioner in __regioners__:
         return False
-    
+
     __regioners__.remove(regioner)
     return True
 
@@ -73,10 +68,10 @@ def registerSplitter(splitter: AbstractSplitter) -> bool:
 
     if not splitter.isValid():
         return False
-    
+
     if splitter in __splitters__:
         return False
-    
+
     __splitters__.append(splitter)
     return True
 
@@ -86,6 +81,6 @@ def unregisterSplitter(splitter: AbstractSplitter) -> bool:
 
     if not splitter in __splitters__:
         return False
-    
+
     __splitters__.remove(splitter)
     return True

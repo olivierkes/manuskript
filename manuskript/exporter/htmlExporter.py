@@ -11,8 +11,7 @@ from manuskript.util import validString
 
 
 class HTMLExporter(AbstractExporter):
-
-    def __init__(self):
+    def __init__(self) -> None:
         AbstractExporter.__init__(self, "html")
 
     def getName(self) -> str:
@@ -24,7 +23,7 @@ class HTMLExporter(AbstractExporter):
     def getIcon(self) -> str:
         return "text-html"
 
-    def __exportItem(self, outlineItem: OutlineItem, output: StringIO, level: int = 1):
+    def __exportItem(self, outlineItem: OutlineItem, output: StringIO, level: int = 1) -> None:
         if type(outlineItem) is OutlineFolder:
             output.write("<h")
             output.write(str(level))
@@ -49,7 +48,7 @@ class HTMLExporter(AbstractExporter):
             output.write(validString(text))
             output.write("\n")
 
-    def export(self, project: Project) -> str | None:
+    def exportText(self, project: Project) -> str | None:
         output = StringIO()
         output.write("<!DOCTYPE html>\n")
         output.write("<html>\n")
@@ -57,10 +56,10 @@ class HTMLExporter(AbstractExporter):
 
         output.write("<title>{0}</title>\n".format(validString(project.info.title)))
 
-        output.write("<meta charset=\"UTF-8\" />\n")
-        output.write("<meta name=\"description\" content=\"{0}\" />\n".format(validString(project.summary.sentence)))
-        output.write("<meta name=\"keywords\" content=\"{0}\" />\n".format(validString(project.info.genre)))
-        output.write("<meta name=\"author\" content=\"{0}\" />\n".format(validString(project.info.author)))
+        output.write('<meta charset="UTF-8" />\n')
+        output.write('<meta name="description" content="{0}" />\n'.format(validString(project.summary.sentence)))
+        output.write('<meta name="keywords" content="{0}" />\n'.format(validString(project.info.genre)))
+        output.write('<meta name="author" content="{0}" />\n'.format(validString(project.info.author)))
 
         output.write("</head>\n")
         output.write("<body>\n")

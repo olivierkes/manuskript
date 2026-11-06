@@ -11,14 +11,13 @@ from manuskript.util import validString
 
 
 class MarkdownExporter(AbstractExporter):
-
-    def __init__(self):
+    def __init__(self) -> None:
         AbstractExporter.__init__(self, "markdown")
 
     def getName(self) -> str:
         return "Markdown"
 
-    def __exportItem(self, outlineItem: OutlineItem, output: StringIO, level: int = 1):
+    def __exportItem(self, outlineItem: OutlineItem, output: StringIO, level: int = 1) -> None:
         if type(outlineItem) is OutlineFolder:
             output.write("#" * level)
             output.write(" ")
@@ -40,7 +39,7 @@ class MarkdownExporter(AbstractExporter):
             output.write(validString(text))
             output.write("\n")
 
-    def export(self, project: Project) -> str | None:
+    def exportText(self, project: Project) -> str | None:
         output = StringIO()
 
         output.write("# ")
@@ -49,7 +48,7 @@ class MarkdownExporter(AbstractExporter):
 
         for outlineItem in project.outline:
             self.__exportItem(outlineItem, output, 2)
-        
+
         text = output.getvalue()
         output.close()
         return text

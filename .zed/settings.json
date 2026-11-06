@@ -5,6 +5,9 @@
 {
   "languages": {
     "Python": {
+      "code_actions_on_format": {
+        "source.organizeImports.ruff": false
+      },
       "language_servers": ["pyright", "ruff"],
       "format_on_save": "off",
       "formatter": [

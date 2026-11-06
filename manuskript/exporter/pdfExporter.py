@@ -2,6 +2,7 @@
 # --!-- coding: utf8 --!--
 
 import tempfile
+from typing import Optional
 
 from manuskript.converter import getConverter
 from manuskript.data import Project
@@ -10,8 +11,7 @@ from manuskript.exporter.latexExporter import LaTeXExporter
 
 
 class PDFExporter(AbstractExporter):
-
-    def __init__(self):
+    def __init__(self) -> None:
         AbstractExporter.__init__(self, "pdf")
         self.latexExporter = LaTeXExporter()
 
@@ -26,24 +26,23 @@ class PDFExporter(AbstractExporter):
 
     def exportFile(self, outputPath: str, project: Project) -> bool:
         converter = getConverter("latex", self.exportFormat)
+        if converter is None:
+            return False
 
-        latex = self.latexExporter.export(project)
+        latex: Optional[bytes] = self.latexExporter.export(project)
+        if latex is None:
+            return False
+
         latexFile = tempfile.NamedTemporaryFile(suffix=".tex")
-
-        latexFile.write(latex.encode('utf-8'))
+        latexFile.write(latex)
         latexFile.flush()
 
-        result = converter.convertFile(
-            latexFile.name,
-            outputPath,
-            "latex",
-            self.exportFormat
-        )
+        result = converter.convertFile(latexFile.name, outputPath, "latex", self.exportFormat)
 
         latexFile.close()
         return result
 
-    def export(self, project: Project) -> str | None:
+    def export(self, project: Project) -> bytes | None:
         pdfFile = tempfile.NamedTemporaryFile(suffix=".pdf")
 
         if self.exportFile(pdfFile.name, project):

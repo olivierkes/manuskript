@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import tempfile
+from typing import Optional
 
 from gi.repository import GLib, GObject, Gtk, Handy, WebKit2
 
@@ -115,14 +116,14 @@ class CompileWindow(AbstractDialog):
             return
 
         if exporter.exportFormat == "pdf":
-            pdf = b"" if exporter is None else exporter.export(project)
-            self.previewWebView.load_bytes(GLib.Bytes(pdf), exporter.getMimeType(), None, None)
+            pdf: Optional[bytes] = None if exporter is None else exporter.export(project)
+            self.previewWebView.load_bytes(GLib.Bytes(b"" if pdf is None else pdf), exporter.getMimeType(), None, None)
         elif exporter.exportFormat == "html":
-            html = "" if exporter is None else exporter.export(project)
-            self.previewWebView.load_html(html, None)
+            html: Optional[str] = "" if exporter is None else exporter.exportText(project)
+            self.previewWebView.load_html("" if html is None else html, None)
         else:
-            text = "" if exporter is None else exporter.export(project)
-            self.previewWebView.load_plain_text(text)
+            text: Optional[str] = "" if exporter is None else exporter.exportText(project)
+            self.previewWebView.load_plain_text("" if text is None else text)
 
     def export(self) -> None:
         exporter = self.getExporter()

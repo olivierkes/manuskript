@@ -10,8 +10,7 @@ from manuskript.converter.abstractConverter import AbstractConverter
 
 
 class PandocConverter(AbstractConverter):
-
-    def __init__(self):
+    def __init__(self) -> None:
         AbstractConverter.__init__(self)
 
         if pypandoc is None:
@@ -22,10 +21,10 @@ class PandocConverter(AbstractConverter):
 
         for inputFormat in inputFormats:
             self.inputFormats.append(inputFormat)
-        
+
         for outputFormat in outputFormats:
             self.outputFormats.append(outputFormat)
-    
+
     def isValid(self) -> bool:
         return False if pypandoc is None else True
 
@@ -33,7 +32,7 @@ class PandocConverter(AbstractConverter):
         if (self.supportsInput(inputFormat)) and (self.supportsOutput(outputFormat)):
             return pypandoc.convert_text(text, outputFormat, format=inputFormat)
         else:
-            return AbstractConverter.convert(text, inputFormat, outputFormat)
+            return AbstractConverter.convert(self, text, inputFormat, outputFormat)
 
     def convertFile(self, path: str, outputPath: str, inputFormat: str, outputFormat: str) -> bool:
         if (self.supportsInput(inputFormat)) and (self.supportsOutput(outputFormat)):
@@ -43,4 +42,4 @@ class PandocConverter(AbstractConverter):
             except RuntimeError:
                 return False
         else:
-            return AbstractConverter.convert(text, inputFormat, outputFormat)
+            return AbstractConverter.convertFile(self, path, outputPath, inputFormat, outputFormat)

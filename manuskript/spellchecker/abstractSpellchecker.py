@@ -5,13 +5,12 @@ from io import StringIO
 
 
 class AbstractSpellchecker:
-
-    def __init__(self, languages: list[str] = []):
+    def __init__(self, languages: list[str] = []) -> None:
         self.languages = languages
-    
+
     def getName(self) -> str:
         return __class__.__name__
-    
+
     def getTitle(self) -> str:
         output = StringIO()
         output.write(self.getName())
@@ -33,18 +32,18 @@ class AbstractSpellchecker:
             return True
 
         return language in self.languages
-    
+
     def isMisspelled(self, word: str) -> bool:
         return False
-    
+
     def getSuggestions(self, word: str) -> list[str]:
         return []
-    
+
     def isCustomWord(self, word: str) -> bool:
         return False
-    
+
     def addCustomWord(self, word: str) -> bool:
         return False
-    
+
     def removeCustomWord(self, word: str) -> bool:
         return False

@@ -8,16 +8,17 @@ import re
 
 
 class RegexSplitter(AbstractSplitter):
-
-    def __init__(self, expression: str = "(\\w|(['’]\\w))+"):
+    def __init__(self, expression: str = "(\\w|(['’]\\w))+") -> None:
         AbstractSplitter.__init__(self)
-        
+
         self.regex = re.compile(expression)
 
     def isValid(self) -> bool:
         return True
 
-    def splitText(self, text: str, lang: str|None = None) -> SplitResult:
+    def splitText(self, text: str, lang: str | None = None) -> SplitResult:
         result: SplitResult = SplitResult(text)
-        result.tuples = [ SplitTuple(match.span()[0], match.span()[1], lang) for match in self.regex.finditer(result.text) ]
+        result.tuples = [
+            SplitTuple(match.span()[0], match.span()[1], lang) for match in self.regex.finditer(result.text)
+        ]
         return result

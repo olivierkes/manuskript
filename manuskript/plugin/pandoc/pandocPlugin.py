@@ -11,13 +11,12 @@ from manuskript.plugin.pandoc.pandocConverter import PandocConverter
 
 
 class PandocPlugin(AbstractPlugin):
-
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
-    
+
     def preload(self) -> bool:
         if not pypandoc:
             return False
-        
+
         self.registerConverter(PandocConverter)
         return True

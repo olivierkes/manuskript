@@ -4,16 +4,26 @@
 from functools import reduce
 
 from manuskript.converter import AbstractConverter, registerConverter, unregisterConverter
-from manuskript.editor import AbstractRegioner, AbstractSplitter, registerRegioner, registerSplitter, unregisterRegioner, unregisterSplitter
+from manuskript.editor import (
+    AbstractRegioner,
+    AbstractSplitter,
+    registerRegioner,
+    registerSplitter,
+    unregisterRegioner,
+    unregisterSplitter,
+)
 from manuskript.exporter import AbstractExporter, registerExporter, unregisterExporter
 from manuskript.plugin.component import PluginComponent
-from manuskript.spellchecker import AbstractSpellchecker, registerSpellchecker, unregisterSpellchecker
+from manuskript.spellchecker import (
+    AbstractSpellchecker,
+    registerSpellchecker,
+    unregisterSpellchecker,
+)
 from manuskript.util import profileTime
 
 
 class AbstractPlugin:
-
-    def __init__(self):
+    def __init__(self) -> None:
         self.converters: list[AbstractConverter] = []
         self.exporters: list[AbstractExporter] = []
         self.regioners: list[AbstractRegioner] = []
@@ -24,7 +34,7 @@ class AbstractPlugin:
     def getName(self) -> str:
         return self.__class__.__name__
 
-    def getDescription(self) -> str|None:
+    def getDescription(self) -> str | None:
         return None
 
     def isValid(self) -> bool:
@@ -39,7 +49,7 @@ class AbstractPlugin:
         except TypeError as e:
             print("PLUGIN ERROR: ( " + self.getName() + " )" + str(e))
             return False
-        
+
         self.converters.append(converter)
         return True
 
@@ -52,10 +62,10 @@ class AbstractPlugin:
         except TypeError as e:
             print("PLUGIN ERROR: ( " + self.getName() + " )" + str(e))
             return False
-        
+
         self.exporters.append(exporter)
         return True
-    
+
     def registerRegioner(self, regioner_cls) -> bool:
         try:
             if not issubclass(regioner_cls, AbstractRegioner):
@@ -65,10 +75,10 @@ class AbstractPlugin:
         except TypeError as e:
             print("PLUGIN ERROR: ( " + self.getName() + " )" + str(e))
             return False
-        
+
         self.regioners.append(regioner)
         return True
-    
+
     def registerSplitter(self, splitter_cls) -> bool:
         try:
             if not issubclass(splitter_cls, AbstractSplitter):
@@ -78,7 +88,7 @@ class AbstractPlugin:
         except TypeError as e:
             print("PLUGIN ERROR: ( " + self.getName() + " )" + str(e))
             return False
-        
+
         self.splitters.append(splitter)
         return True
 
@@ -91,7 +101,7 @@ class AbstractPlugin:
         except TypeError as e:
             print("PLUGIN ERROR: ( " + self.getName() + " )" + str(e))
             return False
-        
+
         self.spellcheckers.append(spellchecker)
         return True
 
@@ -109,35 +119,35 @@ class AbstractPlugin:
 
             for converter in self.converters:
                 status = status and registerConverter(converter)
-            
+
             return status
         elif component == PluginComponent.EXPORTERS:
             status: bool = True
 
             for exporter in self.exporters:
                 status = status and registerExporter(exporter)
-            
+
             return status
         elif component == PluginComponent.REGIONERS:
             status: bool = True
 
             for regioner in self.regioners:
                 status = status and registerRegioner(regioner)
-            
+
             return status
         elif component == PluginComponent.SPLITTERS:
             status: bool = True
 
             for splitter in self.splitters:
                 status = status and registerSplitter(splitter)
-            
+
             return status
         elif component == PluginComponent.SPELLCHECKERS:
             status: bool = True
 
             for spellchecker in self.spellcheckers:
                 status = status and registerSpellchecker(spellchecker)
-            
+
             return status
         elif component == PluginComponent.PLUGIN:
             return profileTime(self.load)
@@ -158,35 +168,35 @@ class AbstractPlugin:
 
             for converter in self.converters:
                 status = status and unregisterConverter(converter)
-            
+
             return status
         elif component == PluginComponent.EXPORTERS:
             status: bool = True
 
             for exporter in self.exporters:
                 status = status and unregisterExporter(exporter)
-            
+
             return status
         elif component == PluginComponent.REGIONERS:
             status: bool = True
 
             for regioner in self.regioners:
                 status = status and unregisterRegioner(regioner)
-            
+
             return status
         elif component == PluginComponent.SPLITTERS:
             status: bool = True
 
             for splitter in self.splitters:
                 status = status and unregisterSplitter(splitter)
-            
+
             return status
         elif component == PluginComponent.SPELLCHECKERS:
             status: bool = True
 
             for spellchecker in self.spellcheckers:
                 status = status and unregisterSpellchecker(spellchecker)
-            
+
             return status
         elif component == PluginComponent.PLUGIN:
             return self.unload()

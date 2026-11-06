@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
+from typing import Optional
+
 from manuskript.converter import getConverter
 from manuskript.data import Project
 from manuskript.io import TextFile
 
 
 class AbstractExporter:
-
-    def __init__(self, outputFormat: str):
+    def __init__(self, outputFormat: str) -> None:
         self.exportFormat = outputFormat
 
     def getName(self) -> str:
@@ -25,8 +26,7 @@ class AbstractExporter:
         return False if converter is None else True
 
     def exportFile(self, outputPath: str, project: Project) -> bool:
-        text = self.export(project)
-
+        text: Optional[str] = self.exportText(project)
         if text is None:
             return False
 
@@ -34,5 +34,12 @@ class AbstractExporter:
         textFile.save(text)
         return True
 
-    def export(self, project: Project) -> str | None:
+    def exportText(self, project: Project) -> str | None:
         return None
+
+    def export(self, project: Project) -> bytes | None:
+        text: Optional[str] = self.exportText(project)
+        if text is None:
+            return None
+
+        return text.encode("utf-8")

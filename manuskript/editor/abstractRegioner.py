@@ -5,8 +5,7 @@ from manuskript.editor.splitResult import SplitResult, SplitTuple
 
 
 class AbstractRegioner:
-
-    def __init__(self, languages: list[str] = []):
+    def __init__(self, languages: list[str] = []) -> None:
         self.supportedLanguages: list[str] = languages
 
     def getName(self) -> str:
@@ -17,18 +16,18 @@ class AbstractRegioner:
 
     def splitText(self, text: str) -> SplitResult:
         result: SplitResult = SplitResult(text)
-        language: str|None = None
+        language: str | None = None
 
         if len(self.supportedLanguages) > 0:
             language = self.supportedLanguages[0]
 
         start = 0
         while start < len(text):
-          end = text.find('\n', start)
-          if end < start:
-            end = len(text)
+            end = text.find("\n", start)
+            if end < start:
+                end = len(text)
 
-          result.tuples.append(SplitTuple(start, end, language))
-          start = end + 1
+            result.tuples.append(SplitTuple(start, end, language))
+            start = end + 1
 
         return result

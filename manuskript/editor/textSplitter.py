@@ -6,14 +6,13 @@ from manuskript.editor.splitResult import SplitResult, SplitTuple
 
 
 class TextSplitter(AbstractSplitter):
-
-    def __init__(self):
+    def __init__(self) -> None:
         AbstractSplitter.__init__(self)
 
     def isValid(self) -> bool:
         return True
 
-    def splitText(self, text: str, lang: str|None = None) -> SplitResult:
+    def splitText(self, text: str, lang: str | None = None) -> SplitResult:
         result: SplitResult = SplitResult(text)
 
         begin: int = 0
@@ -22,5 +21,5 @@ class TextSplitter(AbstractSplitter):
         for sub in text.split():
             begin = text.index(sub, begin, end)
             result.tuples.append(SplitTuple(begin, begin + len(sub), lang))
-        
+
         return result

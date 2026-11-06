@@ -8,8 +8,7 @@ import re
 
 
 class AbstractSplitter:
-
-    def __init__(self):
+    def __init__(self) -> None:
         pass
 
     def getName(self) -> str:
@@ -18,7 +17,7 @@ class AbstractSplitter:
     def isValid(self) -> bool:
         return False
 
-    def splitText(self, text: str, lang: str|None = None) -> SplitResult:
+    def splitText(self, text: str, lang: str | None = None) -> SplitResult:
         result: SplitResult = SplitResult(text)
         result.tuples.append(SplitTuple(0, len(text), lang))
         return result
@@ -27,11 +26,9 @@ class AbstractSplitter:
         result: SplitResult = SplitResult(regions.text)
 
         for region in regions.tuples:
-            text: str = regions.text[region.begin:region.end]
+            text: str = regions.text[region.begin : region.end]
 
             for part in self.splitText(text, region.lang).tuples:
-                result.tuples.append(
-                    SplitTuple(region.begin + part.begin, region.begin + part.end, part.lang)
-                )
+                result.tuples.append(SplitTuple(region.begin + part.begin, region.begin + part.end, part.lang))
 
         return result

@@ -11,7 +11,7 @@ try:
 
     if distutils.version.LooseVersion(symspellpy.__version__) < SYMSPELLPY_MIN_VERSION:
         symspellpy = None
-    
+
 except ImportError:
     symspellpy = None
 
@@ -20,15 +20,14 @@ from manuskript.plugin.symspellpy.symSpellchecker import SymSpellchecker
 
 
 class SymSpellPlugin(AbstractPlugin):
-
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
-    
+
     def getName(self) -> str:
         return "symspellpy"
-    
+
     def preload(self) -> bool:
         if not symspellpy:
             return False
-        
+
         return True

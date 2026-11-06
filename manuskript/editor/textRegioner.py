@@ -7,5 +7,5 @@ from manuskript.editor.splitResult import SplitResult, SplitTuple
 
 class TextRegioner(AbstractRegioner):
 
-    def __init__(self):
-        AbstractRegioner.__init__(self, [None])
+    def __init__(self) -> None:
+        AbstractRegioner.__init__(self, [])

@@ -10,8 +10,7 @@ from manuskript.spellchecker.abstractSpellchecker import AbstractSpellchecker
 
 
 class EnchantSpellchecker(AbstractSpellchecker):
-
-    def __init__(self, language: str):
+    def __init__(self, language: str) -> None:
         AbstractSpellchecker.__init__(self, [language])
 
         self.dictionary = enchant.DictWithPWL(language)
@@ -24,7 +23,7 @@ class EnchantSpellchecker(AbstractSpellchecker):
 
     def isMisspelled(self, word: str) -> bool:
         if word.isnumeric():
-          return False
+            return False
 
         return not self.dictionary.check(word)
 

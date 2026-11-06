@@ -11,18 +11,17 @@ from manuskript.plugin.enchant.enchantSpellchecker import EnchantSpellchecker
 
 
 class EnchantPlugin(AbstractPlugin):
-
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
-    
+
     def getName(self) -> str:
         return "PyEnchant"
-    
+
     def preload(self) -> bool:
         if not enchant:
             return False
-        
-        for d in enchant.list_dicts():
-            self.registerSpellchecker(EnchantSpellchecker, d[0])
-        
+
+        for dictionary in enchant.list_dicts():
+            self.registerSpellchecker(EnchantSpellchecker, dictionary[0])
+
         return True
