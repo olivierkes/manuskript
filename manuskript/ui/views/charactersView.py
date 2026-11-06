@@ -7,7 +7,7 @@ from manuskript.ui.views.abstractView import AbstractView
 
 from manuskript.data import Characters, Character, Importance, Color
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
-from manuskript.util import validString, invalidString, validInt, invalidInt
+from manuskript.util import validString, invalidString, validInt, invalidInt, validVariantValue
 
 
 class CharactersView(AbstractView):
@@ -119,7 +119,7 @@ class CharactersView(AbstractView):
             if tree_iter is None:
                 continue
 
-            self.charactersStore.set_value(tree_iter, 0, character.UID.value)
+            self.charactersStore.set_value(tree_iter, 0, validVariantValue(character.UID))
             self.charactersStore.set_value(tree_iter, 1, validString(character.name))
             self.charactersStore.set_value(tree_iter, 2, pixbufFromColor(character.color))
             self.charactersStore.set_value(tree_iter, 3, Importance.asValue(character.importance))
@@ -240,14 +240,14 @@ class CharactersView(AbstractView):
 
         self.character.color = color
 
-        character_id = self.character.UID.value
+        character_id = validVariantValue(self.character.UID)
 
         for row in self.charactersStore:
             if row[0] == character_id:
                 row[2] = pixbufFromColor(color)
                 break
 
-    def _importanceChanged(self, combo: Gtk.ComboBox):
+    def _importanceChanged(self, combo: Gtk.ComboBox) -> None:
         if self.character is None:
             return
 
@@ -266,7 +266,7 @@ class CharactersView(AbstractView):
 
         self.character.importance = importance
 
-        character_id = self.character.UID.value
+        character_id = validVariantValue(self.character.UID)
 
         for row in self.charactersStore:
             if row[0] == character_id:
@@ -286,13 +286,13 @@ class CharactersView(AbstractView):
                 selection.select_iter(row.iter)
                 break
 
-    def _allowPOVToggled(self, button: Gtk.ToggleButton):
+    def _allowPOVToggled(self, button: Gtk.ToggleButton) -> None:
         if self.character is None:
             return
 
         self.character.POV = button.get_active()
 
-    def _addDetailsClicked(self, button: Gtk.Button):
+    def _addDetailsClicked(self, button: Gtk.Button) -> None:
         if self.character is None:
             return
 
@@ -309,7 +309,7 @@ class CharactersView(AbstractView):
 
         self.character.details[name] = value
 
-    def _removeDetailsClicked(self, button: Gtk.Button):
+    def _removeDetailsClicked(self, button: Gtk.Button) -> None:
         if self.character is None:
             return
 
@@ -323,7 +323,7 @@ class CharactersView(AbstractView):
 
         self.character.details.pop(name)
 
-    def _detailsNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
+    def _detailsNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str) -> None:
         if self.character is None:
             return
 
@@ -337,7 +337,7 @@ class CharactersView(AbstractView):
 
         self.character.details[text] = self.character.details.pop(name)
 
-    def _detailsValueEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
+    def _detailsValueEdited(self, renderer: Gtk.CellRendererText, path: str, text: str) -> None:
         if self.character is None:
             return
 
@@ -351,7 +351,7 @@ class CharactersView(AbstractView):
 
         self.character.details[name] = text
 
-    def __nameChanged(self, buffer: Gtk.EntryBuffer):
+    def __nameChanged(self, buffer: Gtk.EntryBuffer) -> None:
         if self.character is None:
             return
 
@@ -360,20 +360,20 @@ class CharactersView(AbstractView):
 
         self.character.name = name
 
-        character_id = self.character.UID.value
+        character_id = validVariantValue(self.character.UID)
 
         for row in self.charactersStore:
             if row[0] == character_id:
                 row[1] = validString(name)
                 break
 
-    def _nameDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
+    def _nameDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int) -> None:
         self.__nameChanged(buffer)
 
-    def _nameInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
+    def _nameInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int) -> None:
         self.__nameChanged(buffer)
 
-    def _motivationChanged(self, buffer: Gtk.TextBuffer):
+    def _motivationChanged(self, buffer: Gtk.TextBuffer) -> None:
         if self.character is None:
             return
 
@@ -384,7 +384,7 @@ class CharactersView(AbstractView):
 
         self.character.motivation = invalidString(text)
 
-    def _goalChanged(self, buffer: Gtk.TextBuffer):
+    def _goalChanged(self, buffer: Gtk.TextBuffer) -> None:
         if self.character is None:
             return
 
@@ -395,7 +395,7 @@ class CharactersView(AbstractView):
 
         self.character.goal = invalidString(text)
 
-    def _conflictChanged(self, buffer: Gtk.TextBuffer):
+    def _conflictChanged(self, buffer: Gtk.TextBuffer) -> None:
         if self.character is None:
             return
 
@@ -406,7 +406,7 @@ class CharactersView(AbstractView):
 
         self.character.conflict = invalidString(text)
 
-    def _epiphanyChanged(self, buffer: Gtk.TextBuffer):
+    def _epiphanyChanged(self, buffer: Gtk.TextBuffer) -> None:
         if self.character is None:
             return
 
@@ -417,7 +417,7 @@ class CharactersView(AbstractView):
 
         self.character.epiphany = invalidString(text)
 
-    def _oneSentenceChanged(self, buffer: Gtk.TextBuffer):
+    def _oneSentenceChanged(self, buffer: Gtk.TextBuffer) -> None:
         if self.character is None:
             return
 
@@ -428,7 +428,7 @@ class CharactersView(AbstractView):
 
         self.character.summarySentence = invalidString(text)
 
-    def _oneParagraphChanged(self, buffer: Gtk.TextBuffer):
+    def _oneParagraphChanged(self, buffer: Gtk.TextBuffer) -> None:
         if self.character is None:
             return
 
@@ -439,7 +439,7 @@ class CharactersView(AbstractView):
 
         self.character.summaryParagraph = invalidString(text)
 
-    def _summaryChanged(self, buffer: Gtk.TextBuffer):
+    def _summaryChanged(self, buffer: Gtk.TextBuffer) -> None:
         if self.character is None:
             return
 
@@ -450,7 +450,7 @@ class CharactersView(AbstractView):
 
         self.character.summaryFull = invalidString(text)
 
-    def _notesChanged(self, buffer: Gtk.TextBuffer):
+    def _notesChanged(self, buffer: Gtk.TextBuffer) -> None:
         if self.character is None:
             return
 

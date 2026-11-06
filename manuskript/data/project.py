@@ -17,7 +17,7 @@ from manuskript.data.world import World
 from manuskript.data.outline import Outline
 from manuskript.data.revisions import Revisions
 from manuskript.io.mskFile import MskFile
-from manuskript.util import profileTime
+from manuskript.util import profileTime, validVariantValue
 
 
 class Project(AbstractData):
@@ -55,10 +55,10 @@ class Project(AbstractData):
         return name
 
     def getVersion(self) -> int:
-        return self.version.value
+        return validVariantValue(self.version)
 
     def canUpgradeVersion(self) -> bool:
-        return self.version.value < CURRENT_MSK_VERSION
+        return self.getVersion() < CURRENT_MSK_VERSION
 
     def upgradeVersion(self) -> None:
         self.version.value = CURRENT_MSK_VERSION
@@ -111,7 +111,7 @@ class Project(AbstractData):
         saveToZip = self.settings.isEnabled("saveToZip")
 
         self.file.setZipFile(saveToZip)
-        self.file.setVersion(self.version.value)
+        self.file.setVersion(self.getVersion())
 
         self.version.save()
         self.info.save()

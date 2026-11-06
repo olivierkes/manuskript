@@ -188,7 +188,7 @@ class WorldView(AbstractView):
         if tree_iter is None:
             return
 
-        self.worldStore.set_value(tree_iter, 0, worldItem.UID.value)
+        self.worldStore.set_value(tree_iter, 0, hash(worldItem.UID))
         self.worldStore.set_value(tree_iter, 1, validString(worldItem.name))
 
         for item in worldItem:
@@ -307,7 +307,7 @@ class WorldView(AbstractView):
 
         self.worldItem.name = name
 
-        world_item_id = self.worldItem.UID.value
+        world_item_id = hash(self.worldItem.UID)
 
         userdata = {"world_item_id": world_item_id, "name": validString(name)}
 

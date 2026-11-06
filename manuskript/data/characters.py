@@ -17,13 +17,13 @@ from manuskript.util import safeFilename, validBool
 class Character(AbstractData):
     def __init__(self, path: str, characters: Characters) -> None:
         AbstractData.__init__(self, path)
-        self.file = MmdFile(self.dataPath, 21)
-        self.characters = characters
-        self.links = Links()
+        self.file: MmdFile = MmdFile(self.dataPath, 21)
+        self.characters: Characters = characters
+        self.links: Links = Links()
 
         self.UID: Optional[UniqueID] = None
         self.name: Optional[str] = None
-        self.importance: Optional[Importance] = None
+        self.importance: Importance = Importance.MINOR
         self.POV: Optional[bool] = None
         self.motivation: Optional[str] = None
         self.goal: Optional[str] = None
@@ -34,7 +34,7 @@ class Character(AbstractData):
         self.summaryFull: Optional[str] = None
         self.notes: Optional[str] = None
         self.color: Optional[Color] = None
-        self.details = dict()
+        self.details: dict[str, str] = dict()
 
     def changePath(self, path: str) -> None:
         AbstractData.changePath(self, path)
@@ -102,7 +102,7 @@ class Character(AbstractData):
         metadata = OrderedDict()
 
         metadata["Name"] = self.name
-        metadata["ID"] = str(self.UID.value)
+        metadata["ID"] = str(self.UID)
         metadata["Importance"] = Importance.toRawString(self.importance)
         metadata["POV"] = self.POV
         metadata["Motivation"] = self.motivation
@@ -157,7 +157,7 @@ class Characters(AbstractData):
         character.UID = UID
         character.name = name
 
-        self.data[character.UID.value] = character
+        self.data[hash(character.UID)] = character
 
         return character
 
@@ -177,7 +177,7 @@ class Characters(AbstractData):
             return
 
         self.host.removeID(character.UID)
-        self.data.pop(character.UID.value)
+        self.data.pop(hash(character.UID))
 
     def load(self) -> None:
         self.data.clear()
@@ -203,7 +203,7 @@ class Characters(AbstractData):
             if character.UID is None:
               continue
 
-            self.data[character.UID.value] = character
+            self.data[hash(character.UID)] = character
 
         self.complete()
 

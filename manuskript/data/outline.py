@@ -5,7 +5,7 @@ from __future__ import annotations
 import os
 from collections import OrderedDict
 from enum import Enum, unique
-from typing import Iterator, Optional
+from typing import Iterable, Iterator, Optional
 
 from manuskript.data.abstractData import AbstractData, DataStatus
 from manuskript.data.goal import Goal
@@ -15,7 +15,7 @@ from manuskript.data.status import StatusHost, Status
 from manuskript.data.template import Template, TemplateLevel
 from manuskript.data.unique_id import UniqueIDHost, UniqueID
 from manuskript.io.mmdFile import MmdFile
-from manuskript.util import CounterKind, countText, safeInt, safeFilename, validBool, validString
+from manuskript.util import CounterKind, countText, safeInt, safeFilename, validBool, validInt, validVariantValue, validString
 from manuskript.data import Characters, Character
 
 
@@ -61,13 +61,13 @@ class OutlineItem(AbstractData):
 
     @classmethod
     def loadMetadata(cls, item: OutlineItem, metadata: OrderedDict[str, str]) -> None:
-        ID = metadata.get("ID")
-
+        ID: Optional[str] = metadata.get("ID")
         if ID is None:
             return
 
-        if (item.UID is None) or (item.UID.value != int(ID)):
-            item.UID = item.outline.host.loadID(int(ID))
+        uid: int = validInt(ID)
+        if (item.UID is None) or (hash(item.UID) != uid):
+            item.UID = item.outline.host.loadID(uid)
 
         def loadCharacterByID(outline: Outline, characterID: str | None) -> Character | None:
             return outline.characters.getPOVByID(safeInt(characterID, -1))
@@ -97,11 +97,11 @@ class OutlineItem(AbstractData):
             return metadata
 
         metadata["title"] = item.title
-        metadata["ID"] = str(item.UID.value)
+        metadata["ID"] = str(item.UID)
         metadata["type"] = item.type
         metadata["summarySentence"] = item.summarySentence
         metadata["summaryFull"] = item.summaryFull
-        metadata["POV"] = None if item.POV is None else str(item.POV.UID.value)
+        metadata["POV"] = None if item.POV is None else str(item.POV.UID)
         metadata["notes"] = item.notes
         metadata["label"] = None if item.label is None else item.label.ID
         metadata["status"] = None if item.status is None else item.status.ID
@@ -117,7 +117,7 @@ class OutlineItem(AbstractData):
         return CounterKind.WORDS if self.goal is None else self.goal.kind
 
     def goalCount(self) -> int:
-        return 0 if self.goal is None else self.goal.value
+        return validVariantValue(self.goal)
 
     def complete(self, statusCompletion: bool = True, optimized: bool = True) -> None:
         AbstractData.complete(self, statusCompletion)
@@ -346,7 +346,7 @@ class Outline(AbstractData):
         self.plots: Plots = plots
         self.labels: LabelHost = labels
         self.statuses: StatusHost = statuses
-        self.items: list = list()
+        self.items: list[OutlineItem] = list()
         self.cache: dict = dict()
 
     def changePath(self, path: str) -> None:
@@ -399,7 +399,7 @@ class Outline(AbstractData):
                 item = self.addText(name)
                 item.goal = template.goal
 
-    def __iter__(self):
+    def __iter__(self) -> Iterable[OutlineItem]:
         return self.items.__iter__()
 
     def getItemByID(self, ID: int) -> OutlineItem | None:
@@ -407,18 +407,18 @@ class Outline(AbstractData):
             return self.cache.get(ID)
 
         for item in self.all():
-            if item.UID.value == ID:
+            if hash(item.UID) == ID:
                 return item
 
         return None
 
-    def all(self):
-        result = list()
-        queue = list(self.items)
+    def all(self) -> list[OutlineItem]:
+        result: list[OutlineItem] = []
+        queue: list[OutlineItem] = list(self.items)
 
         while len(queue) > 0:
             item = queue.pop()
-            self.cache[item.UID.value] = item
+            self.cache[hash(item.UID)] = item
 
             if type(item) is OutlineFolder:
                 for child in item:

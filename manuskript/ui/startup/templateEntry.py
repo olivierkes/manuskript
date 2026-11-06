@@ -4,7 +4,7 @@
 from gi.repository import Gtk
 
 from manuskript.data import Template, TemplateLevel
-from manuskript.util import validInt, validString
+from manuskript.util import validInt, validString, validVariantValue
 
 
 class TemplateEntry:
@@ -37,7 +37,7 @@ class TemplateEntry:
 
         if self.level is None:
             self.valueAdjustment.set_value(
-                0 if self.template.goal is None else validInt(self.template.goal.value)
+                validVariantValue(self.template.goal)
             )
 
             self.entryStack.set_visible_child_name("page_label")

@@ -118,12 +118,12 @@ class World(AbstractData):
         else:
             parent.children.append(item)
 
-        self.items[item.UID.value] = item
+        self.items[hash(item.UID)] = item
         return item
 
     def loadItem(self, ID: int, name: str | None = None) -> WorldItem:
         item = WorldItem(self, self.host.loadID(ID), name)
-        self.items[item.UID.value] = item
+        self.items[hash(item.UID)] = item
         return item
 
     def removeItem(self, item: WorldItem) -> None:
@@ -135,7 +135,7 @@ class World(AbstractData):
             self.top.remove(item)
 
         self.host.removeID(item.UID)
-        self.items.pop(item.UID.value)
+        self.items.pop(hash(item.UID))
 
     def moveItem(
         self, item: WorldItem, parent: WorldItem | None = None, index: int | None = None
@@ -216,7 +216,7 @@ class World(AbstractData):
         outline = OpmlOutlineItem()
 
         outline.attributes["name"] = item.name
-        outline.attributes["ID"] = str(item.UID.value)
+        outline.attributes["ID"] = str(item.UID)
         outline.attributes["description"] = item.description
         outline.attributes["passion"] = item.passion
         outline.attributes["conflict"] = item.conflict

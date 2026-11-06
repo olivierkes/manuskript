@@ -8,7 +8,7 @@ from manuskript.ui.views.abstractView import AbstractView
 
 from manuskript.data import Outline, OutlineFolder, OutlineText, OutlineItem, OutlineState, Plots, PlotLine, Characters, Character, Importance, Goal, Color, UniqueID
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
-from manuskript.util import validString, invalidString, validInt, invalidInt, CounterKind, countText
+from manuskript.util import validString, invalidString, validInt, invalidInt, CounterKind, countText, validVariantValue
 from manuskript.ui.picker import LabelPicker, CharacterPicker, AbstractGridPicker
 
 class OutlineView(AbstractView):
@@ -147,7 +147,7 @@ class OutlineView(AbstractView):
             if tree_iter is None:
                 continue
 
-            self.plotsStore.set_value(tree_iter, 0, plotLine.UID.value)
+            self.plotsStore.set_value(tree_iter, 0, validVariantValue(plotLine.UID))
             self.plotsStore.set_value(tree_iter, 1, validString(plotLine.name))
             self.plotsStore.set_value(tree_iter, 2, Importance.asValue(plotLine.importance))
 
@@ -171,7 +171,7 @@ class OutlineView(AbstractView):
             if tree_iter is None:
                 continue
 
-            self.charactersStore.set_value(tree_iter, 0, character.UID.value)
+            self.charactersStore.set_value(tree_iter, 0, validVariantValue(character.UID))
             self.charactersStore.set_value(tree_iter, 1, validString(character.name))
             self.charactersStore.set_value(tree_iter, 2, pixbufFromColor(character.color))
 
@@ -180,7 +180,7 @@ class OutlineView(AbstractView):
     ) -> Gtk.TreeIter:
         it = store.iter_children(parent)
         while it:
-            if store[it][0] == uid.value:
+            if store[it][0] == hash(uid):
                 return it
             child = self._findOutlineIterById(store, uid, it)
             if child:
@@ -216,7 +216,7 @@ class OutlineView(AbstractView):
         if outlineItem.UID is None:
             return
 
-        self.outlineStore.set_value(tree_iter, 0, outlineItem.UID.value)
+        self.outlineStore.set_value(tree_iter, 0, validVariantValue(outlineItem.UID))
         self.outlineStore.set_value(tree_iter, 1, validString(outlineItem.title))
         self.outlineStore.set_value(tree_iter, 2, validString(outlineItem.label))
         self.outlineStore.set_value(tree_iter, 3, validString(outlineItem.status))
@@ -334,7 +334,7 @@ class OutlineView(AbstractView):
         self.oneLineSummaryBuffer.set_text(validString(outlineItem.summarySentence), -1)
         self.fewSentencesSummaryBuffer.set_text(validString(outlineItem.summaryFull), -1)
         if (outlineItem.POV) and (outlineItem.POV.UID is not None):
-            self.setPovComboById(validInt(outlineItem.POV.UID.value))
+            self.setPovComboById(validVariantValue(outlineItem.POV.UID))
 
         self.outlineItem = outlineItem
 
@@ -410,7 +410,7 @@ class OutlineView(AbstractView):
 
         self.outlineItem.goal = Goal.parse(text)
 
-        outline_id = self.outlineItem.UID.value
+        outline_id = hash(self.outlineItem.UID)
 
         wordCount = validInt(self.outlineItem.textCount())
         goal = validInt(self.outlineItem.goalCount())

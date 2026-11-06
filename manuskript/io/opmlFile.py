@@ -2,6 +2,7 @@
 # --!-- coding: utf8 --!--
 
 from typing import Any, Iterator
+from typing_extensions import Optional
 
 from lxml import etree
 
@@ -10,7 +11,7 @@ from manuskript.io.xmlFile import XmlFile
 
 class OpmlOutlineItem:
     def __init__(self) -> None:
-        self.attributes: dict[str, str] = dict()
+        self.attributes: dict[str, Optional[str]] = dict()
         self.children: list[OpmlOutlineItem] = list()
 
     def __iter__(self) -> Iterator[OpmlOutlineItem]:
@@ -19,7 +20,7 @@ class OpmlOutlineItem:
     def keys(self) -> Iterator[str]:
         return self.attributes.keys().__iter__()
 
-    def values(self) -> Iterator[str]:
+    def values(self) -> Iterator[Optional[str]]:
         return self.attributes.values().__iter__()
 
 

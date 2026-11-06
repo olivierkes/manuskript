@@ -3,6 +3,8 @@
 
 from enum import Enum, unique
 
+from manuskript.util import validVariantValue
+
 
 @unique
 class Importance(Enum):
@@ -16,7 +18,7 @@ class Importance(Enum):
 
     @classmethod
     def asValue(cls, importance: Importance) -> int:
-        return 0 if importance is None else importance.value
+        return validVariantValue(importance)
 
     @classmethod
     def fromRawString(cls, raw: str | None) -> Importance | None:

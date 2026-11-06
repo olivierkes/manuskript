@@ -35,7 +35,7 @@ class CharacterPicker(AbstractGridPicker):
             return False
 
         if (not self.pickPovOnly) or (item.POV):
-            return item.UID.value not in self.excludedCharactersUIDs
+            return not hash(item.UID) in self.excludedCharactersUIDs
         else:
             return False
 

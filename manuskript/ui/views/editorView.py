@@ -9,7 +9,7 @@ from manuskript.ui.views.abstractView import AbstractView
 from manuskript.data import Project, OutlineFolder, OutlineText, OutlineItem, OutlineState, Goal
 from manuskript.ui.editor import GridItem
 from manuskript.ui.util import pixbufFromColor, iconByOutlineItemType
-from manuskript.util import validString, validInt, safeFraction
+from manuskript.util import validString, validInt, safeFraction, validVariantValue
 
 
 class EditorView(AbstractView):
@@ -133,7 +133,7 @@ class EditorView(AbstractView):
         goal = validInt(outlineItem.goalCount())
         progress = 100 * safeFraction(wordCount, 0, goal)
 
-        self.outlineStore.set_value(tree_iter, 0, outlineItem.UID.value)
+        self.outlineStore.set_value(tree_iter, 0, validVariantValue(outlineItem.UID))
         self.outlineStore.set_value(tree_iter, 1, validString(outlineItem.title))
         self.outlineStore.set_value(tree_iter, 2, validString(outlineItem.label))
         self.outlineStore.set_value(tree_iter, 3, validString(outlineItem.status))
@@ -194,7 +194,7 @@ class EditorView(AbstractView):
         goal = validInt(outlineItem.goalCount())
         progress = 100 * safeFraction(wordCount, 0, goal)
 
-        self.editorOutlineStore.set_value(list_iter, 0, outlineItem.UID.value)
+        self.editorOutlineStore.set_value(list_iter, 0, validVariantValue(outlineItem.UID))
         self.editorOutlineStore.set_value(list_iter, 1, validString(outlineItem.title))
         self.editorOutlineStore.set_value(list_iter, 2, validString(outlineItem.label))
         self.editorOutlineStore.set_value(list_iter, 3, validString(outlineItem.status))
@@ -393,7 +393,9 @@ class EditorView(AbstractView):
         if (index < 0) or (index >= len(self.editorItems)):
             return
 
-        outlineItem = self.editorItems[index]
+        outlineItem: OutlineItem = self.editorItems[index]
+        if (outlineItem is None) or (outlineItem.UID is None):
+            return
 
         def selectEditorOutlineItem(
             model: Gtk.TreeModel, path: Gtk.TreePath, _iter: Gtk.TreeIter, outline_id: int
@@ -406,7 +408,7 @@ class EditorView(AbstractView):
 
             return True
 
-        self.editorOutlineStore.foreach(selectEditorOutlineItem, outlineItem.UID.value)
+        self.editorOutlineStore.foreach(selectEditorOutlineItem, hash(outlineItem.UID))
 
     def __openOutlineItem(self, outlineItem: OutlineItem | None) -> None:
         if (outlineItem is None) or (outlineItem.UID is None):
@@ -427,7 +429,7 @@ class EditorView(AbstractView):
 
             return True
 
-        self.outlineStore.foreach(selectOutlineItem, outlineItem.UID.value)
+        self.outlineStore.foreach(selectOutlineItem, hash(outlineItem.UID))
 
     def _editorFlowboxChildActivated(self, box: Gtk.FlowBox, child: Gtk.FlowBoxChild) -> None:
         if len(self.editorItems) == 0:

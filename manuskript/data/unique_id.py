@@ -10,6 +10,9 @@ class UniqueID:
     def __str__(self) -> str:
         return str(self.value)
 
+    def __hash__(self) -> int:
+        return self.value
+
 
 class UniqueIDHost:
     def __init__(self) -> None:

@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 
 import os
-from typing import Any, Iterator, Optional
+from typing import Any, Iterable, Iterator, Optional
 
 from lxml import etree
 
@@ -66,7 +66,7 @@ class PlotLine:
 
         character.links.add(self.__linkActionCharacter)
 
-        self.characters.append(character.UID.value)
+        self.characters.append(hash(character.UID))
         self.links.call(LinkAction.UPDATE, self.UID, self)
 
     def removeCharacter(self, character: Character, unlink: bool = True) -> None:
@@ -76,7 +76,7 @@ class PlotLine:
         if unlink:
             character.links.remove(self.__linkActionCharacter)
 
-        self.characters.remove(character.UID.value)
+        self.characters.remove(hash(character.UID))
         self.links.call(LinkAction.UPDATE, self.UID, self)
 
     def addStep(self, name: str, meta: Optional[str] = None, summary: Optional[str] = None) -> PlotStep:
@@ -101,7 +101,7 @@ class PlotLine:
 
     def getStepByID(self, ID: int) -> PlotStep | None:
         for step in self.steps:
-            if step.UID.value == ID:
+            if hash(step.UID) == ID:
                 return step
 
         return None
@@ -129,14 +129,14 @@ class Plots(AbstractData):
         self, name: str | None = None, importance: Importance = Importance.MINOR
     ) -> PlotLine:
         line = PlotLine(self, self.host.newID(), name, importance)
-        self.lines[line.UID.value] = line
+        self.lines[hash(line.UID)] = line
         return line
 
     def loadLine(
         self, ID: int, name: str | None = None, importance: Importance = Importance.MINOR
     ) -> PlotLine:
         line = PlotLine(self, self.host.loadID(ID), name, importance)
-        self.lines[line.UID.value] = line
+        self.lines[hash(line.UID)] = line
 
         line.links.call(LinkAction.RELOAD, line.UID, line)
         return line
@@ -145,7 +145,7 @@ class Plots(AbstractData):
         line.links.call(LinkAction.DELETE, line.UID, line)
 
         self.host.removeID(line.UID)
-        self.lines.pop(line.UID.value)
+        self.lines.pop(hash(line.UID))
 
     def getLineByID(self, ID: int) -> PlotLine | None:
         return self.lines.get(ID, None)
@@ -224,7 +224,7 @@ class Plots(AbstractData):
         element = etree.SubElement(parent, "step")
 
         cls.saveElementAttribute(element, "name", step.name)
-        cls.saveElementAttribute(element, "ID", step.UID.value)
+        cls.saveElementAttribute(element, "ID", hash(step.UID))
         cls.saveElementAttribute(element, "meta", step.meta)
         cls.saveElementAttribute(element, "summary", step.summary)
 
@@ -235,7 +235,7 @@ class Plots(AbstractData):
         characters = ",".join([str(characterID) for characterID in line.characters])
 
         cls.saveElementAttribute(element, "name", line.name)
-        cls.saveElementAttribute(element, "ID", line.UID.value)
+        cls.saveElementAttribute(element, "ID", hash(line.UID))
         cls.saveElementAttribute(element, "importance", Importance.toRawString(line.importance))
         cls.saveElementAttribute(element, "characters", characters)
         cls.saveElementAttribute(element, "description", line.description)

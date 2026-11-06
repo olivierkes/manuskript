@@ -9,7 +9,7 @@ from manuskript.ui.views.abstractView import AbstractView
 
 from manuskript.data import Plots, PlotLine, PlotStep, Importance, LinkAction, Characters, Character, UniqueID
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
-from manuskript.util import validString, invalidString, validInt, invalidInt
+from manuskript.util import validString, invalidString, validInt, invalidInt, validVariantValue
 from manuskript.ui.picker.characterPicker import CharacterPicker
 from manuskript.ui.util import pixbufFromColor, rgbaFromColor
 from manuskript.ui.views.abstractView import AbstractView
@@ -136,7 +136,7 @@ class PlotView(AbstractView):
             if tree_iter is None:
                 continue
 
-            self.plotsStore.set_value(tree_iter, 0, plotLine.UID.value)
+            self.plotsStore.set_value(tree_iter, 0, validVariantValue(plotLine.UID))
             self.plotsStore.set_value(tree_iter, 1, validString(plotLine.name))
             self.plotsStore.set_value(tree_iter, 2, Importance.asValue(plotLine.importance))
 
@@ -152,7 +152,7 @@ class PlotView(AbstractView):
             if tree_iter is None:
                 continue
 
-            self.charactersStore.set_value(tree_iter, 0, character.UID.value)
+            self.charactersStore.set_value(tree_iter, 0, validVariantValue(character.UID))
             self.charactersStore.set_value(tree_iter, 1, validString(character.name))
             self.charactersStore.set_value(tree_iter, 2, pixbufFromColor(character.color))
 
@@ -182,7 +182,7 @@ class PlotView(AbstractView):
             if tree_iter is None:
                 continue
 
-            self.resolutionStepsStore.set_value(tree_iter, 0, validInt(step.UID.value))
+            self.resolutionStepsStore.set_value(tree_iter, 0, validVariantValue(step.UID))
             self.resolutionStepsStore.set_value(tree_iter, 1, validString(step.name))
             self.resolutionStepsStore.set_value(tree_iter, 2, validString(step.meta))
 
@@ -284,7 +284,7 @@ class PlotView(AbstractView):
 
         self.plotLine.importance = importance
 
-        plot_id = self.plotLine.UID.value
+        plot_id = hash(self.plotLine.UID)
 
         for row in self.plotsStore:
             if row[0] == plot_id:
@@ -336,7 +336,7 @@ class PlotView(AbstractView):
 
         step = self.plotLine.addStep(name, meta)
 
-        self.resolutionStepsStore.set_value(tree_iter, 0, validInt(step.UID.value))
+        self.resolutionStepsStore.set_value(tree_iter, 0, validVariantValue(step.UID))
         self.resolutionStepsStore.set_value(tree_iter, 1, validString(step.name))
         self.resolutionStepsStore.set_value(tree_iter, 2, validString(step.meta))
 
@@ -392,7 +392,7 @@ class PlotView(AbstractView):
 
         self.plotLine.name = name
 
-        plot_id = self.plotLine.UID.value
+        plot_id = hash(self.plotLine.UID)
 
         for row in self.plotsStore:
             if row[0] == plot_id:
@@ -431,7 +431,7 @@ class PlotView(AbstractView):
         if (userdata.UID is None) or (self.plotLine is None):
             return
 
-        self.plotLine.characters.append(userdata.UID.value)
+        self.plotLine.characters.append(hash(userdata.UID))
         self.refreshCharactersStore()
         self.plotCharactersStore.refilter()
 

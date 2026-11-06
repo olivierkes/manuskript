@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from enum import Enum
 import re
 import time
 from typing import Any, Callable
@@ -49,6 +50,10 @@ def invalidInt(valid: int) -> int | None:
 
 def validBool(invalid: Any) -> bool:
     return str(invalid) != str(False)
+
+
+def validVariantValue(invalid: Any, defaultValue: int = 0) -> int:
+    return validInt(None if invalid is None else invalid.value, defaultValue)
 
 
 def safeFilename(filename: str, extension: str | None = None) -> str:

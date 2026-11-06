@@ -8,6 +8,7 @@ except ModuleNotFoundError:
 
 from manuskript.editor.abstractSplitter import AbstractSplitter
 from manuskript.editor.splitResult import SplitResult, SplitTuple
+from manuskript.util import validString
 
 
 class ICUSplitter(AbstractSplitter):
@@ -19,7 +20,7 @@ class ICUSplitter(AbstractSplitter):
 
     def splitText(self, text: str, lang: str | None = None) -> SplitResult:
         result: SplitResult = SplitResult(text)
-        locale = icu.Locale("" if lang is None else lang)
+        locale = icu.Locale(validString(lang))
 
         breaker = icu.BreakIterator.createWordInstance(locale)
         breaker.setText(text)

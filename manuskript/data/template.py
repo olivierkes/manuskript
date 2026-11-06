@@ -4,6 +4,7 @@
 from enum import Enum, unique
 
 from manuskript.data.goal import Goal
+from manuskript.util import validVariantValue
 
 
 @unique
@@ -18,7 +19,7 @@ class TemplateKind(Enum):
 
     @classmethod
     def asValue(cls, kind: TemplateKind | None) -> int:
-        return 0 if kind is None else kind.value
+        return validVariantValue(kind)
 
 
 class TemplateLevel:
@@ -64,7 +65,7 @@ class Template:
         if self.goal is None:
             return "?"
 
-        value = self.goal.value
+        value = validVariantValue(self.goal)
         for level in self.levels:
             value = value * level.size
 

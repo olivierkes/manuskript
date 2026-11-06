@@ -179,13 +179,13 @@ class CompileWindow(AbstractDialog):
             if (html is None) or (len(html) <= 0):
                 self.__previewError(exporter.getError())
             else:
-                self.previewWebView.load_html("" if html is None else html, None)
+                self.previewWebView.load_html(validString(html), None)
         else:
             text: Optional[str] = None if exporter is None else exporter.exportText(project)
             if text is None:
                 self.__previewError(exporter.getError())
             else:
-                self.previewWebView.load_plain_text("" if text is None else text)
+                self.previewWebView.load_plain_text(validString(text))
 
         if self.previewLabel is not None:
             self.previewLabel.set_visible(True)
