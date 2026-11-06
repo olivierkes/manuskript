@@ -9,7 +9,7 @@ from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoi
                           QRegExp, QUrl, QSize, QModelIndex)
 from PyQt5.QtGui import QStandardItemModel, QIcon, QColor, QStandardItem, QPixmap
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, QFileDialog,\
-    QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit, QTextEdit, QTreeView, QDialog, QTableView, QVBoxLayout, QScrollArea
+    QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit, QTextEdit, QTreeView, QDialog, QTableView, QVBoxLayout, QScrollArea, QPushButton
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
@@ -577,6 +577,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 Qt.SmoothTransformation
             )
         )
+
+        # Mark the project as modified
+        self.startTimerNoChanges()
+
+        # Update the character sidebar
         self.refreshCharacterSidebar()
 
     def changeCurrentCharacter(self, character):
@@ -683,6 +688,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         layout = QVBoxLayout(self.dockWidgetContents_2)
         layout.setContentsMargins(5, 5, 5, 5)
 
+        # Search field
+        self.characterSearch = QLineEdit()
+        self.characterSearch.setPlaceholderText("Search characters...")
+        self.characterSearch.setClearButtonEnabled(True)
+
+        layout.addWidget(self.characterSearch)
+
+        # Filter characters as the user types
+        self.characterSearch.textChanged.connect(
+            self.refreshCharacterSidebar
+        )
+
         # Scrollable area
         self.characterScrollArea = QScrollArea()
         self.characterScrollArea.setWidgetResizable(True)
@@ -701,6 +718,26 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         layout.addWidget(self.characterScrollArea)
 
+    def removeStaleCharacterPins(self, *args):
+        """Remove pins belonging to characters that no longer exist."""
+
+        validIDs = {
+            character.ID()
+            for character in self.mdlCharacter.characters
+        }
+
+        validPins = [
+            characterID
+            for characterID in self.pinnedCharacterIDs
+            if characterID in validIDs
+        ]
+
+        if validPins != self.pinnedCharacterIDs:
+            self.pinnedCharacterIDs = validPins
+            self.startTimerNoChanges()
+
+        self.refreshCharacterSidebar()
+
     def connectCharacterSidebar(self):
         """Connect the sidebar to the current character model."""
 
@@ -709,7 +746,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         )
 
         self.mdlCharacter.rowsRemoved.connect(
-            self.refreshCharacterSidebar
+            self.removeStaleCharacterPins
         )
 
         self.mdlCharacter.dataChanged.connect(
@@ -722,10 +759,26 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.refreshCharacterSidebar()
 
+    def addCharacterCard(self, character, pinned=False):
+        """Add a character card to the sidebar."""
+
+        card = CharacterCard(
+            character,
+            self.characterCardContainer
+        )
+
+        card.pinButton.setChecked(pinned)
+        card.pinButton.setText("Unpin" if pinned else "Pin")
+
+        card.pinToggled.connect(self.toggleCharacterPin)
+        card.characterClicked.connect(self.openCharacterFromSidebar)
+
+        self.characterCardLayout.addWidget(card)
+
     def refreshCharacterSidebar(self, *args):
-        """Display pinned characters first, followed by all other characters."""
+        """Display pinned and unpinned characters in separate sections."""
     
-        # Remove existing cards
+        # Remove existing cards and headings
         while self.characterCardLayout.count():
             item = self.characterCardLayout.takeAt(0)
     
@@ -738,35 +791,81 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Separate pinned and unpinned characters
         pinned = []
         unpinned = []
-    
+
+        # Get the current search text
+        searchText = self.characterSearch.text().strip().casefold()
+
         for character in self.mdlCharacter.characters:
+
+            # Skip characters whose names don't match
+            if searchText not in character.name().casefold():
+                continue
+
             if character.ID() in self.pinnedCharacterIDs:
                 pinned.append(character)
             else:
                 unpinned.append(character)
     
-        # Sort pinned characters by the order they were pinned
+        # Preserve the order characters were pinned
         pinned.sort(
-            key=lambda character: self.pinnedCharacterIDs.index(character.ID())
+            key=lambda character: self.pinnedCharacterIDs.index(
+                character.ID()
+            )
         )
     
-        # Display pinned characters first
-        for character in pinned + unpinned:
-            card = CharacterCard(
-                character,
-                self.characterCardContainer
+        # Pinned Characters section
+        if pinned:
+            pinnedHeader = QWidget()
+            pinnedHeaderLayout = QVBoxLayout(pinnedHeader)
+            pinnedHeaderLayout.setContentsMargins(5, 10, 5, 5)
+            pinnedHeaderLayout.setSpacing(5)
+
+            # Section heading
+            pinnedLabel = QLabel("Pinned Characters")
+            pinnedLabel.setStyleSheet("font-weight: bold;")
+
+            pinnedHeaderLayout.addWidget(pinnedLabel)
+
+            # Clear Pins button below heading
+            clearButton = QPushButton("Clear Pins")
+            clearButton.setToolTip("Unpin all characters")
+            clearButton.clicked.connect(self.clearCharacterPins)
+
+            pinnedHeaderLayout.addWidget(
+                clearButton,
+                alignment=Qt.AlignLeft
+            )
+
+            self.characterCardLayout.addWidget(pinnedHeader)
+
+            for character in pinned:
+                self.addCharacterCard(character, pinned=True)
+
+        # All Characters section
+        if unpinned:
+            allLabel = QLabel("All Characters")
+            allLabel.setStyleSheet(
+                "font-weight: bold; margin-top: 10px;"
             )
     
-            # Reflect the character's current pin state
-            isPinned = character.ID() in self.pinnedCharacterIDs
+            self.characterCardLayout.addWidget(allLabel)
     
-            card.pinButton.setChecked(isPinned)
-            card.pinButton.setText("Unpin" if isPinned else "Pin")
-    
-            # Connect the card's pin button to the main window
-            card.pinToggled.connect(self.toggleCharacterPin)
-    
-            self.characterCardLayout.addWidget(card)
+            for character in unpinned:
+                self.addCharacterCard(character)
+
+    def clearCharacterPins(self):
+        """Unpin all characters in the current project."""
+
+        if not self.pinnedCharacterIDs:
+            return
+
+        self.pinnedCharacterIDs.clear()
+
+        # Mark the project as modified
+        self.startTimerNoChanges()
+
+        # Update the sidebar
+        self.refreshCharacterSidebar()
 
     def toggleCharacterPin(self, character):
         """Pin or unpin a character in the sidebar."""
@@ -783,6 +882,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
         # Update the sidebar
         self.refreshCharacterSidebar()
+
+    def openCharacterFromSidebar(self, character):
+        """Open a character's profile when their portrait is clicked."""
+
+        # Find the character in Manuskript's character list
+        item = self.lstCharacters.getItemByID(character.ID())
+
+        if item is None:
+            return
+
+        # Switch to the Characters tab
+        self.tabMain.setCurrentIndex(self.TabPersos)
+
+        # Select the character
+        self.lstCharacters.clearSelection()
+        self.lstCharacters.setCurrentItem(item)
             
     ###############################################################################
     # PLOTS
@@ -1399,13 +1514,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def loadEmptyDatas(self):
         self.mdlFlatData = QStandardItemModel(self)
 
-        # Each project starts with its own pinned characters
+        # Reset sidebar state for the new project
         self.pinnedCharacterIDs = []
+
+        self.characterSearch.blockSignals(True)
+        self.characterSearch.clear()
+        self.characterSearch.blockSignals(False)
+
         self.mdlCharacter = characterModel(self)
 
         # Connect the new project's characters to the sidebar
         self.connectCharacterSidebar()
-        
+
         self.mdlLabels = QStandardItemModel(self)
         self.mdlStatus = QStandardItemModel(self)
         self.mdlPlots = plotModel(self)

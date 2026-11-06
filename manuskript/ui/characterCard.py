@@ -9,11 +9,26 @@ from PyQt5.QtWidgets import (
     QSizePolicy,
 )
 
+class ClickableLabel(QLabel):
+    """A label that emits a signal when left-clicked."""
+
+    clicked = pyqtSignal()
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setCursor(Qt.PointingHandCursor)
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self.clicked.emit()
+
+        super().mousePressEvent(event)
 
 class CharacterCard(QWidget):
     """Displays a character's name, portrait, and pin control."""
 
     pinToggled = pyqtSignal(object)
+    characterClicked = pyqtSignal(object)
 
     def __init__(self, character, parent=None):
         super().__init__(parent)
@@ -29,10 +44,9 @@ class CharacterCard(QWidget):
         self.nameLabel.setAlignment(Qt.AlignLeft)
         layout.addWidget(self.nameLabel)
 
-        # Portrait and pin button on the same row
-
-        self.portraitLabel = QLabel()
-        self.portraitLabel.setAlignment(Qt.AlignCenter)
+        # Character portrait
+        self.portraitLabel = ClickableLabel()
+        self.portraitLabel.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
         self.portraitLabel.setMinimumSize(120, 150)
         self.portraitLabel.setSizePolicy(
             QSizePolicy.Expanding,
@@ -72,5 +86,10 @@ class CharacterCard(QWidget):
         # Pin button underneath the portrait
         layout.addWidget(
             self.pinButton,
-            alignment=Qt.AlignHCenter
+            alignment=Qt.AlignLeft
+        )
+
+        # Clicking the portrait opens the character's profile
+        self.portraitLabel.clicked.connect(
+            lambda: self.characterClicked.emit(self.character)
         )
