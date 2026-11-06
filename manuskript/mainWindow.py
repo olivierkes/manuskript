@@ -9,7 +9,7 @@ from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoi
                           QRegExp, QUrl, QSize, QModelIndex)
 from PyQt5.QtGui import QStandardItemModel, QIcon, QColor, QStandardItem, QPixmap
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, QFileDialog,\
-    QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit, QTextEdit, QTreeView, QDialog, QTableView
+    QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit, QTextEdit, QTreeView, QDialog, QTableView, QVBoxLayout, QScrollArea
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
@@ -26,6 +26,7 @@ from manuskript.settingsWindow import settingsWindow
 from manuskript.ui import style
 from manuskript.ui import characterInfoDialog
 from manuskript.ui.about import aboutDialog
+from manuskript.ui.characterCard import CharacterCard
 from manuskript.ui.collapsibleDockWidgets import collapsibleDockWidgets
 from manuskript.ui.importers.importer import importerDialog
 from manuskript.ui.exporters.exporter import exporterDialog
@@ -64,6 +65,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         self.setupUi(self)
+
+        # Create the character sidebar once
+        self.setupCharacterSidebar()
+
+        # Var
+        self.currentProject = None
 
         # Var
         self.currentProject = None
@@ -570,6 +577,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 Qt.SmoothTransformation
             )
         )
+        self.refreshCharacterSidebar()
 
     def changeCurrentCharacter(self, character):
         if character is None:
@@ -665,6 +673,73 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             item = self.mdlOutline.getItemByID(itemID)
             if item:
                 item.resetPOV()
+    def setupCharacterSidebar(self):
+        """Create the scrollable character reference sidebar."""
+
+        # Main layout inside the dock
+        layout = QVBoxLayout(self.dockWidgetContents_2)
+        layout.setContentsMargins(5, 5, 5, 5)
+
+        # Scrollable area
+        self.characterScrollArea = QScrollArea()
+        self.characterScrollArea.setWidgetResizable(True)
+
+        # Container for character cards
+        self.characterCardContainer = QWidget()
+        self.characterCardLayout = QVBoxLayout(
+            self.characterCardContainer
+        )
+
+        self.characterCardLayout.setAlignment(Qt.AlignTop)
+
+        self.characterScrollArea.setWidget(
+            self.characterCardContainer
+        )
+
+        layout.addWidget(self.characterScrollArea)
+
+    def connectCharacterSidebar(self):
+        """Connect the sidebar to the current character model."""
+
+        self.mdlCharacter.rowsInserted.connect(
+            self.refreshCharacterSidebar
+        )
+
+        self.mdlCharacter.rowsRemoved.connect(
+            self.refreshCharacterSidebar
+        )
+
+        self.mdlCharacter.dataChanged.connect(
+            self.refreshCharacterSidebar
+        )
+
+        self.mdlCharacter.modelReset.connect(
+            self.refreshCharacterSidebar
+        )
+
+        self.refreshCharacterSidebar()
+
+    def refreshCharacterSidebar(self, *args):
+        """Rebuild the character cards from the current model."""
+
+        # Remove existing cards
+        while self.characterCardLayout.count():
+            item = self.characterCardLayout.takeAt(0)
+
+            widget = item.widget()
+
+            if widget is not None:
+                widget.hide()
+                widget.deleteLater()
+
+        # Add cards for the current project's characters
+        for character in self.mdlCharacter.characters:
+            card = CharacterCard(
+                character,
+                self.characterCardContainer
+            )
+
+            self.characterCardLayout.addWidget(card)
 
     ###############################################################################
     # PLOTS
@@ -1281,6 +1356,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def loadEmptyDatas(self):
         self.mdlFlatData = QStandardItemModel(self)
         self.mdlCharacter = characterModel(self)
+
+        # Connect the new project's characters to the sidebar
+        self.connectCharacterSidebar()
+        
         self.mdlLabels = QStandardItemModel(self)
         self.mdlStatus = QStandardItemModel(self)
         self.mdlPlots = plotModel(self)
@@ -1289,7 +1368,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def loadDatas(self, project):
         errors = loadSave.loadProject(project)
-
+        # Ensure all loaded characters appear in the sidebar
+        self.refreshCharacterSidebar()
         # Giving some feedback
         if not errors:
             LOGGER.info("Project {} loaded.".format(project))
