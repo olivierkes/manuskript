@@ -261,6 +261,7 @@ class Character(searchableItem):
         self._model = model
         self.lastPath = ""
         self.portraitPath = None
+        self.portraitData = None
 
         if not name:
             name = self.translate("Unknown")

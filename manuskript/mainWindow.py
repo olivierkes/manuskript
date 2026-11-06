@@ -559,6 +559,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             return
 
         character.portraitPath = filename
+        with open(filename, "rb") as image:
+            character.portraitData = image.read()
 
         self.lblPersoPortrait.setPixmap(
             pixmap.scaled(
@@ -575,11 +577,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Display the selected character's portrait
         self.lblPersoPortrait.clear()
+        
+        if character.portraitData:
+            pixmap = QPixmap()
 
-        if character.portraitPath:
-            pixmap = QPixmap(character.portraitPath)
-
-            if not pixmap.isNull():
+            if pixmap.loadFromData(character.portraitData):
                 self.lblPersoPortrait.setPixmap(
                     pixmap.scaled(
                         200,
@@ -589,7 +591,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     )
                 )
             else:
-                self.lblPersoPortrait.setText("Image not found")
+                self.lblPersoPortrait.setText("Invalid portrait")
         else:
             self.lblPersoPortrait.setText("No portrait")
 

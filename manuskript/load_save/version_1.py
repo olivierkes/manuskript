@@ -231,6 +231,16 @@ def saveProject(zip=None):
         # Character's color:
         content += formatMetaData("Color", c.color().name(QColor.HexRgb), 20)
 
+        # Character portrait
+        if c.portraitPath and c.portraitData:
+            extension = os.path.splitext(c.portraitPath)[1].lower()
+
+            if extension in (".png", ".jpg", ".jpeg", ".bmp", ".webp"):
+                portraitFile = f"images/characters/{c.ID()}{extension}"
+
+                files.append((portraitFile, c.portraitData))
+                content += formatMetaData("Portrait", portraitFile, 20)
+
         # Character's infos
         for info in c.infos:
             content += formatMetaData(info.description, info.value, 20)
@@ -658,9 +668,14 @@ def loadProject(project, zip=None):
     if zip:
         files = loadFilesFromZip(project)
 
-        # Decode files
+        # Decode text files, but preserve binary images
         for f in files:
-            if f[-4:] not in [".xml", "opml"]:
+            extension = os.path.splitext(f)[1].lower()
+
+            if extension not in (
+                ".xml", ".opml",
+                ".png", ".jpg", ".jpeg", ".bmp", ".webp"
+            ):
                 files[f] = files[f].decode("utf-8")
 
     else:
@@ -687,7 +702,12 @@ def loadProject(project, zip=None):
                 if f[:1] == ".":
                     continue
                 # mode = "r" + ("b" if f[-4:] in [".xml", "opml"] else "")
-                if f[-4:] in [".xml", "opml"]:
+                extension = os.path.splitext(f)[1].lower()
+
+                if extension in (
+                    ".xml", ".opml",
+                    ".png", ".jpg", ".jpeg", ".bmp", ".webp"
+                ):
                     with open(os.path.join(dirpath, f), "rb") as fo:
                         files[os.path.join(p, f)] = fo.read()
                 else:
@@ -851,7 +871,7 @@ def loadProject(project, zip=None):
 
     mdl = mw.mdlCharacter
     LOGGER.debug("Reading Characters:")
-    for f in [f for f in files if "characters" in f]:
+    for f in [f for f in files if f.startswith("characters/") and f.endswith(".txt")]:
         md, body = parseMMDFile(files[f])
         c = mdl.addCharacter()
         c.lastPath = f
@@ -872,9 +892,16 @@ def loadProject(project, zip=None):
                 # If "Color" comes a second time, it is a Character's info.
                 color = True
 
+            # Character portrait
+            elif desc == "Portrait":
+                c.portraitPath = val
+
             # Character's infos
             else:
                 c.infos.append(CharacterInfo(c, desc, val))
+
+            if val in files:
+                c.portraitData = files[val]
 
         LOGGER.debug("* Adds {} ({})".format(c.name(), c.ID()))
 
