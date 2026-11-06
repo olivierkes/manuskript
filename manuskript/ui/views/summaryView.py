@@ -10,10 +10,9 @@ from manuskript.util import WordCounter, PageCounter, validString, invalidString
 
 
 class SummaryView(AbstractView):
-
-    def __init__(self, summary: Summary):
+    def __init__(self, summary: Summary) -> None:
         AbstractView.__init__(self)
-        
+
         self.summary = summary
 
         builder = Gtk.Builder()
@@ -53,7 +52,7 @@ class SummaryView(AbstractView):
         self.nextButton = builder.get_object("next_button")
         self.nextButton.connect("clicked", self._nextClicked)
 
-    def _summaryStackChanged(self, combo: Gtk.ComboBox):
+    def _summaryStackChanged(self, combo: Gtk.ComboBox) -> None:
         tree_iter = combo.get_active_iter()
 
         if tree_iter is None:
@@ -65,16 +64,18 @@ class SummaryView(AbstractView):
         self.nextButton.set_visible(not (model.iter_next(tree_iter) is None))
         self.stack.set_visible_child_name(page)
 
-    def __situationChanged(self, buffer: Gtk.EntryBuffer):
+    def __situationChanged(self, buffer: Gtk.EntryBuffer) -> None:
         self.summary.situation = invalidString(buffer.get_text())
 
-    def _situationDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
+    def _situationDeletedText(self, buffer: Gtk.EntryBuffer, position: int, count: int) -> None:
         self.__situationChanged(buffer)
 
-    def _situationInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
+    def _situationInsertedText(
+        self, buffer: Gtk.EntryBuffer, position: int, value: str, count: int
+    ) -> None:
         self.__situationChanged(buffer)
 
-    def _summaryOneSentenceChanged(self, buffer: Gtk.TextBuffer):
+    def _summaryOneSentenceChanged(self, buffer: Gtk.TextBuffer) -> None:
         start_iter = buffer.get_start_iter()
         end_iter = buffer.get_end_iter()
 
@@ -83,7 +84,7 @@ class SummaryView(AbstractView):
         self.oneSentenceLabel.set_text("Words: {}".format(WordCounter.count(text)))
         self.summary.sentence = invalidString(text)
 
-    def _summaryOneParagraphChanged(self, buffer: Gtk.TextBuffer):
+    def _summaryOneParagraphChanged(self, buffer: Gtk.TextBuffer) -> None:
         start_iter = buffer.get_start_iter()
         end_iter = buffer.get_end_iter()
 
@@ -92,25 +93,29 @@ class SummaryView(AbstractView):
         self.oneParagraphLabel.set_text("Words: {}".format(WordCounter.count(text)))
         self.summary.paragraph = invalidString(text)
 
-    def _summaryOnePageChanged(self, buffer: Gtk.TextBuffer):
+    def _summaryOnePageChanged(self, buffer: Gtk.TextBuffer) -> None:
         start_iter = buffer.get_start_iter()
         end_iter = buffer.get_end_iter()
 
         text = buffer.get_text(start_iter, end_iter, False)
 
-        self.onePageLabel.set_text("Words: {} (~{} pages)".format(WordCounter.count(text), PageCounter.count(text)))
+        self.onePageLabel.set_text(
+            "Words: {} (~{} pages)".format(WordCounter.count(text), PageCounter.count(text))
+        )
         self.summary.page = invalidString(text)
 
-    def _summaryFullChanged(self, buffer: Gtk.TextBuffer):
+    def _summaryFullChanged(self, buffer: Gtk.TextBuffer) -> None:
         start_iter = buffer.get_start_iter()
         end_iter = buffer.get_end_iter()
 
         text = buffer.get_text(start_iter, end_iter, False)
 
-        self.fullLabel.set_text("Words: {} (~{} pages)".format(WordCounter.count(text), PageCounter.count(text)))
+        self.fullLabel.set_text(
+            "Words: {} (~{} pages)".format(WordCounter.count(text), PageCounter.count(text))
+        )
         self.summary.full = invalidString(text)
 
-    def _nextClicked(self, button: Gtk.Button):
+    def _nextClicked(self, button: Gtk.Button) -> None:
         tree_iter = self.stackCombo.get_active_iter()
 
         if tree_iter is None:

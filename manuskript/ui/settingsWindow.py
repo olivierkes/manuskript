@@ -12,7 +12,7 @@ from manuskript.ui.settings import *
 class SettingsWindow(AbstractDialog):
 
     @classmethod
-    def packPage(cls, window, page_cls, settings: Settings, data=None):
+    def packPage(cls, window, page_cls, settings: Settings, data: any = None) -> any:
         if window is None:
             return None
 
@@ -31,7 +31,7 @@ class SettingsWindow(AbstractDialog):
         window.add(page.widget)
         return page
 
-    def __init__(self, mainWindow):
+    def __init__(self, mainWindow) -> None:
         AbstractDialog.__init__(self, mainWindow, "ui/settings.glade", "settings_window")
 
         self.generalPage = None
@@ -41,7 +41,7 @@ class SettingsWindow(AbstractDialog):
         self.statusPage = None
         self.fullscreenPage = None
 
-    def initWindow(self, builder, window):
+    def initWindow(self, builder: Gtk.Builder, window) -> None:
         project = self.getProject()
         settings = self.getSettings()
 

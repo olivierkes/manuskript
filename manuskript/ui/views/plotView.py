@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from typing import Optional
+
 from gi.repository import Gtk
 
 from manuskript.ui.views.abstractView import AbstractView
@@ -9,15 +11,18 @@ from manuskript.data import Plots, PlotLine, PlotStep, Importance, LinkAction, C
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
 from manuskript.util import validString, invalidString, validInt, invalidInt
 from manuskript.ui.picker.characterPicker import CharacterPicker
+from manuskript.ui.util import pixbufFromColor, rgbaFromColor
+from manuskript.ui.views.abstractView import AbstractView
+from manuskript.util import invalidInt, invalidString, validInt, validString
+
 
 class PlotView(AbstractView):
-
-    def __init__(self, plots: Plots, characters: Characters):
+    def __init__(self, plots: Plots, characters: Characters) -> None:
         AbstractView.__init__(self)
-        
+
         self.plots: Plots = plots
-        self.plotLine: PlotLine = None
-        self.plotStep: PlotStep = None
+        self.plotLine: Optional[PlotLine] = None
+        self.plotStep: Optional[PlotStep] = None
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/plot.glade")
@@ -45,11 +50,14 @@ class PlotView(AbstractView):
         self.filteredPlotsStore.refilter()
 
         self.mainPlotsStore.set_visible_func(
-            lambda model, iterator, userdata: model[iterator][2] == Importance.MAIN.value)
+            lambda model, iterator, userdata: model[iterator][2] == Importance.MAIN.value
+        )
         self.secondaryPlotsStore.set_visible_func(
-            lambda model, iterator, userdata: model[iterator][2] == Importance.SECONDARY.value)
+            lambda model, iterator, userdata: model[iterator][2] == Importance.SECONDARY.value
+        )
         self.minorPlotsStore.set_visible_func(
-            lambda model, iterator, userdata: model[iterator][2] == Importance.MINOR.value)
+            lambda model, iterator, userdata: model[iterator][2] == Importance.MINOR.value
+        )
 
         self.mainPlotsStore.refilter()
         self.secondaryPlotsStore.refilter()
@@ -58,7 +66,7 @@ class PlotView(AbstractView):
         self.plotSelections = [
             builder.get_object("minor_plot_selection"),
             builder.get_object("secondary_plot_selection"),
-            builder.get_object("main_plot_selection")
+            builder.get_object("main_plot_selection"),
         ]
 
         for selection in self.plotSelections:
@@ -103,7 +111,9 @@ class PlotView(AbstractView):
         self.addCharacterButton = builder.get_object("add_character")
         self.addCharacterButton.connect("clicked", self._addCharacterClicked)
 
-        self.characterPicker: CharacterPicker = CharacterPicker(characters, pickPovOnly=False, button=self.addCharacterButton)
+        self.characterPicker: CharacterPicker = CharacterPicker(
+            characters, pickPovOnly=False, button=self.addCharacterButton
+        )
         self.characterPicker.connect("character-selected", self._characterPickerCharacterPicked)
 
         self.plotCharactersStore = builder.get_object("plot_characters_store")
@@ -117,7 +127,7 @@ class PlotView(AbstractView):
 
         self.unloadPlotData()
 
-    def refreshPlotsStore(self):
+    def refreshPlotsStore(self) -> None:
         self.plotsStore.clear()
 
         for plotLine in self.plots:
@@ -130,10 +140,13 @@ class PlotView(AbstractView):
             self.plotsStore.set_value(tree_iter, 1, validString(plotLine.name))
             self.plotsStore.set_value(tree_iter, 2, Importance.asValue(plotLine.importance))
 
-    def refreshCharactersStore(self):
+    def refreshCharactersStore(self) -> None:
         self.charactersStore.clear()
 
         for character in self.plots.characters:
+            if character.UID is None:
+                continue
+
             tree_iter = self.charactersStore.append()
 
             if tree_iter is None:
@@ -143,13 +156,13 @@ class PlotView(AbstractView):
             self.charactersStore.set_value(tree_iter, 1, validString(character.name))
             self.charactersStore.set_value(tree_iter, 2, pixbufFromColor(character.color))
 
-    def __linkActionPlotLine(self, action: LinkAction, UID: UniqueID, plotLine: PlotLine):
+    def __linkActionPlotLine(self, action: LinkAction, UID: UniqueID, plotLine: PlotLine) -> None:
         if action == LinkAction.DELETE:
             return
 
         self.plotCharactersStore.refilter()
 
-    def loadPlotData(self, plotLine: PlotLine):
+    def loadPlotData(self, plotLine: PlotLine) -> None:
         if self.plotLine is not None:
             self.plotLine.links.remove(self.__linkActionPlotLine)
 
@@ -182,7 +195,7 @@ class PlotView(AbstractView):
         self.refreshCharactersStore()
         self.plotCharactersStore.refilter()
 
-    def unloadPlotData(self):
+    def unloadPlotData(self) -> None:
         if self.plotLine is not None:
             self.plotLine.links.remove(self.__linkActionPlotLine)
 
@@ -198,7 +211,7 @@ class PlotView(AbstractView):
 
         self.plotCharactersStore.refilter()
 
-    def _plotSelectionChanged(self, selection: Gtk.TreeSelection):
+    def _plotSelectionChanged(self, selection: Gtk.TreeSelection) -> None:
         model, tree_iter = selection.get_selected()
 
         if tree_iter is None:
@@ -216,7 +229,7 @@ class PlotView(AbstractView):
         else:
             self.loadPlotData(plotLine)
 
-    def _addPlotClicked(self, button: Gtk.Button):
+    def _addPlotClicked(self, button: Gtk.Button) -> None:
         name = invalidString(self.filterPlotsBuffer.get_text())
         plotLine = self.plots.addLine(name)
 
@@ -228,29 +241,31 @@ class PlotView(AbstractView):
 
         self.refreshPlotsStore()
 
-    def _removePlotClicked(self, button: Gtk.Button):
+    def _removePlotClicked(self, button: Gtk.Button) -> None:
         if self.plotLine is None:
             return
 
         self.plots.removeLine(self.plotLine)
         self.refreshPlotsStore()
 
-    def _filterPlots(self, model, iterator, userdata):
+    def _filterPlots(self, model: Gtk.TreeModel, iterator: Gtk.TreeIter, userdata: any) -> bool:
         name = validString(model[iterator][1])
         text = validString(self.filterPlotsBuffer.get_text())
 
         return text.lower() in name.lower()
 
-    def __filterPlotsChanged(self, buffer: Gtk.EntryBuffer):
+    def __filterPlotsChanged(self, buffer: Gtk.EntryBuffer) -> None:
         self.filteredPlotsStore.refilter()
 
-    def _filterPlotsDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
+    def _filterPlotsDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int) -> None:
         self.__filterPlotsChanged(buffer)
 
-    def _filterPlotsInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
+    def _filterPlotsInsertedText(
+        self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int
+    ) -> None:
         self.__filterPlotsChanged(buffer)
 
-    def _importanceChanged(self, combo: Gtk.ComboBox):
+    def _importanceChanged(self, combo: Gtk.ComboBox) -> None:
         if self.plotLine is None:
             return
 
@@ -289,7 +304,7 @@ class PlotView(AbstractView):
                 selection.select_iter(row.iter)
                 break
 
-    def _resolutionStepsSelectionChanged(self, selection: Gtk.TreeSelection):
+    def _resolutionStepsSelectionChanged(self, selection: Gtk.TreeSelection) -> None:
         model, tree_iter = selection.get_selected()
 
         self.plotStep = None
@@ -307,7 +322,7 @@ class PlotView(AbstractView):
 
             self.plotStep = plotStep
 
-    def _addResolutionStepClicked(self, button: Gtk.Button):
+    def _addResolutionStepClicked(self, button: Gtk.Button) -> None:
         if self.plotLine is None:
             return
 
@@ -325,7 +340,7 @@ class PlotView(AbstractView):
         self.resolutionStepsStore.set_value(tree_iter, 1, validString(step.name))
         self.resolutionStepsStore.set_value(tree_iter, 2, validString(step.meta))
 
-    def _removeResolutionStepClicked(self, button: Gtk.Button):
+    def _removeResolutionStepClicked(self, button: Gtk.Button) -> None:
         if (self.plotLine is None) or (self.plotStep is None):
             return
 
@@ -338,7 +353,9 @@ class PlotView(AbstractView):
 
         self.plotLine.removeStep(self.plotStep)
 
-    def _resolutionStepsNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
+    def _resolutionStepsNameEdited(
+        self, renderer: Gtk.CellRendererText, path: str, text: str
+    ) -> None:
         if self.plotStep is None:
             return
 
@@ -351,7 +368,9 @@ class PlotView(AbstractView):
 
         self.plotStep.name = invalidString(text)
 
-    def _resolutionStepsMetaEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
+    def _resolutionStepsMetaEdited(
+        self, renderer: Gtk.CellRendererText, path: str, text: str
+    ) -> None:
         if self.plotStep is None:
             return
 
@@ -364,7 +383,7 @@ class PlotView(AbstractView):
 
         self.plotStep.meta = invalidString(text)
 
-    def __nameChanged(self, buffer: Gtk.EntryBuffer):
+    def __nameChanged(self, buffer: Gtk.EntryBuffer) -> None:
         if self.plotLine is None:
             return
 
@@ -380,13 +399,15 @@ class PlotView(AbstractView):
                 row[1] = validString(name)
                 break
 
-    def _nameDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
+    def _nameDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int) -> None:
         self.__nameChanged(buffer)
 
-    def _nameInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
+    def _nameInsertedText(
+        self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int
+    ) -> None:
         self.__nameChanged(buffer)
 
-    def _removeCharacterClicked(self, Button: Gtk.Button):
+    def _removeCharacterClicked(self, Button: Gtk.Button) -> None:
         selection = self.plotCharactersView.get_selection()
         model, treeiter = selection.get_selected()
 
@@ -395,15 +416,19 @@ class PlotView(AbstractView):
             self.refreshCharactersStore()
             self.plotCharactersStore.refilter()
 
-    def _addCharacterClicked(self, button: Gtk.Button):
+    def _addCharacterClicked(self, button: Gtk.Button) -> None:
         self.characterPicker.show(self.plotLine.characters)
 
-    def _characterPickerCharacterPicked(self, characterPicker: CharacterPicker, userdata:Character):
+    def _characterPickerCharacterPicked(
+        self, characterPicker: CharacterPicker, userdata: Character
+    ) -> None:
         self.plotLine.characters.append(userdata.UID.value)
         self.refreshCharactersStore()
         self.plotCharactersStore.refilter()
 
-    def _filterPlotCharacters(self, model, iterator, userdata):
+    def _filterPlotCharacters(
+        self, model: Gtk.TreeModel, iterator: Gtk.TreeIter, userdata: any
+    ) -> bool:
         ID = validInt(model[iterator][0])
 
         if self.plotLine is None:
@@ -411,7 +436,7 @@ class PlotView(AbstractView):
 
         return ID in self.plotLine.characters
 
-    def _descriptionChanged(self, buffer: Gtk.TextBuffer):
+    def _descriptionChanged(self, buffer: Gtk.TextBuffer) -> None:
         if self.plotLine is None:
             return
 
@@ -422,7 +447,7 @@ class PlotView(AbstractView):
 
         self.plotLine.description = invalidString(text)
 
-    def _resultChanged(self, buffer: Gtk.TextBuffer):
+    def _resultChanged(self, buffer: Gtk.TextBuffer) -> None:
         if self.plotLine is None:
             return
 
@@ -433,7 +458,7 @@ class PlotView(AbstractView):
 
         self.plotLine.result = invalidString(text)
 
-    def _stepSummaryChanged(self, buffer: Gtk.TextBuffer):
+    def _stepSummaryChanged(self, buffer: Gtk.TextBuffer) -> None:
         if self.plotStep is None:
             return
 

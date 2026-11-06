@@ -2,9 +2,8 @@
 # --!-- coding: utf8 --!--
 
 import os
-
 from collections import OrderedDict
-from typing import Optional
+from typing import Iterator, Optional
 
 from manuskript.data.abstractData import AbstractData
 from manuskript.data.color import Color
@@ -16,8 +15,7 @@ from manuskript.util import safeFilename, validBool
 
 
 class Character(AbstractData):
-
-    def __init__(self, path, characters):
+    def __init__(self, path: str, characters: Characters) -> None:
         AbstractData.__init__(self, path)
         self.file = MmdFile(self.dataPath, 21)
         self.characters = characters
@@ -38,25 +36,29 @@ class Character(AbstractData):
         self.color: Optional[Color] = None
         self.details = dict()
 
-    def changePath(self, path: str):
+    def changePath(self, path: str) -> None:
         AbstractData.changePath(self, path)
         self.file = MmdFile(self.dataPath, 21)
 
     def allowPOV(self) -> bool:
         return True if self.POV is None else self.POV
 
-    def remove(self):
-        self.links.call(LinkAction.DELETE, self.UID, self)
+    def remove(self) -> None:
+        if self.UID is not None:
+            self.links.call(LinkAction.DELETE, self.UID, self)
+
         self.characters.remove(self)
 
     @classmethod
-    def loadAttribute(cls, metadata: dict, name: str, defaultValue=None):
+    def loadAttribute(
+        cls, metadata: dict[str, str | None], name: str, defaultValue: str | None = None
+    ) -> str | None:
         if name in metadata:
             return metadata.pop(name)
         else:
             return defaultValue
 
-    def load(self):
+    def load(self) -> None:
         AbstractData.load(self)
 
         metadata, _ = self.file.loadMMD(True)
@@ -84,15 +86,19 @@ class Character(AbstractData):
 
         self.details.clear()
 
-        for (key, value) in metadata.items():
+        for key, value in metadata.items():
             self.details[key] = value
 
-        self.links.call(LinkAction.RELOAD, self.UID, self)
+        if self.UID is None:
+            self.links.call(LinkAction.RELOAD, self.UID, self)
+
         self.complete()
 
-    def save(self):
-        AbstractData.save(self)
+    def save(self) -> None:
+        if self.UID is None:
+            return
 
+        AbstractData.save(self)
         metadata = OrderedDict()
 
         metadata["Name"] = self.name
@@ -109,7 +115,7 @@ class Character(AbstractData):
         metadata["Notes"] = self.notes
         metadata["Color"] = self.color
 
-        for (key, value) in self.details.items():
+        for key, value in self.details.items():
             if not (key in metadata):
                 metadata[key] = value
 
@@ -118,13 +124,12 @@ class Character(AbstractData):
 
 
 class Characters(AbstractData):
-
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
         AbstractData.__init__(self, os.path.join(path, "characters"))
         self.host = UniqueIDHost()
-        self.data = dict()
+        self.data: dict[int, Character] = dict()
 
-    def changePath(self, path: str):
+    def changePath(self, path: str) -> None:
         AbstractData.changePath(self, os.path.join(path, "characters"))
 
         for character in self.data.values():
@@ -133,10 +138,10 @@ class Characters(AbstractData):
 
             character.changePath(path_)
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[Character]:
         return self.data.values().__iter__()
 
-    def add(self, name: str = None) -> Character | None:
+    def add(self, name: str | None = None) -> Character | None:
         if name is None:
             name = "New character"
 
@@ -167,11 +172,14 @@ class Characters(AbstractData):
         else:
             return character if character.POV else None
 
-    def remove(self, character: Character):
+    def remove(self, character: Character) -> None:
+        if character.UID is None:
+            return
+
         self.host.removeID(character.UID)
         self.data.pop(character.UID.value)
 
-    def load(self):
+    def load(self) -> None:
         self.data.clear()
         AbstractData.load(self)
 
@@ -192,11 +200,14 @@ class Characters(AbstractData):
             except FileNotFoundError:
                 continue
 
+            if character.UID is None:
+              continue
+
             self.data[character.UID.value] = character
 
         self.complete()
 
-    def save(self):
+    def save(self) -> None:
         AbstractData.save(self)
 
         if not self.data:

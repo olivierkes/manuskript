@@ -12,8 +12,7 @@ from manuskript.data.version import LEGACY_MSK_VERSION
 
 
 class MskFile(TextFile, ZipFile):
-
-    def __init__(self, path, ignorePath: bool = False, forceZip: bool = False):
+    def __init__(self, path: str, ignorePath: bool = False, forceZip: bool = False) -> None:
         try:
             if not forceZip:
                 _ZipFile(path)
@@ -30,7 +29,7 @@ class MskFile(TextFile, ZipFile):
 
         ZipFile.__init__(self, path, directoryPath)
 
-    def __del__(self):
+    def __del__(self) -> None:
         ZipFile.__del__(self)
 
         if self.isZipFile() and (self.tmp is None) and not (self.directoryPath is None):
@@ -39,8 +38,8 @@ class MskFile(TextFile, ZipFile):
     def isZipFile(self) -> bool:
         return self.zipFile
 
-    def setZipFile(self, zipFile: bool):
-        if zipFile is self.zipFile:
+    def setZipFile(self, zipFile: bool) -> None:
+        if zipFile == self.zipFile:
             return
 
         if not zipFile:
@@ -57,10 +56,10 @@ class MskFile(TextFile, ZipFile):
     def getVersion(self) -> int:
         return safeInt(self.version, LEGACY_MSK_VERSION)
 
-    def setVersion(self, version: int):
+    def setVersion(self, version: int) -> None:
         self.version = str(version)
 
-    def load(self):
+    def load(self) -> any:
         if self.zipFile:
             ZipFile.load(self)
         else:
@@ -69,18 +68,18 @@ class MskFile(TextFile, ZipFile):
             if self.getVersion() > LEGACY_MSK_VERSION:
                 self.setZipFile(False)
 
-        return self.zipFile
+        return str(self.zipFile)
 
-    def save(self, content=None):
+    def save(self, content: any = None) -> None:
         if not (content is None):
-            self.setZipFile(content)
+            self.setZipFile(validBool(content))
 
         if self.zipFile:
             ZipFile.save(self)
         else:
             TextFile.save(self, self.version)
 
-    def remove(self):
+    def remove(self) -> None:
         if os.path.isdir(self.directoryPath):
             shutil.rmtree(self.directoryPath)
 

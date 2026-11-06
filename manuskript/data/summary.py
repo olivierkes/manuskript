@@ -8,8 +8,7 @@ from manuskript.io.mmdFile import MmdFile
 
 
 class Summary(AbstractData):
-
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
         AbstractData.__init__(self, os.path.join(path, "summary.txt"))
         self.file = MmdFile(self.dataPath, 13)
 
@@ -19,11 +18,11 @@ class Summary(AbstractData):
         self.page = None
         self.full = None
 
-    def changePath(self, path: str):
+    def changePath(self, path: str) -> None:
         AbstractData.changePath(self, os.path.join(path, "summary.txt"))
         self.file = MmdFile(self.dataPath, 13)
 
-    def load(self):
+    def load(self) -> None:
         AbstractData.load(self)
 
         try:
@@ -38,7 +37,7 @@ class Summary(AbstractData):
         self.full = metadata.get("Full", None)
         self.complete()
 
-    def save(self):
+    def save(self) -> None:
         AbstractData.save(self)
         metadata = dict()
 

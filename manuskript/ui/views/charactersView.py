@@ -12,7 +12,7 @@ from manuskript.util import validString, invalidString, validInt, invalidInt
 
 class CharactersView(AbstractView):
 
-    def __init__(self, characters: Characters):
+    def __init__(self, characters: Characters) -> None:
         AbstractView.__init__(self)
 
         self.characters = characters
@@ -110,7 +110,7 @@ class CharactersView(AbstractView):
 
         self.unloadCharacterData()
 
-    def refreshCharacterStore(self):
+    def refreshCharacterStore(self) -> None:
         self.charactersStore.clear()
 
         for character in self.characters:
@@ -124,7 +124,7 @@ class CharactersView(AbstractView):
             self.charactersStore.set_value(tree_iter, 2, pixbufFromColor(character.color))
             self.charactersStore.set_value(tree_iter, 3, Importance.asValue(character.importance))
 
-    def loadCharacterData(self, character: Character):
+    def loadCharacterData(self, character: Character) -> None:
         self.character = None
 
         self.colorButton.set_rgba(rgbaFromColor(character.color))
@@ -155,7 +155,7 @@ class CharactersView(AbstractView):
         self.character = character
         self.notebook.set_sensitive(True)
 
-    def unloadCharacterData(self):
+    def unloadCharacterData(self) -> None:
         self.character = None
         self.notebook.set_sensitive(False)
 
@@ -174,7 +174,7 @@ class CharactersView(AbstractView):
 
         self.detailsStore.clear()
 
-    def _characterSelectionChanged(self, selection: Gtk.TreeSelection):
+    def _characterSelectionChanged(self, selection: Gtk.TreeSelection) -> None:
         model, tree_iter = selection.get_selected()
 
         if tree_iter is None:
@@ -192,7 +192,7 @@ class CharactersView(AbstractView):
         else:
             self.loadCharacterData(character)
 
-    def _addCharacterClicked(self, button: Gtk.Button):
+    def _addCharacterClicked(self, button: Gtk.Button) -> None:
         name = invalidString(self.filterCharactersBuffer.get_text())
         character = self.characters.add(name)
 

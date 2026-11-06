@@ -1,0 +1,10 @@
+[tool.ruff]
+line-length = 100
+indent-width = 4
+
+[tool.ruff.format]
+indent-style = "space"
+
+[tool.ruff.lint]
+ignore = ["EXE001", "I001", "UP009"]
+select = ["ANN"]

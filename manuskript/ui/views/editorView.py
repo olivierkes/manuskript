@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from gi.repository import GLib, Gtk, Pango, Gdk
+from typing import Optional
 
 from manuskript.ui.views.abstractView import AbstractView
 
@@ -12,12 +13,11 @@ from manuskript.util import validString, validInt, safeFraction
 
 
 class EditorView(AbstractView):
-
-    def __init__(self, project: Project):
+    def __init__(self, project: Project) -> None:
         AbstractView.__init__(self)
-        
+
         self.project = project
-        self.outlineItem = None
+        self.outlineItem: Optional[OutlineItem] = None
         self.outlineCompletion = []
         self.idleCompletion = 0
         self.editorItems = list()
@@ -84,10 +84,7 @@ class EditorView(AbstractView):
         self.editorFlowbox.connect("selected-children-changed", self._editorFlowboxSelectionChanged)
         self.editorFlowbox.connect("child-activated", self._editorFlowboxChildActivated)
 
-        self.upButtons = [
-            builder.get_object("up"),
-            builder.get_object("up_")
-        ]
+        self.upButtons = [builder.get_object("up"), builder.get_object("up_")]
 
         for button in self.upButtons:
             button.connect("clicked", self._upButtonClicked)
@@ -96,14 +93,14 @@ class EditorView(AbstractView):
         self.counterProgressBar = builder.get_object("counter_progress")
 
         self.unloadOutlineData()
-    
-    def activate(self):
+
+    def activate(self) -> None:
         AbstractView.activate(self)
 
         if self.forceReload:
             self.reloadOutlineData()
 
-    def refreshLabelStore(self):
+    def refreshLabelStore(self) -> None:
         self.labelStore.clear()
 
         for label in self.project.labels:
@@ -115,7 +112,7 @@ class EditorView(AbstractView):
             self.labelStore.set_value(tree_iter, 0, validString(label.name))
             self.labelStore.set_value(tree_iter, 1, pixbufFromColor(label.color))
 
-    def refreshStatusStore(self):
+    def refreshStatusStore(self) -> None:
         self.statusStore.clear()
 
         for status in self.project.statuses:
@@ -126,7 +123,10 @@ class EditorView(AbstractView):
 
             self.statusStore.set_value(tree_iter, 0, validString(status.name))
 
-    def __updateOutlineItem(self, tree_iter, outlineItem: OutlineItem):
+    def __updateOutlineItem(self, tree_iter: Gtk.TreeIter, outlineItem: OutlineItem) -> None:
+        if outlineItem.UID is None:
+            return
+
         icon = iconByOutlineItemType(outlineItem)
 
         wordCount = validInt(outlineItem.textCount())
@@ -143,7 +143,7 @@ class EditorView(AbstractView):
         self.outlineStore.set_value(tree_iter, 7, progress)
         self.outlineStore.set_value(tree_iter, 8, icon)
 
-    def __completeOutlineItem(self):
+    def __completeOutlineItem(self) -> bool:
         (tree_iter, outlineItem) = self.outlineCompletion.pop(0)
 
         if outlineItem.state != OutlineState.COMPLETE:
@@ -161,7 +161,9 @@ class EditorView(AbstractView):
 
         return len(self.outlineCompletion) > 0
 
-    def __appendOutlineItem(self, outlineItem: OutlineItem, parent_iter=None):
+    def __appendOutlineItem(
+        self, outlineItem: OutlineItem, parent_iter: Gtk.TreeIter | None = None
+    ) -> None:
         tree_iter = self.outlineStore.append(parent_iter)
 
         if tree_iter is None:
@@ -174,18 +176,18 @@ class EditorView(AbstractView):
         if outlineItem.state != OutlineState.COMPLETE:
             if len(self.outlineCompletion) == 0:
                 self.idleCompletion = GLib.idle_add(self.__completeOutlineItem)
-            
+
             self.outlineCompletion.append((tree_iter, outlineItem))
 
         self.__updateOutlineItem(tree_iter, outlineItem)
 
-    def refreshOutlineStore(self):
+    def refreshOutlineStore(self) -> None:
         self.outlineStore.clear()
 
         for item in self.project.outline.items:
             self.__appendOutlineItem(item)
 
-    def __updateEditorOutlineItem(self, list_iter, outlineItem: OutlineItem):
+    def __updateEditorOutlineItem(self, list_iter: Gtk.TreeIter, outlineItem: OutlineItem) -> None:
         icon = iconByOutlineItemType(outlineItem)
 
         wordCount = validInt(outlineItem.textCount())
@@ -202,7 +204,7 @@ class EditorView(AbstractView):
         self.editorOutlineStore.set_value(list_iter, 7, progress)
         self.editorOutlineStore.set_value(list_iter, 8, icon)
 
-    def refreshEditorOutlineStore(self):
+    def refreshEditorOutlineStore(self) -> None:
         self.editorOutlineSelection.unselect_all()
         self.editorOutlineStore.clear()
 
@@ -213,14 +215,14 @@ class EditorView(AbstractView):
                 continue
 
             self.__updateEditorOutlineItem(list_iter, outlineItem)
-    
-    def reloadOutlineData(self):
+
+    def reloadOutlineData(self) -> None:
         if self.active:
             self.loadOutlineData(self.outlineItem)
         else:
             self.forceReload = True
 
-    def loadOutlineData(self, outlineItem: OutlineItem):
+    def loadOutlineData(self, outlineItem: OutlineItem | None) -> None:
         if outlineItem is None:
             self.unloadOutlineData()
             return
@@ -238,13 +240,15 @@ class EditorView(AbstractView):
         goalCount = outlineItem.goalCount()
 
         self.counterLabel.set_text("{0} {1}".format(textCount, goalKind.name.lower()))
-        self.counterProgressBar.set_text("{0} / {1} {2}".format(textCount, goalCount, goalKind.name.lower()))
+        self.counterProgressBar.set_text(
+            "{0} / {1} {2}".format(textCount, goalCount, goalKind.name.lower())
+        )
         self.counterProgressBar.set_fraction(safeFraction(textCount, 0, goalCount))
 
         self.outlineItem = outlineItem
         self.forceReload = False
 
-    def unloadOutlineData(self):
+    def unloadOutlineData(self) -> None:
         self.outlineItem = None
         self.loadEditorData(None)
 
@@ -253,12 +257,14 @@ class EditorView(AbstractView):
         goalCount = self.project.outline.goalCount()
 
         self.counterLabel.set_text("{0} {1}".format(textCount, goalKind.name.lower()))
-        self.counterProgressBar.set_text("{0} / {1} {2}".format(textCount, goalCount, goalKind.name.lower()))
+        self.counterProgressBar.set_text(
+            "{0} / {1} {2}".format(textCount, goalCount, goalKind.name.lower())
+        )
         self.counterProgressBar.set_fraction(safeFraction(textCount, 0, goalCount))
 
         self.forceReload = False
 
-    def __appendOutlineItemText(self, outlineItem: OutlineItem, level: int = 1):
+    def __appendOutlineItemText(self, outlineItem: OutlineItem, level: int = 1) -> bool:
         end_iter = self.editorTextBuffer.get_end_iter()
 
         if type(outlineItem) is OutlineFolder:
@@ -268,7 +274,9 @@ class EditorView(AbstractView):
             headerTag = "h{0}".format(min(level, 6))
             end_iter = self.editorTextBuffer.get_end_iter()
 
-            self.editorTextBuffer.insert_with_tags_by_name(end_iter, outlineItem.title + "\n", headerTag)
+            self.editorTextBuffer.insert_with_tags_by_name(
+                end_iter, outlineItem.title + "\n", headerTag
+            )
 
             firstItem = True
 
@@ -305,7 +313,7 @@ class EditorView(AbstractView):
         else:
             return False
 
-    def loadEditorData(self, outlineItem: OutlineItem | None = None):
+    def loadEditorData(self, outlineItem: OutlineItem | None = None) -> None:
         self.editorItems = list()
         self.outlineItem = None
 
@@ -334,7 +342,7 @@ class EditorView(AbstractView):
         self.refreshEditorOutlineStore()
         self.outlineItem = outlineItem
 
-    def _outlineSelectionChanged(self, selection: Gtk.TreeSelection):
+    def _outlineSelectionChanged(self, selection: Gtk.TreeSelection) -> None:
         model, tree_iter = selection.get_selected()
 
         if tree_iter is None:
@@ -345,7 +353,7 @@ class EditorView(AbstractView):
 
         self.loadOutlineData(outlineItem)
 
-    def _editorOutlineSelectionChanged(self, selection: Gtk.TreeSelection):
+    def _editorOutlineSelectionChanged(self, selection: Gtk.TreeSelection) -> None:
         if len(self.editorItems) == 0:
             return
 
@@ -355,6 +363,9 @@ class EditorView(AbstractView):
             return
 
         outlineItem = self.project.outline.getItemByID(model[tree_iter][0])
+        if outlineItem is None:
+            self.editorFlowbox.unselect_all()
+            return
 
         try:
             index = self.editorItems.index(outlineItem)
@@ -367,7 +378,7 @@ class EditorView(AbstractView):
                 self.editorFlowbox.select_child(child)
                 break
 
-    def _editorFlowboxSelectionChanged(self, box: Gtk.FlowBox):
+    def _editorFlowboxSelectionChanged(self, box: Gtk.FlowBox) -> None:
         if len(self.editorItems) == 0:
             return
 
@@ -384,7 +395,9 @@ class EditorView(AbstractView):
 
         outlineItem = self.editorItems[index]
 
-        def selectEditorOutlineItem(model: Gtk.TreeModel, path: Gtk.TreePath, _iter: Gtk.TreeIter, outline_id: int):
+        def selectEditorOutlineItem(
+            model: Gtk.TreeModel, path: Gtk.TreePath, _iter: Gtk.TreeIter, outline_id: int
+        ) -> bool:
             if model[_iter][0] != outline_id:
                 return False
 
@@ -395,12 +408,14 @@ class EditorView(AbstractView):
 
         self.editorOutlineStore.foreach(selectEditorOutlineItem, outlineItem.UID.value)
 
-    def __openOutlineItem(self, outlineItem: OutlineItem | None):
-        if outlineItem is None:
+    def __openOutlineItem(self, outlineItem: OutlineItem | None) -> None:
+        if (outlineItem is None) or (outlineItem.UID is None):
             self.outlineSelection.unselect_all()
             return
 
-        def selectOutlineItem(model: Gtk.TreeModel, path: Gtk.TreePath, _iter: Gtk.TreeIter, outline_id: int):
+        def selectOutlineItem(
+            model: Gtk.TreeModel, path: Gtk.TreePath, _iter: Gtk.TreeIter, outline_id: int
+        ) -> bool:
             if model[_iter][0] != outline_id:
                 return False
 
@@ -414,7 +429,7 @@ class EditorView(AbstractView):
 
         self.outlineStore.foreach(selectOutlineItem, outlineItem.UID.value)
 
-    def _editorFlowboxChildActivated(self, box: Gtk.FlowBox, child: Gtk.FlowBoxChild):
+    def _editorFlowboxChildActivated(self, box: Gtk.FlowBox, child: Gtk.FlowBoxChild) -> None:
         if len(self.editorItems) == 0:
             return
 
@@ -430,49 +445,49 @@ class EditorView(AbstractView):
 
         self.__openOutlineItem(outlineItem)
 
-    def _upButtonClicked(self, button: Gtk.Button):
+    def _upButtonClicked(self, button: Gtk.Button) -> None:
         if self.outlineItem is None:
             return
 
         self.__openOutlineItem(self.outlineItem.parentItem())
 
-    def cutSelection(self):
+    def cutSelection(self) -> None:
         if not self.editorTextBuffer.get_has_selection():
             return
-        
+
         clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
 
         if clipboard is None:
             return
-        
+
         self.editorTextBuffer.cut_clipboard(clipboard, True)
 
-    def copySelection(self):
+    def copySelection(self) -> None:
         if not self.editorTextBuffer.get_has_selection():
             return
-        
+
         clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
 
         if clipboard is None:
             return
-        
+
         self.editorTextBuffer.copy_clipboard(clipboard)
 
-    def pasteClipboard(self):
+    def pasteClipboard(self) -> None:
         clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
 
         if clipboard is None:
             return
-        
+
         self.editorTextBuffer.paste_clipboard(clipboard, None, True)
 
-    def deleteSelection(self):
+    def deleteSelection(self) -> None:
         if not self.editorTextBuffer.get_has_selection():
             return
-        
+
         self.editorTextBuffer.delete_selection(True, True)
 
-    def renameItem(self, name: str|None = None):
+    def renameItem(self, name: str | None = None) -> None:
         model, tree_iter = self.outlineSelection.get_selected()
 
         if tree_iter is None:
@@ -490,15 +505,15 @@ class EditorView(AbstractView):
 
         self.loadOutlineData(outlineItem)
 
-    def toggleTagFromSelection(self, tag_name: str):
+    def toggleTagFromSelection(self, tag_name: str) -> None:
         if not self.editorTextBuffer.get_has_selection():
             return
-        
+
         tag = self.editorTextBuffer.get_tag_table().lookup(tag_name)
 
         if tag is None:
             return
-        
+
         start_iter, end_iter = self.editorTextBuffer.get_selection_bounds()
 
         if start_iter.has_tag(tag):

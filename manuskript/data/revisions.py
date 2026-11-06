@@ -2,6 +2,7 @@
 # --!-- coding: utf8 --!--
 
 import os
+from typing import Iterator
 
 from lxml import etree
 
@@ -10,48 +11,45 @@ from manuskript.io.xmlFile import XmlFile
 
 
 class RevisionEntry:
-
-    def __init__(self, outline, timestamp: int, text: str):
+    def __init__(self, outline: RevisionOutline, timestamp: int, text: str) -> None:
         self.outline = outline
 
         self.timestamp = timestamp
         self.text = text
 
-    def load(self):
+    def load(self) -> None:
         self.outline.load()
 
 
 class RevisionOutline:
-
-    def __init__(self, revisions, ID: int):
+    def __init__(self, revisions: Revisions, ID: int) -> None:
         self.revisions = revisions
 
         self.ID = ID
-        self.entries = list()
+        self.entries: list[RevisionEntry] = list()
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[RevisionEntry]:
         return self.entries.__iter__()
 
-    def load(self):
+    def load(self) -> None:
         self.revisions.load()
 
 
 class Revisions(AbstractData):
-
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
         AbstractData.__init__(self, os.path.join(path, "revisions.xml"))
         self.file = XmlFile(self.dataPath)
-        self.outline = dict()
+        self.outline: dict[int, RevisionOutline] = dict()
 
-    def changePath(self, path: str):
+    def changePath(self, path: str) -> None:
         AbstractData.changePath(self, os.path.join(path, "revisions.xml"))
         self.file = XmlFile(self.dataPath)
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[RevisionOutline]:
         return self.outline.values().__iter__()
 
     @classmethod
-    def loadRevisionEntry(cls, revisions, ID: int, element: etree.Element):
+    def loadRevisionEntry(cls, revisions: Revisions, ID: int, element: etree.Element) -> None:
         timestamp = element.get("timestamp")
         text = element.get("text")
 
@@ -67,7 +65,9 @@ class Revisions(AbstractData):
         revOutline.entries.append(RevisionEntry(revOutline, timestamp, text))
 
     @classmethod
-    def loadRevisionOutline(cls, revisions, element: etree.Element, parent: etree.Element):
+    def loadRevisionOutline(
+        cls, revisions: Revisions, element: etree.Element, parent: etree.Element
+    ) -> None:
         if element.tag == "revision":
             if parent is None:
                 return
@@ -84,7 +84,7 @@ class Revisions(AbstractData):
             for child in element:
                 cls.loadRevisionOutline(revisions, child, element)
 
-    def load(self):
+    def load(self) -> None:
         self.outline.clear()
 
         AbstractData.load(self)
@@ -98,7 +98,7 @@ class Revisions(AbstractData):
         except FileNotFoundError:
             self.complete(False)
 
-    def save(self):
+    def save(self) -> None:
         AbstractData.save(self)
 
         # TODO

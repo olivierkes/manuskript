@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from gi.repository import GLib, Gtk, Gdk
+from typing import Optional
 
 from manuskript.ui.views.abstractView import AbstractView
 
@@ -11,12 +12,11 @@ from manuskript.util import validString, invalidString, validInt, invalidInt, Co
 from manuskript.ui.picker import LabelPicker, CharacterPicker, AbstractGridPicker
 
 class OutlineView(AbstractView):
-
-    def __init__(self, outline: Outline):
+    def __init__(self, outline: Outline) -> None:
         AbstractView.__init__(self)
-        
+
         self.outline: Outline = outline
-        self.outlineItem: OutlineItem = None
+        self.outlineItem: Optional[OutlineItem] = None
         self.outlineCompletion: list = []
         self.idleCompletion = 0
 
@@ -45,11 +45,14 @@ class OutlineView(AbstractView):
         self.minorPlotsStore = builder.get_object("minor_plots_store")
 
         self.mainPlotsStore.set_visible_func(
-            lambda model, iterator, userdata: model[iterator][2] == Importance.MAIN.value)
+            lambda model, iterator, userdata: model[iterator][2] == Importance.MAIN.value
+        )
         self.secondaryPlotsStore.set_visible_func(
-            lambda model, iterator, userdata: model[iterator][2] == Importance.SECONDARY.value)
+            lambda model, iterator, userdata: model[iterator][2] == Importance.SECONDARY.value
+        )
         self.minorPlotsStore.set_visible_func(
-            lambda model, iterator, userdata: model[iterator][2] == Importance.MINOR.value)
+            lambda model, iterator, userdata: model[iterator][2] == Importance.MINOR.value
+        )
 
         self.mainPlotsStore.refilter()
         self.secondaryPlotsStore.refilter()
@@ -58,7 +61,7 @@ class OutlineView(AbstractView):
         self.plotSelections = [
             builder.get_object("minor_plot_selection"),
             builder.get_object("secondary_plot_selection"),
-            builder.get_object("main_plot_selection")
+            builder.get_object("main_plot_selection"),
         ]
 
         for selection in self.plotSelections:
@@ -84,10 +87,12 @@ class OutlineView(AbstractView):
         self.outlineTitle = builder.get_object("outline_title")
         self.outlineTitle.connect("edited", self._outlineTitleEdited)
 
-        self.labelPopover:LabelPicker = LabelPicker(self.outline.labels)
+        self.labelPopover: LabelPicker = LabelPicker(self.outline.labels)
         self.labelPopover.connect("label-selected", self._labelPopoverItemSelected)
 
-        self.povPopover:CharacterPicker = CharacterPicker(self.outline.plots.characters, pickPovOnly=True)
+        self.povPopover: CharacterPicker = CharacterPicker(
+            self.outline.plots.characters, pickPovOnly=True
+        )
         self.povPopover.connect("character-selected", self._povPopoverItemSelected)
 
         self.goalBuffer = builder.get_object("goal")
@@ -110,26 +115,7 @@ class OutlineView(AbstractView):
 
         self.unloadOutlineData()
 
-    def populateLabelList(self):
-        for pixbuf, text in self.labelStore:
-            row = Gtk.ListBoxRow()
-            box = Gtk.Box(spacing=6)
-
-            image = Gtk.Image.new_from_pixbuf(pixbuf)
-            label = Gtk.Label(label=text, xalign=0)
-
-            box.pack_start(image, False, False, 0)
-            box.pack_start(label, True, True, 0)
-
-            row.add(box)
-            row.pixbuf = pixbuf
-            row.text = text
-
-            self.labelListbox.add(row)
-
-        self.labelListbox.show_all()
-
-    def refreshLabelStore(self):
+    def refreshLabelStore(self) -> None:
         self.labelStore.clear()
 
         for label in self.outline.labels:
@@ -141,7 +127,7 @@ class OutlineView(AbstractView):
             self.labelStore.set_value(tree_iter, 0, validString(label.name))
             self.labelStore.set_value(tree_iter, 1, pixbufFromColor(label.color))
 
-    def refreshStatusStore(self):
+    def refreshStatusStore(self) -> None:
         self.statusStore.clear()
 
         for status in self.outline.statuses:
@@ -152,7 +138,7 @@ class OutlineView(AbstractView):
 
             self.statusStore.set_value(tree_iter, 0, validString(status.name))
 
-    def refreshPlotsStore(self):
+    def refreshPlotsStore(self) -> None:
         self.plotsStore.clear()
 
         for plotLine in self.outline.plots:
@@ -165,7 +151,7 @@ class OutlineView(AbstractView):
             self.plotsStore.set_value(tree_iter, 1, validString(plotLine.name))
             self.plotsStore.set_value(tree_iter, 2, Importance.asValue(plotLine.importance))
 
-    def refreshCharactersStore(self):
+    def refreshCharactersStore(self) -> None:
         self.charactersStore.clear()
 
         tree_iter = self.charactersStore.append()
@@ -189,7 +175,9 @@ class OutlineView(AbstractView):
             self.charactersStore.set_value(tree_iter, 1, validString(character.name))
             self.charactersStore.set_value(tree_iter, 2, pixbufFromColor(character.color))
 
-    def _findOutlineIterById(self, store, uid, parent=None):
+    def _findOutlineIterById(
+        self, store: Gtk.TreeModel, uid: UniqueID, parent: Gtk.TreeIter | None = None
+    ) -> Gtk.TreeIter:
         it = store.iter_children(parent)
         while it:
             if store[it][0] == uid.value:
@@ -200,12 +188,15 @@ class OutlineView(AbstractView):
             it = store.iter_next(it)
         return None
 
-    def __updateOutlineItemInStore(self, outlineItem: OutlineItem):
+    def __updateOutlineItemInStore(self, outlineItem: OutlineItem) -> None:
+        if outlineItem.UID is None:
+            return
+
         iter = self._findOutlineIterById(self.outlineStore, outlineItem.UID)
         if iter:
             self.__updateOutlineItem(iter, outlineItem)
 
-    def __updateOutlineItem(self, tree_iter, outlineItem: OutlineItem):
+    def __updateOutlineItem(self, tree_iter: Gtk.TreeIter, outlineItem: OutlineItem) -> None:
         if type(outlineItem) is OutlineFolder:
             icon = "folder-symbolic"
         elif type(outlineItem) is OutlineText:
@@ -231,7 +222,9 @@ class OutlineView(AbstractView):
         self.outlineStore.set_value(tree_iter, 6, goal)
         self.outlineStore.set_value(tree_iter, 7, progress)
         self.outlineStore.set_value(tree_iter, 8, icon)
-        self.outlineStore.set_value(tree_iter, 9, self._getLabelPixbuf(validString(outlineItem.label)))
+        self.outlineStore.set_value(
+            tree_iter, 9, self._getLabelPixbuf(validString(outlineItem.label))
+        )
 
         self.outlineStore.set_value(tree_iter, 10, "")
         self.outlineStore.set_value(tree_iter, 11, None)
@@ -239,21 +232,21 @@ class OutlineView(AbstractView):
         if outlineItem.POV:
             povName = outlineItem.POV.name
             povPixbuf = pixbufFromColor(outlineItem.POV.color)
-            if povName!=None:
+            if povName != None:
                 self.outlineStore.set_value(tree_iter, 10, povName)
                 self.outlineStore.set_value(tree_iter, 11, povPixbuf)
 
-    def _getLabelPixbuf(self, labelName: str):
-        if labelName=="":
+    def _getLabelPixbuf(self, labelName: str) -> GdkPixbuf:
+        if labelName == "":
             return None
 
         for row in self.labelStore:
             if row[0] == labelName:
                 return row[1]
-            
+
         return None
 
-    def __completeOutlineItem(self):
+    def __completeOutlineItem(self) -> bool:
         outlineItem: OutlineItem
         (tree_iter, outlineItem) = self.outlineCompletion.pop(0)
 
@@ -264,7 +257,9 @@ class OutlineView(AbstractView):
 
         return len(self.outlineCompletion) > 0
 
-    def __appendOutlineItem(self, outlineItem: OutlineItem, parent_iter=None):
+    def __appendOutlineItem(
+        self, outlineItem: OutlineItem, parent_iter: Gtk.TreeIter | None = None
+    ) -> None:
         tree_iter = self.outlineStore.append(parent_iter)
 
         if tree_iter is None:
@@ -282,13 +277,13 @@ class OutlineView(AbstractView):
 
         self.__updateOutlineItem(tree_iter, outlineItem)
 
-    def refreshOutlineStore(self):
+    def refreshOutlineStore(self) -> None:
         self.outlineStore.clear()
 
         for item in self.outline.items:
             self.__appendOutlineItem(item)
 
-    def _plotSelectionChanged(self, selection: Gtk.TreeSelection):
+    def _plotSelectionChanged(self, selection: Gtk.TreeSelection) -> None:
         model, tree_iter = selection.get_selected()
 
         if tree_iter is None:
@@ -298,7 +293,7 @@ class OutlineView(AbstractView):
             if other != selection:
                 other.unselect_all()
 
-    def setPovComboById(self, character_id: int):
+    def setPovComboById(self, character_id: int) -> None:
         store = self.charactersStore
 
         it = store.get_iter_first()
@@ -310,27 +305,26 @@ class OutlineView(AbstractView):
 
         self.povCombo.set_active(-1)
 
-    def _povChanged(self, combo):
+    def _povChanged(self, combo: Gtk.ComboBox) -> None:
         if not self.outlineItem:
             return
-        
+
         model = combo.get_model()
         tree_iter = combo.get_active_iter()
-        
+
         if tree_iter is None:
             self.current_character = None
             return
-        
-        povId = model[tree_iter][0] 
-        if povId!=-1:
+
+        povId = model[tree_iter][0]
+        if povId != -1:
             self.outlineItem.POV = self.outline.characters.getPOVByID(validInt(povId))
         else:
             self.outlineItem.POV = None
 
         self.__updateOutlineItemInStore(self.outlineItem)
 
-
-    def loadOutlineData(self, outlineItem: OutlineItem):
+    def loadOutlineData(self, outlineItem: OutlineItem) -> None:
         self.outlineItem = None
 
         self.goalBuffer.set_text(validString(outlineItem.goal), -1)
@@ -341,14 +335,14 @@ class OutlineView(AbstractView):
 
         self.outlineItem = outlineItem
 
-    def unloadOutlineData(self):
+    def unloadOutlineData(self) -> None:
         self.outlineItem = None
 
         self.goalBuffer.set_text("", -1)
         self.oneLineSummaryBuffer.set_text("", -1)
         self.fewSentencesSummaryBuffer.set_text("", -1)
 
-    def _outlineSelectionChanged(self, selection: Gtk.TreeSelection):
+    def _outlineSelectionChanged(self, selection: Gtk.TreeSelection) -> None:
         model, tree_iter = selection.get_selected()
 
         if tree_iter is None:
@@ -362,7 +356,7 @@ class OutlineView(AbstractView):
         else:
             self.loadOutlineData(outlineItem)
 
-    def __matchOutlineItemByText(self, outlineItem: OutlineItem, text: str):
+    def __matchOutlineItemByText(self, outlineItem: OutlineItem, text: str) -> bool:
         if type(outlineItem) is OutlineFolder:
             for item in outlineItem:
                 if self.__matchOutlineItemByText(item, text):
@@ -371,7 +365,7 @@ class OutlineView(AbstractView):
         title = validString(outlineItem.title)
         return text in title.lower()
 
-    def _filterOutline(self, model, iterator, userdata):
+    def _filterOutline(self, model: Gtk.TreeModel, iterator: Gtk.TreeIter, userdata: any) -> bool:
         outlineItem = self.outline.getItemByID(model[iterator][0])
 
         if outlineItem is None:
@@ -380,26 +374,32 @@ class OutlineView(AbstractView):
         text = validString(self.filterOutlineBuffer.get_text())
         return self.__matchOutlineItemByText(outlineItem, text.lower())
 
-    def __filterOutlineChanged(self, buffer: Gtk.EntryBuffer):
+    def __filterOutlineChanged(self, buffer: Gtk.EntryBuffer) -> None:
         self.filteredOutlineStore.refilter()
 
-    def _filterOutlineDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
+    def _filterOutlineDeletedText(
+        self, buffer: Gtk.EntryBuffer, position: int, n_chars: int
+    ) -> None:
         self.__filterOutlineChanged(buffer)
 
-    def _filterOutlineInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
+    def _filterOutlineInsertedText(
+        self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int
+    ) -> None:
         self.__filterOutlineChanged(buffer)
 
-    def __updateGoalValue(self, model, path, treeiter, userdata):
+    def __updateGoalValue(
+        self, model: Gtk.TreeModel, path, treeiter: Gtk.TreeIter, userdata: any
+    ) -> bool:
         id = model[treeiter][0]
 
         if userdata["outline_id"] == id:
             model[treeiter][6] = userdata["goal"]
             model[treeiter][7] = userdata["progress"]
             return True
-        
+
         return False
 
-    def __goalChanged(self, buffer: Gtk.EntryBuffer):
+    def __goalChanged(self, buffer: Gtk.EntryBuffer) -> None:
         if self.outlineItem is None:
             return
 
@@ -418,21 +418,19 @@ class OutlineView(AbstractView):
         elif goal > 0:
             progress = 100
 
-        userdata = {
-            "outline_id": outline_id,
-            "goal": goal,
-            "progress": progress
-        }
+        userdata = {"outline_id": outline_id, "goal": goal, "progress": progress}
 
         self.outlineStore.foreach(self.__updateGoalValue, userdata)
 
-    def _goalDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
+    def _goalDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int) -> None:
         self.__goalChanged(buffer)
 
-    def _goalInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
+    def _goalInsertedText(
+        self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int
+    ) -> None:
         self.__goalChanged(buffer)
 
-    def __oneLineSummaryChanged(self, buffer: Gtk.EntryBuffer):
+    def __oneLineSummaryChanged(self, buffer: Gtk.EntryBuffer) -> None:
         if self.outlineItem is None:
             return
 
@@ -441,13 +439,17 @@ class OutlineView(AbstractView):
 
         self.outlineItem.summarySentence = summary
 
-    def _oneLineSummaryDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
+    def _oneLineSummaryDeletedText(
+        self, buffer: Gtk.EntryBuffer, position: int, n_chars: int
+    ) -> None:
         self.__oneLineSummaryChanged(buffer)
 
-    def _oneLineSummaryInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
+    def _oneLineSummaryInsertedText(
+        self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int
+    ) -> None:
         self.__oneLineSummaryChanged(buffer)
 
-    def _fewSentencesSummaryChanged(self, buffer: Gtk.TextBuffer):
+    def _fewSentencesSummaryChanged(self, buffer: Gtk.TextBuffer) -> None:
         if self.outlineItem is None:
             return
 
@@ -458,36 +460,40 @@ class OutlineView(AbstractView):
 
         self.outlineItem.summaryFull = invalidString(text)
 
-    def _outlineTreeviewClicked(self, treeview: Gtk.TreeView, event):
+    def _outlineTreeviewClicked(self, treeview: Gtk.TreeView, event) -> bool:
         if event.button != 1 or event.type != Gdk.EventType._2BUTTON_PRESS:
             return False
-                
+
         result = treeview.get_path_at_pos(int(event.x), int(event.y))
         if not result:
             return False
-        
+
         path, column, cell_x, cell_y = result
 
         if column.get_title() == "Label":
             self.showPopoverOverTreeview(treeview, path, event, column, self.labelPopover)
             return True
-        
+
         if column.get_title() == "POV":
             self.showPopoverOverTreeview(treeview, path, event, column, self.povPopover)
 
         return False
-    
-    def showPopoverOverTreeview(self, treeview: Gtk.TreeView, path: Gtk.TreePath, event: Gdk.Event, column: Gtk.TreeViewColumn, popover: AbstractGridPicker):
+
+    def showPopoverOverTreeview(
+        self,
+        treeview: Gtk.TreeView,
+        path: Gtk.TreePath,
+        event: Gdk.Event,
+        column: Gtk.TreeViewColumn,
+        popover: AbstractGridPicker,
+    ) -> None:
         self.current_path = path
 
         popover.set_relative_to(treeview)
 
         cellRect = treeview.get_cell_area(path, column)
 
-        x, y = treeview.convert_bin_window_to_widget_coords(
-            cellRect.x,
-            cellRect.y
-        )
+        x, y = treeview.convert_bin_window_to_widget_coords(cellRect.x, cellRect.y)
 
         cellRect.x = x
         cellRect.y = y
@@ -497,46 +503,52 @@ class OutlineView(AbstractView):
 
         popover.show()
 
-    def _labelPopoverItemSelected(self, labelPicker: LabelPicker, label: str):
-        labelText=validString(label)
+    def _labelPopoverItemSelected(self, labelPicker: LabelPicker, label: str) -> None:
+        labelText = validString(label)
 
         model = self.outlineTreeview.get_model()
         iter_ = model.get_iter(self.current_path)
         model.set_value(iter_, 2, labelText)
         model.set_value(iter_, 9, self._getLabelPixbuf(labelText))
-        
+
         item = self.outline.getItemByID(model.get_value(iter_, 0))
+
+        if item is None:
+            return
 
         labelObject = self.outline.labels.getLabel(labelText)
         item.label = labelObject
 
-    def _povPopoverItemSelected(self, povPicker: CharacterPicker, character: Character):
+    def _povPopoverItemSelected(self, povPicker: CharacterPicker, character: Character) -> None:
         model = self.outlineTreeview.get_model()
         iter_ = model.get_iter(self.current_path)
         model.set_value(iter_, 10, character.name)
         model.set_value(iter_, 11, pixbufFromColor(character.color))
-        
+
         item = self.outline.getItemByID(model.get_value(iter_, 0))
         item.POV = character
         self.loadOutlineData(item)
 
-    def _outlineTitleEdited(self, renderer: Gtk.CellRenderer, path: Gtk.TreePath, newText: str):
+    def _outlineTitleEdited(self, renderer: Gtk.CellRenderer, path: Gtk.TreePath, newText: str) -> None:
         self.outlineStore[path][1] = newText
         self.outlineItem.title = newText
 
-    def _statusChanged(self, cell, path, new_iter):
+    def _statusChanged(self, cell, path, new_iter: Gtk.TreeIter) -> bool:
+        if self.outlineItem is None:
+          return False
+
         comboModel = cell.get_property("model")
         newStatus = comboModel[new_iter][0]
 
         for status in self.outline.statuses:
             if status.name == newStatus:
                 self.outlineItem.status = status
-                
+
         self.__updateOutlineItemInStore(self.outlineItem)
-        
+
         return True
 
-    def renameItem(self, name: str|None = None):
+    def renameItem(self, name: str | None = None) -> None:
         model, tree_iter = self.outlineSelection.get_selected()
 
         if tree_iter is None:

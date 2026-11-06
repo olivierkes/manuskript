@@ -11,26 +11,25 @@ CURRENT_MSK_VERSION = 1
 
 
 class Version(AbstractData):
-
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
         AbstractData.__init__(self, os.path.join(path, "MANUSKRIPT"))
         self.file = TextFile(self.dataPath)
         self.legacy_file = TextFile(os.path.join(path, "VERSION"))
 
         self.value = LEGACY_MSK_VERSION
 
-    def changePath(self, path: str):
+    def changePath(self, path: str) -> None:
         AbstractData.changePath(self, os.path.join(path, "MANUSKRIPT"))
         self.file = TextFile(self.dataPath)
         self.legacy_file = TextFile(os.path.join(path, "VERSION"))
 
-    def loadLegacy(self):
+    def loadLegacy(self) -> int:
         try:
             return int(self.legacy_file.load())
         except FileNotFoundError or ValueError:
             return LEGACY_MSK_VERSION
 
-    def load(self):
+    def load(self) -> None:
         AbstractData.load(self)
 
         try:
@@ -40,7 +39,7 @@ class Version(AbstractData):
 
         self.complete()
 
-    def save(self):
+    def save(self) -> None:
         AbstractData.save(self)
 
         self.file.save(str(self.value))

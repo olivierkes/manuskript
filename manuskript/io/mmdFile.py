@@ -8,22 +8,21 @@ from manuskript.io.abstractFile import AbstractFile
 
 
 class MmdFile(AbstractFile):
-
-    def __init__(self, path, metaSpacing=16):
+    def __init__(self, path: str, metaSpacing: int = 16) -> None:
         AbstractFile.__init__(self, path)
 
         self.metaSpacing = metaSpacing
 
-    def loadMMD(self, ignoreBody: bool = True):
+    def loadMMD(self, ignoreBody: bool = True) -> tuple(collections.OrderedDict, str | None):
         metadata = collections.OrderedDict()
-        body = None
+        body: str | None = None
 
         metaPattern = re.compile(r"^([^\s].*?):\s*(.*)\n$")
         metaValuePattern = re.compile(r"^(\s+)(.*)\n$")
         metaKey = None
         metaValue = None
 
-        with open(self.path, 'rt', encoding='utf-8') as file:
+        with open(self.path, "rt", encoding="utf-8") as file:
             line = file.readline()
             while line:
                 m = metaPattern.match(line)
@@ -63,21 +62,21 @@ class MmdFile(AbstractFile):
 
         return metadata, body
 
-    def load(self):
+    def load(self) -> any:
         return self.loadMMD(False)
 
-    def save(self, content):
+    def save(self, content: any) -> None:
         metadata, body = content
         metaSpacing = self.metaSpacing
 
-        for (key, value) in metadata.items():
+        for key, value in metadata.items():
             if value is None:
                 continue
 
             metaSpacing = max(metaSpacing, len(key) + 2)
 
-        with open(self.path, 'wt', encoding='utf-8') as file:
-            for (key, value) in metadata.items():
+        with open(self.path, "wt", encoding="utf-8") as file:
+            for key, value in metadata.items():
                 if value is None:
                     continue
 
@@ -92,6 +91,6 @@ class MmdFile(AbstractFile):
             if not (body is None):
                 file.write("\n" + body)
 
-    def remove(self):
+    def remove(self) -> None:
         if os.path.exists(self.path):
             os.remove(self.path)

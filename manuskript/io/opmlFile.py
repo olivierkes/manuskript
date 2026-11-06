@@ -1,30 +1,31 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
+from typing import Iterator
+
 from lxml import etree
+
 from manuskript.io.xmlFile import XmlFile
 
 
 class OpmlOutlineItem:
+    def __init__(self) -> None:
+        self.attributes: dict[str, str] = dict()
+        self.children: list[OpmlOutlineItem] = list()
 
-    def __init__(self):
-        self.attributes = dict()
-        self.children = list()
-
-    def __iter__(self):
+    def __iter__(self) -> Iterator[OpmlOutlineItem]:
         return self.children.__iter__()
 
-    def keys(self):
-        return self.attributes.keys()
+    def keys(self) -> Iterator[str]:
+        return self.attributes.keys().__iter__()
 
-    def values(self):
-        return self.attributes.values()
+    def values(self) -> Iterator[str]:
+        return self.attributes.values().__iter__()
 
 
 class OpmlFile(XmlFile):
-
     @classmethod
-    def loadOutline(cls, element):
+    def loadOutline(cls, element: etree.SubElement) -> OpmlOutlineItem:
         outline = OpmlOutlineItem()
 
         for key in element.keys():
@@ -35,7 +36,7 @@ class OpmlFile(XmlFile):
 
         return outline
 
-    def load(self):
+    def load(self) -> list[OpmlOutlineItem]:
         tree = XmlFile.load(self)
         root = tree.getroot()
 
@@ -50,10 +51,10 @@ class OpmlFile(XmlFile):
         return [OpmlFile.loadOutline(element) for element in body.getchildren()]
 
     @classmethod
-    def saveOutline(cls, outline, parent):
+    def saveOutline(cls, outline: OpmlOutlineItem, parent: etree.SubElement) -> None:
         element = etree.SubElement(parent, "outline")
 
-        for (key, value) in outline.attributes.items():
+        for key, value in outline.attributes.items():
             if value is None:
                 continue
 
@@ -62,7 +63,7 @@ class OpmlFile(XmlFile):
         for child in outline.children:
             cls.saveOutline(child, element)
 
-    def save(self, content):
+    def save(self, content: list[OpmlOutlineItem]) -> None:
         root = etree.Element("opml")
         root.set("version", "1.0")
 

@@ -10,10 +10,9 @@ from manuskript.util import validString, invalidString
 
 
 class GeneralView(AbstractView):
-
-    def __init__(self, info: Info):
+    def __init__(self, info: Info) -> None:
         AbstractView.__init__(self)
-        
+
         self.info = info
 
         builder = Gtk.Builder()
@@ -56,74 +55,90 @@ class GeneralView(AbstractView):
         self.emailBuffer.connect("deleted-text", self._emailDeletedText)
         self.emailBuffer.connect("inserted-text", self._emailInsertedText)
 
-    def __titleChanged(self, buffer: Gtk.EntryBuffer):
+    def __titleChanged(self, buffer: Gtk.EntryBuffer) -> None:
         self.info.title = invalidString(buffer.get_text())
 
-    def __subtitleChanged(self, buffer: Gtk.EntryBuffer):
+    def __subtitleChanged(self, buffer: Gtk.EntryBuffer) -> None:
         self.info.subtitle = invalidString(buffer.get_text())
 
-    def __seriesChanged(self, buffer: Gtk.EntryBuffer):
+    def __seriesChanged(self, buffer: Gtk.EntryBuffer) -> None:
         self.info.serie = invalidString(buffer.get_text())
 
-    def __volumeChanged(self, buffer: Gtk.EntryBuffer):
+    def __volumeChanged(self, buffer: Gtk.EntryBuffer) -> None:
         self.info.volume = invalidString(buffer.get_text())
 
-    def __genreChanged(self, buffer: Gtk.EntryBuffer):
+    def __genreChanged(self, buffer: Gtk.EntryBuffer) -> None:
         self.info.genre = invalidString(buffer.get_text())
 
-    def __licenseChanged(self, buffer: Gtk.EntryBuffer):
+    def __licenseChanged(self, buffer: Gtk.EntryBuffer) -> None:
         self.info.license = invalidString(buffer.get_text())
 
-    def __nameChanged(self, buffer: Gtk.EntryBuffer):
+    def __nameChanged(self, buffer: Gtk.EntryBuffer) -> None:
         self.info.author = invalidString(buffer.get_text())
 
-    def __emailChanged(self, buffer: Gtk.EntryBuffer):
+    def __emailChanged(self, buffer: Gtk.EntryBuffer) -> None:
         self.info.email = invalidString(buffer.get_text())
 
-    def _titleDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
+    def _titleDeletedText(self, buffer: Gtk.EntryBuffer, position: int, count: int) -> None:
         self.__titleChanged(buffer)
 
-    def _titleInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
+    def _titleInsertedText(
+        self, buffer: Gtk.EntryBuffer, position: int, value: str, count: int
+    ) -> None:
         self.__titleChanged(buffer)
 
-    def _subtitleDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
+    def _subtitleDeletedText(self, buffer: Gtk.EntryBuffer, position: int, count: int) -> None:
         self.__subtitleChanged(buffer)
 
-    def _subtitleInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
+    def _subtitleInsertedText(
+        self, buffer: Gtk.EntryBuffer, position: int, value: str, count: int
+    ) -> None:
         self.__subtitleChanged(buffer)
 
-    def _seriesDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
+    def _seriesDeletedText(self, buffer: Gtk.EntryBuffer, position: int, count: int) -> None:
         self.__seriesChanged(buffer)
 
-    def _seriesInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
+    def _seriesInsertedText(
+        self, buffer: Gtk.EntryBuffer, position: int, value: str, count: int
+    ) -> None:
         self.__seriesChanged(buffer)
 
-    def _volumeDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
+    def _volumeDeletedText(self, buffer: Gtk.EntryBuffer, position: int, count: int) -> None:
         self.__volumeChanged(buffer)
 
-    def _volumeInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
+    def _volumeInsertedText(
+        self, buffer: Gtk.EntryBuffer, position: int, value: str, count: int
+    ) -> None:
         self.__volumeChanged(buffer)
 
-    def _genreDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
+    def _genreDeletedText(self, buffer: Gtk.EntryBuffer, position: int, count: int) -> None:
         self.__genreChanged(buffer)
 
-    def _genreInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
+    def _genreInsertedText(
+        self, buffer: Gtk.EntryBuffer, position: int, value: str, count: int
+    ) -> None:
         self.__genreChanged(buffer)
 
-    def _licenseDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
+    def _licenseDeletedText(self, buffer: Gtk.EntryBuffer, position: int, count: int) -> None:
         self.__licenseChanged(buffer)
 
-    def _licenseInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
+    def _licenseInsertedText(
+        self, buffer: Gtk.EntryBuffer, position: int, value: str, count: int
+    ) -> None:
         self.__licenseChanged(buffer)
 
-    def _nameDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
+    def _nameDeletedText(self, buffer: Gtk.EntryBuffer, position: int, count: int) -> None:
         self.__nameChanged(buffer)
 
-    def _nameInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
+    def _nameInsertedText(
+        self, buffer: Gtk.EntryBuffer, position: int, value: str, count: int
+    ) -> None:
         self.__nameChanged(buffer)
 
-    def _emailDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
+    def _emailDeletedText(self, buffer: Gtk.EntryBuffer, position: int, count: int) -> None:
         self.__emailChanged(buffer)
 
-    def _emailInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
+    def _emailInsertedText(
+        self, buffer: Gtk.EntryBuffer, position: int, value: str, count: int
+    ) -> None:
         self.__emailChanged(buffer)

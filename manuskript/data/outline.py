@@ -3,10 +3,9 @@
 from __future__ import annotations
 
 import os
-
 from collections import OrderedDict
 from enum import Enum, unique
-from typing import Optional
+from typing import Iterator, Optional
 
 from manuskript.data.abstractData import AbstractData, DataStatus
 from manuskript.data.goal import Goal
@@ -16,52 +15,52 @@ from manuskript.data.status import StatusHost, Status
 from manuskript.data.template import Template, TemplateLevel
 from manuskript.data.unique_id import UniqueIDHost, UniqueID
 from manuskript.io.mmdFile import MmdFile
-from manuskript.util import CounterKind, countText, safeInt, safeFilename
+from manuskript.util import CounterKind, countText, safeInt, safeFilename, validBool, validString
 from manuskript.data import Characters, Character
 
 
 @unique
 class OutlineState(Enum):
-    UNDEFINED = 0,
-    OPTIMIZED = 1,
+    UNDEFINED = (0,)
+    OPTIMIZED = (1,)
     COMPLETE = 2
 
 
 class OutlineItem(AbstractData):
-    def __init__(self, path, outline: Outline):
+    def __init__(self, path: str, outline: Outline) -> None:
         AbstractData.__init__(self, path)
         self.file: MmdFile = MmdFile(self.dataPath)
         self.outline: Outline = outline
         self.state: OutlineState = OutlineState.UNDEFINED
 
-        self.UID: UniqueID = None
+        self.UID: Optional[UniqueID] = None
         self.title: str = ""
         self.type: str = ""
         self.summarySentence: Optional[str] = None
         self.summaryFull: Optional[str] = None
-        self.POV: Optional[Character] = None
+        self.POV = None
         self.notes: Optional[str] = None
-        self.label: Optional[str] = None
+        self.label: Optional[Label] = None
         self.status: Optional[Status] = None
         self.compile: bool = True
-        self.goal: Optional[int] = None
+        self.goal: Optional[Goal] = None
 
-    def changePath(self, path: str):
+    def changePath(self, path: str) -> None:
         AbstractData.changePath(self, path)
         self.file = MmdFile(self.dataPath)
 
-    def parentItem(self):
+    def parentItem(self) -> OutlineItem | None:
         for item in self.outline.all():
             if item.contains(self):
                 return item
 
         return None
 
-    def contains(self, item: OutlineItem):
+    def contains(self, item: OutlineItem) -> bool:
         return False
 
     @classmethod
-    def loadMetadata(cls, item: OutlineItem, metadata: dict):
+    def loadMetadata(cls, item: OutlineItem, metadata: OrderedDict[str, str]) -> None:
         ID = metadata.get("ID")
 
         if ID is None:
@@ -70,16 +69,16 @@ class OutlineItem(AbstractData):
         if (item.UID is None) or (item.UID.value != int(ID)):
             item.UID = item.outline.host.loadID(int(ID))
 
-        def loadCharacterByID(outline: Outline, characterID: str) -> Character:
+        def loadCharacterByID(outline: Outline, characterID: str | None) -> Character | None:
             return outline.characters.getPOVByID(safeInt(characterID, -1))
 
-        def loadLabelByID(outline: Outline, labelID: str) -> Label:
+        def loadLabelByID(outline: Outline, labelID: str | None) -> Label | None:
             return outline.labels.getLabelByID(safeInt(labelID, 0))
 
-        def loadStatusByID(outline: Outline, statusID: str) -> Status:
+        def loadStatusByID(outline: Outline, statusID: str | None) -> Status | None:
             return outline.statuses.getStatusByID(safeInt(statusID, 0))
 
-        item.title = metadata.get("title", None)
+        item.title = validString(metadata.get("title", None))
         item.type = metadata.get("type", "md")
         item.summarySentence = metadata.get("summarySentence", None)
         item.summaryFull = metadata.get("summaryFull", None)
@@ -87,11 +86,11 @@ class OutlineItem(AbstractData):
         item.notes = metadata.get("notes", None)
         item.label = loadLabelByID(item.outline, metadata.get("label", None))
         item.status = loadStatusByID(item.outline, metadata.get("status", None))
-        item.compile = metadata.get("compile")
+        item.compile = validBool(metadata.get("compile"))
         item.goal = Goal.parse(metadata.get("setGoal", None))
 
     @classmethod
-    def saveMetadata(cls, item: OutlineItem):
+    def saveMetadata(cls, item: OutlineItem) -> OrderedDict[str, str]:
         metadata = OrderedDict()
 
         if item.UID is None:
@@ -107,11 +106,11 @@ class OutlineItem(AbstractData):
         metadata["label"] = None if item.label is None else item.label.ID
         metadata["status"] = None if item.status is None else item.status.ID
         metadata["compile"] = item.compile
-        metadata["setGoal"] = item.goal
+        metadata["setGoal"] = str(item.goal)
 
         return metadata
 
-    def textCount(self, counterKind: CounterKind = None) -> int:
+    def textCount(self, counterKind: CounterKind | None = None) -> int:
         return 0
 
     def goalKind(self) -> CounterKind:
@@ -120,7 +119,7 @@ class OutlineItem(AbstractData):
     def goalCount(self) -> int:
         return 0 if self.goal is None else self.goal.value
 
-    def complete(self, statusCompletion: bool = True, optimized: bool = True):
+    def complete(self, statusCompletion: bool = True, optimized: bool = True) -> None:
         AbstractData.complete(self, statusCompletion)
 
         if self.dataStatus != DataStatus.LOADED:
@@ -128,10 +127,10 @@ class OutlineItem(AbstractData):
 
         self.state = OutlineState.OPTIMIZED if optimized else OutlineState.COMPLETE
 
-    def load(self, optimized: bool = True):
+    def load(self, optimized: bool = True) -> None:
         AbstractData.load(self)
 
-    def save(self):
+    def save(self) -> None:
         AbstractData.save(self)
 
 
@@ -139,14 +138,14 @@ class OutlineText(OutlineItem):
     text: str
     cache: dict
 
-    def __init__(self, path: str, outline: Outline):
+    def __init__(self, path: str, outline: Outline) -> None:
         OutlineItem.__init__(self, path, outline)
 
         self.text: str = ""
         self.cache: dict = dict()
         self.type: str = "md"
 
-    def textCount(self, counterKind: CounterKind = None) -> int:
+    def textCount(self, counterKind: CounterKind | None = None) -> int:
         if counterKind is None:
             counterKind = self.goalKind()
 
@@ -156,10 +155,12 @@ class OutlineText(OutlineItem):
             self.cache[textHash] = True
 
         if counterKind.name not in self.cache:
-            self.cache[counterKind.name] = super().textCount(counterKind) + countText(self.text, counterKind)
+            self.cache[counterKind.name] = super().textCount(counterKind) + countText(
+                self.text, counterKind
+            )
         return self.cache[counterKind.name]
 
-    def load(self, optimized: bool = True):
+    def load(self, optimized: bool = True) -> None:
         OutlineItem.load(self)
 
         metadata, body = self.file.loadMMD(optimized)
@@ -173,9 +174,11 @@ class OutlineText(OutlineItem):
 
         self.complete(optimized=optimized)
 
-    def save(self):
+    def save(self) -> None:
         if self.state == OutlineState.OPTIMIZED:
-            self.outline.host.removeID(self.UID)
+            if self.UID is not None:
+                self.outline.host.removeID(self.UID)
+
             self.load(False)
 
         OutlineItem.save(self)
@@ -188,27 +191,29 @@ class OutlineText(OutlineItem):
 class OutlineFolder(OutlineItem):
     items: list[OutlineItem]
 
-    def __init__(self, path: str, outline: Outline):
+    def __init__(self, path: str, outline: Outline) -> None:
         OutlineItem.__init__(self, os.path.join(path, "folder.txt"), outline)
 
         self.folderPath: str = path
-        self.items: list = list()
+        self.items: list[OutlineItem] = list()
         self.type: str = "folder"
 
-    def changePath(self, path: str):
+    def changePath(self, path: str) -> None:
         OutlineItem.changePath(self, os.path.join(path, "folder.txt"))
 
         self.folderPath = path
 
         index = 0
         for item in self.items:
-            filename = safeFilename("%s-%s" % (str(index), item.title), None if type(item) is OutlineFolder else "md")
+            filename = safeFilename(
+                "%s-%s" % (str(index), item.title), None if type(item) is OutlineFolder else "md"
+            )
             path_ = os.path.join(self.folderPath, filename)
 
             item.changePath(path_)
             index += 1
-    
-    def addFolder(self, name: str):
+
+    def addFolder(self, name: str) -> OutlineFolder:
         filename = safeFilename("%d-%s" % (len(self.items), name))
 
         item = OutlineFolder(os.path.join(self.folderPath, filename), self.outline)
@@ -217,8 +222,8 @@ class OutlineFolder(OutlineItem):
 
         self.items.append(item)
         return item
-    
-    def addText(self, name: str):
+
+    def addText(self, name: str) -> OutlineText:
         filename = safeFilename("%d-%s" % (len(self.items), name), "md")
 
         item = OutlineText(os.path.join(self.folderPath, filename), self.outline)
@@ -227,8 +232,8 @@ class OutlineFolder(OutlineItem):
 
         self.items.append(item)
         return item
-    
-    def initTemplate(self, levels: list, goal: Goal):
+
+    def initTemplate(self, levels: list, goal: Goal) -> None:
         level = levels[0]
 
         for i in range(level.size):
@@ -242,14 +247,14 @@ class OutlineFolder(OutlineItem):
                 item = self.addText(name)
                 item.goal = goal
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[OutlineItem]:
         return self.items.__iter__()
 
-    def contains(self, item: OutlineItem):
+    def contains(self, item: OutlineItem) -> bool:
         return item in self.items
 
     @classmethod
-    def loadItems(cls, outline: Outline, folder: OutlineFolder, recursive: bool = True):
+    def loadItems(cls, outline: Outline, folder: OutlineFolder, recursive: bool = True) -> None:
         folder.items.clear()
 
         names = os.listdir(folder.folderPath)
@@ -272,10 +277,12 @@ class OutlineFolder(OutlineItem):
             folder.items.append(item)
 
         if recursive:
-            for item in filter(lambda outlineItem: type(outlineItem) is OutlineFolder, folder.items):
+            for item in filter(
+                lambda outlineItem: type(outlineItem) is OutlineFolder, folder.items
+            ):
                 cls.loadItems(outline, item, recursive)
 
-    def textCount(self, counterKind: CounterKind = None) -> int:
+    def textCount(self, counterKind: CounterKind | None = None) -> int:
         if counterKind is None:
             counterKind = self.goalKind()
 
@@ -291,7 +298,7 @@ class OutlineFolder(OutlineItem):
 
         return count
 
-    def load(self, optimized: bool = True):
+    def load(self, optimized: bool = True) -> None:
         OutlineItem.load(self)
 
         metadata, _ = self.file.loadMMD(True)
@@ -303,15 +310,17 @@ class OutlineFolder(OutlineItem):
         self.complete(optimized=optimized)
 
     @classmethod
-    def saveItems(cls, folder, recursive: bool = True):
+    def saveItems(cls, folder: OutlineFolder, recursive: bool = True) -> None:
         for item in folder.items:
             item.save()
 
         if recursive:
-            for item in filter(lambda outlineItem: type(outlineItem) is OutlineFolder, folder.items):
+            for item in filter(
+                lambda outlineItem: type(outlineItem) is OutlineFolder, folder.items
+            ):
                 cls.saveItems(item, recursive)
 
-    def save(self):
+    def save(self) -> None:
         self.type = "folder"
 
         OutlineItem.save(self)
@@ -323,8 +332,14 @@ class OutlineFolder(OutlineItem):
 
 
 class Outline(AbstractData):
-
-    def __init__(self, path, characters: Characters, plots: Plots, labels: LabelHost, statuses: StatusHost):
+    def __init__(
+        self,
+        path: str,
+        characters: Characters,
+        plots: Plots,
+        labels: LabelHost,
+        statuses: StatusHost,
+    ) -> None:
         AbstractData.__init__(self, os.path.join(path, "outline"))
         self.host: UniqueIDHost = UniqueIDHost()
         self.characters: Characters = characters
@@ -334,18 +349,20 @@ class Outline(AbstractData):
         self.items: list = list()
         self.cache: dict = dict()
 
-    def changePath(self, path: str):
+    def changePath(self, path: str) -> None:
         AbstractData.changePath(self, os.path.join(path, "outline"))
 
         index = 0
         for item in self.items:
-            filename = safeFilename("%s-%s" % (str(index), item.title), None if type(item) is OutlineFolder else "md")
+            filename = safeFilename(
+                "%s-%s" % (str(index), item.title), None if type(item) is OutlineFolder else "md"
+            )
             path_ = os.path.join(self.dataPath, filename)
 
             item.changePath(path_)
             index += 1
-    
-    def addFolder(self, name: str):
+
+    def addFolder(self, name: str) -> OutlineFolder:
         filename = safeFilename("%d-%s" % (len(self.items), name))
 
         item = OutlineFolder(os.path.join(self.dataPath, filename), self)
@@ -354,8 +371,8 @@ class Outline(AbstractData):
 
         self.items.append(item)
         return item
-    
-    def addText(self, name: str):
+
+    def addText(self, name: str) -> OutlineText:
         filename = safeFilename("%d-%s" % (len(self.items), name), "md")
 
         item = OutlineText(os.path.join(self.dataPath, filename), self)
@@ -364,11 +381,11 @@ class Outline(AbstractData):
 
         self.items.append(item)
         return item
-    
-    def initTemplate(self, template: Template):
+
+    def initTemplate(self, template: Template) -> None:
         if len(template.levels) == 0:
             return
-        
+
         level = template.levels[0]
 
         for i in range(level.size):
@@ -411,7 +428,7 @@ class Outline(AbstractData):
 
         return result
 
-    def textCount(self, counterKind: CounterKind = None) -> int:
+    def textCount(self, counterKind: CounterKind | None = None) -> int:
         if counterKind is None:
             counterKind = self.goalKind()
 
@@ -426,7 +443,7 @@ class Outline(AbstractData):
     def goalCount(self) -> int:
         return sum(item.goalCount() for item in self.items)
 
-    def load(self):
+    def load(self) -> None:
         self.items.clear()
         self.cache.clear()
 
@@ -459,7 +476,7 @@ class Outline(AbstractData):
 
         self.complete()
 
-    def save(self):
+    def save(self) -> None:
         AbstractData.save(self)
 
         if not self.items:

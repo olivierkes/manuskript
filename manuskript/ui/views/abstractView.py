@@ -5,18 +5,17 @@ from gi.repository import Gtk
 
 
 class AbstractView:
-
-    def __init__(self):
+    def __init__(self) -> None:
         self.widget = None
         self.active = False
-    
-    def activate(self):
+
+    def activate(self) -> None:
         self.active = True
 
-    def deactivate(self):
+    def deactivate(self) -> None:
         self.active = False
 
-    def show(self):
+    def show(self) -> None:
         if not self.widget:
             return
 

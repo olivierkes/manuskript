@@ -12,13 +12,7 @@ from manuskript.io.mskFile import MskFile
 
 
 def formatByExtension(extension: str) -> str:
-    formats = {
-        "bin": "binary",
-        "md": "markdown",
-        "txt": "plain",
-        "bbl": "bibtex",
-        "tex": "latex"
-    }
+    formats = {"bin": "binary", "md": "markdown", "txt": "plain", "bbl": "bibtex", "tex": "latex"}
 
     if extension in formats:
         return formats[extension]

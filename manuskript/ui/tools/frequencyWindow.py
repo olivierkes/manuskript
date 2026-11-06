@@ -23,8 +23,7 @@ class AnalyzeStatus(Enum):
 
 
 class FrequencyWindow(AbstractDialog):
-
-    def __init__(self, mainWindow):
+    def __init__(self, mainWindow) -> None:
         AbstractDialog.__init__(self, mainWindow, "ui/frequency.glade", "frequency_window")
 
         self.analyzeStatus = AnalyzeStatus.NONE
@@ -53,7 +52,7 @@ class FrequencyWindow(AbstractDialog):
         self.phraseMaximum = None
         self.wordSize = None
 
-    def initWindow(self, builder, window):
+    def initWindow(self, builder: Gtk.Builder, window) -> None:
         self.headerBar = builder.get_object("header_bar")
         self.back = builder.get_object("back")
         self.wordLeaflet = builder.get_object("word_leaflet")
@@ -72,7 +71,7 @@ class FrequencyWindow(AbstractDialog):
 
         self.filteredFrequencyStore = builder.get_object("filtered_frequency_store")
         self.sortedFrequencyStore = builder.get_object("sorted_frequency_store")
-        
+
         self.filteredFrequencyStore.set_visible_func(self._filterFrequencies)
 
         self.refilter()
@@ -84,11 +83,15 @@ class FrequencyWindow(AbstractDialog):
         self.phraseMaximum = builder.get_object("phrase_maximum")
         self.wordSize = builder.get_object("word_size")
 
-        self.wordLeaflet.bind_property("folded", self.back, "visible",
-                                       GObject.BindingFlags.SYNC_CREATE)
-        self.wordLeaflet.bind_property("folded", self.headerBar, "show-close-button",
-                                       GObject.BindingFlags.SYNC_CREATE |
-                                       GObject.BindingFlags.INVERT_BOOLEAN)
+        self.wordLeaflet.bind_property(
+            "folded", self.back, "visible", GObject.BindingFlags.SYNC_CREATE
+        )
+        self.wordLeaflet.bind_property(
+            "folded",
+            self.headerBar,
+            "show-close-button",
+            GObject.BindingFlags.SYNC_CREATE | GObject.BindingFlags.INVERT_BOOLEAN,
+        )
 
         self.back.connect("clicked", self._backClicked)
         self.analyzeWords.connect("clicked", self._analyzeWordsClicked)
@@ -97,21 +100,23 @@ class FrequencyWindow(AbstractDialog):
         self.excludeWordSelection.connect("changed", self._excludeWordSelectionChanged)
         self.removeWord.connect("clicked", self._removeWordClicked)
         self.addWord.connect("clicked", self._addWordClicked)
-    
+
     def getProject(self) -> Project:
         return self.mainWindow.getProject()
-    
-    def _filterFrequencies(self, model, iterator, userdata):
+
+    def _filterFrequencies(
+        self, model: Gtk.TreeModel, iterator: Gtk.TreeIter, userdata: any
+    ) -> bool:
         word = model[iterator][0]
 
         if word is None:
             return False
-        
+
         word_size = validInt(self.wordSize.get_value())
 
         if len(word) < word_size:
             return False
-        
+
         if self.filteredAmount >= MAX_FILTERED_ENTRIES:
             return False
 
@@ -122,17 +127,17 @@ class FrequencyWindow(AbstractDialog):
                 return False
 
             iter = self.excludeWordsStore.iter_next(iter)
-        
+
         self.filteredAmount += 1
         return True
 
-    def _backClicked(self, button: Gtk.Button):
+    def _backClicked(self, button: Gtk.Button) -> None:
         if self.wordLeaflet.get_visible_child_name() == "wordlist_view":
             self.wordLeaflet.set_visible_child_name("wordfilter_view")
         else:
             self.hide()
-    
-    def __completeOutlineItem(self):
+
+    def __completeOutlineItem(self) -> bool:
         outline_item = self.outlineCompletion.pop(0)
 
         if isinstance(outline_item, OutlineFolder):
@@ -141,9 +146,9 @@ class FrequencyWindow(AbstractDialog):
         elif isinstance(outline_item, OutlineText):
             if outline_item.state != OutlineState.COMPLETE:
                 outline_item.load(False)
-            
+
             self.analyzeTexts.append(outline_item.text)
-        
+
         self.analyzeCompleted = self.analyzeCompleted + 1
 
         incomplete = len(self.outlineCompletion)
@@ -157,7 +162,7 @@ class FrequencyWindow(AbstractDialog):
 
         if incomplete > 0:
             return True
-        
+
         patterns = list()
 
         if self.analyzeStatus == AnalyzeStatus.WORDS:
@@ -170,12 +175,12 @@ class FrequencyWindow(AbstractDialog):
 
             for n in range(phrase_minimum, phrase_maximum + 1):
                 patterns.append(re.compile(r"\w+" + r"\s+\w+" * (n - 1)))
-        
+
         frequencies = dict()
         multiples = dict()
 
         text = "\n".join(self.analyzeTexts)
-        
+
         for pattern in patterns:
             for match in pattern.findall(text):
                 if match is None:
@@ -186,9 +191,9 @@ class FrequencyWindow(AbstractDialog):
                     multiples[match] = frequencies[match]
                 else:
                     frequencies[match] = 1
-        
+
         frequencies = multiples
-        
+
         if self.analyzeStatus == AnalyzeStatus.WORDS:
             self.wordsFrequencyStore.clear()
 
@@ -200,7 +205,7 @@ class FrequencyWindow(AbstractDialog):
 
                 self.wordsFrequencyStore.set_value(tree_iter, 0, validString(word))
                 self.wordsFrequencyStore.set_value(tree_iter, 1, validInt(frequency))
-            
+
             self.wordLeaflet.set_visible_child_name("wordlist_view")
         elif self.analyzeStatus == AnalyzeStatus.PHRASES:
             self.phrasesFrequencyStore.clear()
@@ -220,17 +225,17 @@ class FrequencyWindow(AbstractDialog):
                 self.phrasesFrequencyStore.set_value(tree_iter, 1, validInt(frequency))
 
                 entries += 1
-        
+
         self.refilter()
-        
+
         self.analyzeStatus = AnalyzeStatus.NONE
         self.analyzeTexts = list()
 
         self.analyzeWords.set_sensitive(True)
         self.analyzePhrases.set_sensitive(True)
         return False
-    
-    def analyze(self, status: AnalyzeStatus):
+
+    def analyze(self, status: AnalyzeStatus) -> None:
         if self.analyzeStatus != AnalyzeStatus.NONE:
             return
 
@@ -238,10 +243,10 @@ class FrequencyWindow(AbstractDialog):
 
         if project is None:
             return
-        
+
         self.analyzeWords.set_sensitive(False)
         self.analyzePhrases.set_sensitive(False)
-        
+
         self.analyzeStatus = status
 
         if len(self.outlineCompletion) == 0:
@@ -256,40 +261,40 @@ class FrequencyWindow(AbstractDialog):
             GLib.idle_add(self.__completeOutlineItem)
         for outline_item in project.outline:
             self.outlineCompletion.append(outline_item)
-    
-    def refilter(self):
+
+    def refilter(self) -> None:
         self.filteredAmount = 0
         self.filteredFrequencyStore.refilter()
 
-    def _analyzeWordsClicked(self, button: Gtk.Button):
+    def _analyzeWordsClicked(self, button: Gtk.Button) -> None:
         self.analyze(AnalyzeStatus.WORDS)
-    
-    def _analyzePhrasesClicked(self, button: Gtk.Button):
+
+    def _analyzePhrasesClicked(self, button: Gtk.Button) -> None:
         self.analyze(AnalyzeStatus.PHRASES)
-    
-    def _wordSizeChanged(self, adjustment: Gtk.Adjustment):
+
+    def _wordSizeChanged(self, adjustment: Gtk.Adjustment) -> None:
         self.refilter()
-    
-    def _excludeWordSelectionChanged(self, selection: Gtk.TreeSelection):
+
+    def _excludeWordSelectionChanged(self, selection: Gtk.TreeSelection) -> None:
         model, tree_iter = selection.get_selected()
 
         self.removeWord.set_sensitive(tree_iter is not None)
-    
-    def _removeWordClicked(self, button: Gtk.Button):
+
+    def _removeWordClicked(self, button: Gtk.Button) -> None:
         model, tree_iter = self.excludeWordSelection.get_selected()
 
         if tree_iter is None:
             return
-        
+
         self.excludeWordsStore.remove(tree_iter)
         self.refilter()
-    
-    def _addWordClicked(self, button: Gtk.Button):
+
+    def _addWordClicked(self, button: Gtk.Button) -> None:
         tree_iter = self.excludeWordsStore.append()
 
         if tree_iter is None:
             return
-        
+
         word = self.wordEntry.get_buffer().get_text()
         self.excludeWordsStore.set_value(tree_iter, 0, word)
         self.refilter()

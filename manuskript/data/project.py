@@ -2,7 +2,6 @@
 # --!-- coding: utf8 --!--
 
 import os
-
 from zipfile import BadZipFile
 
 from manuskript.data.abstractData import AbstractData
@@ -22,8 +21,7 @@ from manuskript.util import profileTime
 
 
 class Project(AbstractData):
-
-    def __init__(self, path: str):
+    def __init__(self, path: str) -> None:
         AbstractData.__init__(self, path)
         self.file = MskFile(self.dataPath)
 
@@ -36,20 +34,22 @@ class Project(AbstractData):
         self.characters = Characters(self.file.directoryPath)
         self.plots = Plots(self.file.directoryPath, self.characters)
         self.world = World(self.file.directoryPath)
-        self.outline = Outline(self.file.directoryPath, self.characters, self.plots, self.labels, self.statuses)
+        self.outline = Outline(
+            self.file.directoryPath, self.characters, self.plots, self.labels, self.statuses
+        )
         self.revisions = Revisions(self.file.directoryPath)
 
         self.version.value = self.file.getVersion()
         self.settings.set("saveToZip", self.file.isZipFile())
 
-    def __del__(self):
+    def __del__(self) -> None:
         del self.file
 
-    def getName(self):
+    def getName(self) -> str:
         parts = os.path.split(self.file.path)
         name = parts[-1]
 
-        if name.endswith('.msk'):
+        if name.endswith(".msk"):
             name = name[:-4]
 
         return name
@@ -60,10 +60,10 @@ class Project(AbstractData):
     def canUpgradeVersion(self) -> bool:
         return self.version.value < CURRENT_MSK_VERSION
 
-    def upgradeVersion(self):
+    def upgradeVersion(self) -> None:
         self.version.value = CURRENT_MSK_VERSION
 
-    def changePath(self, path: str):
+    def changePath(self, path: str) -> None:
         AbstractData.changePath(self, path)
         saveToZip = self.settings.isEnabled("saveToZip")
 
@@ -82,7 +82,7 @@ class Project(AbstractData):
         self.outline.changePath(self.file.directoryPath)
         self.revisions.changePath(self.file.directoryPath)
 
-    def load(self):
+    def load(self) -> None:
         AbstractData.load(self)
 
         try:
@@ -106,7 +106,7 @@ class Project(AbstractData):
         self.file.setZipFile(self.settings.isEnabled("saveToZip"))
         self.complete()
 
-    def save(self):
+    def save(self) -> None:
         AbstractData.save(self)
         saveToZip = self.settings.isEnabled("saveToZip")
 
@@ -123,7 +123,7 @@ class Project(AbstractData):
         self.plots.save()
         self.world.save()
         self.outline.save()
-        #self.revisions.save()
+        # self.revisions.save()
 
         self.file.save(saveToZip)
         self.complete()

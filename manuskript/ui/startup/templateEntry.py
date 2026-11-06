@@ -8,8 +8,7 @@ from manuskript.util import validInt, validString
 
 
 class TemplateEntry:
-
-    def __init__(self, window):
+    def __init__(self, window) -> None:
         self.template = None
         self.level = None
 
@@ -27,7 +26,7 @@ class TemplateEntry:
 
         self.deleteButton.connect("clicked", self._deleteClicked)
 
-    def bindTemplate(self, template: Template, level: TemplateLevel = None):
+    def bindTemplate(self, template: Template, level: TemplateLevel | None = None) -> None:
         self.template = template
 
         if self.template is None:
@@ -37,7 +36,9 @@ class TemplateEntry:
         self.level = level if level in self.template.levels else None
 
         if self.level is None:
-            self.valueAdjustment.set_value(0 if self.template.goal is None else validInt(self.template.goal.value))
+            self.valueAdjustment.set_value(
+                0 if self.template.goal is None else validInt(self.template.goal.value)
+            )
 
             self.entryStack.set_visible_child_name("page_label")
         else:
@@ -46,7 +47,7 @@ class TemplateEntry:
 
             self.entryStack.set_visible_child_name("page_entry")
 
-    def _deleteClicked(self, button: Gtk.Button):
+    def _deleteClicked(self, button: Gtk.Button) -> None:
         if self.template is None:
             return
 
@@ -56,10 +57,8 @@ class TemplateEntry:
             self.template.levels.remove(self.level)
 
         self.window.loadTemplate(self.template)
-        self.window = None
-
         self.template = None
         self.level = None
 
-    def show(self):
+    def show(self) -> None:
         self.widget.show_all()

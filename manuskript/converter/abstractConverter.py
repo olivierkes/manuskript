@@ -5,8 +5,7 @@ from manuskript.io import TextFile
 
 
 class AbstractConverter:
-
-    def __init__(self):
+    def __init__(self) -> None:
         self.inputFormats = []
         self.outputFormats = []
 
@@ -36,11 +35,11 @@ class AbstractConverter:
 
         if text is None:
             return False
-        
+
         text = self.convert(text, inputFormat, outputFormat)
 
         if text is None:
             return False
-        
+
         TextFile(outputPath).save(text)
         return True

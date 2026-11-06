@@ -3,19 +3,19 @@
 
 from gi.repository import Gtk, Handy
 
-class AbstractDialog:
 
-    def __init__(self, mainWindow, uiTemplatePath, uiDialogId):
+class AbstractDialog:
+    def __init__(self, mainWindow, uiTemplatePath, uiDialogId) -> None:
         self.mainWindow = mainWindow
         self.window = None
 
         self.builderTemplatePath = uiTemplatePath
         self.builderObjectId = uiDialogId
 
-    def initWindow(self, builder, window):
+    def initWindow(self, builder, window) -> None:
         pass
 
-    def __initWindow(self):
+    def __initWindow(self) -> None:
         builder = Gtk.Builder()
         builder.add_from_file(self.builderTemplatePath)
 
@@ -26,25 +26,25 @@ class AbstractDialog:
 
         self.initWindow(builder, self.window)
 
-    def _destroyWindow(self, window: Gtk.Widget):
+    def _destroyWindow(self, window: Gtk.Widget) -> None:
         self.window = None
 
         if not self.mainWindow.isVisible():
             self.mainWindow.exit()
 
-    def show(self):
+    def show(self) -> None:
         if self.window is None:
             self.__initWindow()
 
         self.window.show()
 
-    def hide(self):
+    def hide(self) -> None:
         if self.window is None:
             return
 
         self.window.hide()
 
-    def isVisible(self):
+    def isVisible(self) -> bool:
         if self.window is None:
             return False
 

@@ -5,25 +5,24 @@ from manuskript.util import CounterKind, countText
 
 
 class Goal:
-
-    def __init__(self, value: int = 0, kind: CounterKind = CounterKind.WORDS):
+    def __init__(self, value: int = 0, kind: CounterKind = CounterKind.WORDS) -> None:
         self.value = max(value, 0)
         self.kind = kind
 
-    def prettyString(self):
+    def prettyString(self) -> str:
         return str(self.value) + " " + self.kind.name.lower()
 
-    def __str__(self):
+    def __str__(self) -> str:
         if self.kind != CounterKind.WORDS:
             return self.prettyString()
         else:
             return str(self.value)
 
-    def count(self, text: str):
+    def count(self, text: str) -> int:
         return countText(text, self.kind)
 
     @classmethod
-    def parse(cls, string: str):
+    def parse(cls, string: str | None) -> Goal | None:
         if string is None:
             return None
 

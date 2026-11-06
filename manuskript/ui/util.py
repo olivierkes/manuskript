@@ -3,28 +3,28 @@
 
 import sys
 
-from gi.repository import GdkPixbuf, Gdk
+from gi.repository import GdkPixbuf, Gdk, Gtk
 
 from manuskript.data import Color, OutlineItem, OutlineText, OutlineFolder
 from manuskript.util import getTranslation, profileTime
 
 
-def rgbaFromColor(color: Color) -> Gdk.RGBA:
+def rgbaFromColor(color: Color | None) -> Gdk.RGBA:
     rgba = Gdk.RGBA()
-    rgba.red = 0 if color is None else color.red / 255.
-    rgba.green = 0 if color is None else color.green / 255.
-    rgba.blue = 0 if color is None else color.blue / 255.
-    rgba.alpha = 1.
+    rgba.red = 0 if color is None else color.red / 255.0
+    rgba.green = 0 if color is None else color.green / 255.0
+    rgba.blue = 0 if color is None else color.blue / 255.0
+    rgba.alpha = 1.0
     return rgba
 
 
-def pixbufFromColor(color: Color) -> GdkPixbuf:
+def pixbufFromColor(color: Color | None) -> GdkPixbuf:
     pixbuf = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB, False, 8, 16, 16)
     pixbuf.fill(0 if color is None else color.getRGB())
     return pixbuf
 
 
-def bindMenuItem(builder, id, action):
+def bindMenuItem(builder: Gtk.Builder, id: str, action) -> None:
     menuItem = builder.get_object(id)
 
     if menuItem is None:
@@ -60,12 +60,11 @@ def packViewIntoSlot(slot, view_cls, data=None, secondaryData=None):
     return view
 
 
-def unpackFromSlot(slot, view):
+def unpackFromSlot(slot, view) -> None:
     if (slot is not None) and (view.widget is not None):
         slot.remove(view.widget)
 
     del view
-    return None
 
 
 def iconByOutlineItemType(outlineItem: OutlineItem) -> str:

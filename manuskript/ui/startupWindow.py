@@ -13,8 +13,7 @@ from manuskript.ui.util import bindMenuItem
 
 
 class StartupWindow(AbstractDialog):
-
-    def __init__(self, mainWindow):
+    def __init__(self, mainWindow) -> None:
         AbstractDialog.__init__(self, mainWindow, "ui/startup.glade", "startup_window")
 
         self.templates = Template.getDefaultTemplates()
@@ -43,13 +42,16 @@ class StartupWindow(AbstractDialog):
         self.recentButton = None
         self.createButton = None
 
-    def initWindow(self, builder, window):
+    def initWindow(self, builder: Gtk.Builder, window) -> None:
         self.headerBar = builder.get_object("header_bar")
         self.templatesLeaflet = builder.get_object("templates_leaflet")
 
-        self.templatesLeaflet.bind_property("folded", self.headerBar, "show-close-button",
-                                            GObject.BindingFlags.SYNC_CREATE |
-                                            GObject.BindingFlags.INVERT_BOOLEAN)
+        self.templatesLeaflet.bind_property(
+            "folded",
+            self.headerBar,
+            "show-close-button",
+            GObject.BindingFlags.SYNC_CREATE | GObject.BindingFlags.INVERT_BOOLEAN,
+        )
 
         self.recentChooserMenu = builder.get_object("recent_chooser_menu")
         self.recentChooserMenuBtn = builder.get_object("recent_chooser_menu_btn")
@@ -63,10 +65,10 @@ class StartupWindow(AbstractDialog):
         bindMenuItem(builder, "about_menu_item", self._aboutAction)
 
         self.templatesStore = builder.get_object("templates_store")
-        
+
         for index in range(len(self.templates)):
             tree_iter = self.templatesStore.append()
-            
+
             if tree_iter is None:
                 continue
 
@@ -81,11 +83,14 @@ class StartupWindow(AbstractDialog):
         self.demoTemplatesStore = builder.get_object("demo_templates_store")
 
         self.fictionTemplatesStore.set_visible_func(
-            lambda model, iterator, userdata: model[iterator][2] == TemplateKind.FICTION.value)
+            lambda model, iterator, userdata: model[iterator][2] == TemplateKind.FICTION.value
+        )
         self.nonfictionTemplatesStore.set_visible_func(
-            lambda model, iterator, userdata: model[iterator][2] == TemplateKind.NONFICTION.value)
+            lambda model, iterator, userdata: model[iterator][2] == TemplateKind.NONFICTION.value
+        )
         self.demoTemplatesStore.set_visible_func(
-            lambda model, iterator, userdata: model[iterator][2] == TemplateKind.DEMO.value)
+            lambda model, iterator, userdata: model[iterator][2] == TemplateKind.DEMO.value
+        )
 
         self.fictionTemplatesStore.refilter()
         self.nonfictionTemplatesStore.refilter()
@@ -94,7 +99,7 @@ class StartupWindow(AbstractDialog):
         self.templateSelections = [
             builder.get_object("fiction_template_selection"),
             builder.get_object("nonfiction_template_selection"),
-            builder.get_object("demo_template_selection")
+            builder.get_object("demo_template_selection"),
         ]
 
         for selection in self.templateSelections:
@@ -118,14 +123,18 @@ class StartupWindow(AbstractDialog):
         self.openButton.connect("clicked", self._openClicked)
         self.createButton.connect("clicked", self._createClicked)
 
-    def loadTemplate(self, template: Template):
+    def loadTemplate(self, template: Template) -> None:
         self.template = template
         self.templateLevelsListbox.foreach(lambda child: self.templateLevelsListbox.remove(child))
 
         self.addLevelButton.set_sensitive(self.template is not None)
-        self.addGoalButton.set_sensitive((self.template is not None) and (self.template.goal is None))
+        self.addGoalButton.set_sensitive(
+            (self.template is not None) and (self.template.goal is None)
+        )
 
-        self.templatesLeaflet.set_visible_child_name("template_details" if template is not None else "templates_list")
+        self.templatesLeaflet.set_visible_child_name(
+            "template_details" if template is not None else "templates_list"
+        )
         self.backButton.set_visible(template is not None)
 
         if self.template is None:
@@ -147,7 +156,7 @@ class StartupWindow(AbstractDialog):
 
         self.goalLabel.set_text(self.template.getGoalString())
 
-    def _templateSelectionChanged(self, selection: Gtk.TreeSelection):
+    def _templateSelectionChanged(self, selection: Gtk.TreeSelection) -> None:
         model, tree_iter = selection.get_selected()
 
         if tree_iter is None:
@@ -160,38 +169,42 @@ class StartupWindow(AbstractDialog):
 
         index = model[tree_iter][0]
 
-        self.loadTemplate(self.templates[index] if (index >= 0) and (index < len(self.templates)) else None)
+        self.loadTemplate(
+            self.templates[index] if (index >= 0) and (index < len(self.templates)) else None
+        )
 
-    def _addLevelClicked(self, button: Gtk.Button):
+    def _addLevelClicked(self, button: Gtk.Button) -> None:
         if self.template is None:
             return
 
         self.template.addLevel()
         self.loadTemplate(self.template)
 
-    def _addGoalClicked(self, button: Gtk.Button):
+    def _addGoalClicked(self, button: Gtk.Button) -> None:
         if self.template is None:
             return
 
         self.template.addGoal()
         self.loadTemplate(self.template)
-    
-    def _backClicked(self, button: Gtk.Button):
+
+    def _backClicked(self, button: Gtk.Button) -> None:
         for selection in self.templateSelections:
             selection.unselect_all()
 
-    def openProject(self):
+    def openProject(self) -> None:
         path = openFileDialog(self.window, FileFilter("Manuskript project", "msk"))
         if path is None:
             return
 
         self.mainWindow.openProject(path)
 
-    def _openClicked(self, button: Gtk.Button):
+    def _openClicked(self, button: Gtk.Button) -> None:
         self.openProject()
 
-    def _createClicked(self, button: Gtk.Button):
-        path = saveFileDialog(self.window, FileFilter("Manuskript project", "msk"), appendAllFilter=False)
+    def _createClicked(self, button: Gtk.Button) -> None:
+        path = saveFileDialog(
+            self.window, FileFilter("Manuskript project", "msk"), appendAllFilter=False
+        )
         if path is None:
             return
 
@@ -199,15 +212,15 @@ class StartupWindow(AbstractDialog):
 
         if self.template is not None:
             project.outline.initTemplate(self.template)
-        
+
         project.save()
 
         self.mainWindow.openProject(path)
 
-    def _openAction(self, menuItem: Gtk.MenuItem):
+    def _openAction(self, menuItem: Gtk.MenuItem) -> None:
         self.openProject()
 
-    def _recentAction(self, recentChooser: Gtk.RecentChooser):
+    def _recentAction(self, recentChooser: Gtk.RecentChooser) -> None:
         uri = recentChooser.get_current_uri()
         if uri is None:
             return
@@ -218,8 +231,8 @@ class StartupWindow(AbstractDialog):
 
         self.mainWindow.openProject(path)
 
-    def _quitAction(self, menuItem: Gtk.MenuItem):
+    def _quitAction(self, menuItem: Gtk.MenuItem) -> None:
         self.mainWindow.exit(True)
 
-    def _aboutAction(self, menuItem: Gtk.MenuItem):
+    def _aboutAction(self, menuItem: Gtk.MenuItem) -> None:
         self.mainWindow.aboutDialog.show()

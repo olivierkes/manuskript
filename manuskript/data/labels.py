@@ -3,6 +3,7 @@
 
 import collections
 import os
+from typing import Iterator
 
 from manuskript.data.abstractData import AbstractData
 from manuskript.data.color import Color
@@ -10,47 +11,48 @@ from manuskript.io.mmdFile import MmdFile
 
 
 class Label:
-
-    def __init__(self, host, index: int, name: str, color: Color):
+    def __init__(self, host: LabelHost, index: int, name: str, color: Color) -> None:
         self.host = host
         self.ID = index
 
         self.name = name
         self.color = color
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
-    def load(self):
+    def load(self) -> None:
         self.host.load()
 
-    def save(self):
+    def save(self) -> None:
         self.host.save()
 
 
 class LabelHost(AbstractData):
-
-    def __init__(self, path):
+    def __init__(self, path) -> None:
         AbstractData.__init__(self, os.path.join(path, "labels.txt"))
         self.file = MmdFile(self.dataPath, 21)
-        self.labels = collections.OrderedDict()
+        self.labels: collections.OrderedDict[str, Label] = collections.OrderedDict()
 
-    def changePath(self, path: str):
+    def changePath(self, path: str) -> None:
         AbstractData.changePath(self, os.path.join(path, "labels.txt"))
         self.file = MmdFile(self.dataPath, 21)
 
-    def addLabel(self, name: str = None, color: Color = None) -> Label:
+    def addLabel(self, name: str | None = None, color: Color | None = None) -> Label:
         if name is None:
             name = "New Label"
 
-        label = Label(self, 1+len(self.labels), name, color)
+        if color is None:
+            color = Color(0, 0, 0)
+
+        label = Label(self, 1 + len(self.labels), name, color)
         self.labels[name] = label
         return label
 
     def removeLabel(self, name: str) -> Label:
         return self.labels.pop(name)
 
-    def renameLabel(self, oldName: str, newName: str):
+    def renameLabel(self, oldName: str, newName: str) -> None:
         match = False
         drop = [oldName]
 
@@ -71,7 +73,7 @@ class LabelHost(AbstractData):
         for label in labels:
             self.labels[label.name] = label
 
-    def getLabel(self, name: str) -> Label:
+    def getLabel(self, name: str) -> Label | None:
         return self.labels.get(name)
 
     def getLabelByID(self, ID: int | None) -> Label | None:
@@ -88,10 +90,10 @@ class LabelHost(AbstractData):
 
         return None
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[Label]:
         return self.labels.values().__iter__()
 
-    def load(self):
+    def load(self) -> None:
         self.labels.clear()
         AbstractData.load(self)
 
@@ -101,7 +103,7 @@ class LabelHost(AbstractData):
             self.complete(False)
             return
 
-        for (name, value) in metadata.items():
+        for name, value in metadata.items():
             if value is None:
                 continue
 
@@ -109,11 +111,11 @@ class LabelHost(AbstractData):
 
         self.complete()
 
-    def save(self):
+    def save(self) -> None:
         AbstractData.save(self)
         metadata = collections.OrderedDict()
 
-        for (name, label) in self.labels.items():
+        for name, label in self.labels.items():
             metadata[name] = label.color
 
         self.file.save((metadata, None))

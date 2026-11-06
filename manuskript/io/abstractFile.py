@@ -3,15 +3,14 @@
 
 
 class AbstractFile:
-
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
         self.path = path
 
-    def load(self):
-        raise IOError('Loading undefined!')
+    def load(self) -> any:
+        raise IOError("Loading undefined!")
 
-    def save(self, content):
-        raise IOError('Saving undefined!')
+    def save(self, content: any) -> None:
+        raise IOError("Saving undefined!")
 
-    def remove(self):
-        raise IOError('Removing undefined!')
+    def remove(self) -> None:
+        raise IOError("Removing undefined!")

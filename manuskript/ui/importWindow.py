@@ -7,8 +7,7 @@ from manuskript.ui.abstractDialog import AbstractDialog
 from manuskript.data import Project
 
 class ImportWindow(AbstractDialog):
-
-    def __init__(self, mainWindow):
+    def __init__(self, mainWindow) -> None:
         AbstractDialog.__init__(self, mainWindow, "ui/import.glade", "import_window")
 
         self.headerBar = None
@@ -16,29 +15,34 @@ class ImportWindow(AbstractDialog):
         self.forward = None
         self.previewLeaflet = None
 
-    def initWindow(self, builder, window):
+    def initWindow(self, builder: Gtk.Builder, window) -> None:
         self.headerBar = builder.get_object("header_bar")
         self.back = builder.get_object("back")
         self.forward = builder.get_object("forward")
         self.previewLeaflet = builder.get_object("preview_leaflet")
 
-        self.previewLeaflet.bind_property("folded", self.back, "visible",
-                                          GObject.BindingFlags.SYNC_CREATE)
-        self.previewLeaflet.bind_property("folded", self.forward, "visible",
-                                          GObject.BindingFlags.SYNC_CREATE)
-        self.previewLeaflet.bind_property("folded", self.headerBar, "show-close-button",
-                                          GObject.BindingFlags.SYNC_CREATE |
-                                          GObject.BindingFlags.INVERT_BOOLEAN)
-        
+        self.previewLeaflet.bind_property(
+            "folded", self.back, "visible", GObject.BindingFlags.SYNC_CREATE
+        )
+        self.previewLeaflet.bind_property(
+            "folded", self.forward, "visible", GObject.BindingFlags.SYNC_CREATE
+        )
+        self.previewLeaflet.bind_property(
+            "folded",
+            self.headerBar,
+            "show-close-button",
+            GObject.BindingFlags.SYNC_CREATE | GObject.BindingFlags.INVERT_BOOLEAN,
+        )
+
         self.back.connect("clicked", self._backClicked)
         self.forward.connect("clicked", self._forwardClicked)
-    
-    def _backClicked(self, button: Gtk.Button):
+
+    def _backClicked(self, button: Gtk.Button) -> None:
         if self.previewLeaflet.get_visible_child_name() == "preview_box":
             self.previewLeaflet.set_visible_child_name("settings_box")
         else:
             self.hide()
-    
-    def _forwardClicked(self, button: Gtk.Button):
+
+    def _forwardClicked(self, button: Gtk.Button) -> None:
         if self.previewLeaflet.get_visible_child_name() == "settings_box":
             self.previewLeaflet.set_visible_child_name("preview_box")

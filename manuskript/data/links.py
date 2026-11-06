@@ -15,18 +15,17 @@ class LinkAction(Enum):
 
 
 class Links:
-
-    def __init__(self):
+    def __init__(self) -> None:
         self.callbacks = list()
 
-    def add(self, callback: Callable[[LinkAction, UniqueID, any], None]):
+    def add(self, callback: Callable[[LinkAction, UniqueID, any], None]) -> None:
         self.callbacks.append(callback)
 
-    def remove(self, callback: Callable[[LinkAction, UniqueID, any], None]):
+    def remove(self, callback: Callable[[LinkAction, UniqueID, any], None]) -> None:
         if callback in self.callbacks:
             self.callbacks.remove(callback)
 
-    def call(self, action: LinkAction, UID: UniqueID, host: any):
+    def call(self, action: LinkAction, UID: UniqueID, host: any) -> None:
         for callback in self.callbacks:
             callback(action, UID, host)
 

@@ -11,15 +11,15 @@ class Importance(Enum):
     MAIN = 2
 
     @classmethod
-    def fromValue(cls, value: int):
+    def fromValue(cls, value: int) -> Importance | None:
         return None if (value < 0) or (value > 2) else Importance(value)
 
     @classmethod
-    def asValue(cls, importance):
+    def asValue(cls, importance: Importance) -> int:
         return 0 if importance is None else importance.value
 
     @classmethod
-    def fromRawString(cls, raw: str):
+    def fromRawString(cls, raw: str | None) -> Importance | None:
         if raw is None:
             return None
 
@@ -29,5 +29,5 @@ class Importance(Enum):
             return None
 
     @classmethod
-    def toRawString(cls, importance):
+    def toRawString(cls, importance: Importance | None) -> str | None:
         return None if importance is None else str(importance.value)

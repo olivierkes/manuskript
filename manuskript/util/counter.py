@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import re
-
 from enum import Enum, unique
 
 _char_pattern_with_spaces = re.compile(r"[\S ]")
@@ -20,9 +19,8 @@ class CounterKind(Enum):
 
 
 class CharCounter:
-
     @classmethod
-    def count(cls, text: str, use_spaces: bool = False):
+    def count(cls, text: str, use_spaces: bool = False) -> int:
         if use_spaces:
             return len(_char_pattern_with_spaces.findall(text))
         else:
@@ -30,15 +28,13 @@ class CharCounter:
 
 
 class WordCounter:
-
     @classmethod
-    def count(cls, text: str):
+    def count(cls, text: str) -> int:
         return len(_word_pattern.findall(text))
 
 
 class PageCounter:
-
     @classmethod
-    def count(cls, text: str):
+    def count(cls, text: str) -> int:
         wc = WordCounter.count(text)
-        return int(wc / 25) / 10.
+        return int(wc // 25) // 10

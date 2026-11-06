@@ -3,52 +3,51 @@
 
 import collections
 import os
+from typing import Iterator
 
 from manuskript.data.abstractData import AbstractData
 from manuskript.io.textFile import TextFile
 
 
 class Status:
-
-    def __init__(self, host, index: int, name: str):
+    def __init__(self, host: StatusHost, index: int, name: str) -> None:
         self.host = host
         self.ID = index
 
         self.name = name
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
-    def load(self):
+    def load(self) -> None:
         self.host.load()
 
-    def save(self):
+    def save(self) -> None:
         self.host.save()
 
 
 class StatusHost(AbstractData):
-
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
         AbstractData.__init__(self, os.path.join(path, "status.txt"))
         self.file = TextFile(self.dataPath)
         self.statuses = collections.OrderedDict()
 
-    def changePath(self, path: str):
+    def changePath(self, path: str) -> None:
         AbstractData.changePath(self, os.path.join(path, "status.txt"))
         self.file = TextFile(self.dataPath)
 
-    def addStatus(self, name: str = None) -> Status:
+    def addStatus(self, name: str | None = None) -> Status:
         if name is None:
             name = "New Status"
 
-        status = Status(self, 1+len(self.statuses), name)
+        status = Status(self, 1 + len(self.statuses), name)
         self.statuses[name] = status
         return status
 
     def removeStatus(self, name: str) -> Status:
         return self.statuses.pop(name)
 
-    def renameStatus(self, oldName: str, newName: str):
+    def renameStatus(self, oldName: str, newName: str) -> None:
         match = False
         drop = [oldName]
 
@@ -69,7 +68,7 @@ class StatusHost(AbstractData):
         for status in statuses:
             self.statuses[status.name] = status
 
-    def getStatus(self, name: str) -> Status:
+    def getStatus(self, name: str) -> Status | None:
         return self.statuses.get(name)
 
     def getStatusByID(self, ID: int | None) -> Status | None:
@@ -86,10 +85,10 @@ class StatusHost(AbstractData):
 
         return None
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[Status]:
         return self.statuses.values().__iter__()
 
-    def load(self):
+    def load(self) -> None:
         self.statuses.clear()
 
         AbstractData.load(self)
@@ -114,7 +113,7 @@ class StatusHost(AbstractData):
 
         self.complete()
 
-    def save(self):
+    def save(self) -> None:
         AbstractData.save(self)
 
         self.file.save("\n".join(self.statuses.keys()) + "\n")

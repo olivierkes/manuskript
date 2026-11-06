@@ -15,24 +15,23 @@ class DataStatus(Enum):
 
 
 class AbstractData:
-
-    def __init__(self, path: str):
+    def __init__(self, path: str) -> None:
         self.dataPath = path
         self.dataStatus = DataStatus.UNDEFINED
 
-    def changePath(self, path: str):
+    def changePath(self, path: str) -> None:
         print("{} -> {}".format(self.dataPath, path))
 
         self.dataPath = path
 
-    def complete(self, statusCompletion: bool = True):
+    def complete(self, statusCompletion: bool = True) -> None:
         if self.dataStatus == DataStatus.LOADING:
             self.dataStatus = DataStatus.LOADED if statusCompletion else DataStatus.UNDEFINED
         elif self.dataStatus == DataStatus.SAVING:
             self.dataStatus = DataStatus.SAVED
 
-    def load(self):
+    def load(self) -> None:
         self.dataStatus = DataStatus.LOADING
 
-    def save(self):
+    def save(self) -> None:
         self.dataStatus = DataStatus.SAVING

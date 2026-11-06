@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from typing import Optional
+
 from gi.repository import GLib, GObject, Gtk
 
 from manuskript.data import Project
@@ -22,12 +24,11 @@ from manuskript.util import parseFilenameFromURL, validString
 
 
 class MainWindow:
-
-    def __init__(self):
+    def __init__(self) -> None:
         self.plugins: list[AbstractPlugin] = findPlugins()
-        self.project: Project = None
-        self.regioner: AbstractRegioner = None
-        self.spellchecker: AbstractSpellchecker = None
+        self.project: Optional[Project] = None
+        self.regioner: Optional[AbstractRegioner] = None
+        self.spellchecker: Optional[AbstractSpellchecker] = None
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/main.glade")
@@ -40,9 +41,15 @@ class MainWindow:
         self.viewSwitcherBar = builder.get_object("view_switcher_bar")
         self.mainStack = builder.get_object("main_stack")
 
-        self.leaflet.bind_property("folded", self.viewSwitcherBar, "reveal", GObject.BindingFlags.SYNC_CREATE)
-        self.leaflet.bind_property("folded", self.headerBar, "show-close-button", GObject.BindingFlags.SYNC_CREATE |
-                                   GObject.BindingFlags.INVERT_BOOLEAN)
+        self.leaflet.bind_property(
+            "folded", self.viewSwitcherBar, "reveal", GObject.BindingFlags.SYNC_CREATE
+        )
+        self.leaflet.bind_property(
+            "folded",
+            self.headerBar,
+            "show-close-button",
+            GObject.BindingFlags.SYNC_CREATE | GObject.BindingFlags.INVERT_BOOLEAN,
+        )
 
         self.generalSlot = builder.get_object("general_slot")
         self.summarySlot = builder.get_object("summary_slot")
@@ -77,7 +84,7 @@ class MainWindow:
             self.startupWindow,
             self.aboutDialog,
             self.frequencyWindow,
-            self.settingsWindow
+            self.settingsWindow,
         ]
 
         self.recentChooserMenu = builder.get_object("recent_chooser_menu")
@@ -117,11 +124,11 @@ class MainWindow:
         self.reloadDictionaries()
         self.hide()
 
-    def getProject(self) -> Project:
+    def getProject(self) -> Project | None:
         return self.project
 
-    def reloadDictionaries(self):
-        def clearMenuItem(item: Gtk.RadioMenuItem):
+    def reloadDictionaries(self) -> None:
+        def clearMenuItem(item: Gtk.RadioMenuItem) -> None:
             item.disconnect("toggled", self._toggledSpellcheckerItem)
             self.dictionaryMenu.remove(item)
 
@@ -139,7 +146,9 @@ class MainWindow:
             self.regioner = regioner
 
         for spellchecker in getSpellcheckers():
-            menuItem = Gtk.RadioMenuItem.new_with_label(self.dictionaryMenuGroup, spellchecker.getTitle())
+            menuItem = Gtk.RadioMenuItem.new_with_label(
+                self.dictionaryMenuGroup, spellchecker.getTitle()
+            )
             menuItem.connect("toggled", self._toggledSpellcheckerItem)
             menuItem.set_active(len(self.dictionaryMenuGroup) == 0)
             menuItem.spellchecker = spellchecker
@@ -155,7 +164,7 @@ class MainWindow:
         if selectedRadioMenuItem:
             self._toggledSpellcheckerItem(selectedRadioMenuItem)
 
-    def _toggledSpellcheckerItem(self, item: Gtk.CheckMenuItem):
+    def _toggledSpellcheckerItem(self, item: Gtk.CheckMenuItem) -> None:
         if not hasattr(item, "spellchecker"):
             return
 
@@ -169,13 +178,16 @@ class MainWindow:
         for s in getSplitters():
             splitter = s
 
+        if (self.regioner is None) or (splitter is None):
+            return
+
         if self.project is None:
             return
         if self.project.outline is None:
             return
 
         if not item.get_active():
-          return
+            return
 
         mistakes = 0
 
@@ -187,15 +199,17 @@ class MainWindow:
             regions = self.regioner.splitText(text)
 
             for t in splitter.splitRegions(regions).tuples:
-                if self.spellchecker.isMisspelled(text[t.begin:t.end]):
+                if self.spellchecker.isMisspelled(text[t.begin : t.end]):
                     mistakes += 1
 
         print(mistakes)
 
-    def __checkStackSelection(self, selected=None):
+    def __checkStackSelection(self, selected=None) -> bool:
         slot = self.mainStack.get_visible_child()
 
-        self.idleStackSelection = GLib.timeout_add(100, self.__checkStackSelection, slot, priority=GLib.PRIORITY_HIGH_IDLE)
+        self.idleStackSelection = GLib.timeout_add(
+            100, self.__checkStackSelection, slot, priority=GLib.PRIORITY_HIGH_IDLE
+        )
 
         if selected == slot:
             return False
@@ -232,7 +246,7 @@ class MainWindow:
 
         return False
 
-    def openProject(self, path=None):
+    def openProject(self, path: str | None = None) -> None:
         if self.project is not None:
             self.closeProject()
 
@@ -246,8 +260,12 @@ class MainWindow:
 
         self.generalView = packViewIntoSlot(self.generalSlot, GeneralView, self.project.info)
         self.summaryView = packViewIntoSlot(self.summarySlot, SummaryView, self.project.summary)
-        self.charactersView = packViewIntoSlot(self.charactersSlot, CharactersView, self.project.characters)
-        self.plotView = packViewIntoSlot(self.plotSlot, PlotView, self.project.plots, self.project.characters)
+        self.charactersView = packViewIntoSlot(
+            self.charactersSlot, CharactersView, self.project.characters
+        )
+        self.plotView = packViewIntoSlot(
+            self.plotSlot, PlotView, self.project.plots, self.project.characters
+        )
         self.worldView = packViewIntoSlot(self.worldSlot, WorldView, self.project.world)
         self.outlineView = packViewIntoSlot(self.outlineSlot, OutlineView, self.project.outline)
         self.editorView = packViewIntoSlot(self.editorSlot, EditorView, self.project)
@@ -255,12 +273,14 @@ class MainWindow:
         if 0 != self.idleStackSelection:
             GLib.source_remove(self.idleStackSelection)
 
-        self.idleStackSelection = GLib.idle_add(self.__checkStackSelection, priority=GLib.PRIORITY_HIGH_IDLE)
+        self.idleStackSelection = GLib.idle_add(
+            self.__checkStackSelection, priority=GLib.PRIORITY_HIGH_IDLE
+        )
 
         self.startupWindow.hide()
         self.show()
 
-    def closeProject(self):
+    def closeProject(self) -> None:
         if 0 != self.idleStackSelection:
             GLib.source_remove(self.idleStackSelection)
             self.idleStackSelection = 0
@@ -280,14 +300,14 @@ class MainWindow:
         self.hide()
         self.startupWindow.show()
 
-    def _openAction(self, menuItem: Gtk.MenuItem):
+    def _openAction(self, menuItem: Gtk.MenuItem) -> None:
         path = openFileDialog(self.window, FileFilter("Manuskript project", "msk"))
         if path is None:
             return
 
         self.openProject(path)
 
-    def _recentAction(self, recentChooser: Gtk.RecentChooser):
+    def _recentAction(self, recentChooser: Gtk.RecentChooser) -> None:
         uri = recentChooser.get_current_uri()
         if uri is None:
             return
@@ -298,10 +318,16 @@ class MainWindow:
 
         self.openProject(path)
 
-    def _saveAction(self, menuItem: Gtk.MenuItem):
+    def _saveAction(self, menuItem: Gtk.MenuItem) -> None:
+        if self.project is None:
+            return
+
         self.project.save()
 
-    def _saveAsAction(self, menuItem: Gtk.MenuItem):
+    def _saveAsAction(self, menuItem: Gtk.MenuItem) -> None:
+        if self.project is None:
+            return
+
         path = saveFileDialog(self.window, FileFilter("Manuskript project", "msk"))
         if path is None:
             return
@@ -309,31 +335,43 @@ class MainWindow:
         self.project.changePath(path)
         self.project.save()
 
-    def _closeAction(self, menuItem: Gtk.MenuItem):
+    def _closeAction(self, menuItem: Gtk.MenuItem) -> None:
         self.closeProject()
 
-    def _importAction(self, menuItem: Gtk.MenuItem):
+    def _importAction(self, menuItem: Gtk.MenuItem) -> None:
         self.importWindow.show()
 
-    def _compileAction(self, menuItem: Gtk.MenuItem):
+    def _compileAction(self, menuItem: Gtk.MenuItem) -> None:
         self.compileWindow.show()
 
-    def _quitAction(self, menuItem: Gtk.MenuItem):
+    def _quitAction(self, menuItem: Gtk.MenuItem) -> None:
         self.exit(True)
 
-    def _cutAction(self, menuItem: Gtk.MenuItem):
+    def _cutAction(self, menuItem: Gtk.MenuItem) -> None:
+        if self.editorView is None:
+            return
+
         self.editorView.cutSelection()
 
-    def _copyAction(self, menuItem: Gtk.MenuItem):
+    def _copyAction(self, menuItem: Gtk.MenuItem) -> None:
+        if self.editorView is None:
+            return
+
         self.editorView.copySelection()
 
-    def _pasteAction(self, menuItem: Gtk.MenuItem):
+    def _pasteAction(self, menuItem: Gtk.MenuItem) -> None:
+        if self.editorView is None:
+            return
+
         self.editorView.pasteClipboard()
 
-    def _deleteAction(self, menuItem: Gtk.MenuItem):
+    def _deleteAction(self, menuItem: Gtk.MenuItem) -> None:
+        if self.editorView is None:
+            return
+
         self.editorView.deleteSelection()
 
-    def _renameAction(self, menuItem: Gtk.MenuItem):
+    def _renameAction(self, menuItem: Gtk.MenuItem) -> None:
         currentSlot = self.mainStack.get_visible_child()
 
         if currentSlot == self.outlineSlot:
@@ -346,7 +384,7 @@ class MainWindow:
         if (currentView is None) or (currentView.outlineItem is None):
             return
 
-        def __renameEditorItem(name: str, mainWindow: MainWindow):
+        def __renameEditorItem(name: str, mainWindow: MainWindow) -> None:
             currentSlot = mainWindow.mainStack.get_visible_child()
 
             if currentSlot == mainWindow.editorSlot:
@@ -359,59 +397,89 @@ class MainWindow:
         dialog = RenameDialog(self, callback=__renameEditorItem, closure=self)
         dialog.show(text=currentView.outlineItem.title)
 
-    def _h1EditorAction(self, menuItem: Gtk.MenuItem):
+    def _h1EditorAction(self, menuItem: Gtk.MenuItem) -> None:
+        if self.editorView is None:
+            return
+
         self.editorView.toggleTagFromSelection("h1")
 
-    def _h2EditorAction(self, menuItem: Gtk.MenuItem):
+    def _h2EditorAction(self, menuItem: Gtk.MenuItem) -> None:
+        if self.editorView is None:
+            return
+
         self.editorView.toggleTagFromSelection("h2")
 
-    def _h3EditorAction(self, menuItem: Gtk.MenuItem):
+    def _h3EditorAction(self, menuItem: Gtk.MenuItem) -> None:
+        if self.editorView is None:
+            return
+
         self.editorView.toggleTagFromSelection("h3")
 
-    def _h4EditorAction(self, menuItem: Gtk.MenuItem):
+    def _h4EditorAction(self, menuItem: Gtk.MenuItem) -> None:
+        if self.editorView is None:
+            return
+
         self.editorView.toggleTagFromSelection("h4")
 
-    def _h5EditorAction(self, menuItem: Gtk.MenuItem):
+    def _h5EditorAction(self, menuItem: Gtk.MenuItem) -> None:
+        if self.editorView is None:
+            return
+
         self.editorView.toggleTagFromSelection("h5")
 
-    def _h6EditorAction(self, menuItem: Gtk.MenuItem):
+    def _h6EditorAction(self, menuItem: Gtk.MenuItem) -> None:
+        if self.editorView is None:
+            return
+
         self.editorView.toggleTagFromSelection("h6")
 
-    def _boldEditorAction(self, menuItem: Gtk.MenuItem):
+    def _boldEditorAction(self, menuItem: Gtk.MenuItem) -> None:
+        if self.editorView is None:
+            return
+
         self.editorView.toggleTagFromSelection("b")
 
-    def _italicEditorAction(self, menuItem: Gtk.MenuItem):
+    def _italicEditorAction(self, menuItem: Gtk.MenuItem) -> None:
+        if self.editorView is None:
+            return
+
         self.editorView.toggleTagFromSelection("i")
 
-    def _strikeEditorAction(self, menuItem: Gtk.MenuItem):
+    def _strikeEditorAction(self, menuItem: Gtk.MenuItem) -> None:
+        if self.editorView is None:
+            return
+
         self.editorView.toggleTagFromSelection("s")
 
-    def getSettings(self):
-        return self.project.settings
+    def getSettings(self) -> Settings | None:
+        if self.project is not None:
+            return self.project.settings
+        else:
+            return None
 
-    def _settingsAction(self, menuItem: Gtk.MenuItem):
+    def _settingsAction(self, menuItem: Gtk.MenuItem) -> None:
         self.settingsWindow.show()
 
-    def _frequencyAction(self, menuItem: Gtk.MenuItem):
+    def _frequencyAction(self, menuItem: Gtk.MenuItem) -> None:
         self.frequencyWindow.show()
 
-    def _aboutAction(self, menuItem: Gtk.MenuItem):
+    def _aboutAction(self, menuItem: Gtk.MenuItem) -> None:
         self.aboutDialog.show()
 
-    def show(self):
+    def show(self) -> None:
         self.window.show_all()
 
-    def hide(self):
+    def hide(self) -> None:
         self.window.hide()
 
-    def isVisible(self):
+    def isVisible(self) -> bool:
         return self.window.get_property("visible")
 
-    def run(self):
+    def run(self) -> None:
         self.show()
         Gtk.main()
 
-    def exit(self, force=False):
+    def exit(self, force: bool = False) -> None:
         if force:
             for window in self.windows:
                 window.hide()
@@ -423,5 +491,5 @@ class MainWindow:
 
         self.window.destroy()
 
-    def _notify(self, obj: GObject.Object, pspec: GObject.ParamSpec):
+    def _notify(self, obj: GObject.Object, pspec: GObject.ParamSpec) -> None:
         print(pspec.name + " = " + str(obj.get_property(pspec.name)))

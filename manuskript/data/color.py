@@ -5,20 +5,19 @@ import re
 
 
 class Color:
-
-    def __init__(self, red: int, green: int, blue: int):
+    def __init__(self, red: int, green: int, blue: int) -> None:
         self.red = red
         self.green = green
         self.blue = blue
 
-    def getRGB(self):
+    def getRGB(self) -> int:
         return (self.red << 24) | (self.green << 16) | (self.blue << 8)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "#%02x%02x%02x" % (self.red, self.green, self.blue)
 
     @classmethod
-    def parse(cls, string: str):
+    def parse(cls, string: str | None) -> Color | None:
         if string is None:
             return None
 

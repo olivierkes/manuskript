@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 from __future__ import annotations
+
 import os
 
 from manuskript.data.abstractData import AbstractData
@@ -9,9 +10,9 @@ from manuskript.io.opmlFile import OpmlFile, OpmlOutlineItem
 
 from typing import Iterator, Optional
 
-class WorldItem:
 
-    def __init__(self, world: World, UID: UniqueID, name: str = None):
+class WorldItem:
+    def __init__(self, world: World, UID: UniqueID, name: str | None = None) -> None:
         self.world: World = world
 
         if name is None:
@@ -24,21 +25,20 @@ class WorldItem:
         self.conflict: Optional[str] = None
         self.children: list[WorldItem] = list()
 
-    def remove(self):
+    def remove(self) -> None:
         for child in self.children:
             child.remove()
 
         self.world.removeItem(self)
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[WorldItem]:
         return self.children.__iter__()
 
-    def load(self):
+    def load(self) -> None:
         self.world.load()
 
 
 class World(AbstractData):
-
     templates = [
         {
             "name": "Fantasy world building",
@@ -55,7 +55,7 @@ class World(AbstractData):
                         "History",
                         "Races",
                         "Diseases",
-                    ]
+                    ],
                 },
                 {
                     "name": "Cultural",
@@ -81,7 +81,7 @@ class World(AbstractData):
                         "Demography",
                         "Transportation",
                         "Medicine",
-                    ]
+                    ],
                 },
                 {
                     "name": "Magic system",
@@ -91,26 +91,26 @@ class World(AbstractData):
                         "Magical objects",
                         "Magical places",
                         "Magical races",
-                    ]
+                    ],
                 },
                 "Important places",
                 "Important objects",
-            ]
+            ],
         }
     ]
 
-    def __init__(self, path: str):
+    def __init__(self, path: str) -> None:
         AbstractData.__init__(self, os.path.join(path, "world.opml"))
         self.file: OpmlFile = OpmlFile(self.dataPath)
         self.host = UniqueIDHost()
         self.items: dict[int, WorldItem] = dict()
         self.top: list[WorldItem] = list()
 
-    def changePath(self, path: str):
+    def changePath(self, path: str) -> None:
         AbstractData.changePath(self, os.path.join(path, "world.opml"))
         self.file = OpmlFile(self.dataPath)
 
-    def addItem(self, name: str = None, parent: WorldItem = None) -> WorldItem:
+    def addItem(self, name: str | None = None, parent: WorldItem | None = None) -> WorldItem:
         item = WorldItem(self, self.host.newID(), name)
 
         if parent is None:
@@ -121,12 +121,12 @@ class World(AbstractData):
         self.items[item.UID.value] = item
         return item
 
-    def loadItem(self, ID: int, name: str = None) -> WorldItem:
+    def loadItem(self, ID: int, name: str | None = None) -> WorldItem:
         item = WorldItem(self, self.host.loadID(ID), name)
         self.items[item.UID.value] = item
         return item
 
-    def removeItem(self, item: WorldItem):
+    def removeItem(self, item: WorldItem) -> None:
         for __item in self.items.values():
             if item in __item.children:
                 __item.children.remove(item)
@@ -137,10 +137,12 @@ class World(AbstractData):
         self.host.removeID(item.UID)
         self.items.pop(item.UID.value)
 
-    def moveItem(self, item: WorldItem, parent: WorldItem = None, index: int | None = None):
+    def moveItem(
+        self, item: WorldItem, parent: WorldItem | None = None, index: int | None = None
+    ) -> None:
         if parent and self.contains(item, parent):
             return
-                
+
         __parent = self.findParent(item)
 
         if __parent:
@@ -159,14 +161,14 @@ class World(AbstractData):
             else:
                 parent.children.insert(index, item)
 
-    def getItemByID(self, ID: int) -> WorldItem:
+    def getItemByID(self, ID: int) -> WorldItem | None:
         return self.items.get(ID, None)
 
     def __iter__(self) -> Iterator[WorldItem]:
         return self.items.values().__iter__()
 
     @classmethod
-    def loadWorldItem(cls, world: World, outline: OpmlOutlineItem) -> WorldItem:
+    def loadWorldItem(cls, world: World, outline: OpmlOutlineItem) -> WorldItem | None:
         ID = outline.attributes.get("ID", None)
 
         if ID is None:
@@ -188,7 +190,7 @@ class World(AbstractData):
 
         return item
 
-    def load(self):
+    def load(self) -> None:
         self.items.clear()
         self.top.clear()
 
@@ -210,7 +212,7 @@ class World(AbstractData):
             self.complete(False)
 
     @classmethod
-    def saveWorldItem(cls, item: WorldItem):
+    def saveWorldItem(cls, item: WorldItem) -> OpmlOutlineItem:
         outline = OpmlOutlineItem()
 
         outline.attributes["name"] = item.name
@@ -224,7 +226,7 @@ class World(AbstractData):
 
         return outline
 
-    def save(self):
+    def save(self) -> None:
         AbstractData.save(self)
         outlines = list()
 
@@ -234,10 +236,10 @@ class World(AbstractData):
         self.file.save(outlines)
         self.complete()
 
-    def fetchTemplateList(self):
+    def fetchTemplateList(self) -> list[dict]:
         return [node["name"] if isinstance(node, dict) else node for node in self.templates]
 
-    def _insertTemplate(self, node: str | dict, parent:WorldItem=None):
+    def _insertTemplate(self, node: str | dict, parent: WorldItem | None = None) -> None:
         if isinstance(node, str):
             self.addItem(name=node, parent=parent)
         elif isinstance(node, dict):
@@ -246,10 +248,14 @@ class World(AbstractData):
             for child in node.get("children", []):
                 self._insertTemplate(child, parent=worldItem)
 
-    def insertTemplate(self, templateName: str):
+    def insertTemplate(self, templateName: str) -> None:
         root = next(
-            (node for node in self.templates if isinstance(node, dict) and node["name"] == templateName),
-            None
+            (
+                node
+                for node in self.templates
+                if isinstance(node, dict) and node["name"] == templateName
+            ),
+            None,
         )
 
         if root is not None:
@@ -265,10 +271,10 @@ class World(AbstractData):
             node = stack.pop()
             if node is target:
                 return True
-            
+
             stack.extend(node.children)
         return False
-    
+
     def findParent(self, item: WorldItem) -> WorldItem | None:
         stack = list(self.top)
 
@@ -279,5 +285,3 @@ class World(AbstractData):
 
             stack.extend(current.children)
         return None
-    
-    
