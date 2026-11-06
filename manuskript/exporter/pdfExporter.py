@@ -13,7 +13,8 @@ from manuskript.exporter.latexExporter import LaTeXExporter
 class PDFExporter(AbstractExporter):
     def __init__(self) -> None:
         AbstractExporter.__init__(self, "pdf")
-        self.latexExporter = LaTeXExporter()
+        self.latexExporter: LaTeXExporter = LaTeXExporter()
+        self.conversionError: Optional[str] = None
 
     def getName(self) -> str:
         return "PDF"
@@ -23,6 +24,13 @@ class PDFExporter(AbstractExporter):
 
     def getIcon(self) -> str:
         return "x-office-document"
+
+    def getError(self) -> str | None:
+        error: Optional[str] = self.latexExporter.getError()
+        if error is not None:
+            return error
+
+        return self.conversionError
 
     def exportFile(self, outputPath: str, project: Project) -> bool:
         converter = getConverter("latex", self.exportFormat)
@@ -38,6 +46,7 @@ class PDFExporter(AbstractExporter):
         latexFile.flush()
 
         result = converter.convertFile(latexFile.name, outputPath, "latex", self.exportFormat)
+        self.conversionError = None if result else converter.getError()
 
         latexFile.close()
         return result
@@ -48,7 +57,7 @@ class PDFExporter(AbstractExporter):
         if self.exportFile(pdfFile.name, project):
             data = pdfFile.read()
         else:
-            data = b""
+            data = None
 
         pdfFile.close()
         return data

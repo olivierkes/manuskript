@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from io import StringIO
 import tempfile
 from typing import Optional
 
@@ -23,7 +24,7 @@ class CompileWindow(AbstractDialog):
         self.forward = None
         self.previewLeaflet = None
         self.previewBox = None
-        self.previewWebView = None
+        self.previewWebView: WebKit2.WebView = None
         self.manageExportersButton = None
         self.previewButton = None
 
@@ -108,6 +109,13 @@ class CompileWindow(AbstractDialog):
     def _exportButtonClicked(self, button: Gtk.Button) -> None:
         self.export()
 
+    def __previewError(self, error: Optional[str]) -> None:
+        text: StringIO = StringIO()
+        text.write("PREVIEW_ERROR:\n\n")
+        text.write("Unknown error!" if error is None else error)
+
+        self.previewWebView.load_plain_text(text.getvalue())
+
     def preview(self) -> None:
         exporter = self.getExporter()
         project = self.getProject()
@@ -117,13 +125,22 @@ class CompileWindow(AbstractDialog):
 
         if exporter.exportFormat == "pdf":
             pdf: Optional[bytes] = None if exporter is None else exporter.export(project)
-            self.previewWebView.load_bytes(GLib.Bytes(b"" if pdf is None else pdf), exporter.getMimeType(), None, None)
+            if (pdf is None) or (len(pdf) <= 0):
+                self.__previewError(exporter.getError())
+            else:
+                self.previewWebView.load_bytes(GLib.Bytes(b"" if pdf is None else pdf), exporter.getMimeType(), None, None)
         elif exporter.exportFormat == "html":
-            html: Optional[str] = "" if exporter is None else exporter.exportText(project)
-            self.previewWebView.load_html("" if html is None else html, None)
+            html: Optional[str] = None if exporter is None else exporter.exportText(project)
+            if (html is None) or (len(html) <= 0):
+                self.__previewError(exporter.getError())
+            else:
+                self.previewWebView.load_html("" if html is None else html, None)
         else:
-            text: Optional[str] = "" if exporter is None else exporter.exportText(project)
-            self.previewWebView.load_plain_text("" if text is None else text)
+            text: Optional[str] = None if exporter is None else exporter.exportText(project)
+            if text is None:
+                self.__previewError(exporter.getError())
+            else:
+                self.previewWebView.load_plain_text("" if text is None else text)
 
     def export(self) -> None:
         exporter = self.getExporter()

@@ -25,6 +25,9 @@ class AbstractExporter:
         converter = getConverter("*", self.exportFormat)
         return False if converter is None else True
 
+    def getError(self) -> str | None:
+        return None
+
     def exportFile(self, outputPath: str, project: Project) -> bool:
         text: Optional[str] = self.exportText(project)
         if text is None:

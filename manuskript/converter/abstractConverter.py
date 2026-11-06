@@ -12,6 +12,9 @@ class AbstractConverter:
     def isValid(self) -> bool:
         return False
 
+    def getError(self) -> str | None:
+        return None
+
     def supportsInput(self, inputFormat: str) -> bool:
         if inputFormat == "*":
             return True
