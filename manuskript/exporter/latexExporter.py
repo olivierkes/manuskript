@@ -19,6 +19,9 @@ class LaTeXExporter(AbstractExporter):
     def getName(self) -> str:
         return "LaTeX"
 
+    def getExtension(self) -> str:
+        return ".tex"
+
     def getIcon(self) -> str:
         return "text-x-tex"
 

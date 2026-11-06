@@ -19,6 +19,9 @@ class OdtExporter(AbstractExporter):
     def getName(self) -> str:
         return "OpenDocument"
 
+    def getExtension(self) -> str:
+        return ".odt"
+
     def getMimeType(self) -> str:
         return "application/vnd.oasis.opendocument.text"
 

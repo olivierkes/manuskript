@@ -17,6 +17,9 @@ class HTMLExporter(AbstractExporter):
     def getName(self) -> str:
         return "HTML"
 
+    def getExtension(self) -> str:
+        return ".html"
+
     def getMimeType(self) -> str:
         return "text/html"
 

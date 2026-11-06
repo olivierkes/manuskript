@@ -19,6 +19,9 @@ class PDFExporter(AbstractExporter):
     def getName(self) -> str:
         return "PDF"
 
+    def getExtension(self) -> str:
+        return ".pdf"
+
     def getMimeType(self) -> str:
         return "application/pdf"
 

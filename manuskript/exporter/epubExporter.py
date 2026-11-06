@@ -19,6 +19,9 @@ class ePubExporter(AbstractExporter):
     def getName(self) -> str:
         return "ePub"
 
+    def getExtension(self) -> str:
+        return ".epub"
+
     def getMimeType(self) -> str:
         return "application/epub+zip"
 

@@ -5,7 +5,7 @@ from __future__ import annotations
 import os
 from collections import OrderedDict
 from enum import Enum, unique
-from typing import Iterable, Iterator, Optional
+from typing import Iterator, Optional
 
 from manuskript.data.abstractData import AbstractData, DataStatus
 from manuskript.data.goal import Goal
@@ -462,7 +462,7 @@ class Outline(AbstractData):
                 item: OutlineText = self.addText(name)
                 item.goal = template.goal
 
-    def __iter__(self) -> Iterable[OutlineItem]:
+    def __iter__(self) -> Iterator[OutlineItem]:
         return self.items.__iter__()
 
     def getItemByID(self, ID: int) -> OutlineItem | None:

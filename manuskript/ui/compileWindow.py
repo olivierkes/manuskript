@@ -199,6 +199,10 @@ class CompileWindow(AbstractDialog):
         if (exporter is None) or (project is None):
             return
 
+        filter: Gtk.FileFilter = Gtk.FileFilter()
+        filter.set_name(exporter.getName())
+        filter.add_mime_type(exporter.getMimeType())
+
         dialog = Gtk.FileChooserDialog(
             title="Export project",
             parent=self.window,
@@ -206,10 +210,18 @@ class CompileWindow(AbstractDialog):
             buttons=(
                 Gtk.STOCK_CANCEL,
                 Gtk.ResponseType.CANCEL,
-                Gtk.STOCK_OPEN,
+                Gtk.STOCK_SAVE_AS,
                 Gtk.ResponseType.ACCEPT,
             ),
         )
+
+        filename: StringIO = StringIO()
+        filename.write(project.getName())
+        filename.write(exporter.getExtension())
+
+        dialog.set_current_name(filename.getvalue())
+        dialog.set_create_folders(True)
+        dialog.add_filter(filter)
 
         response = dialog.run()
 

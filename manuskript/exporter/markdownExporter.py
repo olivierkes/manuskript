@@ -17,6 +17,9 @@ class MarkdownExporter(AbstractExporter):
     def getName(self) -> str:
         return "Markdown"
 
+    def getExtension(self) -> str:
+        return ".md"
+
     def getIcon(self) -> str:
         return "text-x-markdown"
 

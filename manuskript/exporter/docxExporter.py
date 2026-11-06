@@ -19,6 +19,9 @@ class DocXExporter(AbstractExporter):
     def getName(self) -> str:
         return "DocX"
 
+    def getExtension(self) -> str:
+        return ".docx"
+
     def getMimeType(self) -> str:
         return "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 

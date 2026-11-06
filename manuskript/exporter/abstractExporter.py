@@ -15,6 +15,9 @@ class AbstractExporter:
     def getName(self) -> str:
         return str(type(self))
 
+    def getExtension(self) -> str:
+        return ""
+
     def getMimeType(self) -> str:
         return "text/plain"
 
