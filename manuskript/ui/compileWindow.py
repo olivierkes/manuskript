@@ -3,7 +3,7 @@
 
 from io import StringIO
 import tempfile
-from typing import Optional
+from typing import Any, Optional
 
 from gi.repository import GLib, GObject, Gtk, Handy, WebKit2
 
@@ -16,7 +16,7 @@ from manuskript.util import validString
 
 
 class CompileWindow(AbstractDialog):
-    def __init__(self, mainWindow) -> None:
+    def __init__(self, mainWindow: Any) -> None:
         AbstractDialog.__init__(self, mainWindow, "ui/compile.glade", "compile_window")
 
         self.idlePreview = 0
@@ -31,7 +31,7 @@ class CompileWindow(AbstractDialog):
         self.manageExportersButton: Gtk.Button = None
         self.previewButton: Gtk.Button = None
 
-    def initWindow(self, builder: Gtk.Builder, window) -> None:
+    def initWindow(self, builder: Gtk.Builder, window: Any) -> None:
         self.headerBar = builder.get_object("header_bar")
         self.back = builder.get_object("back")
         self.forward = builder.get_object("forward")

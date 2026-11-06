@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from typing import Any, Optional
+
 from gi.repository import GObject, Gtk, Handy
 
 from manuskript.data import Project, Template, TemplateKind
@@ -13,14 +15,14 @@ from manuskript.ui.util import bindMenuItem
 
 
 class StartupWindow(AbstractDialog):
-    def __init__(self, mainWindow) -> None:
+    def __init__(self, mainWindow: Any) -> None:
         AbstractDialog.__init__(self, mainWindow, "ui/startup.glade", "startup_window")
 
         self.templates = Template.getDefaultTemplates()
-        self.template = None
+        self.template: Optional[Template] = None
 
-        self.headerBar = None
-        self.templatesLeaflet = None
+        self.headerBar: Gtk.HeaderBar = None
+        self.templatesLeaflet: Handy.Leaflet = None
 
         self.recentChooserMenu = None
         self.recentChooserMenuBtn = None
@@ -31,18 +33,18 @@ class StartupWindow(AbstractDialog):
         self.demoTemplatesStore = None
 
         self.templateSelections = list()
-        self.templateLevelsListbox = None
+        self.templateLevelsListbox: Gtk.ListBox = None
 
-        self.goalLabel = None
-        self.addLevelButton = None
-        self.addGoalButton = None
+        self.goalLabel: Gtk.Label = None
+        self.addLevelButton: Gtk.Button = None
+        self.addGoalButton: Gtk.Button = None
 
-        self.backButton = None
-        self.openButton = None
-        self.recentButton = None
-        self.createButton = None
+        self.backButton: Gtk.Button = None
+        self.openButton: Gtk.Button = None
+        self.recentButton: Gtk.Button = None
+        self.createButton: Gtk.Button = None
 
-    def initWindow(self, builder: Gtk.Builder, window) -> None:
+    def initWindow(self, builder: Gtk.Builder, window: Any) -> None:
         self.headerBar = builder.get_object("header_bar")
         self.templatesLeaflet = builder.get_object("templates_leaflet")
 
@@ -123,7 +125,7 @@ class StartupWindow(AbstractDialog):
         self.openButton.connect("clicked", self._openClicked)
         self.createButton.connect("clicked", self._createClicked)
 
-    def loadTemplate(self, template: Template) -> None:
+    def loadTemplate(self, template: Template | None) -> None:
         self.template = template
         self.templateLevelsListbox.foreach(lambda child: self.templateLevelsListbox.remove(child))
 

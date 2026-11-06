@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from typing import Any
+
 from gi.repository import Gtk, Handy
 
 
 class AbstractDialog:
-    def __init__(self, mainWindow, uiTemplatePath, uiDialogId) -> None:
+    def __init__(self, mainWindow: Any, uiTemplatePath: str, uiDialogId: str) -> None:
         self.mainWindow = mainWindow
-        self.window = None
+        self.window: Gtk.Window = None
 
-        self.builderTemplatePath = uiTemplatePath
-        self.builderObjectId = uiDialogId
+        self.builderTemplatePath: str = uiTemplatePath
+        self.builderObjectId: str = uiDialogId
 
-    def initWindow(self, builder, window) -> None:
+    def initWindow(self, builder: Gtk.Builder, window: Any) -> None:
         pass
 
     def __initWindow(self) -> None:
@@ -35,6 +37,9 @@ class AbstractDialog:
     def show(self) -> None:
         if self.window is None:
             self.__initWindow()
+
+        if self.window is None:
+            return
 
         self.window.show()
 

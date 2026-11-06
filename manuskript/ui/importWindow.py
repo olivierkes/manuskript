@@ -1,21 +1,23 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from typing import Any
+
 from gi.repository import GObject, Gtk, Handy
 
 from manuskript.ui.abstractDialog import AbstractDialog
 from manuskript.data import Project
 
 class ImportWindow(AbstractDialog):
-    def __init__(self, mainWindow) -> None:
+    def __init__(self, mainWindow: Any) -> None:
         AbstractDialog.__init__(self, mainWindow, "ui/import.glade", "import_window")
 
-        self.headerBar = None
-        self.back = None
-        self.forward = None
-        self.previewLeaflet = None
+        self.headerBar: Gtk.HeaderBar = None
+        self.back: Gtk.Button = None
+        self.forward: Gtk.Button = None
+        self.previewLeaflet: Handy.Leaflet = None
 
-    def initWindow(self, builder: Gtk.Builder, window) -> None:
+    def initWindow(self, builder: Gtk.Builder, window: Any) -> None:
         self.headerBar = builder.get_object("header_bar")
         self.back = builder.get_object("back")
         self.forward = builder.get_object("forward")

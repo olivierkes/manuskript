@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from typing import Any
+from typing import Any, Optional, Type
 
 from gi.repository import Gtk, Handy
 
@@ -14,7 +14,7 @@ from manuskript.ui.settings import *
 class SettingsWindow(AbstractDialog):
 
     @classmethod
-    def packPage(cls, window, page_cls, settings: Settings, data: Any = None) -> Any:
+    def packPage(cls, window: Any, page_cls: Type, settings: Settings, data: Any = None) -> Any:
         if window is None:
             return None
 
@@ -33,17 +33,17 @@ class SettingsWindow(AbstractDialog):
         window.add(page.widget)
         return page
 
-    def __init__(self, mainWindow) -> None:
+    def __init__(self, mainWindow: Any) -> None:
         AbstractDialog.__init__(self, mainWindow, "ui/settings.glade", "settings_window")
 
-        self.generalPage = None
-        self.revisionsPage = None
-        self.viewsPage = None
-        self.labelsPage = None
-        self.statusPage = None
-        self.fullscreenPage = None
+        self.generalPage: Optional[GeneralPage] = None
+        self.revisionsPage: Optional[RevisionsPage] = None
+        self.viewsPage: Optional[ViewsPage] = None
+        self.labelsPage: Optional[LabelsPage] = None
+        self.statusPage: Optional[StatusPage] = None
+        self.fullscreenPage: Optional[FullscreenPage] = None
 
-    def initWindow(self, builder: Gtk.Builder, window) -> None:
+    def initWindow(self, builder: Gtk.Builder, window: Any) -> None:
         project = self.getProject()
         settings = self.getSettings()
 

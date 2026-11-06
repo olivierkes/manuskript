@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import os
-from typing import Optional
+from typing import Any, Optional
 
 from gi.repository import GLib, GObject, Gtk
 
-from manuskript.data import Project
+from manuskript.data import Project, Settings
 from manuskript.editor import AbstractRegioner, AbstractSplitter, getRegioners, getSplitters
 from manuskript.plugin import AbstractPlugin, findPlugins, loadPlugins
 from manuskript.spellchecker import AbstractSpellchecker, getSpellcheckers
@@ -66,13 +66,15 @@ class MainWindow:
         self.dictionaryMenu = builder.get_object("dictionary_menu")
         self.dictionaryMenuGroup = []
 
-        self.generalView = None
-        self.summaryView = None
-        self.charactersView = None
-        self.plotView = None
-        self.worldView = None
-        self.outlineView = None
-        self.editorView = None
+        self.generalView: Optional[GeneralView] = None
+        self.summaryView: Optional[SummaryView] = None
+        self.charactersView: Optional[CharactersView] = None
+        self.plotView: Optional[PlotView] = None
+        self.worldView: Optional[WorldView] = None
+        self.outlineView: Optional[OutlineView] = None
+        self.editorView: Optional[EditorView] = None
+
+        self.viewDictionary: dict[Gtk.Widget, Optional[AbstractView]] = dict()
 
         self.idleStackSelection = 0
 
@@ -187,8 +189,7 @@ class MainWindow:
         if self.spellchecker is None:
             return
 
-        splitter: AbstractSplitter = None
-
+        splitter: Optional[AbstractSplitter] = None
         for s in getSplitters():
             splitter = s
 
@@ -218,8 +219,8 @@ class MainWindow:
 
         print(mistakes)
 
-    def __checkStackSelection(self, selected=None) -> bool:
-        slot = self.mainStack.get_visible_child()
+    def __checkStackSelection(self, selected: Any = None) -> bool:
+        slot: Gtk.Widget = self.mainStack.get_visible_child()
 
         self.idleStackSelection = GLib.timeout_add(
             100, self.__checkStackSelection, slot, priority=GLib.PRIORITY_HIGH_IDLE
@@ -228,35 +229,14 @@ class MainWindow:
         if selected == slot:
             return False
 
-        if self.generalSlot == selected:
-            self.generalView.deactivate()
-        elif self.summarySlot == selected:
-            self.summaryView.deactivate()
-        elif self.charactersSlot == selected:
-            self.charactersView.deactivate()
-        elif self.plotSlot == selected:
-            self.plotView.deactivate()
-        elif self.worldSlot == selected:
-            self.worldView.deactivate()
-        elif self.outlineSlot == selected:
-            self.outlineView.deactivate()
-        elif self.editorSlot == selected:
-            self.editorView.deactivate()
+        selected_view: Optional[AbstractView] = self.viewDictionary.get(selected)
+        current_view: Optional[AbstractView] = self.viewDictionary.get(slot)
 
-        if self.generalSlot == slot:
-            self.generalView.activate()
-        elif self.summarySlot == slot:
-            self.summaryView.activate()
-        elif self.charactersSlot == slot:
-            self.charactersView.activate()
-        elif self.plotSlot == slot:
-            self.plotView.activate()
-        elif self.worldSlot == slot:
-            self.worldView.activate()
-        elif self.outlineSlot == slot:
-            self.outlineView.activate()
-        elif self.editorSlot == slot:
-            self.editorView.activate()
+        if selected_view is not None:
+            selected_view.deactivate()
+
+        if current_view is not None:
+            current_view.activate()
 
         return False
 
@@ -283,6 +263,16 @@ class MainWindow:
         self.worldView = packViewIntoSlot(self.worldSlot, WorldView, self.project.world)
         self.outlineView = packViewIntoSlot(self.outlineSlot, OutlineView, self.project.outline)
         self.editorView = packViewIntoSlot(self.editorSlot, EditorView, self.project)
+
+        self.viewDictionary = {
+          self.generalSlot: self.generalView,
+          self.summarySlot: self.summaryView,
+          self.charactersSlot: self.charactersView,
+          self.plotSlot: self.plotView,
+          self.worldSlot: self.worldView,
+          self.outlineSlot: self.outlineView,
+          self.editorSlot: self.editorView
+        }
 
         if 0 != self.idleStackSelection:
             GLib.source_remove(self.idleStackSelection)
@@ -402,11 +392,15 @@ class MainWindow:
             currentSlot = mainWindow.mainStack.get_visible_child()
 
             if currentSlot == mainWindow.editorSlot:
-                mainWindow.editorView.renameItem(name)
-                mainWindow.outlineView.refreshOutlineStore()
+                if mainWindow.editorView is not None:
+                    mainWindow.editorView.renameItem(name)
+                if mainWindow.outlineView is not None:
+                    mainWindow.outlineView.refreshOutlineStore()
             elif currentSlot == mainWindow.outlineSlot:
-                mainWindow.outlineView.renameItem(name)
-                mainWindow.editorView.refreshOutlineStore()
+                if mainWindow.outlineView is not None:
+                    mainWindow.outlineView.renameItem(name)
+                if mainWindow.editorView is not None:
+                    mainWindow.editorView.refreshOutlineStore()
 
         dialog = RenameDialog(self, callback=__renameEditorItem, closure=self)
         dialog.show(text=currentView.outlineItem.title)
