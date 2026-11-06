@@ -19,6 +19,12 @@ class LaTeXExporter(AbstractExporter):
     def getName(self) -> str:
         return "LaTeX"
 
+    def getIcon(self) -> str:
+        return "text-x-tex"
+
+    def allowsPreview(self) -> bool:
+        return True
+
     def __commandFromLevel(self, level: int) -> str | None:
         commands = ["part", "chapter", "section", "subsection", "subsubsection", "paragraph", "subparagraph"]
 

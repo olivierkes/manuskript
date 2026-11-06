@@ -23,6 +23,9 @@ class HTMLExporter(AbstractExporter):
     def getIcon(self) -> str:
         return "text-html"
 
+    def allowsPreview(self) -> bool:
+        return True
+
     def __exportItem(self, outlineItem: OutlineItem, output: StringIO, level: int = 1) -> None:
         if type(outlineItem) is OutlineFolder:
             output.write("<h")

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from gi.repository import GLib, Gtk, Gdk
+from gi.repository import Gdk, GdkPixbuf, GLib, Gtk
 from typing import Any, Optional
 
 from manuskript.ui.views.abstractView import AbstractView
@@ -309,7 +309,7 @@ class OutlineView(AbstractView):
         self.povCombo.set_active(-1)
 
     def _povChanged(self, combo: Gtk.ComboBox) -> None:
-        if not self.outlineItem:
+        if self.outlineItem is None:
             return
 
         model = combo.get_model()
@@ -333,7 +333,7 @@ class OutlineView(AbstractView):
         self.goalBuffer.set_text(validString(outlineItem.goal), -1)
         self.oneLineSummaryBuffer.set_text(validString(outlineItem.summarySentence), -1)
         self.fewSentencesSummaryBuffer.set_text(validString(outlineItem.summaryFull), -1)
-        if outlineItem.POV:
+        if (outlineItem.POV) and (outlineItem.POV.UID is not None):
             self.setPovComboById(validInt(outlineItem.POV.UID.value))
 
         self.outlineItem = outlineItem
@@ -403,7 +403,7 @@ class OutlineView(AbstractView):
         return False
 
     def __goalChanged(self, buffer: Gtk.EntryBuffer) -> None:
-        if self.outlineItem is None:
+        if (self.outlineItem is None) or (self.outlineItem.UID is None):
             return
 
         text = buffer.get_text()
@@ -529,14 +529,19 @@ class OutlineView(AbstractView):
         model.set_value(iter_, 11, pixbufFromColor(character.color))
 
         item = self.outline.getItemByID(model.get_value(iter_, 0))
+        if item is None:
+            return
+
         item.POV = character
         self.loadOutlineData(item)
 
     def _outlineTitleEdited(self, renderer: Gtk.CellRenderer, path: Gtk.TreePath, newText: str) -> None:
         self.outlineStore[path][1] = newText
-        self.outlineItem.title = newText
 
-    def _statusChanged(self, cell, path, new_iter: Gtk.TreeIter) -> bool:
+        if self.outlineItem is not None:
+            self.outlineItem.title = newText
+
+    def _statusChanged(self, cell, path: Gtk.TreePath, new_iter: Gtk.TreeIter) -> bool:
         if self.outlineItem is None:
           return False
 

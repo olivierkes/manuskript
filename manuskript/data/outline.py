@@ -38,7 +38,7 @@ class OutlineItem(AbstractData):
         self.type: str = ""
         self.summarySentence: Optional[str] = None
         self.summaryFull: Optional[str] = None
-        self.POV = None
+        self.POV: Optional[Character] = None
         self.notes: Optional[str] = None
         self.label: Optional[Label] = None
         self.status: Optional[Status] = None

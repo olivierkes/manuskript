@@ -34,7 +34,7 @@ def bindMenuItem(builder: Gtk.Builder, id: str, action: Callable) -> None:
     menuItem.connect("activate", action)
 
 
-def packViewIntoSlot(slot: Gtk.Container, view_cls: Type, data: Any = None, secondaryData: Any = None):
+def packViewIntoSlot(slot: Gtk.Container, view_cls: Type, data: Any = None, secondaryData: Any = None) -> Any:
     if slot is None:
         return None
 
@@ -61,7 +61,7 @@ def packViewIntoSlot(slot: Gtk.Container, view_cls: Type, data: Any = None, seco
     return view
 
 
-def unpackFromSlot(slot: Gtk.Container, view) -> None:
+def unpackFromSlot(slot: Gtk.Container, view: Any) -> None:
     if (slot is not None) and (view.widget is not None):
         slot.remove(view.widget)
 

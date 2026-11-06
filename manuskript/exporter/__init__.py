@@ -2,13 +2,24 @@
 # --!-- coding: utf8 --!--
 
 from manuskript.exporter.abstractExporter import AbstractExporter
+from manuskript.exporter.docxExporter import DocXExporter
+from manuskript.exporter.epubExporter import ePubExporter
 from manuskript.exporter.htmlExporter import HTMLExporter
 from manuskript.exporter.latexExporter import LaTeXExporter
 from manuskript.exporter.markdownExporter import MarkdownExporter
+from manuskript.exporter.odtExporter import OdtExporter
 from manuskript.exporter.pdfExporter import PDFExporter
 
 
-__exporters__ = [HTMLExporter(), LaTeXExporter(), MarkdownExporter(), PDFExporter()]
+__exporters__ = [
+    DocXExporter(),
+    ePubExporter(),
+    HTMLExporter(),
+    LaTeXExporter(),
+    MarkdownExporter(),
+    OdtExporter(),
+    PDFExporter(),
+]
 
 
 def getExporters() -> filter[AbstractExporter]:

@@ -19,20 +19,24 @@ class CompileWindow(AbstractDialog):
     def __init__(self, mainWindow) -> None:
         AbstractDialog.__init__(self, mainWindow, "ui/compile.glade", "compile_window")
 
-        self.headerBar = None
-        self.back = None
-        self.forward = None
-        self.previewLeaflet = None
-        self.previewBox = None
+        self.idlePreview = 0
+
+        self.headerBar: Gtk.HeaderBar = None
+        self.back: Gtk.Button = None
+        self.forward: Gtk.Button = None
+        self.previewLeaflet: Handy.Leaflet = None
+        self.previewLabel: Gtk.Label = None
+        self.previewBox: Gtk.Box = None
         self.previewWebView: WebKit2.WebView = None
-        self.manageExportersButton = None
-        self.previewButton = None
+        self.manageExportersButton: Gtk.Button = None
+        self.previewButton: Gtk.Button = None
 
     def initWindow(self, builder: Gtk.Builder, window) -> None:
         self.headerBar = builder.get_object("header_bar")
         self.back = builder.get_object("back")
         self.forward = builder.get_object("forward")
         self.previewLeaflet = builder.get_object("preview_leaflet")
+        self.previewLabel = builder.get_object("preview_label")
         self.previewBox = builder.get_object("preview_box")
         self.manageExportersButton = builder.get_object("manage_exporters")
         self.fileFormatStore = builder.get_object("file_format_store")
@@ -56,6 +60,9 @@ class CompileWindow(AbstractDialog):
             self.fileFormatStore.set_value(tree_iter, 1, validString(exporter.getMimeType()))
             self.fileFormatStore.set_value(tree_iter, 2, validString(exporter.getIcon()))
 
+        self.previewLabel.set_visible(False)
+        self.previewBox.set_visible(False)
+
         self.fileFormatCombobox.set_active(0)
         self.previewButton.set_sensitive(count_exporters > 0)
         self.exportButton.set_sensitive(count_exporters > 0)
@@ -73,11 +80,35 @@ class CompileWindow(AbstractDialog):
             GObject.BindingFlags.SYNC_CREATE | GObject.BindingFlags.INVERT_BOOLEAN,
         )
 
+        self._idlePreview()
+
         self.back.connect("clicked", self._backClicked)
         self.forward.connect("clicked", self._forwardClicked)
         self.fileFormatCombobox.connect("changed", self._fileFormatComboboxChanged)
         self.previewButton.connect("clicked", self._previewButtonClicked)
         self.exportButton.connect("clicked", self._exportButtonClicked)
+
+    def __completeIdlePreview(self) -> bool:
+        self.idlePreview = 0
+        self.preview()
+        return False
+
+    def _idlePreview(self, preview: bool = True) -> None:
+        if (self.idlePreview > 0) == preview:
+            return
+
+        if (self.idlePreview > 0) and (GLib.source_remove(self.idlePreview)):
+            self.idlePreview = 0
+        else:
+            self.idlePreview = GLib.idle_add(self.__completeIdlePreview)
+
+    def show(self) -> None:
+        AbstractDialog.show(self)
+        self._idlePreview()
+
+    def hide(self) -> None:
+        AbstractDialog.hide(self)
+        self._idlePreview(False)
 
     def getProject(self) -> Project:
         return self.mainWindow.getProject()
@@ -101,9 +132,23 @@ class CompileWindow(AbstractDialog):
             self.previewLeaflet.set_visible_child_name("preview_box")
 
     def _fileFormatComboboxChanged(self, combobox: Gtk.ComboBox) -> None:
-        self.previewButton.set_sensitive(self.getExporter() is not None)
+        exporter: Optional[AbstractExporter] = self.getExporter()
+        can_preview: bool = (exporter is not None) and (exporter.allowsPreview())
+
+        if self.previewButton is not None:
+            self.previewButton.set_sensitive(can_preview)
+
+        self._idlePreview(can_preview)
+        if can_preview:
+            return
+
+        if self.previewLabel is not None:
+            self.previewLabel.set_visible(can_preview)
+        if self.previewBox is not None:
+            self.previewBox.set_visible(can_preview)
 
     def _previewButtonClicked(self, button: Gtk.Button) -> None:
+        self._idlePreview(False)
         self.preview()
 
     def _exportButtonClicked(self, button: Gtk.Button) -> None:
@@ -117,10 +162,10 @@ class CompileWindow(AbstractDialog):
         self.previewWebView.load_plain_text(text.getvalue())
 
     def preview(self) -> None:
-        exporter = self.getExporter()
-        project = self.getProject()
+        exporter: Optional[AbstractExporter] = self.getExporter()
+        project: Project = self.getProject()
 
-        if (exporter is None) or (project is None):
+        if (exporter is None) or (project is None) or (not exporter.allowsPreview()):
             return
 
         if exporter.exportFormat == "pdf":
@@ -141,6 +186,11 @@ class CompileWindow(AbstractDialog):
                 self.__previewError(exporter.getError())
             else:
                 self.previewWebView.load_plain_text("" if text is None else text)
+
+        if self.previewLabel is not None:
+            self.previewLabel.set_visible(True)
+        if self.previewBox is not None:
+            self.previewBox.set_visible(True)
 
     def export(self) -> None:
         exporter = self.getExporter()

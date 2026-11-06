@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import os
 from typing import Optional
 
 from gi.repository import GLib, GObject, Gtk
@@ -25,6 +26,8 @@ from manuskript.util import parseFilenameFromURL, validString
 
 class MainWindow:
     def __init__(self) -> None:
+        self.initIconTheme()
+
         self.plugins: list[AbstractPlugin] = findPlugins()
         self.project: Optional[Project] = None
         self.regioner: Optional[AbstractRegioner] = None
@@ -123,6 +126,17 @@ class MainWindow:
 
         self.reloadDictionaries()
         self.hide()
+
+    def initIconTheme(self) -> None:
+        realpath = os.path.realpath(__file__)
+        app_path = os.path.join(os.path.dirname(realpath), "../..")
+        icons_dir = os.path.realpath(os.path.join(app_path, "icons"))
+
+        theme: Gtk.IconTheme = Gtk.IconTheme.get_default()
+        theme.append_search_path(icons_dir)
+
+        settings: Gtk.Settings = Gtk.Settings.get_default()
+        settings.set_property("gtk-icon-theme-name", "NumixMsk")
 
     def getProject(self) -> Project | None:
         return self.project

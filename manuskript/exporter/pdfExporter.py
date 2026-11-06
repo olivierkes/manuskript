@@ -23,7 +23,10 @@ class PDFExporter(AbstractExporter):
         return "application/pdf"
 
     def getIcon(self) -> str:
-        return "x-office-document"
+        return "application-pdf"
+
+    def allowsPreview(self) -> bool:
+        return True
 
     def getError(self) -> str | None:
         error: Optional[str] = self.latexExporter.getError()

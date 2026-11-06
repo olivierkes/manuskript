@@ -25,6 +25,9 @@ class AbstractExporter:
         converter = getConverter("*", self.exportFormat)
         return False if converter is None else True
 
+    def allowsPreview(self) -> bool:
+        return False
+
     def getError(self) -> str | None:
         return None
 
