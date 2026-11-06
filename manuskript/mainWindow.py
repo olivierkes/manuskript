@@ -676,6 +676,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def setupCharacterSidebar(self):
         """Create the scrollable character reference sidebar."""
 
+        # Track pinned characters by their IDs
+        self.pinnedCharacterIDs = []
+
         # Main layout inside the dock
         layout = QVBoxLayout(self.dockWidgetContents_2)
         layout.setContentsMargins(5, 5, 5, 5)
@@ -720,27 +723,67 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.refreshCharacterSidebar()
 
     def refreshCharacterSidebar(self, *args):
-        """Rebuild the character cards from the current model."""
-
+        """Display pinned characters first, followed by all other characters."""
+    
         # Remove existing cards
         while self.characterCardLayout.count():
             item = self.characterCardLayout.takeAt(0)
-
+    
             widget = item.widget()
-
+    
             if widget is not None:
                 widget.hide()
                 widget.deleteLater()
-
-        # Add cards for the current project's characters
+    
+        # Separate pinned and unpinned characters
+        pinned = []
+        unpinned = []
+    
         for character in self.mdlCharacter.characters:
+            if character.ID() in self.pinnedCharacterIDs:
+                pinned.append(character)
+            else:
+                unpinned.append(character)
+    
+        # Sort pinned characters by the order they were pinned
+        pinned.sort(
+            key=lambda character: self.pinnedCharacterIDs.index(character.ID())
+        )
+    
+        # Display pinned characters first
+        for character in pinned + unpinned:
             card = CharacterCard(
                 character,
                 self.characterCardContainer
             )
-
+    
+            # Reflect the character's current pin state
+            isPinned = character.ID() in self.pinnedCharacterIDs
+    
+            card.pinButton.setChecked(isPinned)
+            card.pinButton.setText("Unpin" if isPinned else "Pin")
+    
+            # Connect the card's pin button to the main window
+            card.pinToggled.connect(self.toggleCharacterPin)
+    
             self.characterCardLayout.addWidget(card)
 
+    def toggleCharacterPin(self, character):
+        """Pin or unpin a character in the sidebar."""
+    
+        characterID = character.ID()
+    
+        if characterID in self.pinnedCharacterIDs:
+            self.pinnedCharacterIDs.remove(characterID)
+        else:
+            self.pinnedCharacterIDs.append(characterID)
+    
+        # Mark the project as modified
+        self.startTimerNoChanges()
+    
+        # Update the sidebar
+        self.refreshCharacterSidebar()
+            
     ###############################################################################
     # PLOTS
     ###############################################################################
@@ -1355,6 +1398,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def loadEmptyDatas(self):
         self.mdlFlatData = QStandardItemModel(self)
+
+        # Each project starts with its own pinned characters
+        self.pinnedCharacterIDs = []
         self.mdlCharacter = characterModel(self)
 
         # Connect the new project's characters to the sidebar

@@ -218,6 +218,14 @@ def saveProject(zip=None):
     path = os.path.join("characters", "{name}.txt")
     mdl = mw.mdlCharacter
 
+    # Save pinned character IDs in their pinned order
+    pinnedContent = "\n".join(
+        str(characterID)
+        for characterID in mw.pinnedCharacterIDs
+    )
+    
+    files.append(("characters/pinned.txt", pinnedContent))
+
     # Review characters
     for c in mdl.characters:
 
@@ -870,8 +878,25 @@ def loadProject(project, zip=None):
     # Characters
 
     mdl = mw.mdlCharacter
+    # Restore pinned character IDs
+    mw.pinnedCharacterIDs = []
+    
+    if "characters/pinned.txt" in files:
+        pinnedContent = files["characters/pinned.txt"]
+    
+        mw.pinnedCharacterIDs = list(dict.fromkeys(
+            characterID.strip()
+            for characterID in pinnedContent.splitlines()
+            if characterID.strip()
+        ))
+
     LOGGER.debug("Reading Characters:")
-    for f in [f for f in files if f.startswith("characters/") and f.endswith(".txt")]:
+    for f in [
+        f for f in files
+        if f.startswith("characters/")
+        and f.endswith(".txt")
+        and f != "characters/pinned.txt"
+    ]:
         md, body = parseMMDFile(files[f])
         c = mdl.addCharacter()
         c.lastPath = f
@@ -895,13 +920,13 @@ def loadProject(project, zip=None):
             # Character portrait
             elif desc == "Portrait":
                 c.portraitPath = val
-
+            
+                if val in files:
+                    c.portraitData = files[val]
+            
             # Character's infos
             else:
                 c.infos.append(CharacterInfo(c, desc, val))
-
-            if val in files:
-                c.portraitData = files[val]
 
         LOGGER.debug("* Adds {} ({})".format(c.name(), c.ID()))
 
