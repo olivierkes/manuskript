@@ -31,6 +31,22 @@ class CompileWindow(AbstractDialog):
         self.manageExportersButton: Gtk.Button = None
         self.previewButton: Gtk.Button = None
 
+        self.contentExpander: Gtk.Expander = None
+        self.separationsExpander: Gtk.Expander = None
+        self.transformationsExpander: Gtk.Expander = None
+        self.previewExpander: Gtk.Expander = None
+
+        self.expanders: list[Gtk.Expander] = []
+
+        self.betweenFoldersCombo: Gtk.ComboBox = None
+        self.betweenFoldersEntry: Gtk.Entry = None
+        self.betweenTextsCombo: Gtk.ComboBox = None
+        self.betweenTextsEntry: Gtk.Entry = None
+        self.betweenFolderAndTextCombo: Gtk.ComboBox = None
+        self.betweenFolderAndTextEntry: Gtk.Entry = None
+        self.betweenTextAndFolderCombo: Gtk.ComboBox = None
+        self.betweenTextAndFolderEntry: Gtk.Entry = None
+
     def initWindow(self, builder: Gtk.Builder, window: Any) -> None:
         self.headerBar = builder.get_object("header_bar")
         self.back = builder.get_object("back")
@@ -43,6 +59,27 @@ class CompileWindow(AbstractDialog):
         self.fileFormatCombobox = builder.get_object("file_format_combobox")
         self.previewButton = builder.get_object("preview_button")
         self.exportButton = builder.get_object("export_button")
+
+        self.contentExpander = builder.get_object("content_expander")
+        self.separationsExpander = builder.get_object("separations_expander")
+        self.transformationsExpander = builder.get_object("transformations_expander")
+        self.previewExpander = builder.get_object("preview_expander")
+
+        self.expanders = [
+            self.contentExpander,
+            self.separationsExpander,
+            self.transformationsExpander,
+            self.previewExpander
+        ]
+
+        self.betweenFoldersCombo = builder.get_object("between_folders_combo")
+        self.betweenFoldersEntry = builder.get_object("between_folders_entry")
+        self.betweenTextsCombo = builder.get_object("between_texts_combo")
+        self.betweenTextsEntry = builder.get_object("between_texts_entry")
+        self.betweenFolderAndTextCombo = builder.get_object("between_folder_and_text_combo")
+        self.betweenFolderAndTextEntry = builder.get_object("between_folder_and_text_entry")
+        self.betweenTextAndFolderCombo = builder.get_object("between_text_and_folder_combo")
+        self.betweenTextAndFolderEntry = builder.get_object("between_text_and_folder_entry")
 
         self.previewWebView = WebKit2.WebView()
         self.previewBox.pack_start(self.previewWebView, True, True, 0)
@@ -87,6 +124,14 @@ class CompileWindow(AbstractDialog):
         self.fileFormatCombobox.connect("changed", self._fileFormatComboboxChanged)
         self.previewButton.connect("clicked", self._previewButtonClicked)
         self.exportButton.connect("clicked", self._exportButtonClicked)
+
+        for expander in self.expanders:
+            expander.connect("activate", self._expanderActivated)
+
+        self.betweenFoldersCombo.connect("changed", self._betweenFoldersChanged)
+        self.betweenTextsCombo.connect("changed", self._betweenTextsChanged)
+        self.betweenFolderAndTextCombo.connect("changed", self._betweenFolderAndTextChanged)
+        self.betweenTextAndFolderCombo.connect("changed", self._betweenTextAndFolderChanged)
 
     def __completeIdlePreview(self) -> bool:
         self.idlePreview = 0
@@ -153,6 +198,37 @@ class CompileWindow(AbstractDialog):
 
     def _exportButtonClicked(self, button: Gtk.Button) -> None:
         self.export()
+
+    def _expanderActivated(self, expander: Gtk.Expander) -> None:
+        for other in self.expanders:
+            if other is expander:
+                continue
+
+            other.set_expanded(False)
+
+    def _betweenFoldersChanged(self, combo: Gtk.ComboBox) -> None:
+        iter: Gtk.TreeIter = combo.get_active_iter()
+        model: Gtk.TreeModel = combo.get_model()
+
+        self.betweenFoldersEntry.set_sensitive(model.get_value(iter, 1))
+
+    def _betweenTextsChanged(self, combo: Gtk.ComboBox) -> None:
+        iter: Gtk.TreeIter = combo.get_active_iter()
+        model: Gtk.TreeModel = combo.get_model()
+
+        self.betweenTextsEntry.set_sensitive(model.get_value(iter, 1))
+
+    def _betweenFolderAndTextChanged(self, combo: Gtk.ComboBox) -> None:
+        iter: Gtk.TreeIter = combo.get_active_iter()
+        model: Gtk.TreeModel = combo.get_model()
+
+        self.betweenFolderAndTextEntry.set_sensitive(model.get_value(iter, 1))
+
+    def _betweenTextAndFolderChanged(self, combo: Gtk.ComboBox) -> None:
+        iter: Gtk.TreeIter = combo.get_active_iter()
+        model: Gtk.TreeModel = combo.get_model()
+
+        self.betweenTextAndFolderEntry.set_sensitive(model.get_value(iter, 1))
 
     def __previewError(self, error: Optional[str]) -> None:
         text: StringIO = StringIO()
