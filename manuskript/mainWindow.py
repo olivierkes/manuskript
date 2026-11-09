@@ -125,7 +125,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actCut.triggered.connect(self.documentsCut)
         self.actPaste.triggered.connect(self.documentsPaste)
         self.actSearch.triggered.connect(self.doSearch)
-        self.actSearch.triggered.connect(self.doSearch)
         QShortcut(
             QKeySequence(Qt.Key_Escape),
             self.dckSearch,
