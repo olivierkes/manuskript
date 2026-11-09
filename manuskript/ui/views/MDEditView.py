@@ -304,33 +304,79 @@ class MDEditView(textEditView):
 
     def insertFormattingMarkup(self, markup):
         cursor = self.textCursor()
-
-        # Select beginning and end of words
         self.selectWord(cursor)
 
         if cursor.hasSelection():
             start = cursor.selectionStart()
-            end = cursor.selectionEnd() + len(markup)
-            cursor.beginEditBlock()
-            cursor.setPosition(start)
-            cursor.insertText(markup)
-            cursor.setPosition(end)
-            cursor.insertText(markup)
-            cursor.endEditBlock()
-            cursor.movePosition(QTextCursor.PreviousCharacter,
-                                QTextCursor.KeepAnchor, len(markup))
-            #self.setTextCursor(cursor)
+            end = cursor.selectionEnd()
+            backwards = cursor.position() == start
+            existing = self.selectedMarkup(cursor, markup)
 
+            cursor.beginEditBlock()
+            if existing:
+                left, right, width = existing
+                cursor.setPosition(right)
+                cursor.setPosition(right + width, QTextCursor.KeepAnchor)
+                cursor.removeSelectedText()
+                cursor.setPosition(left)
+                cursor.setPosition(left + width, QTextCursor.KeepAnchor)
+                cursor.removeSelectedText()
+                start = left
+                end = right - width
+            else:
+                cursor.setPosition(end)
+                cursor.insertText(markup)
+                cursor.setPosition(start)
+                cursor.insertText(markup)
+                start += len(markup)
+                end += len(markup)
+            cursor.endEditBlock()
+
+            anchor, position = (end, start) if backwards else (start, end)
+            cursor.setPosition(anchor)
+            cursor.setPosition(position, QTextCursor.KeepAnchor)
+            self.setTextCursor(cursor)
         else:
-            # Insert markup twice (for opening and closing around the cursor),
-            # and then move the cursor to be between the pair.
             cursor.beginEditBlock()
             cursor.insertText(markup)
             cursor.insertText(markup)
-            cursor.movePosition(QTextCursor.PreviousCharacter,
-                                QTextCursor.MoveAnchor, len(markup))
+            cursor.movePosition(
+                QTextCursor.PreviousCharacter,
+                QTextCursor.MoveAnchor,
+                len(markup),
+            )
             cursor.endEditBlock()
             self.setTextCursor(cursor)
+
+    def selectedMarkup(self, cursor, markup):
+        """Find matching delimiter runs immediately inside or outside the selection."""
+        document = cursor.document()
+        text = cursor.selectedText()
+        start = cursor.selectionStart()
+        end = cursor.selectionEnd()
+        width = len(markup)
+        markers = "*_" if markup.startswith("*") else markup[0]
+
+        for marker in markers:
+            left = start + len(text) - len(text.lstrip(marker))
+            right = end - (len(text) - len(text.rstrip(marker)))
+            if left >= right:
+                continue
+
+            opening = left
+            while opening > 0 and document.characterAt(opening - 1) == marker:
+                opening -= 1
+            closing = right
+            while document.characterAt(closing) == marker:
+                closing += 1
+
+            # Triple stars or underscores can carry both italic and bold.
+            run = left - opening
+            combined_emphasis = marker in "*_" and run == 3
+            if run == closing - right and (run == width or combined_emphasis):
+                return left - width, right, width
+
+        return None
 
     def clearFormat(self):
         cursor = self.textCursor()
