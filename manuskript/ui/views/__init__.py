@@ -5,7 +5,10 @@ from manuskript.ui.views.abstractView import AbstractView
 from manuskript.ui.views.generalView import GeneralView
 from manuskript.ui.views.charactersView import CharactersView
 from manuskript.ui.views.editorView import EditorView
+from manuskript.ui.views.metadataView import MetadataView
 from manuskript.ui.views.outlineView import OutlineView
 from manuskript.ui.views.plotView import PlotView
+from manuskript.ui.views.reloadOutlineView import ReloadOutlineView
+from manuskript.ui.views.searchView import SearchView
 from manuskript.ui.views.summaryView import SummaryView
 from manuskript.ui.views.worldView import WorldView

@@ -5,6 +5,7 @@ from gi.repository import GLib, Gtk, Pango, Gdk
 from typing import Optional
 
 from manuskript.ui.views.abstractView import AbstractView
+from manuskript.ui.views.reloadOutlineView import ReloadOutlineView
 
 from manuskript.data import Project, OutlineFolder, OutlineText, OutlineItem, OutlineState, Goal
 from manuskript.ui.editor import GridItem
@@ -21,6 +22,7 @@ class EditorView(AbstractView):
         self.outlineCompletion = []
         self.idleCompletion = 0
         self.editorItems = list()
+        self.reloadOulineViews: list[ReloadOutlineView] = list()
         self.forceReload = False
 
         builder = Gtk.Builder()
@@ -246,6 +248,10 @@ class EditorView(AbstractView):
         self.counterProgressBar.set_fraction(safeFraction(textCount, 0, goalCount))
 
         self.outlineItem = outlineItem
+
+        for view in self.reloadOulineViews:
+            view.reloadOutlineData(self.outlineItem)
+
         self.forceReload = False
 
     def unloadOutlineData(self) -> None:
@@ -261,6 +267,9 @@ class EditorView(AbstractView):
             "{0} / {1} {2}".format(textCount, goalCount, goalKind.name.lower())
         )
         self.counterProgressBar.set_fraction(safeFraction(textCount, 0, goalCount))
+
+        for view in self.reloadOulineViews:
+            view.reloadOutlineData(self.outlineItem)
 
         self.forceReload = False
 

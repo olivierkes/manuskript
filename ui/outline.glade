@@ -580,15 +580,15 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                 <property name="can-focus">False</property>
                                 <property name="model">characters_store</property>
                                 <child>
-                                  <object class="GtkCellRendererText"/>
-                                  <attributes>
-                                    <attribute name="text">1</attribute>
-                                  </attributes>
-                                </child>
-                                <child>
                                   <object class="GtkCellRendererPixbuf"/>
                                   <attributes>
                                     <attribute name="pixbuf">2</attribute>
+                                  </attributes>
+                                </child>
+                                <child>
+                                  <object class="GtkCellRendererText"/>
+                                  <attributes>
+                                    <attribute name="text">1</attribute>
                                   </attributes>
                                 </child>
                               </object>

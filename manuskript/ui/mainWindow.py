@@ -62,6 +62,9 @@ class MainWindow:
         self.outlineSlot = builder.get_object("outline_slot")
         self.editorSlot = builder.get_object("editor_slot")
 
+        self.metadataSlot = builder.get_object("metadata_slot")
+        self.searchSlot = builder.get_object("search_slot")
+
         self.dictionaryMenuItem = builder.get_object("dictionary_menu_item")
         self.dictionaryMenu = builder.get_object("dictionary_menu")
         self.dictionaryMenuGroup = []
@@ -73,6 +76,9 @@ class MainWindow:
         self.worldView: Optional[WorldView] = None
         self.outlineView: Optional[OutlineView] = None
         self.editorView: Optional[EditorView] = None
+
+        self.metadataView: Optional[MetadataView] = None
+        self.searchView: Optional[SearchView] = None
 
         self.viewDictionary: dict[Gtk.Widget, Optional[AbstractView]] = dict()
 
@@ -263,6 +269,9 @@ class MainWindow:
         self.worldView = packViewIntoSlot(self.worldSlot, WorldView, self.project.world)
         self.outlineView = packViewIntoSlot(self.outlineSlot, OutlineView, self.project.outline)
         self.editorView = packViewIntoSlot(self.editorSlot, EditorView, self.project)
+
+        self.metadataView = packViewIntoSlot(self.metadataSlot, MetadataView, self.project, self.editorView)
+        self.searchView = packViewIntoSlot(self.searchSlot, SearchView)
 
         self.viewDictionary = {
           self.generalSlot: self.generalView,
