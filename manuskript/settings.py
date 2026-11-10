@@ -47,6 +47,7 @@ spellcheck = False
 dict = None
 corkSizeFactor = 100
 folderView = "cork"
+show_sidebar_labels = False
 lastTab = 0
 openIndexes = [""]
 progressChars = False
@@ -141,7 +142,7 @@ def applyTooltipStyle():
 
 def save(filename=None, protocol=None):
 
-    global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, openIndexes, \
+    global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, show_sidebar_labels, lastTab, openIndexes, \
            progressChars, autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
            corkBackground, corkStyle, fullScreenTheme, defaultTextType, textEditor, revisions, frequencyAnalyzer, viewMode, \
            saveToZip, dontShowDeleteWarning, fullscreenSettings, tooltipStyle
@@ -153,6 +154,7 @@ def save(filename=None, protocol=None):
         "spellcheck": spellcheck,
         "corkSizeFactor": corkSizeFactor,
         "folderView": folderView,
+        "show_sidebar_labels": show_sidebar_labels,
         "lastTab": lastTab,
         "openIndexes": openIndexes,
         "progressChars": progressChars,
@@ -232,6 +234,10 @@ def load(string, fromString=False, protocol=None):
     if "folderView" in allSettings:
         global folderView
         folderView = allSettings["folderView"]
+
+    if "show_sidebar_labels" in allSettings:
+        global show_sidebar_labels
+        show_sidebar_labels = allSettings["show_sidebar_labels"]
 
     if "lastTab" in allSettings:
         global lastTab
