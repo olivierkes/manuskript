@@ -16,6 +16,7 @@
 .settings/org.eclipse.core.resources.prefs
 .vscode
 .vimrc
+desktop.ini
 ExportTest
 Notes.t2t
 dist
