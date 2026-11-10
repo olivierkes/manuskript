@@ -53,6 +53,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.toggledSpellcheck.connect(self.txtRedacText.toggleSpellcheck, AUC)
         self.dictChanged.connect(self.txtRedacText.setDict, AUC)
         self.txtRedacText.setHighlighting(True)
+        self.txtRedacText.enableVim()
         self.currentDict = ""
         self.spellcheck = settings.spellcheck
         self.folderView = "cork"
@@ -198,6 +199,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
                                highlighting=True,
                                autoResize=True)
             edt.setFrameShape(QFrame.NoFrame)
+            edt.enableVim()
             edt.setStatusTip("{}".format(itm.path()))
             self.toggledSpellcheck.connect(edt.toggleSpellcheck, AUC)
             self.dictChanged.connect(edt.setDict, AUC)
