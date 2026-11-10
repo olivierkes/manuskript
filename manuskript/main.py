@@ -5,6 +5,7 @@ import os
 import platform
 import sys
 import signal
+import subprocess
 
 import manuskript.logging
 from PyQt5.QtCore import QLocale, QTranslator, QSettings, Qt
@@ -121,47 +122,97 @@ def prepare(arguments, tests=False):
     LOGGER.info("Preferred translation: {} (based on {})".format(("builtin" if translation == "" else translation), source))
     activateTranslation(translation, source)
 
+    def is_linux_dark_theme():
+        """Detect a dark GTK/desktop theme on Linux using the actual settings sources."""
+        try:
+            result = subprocess.run(
+                ["gsettings", "get", "org.gnome.desktop.interface", "color-scheme"],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            if result.returncode == 0:
+                output = result.stdout.strip().strip("'")
+                if output.lower() == "prefer-dark":
+                    LOGGER.info("Detected a dark theme in use via gsettings. Applying dark theme to Manuskript...")
+                    return True
+        except (FileNotFoundError, OSError):
+            pass
+
+        for gtk_dir in ("~/.config/gtk-3.0", "~/.config/gtk-4.0"):
+            settings_path = os.path.expanduser(os.path.join(gtk_dir, "settings.ini"))
+            if not os.path.isfile(settings_path):
+                continue
+            try:
+                with open(settings_path, "r", encoding="utf-8") as f:
+                    content = f.read().lower()
+                if "gtk-application-prefer-dark-theme=1" in content:
+                    LOGGER.info("Detected a dark theme in use via GTK settings. Applying dark theme to Manuskript...")
+                    return True
+            except OSError:
+                pass
+
+        return False
+
+    def createDarkThemePalette() -> QPalette:
+        """Applies a dark theme palette to the application."""
+        darkPalette = QPalette()
+        darkColor = QColor(45, 45, 45)
+        disabledColor = QColor(127, 127, 127)
+        darkPalette.setColor(QPalette.Window, darkColor)
+        darkPalette.setColor(QPalette.WindowText, Qt.white)
+        darkPalette.setColor(QPalette.Base, QColor(18, 18, 18))
+        darkPalette.setColor(QPalette.AlternateBase, darkColor)
+        darkPalette.setColor(QPalette.ToolTipBase, Qt.white)
+        darkPalette.setColor(QPalette.ToolTipText, Qt.white)
+        darkPalette.setColor(QPalette.Text, Qt.white)
+        darkPalette.setColor(QPalette.Disabled, QPalette.Text, disabledColor)
+        darkPalette.setColor(QPalette.Button, darkColor)
+        darkPalette.setColor(QPalette.ButtonText, Qt.white)
+        darkPalette.setColor(QPalette.Disabled, QPalette.ButtonText, disabledColor)
+        darkPalette.setColor(QPalette.BrightText, Qt.red)
+        darkPalette.setColor(QPalette.Link, QColor(42, 130, 218))
+
+        darkPalette.setColor(QPalette.Highlight, QColor(42, 130, 218))
+        darkPalette.setColor(QPalette.HighlightedText, Qt.black)
+        darkPalette.setColor(QPalette.Disabled, QPalette.HighlightedText, disabledColor)
+
+        # Fixes ugly (not to mention hard to read) disabled menu items.
+        # Source: https://bugreports.qt.io/browse/QTBUG-10322?focusedCommentId=371060#comment-371060
+        darkPalette.setColor(QPalette.Disabled, QPalette.Light, Qt.transparent)
+
+        return darkPalette
+
+
     def respectSystemDarkThemeSetting():
         """Adjusts the Qt theme to match the OS 'dark theme' setting configured by the user."""
-        if platform.system() != 'Windows':
-            return
+        if platform.system() == 'Windows':
+            # Basic Windows 10 Dark Theme support.
+            # Source: https://forum.qt.io/topic/101391/windows-10-dark-theme/4
+            themeSettings = QSettings(
+                "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+                QSettings.NativeFormat)
+            if themeSettings.value("AppsUseLightTheme") == 0:
+                darkPalette = createDarkThemePalette()
+                app.setPalette(darkPalette)
 
-        # Basic Windows 10 Dark Theme support.
-        # Source: https://forum.qt.io/topic/101391/windows-10-dark-theme/4
-        themeSettings = QSettings(
-            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
-            QSettings.NativeFormat)
-        if themeSettings.value("AppsUseLightTheme") == 0:
-            darkPalette = QPalette()
-            darkColor = QColor(45, 45, 45)
-            disabledColor = QColor(127, 127, 127)
-            darkPalette.setColor(QPalette.Window, darkColor)
-            darkPalette.setColor(QPalette.WindowText, Qt.white)
-            darkPalette.setColor(QPalette.Base, QColor(18, 18, 18))
-            darkPalette.setColor(QPalette.AlternateBase, darkColor)
-            darkPalette.setColor(QPalette.ToolTipBase, Qt.white)
-            darkPalette.setColor(QPalette.ToolTipText, Qt.white)
-            darkPalette.setColor(QPalette.Text, Qt.white)
-            darkPalette.setColor(QPalette.Disabled, QPalette.Text, disabledColor)
-            darkPalette.setColor(QPalette.Button, darkColor)
-            darkPalette.setColor(QPalette.ButtonText, Qt.white)
-            darkPalette.setColor(QPalette.Disabled, QPalette.ButtonText, disabledColor)
-            darkPalette.setColor(QPalette.BrightText, Qt.red)
-            darkPalette.setColor(QPalette.Link, QColor(42, 130, 218))
-
-            darkPalette.setColor(QPalette.Highlight, QColor(42, 130, 218))
-            darkPalette.setColor(QPalette.HighlightedText, Qt.black)
-            darkPalette.setColor(QPalette.Disabled, QPalette.HighlightedText, disabledColor)
-
-            # Fixes ugly (not to mention hard to read) disabled menu items.
-            # Source: https://bugreports.qt.io/browse/QTBUG-10322?focusedCommentId=371060#comment-371060
-            darkPalette.setColor(QPalette.Disabled, QPalette.Light, Qt.transparent)
-
-            app.setPalette(darkPalette)
-
-            # This broke the Settings Dialog at one point... and then it stopped breaking it.
-            # TODO: Why'd it break? Check if tooltips look OK... and if not, make them look OK.
-            # app.setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }")
+                # This broke the Settings Dialog at one point... and then it stopped breaking it.
+                # TODO: Why'd it break? Check if tooltips look OK... and if not, make them look OK.
+                # app.setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }")
+        elif platform.system() == 'Linux':
+            LOGGER.info("Linux detected. Attempting to respect system dark theme setting...")
+            # Basic Linux Dark Theme support.
+            themeSettings = QSettings("org.gnome.desktop.interface", QSettings.NativeFormat)
+            
+            # NOTE: There may be a better way to detect the dark theme on Linux that is more concise.
+            # This conditional should be changed to an alternative if it is proven better.
+            if is_linux_dark_theme():
+                LOGGER.info("Detected a dark theme in use. Applying dark theme to Manuskript...")
+                darkPalette = createDarkThemePalette()
+                app.setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }")
+                app.setPalette(darkPalette)
+        else:
+            LOGGER.info("No dark theme detection implemented for this platform. ({}).".format(platform.system()))        
 
     respectSystemDarkThemeSetting()
 

@@ -3,6 +3,9 @@ UIs= $(UI:.ui=.py) $(UI:.qrc=_rc.py)
 TS := $(wildcard i18n/*.ts)
 QMs= $(TS:.ts=.qm)
 
+PYTHON ?= $(shell if [ -x .venv/bin/python ]; then echo .venv/bin/python; elif command -v python3 >/dev/null 2>&1; then echo python3; else echo python; fi)
+PYINSTALLER := $(PYTHON) -m PyInstaller
+
 ui: $(UIs)
 
 run: $(UIs)
@@ -34,7 +37,7 @@ linguist:
 i18n: $(QMs)
 
 pyinstaller:
-	python3 /usr/local/bin/pyinstaller manuskript.spec
+	$(PYINSTALLER) manuskript.spec --clean --noconfirm
 
 snappkg:
 	snapcraft snap
