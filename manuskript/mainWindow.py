@@ -7,9 +7,9 @@ import re
 from PyQt5.Qt import qVersion, PYQT_VERSION_STR
 from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoint,
                           QRegExp, QUrl, QSize, QModelIndex)
-from PyQt5.QtGui import QStandardItemModel, QIcon, QColor, QStandardItem
+from PyQt5.QtGui import QStandardItemModel, QIcon, QColor, QStandardItem, QKeySequence
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
-    QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit, QTextEdit, QTreeView, QDialog, QTableView
+    QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit, QTextEdit, QTreeView, QDialog, QTableView, QShortcut
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
@@ -125,6 +125,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actCut.triggered.connect(self.documentsCut)
         self.actPaste.triggered.connect(self.documentsPaste)
         self.actSearch.triggered.connect(self.doSearch)
+        QShortcut(
+            QKeySequence(Qt.Key_Escape),
+            self.dckSearch,
+            self.dckSearch.close,
+            context=Qt.WidgetWithChildrenShortcut,
+        )
         self.actRename.triggered.connect(self.documentsRename)
         self.actDuplicate.triggered.connect(self.documentsDuplicate)
         self.actDelete.triggered.connect(self.documentsDelete)
