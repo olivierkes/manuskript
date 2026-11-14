@@ -6,6 +6,7 @@ import re
 import time
 from typing import Any, Callable
 import urllib.parse
+import urllib.request
 
 from manuskript.util.counter import CounterKind, CharCounter, WordCounter, PageCounter
 from manuskript.util.translation import Translation
@@ -76,13 +77,10 @@ def safeFilename(filename: str, extension: str | None = None) -> str:
 def parseFilenameFromURL(url: str) -> str | None:
     result = urllib.parse.urlparse(url)
 
-    if result is None:
-        return None
-
     if result.scheme != "file":
         return None
 
-    return result.path
+    return urllib.request.url2pathname(result.path)
 
 
 def countText(text: str, kind: CounterKind = CounterKind.WORDS) -> int:
