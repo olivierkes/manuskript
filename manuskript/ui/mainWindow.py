@@ -4,7 +4,7 @@
 import os
 from typing import Any, Optional
 
-from gi.repository import GLib, GObject, Gtk
+from gi.repository import GLib, GObject, Gtk, Gdk
 
 from manuskript.data import Project, Settings
 from manuskript.editor import AbstractRegioner, AbstractSplitter, getRegioners, getSplitters
@@ -129,6 +129,35 @@ class MainWindow:
         bindMenuItem(builder, "settings_menu_item", self._settingsAction)
         bindMenuItem(builder, "frequency_menu_item", self._frequencyAction)
         bindMenuItem(builder, "about_menu_item", self._aboutAction)
+
+        # Keyboard shortcuts
+        self.accelGroup = Gtk.AccelGroup()
+        self.window.add_accel_group(self.accelGroup)
+
+        shortcuts = {
+            "open_menu_item": "<Control>o",
+            "save_menu_item": "<Control>s",
+            "saveas_menu_item": "<Control><Shift>s",
+            "close_menu_item": "<Control>w",
+            "quit_menu_item": "<Control>q",
+            "rename_menu_item": "F2",
+        }
+
+        for menu_id, shortcut in shortcuts.items():
+            menu_item = builder.get_object(menu_id)
+
+            if menu_item is None:
+                continue
+
+            key, modifiers = Gtk.accelerator_parse(shortcut)
+
+            menu_item.add_accelerator(
+                "activate",
+                self.accelGroup,
+                key,
+                modifiers,
+                Gtk.AccelFlags.VISIBLE,
+            )
 
         loadPlugins(self.plugins)
 

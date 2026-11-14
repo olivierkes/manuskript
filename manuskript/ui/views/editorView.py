@@ -81,6 +81,7 @@ class EditorView(AbstractView):
         self.viewStack = builder.get_object("view_stack")
 
         self.editorTextBuffer = builder.get_object("editor_text")
+        self.editorTextBuffer.connect("changed", self._editorTextChanged)
         self.editorFlowbox = builder.get_object("editor_flowbox")
 
         self.editorFlowbox.connect("selected-children-changed", self._editorFlowboxSelectionChanged)
@@ -321,6 +322,13 @@ class EditorView(AbstractView):
             return True
         else:
             return False
+    def _editorTextChanged(self, buffer: Gtk.TextBuffer) -> None:
+        """Synchronize edited chapter text with the project model."""
+        if type(self.outlineItem) is not OutlineText:
+            return
+
+        start, end = buffer.get_bounds()
+        self.outlineItem.text = buffer.get_text(start, end, False)
 
     def loadEditorData(self, outlineItem: OutlineItem | None = None) -> None:
         self.editorItems = list()
