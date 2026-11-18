@@ -13,11 +13,12 @@ from manuskript.functions import mainWindow
 
 import logging
 LOGGER = logging.getLogger(__name__)
+from manuskript import MD
 
-try:
-    import markdown as MD
-except ImportError:
-    MD = None
+# try:
+#     from manuskript import MD
+# except ImportError:
+#     MD = None
 
 
 class markdownConverter(abstractConverter):
@@ -28,14 +29,12 @@ class markdownConverter(abstractConverter):
     name = "python module markdown"
 
     @classmethod
-    def isValid(self):
-        return MD != None
+    def isValid(cls):
+        return MD.isValid
 
     @classmethod
-    def convert(self, markdown):
-        if not self.isValid:
+    def convert(cls, markdown):
+        if not MD.isValid:
             LOGGER.error("markdownConverter is called but not valid.")
-            return ""
-
         html = MD.markdown(markdown)
         return html

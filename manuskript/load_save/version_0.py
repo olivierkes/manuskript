@@ -23,7 +23,7 @@ try:
     import zlib  # Used with zipfile for compression
 
     compression = zipfile.ZIP_DEFLATED
-except:
+except Exception:
     compression = zipfile.ZIP_STORED
 
 ###########################################################################################
@@ -200,7 +200,7 @@ def loadStandardItemModelXML(mdl, xml, fromString=False):
     if not fromString:
         try:
             tree = ET.parse(xml)
-        except:
+        except Exception:
             LOGGER.error("Failed to load XML for QStandardItemModel (%s).", xml)
             return
     else:

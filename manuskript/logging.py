@@ -203,7 +203,7 @@ def logFutureExceptions():
         import threading # threading module was optional pre-3.7
         if hasattr(threading, "excepthook"):  # Python 3.8+
             threading.excepthook = handle_uncaught_thread_exception
-    except:
+    except Exception:
         pass
     if hasattr(sys, "unraisablehook"):  # Python 3.8+
         sys.unraisablehook = handle_unraisable_exception

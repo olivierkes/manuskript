@@ -1,0 +1,6 @@
+symspellpy>=6.3.8
+yaml
+markdown
+spellchecker
+language_tool_python
+language_check

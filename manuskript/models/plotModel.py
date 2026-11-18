@@ -15,7 +15,25 @@ from manuskript.searchLabels import PlotSearchLabels, PLOT_STEP_COLUMNS_OFFSET
 from manuskript.functions import search
 from manuskript.models.searchableModel import searchableModel
 from manuskript.models.searchableItem import searchableItem
-
+from typing import TypedDict, cast, TYPE_CHECKING
+if TYPE_CHECKING:
+    from manuskript.models.characterModel import Character
+else:
+    Character=searchableItem
+class PlotStepRow(TypedDict):
+    name:str
+    ID :str|None
+    meta:str
+    summary:str
+class RowPlot(TypedDict):
+    name:str
+    ID:str
+    importance:str
+    characters:list[Character]
+    description:str
+    result:str
+    steps:PlotStepRow
+    summary:str
 class plotModel(QStandardItemModel, searchableModel):
     def __init__(self, parent):
         QStandardItemModel.__init__(self, 0, 3, parent)
@@ -27,54 +45,82 @@ class plotModel(QStandardItemModel, searchableModel):
     ###############################################################################
     # QUERIES
     ###############################################################################
+    def rowPlotsteps(self, idx:int)->dict[str|None, PlotStepRow]:
+        item = self.item(idx, Plot.steps)
+        plots={}
+        if item:
+            for r in range(item.rowCount()):
+                plotRow={}
+                plotRow['ID']=None
+                for key  in PlotStep:
+                    if child:=item.child(r, key.value):
+                        plotRow[key.name]=child.text() or ''
+                plots[plotRow["ID"]]=plotRow
+        return plots
+    def rowPlot(self, idx:int)->RowPlot:
+        row={}
+        for key in Plot:
+            if key==Plot.steps:
+                row[key.name]=self.rowPlotsteps(idx)
+            elif key==Plot.characters:
+                item=self.item(idx, key.value)
+                if not item:
+                    continue
+                pM=mainWindow().mdlCharacter
+                char=[]
+                for r in range(item.rowCount()):
+                    child=item.child(r, 0)
+                    if not (child:=item.child(r, 0)):
+                        continue
+                    ID = child.text()
+                    if character := pM.getCharacterByID(ID):
+                        char.append(character)
+                
 
+                
+            elif child:=self.item(idx, key.value):
+                row[key.name]=child.text()
+            else:
+                row[key.name]=''
+        return cast(RowPlot,row)
     def getPlotsByImportance(self):
         plots = [[], [], []]
         for i in range(self.rowCount()):
-            importance = self.item(i, Plot.importance).text()
-            ID = self.item(i, Plot.ID).text()
+            data=self.rowPlot(i)
+            importance = data["importance"]
+            ID = data["ID"]
             plots[2 - toInt(importance)].append(ID)
         return plots
 
-    def getSubPlotsByID(self, ID):
+    def getSubPlotsByID(self, ID)->None|list[tuple[str,str,str]]:
         index = self.getIndexFromID(ID)
         if not index.isValid():
             return
         index = index.sibling(index.row(), Plot.steps)
         item = self.itemFromIndex(index)
+        if not item:return
         lst = []
-        for i in range(item.rowCount()):
-            if item.child(i, PlotStep.ID):
-                _ID = item.child(i, PlotStep.ID).text()
-
-                # Don't know why sometimes name is None (while drag'n'dropping
-                # several items)
-                if item.child(i, PlotStep.name):
-                    name = item.child(i, PlotStep.name).text()
-                else:
-                    name = ""
-
-                # Don't know why sometimes summary is None
-                if item.child(i, PlotStep.summary):
-                    summary = item.child(i, PlotStep.summary).text()
-                else:
-                    summary = ""
-
-                lst.append((_ID, name, summary))
+        for steps in self.rowPlotsteps(index.row()).values():
+            _ID = steps['ID']
+            if _ID is None:
+                continue
+            name=steps["name"]
+            summary=steps['summary']
+            lst.append((_ID, name, summary))
         return lst
 
     def getPlotNameByID(self, ID):
         for i in range(self.rowCount()):
-            _ID = self.item(i, Plot.ID).text()
+            dat=self.rowPlot(i)
+            _ID = dat["ID"]
             if _ID == ID or toInt(_ID) == ID:
-                name = self.item(i, Plot.name).text()
-                return name
+                return dat['name']
         return None
 
     def getPlotImportanceByRow(self, row):
         for i in range(self.rowCount()):
             if i == row:
-                importance = self.item(i, Plot.importance).text()
+                importance = item.text() if (item:=self.item(i, Plot.importance)) else '0'
                 return importance
         return "0"  # Default to "Minor"
 
@@ -83,13 +129,15 @@ class plotModel(QStandardItemModel, searchableModel):
         is ``subplotRaw``, of plot whose ID is ``plotID``.
         """
         plotIndex = self.getIndexFromID(plotID)
-        name = plotIndex.child(subplotRaw, PlotStep.name).data()
+        name = plotIndex.child(subplotRaw, PlotStep.name).data() # pyright: ignore[reportArgumentType]
         summary = plotIndex.child(subplotRaw, PlotStep.summary).data()
         return name, summary
 
     def getIndexFromID(self, ID):
         for i in range(self.rowCount()):
-            _ID = self.item(i, Plot.ID).text()
+            if not (item:=self.item(i, Plot.ID)):
+                continue
+            _ID = item.text()
             if _ID == ID or toInt(_ID) == ID:
                 return self.index(i, 0)
         return QModelIndex()
@@ -122,6 +170,7 @@ class plotModel(QStandardItemModel, searchableModel):
         vals = []
         for i in range(self.rowCount(parent)):
             index = self.index(i, Plot.ID, parent)
+            
             # item = self.item(i, Plot.ID)
             if index.isValid() and index.data():
                 vals.append(int(index.data()))
@@ -138,9 +187,9 @@ class plotModel(QStandardItemModel, searchableModel):
     # SUBPLOTS
     ###############################################################################
 
-    def headerData(self, section, orientation, role=Qt.DisplayRole):
-        if role == Qt.DisplayRole:
-            if orientation == Qt.Horizontal:
+    def headerData(self, section, orientation, role=Qt.ItemDataRole.DisplayRole):
+        if role == Qt.ItemDataRole.DisplayRole:
+            if orientation == Qt.Orientation.Horizontal:
                 if section == PlotStep.name:
                     return self.tr("Name")
                 elif section == PlotStep.meta:
@@ -152,14 +201,14 @@ class plotModel(QStandardItemModel, searchableModel):
         else:
             return QStandardItemModel.headerData(self, section, orientation, role)
 
-    def data(self, index, role=Qt.DisplayRole):
-        if index.parent().isValid() and \
-                index.parent().column() == Plot.steps and \
+    def data(self, index, role=Qt.ItemDataRole.DisplayRole):
+        if (parentindex:= index.parent()).isValid() and \
+                parentindex.column() == Plot.steps and \
                 index.column() == PlotStep.meta:
-            if role == Qt.TextAlignmentRole:
-                return Qt.AlignRight | Qt.AlignVCenter
-            elif role == Qt.ForegroundRole:
-                return QBrush(Qt.gray)
+            if role == Qt.ItemDataRole.TextAlignmentRole:
+                return Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter
+            elif role == Qt.ItemDataRole.ForegroundRole:
+                return QBrush(Qt.GlobalColor.gray)
             else:
                 return QStandardItemModel.data(self, index, role)
 
@@ -204,6 +253,8 @@ class plotModel(QStandardItemModel, searchableModel):
         if not parent.isValid():
             return
         parentItem = self.itemFromIndex(parent)
+        if not parentItem:
+            return
 
         while self.mw.lstSubPlots.selectionModel().selectedRows():
             i = self.mw.lstSubPlots.selectionModel().selectedRows()[0]
@@ -212,7 +263,7 @@ class plotModel(QStandardItemModel, searchableModel):
     def flags(self, index):
         parent = index.parent()
         if parent.isValid():  # this is a subitem
-            return Qt.ItemIsEnabled | Qt.ItemIsEditable | Qt.ItemIsSelectable | Qt.ItemIsDragEnabled
+            return Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsEditable | Qt.ItemFlag.ItemIsSelectable | Qt.ItemFlag.ItemIsDragEnabled
         else:
             return QStandardItemModel.flags(self, index)
 
@@ -222,18 +273,17 @@ class plotModel(QStandardItemModel, searchableModel):
 
     def addPlotPerso(self, v):
         index = self.mw.lstPlots.currentPlotIndex()
+        v=str(v)
         if index.isValid():
-            if not self.item(index.row(), Plot.characters):
-                self.setItem(index.row(), Plot.characters, QStandardItem())
-
-            item = self.item(index.row(), Plot.characters)
-
+            if not (item :=self.item(index.row(), Plot.characters)):
+                item=QStandardItem()
+                self.setItem(index.row(), Plot.characters, item)
             # We check that the PersoID is not in the list yet
             for i in range(item.rowCount()):
-                if item.child(i).text() == str(v):
+                if (child:=item.child(i)) and child.text() == v:
                     return
 
-            item.appendRow(QStandardItem(str(v)))
+            item.appendRow(QStandardItem(v))
 
     def removePlotPerso(self):
         index = self.mw.lstPlotPerso.currentIndex()
@@ -241,6 +291,7 @@ class plotModel(QStandardItemModel, searchableModel):
             return
         parent = index.parent()
         parentItem = self.itemFromIndex(parent)
+        if not parentItem:return
         parentItem.takeRow(index.row())
 
     def updatePlotPersoButton(self):

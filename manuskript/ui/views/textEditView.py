@@ -4,9 +4,9 @@ import re, textwrap
 
 from PyQt5.Qt import QApplication
 from PyQt5.QtCore import QTimer, QModelIndex, Qt, QEvent, pyqtSignal, QRegExp, QLocale, QPersistentModelIndex, QMutex
-from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat, QFont, QColor, QIcon, QMouseEvent, QTextCursor
+from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat, QFont, QColor, QIcon, QMouseEvent, QTextCursor, QTextDocument
 from PyQt5.QtWidgets import QWidget, QTextEdit, qApp, QAction, QMenu, QToolTip
-
+from typing import cast, TypeVar, Any
 from manuskript import settings
 from manuskript.enums import Outline, World, Character, Plot
 from manuskript import functions as F
@@ -19,7 +19,7 @@ from manuskript.models.characterModel import Character, CharacterInfo
 
 import logging
 LOGGER = logging.getLogger(__name__)
-
+TYPE=TypeVar('TYPE', default=Any)
 # See implementation of QTextDocument::toPlainText()
 PLAIN_TRANSLATION_TABLE = {0x2028: "\n", 0x2029: "\n", 0xfdd0: "\n", 0xfdd1: "\n"}
 
@@ -28,7 +28,7 @@ class textEditView(QTextEdit):
     def __init__(self, parent=None, index=None, html=None, spellcheck=None,
                  highlighting=False, dict="", autoResize=False):
         QTextEdit.__init__(self, parent)
-        self._column = Outline.text
+        self._column:int|Outline = Outline.text
         self._index = None
         self._indexes = None
         self._model = None
@@ -66,7 +66,7 @@ class textEditView(QTextEdit):
         self.updateTimer.timeout.connect(self.submit)
 
         self.updateTimer.stop()
-        self.updateTimerConnection = self.document().contentsChanged.connect(self.updateTimer.start, F.AUC)
+        self.updateTimerConnection = self.document().contentsChanged.connect(self.updateTimer.start, F.AUC) # type: ignore
 
         self.setEnabled(False)
 
@@ -215,14 +215,14 @@ class textEditView(QTextEdit):
         # there are margins. We check that the parent class is a QWidget because
         # if textEditView is used in fullScreenEditor, then we don't want to
         # set the background.
-        if self.parent().__class__ == QWidget:
-            self.parent().setStyleSheet("""
+        if isinstance((parent:=self.parent()),QWidget):
+            parent.setStyleSheet("""
                 QWidget#{name}{{
                     background: {bg};
                 }}""".format(
                 # We style by name, otherwise all inheriting widgets get the same
                 # colored background, for example context menu.
-                name=self.parent().objectName(),
+                name=parent.objectName(),
                 bg=background,
             ))
 
@@ -237,10 +237,10 @@ class textEditView(QTextEdit):
         bf.setTextIndent(opt["tabWidth"] * 1 if opt["indent"] else 0)
         bf.setTopMargin(opt["spacingAbove"])
         bf.setBottomMargin(opt["spacingBelow"])
-        bf.setAlignment(Qt.AlignLeft if opt["textAlignment"] == 0 else
-                        Qt.AlignCenter if opt["textAlignment"] == 1 else
-                        Qt.AlignRight if opt["textAlignment"] == 2 else
-                        Qt.AlignJustify)
+        bf.setAlignment(Qt.AlignmentFlag.AlignLeft if opt["textAlignment"] == 0 else
+                        Qt.AlignmentFlag.AlignCenter if opt["textAlignment"] == 1 else
+                        Qt.AlignmentFlag.AlignRight if opt["textAlignment"] == 2 else
+                        Qt.AlignmentFlag.AlignJustify)
 
         self._defaultCharFormat = cf
         self._defaultBlockFormat = bf
@@ -283,14 +283,17 @@ class textEditView(QTextEdit):
         try:
             self.document().contentsChanged.disconnect(self.updateTimerConnection)
             self.updateTimerConnection = None
-        except:
+        except Exception:
             pass
 
     def reconnectDocument(self):
         if not self.updateTimer or self.updateTimerConnection:
             return
-
-        self.updateTimerConnection = self.document().contentsChanged.connect(self.updateTimer.start, F.AUC)
+        self.updateTimerConnection = self.document().contentsChanged.connect(self.updateTimer.start, F.AUC) # pyright: ignore[reportCallIssue]
+        
+    def document(self) -> QTextDocument:
+        return cast(QTextDocument,super().document())
+    
 
     def toIdealText(self):
         """QTextDocument::toPlainText() replaces NBSP with spaces, which we don't want.
@@ -347,11 +350,13 @@ class textEditView(QTextEdit):
         # LOGGER.debug("Submitting %s", self.objectName())
         if self._index and self._index.isValid():
             # item = self._index.internalPointer()
-            if text != self._index.data():
+            if text != self._index.data() and self._model:
                 # LOGGER.debug("    Submitting plain text")
                 self._model.setData(QModelIndex(self._index), text)
 
         elif self._indexes:
+            if not self._model:
+                return
             for i in self._indexes:
                 item = i.internalPointer()
                 if text != F.toString(item.data(self._column)):
@@ -359,13 +364,13 @@ class textEditView(QTextEdit):
                     self._model.setData(i, text)
 
     def keyPressEvent(self, event):
-        if event.key() == Qt.Key_V and event.modifiers() & Qt.ControlModifier:
+        if event.key() == Qt.Key.Key_V and event.modifiers() & Qt.KeyboardModifier.ControlModifier:
             text = QApplication.clipboard().text()
             self.insertPlainText(text)
         else:
             QTextEdit.keyPressEvent(self, event)
 
-        if event.key() == Qt.Key_Space:
+        if event.key() == Qt.Key.Key_Space:
             self.submit()
 
     # -----------------------------------------------------------------------------------------------------
@@ -416,11 +421,11 @@ class textEditView(QTextEdit):
             self.spellcheck = False
 
     def mousePressEvent(self, event):
-        if event.button() == Qt.RightButton:
+        if event.button() == Qt.MouseButton.RightButton:
             # Rewrite the mouse event to a left button event so the cursor is
             # moved to the location of the pointer.
-            event = QMouseEvent(QEvent.MouseButtonPress, event.pos(),
-                                Qt.LeftButton, Qt.LeftButton, Qt.NoModifier)
+            event = QMouseEvent(QEvent.Type.MouseButtonPress, event.pos(),
+                                Qt.MouseButton.LeftButton, Qt.MouseButton.LeftButton, Qt.KeyboardModifier.NoModifier)
         QTextEdit.mousePressEvent(self, event)
 
     def beginTooltipMoveEvent(self):
@@ -457,11 +462,11 @@ class textEditView(QTextEdit):
             if len(suggestions) > 0:
                 # I think it should focus on one type of error at a time.
                 match = suggestions[0]
+                
 
         if match:
             # Wrap the message into a fitting width
             msg_lines = textwrap.wrap(match.msg, 48)
-
             self.showTooltip(event.globalPos(), "\n".join(msg_lines))
         else:
             self.hideTooltip()
@@ -471,7 +476,7 @@ class textEditView(QTextEdit):
         We catch wheelEvent if key modifier is CTRL to change font size.
         Note: this should be in a class specific for main textEditView (#TODO).
         """
-        if event.modifiers() & Qt.ControlModifier:
+        if event.modifiers() & Qt.KeyboardModifier.ControlModifier:
             # Get the wheel angle.
             d = event.angleDelta().y() / 120
 
@@ -506,9 +511,11 @@ class textEditView(QTextEdit):
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
         popup_menu = self.createStandardContextMenu()
         popup_menu.exec_(event.globalPos())
+    def sender(self, type:type[TYPE]=F.QObject)->TYPE:
+        return cast(TYPE,super().sender())
 
     def newCharacter(self):
-        text = self.sender().data()
+        text = self.sender(QAction).data()
         LOGGER.debug(f'New character: {text}')
         # switch to character page
         mw = F.mainWindow()
@@ -520,7 +527,7 @@ class textEditView(QTextEdit):
         mw.lstCharacters.setCurrentItem(item)
 
     def newPlotItem(self):
-        text = self.sender().data()
+        text = self.sender(QAction).data()
         LOGGER.debug(f'New plot item: {text}')
         # switch to plot page
         mw = F.mainWindow()
@@ -533,7 +540,7 @@ class textEditView(QTextEdit):
         # mw.lstSubPlots.setCurrentIndex(plotIndex)
 
     def newWorldItem(self):
-        text = self.sender().data()
+        text = self.sender(QAction).data()
         LOGGER.debug(f'New world item: {text}')
         mw = F.mainWindow()
         mw.tabMain.setCurrentIndex(mw.TabWorld)
@@ -542,7 +549,7 @@ class textEditView(QTextEdit):
             mw.mdlWorld.indexFromItem(item))
 
 
-    def appendContextMenuEntriesForWord(self, popup_menu, selectedWord):
+    def appendContextMenuEntriesForWord(self, popup_menu:QMenu, selectedWord:str|None):
         # add "new <something>" buttons at end
         if selectedWord != None:
             # new character
@@ -570,6 +577,27 @@ class textEditView(QTextEdit):
 
     def createStandardContextMenu(self):
         popup_menu = QTextEdit.createStandardContextMenu(self)
+        if not popup_menu:
+            popup_menu=QMenu(self)
+            doc=self.document()
+            def Action(text, slot, enabled=True, shortcut=None):
+                assert popup_menu
+                a=popup_menu.addAction(text, slot, shortcut)
+                if a is None:
+                    a=QAction(text, self)
+                    a.triggered.connect(slot)
+                a.setEnabled(enabled)
+                return a
+            Action("Undo", self.undo, enabled=doc.isUndoAvailable())
+            Action("Redo", self.redo, doc.isRedoAvailable())
+            popup_menu.addSeparator()
+            hasSelection=self.textCursor().hasSelection()
+            Action("Cut", self.cut,hasSelection)
+            Action("Copy", self.copy,hasSelection)
+            Action("Paste", self.paste, self.canPaste())
+            popup_menu.addSeparator()
+            Action("Select All", self.selectAll)
+    
 
         cursor = self.textCursor()
         selectedWord = cursor.selectedText() if cursor.hasSelection() else None
@@ -688,11 +716,10 @@ class textEditView(QTextEdit):
                         popup_menu.insertMenu(popup_menu.actions()[0], correct_menu)
 
             # If word was added to custom dict, give the possibility to remove it
-            elif self._dict.isCustomWord(selectedWord):
+            elif self._dict and self._dict.isCustomWord(selectedWord):
                 popup_menu.insertSeparator(popup_menu.actions()[0])
                 # Adds: remove from dictionary
-                rmAction = QAction(
-                    self.tr("&Remove from custom dictionary"), popup_menu)
+                rmAction = QAction(self.tr("&Remove from custom dictionary"), popup_menu)
                 rmAction.setIcon(QIcon.fromTheme("list-remove"))
                 rmAction.triggered.connect(self.rmWordFromDict)
                 rmAction.setData(selectedWord)
@@ -713,14 +740,18 @@ class textEditView(QTextEdit):
         cursor.endEditBlock()
 
     def addWordToDict(self):
-        word = self.sender().data()
-        self._dict.addWord(word)
-        self.highlighter.rehighlight()
+        word:str|None = self.sender(QAction).data()
+        if self._dict:
+            self._dict.addWord(word)
+        if self.highlighter:
+            self.highlighter.rehighlight()
 
     def rmWordFromDict(self):
-        word = self.sender().data()
-        self._dict.removeWord(word)
-        self.highlighter.rehighlight()
+        word = self.sender(QAction).data()
+        if self._dict:
+            self._dict.removeWord(word)
+        if self.highlighter:
+            self.highlighter.rehighlight()
 
     ###############################################################################
     # FORMATTING
@@ -744,7 +775,6 @@ class textEditView(QTextEdit):
         if self._index and self._column == Outline.text:
             function = getattr(F.mainWindow().treeRedacOutline, functionName)
             function()
-
     def rename(self): self.callMainTreeView("rename")
     def duplicate(self): self.callMainTreeView("duplicate")
     def moveUp(self): self.callMainTreeView("moveUp")

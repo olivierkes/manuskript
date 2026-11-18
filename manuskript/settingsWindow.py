@@ -74,7 +74,7 @@ class settingsWindow(QWidget, Ui_Settings):
         self.cmbStyle.currentIndexChanged[str].connect(self.setStyle)
 
         self.cmbTranslation.clear()
-        tr = OrderedDict()
+        tr:OrderedDict[str, str] = OrderedDict()
         tr["English"] = ""
         tr["Arabic (Saudi Arabia)"] = "manuskript_ar_SA.qm"
         tr["German"] = "manuskript_de.qm"
@@ -322,7 +322,6 @@ class settingsWindow(QWidget, Ui_Settings):
         self.updateTooltipControlsState()
 
     def setTab(self, tab):
-
         tabs = {
             "General": 0,
             "Views": 1,
@@ -331,7 +330,6 @@ class settingsWindow(QWidget, Ui_Settings):
             "Fullscreen": 4,
             "Style": 5,
         }
-
         if tab in tabs:
             self.lstMenu.setCurrentRow(tabs[tab])
         else:
@@ -339,7 +337,6 @@ class settingsWindow(QWidget, Ui_Settings):
     ####################################################################################################
     #                                           GENERAL                                                #
     ####################################################################################################
-
     def setStyle(self, style):
         # Save style to Qt Settings
         sttgs = QSettings(qApp.organizationName(), qApp.applicationName())
@@ -825,7 +822,7 @@ class settingsWindow(QWidget, Ui_Settings):
         self.btnThemWindowBackgroundColor.clicked.connect(lambda: self.getThemeColor("Background/Color"))
         try:
             self.cmbThemeBackgroundImage.disconnect()
-        except:
+        except Exception:
             pass
         self.populatesCmbBackgrounds(self.cmbThemeBackgroundImage)
         self.cmbThemeBackgroundImage.currentIndexChanged.connect(self.updateThemeBackground)
@@ -845,7 +842,7 @@ class settingsWindow(QWidget, Ui_Settings):
         self.cmbThemeFont.currentFontChanged.connect(self.updateThemeFont)
         try:
             self.cmbThemeFontSize.currentIndexChanged.disconnect(self.updateThemeFont)
-        except:
+        except Exception:
             pass
         self.populatesFontSize()
         self.cmbThemeFontSize.currentIndexChanged.connect(self.updateThemeFont)

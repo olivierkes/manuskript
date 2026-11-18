@@ -1,0 +1,12 @@
+QMenuBar#menubar{
+    border:none;
+}
+QToolButton{
+    background: none;
+    border: none;
+}
+QPushButton:flat:hover, QToolButton:hover{
+    border: 1px solid {mid};
+    border-radius: 3px;
+    background: {highlightLight};
+}

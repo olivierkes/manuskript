@@ -150,15 +150,16 @@ class outlineCharacterDelegate(QStyledItemDelegate):
             for i in range(self.mdlCharacter.rowCount()):
                 imp = toInt(self.mdlCharacter.importance(i))
                 if not 2 - imp == importance: continue
-
+                if editor is None:
+                    continue
                 # try:
                 editor.addItem(self.mdlCharacter.icon(i), self.mdlCharacter.name(i), self.mdlCharacter.ID(i))
                 editor.setItemData(editor.count() - 1, self.mdlCharacter.name(i), Qt.ToolTipRole)
                 # except:
                 # pass
-
-        editor.setCurrentIndex(editor.findData(index.data()))
-        editor.showPopup()
+        if editor is not None:
+            editor.setCurrentIndex(editor.findData(index.data()))
+            editor.showPopup()
 
     def setModelData(self, editor, model, index):
         val = editor.currentData()
@@ -286,7 +287,7 @@ class outlineStatusDelegate(QStyledItemDelegate):
     def displayText(self, value, locale):
         try:
             return self.mdlStatus.item(int(value), 0).text()
-        except:
+        except Exception:
             return ""
 
     def paint(self, painter, option, index):

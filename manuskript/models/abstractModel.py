@@ -20,7 +20,7 @@ from manuskript.models import outlineItem
 
 try:
     locale.setlocale(locale.LC_ALL, '')
-except:
+except Exception:
     # Invalid locale, but not really a big deal because it's used only for
     # number formatting
     pass
@@ -183,14 +183,14 @@ class abstractModel(QAbstractItemModel):
 
         return parentItem.columnCount()
 
-    def data(self, index, role=Qt.DisplayRole):
+    def data(self, index, role=Qt.ItemDataRole.DisplayRole):
         if not index.isValid():
             return QVariant()
 
         item = index.internalPointer()
         return item.data(index.column(), role)
 
-    def setData(self, index, value, role=Qt.EditRole):
+    def setData(self, index, value, role=Qt.ItemDataRole.EditRole):
         item = index.internalPointer()
         if item.data(index.column(), role) != value:
 
@@ -209,8 +209,8 @@ class abstractModel(QAbstractItemModel):
 
         return True
 
-    def headerData(self, section, orientation, role=Qt.DisplayRole):
-        if orientation == Qt.Horizontal and role in [Qt.DisplayRole, Qt.ToolTipRole]:
+    def headerData(self, section, orientation, role=Qt.ItemDataRole.DisplayRole):
+        if orientation == Qt.Orientation.Horizontal and role in [Qt.ItemDataRole.DisplayRole, Qt.ItemDataRole.ToolTipRole]:
             if section == Outline.title:
                 return self.tr("Title")
             elif section == Outline.POV:
@@ -230,7 +230,7 @@ class abstractModel(QAbstractItemModel):
             else:
                 return [i.name for i in Outline][section]
 
-        elif role == Qt.SizeHintRole:
+        elif role == Qt.ItemDataRole.SizeHintRole:
             if section == Outline.compile:
                 return QSize(40, 30)
             elif section == Outline.goalPercentage:
@@ -261,22 +261,22 @@ class abstractModel(QAbstractItemModel):
     def flags(self, index):
         # FIXME when dragging folders, sometimes flags is not called
 
-        flags = QAbstractItemModel.flags(self, index) | Qt.ItemIsEditable
+        flags = QAbstractItemModel.flags(self, index) | Qt.ItemFlag.ItemIsEditable
 
         if index.isValid() and index.internalPointer().isFolder() and index.column() == 0:
-            flags |= Qt.ItemIsDragEnabled | Qt.ItemIsDropEnabled
+            flags |= Qt.ItemFlag.ItemIsDragEnabled | Qt.ItemFlag.ItemIsDropEnabled
 
         elif index.isValid() and index.column() == 0:
-            flags |= Qt.ItemIsDragEnabled
+            flags |= Qt.ItemFlag.ItemIsDragEnabled
 
         elif not index.isValid():
-            flags |= Qt.ItemIsDropEnabled
+            flags |= Qt.ItemFlag.ItemIsDropEnabled
 
         if index.isValid() and index.column() == Outline.compile:
-            flags |= Qt.ItemIsUserCheckable
+            flags |= Qt.ItemFlag.ItemIsUserCheckable
 
         if index.column() in [i.value for i in [Outline.wordCount, Outline.goalPercentage]]:
-            flags &= ~ Qt.ItemIsEditable
+            flags &= ~ Qt.ItemFlag.ItemIsEditable
 
         return flags
 
@@ -301,12 +301,11 @@ class abstractModel(QAbstractItemModel):
 
     def supportedDropActions(self):
 
-        return Qt.CopyAction | Qt.MoveAction
+        return Qt.DropAction.CopyAction | Qt.DropAction.MoveAction
 
     def canDropMimeData(self, data, action, row, column, parent):
         """Ensures that we are not dropping an item into itself."""
-
-        if not data.hasFormat("application/xml"):
+        if data is None or not data.hasFormat("application/xml"):
             return False
 
         if column > 0:
@@ -323,7 +322,7 @@ class abstractModel(QAbstractItemModel):
 
         return True
 
-    def isParentAChildOfItems(self, parent, items):
+    def isParentAChildOfItems(self, parent:QModelIndex, items:list[outlineItem]):
         """
         Takes a parent index, and a list of outlineItems items. Check whether
         parent is in a child of one of the items.
@@ -334,21 +333,21 @@ class abstractModel(QAbstractItemModel):
         if not parent.isValid():
             parentItem = self.rootItem
         else:
-            parentItem = parent.internalPointer()
+            parentItem:outlineItem|None = parent.internalPointer()
 
         if not parentItem:
             return False
-
+        # Get parentItem's parents IDs in a list
+        path = parentItem.pathID()  # path to item in the form [(ID, title), ...]
+        path = [ID for ID, title in path]
         for item in items:
-            # Get parentItem's parents IDs in a list
-            path = parentItem.pathID()  # path to item in the form [(ID, title), ...]
-            path = [ID for ID, title in path]
             # Is item in the path? It would mean that it tries to get dropped
             # as a children of himself.
             if item.ID() in path:
                 return True
 
         return False
+        return any(item.ID() in path for item in items)
 
     def decodeMimeData(self, data):
         if not data.hasFormat("application/xml"):
@@ -361,7 +360,7 @@ class abstractModel(QAbstractItemModel):
         if root.tag != "outlineItems":
             return None
 
-        items = []
+        items:list[outlineItem] = []
         for child in root:
             if child.tag == "outlineItem":
                 item = outlineItem(xml=ET.tostring(child))
@@ -402,10 +401,10 @@ class abstractModel(QAbstractItemModel):
 
     def dropMimeData(self, data, action, row, column, parent):
 
-        if action == Qt.IgnoreAction:
+        if action == Qt.DropAction.IgnoreAction:
             return True  # What is that?
 
-        if action == Qt.MoveAction:
+        if action == Qt.DropAction.MoveAction:
             # Strangely, on some cases, we get a call to dropMimeData though
             # self.canDropMimeData returned False.
             # See https://github.com/olivierkes/manuskript/issues/169 to reproduce.
@@ -428,7 +427,7 @@ class abstractModel(QAbstractItemModel):
         else:
             beginRow = self.rowCount() + 1
 
-        if action == Qt.CopyAction:
+        if action == Qt.DropAction.CopyAction:
             # Behavior if parent is a text item
             # For example, we select a text and do: CTRL+C CTRL+V
             if parent.isValid() and not parent.internalPointer().isFolder():
@@ -452,23 +451,29 @@ class abstractModel(QAbstractItemModel):
 
         # Recursively change the existing IDs to new, unique values. No need to strip out the old
         # even if they are not duplicated in pasting. There is no practical need for ID conservation.
+        def rootItem():
+            if self.rootItem:
+                return self.rootItem
+            item=items[0]
+            while (par:=item.parent()):
+                item=par
+            return item
+        if action == Qt.DropAction.CopyAction:
+            
+            IDs = rootItem().listAllIDs()
+    
+            # Items don't get new IDs, because they are not part of a model yet,
+            # so the following call does nothing:
+            # item.getUniqueID(recursive=True)
 
-        if action == Qt.CopyAction:
-            IDs = self.rootItem.listAllIDs()
-
+            # Instead we need to remove IDs (recursively) in all copied items, so that they
+            # will receive new ones when inserted within the model.
+            def removeIDs(i):
+                i.setData(item.enum.ID, None)
+                for c in i.children():
+                    removeIDs(c)
             for item in items:
                 if item.ID() in IDs:
-                    # Items don't get new IDs, because they are not part of a model yet,
-                    # so the following call does nothing:
-                    # item.getUniqueID(recursive=True)
-
-                    # Instead we need to remove IDs (recursively) in all copied items, so that they
-                    # will receive new ones when inserted within the model.
-                    def removeIDs(i):
-                        i.setData(item.enum.ID, None)
-                        for c in i.children():
-                            removeIDs(c)
-
                     removeIDs(item)
 
         r = self.insertItems(items, beginRow, parent)
@@ -499,9 +504,7 @@ class abstractModel(QAbstractItemModel):
                 parentItem.insertChild(row + items.index(i), i)
 
             self.endInsertRows()
-
             return True
-
         else:
             return False
 
@@ -595,8 +598,8 @@ class abstractModel(QAbstractItemModel):
         if xml:
             ET.ElementTree(root).write(xml, encoding="UTF-8", xml_declaration=True, pretty_print=True)
             return str()
-        else:
-            return ET.tostring(root, encoding="UTF-8", xml_declaration=True, pretty_print=True)
+        
+        return ET.tostring(root, encoding="UTF-8", xml_declaration=True, pretty_print=True)
 
     def loadFromXML(self, xml, fromString=False):
         "Load from xml. Assume that xml is a filename. If fromString=True, xml is the content."

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 import locale, os
+from typing import TYPE_CHECKING
 
 from PyQt5.QtCore import QModelIndex, QRect, QPoint
 from PyQt5.QtCore import Qt
@@ -14,10 +15,13 @@ from manuskript.ui import style
 from manuskript.ui.editors.editorWidget import editorWidget
 from manuskript.ui.editors.fullScreenEditor import fullScreenEditor
 from manuskript.ui.editors.mainEditor_ui import Ui_mainEditor
-
+if TYPE_CHECKING:
+    from manuskript.ui.editors.tabSplitter import tabSplitter as TS
+else:
+    TS=QWidget
 try:
     locale.setlocale(locale.LC_ALL, '')
-except:
+except Exception:
     pass
 
 import logging
@@ -63,6 +67,7 @@ class mainEditor(QWidget, Ui_mainEditor):
     +-------------------------------------------------------------------------+
     """
 
+    tabSplitter:TS
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         self.setupUi(self)
@@ -229,7 +234,7 @@ class mainEditor(QWidget, Ui_mainEditor):
                 tabWidget.setCurrentWidget(w)
                 return
 
-        if qApp.keyboardModifiers() & Qt.ControlModifier:
+        if qApp.keyboardModifiers() & Qt.KeyboardModifier.ControlModifier: # type: ignore
             newTab = True
 
         if newTab or not tabWidget.count():
@@ -245,7 +250,9 @@ class mainEditor(QWidget, Ui_mainEditor):
 
     def updateTargets(self):
         """Updates all tabSplitter that are targets. This is called from editorWidget."""
-        index = self.sender().currentIndex()
+        if not isinstance(sender:=self.sender(), editorWidget):
+            return
+        index = sender.currentIndex()
 
         for ts in self.allTabSplitters():
             if ts.isTarget:
@@ -368,7 +375,7 @@ class mainEditor(QWidget, Ui_mainEditor):
             rect = self.lblRedacProgress.geometry()
             rect = QRect(QPoint(0, 0), rect.size())
             self.px = QPixmap(rect.size())
-            self.px.fill(Qt.transparent)
+            self.px.fill(Qt.GlobalColor.transparent)
             p = QPainter(self.px)
             drawProgress(p, rect, progress, 2)
             del p

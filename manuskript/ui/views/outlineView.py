@@ -55,15 +55,15 @@ class outlineView(QTreeView, dndView, outlineBasics):
 
         # Hiding columns
         self.hideColumns()
-
-        self.header().setSectionResizeMode(Outline.title, QHeaderView.ResizeToContents)
-        self.header().setSectionResizeMode(Outline.POV, QHeaderView.ResizeToContents)
-        self.header().setSectionResizeMode(Outline.status, QHeaderView.ResizeToContents)
-        self.header().setSectionResizeMode(Outline.label, QHeaderView.ResizeToContents)
-        self.header().setSectionResizeMode(Outline.compile, QHeaderView.ResizeToContents)
-        self.header().setSectionResizeMode(Outline.wordCount, QHeaderView.ResizeToContents)
-        self.header().setSectionResizeMode(Outline.goal, QHeaderView.ResizeToContents)
-        self.header().setSectionResizeMode(Outline.goalPercentage, QHeaderView.ResizeToContents)
+        if (header:=self.header()):
+            header.setSectionResizeMode(Outline.title, QHeaderView.ResizeToContents)
+            header.setSectionResizeMode(Outline.POV, QHeaderView.ResizeToContents)
+            header.setSectionResizeMode(Outline.status, QHeaderView.ResizeToContents)
+            header.setSectionResizeMode(Outline.label, QHeaderView.ResizeToContents)
+            header.setSectionResizeMode(Outline.compile, QHeaderView.ResizeToContents)
+            header.setSectionResizeMode(Outline.wordCount, QHeaderView.ResizeToContents)
+            header.setSectionResizeMode(Outline.goal, QHeaderView.ResizeToContents)
+            header.setSectionResizeMode(Outline.goalPercentage, QHeaderView.ResizeToContents)
 
     def hideColumns(self):
         if not self.model():

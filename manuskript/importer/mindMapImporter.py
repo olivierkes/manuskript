@@ -32,7 +32,7 @@ class mindMapImporter(abstractImporter):
             try:
                 with open(filePath, 'rb') as f:
                     content = f.read()
-            except:
+            except Exception:
                 return None
 
         elif fromString == "":

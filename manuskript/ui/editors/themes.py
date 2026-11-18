@@ -15,7 +15,7 @@ from manuskript.ui.views.MDEditView import MDEditView
 _thumbCache = {}
 
 def loadThemeDatas(themeFile):
-    settings = QSettings(themeFile, QSettings.IniFormat)
+    settings = QSettings(themeFile, QSettings.Format.IniFormat)
     _themeData = {}
 
     # Theme name

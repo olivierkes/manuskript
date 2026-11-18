@@ -3,7 +3,7 @@
 
 import time
 import locale
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QModelIndex
 from PyQt5.QtGui import QFont, QIcon
 from PyQt5.QtWidgets import qApp
 from lxml import etree as ET
@@ -18,7 +18,7 @@ from manuskript.enums import Outline, Model
 
 try:
     locale.setlocale(locale.LC_ALL, '')
-except:
+except Exception:
     # Invalid locale, but not really a big deal because it's used only for
     # number formatting
     pass
@@ -57,7 +57,7 @@ class outlineItem(abstractItem, searchableItem):
     def isMMD(self):
         return self._data[self.enum.type] == "md"
 
-    def text(self):
+    def text(self)->str:
         return self.data(self.enum.text)
 
     def compile(self):
@@ -305,9 +305,20 @@ class outlineItem(abstractItem, searchableItem):
 
                     # Inserting item
                     #self.parent().insertChild(self.row()+k, item)
-                    self._model.insertItem(item, self.row()+k, self.parent().index())
+                    if (row:=self.row()) is None:
+                        continue
+                    index= par.index() if (par:=self.parent()) else QModelIndex()
+                    self.model.insertItem(item, row+k, index)
+                
                     k += 1
-
+    @property
+    def model(self):
+        if (model:=self._model):
+            return model
+        #Is it mabye worth it to return this? Or at least calling setModel() to that, bc sometimes _model is None, so errors occur
+        model=F.mainWindow().mdlOutline
+        self.setModel(model)
+        return  model
     def splitAt(self, position, length=0):
         """
         Splits note at position p.
@@ -335,7 +346,8 @@ class outlineItem(abstractItem, searchableItem):
         item.setData(self.enum.text, txt[position+length:])
 
         # Inserting item using the model to signal views
-        self._model.insertItem(item, self.row()+1, self.parent().index())
+        if self._model:# Splitcursoror failed for some reason because this was none
+            self._model.insertItem(item, self.row()+1, self.parent().index())
 
     def mergeWith(self, items, sep="\n\n"):
         """

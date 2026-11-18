@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QVBoxLayout, qApp, QStyle
 from manuskript import settings
 from manuskript.functions import AUC, mainWindow
 from manuskript.ui.editors.editorWidget_ui import Ui_editorWidget_ui
-from manuskript.ui.views.MDEditView import MDEditView
+from manuskript.ui.views.MDEditView import MDEditView, textEditView
 from manuskript.ui.tools.splitDialog import splitDialog
 
 
@@ -48,7 +48,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.setupUi(self)
         self.currentIndex = QModelIndex()
         self.currentID = None
-        self.txtEdits = []
+        self.txtEdits:list[textEditView] = []
         self.scroll.setBackgroundRole(QPalette.Base)
         self.toggledSpellcheck.connect(self.txtRedacText.toggleSpellcheck, AUC)
         self.dictChanged.connect(self.txtRedacText.setDict, AUC)

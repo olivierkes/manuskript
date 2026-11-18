@@ -1,0 +1,9 @@
+QToolBar{
+    background:transparent;
+    border:none;
+    spacing: 0px;
+    margin-top:40px;
+}
+QToolBar:separator{
+    border: none;
+}

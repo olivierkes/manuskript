@@ -17,7 +17,7 @@ class characterModel(QAbstractItemModel, searchableModel):
         QAbstractItemModel.__init__(self, parent)
 
         # CharacterItems are stored in this list
-        self.characters = []
+        self.characters:list[Character] = []
 
 ###############################################################################
 # QAbstractItemModel subclassed
@@ -43,14 +43,12 @@ class characterModel(QAbstractItemModel, searchableModel):
             if role == Qt.DisplayRole:
                 if index.column() in c._data:
                     return c._data[index.column()]
-                else:
-                    return ""
+                return ""
 
             elif role == Qt.DecorationRole:
                 if index.column() == C.name.value:
                     return c.icon
-                else:
-                    return QVariant()
+                return QVariant()
 
         elif type(c) == CharacterInfo:
             if role == Qt.DisplayRole or role == Qt.EditRole:
@@ -177,7 +175,6 @@ class characterModel(QAbstractItemModel, searchableModel):
         """
         if not name:
             name = self.tr("New character")
-
         c = Character(model=self, name=self.tr(name), importance=importance)
         self.beginInsertRows(QModelIndex(), len(self.characters), len(self.characters))
         self.characters.append(c)
@@ -191,8 +188,8 @@ class characterModel(QAbstractItemModel, searchableModel):
         @return: nothing
         """
         c = self.getCharacterByID(ID)
-        self.beginRemoveRows(QModelIndex(), self.characters.index(
-            c), self.characters.index(c))
+        if not c:return
+        self.beginRemoveRows(QModelIndex(), self.characters.index(c), self.characters.index(c))
         self.characters.remove(c)
         self.endRemoveRows()
 
@@ -258,13 +255,13 @@ class characterModel(QAbstractItemModel, searchableModel):
 class Character(searchableItem):
 
     def __init__(self, model, name=None, importance=0):
-        self._model = model
+        self._model:characterModel = model
         self.lastPath = ""
 
         if not name:
             name = self.translate("Unknown")
 
-        self._data = {C.name.value: name}
+        self._data:dict[int, str] = {C.name.value: name}
         self.assignUniqueID()
         self.assignRandomColor()
         self._data[C.importance.value] = str(importance)
@@ -289,7 +286,7 @@ class Character(searchableItem):
     def index(self, column=0):
         return self._model.indexFromItem(self, column)
 
-    def data(self, column, role=Qt.DisplayRole):
+    def data(self, column, role=Qt.ItemDataRole.DisplayRole):
         if column == "Info":
             return self.infos
         else:
@@ -312,7 +309,7 @@ class Character(searchableItem):
         self.icon = QIcon(px)
         try:
             self._model.dataChanged.emit(self.index(), self.index())
-        except:
+        except Exception:
             # If it is the initialisation, won't be able to emit
             pass
 
@@ -332,7 +329,7 @@ class Character(searchableItem):
 
             try:
                 self._model.dataChanged.emit(self.index(), self.index())
-            except:
+            except Exception:
                 # If it is the initialisation, won't be able to emit
                 pass
 
