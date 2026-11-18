@@ -12,6 +12,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_tabSplitter(object):
+    verticalLayout: QtWidgets.QVBoxLayout
+    splitter:QtWidgets.QSplitter
+    tab:QtWidgets.QTabWidget
     def setupUi(self, tabSplitter):
         tabSplitter.setObjectName("tabSplitter")
         tabSplitter.resize(400, 300)

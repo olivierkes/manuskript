@@ -1,0 +1,10 @@
+QToolBox::tab{
+    background-color: {background};
+    padding: 2px;
+    border: none;
+}
+
+QToolBox::tab:selected, QToolBox::tab:hover{
+    background-color:{backgroundHover};
+    color: {colorHover};
+}

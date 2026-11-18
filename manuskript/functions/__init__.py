@@ -5,7 +5,7 @@ import os
 import re
 import sys
 import pathlib
-from random import *
+from random import randint#*
 
 from PyQt5.QtCore import Qt, QRect, QStandardPaths, QObject, QProcess, QRegExp
 from PyQt5.QtCore import QDir, QUrl, QTimer
@@ -14,12 +14,16 @@ from PyQt5.QtGui import QDesktopServices
 from PyQt5.QtWidgets import qApp, QFileDialog
 
 from manuskript.enums import Outline
-
+from typing import TYPE_CHECKING, overload, Literal
 import logging
 LOGGER = logging.getLogger(__name__)
 
 # Used to detect multiple connections
-AUC = Qt.AutoConnection | Qt.UniqueConnection
+AUC = Qt.ConnectionType.AutoConnection | Qt.ConnectionType.UniqueConnection
+if TYPE_CHECKING:
+    from manuskript.mainWindow import MainWindow
+    def mainWindow()->MainWindow:...
+    MW:None|MainWindow
 MW = None
 
 
@@ -28,15 +32,14 @@ translationCache = dict()
 def resetTranslation():
     translationCache.clear()
 
-def safeTranslate(qApp, group, text):
+def safeTranslate(qApp, group, text)->str:
     if text in translationCache:
         return translationCache[text]
-
     try:
         _text = qApp.translate(group, text)
         translationCache[text] = _text
         return _text
-    except:
+    except Exception:
         return text
 
 
@@ -63,7 +66,7 @@ def uiParse(input, default, converter, validator=validate_ok):
     result = default
     try:
         result = converter(input)
-    except:
+    except Exception:
         pass  # failed to convert
 
     # Whitelist default value in case default type differs from converter output.
@@ -97,7 +100,7 @@ def toString(text):
 
 
 def drawProgress(painter, rect, progress, radius=0):
-    painter.setPen(Qt.NoPen)
+    painter.setPen(Qt.PenStyle.NoPen)
     painter.setBrush(QBrush(colorFromProgress(None)))
     painter.drawRoundedRect(rect, radius, radius)
 
@@ -116,9 +119,9 @@ def colorFromProgress(progress):
         return c0
 
     progress = toFloat(progress)
-    c1 = QColor(Qt.red)
-    c2 = QColor(Qt.blue)
-    c3 = QColor(Qt.darkGreen)
+    c1 = QColor(Qt.GlobalColor.red)
+    c2 = QColor(Qt.GlobalColor.blue)
+    c3 = QColor(Qt.GlobalColor.darkGreen)
     c4 = QColor("#FFA500")
 
     if progress < 0.3:
@@ -130,17 +133,20 @@ def colorFromProgress(progress):
     else:
         return c3
 
-
-def mainWindow():
-    global MW
-    if not MW:
-        for i in qApp.topLevelWidgets():
-            if i.objectName() == "MainWindow":
-                MW = i
-                return MW
-        return None
-    else:
-        return MW
+if TYPE_CHECKING:
+    from manuskript.mainWindow import MainWindow
+    def mainWindow()->MainWindow:...
+else:
+    def mainWindow():
+        global MW
+        if not MW:
+            for i in qApp.topLevelWidgets():
+                if i.objectName() == "MainWindow":
+                    MW = i
+                    return MW
+            return None
+        else:
+            return MW
 
 
 def iconColor(icon):
@@ -149,7 +155,7 @@ def iconColor(icon):
     if px.width() != 0:
         return QColor(QImage(px).pixel(2, 2))
     else:
-        return QColor(Qt.transparent)
+        return QColor(Qt.GlobalColor.transparent)
 
 
 def iconFromColor(color):
@@ -199,21 +205,26 @@ def randomColor(mix=None):
 
     return QColor(r, g, b)
 
-
-def mixColors(col1, col2, f=0.5):
+@overload
+def mixColors(col1:str|QColor, col2:str|QColor, f=0.5, isqcolor:None=None)-> (QColor | str):...
+@overload
+def mixColors(col1:str|QColor, col2:str|QColor, f=0.5, isqcolor:Literal[True]=...)-> (QColor):...
+@overload
+def mixColors(col1:str|QColor, col2:str|QColor, f=0.5, isqcolor:Literal[False]=False)-> (str):...
+def mixColors(col1, col2, f=0.5, isqcolor=None):
     fromString = False
     if type(col1) == str:
         fromString = True
         col1 = QColor(col1)
     if type(col2) == str:
         col2 = QColor(col2)
-
     f2 = 1.0 - f
     r = int(col1.red() * f + col2.red() * f2)
     g = int(col1.green() * f + col2.green() * f2)
     b = int(col1.blue() * f + col2.blue() * f2)
-
-    return QColor(r, g, b) if not fromString else QColor(r, g, b).name()
+    if isqcolor or not fromString:
+        return QColor(r, g, b)
+    return QColor(r, g, b).name()
 
 
 def outlineItemColors(item):
@@ -224,10 +235,10 @@ def outlineItemColors(item):
     mw = mainWindow()
 
     # POV
-    colors["POV"] = QColor(Qt.transparent)
+    colors["POV"] = QColor(Qt.GlobalColor.transparent)
     POV = item.data(Outline.POV)
     if POV == "":
-        col = QColor(Qt.transparent)
+        col = QColor(Qt.GlobalColor.transparent)
     else:
         for i in range(mw.mdlCharacter.rowCount()):
             if mw.mdlCharacter.ID(i) == POV:
@@ -236,9 +247,12 @@ def outlineItemColors(item):
     # Label
     lbl = item.data(Outline.label)
     if lbl == "":
-        col = QColor(Qt.transparent)
+        col = QColor(Qt.GlobalColor.transparent)
+    elif (lblitem :=mw.mdlLabels.item(toInt(lbl))):
+        col = iconColor(lblitem.icon())
     else:
-        col = iconColor(mw.mdlLabels.item(toInt(lbl)).icon())
+        col = QColor(Qt.GlobalColor.transparent)
+
     # if col == Qt.black:
     #     # Don't know why, but transparent is rendered as black
     #     col = QColor(Qt.transparent)
@@ -252,7 +266,7 @@ def outlineItemColors(item):
     if item.compile() in [0, "0"]:
         colors["Compile"] = mixColors(QColor(S.text), QColor(S.window))
     else:
-        colors["Compile"] = QColor(Qt.transparent) # will use default
+        colors["Compile"] = QColor(Qt.GlobalColor.transparent) # will use default
 
     return colors
 
@@ -412,7 +426,9 @@ def statusMessage(message, duration=5000, importance=1):
     Importance: 0 = low, 1 = normal, 2 = important, 3 = critical.
     """
     from manuskript.ui import style as S
-    MW.statusBar().hide()
+    if MW is None: return
+    if (bar:=MW.statusBar()):
+        bar.hide()
     MW.statusLabel.setText(message)
     if importance == 0:
         MW.statusLabel.setStyleSheet("color:{};".format(S.textLighter))
@@ -425,7 +441,10 @@ def statusMessage(message, duration=5000, importance=1):
     MW.statusLabel.adjustSize()
     g = MW.statusLabel.geometry()
     # g.moveCenter(MW.mapFromGlobal(MW.geometry().center()))
-    s = int(MW.layout().spacing() / 2)
+    if (layout:=MW.layout()):
+        s = int(layout.spacing() / 2)
+    else:
+        s=10#dont know the ideal, but anyway were unlikely to have no layout
     g.setLeft(s)
     g.moveBottom(MW.mapFromGlobal(MW.geometry().bottomLeft()).y() - s)
     MW.statusLabel.setGeometry(g)
@@ -471,7 +490,8 @@ def inspect():
             os.path.basename(s.filename),
             s.lineno,
             s.function))
-        print("   " + "".join(s.code_context))
+        if s.code_context:
+            print("   " + "".join(s.code_context))
 
 
 def search(searchRegex, text):

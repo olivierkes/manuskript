@@ -1,0 +1,21 @@
+QScrollBar:vertical {
+    border: none;
+    background: {background};
+    width: {width}px;
+}
+QScrollBar::handle {
+    background: {handle};
+}
+QScrollBar::add-line:vertical {
+    width:0;
+    height: 0;
+    border: none;
+    background: none;
+}
+
+QScrollBar::sub-line:vertical {
+    width:0;
+    height: 0;
+    border: none;
+    background: none;
+}

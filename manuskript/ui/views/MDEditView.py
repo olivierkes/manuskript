@@ -61,13 +61,12 @@ class MDEditView(textEditView):
         cursor = self.textCursor()
 
         # RETURN
-        if k == Qt.Key_Return:
+        if k == Qt.Key.Key_Return:
             if not cursor.hasSelection():
-                if m & Qt.ShiftModifier:
+                if m & Qt.KeyboardModifier.ShiftModifier:
                     # Insert Markdown-style line break
                     cursor.insertText("  ")
-
-                if m & Qt.ControlModifier:
+                if m & Qt.KeyboardModifier.ControlModifier:
                     cursor.insertText("\n")
                 else:
                     self.handleCarriageReturn()
@@ -75,18 +74,16 @@ class MDEditView(textEditView):
                 textEditView.keyPressEvent(self, event)
 
         # TAB
-        elif k == Qt.Key_Tab:
+        elif k == Qt.Key.Key_Tab:
             #self.indentText()
             # FIXME
             textEditView.keyPressEvent(self, event)
-        elif k == Qt.Key_Backtab:
+        elif k == Qt.Key.Key_Backtab:
             #self.unindentText()
             # FIXME
             textEditView.keyPressEvent(self, event)
-
         else:
             textEditView.keyPressEvent(self, event)
-
     # Thanks to GhostWriter, mainly
     def handleCarriageReturn(self):
         autoInsertText = "";
@@ -123,7 +120,7 @@ class MDEditView(textEditView):
                     try: # digit
                         i = int(g[3])+1
 
-                    except: # letter
+                    except Exception: # letter
                         i = chr(ord(g[3])+1)
 
                     autoInsertText = "{}{}{}{}".format(
@@ -169,12 +166,10 @@ class MDEditView(textEditView):
         text = self.textCursor().block().text()
         l = len(text) - len(text.lstrip())
         return text[:l]
-
     def getPriorMarkdownBlockItemStart(self, itemRegex):
         text = self.textCursor().block().text()
         if itemRegex.indexIn(text) >= 0:
             return text[itemRegex.matchedLength():]
-
         return ""
 
     ###########################################################################
@@ -611,7 +606,7 @@ class ImageTooltip:
 
         try:
             ImageTooltip.manager.finished.connect(ImageTooltip.finished, F.AUC)
-        except:
+        except Exception:
             pass # already connected
 
         qurl = QUrl.fromUserInput(url)

@@ -7,10 +7,9 @@ import re
 from PyQt5.Qt import qVersion, PYQT_VERSION_STR
 from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoint,
                           QRegExp, QUrl, QSize, QModelIndex)
-from PyQt5.QtGui import QStandardItemModel, QIcon, QColor, QStandardItem, QKeySequence
+from PyQt5.QtGui import QStandardItemModel, QIcon, QColor, QStandardItem
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
-    QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit, QTextEdit, QTreeView, QDialog, QTableView, QShortcut
-
+    QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit, QTextEdit, QTreeView, QDialog, QTableView
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
 from manuskript.functions import wordCount, appPath, findWidgetsOfClass, openURL, showInFolder
@@ -47,6 +46,11 @@ import logging
 LOGGER = logging.getLogger(__name__)
 
 class MainWindow(QMainWindow, Ui_MainWindow):
+    actionEnchant: QAction
+    actionPyspellchecker: QAction
+    actionLanguageTool: QAction
+    actionSymspellpy: QAction
+    actionLxml: QAction
     # dictChanged = pyqtSignal(str)
 
     # Tab indexes
@@ -64,10 +68,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         self.setupUi(self)
+        self.actionEnchant
 
         # Var
-        self.currentProject = None
-        self.projectDirty = None  # has the user made any unsaved changes ?
+        self.currentProject:str|None = None
+        self.projectDirty = None  
+        """has the user made any unsaved changes ?"""
         self._lastFocus = None
         self._lastMDEditView = None
         self._defaultCursorFlashTime = 1000 # Overridden at startup with system
@@ -125,12 +131,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actCut.triggered.connect(self.documentsCut)
         self.actPaste.triggered.connect(self.documentsPaste)
         self.actSearch.triggered.connect(self.doSearch)
-        QShortcut(
-            QKeySequence(Qt.Key_Escape),
-            self.dckSearch,
-            self.dckSearch.close,
-            context=Qt.WidgetWithChildrenShortcut,
-        )
         self.actRename.triggered.connect(self.documentsRename)
         self.actDuplicate.triggered.connect(self.documentsDuplicate)
         self.actDelete.triggered.connect(self.documentsDelete)
@@ -186,6 +186,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actLocateLog.triggered.connect(self.locateLogFile)
         self.actAbout.triggered.connect(self.about)
 
+        # Main Menu:: Installations
+        self.installActions()
+
         self.makeUIConnections()
 
         # Tools non-modal windows
@@ -197,6 +200,28 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.BulkManageUi = None
         self.bulkAffectedCharacters = []
         self.isPersoBulkModeEnabled = False
+
+    def installActions(self):
+        from manuskript import enchant, pyspellchecker, languagetool, symspellpy, etree, BaseModule, markdown
+        def installmethod(method, action:QAction):
+            def newmethod(*args, **kwargs):
+                print(args, kwargs)
+                r=method()
+                if r is None:
+                    QMessageBox.warning(self, 'Installing library', 'Failed to install')
+                    return
+                print(f'Results as follows: {r}')
+                action.setToolTip('Library already installed')
+                action.setEnabled(False)
+                action.triggered.disconnect(newmethod)
+            return newmethod
+        actionmodules:list[tuple[QAction, BaseModule]]=[(self.actionEnchant, enchant),(self.actionPyspellchecker, pyspellchecker), (self.actionLanguageTool, languagetool),
+                       (self.actionSymspellpy, symspellpy), (self.actionLxml, etree), (self.actionMarkdown, markdown)]
+        for action, module in actionmodules:
+            action.setToolTip('Library already installed' if module.isValid else ''    )
+            action.setEnabled(not module.isValid)
+            action.triggered.connect(installmethod(module.__install__, action))
+
 
     def updateDockVisibility(self, restore=False):
         """
@@ -345,7 +370,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Returns a user-friendly name for the loaded project.
         """
-        pName = os.path.split(self.currentProject)[1]
+        pName = os.path.split(self.currentProject or '')[1]
         if pName.endswith('.msk'):
             pName=pName[:-4]
         return pName
@@ -1758,13 +1783,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         else:
             # No Spell check support
+            def gen_slot_cb(l):
+                # Need to bound the lib argument otherwise the lambda uses the same lib value across all calls
+                return lambda: self.openSpellcheckWebPage(l)
             self.actSpellcheck.setVisible(False)
             for lib, requirement in Spellchecker.supportedLibraries().items():
-                a = QAction(self.tr("Install {}{} to use spellcheck").format(lib, requirement or ""), self)
+                a = QAction(self.tr("Install {}{} to use spellcheck").format(lib, requirement), self)
                 a.setIcon(self.style().standardIcon(QStyle.SP_MessageBoxWarning))
-                # Need to bound the lib argument otherwise the lambda uses the same lib value across all calls
-                def gen_slot_cb(l):
-                    return lambda: self.openSpellcheckWebPage(l)
                 a.triggered.connect(gen_slot_cb(lib), F.AUC)
                 self.menuTools.addAction(a)
 
@@ -1794,6 +1819,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 if Spellchecker.normalizeDictName(lib, i) == settings.dict:
                     dict_available = True
                     break
+                
         # Reset dict to default one if it's unavailable
         if not dict_available:
             settings.dict = Spellchecker.getDefaultDictionary()
@@ -1823,7 +1849,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         for lib, requirement in Spellchecker.supportedLibraries().items():
             if lib not in dictionaries:
-                a = QAction(self.tr("{}{} is not installed").format(lib, requirement or ""), self)
+                a = QAction(self.tr("{}{} is not installed").format(lib, requirement), self)
                 a.setEnabled(False)
                 self.menuDict.addAction(a)
                 self.menuDict.addSeparator()
@@ -1839,7 +1865,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
                 # Find all textEditView from self, and toggle spellcheck
                 for w in self.findChildren(textEditView, QRegExp(".*"),
-                                           Qt.FindChildrenRecursively):
+                                           Qt.FindChildOption.FindChildrenRecursively):
                     w.setDict(settings.dict)
 
     def openSpellcheckWebPage(self, lib):

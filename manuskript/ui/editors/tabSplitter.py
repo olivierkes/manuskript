@@ -5,7 +5,7 @@ import locale, os
 from PyQt5.QtCore import QModelIndex, QRect, QPoint, Qt, QObject, QSize
 from PyQt5.QtGui import QIcon, QPalette
 from PyQt5.QtGui import QDropEvent, QDragEnterEvent
-from PyQt5.QtWidgets import QWidget, QPushButton, qApp
+from PyQt5.QtWidgets import QWidget, QPushButton, qApp, QTabWidget, QVBoxLayout, QSplitter
 
 from manuskript.functions import mainWindow, appPath
 from manuskript.ui import style
@@ -34,7 +34,9 @@ class tabSplitter(QWidget, Ui_tabSplitter):
      2. `self.btnTarget`: toggles whether `self.tab` is a target to open any
         selected outlineItem in any other views.
     """
-
+    verticalLayout: QVBoxLayout
+    splitter:QSplitter
+    tab:QTabWidget
     def __init__(self, parent=None, mainEditor=None):
         QWidget.__init__(self, parent)
         self.setupUi(self)
@@ -78,20 +80,25 @@ class tabSplitter(QWidget, Ui_tabSplitter):
         self.updateStyleSheet()
 
         self.tab.tabCloseRequested.connect(self.closeTab)
-        self.tab.currentChanged.connect(self.mainEditor.tabChanged)
+        if self.mainEditor:
+            self.tab.currentChanged.connect(self.mainEditor.tabChanged)
         qApp.focusChanged.connect(self.focusChanged)
 
         self.setAcceptDrops(True)
 
     def dragEnterEvent(self, event: QDragEnterEvent) -> None:
-        if event.mimeData().hasFormat('application/xml'):
+        
+        if (m:=event.mimeData()) and m.hasFormat('application/xml'):
             event.accept()
         else:
             event.ignore()
 
     def dropEvent(self, event: QDropEvent) -> None:
-        itemID = mainWindow().mdlOutline.decodeMimeData(event.mimeData())[0].ID()
+        outlines=mainWindow().mdlOutline.decodeMimeData(event.mimeData())
+        if not outlines:return
+        itemID = outlines[0].ID()
         itemIndex = mainWindow().mdlOutline.getIndexByID(itemID)
+        if not self.mainEditor:return
         self.mainEditor.setCurrentModelIndex(itemIndex, tabWidget = self.tab)
 
     def updateStyleSheet(self):
@@ -124,21 +131,21 @@ class tabSplitter(QWidget, Ui_tabSplitter):
         return r
 
     def restoreOpenIndexes(self, openIndexes):
-
         try:
             if openIndexes[1]:
                 self.split(state=openIndexes[0])
+            if self.mainEditor:
+                for i in openIndexes[1]:
+                    idx = mainWindow().mdlOutline.getIndexByID(i)
+                    self.mainEditor.setCurrentModelIndex(idx, newTab=True)
 
-            for i in openIndexes[1]:
-                idx = mainWindow().mdlOutline.getIndexByID(i)
-                self.mainEditor.setCurrentModelIndex(idx, newTab=True)
-
-            if openIndexes[2]:
+            if openIndexes[2] and self.secondTab:
                 self.focusTab = 2
                 self.secondTab.restoreOpenIndexes(openIndexes[2])
 
-        except:
+        except Exception:
             # Cannot load open indexes. Let's simply open root.
+            if not self.mainEditor:return
             self.mainEditor.setCurrentModelIndex(QModelIndex(), newTab=True)
 
     ###############################################################################
@@ -152,7 +159,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
     def updateTargetIcon(self, val):
         icon = QIcon.fromTheme("set-target", QIcon(appPath(os.path.join("icons", "NumixMsk", "256x256", "actions", "set-target.svg"))))
         if not val:
-            icon = QIcon(icon.pixmap(128, 128, icon.Disabled))
+            icon = QIcon(icon.pixmap(128, 128, icon.Mode.Disabled))
         self.btnTarget.setIcon(icon)
 
     ###############################################################################
@@ -166,7 +173,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
                 self.addSecondTab()
 
             self.splitState = 1
-            self.splitter.setOrientation(Qt.Horizontal)
+            self.splitter.setOrientation(Qt.Orientation.Horizontal)
             # self.btnSplit.setChecked(True)
             self.btnSplit.setIcon(QIcon.fromTheme("split-vertical"))
             self.btnSplit.setToolTip(self.tr("Split horizontally"))
@@ -175,7 +182,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
             if self.secondTab == None:
                 self.addSecondTab()
 
-            self.splitter.setOrientation(Qt.Vertical)
+            self.splitter.setOrientation(Qt.Orientation.Vertical)
             self.splitState = 2
             # self.btnSplit.setChecked(True)
             self.btnSplit.setIcon(QIcon.fromTheme("split-horizontal"))
@@ -193,7 +200,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
         self.splitter.setStretchFactor(0, 10)
         self.splitter.setStretchFactor(1, 10)
 
-        if self.mainEditor.currentEditor():
+        if self.mainEditor and self.mainEditor.currentEditor():
             idx = self.mainEditor.currentEditor().currentIndex
             self.focusTab = 2
             self.mainEditor.setCurrentModelIndex(idx)
@@ -217,7 +224,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
         self.btnSplit.setIcon(QIcon.fromTheme("split-close"))
         self.btnSplit.setToolTip(self.tr("Split vertically"))
 
-        if len(l):
+        if len(l) and self.mainEditor:
             self.mainEditor.tabChanged()
 
     # def resizeEvent(self, event):
@@ -242,7 +249,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
             else:
                 new = new.parent()
 
-        if self.focusTab != oldFT:
+        if self.focusTab != oldFT and self.mainEditor:
             self.mainEditor.tabChanged()
 
     def eventFilter(self, object, event):

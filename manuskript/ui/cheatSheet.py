@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import pyqtSignal, Qt, QTimer, QRect
 from PyQt5.QtGui import QBrush, QCursor, QPalette, QFontMetrics, QColor
-from PyQt5.QtWidgets import QWidget, QListWidgetItem, QToolTip, QStyledItemDelegate, QStyle
+from PyQt5.QtWidgets import QWidget, QListWidgetItem, QToolTip, QStyledItemDelegate, QStyle, QListWidget
 
 from manuskript.enums import Character
 from manuskript.enums import Plot
@@ -15,6 +15,7 @@ from manuskript.ui.editors.completer import completer
 
 class cheatSheet(QWidget, Ui_cheatSheet):
     activated = pyqtSignal(str)
+    list:QListWidget
 
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
@@ -150,7 +151,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
         self.hideList()
         if self.list and len(self.txtFilter.text()) != 0:
             i = self.list.currentItem()
-            ref = i.data(Qt.UserRole)
+            ref = i.data(Qt.ItemDataRole.UserRole)
             if ref:
                 self.view.setText(Ref.infos(ref))
 

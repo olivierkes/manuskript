@@ -1,0 +1,44 @@
+/* searchResultSS */
+QListWidget{
+    background: {window};
+}
+/* lineEditSS */
+QLineEdit{
+    border: none;
+    border-bottom: 1px solid {line};
+    background:{window};
+}
+QLineEdit:focus{
+    border-bottom: 1px solid {highlight};
+}
+/* transparentSS */
+QTextEdit{
+    background: transparent;
+    border:none;
+}
+/* dockSS */
+QDockWidget::title {
+    text-align: left; /* align the text to the left */
+    background: {header};
+    padding: 5px;
+}
+
+QDockWidget::close-button, QDockWidget::float-button {
+    background: {header};
+}
+/* titleLabelSS */
+QLabel{
+    background-color:{bg};
+    border:none;
+    padding:10px;
+    color:{text};
+    font-size:16px;
+    font-weight:bold;
+    text-align:center;
+}
+/* toolTipSS */
+QToolTip {
+    color: {textColor}; 
+    background-color: {backgroundColor}; 
+    border: 1px solid {borderColor};
+}

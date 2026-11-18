@@ -35,10 +35,10 @@ PlotLetter = "P"
 WorldLetter = "W"
 
 # Colors
-TextHighlightColor = QColor(mixColors(QColor(Qt.blue).name(), S.window, .3))
-CharacterHighlightColor = QColor(mixColors(QColor(Qt.yellow).name(), S.window, .3))
-PlotHighlightColor = QColor(mixColors(QColor(Qt.red).name(), S.window, .3))
-WorldHighlightColor = QColor(mixColors(QColor(Qt.green).name(), S.window, .3))
+TextHighlightColor = mixColors(QColor(Qt.GlobalColor.blue).name(), S.window, .3, isqcolor=True)
+CharacterHighlightColor = mixColors(QColor(Qt.GlobalColor.yellow).name(), S.window, .3,isqcolor=True)
+PlotHighlightColor = mixColors(QColor(Qt.GlobalColor.red).name(), S.window, .3,isqcolor=True)
+WorldHighlightColor = mixColors(QColor(Qt.GlobalColor.green).name(), S.window, .3,isqcolor=True)
 
 
 def plotReference(ID, searchable=False):
@@ -97,9 +97,8 @@ def infos(ref):
         m = mainWindow().mdlOutline
         idx = m.getIndexByID(_ref)
 
-        if not idx.isValid():
+        if not idx or  not idx.isValid():
             return safeTranslate(qApp, "references", "Unknown reference: {}.").format(ref)
-
         item = idx.internalPointer()
 
         # Titles
@@ -115,21 +114,25 @@ def infos(ref):
         # The POV of the scene
         POV = ""
         if item.POV():
-            POV = "<a href='{ref}'>{text}</a>".format(
-                    ref=characterReference(item.POV()),
-                    text=mainWindow().mdlCharacter.getCharacterByID(item.POV()).name())
+            char=mainWindow().mdlCharacter.getCharacterByID(item.POV())
+            if char:
+                POV = "<a href='{ref}'>{text}</a>".format(ref=characterReference(item.POV()), text=char.name())
 
         # The status of the scene
         status = item.status()
         if status:
-            status = mainWindow().mdlStatus.item(int(status), 0).text()
+            statusitem=mainWindow().mdlStatus.item(int(status), 0)
+            if statusitem:
+                status = statusitem.text()
+            else:
+                status=''
         else:
             status = ""
 
         # The label of the scene
         label = item.label()
         if label:
-            label = mainWindow().mdlLabels.item(int(label), 0).text()
+            label = labelitem.text() if (labelitem:=mainWindow().mdlLabels.item(int(label), 0)) else ''
         else:
             label = ""
 
@@ -137,9 +140,7 @@ def infos(ref):
         path = item.pathID()
         pathStr = []
         for _id, title in path:
-            pathStr.append("<a href='{ref}'>{text}</a>".format(
-                    ref=textReference(_id),
-                    text=title))
+            pathStr.append("<a href='{ref}'>{text}</a>".format(ref=textReference(_id), text=title))
         path = " > ".join(pathStr)
 
         # Summaries and notes
@@ -271,7 +272,6 @@ def infos(ref):
     elif _type == PlotLetter:
         m = mainWindow().mdlPlots
         index = m.getIndexFromID(_ref)
-        name = m.getPlotNameByID(_ref)
 
         if not index.isValid():
             return safeTranslate(qApp, "references", "Unknown reference: {}.").format(ref)
@@ -285,43 +285,28 @@ def infos(ref):
         # Goto (link)
         goto = safeTranslate(qApp, "references", "Go to {}.")
         goto = goto.format(refToLink(ref))
-
+        rowPlot=m.rowPlot(index.row())
         # Description
-        description = m.data(index.sibling(index.row(),
-                                           Plot.description))
-
+        name = rowPlot['name']
+        description = rowPlot["description"]
         # Result
-        result = m.data(index.sibling(index.row(),
-                                      Plot.result))
-
+        result =rowPlot['result']
+        print(repr(rowPlot["characters"]))
         # Characters
-        pM = mainWindow().mdlCharacter
-        item = m.item(index.row(), Plot.characters)
         characters = ""
-        if item:
-            for r in range(item.rowCount()):
-                ID = item.child(r, 0).text()
-                character = pM.getCharacterByID(ID)
-
-                if character is not None:
-                    characters += "<li><a href='{link}'>{text}</a>".format(
-                            link=characterReference(ID),
-                            text=character.name())
+        for character in rowPlot["characters"]:
+            characters += "<li><a href='{link}'>{text}</a>".format(link=characterReference(character.ID()), text=character.name())
 
         # Resolution steps
         steps = ""
-        item = m.item(index.row(), Plot.steps)
-        if item:
-            for r in range(item.rowCount()):
-                title = item.child(r, PlotStep.name).text()
-                summary = item.child(r, PlotStep.summary).text()
-                meta = item.child(r, PlotStep.meta).text()
-                if meta:
-                    meta = " <span style='color:gray;'>({})</span>".format(meta)
-                steps += "<li><b>{title}</b>{summary}{meta}</li>".format(
-                        title=title,
-                        summary=": {}".format(summary) if summary else "",
-                        meta=meta if meta else "")
+        
+        
+            
+        for step in m.rowPlotsteps(index.row()).values():
+            title = step["name"]
+            summary = ": {}".format(summary) if (summary:=step['summary']) else ""
+            meta =  " <span style='color:gray;'>({})</span>".format(meta) if (meta:=step['meta'] ) else ""
+            steps += "<li><b>{title}</b>{summary}{meta}</li>".format(title=title, summary=": {}".format(summary) if summary else "", meta=meta if meta else "")
 
         text = """<h1>{name}</h1>
         {goto}
@@ -364,7 +349,7 @@ def infos(ref):
         conflictTitle = safeTranslate(qApp, "references", "Conflict")
 
         # Goto (link)
-        goto = safeTranslate(qApp, "references", "Go to {}.")
+        goto:str = safeTranslate(qApp, "references", "Go to {}.")
         goto = goto.format(refToLink(ref))
 
         # Description
@@ -527,13 +512,12 @@ def refToLink(ref):
     """
     match = re.fullmatch(RegEx, ref)
     if match:
-        _type = match.group(1)
-        _ref = match.group(2)
+        _type:str = match.group(1)
+        _ref:str = match.group(2)
         text = ""
         if _type == TextLetter:
             m = mainWindow().mdlOutline
-            idx = m.getIndexByID(_ref)
-            if idx.isValid():
+            if (idx := m.getIndexByID(_ref)) and idx.isValid():
                 item = idx.internalPointer()
                 text = item.title()
 
@@ -559,7 +543,7 @@ def refToLink(ref):
                     text=text)
         else:
             return ref
-
+    return ref
 def linkifyAllRefs(text):
     """Takes all the references in ``text`` and transform them into HMTL links."""
     return re.sub(RegEx, lambda m: refToLink(m.group(0)), text)

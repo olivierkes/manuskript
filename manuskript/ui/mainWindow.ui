@@ -326,6 +326,7 @@
                <widget class="QLabel" name="label_9">
                 <property name="font">
                  <font>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -349,6 +350,7 @@
                <widget class="QLabel" name="label_29">
                 <property name="font">
                  <font>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -767,8 +769,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>453</width>
-                      <height>699</height>
+                      <width>430</width>
+                      <height>730</height>
                      </rect>
                     </property>
                     <layout class="QFormLayout" name="formLayout_8">
@@ -1997,7 +1999,7 @@
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>23</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -2028,12 +2030,25 @@
     <property name="title">
      <string>&amp;Help</string>
     </property>
+    <widget class="QMenu" name="menuInstallLibraries">
+     <property name="title">
+      <string>Install Libraries</string>
+     </property>
+     <addaction name="actionEnchant"/>
+     <addaction name="actionMarkdown"/>
+     <addaction name="actionPyspellchecker"/>
+     <addaction name="actionLanguageTool"/>
+     <addaction name="actionSymspellpy"/>
+     <addaction name="actionLxml"/>
+    </widget>
     <addaction name="actShowHelp"/>
     <addaction name="separator"/>
     <addaction name="actSupport"/>
     <addaction name="actLocateLog"/>
     <addaction name="separator"/>
     <addaction name="actAbout"/>
+    <addaction name="separator"/>
+    <addaction name="menuInstallLibraries"/>
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
@@ -2165,6 +2180,7 @@
       <widget class="cheatSheet" name="cheatSheet" native="true">
        <property name="font">
         <font>
+         <weight>50</weight>
          <bold>false</bold>
         </font>
        </property>
@@ -2198,6 +2214,7 @@
       <widget class="search" name="widget" native="true">
        <property name="font">
         <font>
+         <weight>50</weight>
          <bold>false</bold>
         </font>
        </property>
@@ -2838,6 +2855,36 @@
    </property>
    <property name="shortcut">
     <string notr="true">Shift+F1</string>
+   </property>
+  </action>
+  <action name="actionEnchant">
+   <property name="text">
+    <string>Enchant</string>
+   </property>
+  </action>
+  <action name="actionMarkdown">
+   <property name="text">
+    <string>Markdown</string>
+   </property>
+  </action>
+  <action name="actionPyspellchecker">
+   <property name="text">
+    <string>Pyspellchecker</string>
+   </property>
+  </action>
+  <action name="actionLanguageTool">
+   <property name="text">
+    <string>LanguageTool</string>
+   </property>
+  </action>
+  <action name="actionSymspellpy">
+   <property name="text">
+    <string>Symspellpy</string>
+   </property>
+  </action>
+  <action name="actionLxml">
+   <property name="text">
+    <string>Lxml</string>
    </property>
   </action>
  </widget>

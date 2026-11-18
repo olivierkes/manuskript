@@ -9,6 +9,7 @@ present, and do the job as best as possible with what we have in hand.
 
 from manuskript.converters.abstractConverter import abstractConverter
 from manuskript.converters.pandocConverter import pandocConverter
+from PyQt5.QtWidgets import QTextEdit
 #from manuskript.converters.markdownConverter import markdownConverter
 
 

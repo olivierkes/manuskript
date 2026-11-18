@@ -11,13 +11,13 @@ else:
     try:
         import PyQt5.QtWebKitWidgets
         features['qtwebkit'] = True
-    except:
+    except ImportError:
         features['qtwebkit'] = False
 
     try:
         import PyQt5.QtWebEngineWidgets
         features['qtwebengine'] = True
-    except:
+    except ImportError:
         features['qtwebengine'] = False
 
 if features['qtwebkit']:

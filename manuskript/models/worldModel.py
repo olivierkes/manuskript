@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import QModelIndex, QSize
+from PyQt5.QtCore import QModelIndex, QObject, QSize
 from PyQt5.QtCore import Qt, QMimeData, QByteArray
 from PyQt5.QtGui import QStandardItem, QBrush, QFontMetrics
 from PyQt5.QtGui import QStandardItemModel, QColor
@@ -12,13 +12,16 @@ from manuskript.ui import style as S
 from manuskript.models.searchableModel import searchableModel
 from manuskript.models.searchableItem import searchableItem
 from manuskript.searchLabels import WorldSearchLabels
-
+import manuskript.models.worldTemplate as WT
+from typing import TypeVar, cast
+T=TypeVar('T')
 
 class worldModel(QStandardItemModel, searchableModel):
     def __init__(self, parent):
         QStandardItemModel.__init__(self, 0, len(World), parent)
         self.mw = mainWindow()
-
+    def sender(self, Type:type[T]=QObject) -> T:
+        return cast(T,super().sender())
     ###############################################################################
     # SELECTION
     ###############################################################################
@@ -29,8 +32,7 @@ class worldModel(QStandardItemModel, searchableModel):
         item = self.itemFromIndex(index)
         if item:
             return item
-        else:
-            return self.invisibleRootItem()
+        return self.invisibleRootItem()
 
     def selectedIndex(self):
         """Returns the selected index in the treeView."""
@@ -88,7 +90,7 @@ class worldModel(QStandardItemModel, searchableModel):
             name = item.text()
             ID = self.itemID(item)
             path = self.path(item)
-            if name and ID:
+            if bool(name and ID):
                 lst.append((name, ID, path))
             for c in self.children(item):
                 readAll(c)
@@ -128,7 +130,7 @@ class worldModel(QStandardItemModel, searchableModel):
     # ADDING AND REMOVE
     ###############################################################################
 
-    def addItem(self, title=None, parent=None):
+    def addItem(self, title=None, parent=None, expand=True):
         """Adds an item, and returns it."""
         if not parent:
             parent = self.selectedItem()
@@ -137,9 +139,10 @@ class worldModel(QStandardItemModel, searchableModel):
         name = QStandardItem(title)
         _id = QStandardItem(self.getUniqueID())
         row = [name, _id] + [QStandardItem() for i in range(2, len(World))]
-        parent.appendRow(row)
-
-        self.mw.treeWorld.setExpanded(self.selectedIndex(), True)
+        if parent:
+            parent.appendRow(row)
+        if expand:
+            self.mw.treeWorld.setExpanded(self.selectedIndex(), True)
         self.mw.treeWorld.setCurrentIndex(self.indexFromItem(name))
         return name
 
@@ -190,9 +193,9 @@ class worldModel(QStandardItemModel, searchableModel):
         row_indexes = []
         for index in indexes:
             item = self.itemFromIndex(index)
-            parent = item.parent()
-            if parent == None:
-                parent = self.invisibleRootItem()
+            if not item:
+                continue
+            parent = item.parent() or self.invisibleRootItem()
             row_indexes.append((parent, item.row()))
 
         def copyRowWithChildren(row_index):
@@ -219,7 +222,7 @@ class worldModel(QStandardItemModel, searchableModel):
             after dropMimeData"""
             rows.append(copyRowWithChildren(i))
         """mime_data.rows available only in the application"""
-        mime_data.rows = rows
+        mime_data.rows = rows # pyright: ignore[reportAttributeAccessIssue]
         return mime_data
 
     def dropMimeData(self, mime_data, action, row_i, column_i, parent):
@@ -227,7 +230,8 @@ class worldModel(QStandardItemModel, searchableModel):
         parent_item = self.itemFromIndex(parent)
         if not parent_item:
             parent_item = self.invisibleRootItem()
-
+        if not parent_item:
+            return False
         """if place for drop is not specified row_i equals -1"""
         if row_i == -1:
             for row in mime_data.rows:
@@ -246,54 +250,10 @@ class worldModel(QStandardItemModel, searchableModel):
 
     def dataSets(self):
         """Returns sets of empty data that can guide the writer for world building."""
-        dataset = {
-            self.tr("Fantasy world building"): [
-                (self.tr("Physical"), [
-                    self.tr("Climate"),
-                    self.tr("Topography"),
-                    self.tr("Astronomy"),
-                    self.tr("Natural resources"),
-                    self.tr("Wild life"),
-                    self.tr("Flora"),
-                    self.tr("History"),
-                    self.tr("Races"),
-                    self.tr("Diseases"),
-                ]),
-                (self.tr("Cultural"), [
-                    self.tr("Customs"),
-                    self.tr("Food"),
-                    self.tr("Languages"),
-                    self.tr("Education"),
-                    self.tr("Dresses"),
-                    self.tr("Science"),
-                    self.tr("Calendar"),
-                    self.tr("Bodily language"),
-                    self.tr("Ethics"),
-                    self.tr("Religion"),
-                    self.tr("Government"),
-                    self.tr("Politics"),
-                    self.tr("Gender roles"),
-                    self.tr("Music and arts"),
-                    self.tr("Architecture"),
-                    self.tr("Military"),
-                    self.tr("Technology"),
-                    self.tr("Courtship"),
-                    self.tr("Demography"),
-                    self.tr("Transportation"),
-                    self.tr("Medicine"),
-                ]),
-                (self.tr("Magic system"), [
-                    self.tr("Rules"),
-                    self.tr("Organization"),
-                    self.tr("Magical objects"),
-                    self.tr("Magical places"),
-                    self.tr("Magical races"),
-                ]),
-                self.tr("Important places"),
-                self.tr("Important objects"),
-            ]
-        }
-        return dataset
+        if self.mw:
+            return WT.getTree().toJson()
+        print('Init without ou tree')
+        return WT.WORLDBASE.copy()
 
     def emptyDataMenu(self):
         """Returns a menu with the empty data sets."""
@@ -302,20 +262,31 @@ class worldModel(QStandardItemModel, searchableModel):
             a = QAction(name, self.menu)
             a.triggered.connect(self.setEmptyData)
             self.menu.addAction(a)
+        a = QAction(self.tr('+ Template'), self.menu)
+        a.triggered.connect(WT.WorldTemplateDialog.new)
+        self.menu.addAction(a)
         return self.menu
 
     def setEmptyData(self):
         """Called from the menu generated with ``emptyDataMenu``."""
-        act = self.sender()
+        act = self.sender(QAction)
         data = self.dataSets()[act.text()]
 
-        def addItems(data, parent):
-            for d in data:
-                if len(d) == 1 or type(d) == str:
-                    self.addItem(d, parent)
-                else:
-                    i = self.addItem(d[0], parent)
-                    addItems(d[1], i)
+        def addItems(data:dict|list|str, parent:QStandardItem|None=self.invisibleRootItem()):
+            myitem:QStandardItem|None=None
+            try:
+                if isinstance(data, dict):
+                    for key, childdata in data.items():
+                        myitem=addItems(childdata,self.addItem(key, parent))
+                elif isinstance(data, list):
+                    for item in data:
+                        myitem=addItems(item, parent)
+                elif isinstance(data, str):
+                    myitem=self.addItem(self.tr(data), parent, expand=False)
+                return myitem
+            except Exception as e:
+                print(data,e)
+                return None
 
         addItems(data, self.invisibleRootItem())
         self.mw.treeWorld.expandAll()
@@ -324,32 +295,32 @@ class worldModel(QStandardItemModel, searchableModel):
     # APPEARANCE
     ###############################################################################
 
-    def data(self, index, role=Qt.EditRole):
+    def data(self, index, role=Qt.ItemDataRole.EditRole):
         level = 0
         i = index
         while i.parent() != QModelIndex():
             i = i.parent()
             level += 1
 
-        if role == Qt.BackgroundRole:
+        if role == Qt.ItemDataRole.BackgroundRole:
             if level == 0:
                 return QBrush(QColor(S.highlightLight))
 
-        if role == Qt.TextAlignmentRole:
+        if role == Qt.ItemDataRole.TextAlignmentRole:
             if level == 0:
-                return Qt.AlignCenter
+                return Qt.AlignmentFlag.AlignCenter
 
-        if role == Qt.FontRole:
+        if role == Qt.ItemDataRole.FontRole:
             if level in [0, 1]:
                 f = qApp.font()
                 f.setBold(True)
                 return f
 
-        if role == Qt.ForegroundRole:
+        if role == Qt.ItemDataRole.ForegroundRole:
             if level == 0:
                 return QBrush(QColor(S.highlightedTextDark))
 
-        if role == Qt.SizeHintRole:
+        if role == Qt.ItemDataRole.SizeHintRole:
             fm = QFontMetrics(qApp.font())
             h = fm.height()
             if level == 0:

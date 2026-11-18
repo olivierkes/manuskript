@@ -33,7 +33,7 @@ class opmlImporter(abstractImporter):
                 with open(filePath, 'rb') as opmlFile:
                     #opmlContent = cls.saveNewlines(opmlFile.read())
                     opmlContent = opmlFile.read()
-            except:
+            except Exception:
                 QMessageBox.critical(settingsWidget,
                                     safeTranslate(qApp, "Import", "OPML Import"),
                                     safeTranslate(qApp, "Import", "File open failed."))

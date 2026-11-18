@@ -9,11 +9,11 @@ from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSetting
 from manuskript.functions import safeTranslate
 
 import os
-
-try:
-    import markdown as MD
-except ImportError:
-    MD = None
+from manuskript import MD
+# try:
+#     import markdown as MD
+# except ImportError:
+#     MD = None
 
 class HTML(markdown):
     name = "HTML"
@@ -26,7 +26,7 @@ class HTML(markdown):
     exportDefaultSuffix = ".html"
 
     def isValid(self):
-        return MD != None
+        return MD.isValid
 
     def settingsWidget(self):
         w = markdownSettings(self)

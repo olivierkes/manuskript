@@ -2,8 +2,10 @@
 #--!-- coding: utf8 --!--
 
 from manuskript import enums
+from manuskript.enums import Character as Perso
 from manuskript.ui import style as S
-
+from PyQt5.QtCore import QSortFilterProxyModel, Qt, pyqtSignal,QModelIndex,QAbstractItemModel
+from PyQt5.QtGui import QStandardItem,QColor,QBrush,QFont
 
 class persosProxyModel(QSortFilterProxyModel):
 

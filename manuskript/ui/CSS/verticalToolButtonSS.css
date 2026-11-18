@@ -1,0 +1,15 @@
+QToolButton{
+    border: 0;
+    border-radius: 0px;
+    background: transparent;
+    margin: 0px;
+    padding: 4px 8px;
+}
+QToolButton:checked{
+    border: 0px solid {borderColor};
+    background: {bgChecked};
+}
+QToolButton:hover{
+    border: 0px solid {borderColor};
+    background: {bgHover};
+}

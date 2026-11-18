@@ -5,45 +5,18 @@ import os, gzip, json, glob, re, string
 from PyQt5.QtCore import QLocale
 from collections import OrderedDict
 from manuskript.functions import writablePath
+from manuskript import enchant, pyspellchecker, symspellpy, Any, BaseModule, ENCHANT
 
-try:
-    import enchant
-except ImportError:
-    enchant = None
-
-try:
-    import spellchecker as pyspellchecker
-except ImportError:
-    pyspellchecker = None
-
-SYMSPELLPY_MIN_VERSION = "6.3.8"
-try:
-    import symspellpy
-    import distutils.version
-
-    if ((not hasattr(symspellpy, '__version__')) or
-        (distutils.version.LooseVersion(symspellpy.__version__) < SYMSPELLPY_MIN_VERSION)):
-        symspellpy = None
-
-except ImportError:
-    symspellpy = None
 
 
 use_language_check = False
+from manuskript import use_language_check, languagetool,SYMSPELLPY_MIN_VERSION
 
-try:
-    try:
-        import language_tool_python as languagetool
-    except:
-        import language_check as languagetool
-        use_language_check = True
-except:
-    languagetool = None
 
 class Spellchecker:
-    dictionaries = {}
+    dictionaries:dict[str, 'BasicDictionary'] = {}
     # In order of priority
-    implementations = []
+    implementations:list[type['BasicDictionary']] = []
 
     def __init__(self):
         pass
@@ -58,10 +31,12 @@ class Spellchecker:
             if impl.isInstalled():
                 return True
         return False
+        # return any(impl.isInstalled() for impl in Spellchecker.implementations )
+    
 
     @staticmethod
     def supportedLibraries():
-        libs = OrderedDict()
+        libs:OrderedDict[str,str] = OrderedDict()
         for impl in Spellchecker.implementations:
             libs[impl.getLibraryName()] = impl.getLibraryRequirement()
         return libs
@@ -96,7 +71,7 @@ class Spellchecker:
 
     @staticmethod
     def getLibraryURL(lib=None):
-        urls = {}
+        urls:dict[str,str] = {}
         for impl in Spellchecker.implementations:
             urls[impl.getLibraryName()] = impl.getLibraryURL()
         if lib:
@@ -104,7 +79,7 @@ class Spellchecker:
         return urls
 
     @staticmethod
-    def getDictionary(dictionary):
+    def getDictionary(dictionary:str|None):
         if not dictionary:
             dictionary = Spellchecker.getDefaultDictionary()
         if not dictionary:
@@ -141,6 +116,9 @@ class BasicMatch:
         return text[self.start:self.end]
 
 class BasicDictionary:
+    _dict:Any
+    CUSTOM_COUNT:Any
+    module=BaseModule('')
     def __init__(self, name):
         self._lang = name
         if not self._lang:
@@ -153,7 +131,7 @@ class BasicDictionary:
                 self._customDict = set(json.loads(f.read()))
                 for word in self._customDict:
                     self._dict.create_dictionary_entry(word, self.CUSTOM_COUNT)
-        except:
+        except Exception:
             # If error loading the file, overwrite with empty dictionary
             self._saveCustomDict()
 
@@ -161,21 +139,28 @@ class BasicDictionary:
     def name(self):
         return self._lang
 
-    @staticmethod
-    def getLibraryName():
-        raise NotImplemented
+    @classmethod
+    def getLibraryName(cls):
+        return cls.module.LibraryName
 
-    @staticmethod
-    def getLibraryRequirement():
-        return None
+    @classmethod
+    def getLibraryRequirement(cls):
+        return cls.module.LibraryRequirement
+    @classmethod
+    def installLibrary(cls):
+        if cls.isInstalled():
+            return True
+        elif cls.module.__install__() is not None:
+            return True
+        return False
 
-    @staticmethod
-    def getLibraryURL():
-        raise NotImplemented
+    @classmethod
+    def getLibraryURL(cls):
+        return cls.module.LibraryURL
 
-    @staticmethod
-    def isInstalled():
-        raise NotImplemented
+    @classmethod
+    def isInstalled(cls):
+        return cls.module.isValid
 
     @staticmethod
     def getDefaultDictionary():
@@ -195,7 +180,7 @@ class BasicDictionary:
         #
         # See also https://stackoverflow.com/questions/2062169/regex-w-in-utf-8
 
-        matches = []
+        matches:list[BasicMatch] = []
 
         for word_object in re.finditer(WORDS, text):
             word = word_object.group(1)
@@ -229,13 +214,13 @@ class BasicDictionary:
 
         return matches
 
-    def isMisspelled(self, word):
+    def isMisspelled(self, word)->bool:
         raise NotImplemented
 
-    def getSuggestions(self, word):
+    def getSuggestions(self, word)->list[str]:
         raise NotImplemented
 
-    def findSuggestions(self, text, start, end):
+    def findSuggestions(self, text:str, start:int, end:int)->list[BasicMatch]:
         if start < end:
             word = text[start:end]
 
@@ -250,7 +235,9 @@ class BasicDictionary:
     def isCustomWord(self, word):
         return word.lower() in self._customDict
 
-    def addWord(self, word):
+    def addWord(self, word:str|None):
+        if word is None or not word:
+            word=''
         word = word.lower()
         if not word in self._customDict:
             self._customDict.add(word)
@@ -279,12 +266,12 @@ class BasicDictionary:
 
 
 class EnchantDictionary(BasicDictionary):
-
+    module=enchant
+    _dict:ENCHANT.DictWithPWL
     def __init__(self, name):
         self._lang = name
         if not (self._lang and enchant.dict_exists(self._lang)):
             self._lang = self.getDefaultDictionary()
-
         self._dict = enchant.DictWithPWL(self._lang, self.getCustomDictionaryPath())
 
     @staticmethod
@@ -292,21 +279,17 @@ class EnchantDictionary(BasicDictionary):
         return "PyEnchant"
 
     @staticmethod
-    def getLibraryURL():
-        return "https://pypi.org/project/pyenchant/"
-
-    @staticmethod
     def isInstalled():
-        return enchant != None
-
+        return enchant.isValid
     @staticmethod
     def availableDictionaries():
+        
         if EnchantDictionary.isInstalled():
             return list(map(lambda i: str(i[0]), enchant.list_dicts()))
         return []
 
-    @staticmethod
-    def getDefaultDictionary():
+    @classmethod
+    def getDefaultDictionary(cls):
         if not EnchantDictionary.isInstalled():
             return None
 
@@ -317,7 +300,7 @@ class EnchantDictionary(BasicDictionary):
         if default_locale == None:
             default_locale = QLocale.system().name()
         if default_locale == None:
-            default_locale = self.availableDictionaries()[0]
+            default_locale = cls.availableDictionaries()[0]
 
         return default_locale
 
@@ -340,40 +323,30 @@ class EnchantDictionary(BasicDictionary):
         return os.path.join(self.getResourcesPath(), "{}.txt".format(self.name))
 
 class PySpellcheckerDictionary(BasicDictionary):
-
+    module=pyspellchecker
     def __init__(self, name):
-        BasicDictionary.__init__(self, name)
-
         self._dict = pyspellchecker.SpellChecker(self.name)
         self._dict.word_frequency.load_words(self._customDict)
+        BasicDictionary.__init__(self, name)
+
 
     @staticmethod
     def getLibraryName():
         return "pyspellchecker"
 
-    @staticmethod
-    def getLibraryURL():
-        return "https://pyspellchecker.readthedocs.io/en/latest/"
 
     @staticmethod
     def isInstalled():
-        return pyspellchecker != None
+        return pyspellchecker.isValid
 
     @staticmethod
     def availableDictionaries():
-        if PySpellcheckerDictionary.isInstalled():
-            dictionaries = []
-            files = glob.glob(os.path.join(pyspellchecker.__path__[0], "resources", "*.json.gz"))
-            for file in files:
-                dictionaries.append(os.path.basename(file)[:-8])
-            return dictionaries
-        return []
+        return [p.removesuffix('.json.gz') for p in pyspellchecker.resource()]
 
     @staticmethod
     def getDefaultDictionary():
         if not PySpellcheckerDictionary.isInstalled():
             return None
-
         default_locale = QLocale.system().name()
         if default_locale:
             default_locale = default_locale[0:2]
@@ -393,6 +366,8 @@ class PySpellcheckerDictionary(BasicDictionary):
 
     def addWord(self, word):
         BasicDictionary.addWord(self, word)
+        if word is None or not word:
+            word=''
         self._dict.word_frequency.add(word.lower())
 
     def removeWord(self, word):
@@ -402,7 +377,9 @@ class PySpellcheckerDictionary(BasicDictionary):
 class SymSpellDictionary(BasicDictionary):
     CUSTOM_COUNT = 1
     DISTANCE = 2
-
+    module=symspellpy
+    from manuskript import SYMSPELLPY
+    _dict:SYMSPELLPY.SymSpell
     def __init__(self, name):
         BasicDictionary.__init__(self, name)
 
@@ -413,14 +390,14 @@ class SymSpellDictionary(BasicDictionary):
             if not self._dict.load_pickle(cachePath, False):
                 raise Exception("Can't load cached dictionary. " +
                                 "File might be corrupted or incompatible with installed symspellpy version")
-        except:
-            if pyspellchecker:
-                path = os.path.join(pyspellchecker.__path__[0], "resources", "{}.json.gz".format(self.name))
-                if os.path.exists(path):
+        except Exception:
+            if pyspellchecker.isValid:
+                path = pyspellchecker.cachedresource.get("{}.json.gz".format(self.name))
+                if path is not None and  path.exists():
                     with gzip.open(path, 'rt', encoding='utf-8') as f:
-                        data = json.loads(f.read())
-                        for key in data:
-                            self._dict.create_dictionary_entry(key, data[key])
+                        data:dict[str,int] = json.loads(f.read())
+                        for key,value in data.items():
+                            self._dict.create_dictionary_entry(key, value)
                     self._dict.save_pickle(cachePath, False)
         for word in self._customDict:
             self._dict.create_dictionary_entry(word, self.CUSTOM_COUNT)
@@ -442,18 +419,14 @@ class SymSpellDictionary(BasicDictionary):
 
     @staticmethod
     def isInstalled():
-        return symspellpy != None
+        return symspellpy.isValid
 
     @classmethod
-    def availableDictionaries(cls):
+    def availableDictionaries(cls)->list[str]:
         if SymSpellDictionary.isInstalled():
             files = glob.glob(os.path.join(cls.getResourcesPath(), "*.sym"))
-            dictionaries = []
-            for file in files:
-                dictionaries.append(os.path.basename(file)[:-4])
-            for sp_dict in PySpellcheckerDictionary.availableDictionaries():
-                if not sp_dict in dictionaries:
-                    dictionaries.append(sp_dict)
+            dictionaries = [os.path.basename(file).removesuffix(".sym") for file in files]
+            dictionaries.extend(sp_dict for sp_dict in PySpellcheckerDictionary.availableDictionaries() if not sp_dict in dictionaries)
             return dictionaries
         return []
 
@@ -464,7 +437,8 @@ class SymSpellDictionary(BasicDictionary):
 
         return PySpellcheckerDictionary.getDefaultDictionary()
 
-    def isMisspelled(self, word):
+    def isMisspelled(self, word:str):
+        word=str(word)
         suggestions = self._dict.lookup(word.lower(), symspellpy.Verbosity.TOP)
         if len(suggestions) > 0 and suggestions[0].distance == 0:
             return False
@@ -494,6 +468,8 @@ class SymSpellDictionary(BasicDictionary):
 
     def addWord(self, word):
         BasicDictionary.addWord(self, word)
+        if word is None or not word:
+            word=''
         self._dict.create_dictionary_entry(word.lower(), self.CUSTOM_COUNT)
 
     def removeWord(self, word):
@@ -502,22 +478,13 @@ class SymSpellDictionary(BasicDictionary):
         self._dict.delete_dictionary_entry(word)
 
 def get_languagetool_match_errorLength(match):
-    if use_language_check:
-        return match.errorlength
-    else:
-        return match.error_length
+    return languagetool.match_errorLength(match)
 
 def get_languagetool_match_ruleIssueType(match):
-    if use_language_check:
-        return match.locqualityissuetype
-    else:
-        return match.rule_issue_type
+    return languagetool.match_ruleIssueType(match)
 
 def get_languagetool_match_message(match):
-    if use_language_check:
-        return match.msg
-    else:
-        return match.message
+    return languagetool.get_match_message(match)
 
 class LanguageToolCache:
 
@@ -549,16 +516,10 @@ class LanguageToolCache:
             self._matches = self._buildMatches(tool, text)
 
 def get_languagetool_languages(tool):
-    if use_language_check:
-        return languagetool.get_languages()
-    else:
-        return tool._get_languages()
+    return languagetool.get_languages(tool)
 
 def get_languagetool_locale_language():
-    if use_language_check:
-        return languagetool.get_locale_language()
-    else:
-        return languagetool.utils.get_locale_language()
+    return languagetool.local_language
 
 class LanguageToolDictionary(BasicDictionary):
 
@@ -569,54 +530,43 @@ class LanguageToolDictionary(BasicDictionary):
 
         if not (self._lang and self._lang in get_languagetool_languages(self.getTool())):
             self._lang = self.getDefaultDictionary()
-
-        self.tool = languagetool.LanguageTool(self._lang)
+        self.tool = languagetool.maketool(self._lang)
         self._cache = {}
 
     @staticmethod
     def getTool():
-        if LanguageToolDictionary._tool == None:
-            try:
-                LanguageToolDictionary._tool = languagetool.LanguageTool()
-            except:
-                return None
-
-        return LanguageToolDictionary._tool
-
+        return languagetool.getTool(LanguageToolDictionary)
     @staticmethod
     def getLibraryName():
         return "LanguageTool"
 
     @staticmethod
     def getLibraryURL():
-        if use_language_check:
-            return "https://pypi.org/project/language-check/"
-        else:
-            return "https://pypi.org/project/language-tool-python/"
+        return languagetool.LibraryURL
+
 
     @staticmethod
-    def isInstalled():
-        if (languagetool != None) and (LanguageToolDictionary.getTool() != None):
+    def isInstalled()->bool:
+        if (languagetool.isValid) and (LanguageToolDictionary.getTool() != None):
 
             # This check, if Java is installed, is necessary to
             # make sure LanguageTool can be run without problems.
             #
-            return (os.system('java -version') == 0)
-
+            import subprocess
+            p=subprocess.Popen('java -version')
+            return (p.wait() == 0)
         return False
 
     @staticmethod
-    def availableDictionaries():
+    def availableDictionaries()->list[str]:
         if LanguageToolDictionary.isInstalled():
             tool = LanguageToolDictionary.getTool()
-            languages = list(get_languagetool_languages(tool))
-            languages.sort()
+            languages = sorted(get_languagetool_languages(tool))
             return languages
+        return sorted(get_languagetool_languages(None))
 
-        return []
-
-    @staticmethod
-    def getDefaultDictionary():
+    @classmethod
+    def getDefaultDictionary(cls):
         if not LanguageToolDictionary.isInstalled():
             return None
 
@@ -625,11 +575,10 @@ class LanguageToolDictionary(BasicDictionary):
 
         if default_locale and not default_locale in get_languagetool_languages(tool):
             default_locale = None
-
         if default_locale == None:
             default_locale = QLocale.system().name()
         if default_locale == None:
-            default_locale = self.availableDictionaries()[0]
+            default_locale = cls.availableDictionaries()[0]
 
         return default_locale
 
@@ -644,7 +593,6 @@ class LanguageToolDictionary(BasicDictionary):
 
         if not textId in self._cache:
             cacheEntry = LanguageToolCache(self.tool, text)
-
             self._cache[textId] = cacheEntry
         else:
             cacheEntry = self._cache[textId]
@@ -655,7 +603,6 @@ class LanguageToolDictionary(BasicDictionary):
 
             if not (match.locqualityissuetype == 'misspelling' and self.isCustomWord(word)):
                 matches.append(match)
-
         return matches
 
     def isMisspelled(self, word):

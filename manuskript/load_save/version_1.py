@@ -36,7 +36,7 @@ try:
     import zlib  # Used with zipfile for compression
 
     compression = zipfile.ZIP_DEFLATED
-except:
+except Exception:
     compression = zipfile.ZIP_STORED
 
 cache = {}
@@ -224,7 +224,7 @@ def saveProject(zip=None):
         # Generates file's content
         content = ""
         for m in characterMap:
-            val = mdl.data(c.index(m.value)).strip()
+            val = (mdl.data(c.index(m.value)) or '').strip()
             if val:
                 content += formatMetaData(characterMap[m], val, 20)
 
@@ -418,7 +418,7 @@ def saveProject(zip=None):
                 try:
                     os.removedirs(newDir)
                     LOGGER.debug("* Removing empty directory: %s", newDir)
-                except:
+                except Exception:
                     # Directory not empty, we don't remove.
                     pass
 

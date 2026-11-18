@@ -1,0 +1,24 @@
+QTabWidget::pane{
+    margin-top: -{bw}px;
+    border: none;
+}
+QTabWidget::tab-bar{
+    left:50px;
+}
+QTabBar{
+    background: {bgColor};
+    border: 0px;
+}
+QTabBar::tab{
+    padding: 2px 9px;
+    border: {bw}px solid {borderColor};
+}
+QTabBar::tab:selected{
+    border: {bw}px solid {borderColor};
+    background: {highlight};
+    color: {highlightedText};
+}
+QTabBar::tab:!selected:hover{
+    background:{highlight};
+    color: {highlightedText};
+}

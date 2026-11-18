@@ -1,0 +1,14 @@
+QListView {
+    show-decoration-selected: 0;
+    outline: none;
+    background-color: transparent;
+}
+
+QListView::item:selected {
+    background: {highlight};
+    color: {textSelected};
+}
+
+QListView::item:hover {
+    background: {hover};
+}

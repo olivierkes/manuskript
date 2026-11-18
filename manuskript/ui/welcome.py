@@ -5,7 +5,7 @@ import locale
 import importlib
 import os
 
-from PyQt5.QtCore import QSettings, QRegExp, Qt, QDir
+from PyQt5.QtCore import QObject, QSettings, QRegExp, Qt, QDir
 from PyQt5.QtGui import QIcon, QBrush, QColor, QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QWidget, QAction, QFileDialog, QSpinBox, QLineEdit, QLabel, QPushButton, QTreeWidgetItem, \
     qApp, QMessageBox
@@ -20,13 +20,14 @@ from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.ui.welcome_ui import Ui_welcome
 from manuskript.ui import style as S
-
+from typing import TypeVar, cast
+T=TypeVar('T')
 import logging
 LOGGER = logging.getLogger(__name__)
 
 try:
     locale.setlocale(locale.LC_ALL, '')
-except:
+except Exception:
     pass
 
 class welcome(QWidget, Ui_welcome):
@@ -47,7 +48,8 @@ class welcome(QWidget, Ui_welcome):
 
         self.populateTemplates()
         self._templates = self.templates()
-
+    def sender(self, Type:type[T]=QObject) -> T:
+        return cast(T,super().sender())
     def updateValues(self):
         # Auto load
         autoLoad, last = self.getAutoLoadValues()
@@ -142,7 +144,7 @@ class welcome(QWidget, Ui_welcome):
         sttgns.setValue("recentFiles", recentFiles)
 
     def loadRecentFile(self):
-        act = self.sender()
+        act = self.sender(QAction)
         self.appendToRecentFiles(act.data())
         self.mw.closeProject()
         self.mw.loadProject(act.data())
@@ -260,8 +262,8 @@ class welcome(QWidget, Ui_welcome):
             self.updateTemplate()
 
         # Selected item is a sample project
-        elif item.data(0, Qt.UserRole):
-            name = item.data(0, Qt.UserRole)
+        elif item.data(0, Qt.ItemDataRole.UserRole):
+            name = item.data(0, Qt.ItemDataRole.UserRole)
             # Clear templates
             self.template = self._templates[0]
             self.updateTemplate()
@@ -359,7 +361,7 @@ class welcome(QWidget, Ui_welcome):
         # Searching for every spinboxes on the widget, and multiplying
         # their values to get the number of words.
         for s in self.findChildren(QSpinBox, QRegExp(".*"),
-                                   Qt.FindChildrenRecursively):
+                                   Qt.FindChildOption.FindChildrenRecursively):
             templateIndex = s.property("templateIndex")
             if (templateIndex is None) or (templateIndex >= len(self.template[1])):
                 continue
@@ -370,7 +372,7 @@ class welcome(QWidget, Ui_welcome):
                 self.template[1][templateIndex][1])
 
         for t in self.findChildren(QLineEdit, QRegExp(".*"),
-                                   Qt.FindChildrenRecursively):
+                                   Qt.FindChildOption.FindChildrenRecursively):
             templateIndex = t.property("templateIndex")
             if (templateIndex is None) or (templateIndex >= len(self.template[1])):
                 continue
@@ -401,8 +403,8 @@ class welcome(QWidget, Ui_welcome):
         item = QTreeWidgetItem(self.tree, [name])
         item.setBackground(0, QBrush(QColor(S.highlightLight)))
         item.setForeground(0, QBrush(QColor(S.highlightedTextDark)))
-        item.setTextAlignment(0, Qt.AlignCenter)
-        item.setFlags(Qt.ItemIsEnabled)
+        item.setTextAlignment(0, Qt.AlignmentFlag.AlignCenter)
+        item.setFlags(Qt.ItemFlag.ItemIsEnabled)
         f = item.font(0)
         f.setBold(True)
         item.setFont(0, f)
@@ -430,7 +432,7 @@ class welcome(QWidget, Ui_welcome):
         dir = QDir(appPath("sample-projects"))
         for f in dir.entryList(["*.msk"], filters=QDir.Files):
             sub = QTreeWidgetItem(item, [f[:-4]])
-            sub.setData(0, Qt.UserRole, f)
+            sub.setData(0, Qt.ItemDataRole.UserRole, f)
 
         self.tree.expandAll()
 
@@ -453,12 +455,12 @@ class welcome(QWidget, Ui_welcome):
 
         # Labels
         for color, text in [
-            (Qt.transparent, ""),
-            (Qt.yellow, self.tr("Idea")),
-            (Qt.green, self.tr("Note")),
-            (Qt.blue, self.tr("Chapter")),
-            (Qt.red, self.tr("Scene")),
-            (Qt.cyan, self.tr("Research"))
+            (Qt.GlobalColor.transparent, ""),
+            (Qt.GlobalColor.yellow, self.tr("Idea")),
+            (Qt.GlobalColor.green, self.tr("Note")),
+            (Qt.GlobalColor.blue, self.tr("Chapter")),
+            (Qt.GlobalColor.red, self.tr("Scene")),
+            (Qt.GlobalColor.cyan, self.tr("Research"))
         ]:
             self.mw.mdlLabels.appendRow(QStandardItem(iconFromColor(color), text))
 

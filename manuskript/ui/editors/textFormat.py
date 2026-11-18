@@ -64,5 +64,5 @@ class textFormat(QWidget, Ui_textFormat):
 
     def setFormat(self):
         act = self.sender()
-        if self._textEdit:
+        if self._textEdit and act:
             self._textEdit.applyFormat(act.text())

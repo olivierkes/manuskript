@@ -12,7 +12,6 @@ LOGGER = logging.getLogger(__name__)
 
 # TODO: move some/all of those settings to application settings and not project settings
 #       in order to allow a shared project between several writers
-
 viewSettings = {
     "Tree": {
         "Icon": "Nothing",
@@ -66,11 +65,10 @@ corkBackground = {
 corkStyle = "new"
 defaultTextType = "md"
 fullScreenTheme = "spacedreams"
-
 textEditor = {
     "background": "",
     "fontColor": "",
-    "font": qApp.font().toString(),
+    "font": qApp.font().toString() if qApp.instance() else 'MS Shell Dlg 2,-1,-1,5,50,0,0,0,0,0',
     "misspelled": "#F00",
     "lineSpacing": 100,
     "tabWidth": 20,

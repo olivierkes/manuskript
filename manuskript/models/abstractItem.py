@@ -10,6 +10,7 @@ from PyQt5.QtGui import QIcon, QFont
 from PyQt5.QtWidgets import QTextEdit, qApp
 from lxml import etree as ET
 import re
+from typing import Self
 
 from manuskript import enums
 
@@ -31,7 +32,7 @@ class abstractItem():
 
         self._data = {}
         self.childItems = []
-        self._parent = None
+        self._parent:None|Self = None
         self._model = model
         self._parser = ET.XMLParser(huge_tree=True)
 
@@ -48,7 +49,6 @@ class abstractItem():
         if parent:
             # add this as a child to the parent, and link to the outlineModel of the parent
             parent.appendChild(self)
-
         if ID:
             self._data[self.enum.ID] = ID
 
@@ -105,10 +105,10 @@ class abstractItem():
     # Properties
     #######################################################################
 
-    def title(self):
+    def title(self)->str:
         return self._data.get(self.enum.title, "")
 
-    def ID(self):
+    def ID(self)->str|None:
         return self._data.get(self.enum.ID)
 
     def columnCount(self):
@@ -137,8 +137,8 @@ class abstractItem():
         return self.childItems
 
     def row(self):
-        if self.parent():
-            return self.parent().childItems.index(self)
+        if (parent:=self.parent()):
+            return parent.childItems.index(self)
         return None
 
     def appendChild(self, child):
@@ -166,25 +166,22 @@ class abstractItem():
 
     def path(self, sep=" > "):
         "Returns path to item as string."
-        if self.parent().parent():
-            return "{parent}{sep}{title}".format(
-                parent=self.parent().path(),
-                sep=sep,
-                title=self.title())
+        if (parent:=self.parent()) and (parent.parent()):
+            return "{parent}{sep}{title}".format(parent=parent.path(), sep=sep, title=self.title())
         else:
             return self.title()
 
-    def pathID(self):
+    def pathID(self)->list[tuple[str|None, str]]:
         "Returns path to item as list of (ID, title)."
-        if self.parent() and self.parent().parent():
-            return self.parent().pathID() + [(self.ID(), self.title())]
+        if (parent:=self.parent())and parent.parent():
+            return parent.pathID() + [(self.ID(), self.title())]
         else:
             return [(self.ID(), self.title())]
 
     def level(self):
         """Returns the level of the current item. Root item returns -1."""
-        if self.parent():
-            return self.parent().level() + 1
+        if (parent:=self.parent()):
+            return parent.level() + 1
         else:
             return -1
 
@@ -197,8 +194,8 @@ class abstractItem():
         return item
 
     def siblings(self):
-        if self.parent():
-            return self.parent().children()
+        if (par:=self.parent()):
+            return par.children()
         return []
 
     ###############################################################################
@@ -252,15 +249,15 @@ class abstractItem():
     # Data
     #######################################################################
 
-    def data(self, column, role=Qt.DisplayRole):
+    def data(self, column, role=Qt.ItemDataRole.DisplayRole):
         # Return value in self._data
-        if role == Qt.DisplayRole or role == Qt.EditRole:
+        if role == Qt.ItemDataRole.DisplayRole or role == Qt.ItemDataRole.EditRole:
             return self._data.get(column, "")
 
         # Or return QVariant
         return QVariant()
 
-    def setData(self, column, data, role=Qt.DisplayRole):
+    def setData(self, column, data, role=Qt.ItemDataRole.DisplayRole):
         # Setting data
         self._data[column] = data
 
